@@ -30,16 +30,14 @@ class ProfilePhotoPicker extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			profilePhoto: imageURLs[0],
-			photoPosition: -50,
-			pickerIndex: 0
+			photoPosition: -100,
+			photoIndex: 0
 		};
 	}
 
 	handlePickerChange = (event) => {
 		this.setState({
-			profilePhoto: imageURLs[event.value],
-			pickerIndex: event.value
+			photoIndex: event.value
 		});
 	}
 
@@ -49,11 +47,11 @@ class ProfilePhotoPicker extends React.Component {
 
 	render = () => (
 		<div className={css.profilePhotoPicker}>
-			<Image className={css.profilePhoto} src={this.state.profilePhoto} style={{backgroundPosition: this.state.photoPosition + 'px'}} />
+			<Image className={css.profilePhoto} src={imageURLs[this.state.photoIndex]} style={{backgroundPosition: this.state.photoPosition + 'px'}} />
 
 			<Slider className={css.slider} min={-100} max={0} value={this.state.photoPosition} onChange={this.handleSliderChange} />
 
-			<BodyText centered>{imageNames[this.state.pickerIndex]} :: {this.state.pickerIndex + 1} of {imageURLs.length} photos</BodyText>
+			<BodyText centered>{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos</BodyText>
 
 			<StatefulPicker onChange={this.handlePickerChange} width="large" >
 				{imageComponents}
@@ -63,3 +61,5 @@ class ProfilePhotoPicker extends React.Component {
 }
 
 export default ProfilePhotoPicker;
+
+export {imageURLs};

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import ProfilePhotoPicker from '../ProfilePhotoPicker.js';
+import ProfilePhotoPicker, {imageURLs} from '../ProfilePhotoPicker.js';
 
 describe('ProfilePhotoPicker specs', () => {
 
@@ -12,9 +12,9 @@ describe('ProfilePhotoPicker specs', () => {
 
 		const profilePhoto = subject.find('Image');
 
-		subject.setState({profilePhoto: 'newPhoto.jpg'});
+		subject.setState({photoIndex: 2});
 		const actual = profilePhoto.node.props.src;
-		const expected = 'newPhoto.jpg';
+		const expected = imageURLs[2];
 
 		expect(actual).to.equal(expected);
 	});
