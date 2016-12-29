@@ -5,11 +5,11 @@ import Slider from '@enact/moonstone/Slider';
 import Picker from '@enact/moonstone/Picker';
 import Changeable from '@enact/ui/Changeable';
 import css from './ProfilePhotoPicker.less';
-import car from './images/car.jpeg';
-import city from './images/city.jpeg';
-import mural from './images/mural.jpeg';
-import spaceShuttle from './images/space-shuttle.jpg';
-import violin from './images/violin.jpeg';
+import car from '../../assets/images/car.jpeg';
+import city from '../../assets/images/city.jpeg';
+import mural from '../../assets/images/mural.jpeg';
+import spaceShuttle from '../../assets/images/space-shuttle.jpg';
+import violin from '../../assets/images/violin.jpeg';
 
 const StatefulPicker = Changeable(Picker);
 
