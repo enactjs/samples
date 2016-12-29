@@ -3,12 +3,20 @@ import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import {Panel, Header} from '@enact/moonstone/Panels';
 
+import RouteTree from './RouteTree';
+
 const MainPanel = kind({
 	name: 'MainPanel',
-	render: ({title, onClick}) => (
+
+	computed: {
+		text: ({next}) => `To ${next} Panel`
+	},
+
+	render: ({title, onClick, text}) => (
 		<Panel>
 			<Header title={title} />
-			<Button onClick={onClick}>Click me</Button>
+			<RouteTree />
+			<Button onClick={onClick}>{text}</Button>
 		</Panel>
 	)
 });

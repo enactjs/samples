@@ -28,9 +28,9 @@ const App = kind({
 		return (
 			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 				<Route path="first" component={AboutPanel} title="About Routable Panels Pattern" onClick={onSecondPanel}>
-					<Route path="second" component={MainPanel} title="Second" onClick={onFourthPanel} />
-					<Route path="third" component={MainPanel} title="Third" onClick={onFirstPanel}>
-						<Route path="fourth" component={MainPanel} title="Fouth" onClick={onThirdPanel} />
+					<Route path="second" component={MainPanel} next="fourth" title="Second" onClick={onFourthPanel} />
+					<Route path="third" component={MainPanel} next="first" title="Third" onClick={onFirstPanel}>
+						<Route path="fourth" component={MainPanel} next="third" title="Fourth" onClick={onThirdPanel} />
 					</Route>
 				</Route>
 			</RoutablePanels>
