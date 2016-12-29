@@ -8,12 +8,20 @@ Run `npm install` then
 `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Moonstone Components used
-- Image
-- Slider
-- Button
-- Popup
-- Picker
-- Changable (Higher Order Component)
+- `moonstone/Image`
+- `moonstone/Slider`
+- `moonstone/Button`
+- `moonstone/Popup`
+- `moonstone/Picker`
+- `ui/Changeable` (Higher Order Component)
+
+#### Running Tests
+
+The sample includes examples on how to use unit tests with Enact. To execute the tests, issue the following command:
+
+```bash
+npm run test
+```
 
 ---
 
