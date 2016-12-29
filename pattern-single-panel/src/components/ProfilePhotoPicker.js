@@ -5,15 +5,20 @@ import Slider from '@enact/moonstone/Slider';
 import Picker from '@enact/moonstone/Picker';
 import Changeable from '@enact/ui/Changeable';
 import css from './ProfilePhotoPicker.less';
+import car from './images/car.jpeg';
+import city from './images/city.jpeg';
+import mural from './images/mural.jpeg';
+import spaceShuttle from './images/space-shuttle.jpg';
+import violin from './images/violin.jpeg';
 
 const StatefulPicker = Changeable(Picker);
 
 const imageURLs = [
-	'../images/mural.jpeg',
-	'../images/violin.jpeg',
-	'../images/car.jpeg',
-	'../images/city.jpeg',
-	'../images/space-shuttle.jpg'
+	car,
+	city,
+	mural,
+	spaceShuttle,
+	violin
 ];
 
 const imageNames = ['Mural', 'Violin', 'Vintage Car', 'City', 'Space Shuttle'];
