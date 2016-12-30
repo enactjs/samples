@@ -17,6 +17,12 @@ const example =
 
 const AboutPanel = kind({
 	name: 'AboutPanel',
+
+	propTypes: {
+		onClick: React.PropTypes.func,
+		title: React.PropTypes.string
+	},
+
 	render: ({title, onClick}) => (
 		<Panel>
 			<Header title={title}>
@@ -38,8 +44,8 @@ const AboutPanel = kind({
 				</BodyText>
 
 				<BodyText>
-					Instead of setting the <code>index</code> of the active panel, you set the
-					<code>path</code> (e.g. <code>'/first/second'</code>) and <code>Routable</code>
+					Instead of setting the <code>index</code> of the active panel, you set
+					the <code>path</code> (e.g. <code>&#39;/first/second&#39;</code>) and <code>Routable</code>
 					derives the correct index. When using breadcrumbs or the back/ESC key, the user is
 					routed back up the path until it reaches the top-most panel.
 				</BodyText>

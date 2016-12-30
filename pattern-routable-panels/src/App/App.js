@@ -12,6 +12,8 @@ import AppStateDecorator from './AppStateDecorator';
 const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
 
 const App = kind({
+	name: 'App',
+
 	propTypes: {
 		onNavigate: React.PropTypes.func,
 		path: React.PropTypes.string
@@ -34,7 +36,7 @@ const App = kind({
 					</Route>
 				</Route>
 			</RoutablePanels>
-		)
+		);
 	}
 });
 

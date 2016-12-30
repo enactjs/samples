@@ -1,6 +1,6 @@
 import React from 'react';
 
-const tree =`    First
+const tree = `    First
     |	\\
 Second	Third
 	  |

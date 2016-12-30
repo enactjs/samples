@@ -8,6 +8,12 @@ import RouteTree from './RouteTree';
 const MainPanel = kind({
 	name: 'MainPanel',
 
+	propTypes: {
+		next: React.PropTypes.string,
+		onClick: React.PropTypes.func,
+		title: React.PropTypes.string
+	},
+
 	computed: {
 		text: ({next}) => `To ${next} Panel`
 	},
