@@ -29,7 +29,7 @@ Here's a basic look at what your panels JSX will end up looking like.
 </RoutablePanels>
 ```
 
-You can find a more detailed view inside of [App.js](src/App.js)
+You can find a more detailed view inside of [App.js](src/App/App.js)
 
 
 
