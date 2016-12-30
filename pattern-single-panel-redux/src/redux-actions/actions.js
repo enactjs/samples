@@ -1,4 +1,3 @@
-
 export const save = (saved) => ({
 	type: 'SAVE_PROFILE_PHOTO',
 	saved

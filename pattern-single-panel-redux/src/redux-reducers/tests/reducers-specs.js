@@ -1,13 +1,14 @@
 import reducer from '../reducers.js';
+import mural from '../../../assets/images/mural.jpeg';
 
 describe('Redux reducer specs', () => {
 
 	const intialState = {
 		saved: false,
-		setPreview: {
+		photo: {
 			index: 0,
 			size: 100,
-			url: 'https://images.pexels.com/photos/38981/pexels-photo-38981.jpeg?h=350&auto=compress'
+			url: mural
 		}
 	};
 
@@ -44,7 +45,7 @@ describe('Redux reducer specs', () => {
 				size: 6666,
 				index: 9999
 			}
-		}).setPreview;
+		}).photo;
 		const expected = savedState;
 
 		expect(actual).to.deep.equal(expected);
@@ -62,7 +63,7 @@ describe('Redux reducer specs', () => {
 			previewPhoto: {
 				url: 'someurl.com'
 			}
-		}).setPreview;
+		}).photo;
 		const expected = changedState;
 
 		expect(actual).to.deep.equal(expected);

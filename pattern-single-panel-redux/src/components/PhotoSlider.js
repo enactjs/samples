@@ -1,24 +1,38 @@
 import React, {PropTypes} from 'react';
+import kind from '@enact/core/kind';
 import Slider from '@enact/moonstone/Slider';
-import css from './styles.less';
+import css from './componentStyles.less';
 
-const PhotoSlider = ({size, setPreview}) => {
-	const handleOnChange = (event) => {
-		setPreview({
-			size: event.value
-		});
-	};
+const PhotoSlider = kind({
+	name: 'PhotoSlider',
 
-	return (
-		<div>
-			<Slider className={css.slider} min={100} max={200} value={size} onChange={handleOnChange} />
-		</div>
-	);
-};
+	propTypes: {
+		setPreview: PropTypes.func.isRequired,
+		size: PropTypes.number.isRequired
+	},
 
-PhotoSlider.propTypes = {
-	setPreview: PropTypes.func.isRequired,
-	size: PropTypes.number.isRequired
-};
+	styles: {
+		css,
+		className: 'slider'
+	},
+
+	computed: {
+		onChange: ({setPreview}) => {
+			return (ev) => {
+				setPreview({
+					size: ev.value
+				});
+			};
+		}
+	},
+
+	render: ({onChange, size, ...rest}) => {
+		delete rest.setPreview;
+
+		return (
+			<Slider {...rest} min={100} max={200} value={size} onChange={onChange} />
+		);
+	}
+});
 
 export default PhotoSlider;

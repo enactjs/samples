@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
+import mural from '../../assets/images/mural.jpeg';
 
 const defaultProfilePhoto = {
 	index: 0,
 	size: 100,
-	url: '../images/mural.jpeg'
+	url: mural
 };
 
 const saved = (state = false, action) => {

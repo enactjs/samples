@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {setPreview} from '../redux-actions/actions';
+import {setPreview} from '../redux-actions';
 import PhotoPicker from '../components/PhotoPicker';
 
 const mapStateToProps = (state) => {

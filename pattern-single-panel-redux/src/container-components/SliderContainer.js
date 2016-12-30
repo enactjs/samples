@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {setPreview} from '../redux-actions/actions';
+import {setPreview} from '../redux-actions';
 import PhotoSlider from '../components/PhotoSlider';
 
 const mapStateToProps = (state) => {
