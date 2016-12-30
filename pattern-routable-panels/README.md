@@ -1,6 +1,6 @@
 ## Routable panel pattern
 
-A sample panel Enact application that shows off how to use Routable, Routes and Panels
+A sample Enact application that shows off how to use Routable, Routes and Panels
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
@@ -14,9 +14,9 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `moonstone/Button`
 - `moonstone/Scroller`
 
-Using Routes and Routeable you will have a very simple declarative way to view and navigate through your panels. Just set up your routes and RoutablePanels will take care of the history logic.
+Using `Routes` and `Routable` you will have a very simple, declarative way to view and navigate through your panels. Just set up your routes and `RoutablePanels` will take care of the history logic.
 
-Here's a basic look at what your panels JSX will end up looking like.
+Here's what your panels' JSX will end up looking like:
 
 ```
 <RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
@@ -31,15 +31,6 @@ Here's a basic look at what your panels JSX will end up looking like.
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 
-
-
-#### Running Tests
-
-The sample includes examples on how to use unit tests with Enact. To execute the tests, issue the following command:
-
-```bash
-npm run test
-```
 ---
 
 This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).
