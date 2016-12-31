@@ -40,14 +40,16 @@ class ProfilePhotoPicker extends React.Component {
 		};
 	}
 
-	handlePickerChange = (event) => {
+	handlePickerChange = (ev) => {
 		this.setState({
-			photoIndex: event.value
+			photoIndex: ev.value
 		});
 	}
 
-	handleSliderChange = (event) => {
-		this.setState({photoPosition: event.value});
+	handleSliderChange = (ev) => {
+		if (ev.value) {
+			this.setState({photoPosition: ev.value});
+		}
 	}
 
 	render = () => (
