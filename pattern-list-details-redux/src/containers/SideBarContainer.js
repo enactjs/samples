@@ -6,13 +6,12 @@ const mapStateToProps = (state) => {
 	return ({
 		selectedCountry: state.country,
 		selectedCity: state.city,
-		zoomed: state.zoom
+		zoom: state.zoom
 	});
 };
 
 const mapDispatchToProps = (dispatch) => ({
 	onCityChange: (city) => {
-		// Dipatch the change to state.saved
 		dispatch(changeCity(city.target.textContent));
 
 		// Add other things you want to do when the state.saved is changed

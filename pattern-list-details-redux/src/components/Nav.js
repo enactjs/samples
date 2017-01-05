@@ -1,13 +1,12 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
-import {Header} from '@enact/moonstone/Panels';
 import Button from '@enact/moonstone/Button';
-import css from './Head.less';
+import css from './Nav.less';
 
 const countryList = ['usa', 'spain', 'korea', 'japan'];
 
-const Head = kind({
-	name: 'Head',
+const Nav = kind({
+	name: 'Nav',
 
 	propTypes: {
 		onCountryChange: PropTypes.func.isRequired,
@@ -43,11 +42,10 @@ const Head = kind({
 
 		return (
 			<div className={css.head}>
-				<Header title="City Viewer" type="compact" />
 				{countryButtons}
 			</div>
 		);
 	}
 });
 
-export default Head;
+export default Nav;

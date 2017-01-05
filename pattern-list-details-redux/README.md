@@ -25,6 +25,10 @@ The sample includes examples on how to use unit tests with Enact. In this redux 
 npm run test
 ```
 
+### Photo credits
+
+All photos are found in [Pexels.com](https://www.pexels.com) under Public Domain CC0 license.
+
 ---
 
 This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).

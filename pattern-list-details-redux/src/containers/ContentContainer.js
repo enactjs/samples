@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {zoomIn} from '../redux-actions/actions';
+import {zoomIn} from '../actions';
 import Content from '../components/Content';
 
 const mapStateToProps = (state) => {
@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	onZoom: () => {
-		// Dipatch the change to state.saved
 		dispatch(zoomIn());
 
 		// Add other things you want to do when the state.saved is changed

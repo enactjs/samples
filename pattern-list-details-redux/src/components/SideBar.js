@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import Divider from '@enact/moonstone/Divider';
+import css from './SideBar.less';
 
 const cities = {
 	usa: ['San Francisco', 'Los Angeles', 'New York City'],
@@ -17,20 +18,23 @@ const SideBar = kind({
 		onCityChange: PropTypes.func.isRequired,
 		selectedCity: PropTypes.string.isRequired,
 		selectedCountry: PropTypes.string.isRequired,
-		zoomed: PropTypes.bool
+		zoom: PropTypes.bool
 	},
 
 	defaultProps: {
 		selectedCountry: 'usa',
 		selectedCity: 'San Francisco',
-		zoomed: false
+		zoom: false
+	},
+
+	styles: {
+		css,
+		className: 'sideBar'
 	},
 
 	computed: {
-		minimizeSidebar: ({zoomed}) => {
-			if (zoomed) {
-				return {flex: '0'};
-			}
+		className: ({zoom, styler}) => {
+			return styler.append(css.sideBar, {zoom});
 		},
 		cityList: ({onCityChange, selectedCountry, selectedCity}) => {
 			return cities[selectedCountry].map((city, index) => {
@@ -49,14 +53,14 @@ const SideBar = kind({
 		}
 	},
 
-	render: ({className, cityList, minimizeSidebar, ...rest}) => {
+	render: ({cityList, minimizeSidebar, ...rest}) => {
 		delete rest.onCityChange;
 		delete rest.selectedCity;
 		delete rest.selectedCountry;
-		delete rest.zoomed;
+		delete rest.zoom;
 
 		return (
-			<div {...rest} className={className} style={minimizeSidebar}>
+			<div {...rest} style={minimizeSidebar}>
 				{cityList}
 			</div>
 		);

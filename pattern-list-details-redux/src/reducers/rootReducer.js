@@ -27,10 +27,10 @@ const zoom = (state = false, action) => {
 	}
 };
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
 	country,
 	city,
 	zoom
 });
 
-export default reducer;
+export default rootReducer;

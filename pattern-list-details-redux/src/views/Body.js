@@ -1,7 +1,7 @@
 import React from 'react';
 import kind from '@enact/core/kind';
-import SideBarContainer from '../container-components/SideBarContainer';
-import ContentContainer from '../container-components/ContentContainer';
+import SideBarContainer from '../containers/SideBarContainer';
+import ContentContainer from '../containers/ContentContainer';
 import css from './Body.less';
 
 const Body = kind({
