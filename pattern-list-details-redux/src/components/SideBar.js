@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import Divider from '@enact/moonstone/Divider';
+import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
 
 const SideBar = kind({
@@ -26,27 +27,32 @@ const SideBar = kind({
 	},
 
 	computed: {
+		cityList: ({cities, selectedCountry}) => {
+			return cities[selectedCountry];
+		},
 		className: ({zoom, styler}) => {
 			return styler.append(css.sideBar, {zoom});
 		},
-		cityList: ({cities, onCityChange, selectedCountry, selectedCity}) => {
-			return cities[selectedCountry].map((city, index) => {
-				return (
-					<div key={index}>
-						<SelectableItem
-							onClick={onCityChange}
-							selected={selectedCity === city}
-						>
-							{city}
-						</SelectableItem>
-						<Divider />
-					</div>
-				);
-			});
+		numberOfCities: ({cities, selectedCountry}) => {
+			return cities[selectedCountry].length;
+		},
+		virtualListItem: ({onCityChange, selectedCity}) => ({data, index, key}) => {
+			const city = data[index];
+			return (
+				<div key={key}>
+					<SelectableItem
+						onClick={onCityChange}
+						selected={selectedCity === city}
+					>
+						{city}
+					</SelectableItem>
+					<Divider />
+				</div>
+			)
 		}
 	},
 
-	render: ({cityList, minimizeSidebar, ...rest}) => {
+	render: ({cityList, numberOfCities, virtualListItem, ...rest}) => {
 		delete rest.cities;
 		delete rest.onCityChange;
 		delete rest.selectedCity;
@@ -54,9 +60,15 @@ const SideBar = kind({
 		delete rest.zoom;
 
 		return (
-			<div {...rest} style={minimizeSidebar}>
-				{cityList}
-			</div>
+			<VirtualList
+				{...rest}
+				data={cityList}
+				dataSize={numberOfCities}
+				direction='vertical'
+				itemSize={5}
+				spacing={1}
+				component={virtualListItem}
+			/>
 		);
 	}
 });

@@ -1,4 +1,4 @@
-import reducer from '../reducers.js';
+import reducer from '../';
 
 describe('Redux reducer specs', () => {
 
