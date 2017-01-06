@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {changeCountry} from '../actions';
+import {changeCountry, changeCity} from '../actions';
 import Nav from '../components/Nav';
 
 const mapStateToProps = (state) => {
@@ -8,11 +8,12 @@ const mapStateToProps = (state) => {
 	});
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
 	onCountryChange: (country) => {
-		dispatch(changeCountry(country.target.textContent.toLowerCase()));
+		const countryName = country.target.textContent.toLowerCase();
 
-		// Add other things you want to do when the state.saved is changed
+		dispatch(changeCountry(countryName));
+		dispatch(changeCity(ownProps.cities[countryName][0]));
 	}
 });
 

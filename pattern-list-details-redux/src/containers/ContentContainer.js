@@ -11,8 +11,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
 	onZoom: () => {
 		dispatch(zoomIn());
-
-		// Add other things you want to do when the state.saved is changed
 	}
 });
 

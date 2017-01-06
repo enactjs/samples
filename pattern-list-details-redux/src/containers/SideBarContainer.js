@@ -13,8 +13,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
 	onCityChange: (city) => {
 		dispatch(changeCity(city.target.textContent));
-
-		// Add other things you want to do when the state.saved is changed
 	}
 });
 

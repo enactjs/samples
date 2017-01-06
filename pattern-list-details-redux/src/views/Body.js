@@ -7,9 +7,9 @@ import css from './Body.less';
 const Body = kind({
 	name: 'Body',
 
-	render: () => (
+	render: ({cities}) => (
 		<div className={css.body}>
-			<SideBarContainer className={css.sideBar} />
+			<SideBarContainer cities={cities} className={css.sideBar} />
 			<ContentContainer className={css.content} />
 		</div>
 	)

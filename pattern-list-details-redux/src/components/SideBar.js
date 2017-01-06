@@ -4,13 +4,6 @@ import SelectableItem from '@enact/moonstone/SelectableItem';
 import Divider from '@enact/moonstone/Divider';
 import css from './SideBar.less';
 
-const cities = {
-	usa: ['San Francisco', 'Los Angeles', 'New York City'],
-	spain: ['Madrid', 'Barcelona', 'Valencia'],
-	korea: ['Seoul', 'Busan', 'Daegu'],
-	japan: ['Tokyo', 'Osaka', 'Kyoto']
-};
-
 const SideBar = kind({
 	name: 'SideBar',
 
@@ -36,7 +29,7 @@ const SideBar = kind({
 		className: ({zoom, styler}) => {
 			return styler.append(css.sideBar, {zoom});
 		},
-		cityList: ({onCityChange, selectedCountry, selectedCity}) => {
+		cityList: ({cities, onCityChange, selectedCountry, selectedCity}) => {
 			return cities[selectedCountry].map((city, index) => {
 				return (
 					<div key={index}>
@@ -54,6 +47,7 @@ const SideBar = kind({
 	},
 
 	render: ({cityList, minimizeSidebar, ...rest}) => {
+		delete rest.cities;
 		delete rest.onCityChange;
 		delete rest.selectedCity;
 		delete rest.selectedCountry;

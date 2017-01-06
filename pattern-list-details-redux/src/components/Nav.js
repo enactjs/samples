@@ -3,14 +3,14 @@ import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import css from './Nav.less';
 
-const countryList = ['usa', 'spain', 'korea', 'japan'];
-
 const Nav = kind({
 	name: 'Nav',
 
 	propTypes: {
+		countryList: PropTypes.array.isRequired,
 		onCountryChange: PropTypes.func.isRequired,
-		selectedCountry: PropTypes.string.isRequired
+		selectedCountry: PropTypes.string.isRequired,
+		cities: PropTypes.object
 	},
 
 	defaultProps: {
@@ -18,7 +18,7 @@ const Nav = kind({
 	},
 
 	computed: {
-		countryButtons: ({selectedCountry, onCountryChange}) => {
+		countryButtons: ({countryList, selectedCountry, onCountryChange}) => {
 			return countryList.map((country, index) => {
 				return (
 					<Button
@@ -37,6 +37,8 @@ const Nav = kind({
 	},
 
 	render: ({countryButtons, ...rest}) => {
+		delete rest.cities;
+		delete rest.countryList;
 		delete rest.onCountryChange;
 		delete rest.selectedCountry;
 
