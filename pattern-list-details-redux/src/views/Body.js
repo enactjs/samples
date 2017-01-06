@@ -7,8 +7,13 @@ import css from './Body.less';
 const Body = kind({
 	name: 'Body',
 
-	render: ({cities}) => (
-		<div className={css.body}>
+	styles: {
+		css,
+		className: 'body'
+	},
+
+	render: ({cities, ...rest}) => (
+		<div {...rest}>
 			<SideBarContainer cities={cities} className={css.sideBar} />
 			<ContentContainer className={css.content} />
 		</div>

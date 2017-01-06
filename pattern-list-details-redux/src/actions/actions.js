@@ -9,6 +9,6 @@ export const changeCity = (city) => ({
 });
 
 export const zoomIn = (zoom) => ({
-	type: 'ZOOM_IN',
+	type: 'ZOOM',
 	zoom
 });

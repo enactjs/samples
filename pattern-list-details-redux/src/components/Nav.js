@@ -17,6 +17,11 @@ const Nav = kind({
 		selectedCountry: 'usa'
 	},
 
+	styles: {
+		css,
+		className: 'nav'
+	},
+
 	computed: {
 		countryButtons: ({countryList, selectedCountry, onCountryChange}) => {
 			return countryList.map((country, index) => {
@@ -43,7 +48,7 @@ const Nav = kind({
 		delete rest.selectedCountry;
 
 		return (
-			<div className={css.head}>
+			<div>
 				{countryButtons}
 			</div>
 		);
