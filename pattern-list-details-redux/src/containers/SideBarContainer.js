@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	onCityChange: (city) => {
-		dispatch(changeCity(city.target.textContent));
+		dispatch(changeCity(city.value));
 	}
 });
 

@@ -15,7 +15,8 @@ Run `npm install` then
 - `moonstone/Divider`
 - `moonstone/IconButton`
 - `moonstone/Image`
-- `moonstone/SelectableItem`
+- `moonstone/ToggleItem`
+- `moonstone/VirtualList`
 
 #### Running Tests
 

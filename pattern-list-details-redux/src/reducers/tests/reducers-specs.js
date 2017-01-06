@@ -9,6 +9,7 @@ describe('Redux reducer specs', () => {
 	};
 
 	it('should return initial state', function () {
+		// eslint-disable-next-line
 		const actual = reducer(undefined, {});
 		const expected = intialState;
 

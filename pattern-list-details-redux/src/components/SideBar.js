@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
-import SelectableItem from '@enact/moonstone/SelectableItem';
+import ToggleItem from '@enact/moonstone/ToggleItem';
 import Divider from '@enact/moonstone/Divider';
 import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
@@ -40,12 +40,14 @@ const SideBar = kind({
 			const city = data[index];
 			return (
 				<div key={key}>
-					<SelectableItem
-						onClick={onCityChange}
+					<ToggleItem
+						icon='circle'
+						onToggle={onCityChange}
 						selected={selectedCity === city}
+						value={city}
 					>
 						{city}
-					</SelectableItem>
+					</ToggleItem>
 					<Divider />
 				</div>
 			)
@@ -64,9 +66,8 @@ const SideBar = kind({
 				{...rest}
 				data={cityList}
 				dataSize={numberOfCities}
-				direction='vertical'
 				itemSize={5}
-				spacing={1}
+				spacing={5}
 				component={virtualListItem}
 			/>
 		);
