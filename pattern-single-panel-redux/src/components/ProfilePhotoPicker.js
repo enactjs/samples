@@ -1,8 +1,8 @@
 import React from 'react';
 import kind from '@enact/core/kind';
-import PhotoPickerContainer from '../container-components/PhotoPickerContainer';
-import ProfilePhotoPickerContainer from '../container-components/PhotoPreviewContainer';
-import SliderContainer from '../container-components/SliderContainer';
+import PhotoPickerContainer from '../containers/PhotoPickerContainer';
+import ProfilePhotoPickerContainer from '../containers/PhotoPreviewContainer';
+import SliderContainer from '../containers/SliderContainer';
 import css from './componentStyles.less';
 
 const ProfilePhotoPicker = kind({
