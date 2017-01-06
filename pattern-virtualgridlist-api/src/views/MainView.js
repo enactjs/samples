@@ -67,6 +67,11 @@ const addItem = (item) => ({type: types.ADD_ITEM, item});
 const toggleItem = (index) => ({type: types.TOGGLE_ITEM, index});
 
 class MainView extends React.Component {
+
+	albumsInfo = []
+	scrollX = 0
+	scrollY = 0
+	
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -99,26 +104,24 @@ class MainView extends React.Component {
 		return this.store.dispatch({type: types.SELECTION_ENABLE});
 	}
 
-	renderItem = ({index, key}) => {
-		const data = this.store.getState();
-		return (
-			<GridListImageItem
-				key={key}
-				caption={data[index].text}
-				source={data[index].url}
-				subCaption={data[index].subText}
-				selected={data[index].selected}
-				selectionOverlayShowing={data[index].selectionEnable}
-				onClick={() => this.toggleItem(index)}
-				className={css.gridListItem}
-			/>
-		);
-	}
-
 	onChange = (ev) => {
-		const album = ev.value;
+		const 
+			album = ev.value,
+			//prevAlbum = this.state.album;
+			prevAlbumInfo = {name: this.state.album, left: this.scrollX, top: this.scrollY};
 		this.setState({album: album});
 		this.store.dispatch({type: types.CHANGE_ALBUM, album});
+		this.scrollTo({index: 0, animate: false});
+	}
+
+	getScrollTo = (scrollTo) => {
+		this.scrollTo = scrollTo;
+	}
+
+	handlerOnScrollStop = (ev) => {
+		//const position = {ev.scrollTop, ev.scrollLeft};
+		this.scrollX = ev.scrollLeft;
+		this.scrollY = ev.scrollTop;
 	}
 	
 	createMockItem = (album) => {
@@ -136,6 +139,22 @@ class MainView extends React.Component {
 			bgColor: '#' + color,
 			selectionEnable: this.showOverlay
 		}
+	}
+
+	renderItem = ({index, key}) => {
+		const data = this.store.getState();
+		return (
+			<GridListImageItem
+				key={key}
+				caption={data[index].text}
+				source={data[index].url}
+				subCaption={data[index].subText}
+				selected={data[index].selected}
+				selectionOverlayShowing={data[index].selectionEnable}
+				onClick={() => this.toggleItem(index)}
+				className={css.gridListItem}
+			/>
+		);
 	}
 
 	render = () => {
@@ -163,6 +182,8 @@ class MainView extends React.Component {
 						selectedAlbum={this.state.album}
 					/>
 					<VirtualGridList
+						cbScrollTo={this.getScrollTo}
+						onScrollStop={this.handlerOnScrollStop}
 						data={data}
 						dataSize={data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
