@@ -4,7 +4,7 @@ import PhotoSlider from '../components/PhotoSlider';
 
 const mapStateToProps = (state) => {
 	return ({
-		size: state.photo.size
+		position: state.photo.position
 	});
 };
 

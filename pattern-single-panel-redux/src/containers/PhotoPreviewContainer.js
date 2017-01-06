@@ -8,8 +8,9 @@ const PhotoPreview = kind({
 	name: 'PhotoPreview',
 
 	propTypes: {
-		size: PropTypes.number.isRequired,
-		url: PropTypes.string.isRequired
+		position: PropTypes.number.isRequired,
+		url: PropTypes.string.isRequired,
+		dispatch: PropTypes.func
 	},
 
 	styles: {
@@ -17,21 +18,24 @@ const PhotoPreview = kind({
 		className: 'profilePhoto'
 	},
 
-	render: ({url, size, ...rest}) => (
-		<Image {...rest} src={url} style={{backgroundSize: size + '%'}} />
-	)
+	render: ({url, position, ...rest}) => {
+		delete rest.dispatch;
+
+		return (
+			<Image {...rest} src={url} style={{backgroundPosition: position + 'px'}} />
+		);
+	}
 });
 
 const mapStateToProps = (state) => {
 	return ({
 		url: state.photo.url,
-		size: state.photo.size
+		position: state.photo.position
 	});
 };
 
 const ProfilePhotoPickerContainer = connect(
-	mapStateToProps,
-	null
+	mapStateToProps
 )(PhotoPreview);
 
 export default ProfilePhotoPickerContainer;

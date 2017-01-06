@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
@@ -9,16 +9,21 @@ import {save} from '../actions';
 const Footer = kind({
 	name: 'Footer',
 
+	propTypes: {
+		saved: PropTypes.bool,
+		saveToState: PropTypes.func
+	},
+
 	styles: {
 		css,
 		className: 'saveButton'
 	},
 
-	render: ({...rest}) => {
+	render: ({saved, saveToState, ...rest}) => {
 		return (
 			<div {...rest}>
-				<SaveButton {...rest} />
-				<SavedPopup {...rest} />
+				<SaveButton saved={saved} saveToState={saveToState} />
+				<SavedPopup saved={saved} saveToState={saveToState} />
 			</div>
 		);
 	}

@@ -2,7 +2,7 @@ import React from 'react';
 import kind from '@enact/core/kind';
 import PhotoPickerContainer from '../containers/PhotoPickerContainer';
 import ProfilePhotoPickerContainer from '../containers/PhotoPreviewContainer';
-import SliderContainer from '../containers/SliderContainer';
+import PhotoSliderContainer from '../containers/PhotoSliderContainer';
 import css from './componentStyles.less';
 
 const ProfilePhotoPicker = kind({
@@ -16,7 +16,7 @@ const ProfilePhotoPicker = kind({
 	render: ({...rest}) => (
 		<div {...rest}>
 			<ProfilePhotoPickerContainer />
-			<SliderContainer />
+			<PhotoSliderContainer />
 			<PhotoPickerContainer />
 		</div>
 	)

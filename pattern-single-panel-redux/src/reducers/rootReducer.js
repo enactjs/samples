@@ -2,8 +2,8 @@ import {combineReducers} from 'redux';
 import mural from '../../assets/images/mural.jpeg';
 
 const defaultProfilePhoto = {
-	index: 0,
-	size: 100,
+	photoIndex: 0,
+	position: -50,
 	url: mural
 };
 
@@ -21,8 +21,8 @@ const photo = (state = defaultProfilePhoto, action) => {
 		case 'SET_PREVIEW_PHOTO':
 			return {
 				url: action.previewPhoto.url || state.url,
-				size: action.previewPhoto.size || state.size,
-				index: action.previewPhoto.index || state.index
+				position: action.previewPhoto.position || state.position,
+				photoIndex: action.previewPhoto.photoIndex || state.photoIndex
 			};
 		default:
 			return state;

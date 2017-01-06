@@ -6,7 +6,7 @@ describe('reducer specs', () => {
 	const intialState = {
 		saved: false,
 		photo: {
-			index: 0,
+			photoIndex: 0,
 			size: 100,
 			url: mural
 		}
@@ -36,7 +36,7 @@ describe('reducer specs', () => {
 		const savedState = {
 			url: 'someurl.com',
 			size: 6666,
-			index: 9999
+			photoIndex: 9999
 		};
 
 		const actual = reducer(intialState, {
@@ -44,7 +44,7 @@ describe('reducer specs', () => {
 			previewPhoto: {
 				url: 'someurl.com',
 				size: 6666,
-				index: 9999
+				photoIndex: 9999
 			}
 		}).photo;
 		const expected = savedState;
@@ -56,7 +56,7 @@ describe('reducer specs', () => {
 		const changedState = {
 			url: 'someurl.com',
 			size: 100,
-			index: 0
+			photoIndex: 0
 		};
 
 		const actual = reducer(intialState, {

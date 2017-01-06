@@ -4,7 +4,7 @@ import PhotoPicker from '../components/PhotoPicker';
 
 const mapStateToProps = (state) => {
 	return ({
-		index: state.photo.index
+		photoIndex: state.photo.photoIndex
 	});
 };
 
