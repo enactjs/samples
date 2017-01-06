@@ -29,9 +29,9 @@ const photo = (state = defaultProfilePhoto, action) => {
 	}
 };
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
 	saved,
 	photo
 });
 
-export default reducer;
+export default rootReducer;

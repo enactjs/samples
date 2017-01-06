@@ -1,25 +1,25 @@
 import {connect} from 'react-redux';
-import {setPreview} from '../redux-actions';
-import PhotoSlider from '../components/PhotoSlider';
+import {setPreview} from '../actions';
+import PhotoPicker from '../components/PhotoPicker';
 
 const mapStateToProps = (state) => {
 	return ({
-		size: state.photo.size
+		index: state.photo.index
 	});
 };
 
 const mapDispatchToProps = (dispatch) => ({
+	// Dipatch the change to state.photo
 	setPreview: (newPhoto) => {
-		// Dipatch the change to state.photo
 		dispatch(setPreview(newPhoto));
 
 		// Add other things you want to do when the state.photo is changed
 	}
 });
 
-const SliderContainer = connect(
+const ProfilePhotoPickerContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(PhotoSlider);
+)(PhotoPicker);
 
-export default SliderContainer;
+export default ProfilePhotoPickerContainer;

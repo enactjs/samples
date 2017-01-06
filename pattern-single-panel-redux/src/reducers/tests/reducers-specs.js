@@ -1,7 +1,7 @@
-import reducer from '../reducers.js';
+import reducer from '../';
 import mural from '../../../assets/images/mural.jpeg';
 
-describe('Redux reducer specs', () => {
+describe('reducer specs', () => {
 
 	const intialState = {
 		saved: false,
@@ -13,6 +13,7 @@ describe('Redux reducer specs', () => {
 	};
 
 	it('should return initial state', function () {
+		// eslint-disable-next-line
 		const actual = reducer(undefined, {});
 		const expected = intialState;
 

@@ -4,7 +4,7 @@ import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 import css from './containerStyles.less';
 import {connect} from 'react-redux';
-import {save} from '../redux-actions';
+import {save} from '../actions';
 
 const Footer = kind({
 	name: 'Footer',
