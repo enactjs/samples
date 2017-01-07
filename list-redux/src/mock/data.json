@@ -1,0 +1,22 @@
+{
+    "channels": [
+        {
+            "number": 1,
+            "subNumber": 1,
+            "favorite": true,
+            "skipped": true,
+            "source": "dtv",
+            "name": "KRON-HD",
+            "selected": true
+        },
+        {
+            "number": 1,
+            "subNumber": 2,
+            "favorite": true,
+            "skipped": true,
+            "source": "dtv",
+            "name": "KRON2-HD",
+            "selected": false
+        }
+    ]
+}
