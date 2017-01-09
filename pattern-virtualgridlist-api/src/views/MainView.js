@@ -7,6 +7,8 @@ import IconButton from '@enact/moonstone/IconButton';
 import SideBar from '../components/SideBar';
 import {GridListImageItem, VirtualGridList} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
+import {Spotlight} from '@enact/spotlight';
+import {startJob} from '@enact/core/jobs';
 
 import css from './MainView.less';
 
@@ -77,6 +79,8 @@ class MainView extends React.Component {
 		this.unsubscribe = this.store.subscribe(this.updateData);
 	}
 
+	scrollTo = null
+
 	updateData = () => {
 		this.setState({data: this.store.getState()});
 	}
@@ -89,10 +93,14 @@ class MainView extends React.Component {
 		const item = this.createMockItem(this.state.album);
 		this.store.dispatch(addItem(item));
 	}
-	
+
 	deleteItem = () => this.store.dispatch({type: types.DELETE_ITEM});
 
 	selectAll = () => this.store.dispatch({type: types.SELECT_ALL});
+
+	getChildForIndex = (index) => {
+		return document.querySelector(`div[data-index='${index}']`);
+	}
 
 	showSelectionOverlayHandler = () => {
 		this.showOverlay = !this.showOverlay;
@@ -120,9 +128,9 @@ class MainView extends React.Component {
 		this.setState({album: album});
 		this.store.dispatch({type: types.CHANGE_ALBUM, album});
 	}
-	
+
 	createMockItem = (album) => {
-		const 
+		const
 			dataLength = this.store.getState().length,
 			title = (dataLength % 8 === 0) ? ' with long title' : '',
 			subTitle = (dataLength % 8 === 0) ? 'Lorem ipsum dolor sit amet' : 'Subtitle',
@@ -138,6 +146,18 @@ class MainView extends React.Component {
 		}
 	}
 
+	componentDidMount () {
+		//focusOnIndex, setInitialFocusIndex, scrollToItem
+		this.scrollTo({index: 60, animate: false});
+		startJob('', () => {
+			Spotlight.focus('div[data-index="60"]');
+		}, 1000)
+	}
+
+	getScrollTo = (fn) => {
+		this.scrollTo = fn;
+	}
+
 	render = () => {
 		const
 			data = this.store.getState(),
@@ -146,7 +166,7 @@ class MainView extends React.Component {
 			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Go To Previous" onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
 			selectionButton = !this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Selection" onClick={this.showSelectionOverlayHandler}>star</IconButton> : null,
 			addButton = !this.showOverlay ? <IconButton tooltipText="Add Item" onClick={this.addItem}>plus</IconButton> : null;
-			
+
 		return (
 			<div>
 				<Header title="My Gallery">
@@ -163,6 +183,7 @@ class MainView extends React.Component {
 						selectedAlbum={this.state.album}
 					/>
 					<VirtualGridList
+						cbScrollTo={this.getScrollTo}
 						data={data}
 						dataSize={data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
@@ -170,7 +191,7 @@ class MainView extends React.Component {
 						className={css.content}
 						component={this.renderItem}
 					/>
-				</div>	
+				</div>
 			</div>
 		);
 	}
