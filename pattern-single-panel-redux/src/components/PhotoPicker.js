@@ -38,9 +38,10 @@ const ProfilePhotoPickerContainer = kind({
 		},
 		onChange: ({setPreview}) => {
 			return (ev) => {
+				const index = ev.value;
 				setPreview({
-					url: imageURLs[ev.value],
-					photoIndex: ev.value
+					url: imageURLs[index],
+					photoIndex: index
 				});
 			};
 		}

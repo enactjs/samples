@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
 	}
 });
 
-const ProfilePhotoPickerContainer = connect(
+const PhotoPickerContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(PhotoPicker);
 
-export default ProfilePhotoPickerContainer;
+export default PhotoPickerContainer;

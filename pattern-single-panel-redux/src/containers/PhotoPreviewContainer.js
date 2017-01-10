@@ -34,8 +34,8 @@ const mapStateToProps = (state) => {
 	});
 };
 
-const ProfilePhotoPickerContainer = connect(
+const PhotoPreviewContainer = connect(
 	mapStateToProps
 )(PhotoPreview);
 
-export default ProfilePhotoPickerContainer;
+export default PhotoPreviewContainer;
