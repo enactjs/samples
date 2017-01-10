@@ -7,7 +7,7 @@ describe('reducer specs', () => {
 		saved: false,
 		photo: {
 			photoIndex: 0,
-			size: 100,
+			position: -50,
 			url: mural
 		}
 	};
@@ -35,7 +35,7 @@ describe('reducer specs', () => {
 	it('should handle SET_PREVIEW_PHOTO', function () {
 		const savedState = {
 			url: 'someurl.com',
-			size: 6666,
+			position: 6666,
 			photoIndex: 9999
 		};
 
@@ -43,7 +43,7 @@ describe('reducer specs', () => {
 			type: 'SET_PREVIEW_PHOTO',
 			previewPhoto: {
 				url: 'someurl.com',
-				size: 6666,
+				position: 6666,
 				photoIndex: 9999
 			}
 		}).photo;
@@ -55,7 +55,7 @@ describe('reducer specs', () => {
 	it('should handle SET_PREVIEW_PHOTO given one key-value', function () {
 		const changedState = {
 			url: 'someurl.com',
-			size: 100,
+			position: -50,
 			photoIndex: 0
 		};
 
