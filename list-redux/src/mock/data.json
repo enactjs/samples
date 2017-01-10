@@ -1,22 +1,22 @@
 {
-    "channels": [
-        {
-            "number": 1,
-            "subNumber": 1,
+    "channelsOrder": ["1", "2"],
+    "channels": {
+        "1": {
+            "number": "1-1",
             "favorite": true,
             "skipped": true,
             "source": "dtv",
-            "name": "KRON-HD",
-            "selected": true
+            "name": "NBC-HD",
+            "selected": false
         },
-        {
-            "number": 1,
-            "subNumber": 2,
+        "2": {
+            "number": "1-2",
             "favorite": true,
             "skipped": true,
             "source": "dtv",
-            "name": "KRON2-HD",
+            "name": "ABC-HD",
             "selected": false
         }
-    ]
+    },
+    "selectedChannels": []
 }

@@ -1,15 +1,17 @@
 import React from 'react';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
-import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
+import Item from '@enact/moonstone/Item';
 
 const MainPanel = kind({
 	name: 'MainPanel',
-
-	render: (rest) => (
+	computed: {
+		navigate: ({onNavigate}) => () => onNavigate({index: 1})
+	},
+	render: ({navigate, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="Channel Manager" />
+			<Item onClick={navigate}>Edit All Channels</Item>
 		</Panel>
 	)
 });
