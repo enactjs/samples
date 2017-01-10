@@ -1,13 +1,11 @@
 import Button from '@enact/moonstone/Button';
-import {connect} from 'react-redux';
 import {GridListImageItem, VirtualGridList} from '@enact/moonstone/VirtualList';
 import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
-import kind from '@enact/core/kind';
 import React from 'react';
 import ri from '@enact/ui/resolution';
 
-import {addItem, changeAlbum, deleteItem, selectAll, selectionEnable, toggleItem} from '../actions';
+import AppStateDecorator from './AppStateDecorator';
 import SideBar from '../components/SideBar';
 
 import css from './MainView.less';
@@ -15,19 +13,14 @@ import css from './MainView.less';
 const albums = ['Family', 'Video', 'Travel'];
 
 class MainView extends React.Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			album: albums[0]
-		};
-		this.showOverlay = false;
-	}
+	showOverlay = false
+	currentAlbum = albums[0]
 
 	addItem = () => {
-		const item = this.createMockItem(this.state.album);
+		const item = this.createMockItem(this.currentAlbum);
 		this.props.addItem(item);
 	}
-	
+
 	showSelectionOverlayHandler = () => {
 		this.showOverlay = !this.showOverlay;
 		this.props.selectionEnable();
@@ -35,17 +28,17 @@ class MainView extends React.Component {
 
 	onChange = (ev) => {
 		const album = ev.value;
-		this.setState({album: album});
-		this.props.onChnageAlbum(album);
+		this.currentAlbum = album;
+		this.props.onChangeAlbum(album);
 		this.scrollTo({index: 0, animate: false});
 	}
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
+	onClickItem = (index) => () => {
+		this.props.toggleItem(index);
 	}
-	
+
 	createMockItem = (album) => {
-		const 
+		const
 			dataLength = this.props.data.length,
 			title = (dataLength % 8 === 0) ? ' with long title' : '',
 			subTitle = (dataLength % 8 === 0) ? 'Lorem ipsum dolor sit amet' : 'Subtitle',
@@ -62,31 +55,37 @@ class MainView extends React.Component {
 	}
 
 	renderItem = ({index, key}) => {
+		const item = this.props.data[index];
+
 		return (
 			<GridListImageItem
 				key={key}
-				caption={this.props.data[index].text}
-				source={this.props.data[index].url}
-				subCaption={this.props.data[index].subText}
-				selected={this.props.data[index].selected}
-				selectionOverlayShowing={this.props.data[index].selectionEnable}
-				onClick={() => this.props.toggleItem(index)}
+				caption={item.text}
+				source={item.url}
+				subCaption={item.subText}
+				selected={item.selected}
+				selectionOverlayShowing={item.selectionEnable}
+				onClick={this.onClickItem(index)}
 				className={css.gridListItem}
 			/>
 		);
 	}
 
+	getScrollTo = (scrollTo) => {
+		this.scrollTo = scrollTo;
+	}
+
 	render = () => {
 		const
 			deleteButton = this.showOverlay ? <Button onClick={this.props.deleteItem}>Delete</Button> : null,
-			seleteAllButton = this.showOverlay ? <Button onClick={this.props.selectAll}>Select All </Button> : null,
-			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Go To Previous" onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
-			selectionButton = !this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Selection" onClick={this.showSelectionOverlayHandler}>star</IconButton> : null,
-			addButton = !this.showOverlay ? <IconButton tooltipText="Add Item" onClick={this.addItem}>plus</IconButton> : null;
-			
+			seleteAllButton = this.showOverlay ? <Button onClick={this.props.selectAll}>Select All</Button> : null,
+			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Go To Previous' onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
+			selectionButton = !this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Selection' onClick={this.showSelectionOverlayHandler}>star</IconButton> : null,
+			addButton = !this.showOverlay ? <IconButton tooltipText='Add Item' onClick={this.addItem}>plus</IconButton> : null;
+
 		return (
 			<div>
-				<Header title="My Gallery">
+				<Header title='My Gallery'>
 					{addButton}
 					{selectionButton}
 					{deleteButton}
@@ -97,7 +96,7 @@ class MainView extends React.Component {
 					<SideBar
 						albums={albums}
 						onAlbumChange={this.onChange}
-						selectedAlbum={this.state.album}
+						selectedAlbum={this.currentAlbum}
 					/>
 					<VirtualGridList
 						cbScrollTo={this.getScrollTo}
@@ -108,27 +107,10 @@ class MainView extends React.Component {
 						className={css.content}
 						component={this.renderItem}
 					/>
-				</div>	
+				</div>
 			</div>
 		);
 	}
 }
 
-let mapStateToProps = (state) => {
-    return {
-        data: state.data
-    };
-}
-
-let mapDispatchToProps = (dispatch) => {
-	return {
-		addItem: (item) => dispatch(addItem(item)),
-		deleteItem: () => dispatch(deleteItem()),
-		onChnageAlbum: (album) => dispatch(changeAlbum(album)),
-		selectionEnable: () => dispatch(selectionEnable()),
-		selectAll: () => dispatch(selectAll()),
-		toggleItem: (id) => dispatch(toggleItem(id))
-	};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainView);
+export default AppStateDecorator(MainView);

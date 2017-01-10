@@ -1,7 +1,7 @@
 import {ADD_ITEM, DELETE_ITEM, SELECTION_ENABLE, SELECT_ALL, TOGGLE_ITEM, CHANGE_ALBUM} from '../actions';
 import {combineReducers} from 'redux';
 
-const updateState = (album) => {
+const createRecords = (album) => {
 	let
 		records = [],
 		title, subTitle, color;
@@ -23,7 +23,7 @@ const updateState = (album) => {
 	return records;
 }
 
-const data = (state = updateState('Family'), action) => {
+const data = (state = createRecords('Family'), action) => {
 	switch (action.type) {
 		case ADD_ITEM:
 			return [action.item, ...state];
@@ -36,7 +36,7 @@ const data = (state = updateState('Family'), action) => {
 		case TOGGLE_ITEM:
 			return state.map((item, index) => (index !== action.index) ? item : {...item, selected: !item.selected});
 		case CHANGE_ALBUM:
-			return updateState(action.album);
+			return createRecords(action.album);
 		default:
 			return state;
 	}
@@ -44,6 +44,6 @@ const data = (state = updateState('Family'), action) => {
 
 const rootReducer = combineReducers({
 	data
-})
+});
 
 export default rootReducer;

@@ -2,8 +2,8 @@ import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import Divider from '@enact/moonstone/Divider';
-import css from './SideBar.less';
 
+import css from './SideBar.less';
 
 const SideBar = kind({
 	name: 'SideBar',
@@ -20,16 +20,14 @@ const SideBar = kind({
 	},
 
 	computed: {
-		className: ({styler}) => {
-			return styler.append(css.sideBar);
-		},
+		className: ({styler}) => styler.append(css.sideBar),
 		albumList: ({albums, onAlbumChange, selectedAlbum}) => {
 			return albums.map((album, index) => {
 				return (
 					<div key={index}>
 						<SelectableItem
 							onToggle={onAlbumChange}
-							selected={selectedAlbum == album}
+							selected={selectedAlbum === album}
 							value={album}
 						>
 							{album}
@@ -45,7 +43,7 @@ const SideBar = kind({
 		delete rest.albums;
 		delete rest.onAlbumChange;
 		delete rest.selectedAlbum;
-		
+
 		return (
 			<div {...rest}>
 				{albumList}
