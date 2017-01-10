@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
-import css from './Nav.less';
 
 const Nav = kind({
 	name: 'Nav',
@@ -17,18 +16,12 @@ const Nav = kind({
 		selectedCountry: 'usa'
 	},
 
-	styles: {
-		css,
-		className: 'nav'
-	},
-
 	computed: {
 		countryButtons: ({countryList, selectedCountry, onCountryChange}) => {
 			return countryList.map((country, index) => {
 				return (
 					<Button
 						backgroundOpacity="translucent"
-						className={css.button}
 						key={index}
 						onClick={onCountryChange}
 						selected={country === selectedCountry}
@@ -48,7 +41,7 @@ const Nav = kind({
 		delete rest.selectedCountry;
 
 		return (
-			<div>
+			<div {...rest}>
 				{countryButtons}
 			</div>
 		);

@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import ToggleItem from '@enact/moonstone/ToggleItem';
-import Divider from '@enact/moonstone/Divider';
 import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
 
@@ -48,7 +47,6 @@ const SideBar = kind({
 					>
 						{city}
 					</ToggleItem>
-					<Divider />
 				</div>
 			)
 		}
@@ -67,7 +65,7 @@ const SideBar = kind({
 				data={cityList}
 				dataSize={numberOfCities}
 				itemSize={5}
-				spacing={5}
+				spacing={0}
 				component={virtualListItem}
 			/>
 		);
