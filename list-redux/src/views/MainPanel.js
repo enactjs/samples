@@ -5,13 +5,10 @@ import Item from '@enact/moonstone/Item';
 
 const MainPanel = kind({
 	name: 'MainPanel',
-	computed: {
-		navigate: ({onNavigate}) => () => onNavigate({index: 1})
-	},
 	render: ({navigate, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="Channel Manager" />
-			<Item onClick={navigate}>Edit All Channels</Item>
+			<Item>Edit All Channels</Item>
 		</Panel>
 	)
 });

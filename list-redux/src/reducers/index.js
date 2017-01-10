@@ -6,15 +6,15 @@ let mockData = {
 	channels: {},
 	selectedChannels: new Set()
 }
-
+// MOCK DATA. Don't use for setting initial data.
 for (let index = 0; index < 100; index++) {
 	mockData.channelsOrder.push(index)
 	mockData.channels[index] = {
 		id: index,
-		favorite: false,
+		locked: false,
 		source: "dtv",
 		name: `Channel ${index}`,
-		selected: false
+		selected: false,
 	}
 }
 
@@ -32,17 +32,17 @@ function channels (state = mockData, action) {
 
 			return Object.assign({}, state);
 		}
-		case "SAVE_ITEMS": {
+		case "LOCK_ITEMS": {
 			state.selectedChannels.forEach((id) => {
-				state.channels[id].favorite = true;
+				state.channels[id].locked = true;
 				state.channels[id].selected = false;
 			})
 			state.selectedChannels.clear()
 			return Object.assign({}, state);
 		}
-		case "UNSAVE_ITEMS": {
+		case "UNLOCK_ITEMS": {
 			state.selectedChannels.forEach((id) => {
-				state.channels[id].favorite = false;
+				state.channels[id].locked = false;
 				state.channels[id].selected = false;
 			})
 			state.selectedChannels.clear()
@@ -54,8 +54,18 @@ function channels (state = mockData, action) {
 	}
 }
 
+function path (state = '/first', action) {
+	switch (action.type) {
+		case 'NAVIGATE':
+			return action.path;
+		default:
+			return state;
+	}
+}
+
 const rootReducer = combineReducers({
-	channels
+	channels,
+	path
 });
 
 const store = createStore(rootReducer);

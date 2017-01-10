@@ -5,16 +5,23 @@ const selectItem = (index) => {
 	}
 }
 
-const saveItems = () => {
+const lockItems = () => {
 	return {
-		type: 'SAVE_ITEMS'
+		type: 'LOCK_ITEMS'
 	}
 }
 
-const unsaveItems = () => {
+const unlockItems = () => {
 	return {
-		type: 'UNSAVE_ITEMS'
+		type: 'UNLOCK_ITEMS'
 	}
 }
 
-export {selectItem, saveItems, unsaveItems}
+export const navigate = (path) => {
+	return {
+		type: 'NAVIGATE',
+		path
+	};
+};
+
+export {selectItem, lockItems, unlockItems}

@@ -2,29 +2,36 @@ import React from 'react';
 import kind from '@enact/core/kind';
 import Changeable from '@enact/ui/Changeable';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels} from '@enact/moonstone/Panels';
+import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import MainPanel from '../views/MainPanel';
 import EditChannelPanel from '../views/EditChannelPanel';
+import AppStateDecorator from './AppStateDecorator';
+
 import css from './App.less';
 
-const AppBase = kind({
+const RoutablePanels = Routable({navigate: 'onSelectBreadcrumb'}, ActivityPanels);
+
+const App = kind({
 	name: 'App',
 
 	styles: {
 		css,
 		className: 'app'
 	},
-
-	render: ({onNavigate, index, ...rest}) => (
-		<div {...rest}>
-			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
-				<MainPanel onNavigate={onNavigate} index={0} />
-				<EditChannelPanel onNavigate={onNavigate} index={1} />
-			</ActivityPanels>
-		</div>
+	computed: {
+		onSecondPanel: ({onNavigate}) => () => onNavigate({path: '/first/second'}),
+	},
+	render: ({onNavigate, onSecondPanel, path, ...rest}) => (
+		<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
+			<Route path="first" component={MainPanel} title="First" onClick={onSecondPanel}>
+				<Route path="second" component={EditChannelPanel} title="Second"/>
+			</Route>
+		</RoutablePanels>
 	)
 });
 
-const App = Changeable({change: 'onNavigate', prop: 'index'}, AppBase);
-
-export default MoonstoneDecorator(App);
+export default MoonstoneDecorator(
+	AppStateDecorator(
+		App
+	)
+);

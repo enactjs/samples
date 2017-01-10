@@ -7,7 +7,7 @@ import {selectItem} from '../../actions/';
 const ChannelItem = kind({
 	name: 'ChannelItem',
 	computed: {
-		content: ({data}) => data.favorite ? `${data.name} FAV` : `${data.name}`
+		content: ({data}) => data.favorite ? `${data.name} LOCKED` : `${data.name}`
 	},
 	render: ({content, data, selectChannel, ...rest}) => {
 		delete rest.dataIndex

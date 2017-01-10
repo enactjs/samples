@@ -3,17 +3,17 @@ import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import Button from '@enact/moonstone/Button';
-import {saveItems, unsaveItems} from '../actions/';
+import {lockItems, unlockItems} from '../actions/';
 import ChannelList from '../components/ChannelList';
 
 const EditChannelPanel = kind({
 	name: 'EditChannelPanel',
 
-	render: ({saveChannels, unsaveChannels, ...rest}) => (
+	render: ({lockChannels, unlockChannels, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="Edit All Channels">
-				<Button onClick={saveChannels}>Favorite</Button>
-				<Button onClick={unsaveChannels}>Unfavorite</Button>
+				<Button onClick={lockChannels}>Lock</Button>
+				<Button onClick={unlockChannels}>Unlock</Button>
 			</Header>
 			<div style={{display: 'flex', flexDirection: 'row'}}>
 				<div style={{flex: '1'}}>
@@ -26,8 +26,8 @@ const EditChannelPanel = kind({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		saveChannels: () => dispatch(saveItems()),
-		unsaveChannels: () => dispatch(unsaveItems())
+		lockChannels: () => dispatch(lockItems()),
+		unlockChannels: () => dispatch(unlockItems())
 	};
 };
 
