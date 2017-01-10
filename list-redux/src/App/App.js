@@ -1,6 +1,5 @@
 import React from 'react';
 import kind from '@enact/core/kind';
-import Changeable from '@enact/ui/Changeable';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import MainPanel from '../views/MainPanel';

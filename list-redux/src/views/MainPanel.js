@@ -5,7 +5,7 @@ import Item from '@enact/moonstone/Item';
 
 const MainPanel = kind({
 	name: 'MainPanel',
-	render: ({navigate, ...rest}) => (
+	render: ({...rest}) => (
 		<Panel {...rest}>
 			<Header title="Channel Manager" />
 			<Item>Edit All Channels</Item>

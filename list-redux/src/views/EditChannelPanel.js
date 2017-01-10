@@ -8,7 +8,6 @@ import ChannelList from '../components/ChannelList';
 
 const EditChannelPanel = kind({
 	name: 'EditChannelPanel',
-
 	render: ({lockChannels, unlockChannels, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="Edit All Channels">
