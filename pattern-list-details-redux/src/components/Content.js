@@ -51,6 +51,9 @@ const Content = kind({
 	},
 
 	computed: {
+		onZoom: ({onZoom, zoomState}) => () => {
+			onZoom(!zoomState);
+		},
 		cityPhoto: ({selectedCity}) => {
 			const cityImgSrc = cityPhotos[selectedCity.toLowerCase().replace(/\W/g, '')];
 			return (
@@ -60,8 +63,7 @@ const Content = kind({
 	},
 
 	render: ({cityPhoto, onZoom, selectedCity, ...rest}) => {
-		delete rest.zoomIn;
-		delete rest.zoomed;
+		delete rest.zoomState;
 
 		return (
 			<div {...rest}>

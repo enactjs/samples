@@ -33,17 +33,17 @@ describe('Redux reducer specs', () => {
 		}).city;
 		const expected = 'London';
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).equal(expected);
 	});
 
-	it('should handle ZOOM_IN', function () {
+	it('should handle ZOOM', function () {
 		const actual = reducer(intialState, {
-			type: 'SET_PREVIEW_PHOTO',
-			zoom: false
+			type: 'ZOOM',
+			zoom: true
 		}).zoom;
-		const expected = false;
+		const expected = true;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).equal(expected);
 	});
 
 	it('should return initial state given nonsense', function () {

@@ -21,7 +21,7 @@ const city = (state = 'San Francisco', action) => {
 const zoom = (state = false, action) => {
 	switch (action.type) {
 		case 'ZOOM':
-			return !state;
+			return action.zoom;
 		default:
 			return state;
 	}

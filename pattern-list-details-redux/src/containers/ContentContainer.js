@@ -1,16 +1,17 @@
 import {connect} from 'react-redux';
-import {zoomIn} from '../actions';
+import {changeZoom} from '../actions';
 import Content from '../components/Content';
 
 const mapStateToProps = (state) => {
 	return ({
-		selectedCity: state.city
+		selectedCity: state.city,
+		zoomState: state.zoom
 	});
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	onZoom: () => {
-		dispatch(zoomIn());
+	onZoom: (zoom) => {
+		dispatch(changeZoom(zoom));
 	}
 });
 

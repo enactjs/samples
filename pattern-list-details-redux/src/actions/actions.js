@@ -8,7 +8,7 @@ export const changeCity = (city) => ({
 	city
 });
 
-export const zoomIn = (zoom) => ({
+export const changeZoom = (zoom) => ({
 	type: 'ZOOM',
 	zoom
 });
