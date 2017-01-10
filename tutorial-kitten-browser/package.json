@@ -1,7 +1,7 @@
 {
-	"name": "tutorial-hello-enact",
+	"name": "tutorial-kitten-browser",
 	"version": "1.0.0",
-	"description": "A general template for an Enact Moonstone application.",
+	"description": "A kitten browser app to introduce some intermediate ES6, React, and Enact concepts",
 	"author": "",
 	"main": "src/index.js",
 	"scripts": {

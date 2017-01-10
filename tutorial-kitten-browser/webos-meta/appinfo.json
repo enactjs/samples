@@ -1,10 +1,10 @@
 {
-	"id": "tutorial-hello-enact",
+	"id": "tutorial-kitten-browser",
 	"version": "1.0.0",
 	"vendor": "LGE-SVL",
 	"type": "web",
 	"main": "index.html",
-	"title": "Enact App Template",
+	"title": "Kitten Browser",
 	"icon": "icon.png",
 	"miniicon": "icon-mini.png",
 	"largeIcon": "icon-large.png",
