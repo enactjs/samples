@@ -75,6 +75,11 @@ class MainView extends React.Component {
 		this.scrollTo = scrollTo;
 	}
 
+	componentDidMount () {
+		//focusOnIndex, setInitialFocusIndex, scrollToItem
+		this.scrollTo({index: 60, animate: false});
+	}
+
 	render = () => {
 		const
 			deleteButton = this.showOverlay ? <Button onClick={this.props.deleteItem}>Delete</Button> : null,
