@@ -1,18 +1,19 @@
 import {connect} from 'react-redux';
-import {setPreview} from '../actions';
+import {changePhotoPosition} from '../actions';
 import PhotoSlider from '../components/PhotoSlider';
 
 const mapStateToProps = (state) => {
 	return ({
-		position: state.photo.position
+		photoPosition: state.photoPosition
 	});
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	setPreview: (newPhoto) => {
-		// Dipatch the change to state.photo
-		dispatch(setPreview(newPhoto));
-
+	changePhotoPosition: (photoPosition) => {
+		// Dipatch the change to state if photoPosition is not undefined
+		if (photoPosition) {
+			dispatch(changePhotoPosition(photoPosition));
+		}
 		// Add other things you want to do when the state.photo is changed
 	}
 });

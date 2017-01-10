@@ -7,9 +7,9 @@ describe('reducer specs', () => {
 		saved: false,
 		photo: {
 			photoIndex: 0,
-			position: -50,
 			url: mural
-		}
+		},
+		photoPosition: -50
 	};
 
 	it('should return initial state', function () {
@@ -35,7 +35,6 @@ describe('reducer specs', () => {
 	it('should handle SET_PREVIEW_PHOTO', function () {
 		const savedState = {
 			url: 'someurl.com',
-			position: 6666,
 			photoIndex: 9999
 		};
 
@@ -43,7 +42,6 @@ describe('reducer specs', () => {
 			type: 'SET_PREVIEW_PHOTO',
 			previewPhoto: {
 				url: 'someurl.com',
-				position: 6666,
 				photoIndex: 9999
 			}
 		}).photo;
@@ -52,22 +50,16 @@ describe('reducer specs', () => {
 		expect(actual).to.deep.equal(expected);
 	});
 
-	it('should handle SET_PREVIEW_PHOTO given one key-value', function () {
-		const changedState = {
-			url: 'someurl.com',
-			position: -50,
-			photoIndex: 0
-		};
+	it('should handle CHANGE_PHOTO_POSITION', function () {
+		const photoPosition = 100;
 
 		const actual = reducer(intialState, {
-			type: 'SET_PREVIEW_PHOTO',
-			previewPhoto: {
-				url: 'someurl.com'
-			}
-		}).photo;
-		const expected = changedState;
+			type: 'CHANGE_PHOTO_POSITION',
+			photoPosition: 100
+		}).photoPosition;
+		const expected = photoPosition;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).equal(expected);
 	});
 
 	it('should return initial state given nonsense', function () {

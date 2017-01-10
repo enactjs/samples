@@ -7,8 +7,8 @@ const PhotoSlider = kind({
 	name: 'PhotoSlider',
 
 	propTypes: {
-		position: PropTypes.number.isRequired,
-		setPreview: PropTypes.func.isRequired
+		changePhotoPosition: PropTypes.func.isRequired,
+		photoPosition: PropTypes.number.isRequired
 	},
 
 	styles: {
@@ -17,20 +17,18 @@ const PhotoSlider = kind({
 	},
 
 	computed: {
-		onChange: ({setPreview}) => {
+		onChange: ({changePhotoPosition}) => {
 			return (ev) => {
-				setPreview({
-					position: ev.value
-				});
+				changePhotoPosition(ev.value);
 			};
 		}
 	},
 
-	render: ({onChange, position, ...rest}) => {
-		delete rest.setPreview;
+	render: ({onChange, photoPosition, ...rest}) => {
+		delete rest.changePhotoPosition;
 
 		return (
-			<Slider {...rest} min={-100} max={0} value={position} onChange={onChange} />
+			<Slider {...rest} min={-100} max={0} value={photoPosition} onChange={onChange} />
 		);
 	}
 });
