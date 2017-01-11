@@ -2,15 +2,15 @@
 
 A sample Enact application that shows off how to use LS2Request
 
-Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
+Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can access it from a webOS device. To create an installable application, use `npm run pack` and then use the packaging tools to package the **dist** folder.
 
 #### Enact Components Used
 - `moonstone/Button`
 - `moonstone/LabeledItem`
 - `webos/LS2Request`
 
-In order to create a webOS app, you need to interact with LS2Request. In this sample, we show how to
-use LS2Request with redux.
+Most webOS apps require interaction with LS2Request. In this sample, we show how to
+use LS2Request with Redux.
 
 We recommend that you declare your luna service requests in actions. Note that `LS2Request.send()` is
 an asynchronous function, so we return a function instead of plain object. 
@@ -29,12 +29,12 @@ export const getSystemSettings = params => dispatch => {
 };
 ```
 
-In the sample, there are two luna service calls being made at the `componentDidMount`: one with
+In the sample, there are two luna service calls being made at `componentDidMount`: one with
 `subscribe: true`, and one without. If the call is subscribed, then the setter action
 (e.g. `setSystemSettings`) does not directly interfere with redux data flow.
 
-For a setter action that is expected to be handled by subscribed callback, we don't need to dispatch
-and action. See `setSystemSettingsSubscribed` in `./src/actions/actions.js` for more details.
+For a setter action that is expected to be handled by a subscribed callback, we don't need to dispatch
+an action. See `setSystemSettingsSubscribed` in **./src/actions/actions.js** for more details.
 
 ---
 

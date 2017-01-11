@@ -14,7 +14,7 @@ function updateSystemSettings ({settings}) {
 		payload: {
 			settings
 		}
-	}
+	};
 }
 
 export const getSystemSettings = params => dispatch => {
@@ -28,7 +28,7 @@ export const getSystemSettings = params => dispatch => {
 			// dispatches action on success callback with payload
 			dispatch(receiveSystemSettings(res));
 		},
-		onFailure: (res) => console.error(res)
+		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
 };
 
@@ -40,17 +40,17 @@ export const setSystemSettings = params => dispatch => {
 		onSuccess: () => {
 			dispatch(updateSystemSettings(params));
 		},
-		onFailure: (res) => console.error(res)
+		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
 };
 
 export const setSystemSettingsSubscribed = params => {
-	// NOTE: This does not dispatch and will not follow update store directly. It's expected to be updated by the subscription.
+	// NOTE: This does not dispatch and will not update the store directly. It's expected to be updated by the subscription.
 	return new LS2Request().send({
 		service: 'luna://com.webos.settingsservice/',
 		method: 'setSystemSettings',
 		parameters: params,
 		onSuccess: () => {}, // we expect the value will be updated via subscribed callback and do nothing here
-		onFailure: (res) => console.error(res)
+		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
 };

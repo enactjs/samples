@@ -2,10 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Button from '@enact/moonstone/Button';
-import LabeledItemBase from '@enact/moonstone/LabeledItem';
+import LabeledItem from '@enact/moonstone/LabeledItem';
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 
 class App extends React.Component {
+	static propTypes = {
+		dispatch: React.PropTypes.func.isRequired,
+		eyeComfortMode: React.PropTypes.string,
+		smartPictureMode: React.PropTypes.string
+	}
+
+	static defaultProps = {
+		eyeComfortMode: 'Loading...'
+	}
+
 	componentDidMount () {
 		// This LS2Request is WITHOUT subscription
 		this.props.dispatch(getSystemSettings({
@@ -36,14 +46,21 @@ class App extends React.Component {
 		}
 	}))
 
+	checkSystem = () => {
+		if (typeof window.PalmSystem === 'undefined') {
+			return <div>This test will only function correctly on webOS systems!</div>;
+		}
+	}
+
 	render () {
 		const {smartPictureMode, eyeComfortMode} = this.props;
 
 		return (
 			<div>
-				<LabeledItemBase label={smartPictureMode}>Smart Picture Mode</LabeledItemBase>
+				{this.checkSystem()}
+				<LabeledItem label={smartPictureMode}>Smart Picture Mode</LabeledItem>
 				<Button onClick={this.onSmartPictureToggle}>Toggle</Button>
-				<LabeledItemBase label={eyeComfortMode}>Eye Comfort Mode</LabeledItemBase>
+				<LabeledItem label={eyeComfortMode}>Eye Comfort Mode</LabeledItem>
 				<Button onClick={this.onEyeComfortModeToggle}>Toggle</Button>
 			</div>
 		);
@@ -56,6 +73,6 @@ const mapStateToProps = ({systemSettings}) => {
 		smartPictureMode,
 		eyeComfortMode
 	};
-}
+};
 
 export default connect(mapStateToProps)(MoonstoneDecorator(App));
