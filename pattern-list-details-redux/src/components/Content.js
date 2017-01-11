@@ -41,10 +41,6 @@ const Content = kind({
 		selectedCity: PropTypes.string.isRequired
 	},
 
-	defaultProps: {
-		selectedCity: 'San Francisco'
-	},
-
 	styles: {
 		css,
 		className: 'content'

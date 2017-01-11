@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
-import ToggleItem from '@enact/moonstone/ToggleItem';
+import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
 
@@ -12,12 +12,6 @@ const SideBar = kind({
 		selectedCity: PropTypes.string.isRequired,
 		selectedCountry: PropTypes.string.isRequired,
 		zoom: PropTypes.bool
-	},
-
-	defaultProps: {
-		selectedCountry: 'usa',
-		selectedCity: 'San Francisco',
-		zoom: false
 	},
 
 	styles: {
@@ -39,14 +33,13 @@ const SideBar = kind({
 			const city = data[index];
 			return (
 				<div key={key}>
-					<ToggleItem
-						icon='circle'
+					<CheckboxItem
 						onToggle={onCityChange}
 						selected={selectedCity === city}
 						value={city}
 					>
 						{city}
-					</ToggleItem>
+					</CheckboxItem>
 				</div>
 			)
 		}

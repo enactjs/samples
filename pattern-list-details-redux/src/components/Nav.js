@@ -8,12 +8,7 @@ const Nav = kind({
 	propTypes: {
 		countryList: PropTypes.array.isRequired,
 		onCountryChange: PropTypes.func.isRequired,
-		selectedCountry: PropTypes.string.isRequired,
-		cities: PropTypes.object
-	},
-
-	defaultProps: {
-		selectedCountry: 'usa'
+		selectedCountry: PropTypes.string.isRequired
 	},
 
 	computed: {
@@ -35,7 +30,6 @@ const Nav = kind({
 	},
 
 	render: ({countryButtons, ...rest}) => {
-		delete rest.cities;
 		delete rest.countryList;
 		delete rest.onCountryChange;
 		delete rest.selectedCountry;

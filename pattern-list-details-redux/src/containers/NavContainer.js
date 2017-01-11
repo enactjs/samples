@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {changeCountry, changeCity} from '../actions';
+import {changeCountry} from '../actions';
 import Nav from '../components/Nav';
 
 const mapStateToProps = (state) => {
@@ -8,12 +8,11 @@ const mapStateToProps = (state) => {
 	});
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
 	onCountryChange: (country) => {
 		const countryName = country.target.textContent.toLowerCase();
 
 		dispatch(changeCountry(countryName));
-		dispatch(changeCity(ownProps.cities[countryName][0]));
 	}
 });
 
