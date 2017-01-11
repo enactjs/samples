@@ -5,7 +5,7 @@ function index (state = 0, action) {
 		case 'INCREASE_INDEX':
 			return state + 1;
 		case 'DECREASE_INDEX':
-			return state - 1;
+			return state > 0 ? state - 1 : 0;
 		default:
 			return state;
 	}
