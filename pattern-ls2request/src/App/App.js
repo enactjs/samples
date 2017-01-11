@@ -39,12 +39,12 @@ class App extends React.Component {
 	}))
 
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
-	onEyeComfortModeToggle = () => this.props.dispatch(setSystemSettingsSubscribed({
+	onEyeComfortModeToggle = () => setSystemSettingsSubscribed({
 		category: 'picture',
 		settings: {
 			'eyeComfortMode': this.props.eyeComfortMode === 'on' ? 'off' : 'on'
 		}
-	}))
+	})
 
 	checkSystem = () => {
 		if (typeof window.PalmSystem === 'undefined') {
