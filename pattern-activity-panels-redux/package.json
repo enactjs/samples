@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels-redux",
   "version": "1.0.0",
-  "description": "A general template for an Enact Moonstone application.",
+  "description": "ActivityPanels with redux sample Enact Moonstone application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
