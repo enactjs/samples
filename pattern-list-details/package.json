@@ -1,7 +1,7 @@
 {
-	"name": "ProfilePhotoPicker",
+	"name": "CityViewer",
 	"version": "1.0.0",
-	"description": "A sample single panel Enact application.",
+	"description": "Sample list details Enact application.",
 	"author": "",
 	"main": "src/index.js",
 	"scripts": {
@@ -17,9 +17,8 @@
 	},
 	"license": "Apache-2.0",
 	"private": true,
-	"repository": "https://github.com/enyojs/enact-samples",
+	"repository": "",
 	"enact": {
-		"title": "Profile Photo Picker",
 		"isomorphic": "src/iso.js",
 		"ri": {
 			"baseSize": 24
