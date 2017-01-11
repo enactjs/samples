@@ -5,12 +5,12 @@ import IconButton from '@enact/moonstone/IconButton';
 import React from 'react';
 import ri from '@enact/ui/resolution';
 
-import AppStateDecorator from './AppStateDecorator';
 import SideBar from '../components/SideBar';
 
+import AppStateDecorator from './AppStateDecorator';
 import css from './MainView.less';
 
-const albums = ['Family', 'Video', 'Travel'];
+const albums = ['Family', 'Car', 'Travel'];
 
 class MainView extends React.Component {
 	showOverlay = false
@@ -34,7 +34,9 @@ class MainView extends React.Component {
 	}
 
 	onClickItem = (index) => () => {
-		this.props.toggleItem(index);
+		if (this.showOverlay) {
+			this.props.toggleItem(index);
+		}
 	}
 
 	createMockItem = (album) => {
@@ -85,7 +87,7 @@ class MainView extends React.Component {
 			deleteButton = this.showOverlay ? <Button onClick={this.props.deleteItem}>Delete</Button> : null,
 			seleteAllButton = this.showOverlay ? <Button onClick={this.props.selectAll}>Select All</Button> : null,
 			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Go To Previous' onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
-			selectionButton = !this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Selection' onClick={this.showSelectionOverlayHandler}>star</IconButton> : null,
+			selectionButton = !this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Selection' onClick={this.showSelectionOverlayHandler}>check</IconButton> : null,
 			addButton = !this.showOverlay ? <IconButton tooltipText='Add Item' onClick={this.addItem}>plus</IconButton> : null;
 
 		return (

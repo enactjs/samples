@@ -27,6 +27,8 @@ const data = (state = createRecords('Family'), action) => {
 	switch (action.type) {
 		case ADD_ITEM:
 			return [action.item, ...state];
+		case CHANGE_ALBUM:
+			return createRecords(action.album);
 		case DELETE_ITEM:
 			return state.filter(item => !item.selected);
 		case SELECTION_ENABLE:
@@ -35,8 +37,6 @@ const data = (state = createRecords('Family'), action) => {
 			return state.map(item => ({...item, selected: !item.selected}));
 		case TOGGLE_ITEM:
 			return state.map((item, index) => (index !== action.index) ? item : {...item, selected: !item.selected});
-		case CHANGE_ALBUM:
-			return createRecords(action.album);
 		default:
 			return state;
 	}

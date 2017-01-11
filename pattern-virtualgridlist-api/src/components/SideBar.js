@@ -1,7 +1,7 @@
-import React, {PropTypes} from 'react';
-import kind from '@enact/core/kind';
-import SelectableItem from '@enact/moonstone/SelectableItem';
 import Divider from '@enact/moonstone/Divider';
+import kind from '@enact/core/kind';
+import React, {PropTypes} from 'react';
+import SelectableItem from '@enact/moonstone/SelectableItem';
 
 import css from './SideBar.less';
 

@@ -1,9 +1,9 @@
 export const ADD_ITEM = 'ADD_ITEM';
+export const CHANGE_ALBUM = 'CHANGE_ALBUM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const SELECTION_ENABLE = 'SELECTION_ENABLE';
 export const SELECT_ALL = 'SELECT_ALL';
 export const TOGGLE_ITEM = 'TOGGLE_ITEM';
-export const CHANGE_ALBUM = 'CHANGE_ALBUM';
 
 export const addItem = (item) => {
 	return {
