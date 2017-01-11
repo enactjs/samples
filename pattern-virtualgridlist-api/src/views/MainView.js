@@ -99,7 +99,7 @@ class MainView extends React.Component {
 					{seleteAllButton}
 					{showPreviousButton}
 				</Header>
-				<div className={css.body}>
+				<div className={css.content}>
 					<SideBar
 						albums={albums}
 						onAlbumChange={this.onChange}
@@ -111,7 +111,7 @@ class MainView extends React.Component {
 						dataSize={this.props.data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
 						spacing={ri.scale(20)}
-						className={css.content}
+						className={css.list}
 						component={this.renderItem}
 					/>
 				</div>

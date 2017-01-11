@@ -1,94 +1,19 @@
-.body {
+.content {
 	display: flex;
 	height: 80vh;
 	margin: 12px;
 }
-
-.content {
+.list {
 	display: flex;
 	flex: 3;
 	overflow-y: hidden;
 	height: 95%;
-}
-// Views
-// list common classes
-
-.listItem {
-	background: black;
-	position: absolute;
-	width: 100%;
-	height: 72px;
-	border-bottom: 2px solid #202328;
-	box-sizing: border-box;
-
-	color: white;
-	font-size: 40px;
-	line-height: 70px;
-	text-align: center;
 }
 .gridListItem {
 	background-color: inherit;
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	padding: 0 0 96px 0;
-	margin: 0;
-	border: 6px solid transparent;
 	box-sizing: border-box;
-
 	color: #fff;
-}
-.gridListItemOverlay {
-	position: relative;
-	display: block;
-	width: 100%;
-	min-height: 100%;
-	margin: 0;
-}
-.gridListItemImage {
-	display: block;
-	width: 100%;
-	max-height: 100%;
-	margin: 0;
-}
-.gridListItemCaption,
-.gridListItemSubCaption {
-	width: 100%;
-	height: 35px;
-	padding-top: 10px;
-	z-index: 10;
-	overflow: hidden;
-
-	font-family: "MuseoSans 700";
-	font-size: 30px;
-	color: #fff;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	text-align: center;
-	font-style: normal;
-	letter-spacing: normal;
-	line-height: 35px;
-}
-.gridListItemSubCaptionText {
-	font-family: "MuseoSans 300";
-	font-size: 33px;
-	font-weight: normal;
-	line-height: 30px;
-}
-
-// VirtualGridListsAsync
-
-.gridListItemOverlayInAsync {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 150%;
-	margin: 0;
-}
-
-// VirtualGridListWithOptions
-
-.inputOfGridListOptionField {
-	margin: 5px 5%;
-	width: 80%;
 }
