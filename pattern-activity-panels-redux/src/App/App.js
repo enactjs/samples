@@ -1,10 +1,11 @@
-import React, {PropTypes} from 'react';
-import kind from '@enact/core/kind';
-import {connect} from 'react-redux';
 import {ActivityPanels} from '@enact/moonstone/Panels';
+import {connect} from 'react-redux';
+import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import MainPanel from '../views/MainPanel';
+import React, {PropTypes} from 'react';
+
 import {increaseIndex, decreaseIndex} from '../actions';
+import MainPanel from '../views/MainPanel';
 
 const App = kind({
 	name: 'App',
