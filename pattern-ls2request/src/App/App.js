@@ -12,10 +12,6 @@ class App extends React.Component {
 		smartPictureMode: React.PropTypes.string
 	}
 
-	static defaultProps = {
-		eyeComfortMode: 'Loading...'
-	}
-
 	componentDidMount () {
 		// This LS2Request is WITHOUT subscription
 		this.props.dispatch(getSystemSettings({
