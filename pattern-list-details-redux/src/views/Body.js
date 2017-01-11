@@ -12,9 +12,9 @@ const Body = kind({
 		className: 'body'
 	},
 
-	render: ({cities, ...rest}) => (
+	render: ({...rest}) => (
 		<div {...rest}>
-			<SideBarContainer cities={cities} className={css.sideBar} />
+			<SideBarContainer className={css.sideBar} />
 			<ContentContainer className={css.content} />
 		</div>
 	)

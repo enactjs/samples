@@ -5,6 +5,12 @@ describe('Redux reducer specs', () => {
 	const intialState = {
 		country: 'usa',
 		city: 'San Francisco',
+		data: {
+			usa: ['San Francisco', 'Los Angeles', 'New York City'],
+			spain: ['Madrid', 'Barcelona', 'Valencia'],
+			korea: ['Seoul', 'Busan', 'Daegu'],
+			japan: ['Tokyo', 'Osaka', 'Kyoto']
+		},
 		zoom: false
 	};
 

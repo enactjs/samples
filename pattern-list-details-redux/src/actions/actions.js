@@ -12,3 +12,8 @@ export const changeZoom = (zoom) => ({
 	type: 'ZOOM',
 	zoom
 });
+
+export const updateData = (data) => ({
+	type: 'CHANGE_DATA',
+	data
+});
