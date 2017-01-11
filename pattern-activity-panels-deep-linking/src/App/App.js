@@ -3,7 +3,6 @@ import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import React from 'react';
 
-// import AboutPanel from '../views/AboutPanel';
 import MainPanel from '../views/MainPanel';
 
 import AppStateDecorator from './AppStateDecorator';

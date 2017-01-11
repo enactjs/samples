@@ -1,6 +1,6 @@
 const increaseIndex = () => {
 	return {
-		type: 'INCREASE_INDEX',
+		type: 'INCREASE_INDEX'
 	};
 };
 
@@ -13,4 +13,4 @@ const decreaseIndex = () => {
 export {
 	increaseIndex,
 	decreaseIndex
-}
+};
