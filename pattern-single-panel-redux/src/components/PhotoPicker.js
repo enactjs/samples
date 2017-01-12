@@ -5,50 +5,33 @@ import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
 import Changeable from '@enact/ui/Changeable';
 
-import car from '../../assets/images/car.jpeg';
-import city from '../../assets/images/city.jpeg';
-import mural from '../../assets/images/mural.jpeg';
-import spaceShuttle from '../../assets/images/space-shuttle.jpg';
-import violin from '../../assets/images/violin.jpeg';
-
 const StatefulPicker = Changeable(Picker);
-
-const images = {
-	mural,
-	violin,
-	car,
-	city,
-	spaceShuttle
-};
-
-const imageNames = Object.keys(images);
-const imageURLs = Object.values(images);
 
 const ProfilePhotoPickerContainer = kind({
 	name: 'ProfilePhotoPickerContainer',
 
 	propTypes: {
-		photoIndex: PropTypes.number.isRequired,
-		setPreview: PropTypes.func.isRequired
+		changePhotoIndex: PropTypes.func.isRequired,
+		imageNames: PropTypes.array.isRequired,
+		imageURLs: PropTypes.array.isRequired,
+		photoIndex: PropTypes.number.isRequired
 	},
 
 	computed: {
-		imageComponents: () => {
-			return imageURLs.map(url => (<Image src={url} key={url} />));
+		imageComponents: ({imageURLs}) => {
+			return imageURLs.map((url) => (<Image src={url} key={url} />));
 		},
-		onChange: ({setPreview}) => {
+		onChange: ({changePhotoIndex}) => {
 			return (ev) => {
 				const index = ev.value;
-				setPreview({
-					url: imageURLs[index],
-					photoIndex: index
-				});
+				changePhotoIndex(index);
 			};
 		}
 	},
 
-	render: ({imageComponents, photoIndex, onChange, ...rest}) => {
-		delete rest.setPreview;
+	render: ({imageComponents, imageNames, photoIndex, onChange, ...rest}) => {
+		delete rest.changePhotoIndex;
+		delete rest.imageURLs;
 
 		return (
 			<div {...rest}>

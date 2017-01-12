@@ -8,8 +8,9 @@ const PhotoPreview = kind({
 	name: 'PhotoPreview',
 
 	propTypes: {
+		imageURLs: PropTypes.array.isRequired,
+		photoIndex: PropTypes.number.isRequired,
 		photoPosition: PropTypes.number.isRequired,
-		url: PropTypes.string.isRequired,
 		dispatch: PropTypes.func
 	},
 
@@ -18,18 +19,18 @@ const PhotoPreview = kind({
 		className: 'profilePhoto'
 	},
 
-	render: ({url, photoPosition, ...rest}) => {
+	render: ({imageURLs, photoIndex, photoPosition, ...rest}) => {
 		delete rest.dispatch;
 
 		return (
-			<Image {...rest} src={url} style={{backgroundPosition: photoPosition + 'px'}} />
+			<Image {...rest} src={imageURLs[photoIndex]} style={{backgroundPosition: photoPosition + 'px'}} />
 		);
 	}
 });
 
 const mapStateToProps = (state) => {
 	return ({
-		url: state.photo.url,
+		photoIndex: state.photoIndex,
 		photoPosition: state.photoPosition
 	});
 };

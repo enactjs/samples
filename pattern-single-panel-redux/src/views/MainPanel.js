@@ -8,6 +8,23 @@ import PhotoPreviewContainer from '../containers/PhotoPreviewContainer';
 import PhotoSliderContainer from '../containers/PhotoSliderContainer';
 import FooterContainer from '../containers/FooterContainer';
 
+import car from '../../assets/images/car.jpeg';
+import city from '../../assets/images/city.jpeg';
+import mural from '../../assets/images/mural.jpeg';
+import spaceShuttle from '../../assets/images/space-shuttle.jpg';
+import violin from '../../assets/images/violin.jpeg';
+
+const images = {
+	mural,
+	violin,
+	car,
+	city,
+	spaceShuttle
+};
+
+const imageNames = Object.keys(images);
+const imageURLs = Object.values(images);
+
 const MainPanel = kind({
 	name: 'MainPanel',
 
@@ -15,9 +32,12 @@ const MainPanel = kind({
 		<Panel>
 			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" preserveCase />
 			<div className={css.profilePhotoPicker}>
-				<PhotoPreviewContainer />
+				<PhotoPreviewContainer imageURLs={imageURLs} />
 				<PhotoSliderContainer />
-				<PhotoPickerContainer />
+				<PhotoPickerContainer
+					imageNames={imageNames}
+					imageURLs={imageURLs}
+				/>
 			</div>
 			<FooterContainer />
 		</Panel>

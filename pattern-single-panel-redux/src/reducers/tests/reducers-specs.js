@@ -1,15 +1,11 @@
 import reducer from '../';
-import mural from '../../../assets/images/mural.jpeg';
 
 describe('reducer specs', () => {
 
 	const intialState = {
-		saved: false,
-		photo: {
-			photoIndex: 0,
-			url: mural
-		},
-		photoPosition: -50
+		photoIndex: 0,
+		photoPosition: -50,
+		saved: false
 	};
 
 	it('should return initial state', function () {
@@ -32,22 +28,16 @@ describe('reducer specs', () => {
 		expect(actual).to.equal(expected);
 	});
 
-	it('should handle SET_PREVIEW_PHOTO', function () {
-		const savedState = {
-			url: 'someurl.com',
-			photoIndex: 9999
-		};
+	it('should handle CHANGE_PHOTO_INDEX', function () {
+		const newPhotoIndex = 9999;
 
 		const actual = reducer(intialState, {
-			type: 'SET_PREVIEW_PHOTO',
-			previewPhoto: {
-				url: 'someurl.com',
-				photoIndex: 9999
-			}
-		}).photo;
-		const expected = savedState;
+			type: 'CHANGE_PHOTO_INDEX',
+			photoIndex: 9999
+		}).photoIndex;
+		const expected = newPhotoIndex;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).equal(expected);
 	});
 
 	it('should handle CHANGE_PHOTO_POSITION', function () {

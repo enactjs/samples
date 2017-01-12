@@ -3,9 +3,9 @@ export const save = (saved) => ({
 	saved
 });
 
-export const setPreview = (previewPhoto) => ({
-	type: 'SET_PREVIEW_PHOTO',
-	previewPhoto
+export const changePhotoIndex = (photoIndex) => ({
+	type: 'CHANGE_PHOTO_INDEX',
+	photoIndex
 });
 
 export const changePhotoPosition = (photoPosition) => ({

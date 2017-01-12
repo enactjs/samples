@@ -1,34 +1,21 @@
 import {combineReducers} from 'redux';
-import mural from '../../assets/images/mural.jpeg';
 
 const initialState = {
 	photoIndex: 0,
-	url: mural
+	photoPosition: -50,
+	saved: false
 };
-const initialPosition = -50;
 
-const saved = (state = false, action) => {
+const photoIndex = (state = initialState.photoIndex, action) => {
 	switch (action.type) {
-		case 'SAVE_PROFILE_PHOTO':
-			return action.saved;
+		case 'CHANGE_PHOTO_INDEX':
+			return action.photoIndex;
 		default:
 			return state;
 	}
 };
 
-const photo = (state = initialState, action) => {
-	switch (action.type) {
-		case 'SET_PREVIEW_PHOTO':
-			return {
-				url: action.previewPhoto.url,
-				photoIndex: action.previewPhoto.photoIndex
-			};
-		default:
-			return state;
-	}
-};
-
-const photoPosition = (state = initialPosition, action) => {
+const photoPosition = (state = initialState.photoPosition, action) => {
 	switch (action.type) {
 		case 'CHANGE_PHOTO_POSITION':
 			return action.photoPosition;
@@ -37,10 +24,19 @@ const photoPosition = (state = initialPosition, action) => {
 	}
 };
 
+const saved = (state = initialState.saved, action) => {
+	switch (action.type) {
+		case 'SAVE_PROFILE_PHOTO':
+			return action.saved;
+		default:
+			return state;
+	}
+};
+
 const rootReducer = combineReducers({
-	saved,
-	photo,
-	photoPosition
+	photoIndex,
+	photoPosition,
+	saved
 });
 
 export default rootReducer;
