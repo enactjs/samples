@@ -2,7 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
-import store from './reducers';
+import configureStore from './store';
+
+const store = configureStore();
 
 let appElement = (
 	<Provider store={store}>

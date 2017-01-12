@@ -1,25 +1,16 @@
-import {combineReducers, createStore} from "redux";
-
+import {combineReducers} from "redux";
 // NOTE: We use this type of structure for performance.
-let mockData = {
+let initialState = {
 	channelsOrder: [],
 	channels: {},
 	selectedChannels: new Set()
 }
-// MOCK DATA. Don't use for setting initial data.
-for (let index = 0; index < 100; index++) {
-	mockData.channelsOrder.push(index)
-	mockData.channels[index] = {
-		id: index,
-		locked: false,
-		source: "dtv",
-		name: `Channel ${index}`,
-		selected: false,
-	}
-}
 
-function channels (state = mockData, action) {
+function channels (state = initialState, action) {
 	switch (action.type) {
+		case "RECEIVE_CHANNEL_LIST": {
+			return Object.assign({}, action.payload);
+		}
 		case "SELECT_ITEM" : {
 			state.channels[action.index].selected = !state.channels[action.index].selected;
 			const isSelected = state.channels[action.index].selected;
@@ -68,6 +59,4 @@ const rootReducer = combineReducers({
 	path
 });
 
-const store = createStore(rootReducer);
-
-export default store;
+export default rootReducer

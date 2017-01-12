@@ -8,19 +8,21 @@ import ChannelList from '../components/ChannelList';
 
 const EditChannelPanel = kind({
 	name: 'EditChannelPanel',
-	render: ({lockChannels, unlockChannels, ...rest}) => (
-		<Panel {...rest}>
-			<Header title="Edit All Channels">
-				<Button onClick={lockChannels}>Lock</Button>
-				<Button onClick={unlockChannels}>Unlock</Button>
-			</Header>
-			<div style={{display: 'flex', flexDirection: 'row'}}>
-				<div style={{flex: '1'}}>
-					<ChannelList/>
+	render: ({lockChannels, unlockChannels, ...rest}) => {
+		return (
+			<Panel {...rest}>
+				<Header title="Edit All Channels">
+					<Button onClick={lockChannels}>Lock</Button>
+					<Button onClick={unlockChannels}>Unlock</Button>
+				</Header>
+				<div style={{display: 'flex', flexDirection: 'row'}}>
+					<div style={{flex: '1'}}>
+						<ChannelList/>
+					</div>
 				</div>
-			</div>
-		</Panel>
-	)
+			</Panel>
+		)
+	}
 });
 
 const mapDispatchToProps = (dispatch) => {

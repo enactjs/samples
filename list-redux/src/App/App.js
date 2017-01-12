@@ -1,36 +1,44 @@
 import React from 'react';
-import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
+import {connect} from 'react-redux';
 import MainPanel from '../views/MainPanel';
 import EditChannelPanel from '../views/EditChannelPanel';
 import AppStateDecorator from './AppStateDecorator';
-
-import css from './App.less';
+import {getChannelList} from '../actions/';
 
 const RoutablePanels = Routable({navigate: 'onSelectBreadcrumb'}, ActivityPanels);
 
-const App = kind({
-	name: 'App',
+class App extends React.Component {
+	componentDidMount() {
+		this.props.dispatch(getChannelList({
+			"channelGroup": "All",
+			"channelMode" : ["Tuner"],
+			"dataType":0,
+			"sort":0
+		}));
+	}
 
-	styles: {
-		css,
-		className: 'app'
-	},
-	computed: {
-		onSecondPanel: ({onNavigate}) => () => onNavigate({path: '/first/second'}),
-	},
-	render: ({onNavigate, onSecondPanel, path, ...rest}) => (
-		<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
-			<Route path="first" component={MainPanel} title="First" onClick={onSecondPanel}>
-				<Route path="second" component={EditChannelPanel} title="Second"/>
-			</Route>
-		</RoutablePanels>
-	)
-});
+	onSecondPanel = () => {
+		this.props.onNavigate({path: '/first/second'})
+	}
+
+	render() {
+		const {onNavigate, path, ...rest} = this.props;
+		delete rest.dispatch;
+
+		return (
+			<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
+				<Route path="first" component={MainPanel} title="First" onClick={this.onSecondPanel}>
+					<Route path="second" component={EditChannelPanel} title="Second"/>
+				</Route>
+			</RoutablePanels>
+		);
+	}
+}
 
 export default MoonstoneDecorator(
 	AppStateDecorator(
-		App
+		connect()(App)
 	)
 );

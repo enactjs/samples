@@ -7,14 +7,17 @@ import {selectItem} from '../../actions/';
 const ChannelItem = kind({
 	name: 'ChannelItem',
 	computed: {
-		content: ({data}) => data.locked ? `${data.name} LOCKED` : `${data.name}`
+		content: ({locked, channelNumber}) => locked ? `${channelNumber} LOCKED` : `${channelNumber}`
 	},
-	render: ({content, data, selectChannel, ...rest}) => {
-		delete rest.dataIndex
+	render: ({content, selectChannel, selected, ...rest}) => {
+		delete rest.dataIndex;
+		delete rest.locked;
+		delete rest.channelNumber;
+
 		return (
 			<div {...rest}>
-				<CheckboxItem onClick={selectChannel} selected={data.selected}>
-					{content}
+				<CheckboxItem onClick={selectChannel} selected={selected}>
+					{`Channel ${content}`}
 				</CheckboxItem>
 			</div>
 		)
@@ -22,8 +25,11 @@ const ChannelItem = kind({
 });
 
 const mapStateToProps = ({channels}, {dataIndex}) => ({
-	data: channels.channels[dataIndex]
+	selected: channels.channels[dataIndex].selected,
+	locked: channels.channels[dataIndex].locked,
+	channelNumber: channels.channels[dataIndex].channelNumber
 });
+
 
 const mapDispatchToProps = (dispatch, {dataIndex}) => {
 	return {

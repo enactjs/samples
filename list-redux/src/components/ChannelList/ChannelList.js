@@ -29,12 +29,14 @@ const renderComponent = ({data, index, key}) => {
 
 const ChannelList = kind({
 	name: 'ChannelList',
-	render: ({...rest}) => {
+	render: ({channels, ...rest}) => {
+	delete rest.dispatch;
+
 	return (
-		<div>
+		<div {...rest}>
 			<VirtualList
-				data={rest.channels.channelsOrder}
-				dataSize={rest.channels.channelsOrder.length}
+				data={channels}
+				dataSize={channels.length}
 				direction="vertical"
 				itemSize={ri.scale(48)}
 				spacing={ri.scale(0)}
@@ -46,7 +48,7 @@ const ChannelList = kind({
 });
 
 const mapStateToProps = ({channels}) => ({
-	channels
+	channels: channels.channelsOrder
 });
 
 export default connect(mapStateToProps)(ChannelList);
