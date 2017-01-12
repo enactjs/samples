@@ -1,7 +1,7 @@
 {
-  "name": "panel-routable-sample",
+  "name": "pattern-ls2request",
   "version": "1.0.0",
-  "description": "A sample demonstrating routable panels",
+  "description": "An Enact Moonstone application demonstrating LS2Request",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -15,9 +15,9 @@
     "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
     "test-watch": "enact test start --browsers PhantomJS"
   },
-  "license": "Apache-2.0",
+  "license": "UNLICENSED",
   "private": true,
-  "repository": "https://github.com/enyojs/enact-samples",
+  "repository": "",
   "enact": {
     "isomorphic": "src/iso.js",
     "ri": {
@@ -28,19 +28,16 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^1.0.0-beta.1",
-    "@enact/i18n": "^1.0.0-beta.1",
-    "@enact/moonstone": "^1.0.0-beta.1",
-    "@enact/spotlight": "^1.0.0-beta.1",
-    "@enact/ui": "^1.0.0-beta.1",
-    "@enact/webos": "^1.0.0-beta.1",
+    "@enact/core": "^1.0.0-alpha.4",
+    "@enact/i18n": "^1.0.0-alpha.4",
+    "@enact/moonstone": "^1.0.0-alpha.4",
+    "@enact/spotlight": "^1.0.0-alpha.4",
+    "@enact/ui": "^1.0.0-alpha.4",
+    "@enact/webos": "^1.0.0-alpha.4",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
-  },
-  "devDependencies": {
-    "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   }
 }

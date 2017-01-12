@@ -1,7 +1,7 @@
 {
-	"name": "CityViewer",
+	"name": "tutorial-kitten-browser",
 	"version": "1.0.0",
-	"description": "Sample list details Enact application.",
+	"description": "A kitten browser app to introduce some intermediate ES6, React, and Enact concepts",
 	"author": "",
 	"main": "src/index.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"pack-p": "enact pack -p",
 		"watch": "enact pack --watch",
 		"clean": "enact clean",
-		"lint": "enact lint --strict .",
+		"lint": "enact lint .",
 		"test": "enact test start --single-run --browsers PhantomJS",
 		"test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
 		"test-watch": "enact test start --browsers PhantomJS"
@@ -19,13 +19,13 @@
 	"private": true,
 	"repository": "",
 	"enact": {
-		"isomorphic": "src/iso.js",
+		"isomorphic": true,
 		"ri": {
 			"baseSize": 24
 		}
 	},
 	"eslintConfig": {
-		"extends": "enact/strict"
+		"extends": "enact"
 	},
 	"dependencies": {
 		"@enact/core": "^1.0.0-beta.1",
@@ -34,7 +34,7 @@
 		"@enact/spotlight": "^1.0.0-beta.1",
 		"@enact/i18n": "^1.0.0-beta.1",
 		"@enact/webos": "^1.0.0-beta.1",
-		"react": "^15.4.0",
-		"react-dom": "^15.4.0"
+		"react": "^15.4.1",
+		"react-dom": "^15.4.1"
 	}
 }

@@ -1,7 +1,7 @@
 {
-  "name": "panel-routable-sample",
+  "name": "pattern-activity-panels",
   "version": "1.0.0",
-  "description": "A sample demonstrating routable panels",
+  "description": "ActivityPanels sample Enact Moonstone application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "private": true,
   "repository": "https://github.com/enyojs/enact-samples",
   "enact": {
+    "title": "ActivityPanels sample",
     "isomorphic": "src/iso.js",
     "ri": {
       "baseSize": 24
@@ -29,18 +30,12 @@
   },
   "dependencies": {
     "@enact/core": "^1.0.0-beta.1",
-    "@enact/i18n": "^1.0.0-beta.1",
+    "@enact/ui": "^1.0.0-beta.1",
     "@enact/moonstone": "^1.0.0-beta.1",
     "@enact/spotlight": "^1.0.0-beta.1",
-    "@enact/ui": "^1.0.0-beta.1",
+    "@enact/i18n": "^1.0.0-beta.1",
     "@enact/webos": "^1.0.0-beta.1",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0",
-    "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
-  },
-  "devDependencies": {
-    "react-redux": "^5.0.1",
-    "redux": "^3.6.0"
+    "react-dom": "^15.4.0"
   }
 }
