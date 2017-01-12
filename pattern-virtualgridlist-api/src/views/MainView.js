@@ -4,13 +4,17 @@ import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import React from 'react';
 import ri from '@enact/ui/resolution';
+import {Spotlight} from '@enact/spotlight';
+import {startJob} from '@enact/core/jobs';
 
 import SideBar from '../components/SideBar';
 
 import AppStateDecorator from './AppStateDecorator';
 import css from './MainView.less';
 
-const albums = ['Family', 'Car', 'Travel'];
+const
+	albums = ['Family', 'Car', 'Travel'],
+	doc = (typeof window === 'object') ? window.document : {};
 
 class MainView extends React.Component {
 	showOverlay = false
@@ -77,9 +81,21 @@ class MainView extends React.Component {
 		this.scrollTo = scrollTo;
 	}
 
+	focusOnItem = (index) => {
+		startJob('focusing', () => {
+			const item = doc.querySelector(`[data-my-list] [data-index='${index}'].spottable`);
+
+			if (item) {
+				Spotlight.setPointerMode(false);
+				Spotlight.focus(item);
+			}
+		}, 0);
+	}
+
 	componentDidMount () {
 		//focusOnIndex, setInitialFocusIndex, scrollToItem
 		this.scrollTo({index: 60, animate: false});
+		this.focusOnItem(60);
 	}
 
 	render = () => {
@@ -108,6 +124,7 @@ class MainView extends React.Component {
 					<VirtualGridList
 						cbScrollTo={this.getScrollTo}
 						data={this.props.data}
+						data-my-list
 						dataSize={this.props.data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
 						spacing={ri.scale(20)}
