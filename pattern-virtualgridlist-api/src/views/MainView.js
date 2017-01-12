@@ -48,7 +48,7 @@ class MainView extends React.Component {
 			dataLength = this.props.data.length,
 			title = (dataLength % 8 === 0) ? ' with long title' : '',
 			subTitle = (dataLength % 8 === 0) ? 'Lorem ipsum dolor sit amet' : 'Subtitle',
-			color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16);
+			color = Math.floor((Math.random() * 0xEFEFF0) + 0x101010).toString(16);
 
 		return {
 			selected: false,
@@ -123,13 +123,13 @@ class MainView extends React.Component {
 					/>
 					<VirtualGridList
 						cbScrollTo={this.getScrollTo}
+						className={css.list}
+						component={this.renderItem}
 						data={this.props.data}
 						data-my-list
 						dataSize={this.props.data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
 						spacing={ri.scale(20)}
-						className={css.list}
-						component={this.renderItem}
 					/>
 				</div>
 			</div>

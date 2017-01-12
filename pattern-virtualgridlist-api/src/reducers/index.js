@@ -1,5 +1,6 @@
-import {ADD_ITEM, DELETE_ITEM, SELECTION_ENABLE, SELECT_ALL, TOGGLE_ITEM, CHANGE_ALBUM} from '../actions';
 import {combineReducers} from 'redux';
+
+import {ADD_ITEM, DELETE_ITEM, SELECTION_ENABLE, SELECT_ALL, TOGGLE_ITEM, CHANGE_ALBUM} from '../actions';
 
 const createRecords = (album) => {
 	let
