@@ -21,30 +21,37 @@ const style = {
 	listHeight: {
 		height: ri.scale(550) + 'px'
 	}
-}
+};
 
 const renderComponent = ({data, index, key}) => {
-	return (<ChannelItem key={key} dataIndex={data[index]} />)
-}
+	return (<ChannelItem key={key} dataIndex={data[index]} />);
+};
 
 const ChannelList = kind({
 	name: 'ChannelList',
-	render: ({channels, ...rest}) => {
-	delete rest.dispatch;
 
-	return (
-		<div {...rest}>
-			<VirtualList
-				data={channels}
-				dataSize={channels.length}
-				direction="vertical"
-				itemSize={ri.scale(48)}
-				spacing={ri.scale(0)}
-				style={style.listHeight}
-				component={renderComponent}
-			/>
-		</div>
-	)}
+	propTypes: {
+		channels: React.PropTypes.array,
+		dispatch: React.PropTypes.func
+	},
+	render: ({channels, ...rest}) => {
+		delete rest.dispatch;
+
+		return (
+			<div {...rest}>
+				<VirtualList
+					data={channels}
+					dataSize={channels.length}
+					direction="vertical"
+					itemSize={ri.scale(72)}
+					spacing={ri.scale(0)}
+					style={style.listHeight}
+					component={renderComponent}
+				/>
+			</div>
+		);
+
+	}
 });
 
 const mapStateToProps = ({channels}) => ({

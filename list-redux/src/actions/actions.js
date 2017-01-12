@@ -5,29 +5,29 @@ export const selectItem = (index) => {
 	return {
 		type: 'SELECT_ITEM',
 		index
-	}
-}
+	};
+};
 
-const updateLockItems = () =>{
+const updateLockItems = () => {
 	return {
 		type: 'LOCK_ITEMS'
-	}
-}
+	};
+};
 
 const selectedChannelsToArray = (channelSet) => {
 	let channelArray = [];
 	channelSet.forEach((val) => {
 		channelArray.push(val);
-	})
+	});
 
 	return channelArray;
-}
+};
 
 export const lockItems = () => (dispatch, getState) => {
 	const channelIds = getState().channels.selectedChannels;
-	const channelArray = selectedChannelsToArray(channelIds)
+	const channelArray = selectedChannelsToArray(channelIds);
 
-	if(!window.webos){
+	if (!window.webos) {
 		return dispatch(updateLockItems());
 	}
 
@@ -36,25 +36,25 @@ export const lockItems = () => (dispatch, getState) => {
 		method: 'setChannelBlock',
 		parameters: {channelIds: channelArray},
 		onSuccess: (res) => {
-			if(res.returnValue){
+			if (res.returnValue) {
 				dispatch(updateLockItems());
 			}
 		},
 		onFailure: (res) => console.error(res)
 	});
-}
+};
 
 const updateUnlockItems = () => {
 	return {
 		type: 'UNLOCK_ITEMS'
-	}
-}
+	};
+};
 
 export const unlockItems = () => (dispatch, getState) => {
 	const channelIds = getState().channels.selectedChannels;
 	const channelArray = selectedChannelsToArray(channelIds);
 
-	if(!window.webos){
+	if (!window.webos) {
 		return dispatch(updateUnlockItems());
 	}
 
@@ -63,18 +63,18 @@ export const unlockItems = () => (dispatch, getState) => {
 		method: 'releaseChannelBlock',
 		parameters: {channelIds: channelArray},
 		onSuccess: (res) => {
-			if(res.returnValue){
+			if (res.returnValue) {
 				dispatch(updateUnlockItems());
 			}
 		},
 		onFailure: (res) => console.error(res)
 	});
-}
+};
 
 
 export const getChannelList = params => dispatch => {
 	// Mock Data
-	if(!window.webos){
+	if (!window.webos) {
 		return dispatch(receiveChannelList(mockChannelList));
 	}
 	return new LS2Request().send({
@@ -89,9 +89,9 @@ export const getChannelList = params => dispatch => {
 };
 
 function receiveChannelList (res) {
-	//Transform Data
+	// Transform Data
 	const channelList = res.channelList.reduce((prev, curr) => {
-		prev.channelsOrder.push(curr.channelId)
+		prev.channelsOrder.push(curr.channelId);
 		prev.channels[curr.channelId] = curr;
 		prev.channels[curr.channelId].selected = false;
 		return prev;

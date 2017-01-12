@@ -1,17 +1,17 @@
-import {combineReducers} from "redux";
+import {combineReducers} from 'redux';
 // NOTE: We use this type of structure for performance.
 let initialState = {
 	channelsOrder: [],
 	channels: {},
 	selectedChannels: new Set()
-}
+};
 
 function channels (state = initialState, action) {
 	switch (action.type) {
-		case "RECEIVE_CHANNEL_LIST": {
+		case 'RECEIVE_CHANNEL_LIST': {
 			return Object.assign({}, action.payload);
 		}
-		case "SELECT_ITEM" : {
+		case 'SELECT_ITEM' : {
 			state.channels[action.index].selected = !state.channels[action.index].selected;
 			const isSelected = state.channels[action.index].selected;
 
@@ -23,24 +23,24 @@ function channels (state = initialState, action) {
 
 			return Object.assign({}, state);
 		}
-		case "LOCK_ITEMS": {
+		case 'LOCK_ITEMS': {
 			state.selectedChannels.forEach((id) => {
 				state.channels[id].locked = true;
 				state.channels[id].selected = false;
-			})
-			state.selectedChannels.clear()
+			});
+			state.selectedChannels.clear();
 			return Object.assign({}, state);
 		}
-		case "UNLOCK_ITEMS": {
+		case 'UNLOCK_ITEMS': {
 			state.selectedChannels.forEach((id) => {
 				state.channels[id].locked = false;
 				state.channels[id].selected = false;
-			})
-			state.selectedChannels.clear()
+			});
+			state.selectedChannels.clear();
 			return Object.assign({}, state);
 		}
 		default: {
-			return state
+			return state;
 		}
 	}
 }
@@ -60,3 +60,4 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer
+;

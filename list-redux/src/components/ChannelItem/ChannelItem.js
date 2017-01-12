@@ -6,6 +6,14 @@ import {selectItem} from '../../actions/';
 
 const ChannelItem = kind({
 	name: 'ChannelItem',
+
+	propTypes: {
+		channelNumber: React.PropTypes.string,
+		dataIndex: React.PropTypes.string,
+		locked: React.PropTypes.bool,
+		selectChannel: React.PropTypes.func,
+		selected: React.PropTypes.bool
+	},
 	computed: {
 		content: ({locked, channelNumber}) => locked ? `${channelNumber} LOCKED` : `${channelNumber}`
 	},
@@ -20,7 +28,7 @@ const ChannelItem = kind({
 					{`Channel ${content}`}
 				</CheckboxItem>
 			</div>
-		)
+		);
 	}
 });
 

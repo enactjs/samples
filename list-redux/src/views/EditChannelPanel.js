@@ -8,6 +8,12 @@ import ChannelList from '../components/ChannelList';
 
 const EditChannelPanel = kind({
 	name: 'EditChannelPanel',
+
+	propTypes: {
+		lockChannels: React.PropTypes.func,
+		unlockChannels: React.PropTypes.func
+	},
+
 	render: ({lockChannels, unlockChannels, ...rest}) => {
 		return (
 			<Panel {...rest}>
@@ -17,11 +23,11 @@ const EditChannelPanel = kind({
 				</Header>
 				<div style={{display: 'flex', flexDirection: 'row'}}>
 					<div style={{flex: '1'}}>
-						<ChannelList/>
+						<ChannelList />
 					</div>
 				</div>
 			</Panel>
-		)
+		);
 	}
 });
 
