@@ -9,7 +9,14 @@ let initialState = {
 function channels (state = initialState, action) {
 	switch (action.type) {
 		case 'RECEIVE_CHANNEL_LIST': {
-			return Object.assign({}, action.payload);
+			const channelList = action.payload.channelList.reduce((prev, curr) => {
+				prev.channelsOrder.push(curr.channelId);
+				prev.channels[curr.channelId] = curr;
+				prev.channels[curr.channelId].selected = false;
+				return prev;
+			}, state);
+
+			return Object.assign({}, channelList);
 		}
 		case 'SELECT_ITEM' : {
 			state.channels[action.index].selected = !state.channels[action.index].selected;

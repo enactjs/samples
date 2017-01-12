@@ -89,21 +89,9 @@ export const getChannelList = params => dispatch => {
 };
 
 function receiveChannelList (res) {
-	// Transform Data
-	const channelList = res.channelList.reduce((prev, curr) => {
-		prev.channelsOrder.push(curr.channelId);
-		prev.channels[curr.channelId] = curr;
-		prev.channels[curr.channelId].selected = false;
-		return prev;
-	}, {
-		channelsOrder: [],
-		channels: {},
-		selectedChannels: new Set()
-	});
-
 	return {
 		type: 'RECEIVE_CHANNEL_LIST',
-		payload: channelList
+		payload: res
 	};
 }
 

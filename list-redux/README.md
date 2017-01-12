@@ -1,6 +1,6 @@
-## List-Redux
+# List-Redux
 
-A sample Enact application that shows off how to use VirtualList + Redux + LS2Request. The app is a very stripped down version of ChannelEdit. This is designed to help developers connect the dots for a more complete application. Also we want to show off some differences between the newer `Enact` way and the `Enyo` way.
+A sample Enact application that shows off how to use VirtualList + Redux + LS2Request. The app is a very stripped down version of ChannelEdit. This is designed to help developers connect the dots for a  complete application. Also, we want to show off some differences between the newer `Enact` way and the `Enyo` way.
 
 ## Installation 
 
@@ -8,72 +8,195 @@ Clone this repo. Run `npm install` then `npm run serve` to have the app running 
 
 ## Enyo Architecture vs Enact Architecture
 
-### NOTE: This assumes you have some knowledge of redux and how it works.
+Even though `Enyo` and `Enact` are both component based `Javascript` libraries, there are quite a few differences between the two.
 
-In the `Enyo` version of the ChannelEdit app `Collections` and `Controllers` were used to a great 
-extent. There were `Luna` methods inside of `Controllers`, and they were called inside of 
-`Components` which then updated `Collections`. The basic ideas are very similar, but with `Enact` + 
-`Redux` it makes the process a lot easier. As we know, `Redux` has all of the `State` in a single 
-object that we can expose to our app. We can call `actions` from our `Component`, which will then 
-pass the data received from a `Luna` method to a `Reducer`. From that reducer, we can decide what 
-part of our `State` to update. Using `react-redux` and `connect` we can update the parts of the 
-tree that need to be updated. We don't need to mess with binding, which allows us to have more 
-declarative code.
+### Mixins
 
-## Redux Shape
+In `Enyo` we used `Mixin`s. `Mixin`s are a way for us to apply functionality to a component without extending a from a parent object or class. In `Enact` we have `Higher-Order Components` or `HOC`s. `HOC`s are components or functions that we can use to wrap other components to give add functionality to the wrapped component. The biggest difference between a `Mixin` and a `HOC` is that a `Mixin` adds methods straight to a component where a `HOC` composes a new component. This means `Mixin`s can potentially overwrite methods with the same name. We are using a few `HOC`'s in our code(e.g `AppStateDecorator` and `connect`). These give use the ability to do routing and manage global state. Also, a lot of our `Moonstone` components are already wrapped so there is rarely a need to add in things like `spotlight` or `marquee` directly.
+
+You can read more about `HOC`s here:
+
+[Facebook Docs Higher-Order Components](https://facebook.github.io/react/docs/higher-order-components.html)
+
+[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.2lgpctscu).
+
+### Redux
+
+**NOTE: This assumes you have some knowledge of redux and how it works.**
+
+In the `Enyo` version of the ChannelEdit app `Collections` and `Controllers` were used to a great extent. We called `Controllers` commands from our `Components` which called `Luna` commands. Then we updated our `Collections`, which we received and event from. Then we had to imperatively update our `Component` based on the `Collection` change event.
+
+The basic ideas are very similar, but with `Enact` + `Redux` it makes the process a lot easier. As we all know, `Redux` has all of the `State` in a single object that we can expose to our app. We can call `actions` from our `Component`, which will then pass the data received from a `Luna` method to a `Reducer`. From that reducer, we can decide what part of our `State` to update. Using `react-redux` and `connect` we can update pass new props to the `Component`. If we set up our `Components` correctly the view will update correctly based on the new props from `Redux`. This means we don't need to handle the event, we just need to handle the new data. This allows us to reason about our code much easier. 
+
+In `Enyo` we also had support for the `flux` pattern. `Redux` is a simplified and very popular version of `flux`.
+
+### VirtualList + Redux
+
+In many apps like `ChannelEdit`, we need to use VirtualList and Redux together. This allows us to list as many things as we need with not too much performance impact. `VirtualList` is very good rendering only what is on screen. However, if we need to make UI updates inside of the list there is still potential to trigger re-renders when they aren't wanted. Below we'll discuss the why it's important to have an optimized redux state shape.
+
+### Redux State Shape
+
+#### The Naive Approach
+
+**Problem 1: Poor Redux Shape**
+
+`Redux` shape is a very important topic. The `Redux` store is just a single javascript object. The simplicity is great for developers. We can just put things into a redux store and it will update our views with no problem. It can be tempting to make its shape look as simple as possible. However, that could possibly be a very inefficient view that can potentially cost a lot of performance down the line.
+
+When you first learn redux through something like a TODO List sample, the example will just have an array of items to represent a list. This is very easy for the developer and if we need to make an update to a specific item we just traverse through the list making our needed updates.
+
+```javascript
+// Initial Shape
+let initialState = {
+    channels: []
+};
+
+// each channel in the channels array can look something like this:
+{
+    channelId: '1_2_3_4_5'
+    selected: true,
+    locked: false
+    //... more data
+}
+
+//reducer section
+case 'SELECT_ITEM' : {
+    const selectedIndex = action.selectedIndex
+    const newState = state.channel.map((val, index) => {
+        return selectedIndex === index ? val.selected = true : val
+    });
+    return Object.assign({}, newState);
+}
+
+```
+
+The problem is what if our list grows to a very large amount? If we have 1000 channels then we're looking at up to 1000 pieces of data every time when we just need to access 1 specific piece.
+
+**Problem 2: Sending out too much data to components**
+
+Another common mistake when using `Redux` is to just place a connect at the top of the tree and let `React` take care of the updates.
+
+Inside our `ChannelList.js`
+
+```javascript
+const renderComponent = ({data, key}) => {
+    return (<ChannelItem key={key} data={data} />);
+};
+
+const mapStateToProps = ({channels}) => ({
+    channels: channels.channels
+});
+
+export default connect(mapStateToProps)(ChannelList);
+```
+
+In this example, we're just taking channels with all of the data and passing them all to the list. Each component will get all the data from a channel. This approach will work, but every time the list changes it will trigger a re-render for all of the children inside of `VirtualList` instead of just the one that needs to be updated.
+
+#### The Optimized Approach
+**To solve our first problem we need to reorganize our `Redux` shape.**
 
 If you look in the `reducers.js` file we'll see what looks like a standard reducer. One thing to note is the shape of the `initialState`. This will be the state of our channel reducer. We could use one `Array` for all the channels, but that would lead to very inefficient updates.
 
 ```javascript
 let initialState = {
-	channelsOrder: [],
-	channels: {},
-	selectedChannels: new Set()
+    channelsOrder: [],
+    channels: {},
+    selectedChannels: new Set()
 };
 ```
 
-We break things up into 3 parts: `channelsOrder`, `channels` (which is an object), and `selectedChannels` (which is a set).
+We break things up into 3 parts: `channelsOrder` (array), `channels` (object), and `selectedChannels` (set).
 
 It's very important to choose the correct data structures for our store.
 
-We use and `Array` for `channelsOrder` which only holds the `channelId`.
+We use and `Array` for `channelsOrder` which only holds the `channelId` of each channel.
 
-We use an `Object` for channels so we can index each channel by it's `channelId`. This way we can make quick updates to our store and also have minimal re-renders.
+We use an `Object` for channels so we can index each channel by it's `channelId`. This way we can access our channels quickly make quick updates to our store.
 
-We use a `Set` for `selectedChannels` because it makes it very easy and performant way to add and remove values compared to an `Array`.
+We use a `Set` for `selectedChannels` because it makes it very easy and efficient way to add and remove values compared to an `Array`.
 
+Take a look inside `reducers.js` to see how we organized our data from `Luna` to redux.
 
-This technique is explained in detail here: https://medium.com/@lavrton/optimizing-react-redux-store-for-high-performance-updates-3ae6f7f1e4c1
+```javascript
+case 'RECEIVE_CHANNEL_LIST': {
+    const channelList = action.payload.channelList.reduce((prev, curr) => {
+        prev.channelsOrder.push(curr.channelId);
+        prev.channels[curr.channelId] = curr;
+        prev.channels[curr.channelId].selected = false;
+        return prev;
+    }, state);
 
-Then in our `ChannelItem` component we can call:
+    return Object.assign({}, channelList);
+}
+```
+
+Now that we have this all set, we have solved the problem of having the wrong data shape. This means we can access any channel without traversing through an array.
+
+**To solve our second problem we need to specify the data received by our connected components**
+
+Now that we have a new shape inside `ChannelList.js` we can now do this.
+
+```javascript
+const renderComponent = ({data, index, key}) => {
+    return (<ChannelItem key={key} dataIndex={data[index]} />);
+};
+
+const mapStateToProps = ({channels}) => ({
+    channels: channels.channelsOrder
+});
+
+export default connect(mapStateToProps)(ChannelList);
+```
+
+This will only send in our specific `channelIds` to each `ChannelItem` as a `dataIndex`.
+
+Then in our `ChannelItem` component we can do this:
 
 ```javascript
 const mapStateToProps = ({channels}, {dataIndex}) => ({
-	selected: channels.channels[dataIndex].selected,
-	locked: channels.channels[dataIndex].locked,
-	channelNumber: channels.channels[dataIndex].channelNumber
+    selected: channels.channels[dataIndex].selected,
+    locked: channels.channels[dataIndex].locked,
+    //...Any other state that we need
 });
 ```
 
-This will update only the items that need to be updated when `locked`, `unlocked`, or `selected`. 
+This will update only the items that need to be updated when `locked` or `selected` are changed. You must remember to explicitly get all the data you need or else different updates to a channel can trigger a re-render.
 
-**It is important to only expose the parts of the data we need to the component. This will make it much more performant.** 
+Now that we have this more specific `connect` we have solved the second problem.
 
-Starting out with a good redux shape will save you from performance problems down the line.
+This technique is explained in more detail here: 
 
-#### Enact Components Used
-- `moonstone/Button`
-- `moonstone/LabeledItem`
-- `webos/LS2Request`
+[Optimizing React-Redux](https://medium.com/@lavrton/optimizing-react-redux-store-for-high-performance-updates-3ae6f7f1e4c1)
 
-The main thing we want to take away from this project is how to update data using redux
+[Normalizing State Shape](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html)
 
-In the sample, there are two luna service calls being made at `componentDidMount`: one with
-`subscribe: true`, and one without. If the call is subscribed, then the setter action
-(e.g. `setSystemSettings`) does not directly interfere with redux data flow.
+### LS2Request
 
-For a setter action that is expected to be handled by a subscribed callback, we don't need to dispatch
-an action. See `setSystemSettingsSubscribed` in **./src/actions/actions.js** for more details.
+If you take a look into the `actions.js` file you can find how we do LS2Requests. It's pretty straightforward. You just need to dispatch these actions from an event. You need to call `LS2Request` inside of an action then `onSuccess` you must pass the response to a function with a `type`. This way your reducer will know what to do with the data.
+
+```javascript
+export const getChannelList = params => dispatch => {
+    return new LS2Request().send({
+        service: 'luna://com.webos.service.iepg',
+        method: 'getChannelList',
+        parameters: params,
+        onSuccess: (res) => {
+            dispatch(receiveChannelList(res));
+        },
+        onFailure: (res) => console.error(res)
+    });
+};
+
+function receiveChannelList (res) {
+    return {
+        type: 'RECEIVE_CHANNEL_LIST',
+        payload: res
+    };
+}
+```
+
+You can read more here:
+
+[Redux Async Actions](http://redux.js.org/docs/advanced/AsyncActions.html)
 
 ---
 
