@@ -47,24 +47,24 @@ When you first learn redux through something like a TODO List sample, the exampl
 ```javascript
 // Initial Shape
 let initialState = {
-    channels: []
+	channels: []
 };
 
 // each channel in the channels array can look something like this:
 {
-    channelId: '1_2_3_4_5'
-    selected: true,
-    locked: false
-    //... more data
+	channelId: '1_2_3_4_5'
+	selected: true,
+	locked: false
+	//... more data
 }
 
 //reducer section
 case 'SELECT_ITEM' : {
-    const selectedIndex = action.selectedIndex
-    const newState = state.channel.map((val, index) => {
-        return selectedIndex === index ? val.selected = true : val
-    });
-    return Object.assign({}, newState);
+	const selectedIndex = action.selectedIndex
+	const newState = state.channel.map((val, index) => {
+		return selectedIndex === index ? val.selected = true : val
+	});
+	return Object.assign({}, newState);
 }
 
 ```
@@ -79,11 +79,11 @@ Inside our `ChannelList.js`
 
 ```javascript
 const renderComponent = ({data, key}) => {
-    return (<ChannelItem key={key} data={data} />);
+	return (<ChannelItem key={key} data={data} />);
 };
 
 const mapStateToProps = ({channels}) => ({
-    channels: channels.channels
+	channels: channels.channels
 });
 
 export default connect(mapStateToProps)(ChannelList);
@@ -98,9 +98,9 @@ If you look in the `reducers.js` file we'll see what looks like a standard reduc
 
 ```javascript
 let initialState = {
-    channelsOrder: [],
-    channels: {},
-    selectedChannels: new Set()
+	channelsOrder: [],
+	channels: {},
+	selectedChannels: new Set()
 };
 ```
 
@@ -116,16 +116,25 @@ We use a `Set` for `selectedChannels` because it makes it very easy and efficien
 
 Take a look inside `reducers.js` to see how we organized our data from `Luna` to redux.
 
+**Note: We are trying to make our reducers pure so we're trying to emphasize immutability**
+
 ```javascript
 case 'RECEIVE_CHANNEL_LIST': {
-    const channelList = action.payload.channelList.reduce((prev, curr) => {
-        prev.channelsOrder.push(curr.channelId);
-        prev.channels[curr.channelId] = curr;
-        prev.channels[curr.channelId].selected = false;
-        return prev;
-    }, state);
+	const newState = action.payload.channelList.reduce((previous, current) => {
+		const channelObj = Object.assign({}, previous);
+		const currentChannel = Object.assign({}, current);
 
-    return Object.assign({}, channelList);
+		const channelOrder = channelObj.channelsOrder.concat(currentChannel.channelId);
+
+		const completeCurrent = Object.assign({}, currentChannel, {selected: false});
+
+		channelObj.channelsOrder = channelOrder;
+		channelObj.channels[currentChannel.channelId] = completeCurrent;
+
+		return channelObj;
+	}, state);
+
+	return Object.assign({}, state, newState);
 }
 ```
 
@@ -137,11 +146,11 @@ Now that we have a new shape inside `ChannelList.js` we can now do this.
 
 ```javascript
 const renderComponent = ({data, index, key}) => {
-    return (<ChannelItem key={key} dataIndex={data[index]} />);
+	return (<ChannelItem key={key} dataIndex={data[index]} />);
 };
 
 const mapStateToProps = ({channels}) => ({
-    channels: channels.channelsOrder
+	channels: channels.channelsOrder
 });
 
 export default connect(mapStateToProps)(ChannelList);
@@ -153,9 +162,9 @@ Then in our `ChannelItem` component we can do this:
 
 ```javascript
 const mapStateToProps = ({channels}, {dataIndex}) => ({
-    selected: channels.channels[dataIndex].selected,
-    locked: channels.channels[dataIndex].locked,
-    //...Any other state that we need
+	selected: channels.channels[dataIndex].selected,
+	locked: channels.channels[dataIndex].locked,
+	//...Any other state that we need
 });
 ```
 
@@ -175,22 +184,22 @@ If you take a look into the `actions.js` file you can find how we do LS2Requests
 
 ```javascript
 export const getChannelList = params => dispatch => {
-    return new LS2Request().send({
-        service: 'luna://com.webos.service.iepg',
-        method: 'getChannelList',
-        parameters: params,
-        onSuccess: (res) => {
-            dispatch(receiveChannelList(res));
-        },
-        onFailure: (res) => console.error(res)
-    });
+	return new LS2Request().send({
+		service: 'luna://com.webos.service.iepg',
+		method: 'getChannelList',
+		parameters: params,
+		onSuccess: (res) => {
+			dispatch(receiveChannelList(res));
+		},
+		onFailure: (res) => console.error(res)
+	});
 };
 
 function receiveChannelList (res) {
-    return {
-        type: 'RECEIVE_CHANNEL_LIST',
-        payload: res
-    };
+	return {
+		type: 'RECEIVE_CHANNEL_LIST',
+		payload: res
+	};
 }
 ```
 

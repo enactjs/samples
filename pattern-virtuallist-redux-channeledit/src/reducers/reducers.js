@@ -10,56 +10,65 @@ function channels (state = initialState, action) {
 	switch (action.type) {
 		case 'RECEIVE_CHANNEL_LIST': {
 			const newState = action.payload.channelList.reduce((previous, current) => {
-				const channelObj = previous;
+				const channelObj = Object.assign({}, previous);
+				const currentChannel = Object.assign({}, current);
 
-				const channelOrder = channelObj.channelsOrder.concat(current.channelId);
+				const channelOrder = channelObj.channelsOrder.concat(currentChannel.channelId);
 
-				const currentChannel = current;
-				currentChannel.selected = false;
+				const completeCurrent = Object.assign({}, currentChannel, {selected: false});
 
 				channelObj.channelsOrder = channelOrder;
-				channelObj.channels[current.channelId] = currentChannel;
+				channelObj.channels[currentChannel.channelId] = completeCurrent;
 
 				return channelObj;
 			}, state);
 
-			return Object.assign({}, newState);
+			return Object.assign({}, state, newState);
 		}
 		case 'SELECT_ITEM' : {
-			const newState = state;
-			const isSelected = !newState.channels[action.index].selected;
+			const isSelected = !state.channels[action.index].selected;
+			const selectedChannels	= new Set(state.selectedChannels);
 
 			if (isSelected) {
-				newState.selectedChannels.add(action.index);
+				selectedChannels.add(action.index);
 			} else {
-				newState.selectedChannels.delete(action.index);
+				selectedChannels.delete(action.index);
 			}
 
+			const newState = {
+				channels: {
+					[action.index] : {}
+				}
+			};
 			newState.channels[action.index].selected = isSelected;
 
-			return Object.assign({}, newState);
+			const channelState = Object.assign({}, state.channels[action.index], newState.channels[action.index]);
+			const channelsState = Object.assign({}, state.channels, {[action.index] : channelState});
+			return Object.assign({}, state, {channels: channelsState, selectedChannels});
 		}
 		case 'LOCK_ITEMS': {
-			const newState = state;
+			const newChannelState = {};
 
-			newState.selectedChannels.forEach((id) => {
-				newState.channels[id].locked = true;
-				newState.channels[id].selected = false;
+			state.selectedChannels.forEach((id) => {
+				newChannelState[id] = Object.assign({}, state.channels[id], {locked : true, selected: false});
 			});
 
-			newState.selectedChannels.clear();
-			return Object.assign({}, newState);
+			const channelsState = Object.assign({}, state.channels, newChannelState);
+
+			return Object.assign({}, state, {channels: channelsState, selectedChannels: new Set()});
 		}
 		case 'UNLOCK_ITEMS': {
-			const newState = state;
+			const newChannelState = {};
 
-			newState.selectedChannels.forEach((id) => {
-				newState.channels[id].locked = false;
-				newState.channels[id].selected = false;
+			state.selectedChannels.forEach((id) => {
+				newChannelState[id] = Object.assign({}, state.channels[id], {locked : false, selected: false});
 			});
 
-			newState.selectedChannels.clear();
-			return Object.assign({}, newState);
+			state.selectedChannels.clear();
+
+			const channelsState = Object.assign({}, state.channels, newChannelState);
+
+			return Object.assign({}, state, {channels: channelsState, selectedChannels: new Set()});
 		}
 		default: {
 			return state;
