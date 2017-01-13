@@ -23,11 +23,9 @@ const ChannelItem = kind({
 		delete rest.channelNumber;
 
 		return (
-			<div {...rest}>
-				<CheckboxItem onClick={selectChannel} selected={selected}>
-					{`Channel ${content}`}
-				</CheckboxItem>
-			</div>
+			<CheckboxItem {...rest} onClick={selectChannel} selected={selected}>
+				{`Channel ${content}`}
+			</CheckboxItem>
 		);
 	}
 });

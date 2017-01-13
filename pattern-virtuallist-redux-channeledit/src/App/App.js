@@ -1,28 +1,21 @@
 import React from 'react';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
-import {connect} from 'react-redux';
 import MainPanel from '../views/MainPanel';
 import EditChannelPanel from '../views/EditChannelPanel';
 import AppStateDecorator from './AppStateDecorator';
-import {getChannelList} from '../actions/';
 
 const RoutablePanels = Routable({navigate: 'onSelectBreadcrumb'}, ActivityPanels);
 
 class App extends React.Component {
 	static propTypes = {
-		dispatch: React.PropTypes.func.isRequired,
+		getChannelList: React.PropTypes.func.isRequired,
 		onNavigate: React.PropTypes.func.isRequired,
 		path: React.PropTypes.string.isRequired
 	}
 
 	componentDidMount () {
-		this.props.dispatch(getChannelList({
-			'channelGroup': 'All',
-			'channelMode' : ['Tuner'],
-			'dataType':0,
-			'sort':0
-		}));
+		this.props.getChannelList();
 	}
 
 	onSecondPanel = () => {
@@ -31,7 +24,7 @@ class App extends React.Component {
 
 	render () {
 		const {onNavigate, path, ...rest} = this.props;
-		delete rest.dispatch;
+		delete rest.getChannelList;
 
 		return (
 			<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
@@ -45,6 +38,6 @@ class App extends React.Component {
 
 export default MoonstoneDecorator(
 	AppStateDecorator(
-		connect()(App)
+		App
 	)
 );

@@ -27,7 +27,7 @@ export const lockItems = () => (dispatch, getState) => {
 	const channelIds = getState().channels.selectedChannels;
 	const channelArray = selectedChannelsToArray(channelIds);
 
-	if (!window.webos) {
+	if (!window.PalmSystem) {
 		return dispatch(updateLockItems());
 	}
 
@@ -35,11 +35,10 @@ export const lockItems = () => (dispatch, getState) => {
 		service: 'luna://com.webos.service.tv.channel',
 		method: 'setChannelBlock',
 		parameters: {channelIds: channelArray},
-		onSuccess: (res) => {
-			if (res.returnValue) {
-				dispatch(updateLockItems());
-			}
+		onSuccess: () => {
+			dispatch(updateLockItems());
 		},
+		// eslint-disable-next-line
 		onFailure: (res) => console.error(res)
 	});
 };
@@ -54,7 +53,7 @@ export const unlockItems = () => (dispatch, getState) => {
 	const channelIds = getState().channels.selectedChannels;
 	const channelArray = selectedChannelsToArray(channelIds);
 
-	if (!window.webos) {
+	if (!window.PalmSystem) {
 		return dispatch(updateUnlockItems());
 	}
 
@@ -62,11 +61,10 @@ export const unlockItems = () => (dispatch, getState) => {
 		service: 'luna://com.webos.service.tv.channel',
 		method: 'releaseChannelBlock',
 		parameters: {channelIds: channelArray},
-		onSuccess: (res) => {
-			if (res.returnValue) {
-				dispatch(updateUnlockItems());
-			}
+		onSuccess: () => {
+			dispatch(updateUnlockItems());
 		},
+		// eslint-disable-next-line
 		onFailure: (res) => console.error(res)
 	});
 };
@@ -74,7 +72,7 @@ export const unlockItems = () => (dispatch, getState) => {
 
 export const getChannelList = params => dispatch => {
 	// Mock Data
-	if (!window.webos) {
+	if (!window.PalmSystem) {
 		return dispatch(receiveChannelList(mockChannelList));
 	}
 	return new LS2Request().send({
@@ -84,6 +82,7 @@ export const getChannelList = params => dispatch => {
 		onSuccess: (res) => {
 			dispatch(receiveChannelList(res));
 		},
+		// eslint-disable-next-line
 		onFailure: (res) => console.error(res)
 	});
 };

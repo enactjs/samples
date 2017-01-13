@@ -27,6 +27,12 @@ const renderComponent = ({data, index, key}) => {
 	return (<ChannelItem key={key} dataIndex={data[index]} />);
 };
 
+renderComponent.propTypes = {
+	data: React.PropTypes.array,
+	index: React.PropTypes.number,
+	key: React.PropTypes.number
+};
+
 const ChannelList = kind({
 	name: 'ChannelList',
 
@@ -38,17 +44,16 @@ const ChannelList = kind({
 		delete rest.dispatch;
 
 		return (
-			<div {...rest}>
-				<VirtualList
-					data={channels}
-					dataSize={channels.length}
-					direction="vertical"
-					itemSize={ri.scale(72)}
-					spacing={ri.scale(0)}
-					style={style.listHeight}
-					component={renderComponent}
-				/>
-			</div>
+			<VirtualList
+				{...rest}
+				data={channels}
+				dataSize={channels.length}
+				direction="vertical"
+				itemSize={ri.scale(72)}
+				spacing={ri.scale(0)}
+				style={style.listHeight}
+				component={renderComponent}
+			/>
 		);
 
 	}

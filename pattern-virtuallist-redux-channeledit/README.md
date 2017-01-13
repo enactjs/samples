@@ -195,7 +195,7 @@ function receiveChannelList (res) {
 ```
 
 You can read more here:
-
+[Enact Redux Async Docs with LS2Request Sample](http://nebula.lgsvl.com/enyojs/enact-docs/develop/docs/developer-guide/redux/redux_async/)
 [Redux Async Actions](http://redux.js.org/docs/advanced/AsyncActions.html)
 
 ---

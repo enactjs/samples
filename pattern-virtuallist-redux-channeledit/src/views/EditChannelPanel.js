@@ -21,11 +21,7 @@ const EditChannelPanel = kind({
 					<Button onClick={lockChannels}>Lock</Button>
 					<Button onClick={unlockChannels}>Unlock</Button>
 				</Header>
-				<div style={{display: 'flex', flexDirection: 'row'}}>
-					<div style={{flex: '1'}}>
-						<ChannelList />
-					</div>
-				</div>
+				<ChannelList />
 			</Panel>
 		);
 	}

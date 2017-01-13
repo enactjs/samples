@@ -9,42 +9,57 @@ let initialState = {
 function channels (state = initialState, action) {
 	switch (action.type) {
 		case 'RECEIVE_CHANNEL_LIST': {
-			const channelList = action.payload.channelList.reduce((prev, curr) => {
-				prev.channelsOrder.push(curr.channelId);
-				prev.channels[curr.channelId] = curr;
-				prev.channels[curr.channelId].selected = false;
-				return prev;
+			const newState = action.payload.channelList.reduce((previous, current) => {
+				const channelObj = previous;
+
+				const channelOrder = channelObj.channelsOrder.concat(current.channelId);
+
+				const currentChannel = current;
+				currentChannel.selected = false;
+
+				channelObj.channelsOrder = channelOrder;
+				channelObj.channels[current.channelId] = currentChannel;
+
+				return channelObj;
 			}, state);
 
-			return Object.assign({}, channelList);
+			return Object.assign({}, newState);
 		}
 		case 'SELECT_ITEM' : {
-			state.channels[action.index].selected = !state.channels[action.index].selected;
-			const isSelected = state.channels[action.index].selected;
+			const newState = state;
+			const isSelected = !newState.channels[action.index].selected;
 
 			if (isSelected) {
-				state.selectedChannels.add(action.index);
+				newState.selectedChannels.add(action.index);
 			} else {
-				state.selectedChannels.delete(action.index);
+				newState.selectedChannels.delete(action.index);
 			}
 
-			return Object.assign({}, state);
+			newState.channels[action.index].selected = isSelected;
+
+			return Object.assign({}, newState);
 		}
 		case 'LOCK_ITEMS': {
-			state.selectedChannels.forEach((id) => {
-				state.channels[id].locked = true;
-				state.channels[id].selected = false;
+			const newState = state;
+
+			newState.selectedChannels.forEach((id) => {
+				newState.channels[id].locked = true;
+				newState.channels[id].selected = false;
 			});
-			state.selectedChannels.clear();
-			return Object.assign({}, state);
+
+			newState.selectedChannels.clear();
+			return Object.assign({}, newState);
 		}
 		case 'UNLOCK_ITEMS': {
-			state.selectedChannels.forEach((id) => {
-				state.channels[id].locked = false;
-				state.channels[id].selected = false;
+			const newState = state;
+
+			newState.selectedChannels.forEach((id) => {
+				newState.channels[id].locked = false;
+				newState.channels[id].selected = false;
 			});
-			state.selectedChannels.clear();
-			return Object.assign({}, state);
+
+			newState.selectedChannels.clear();
+			return Object.assign({}, newState);
 		}
 		default: {
 			return state;
