@@ -126,10 +126,8 @@ case 'RECEIVE_CHANNEL_LIST': {
 
 		const channelOrder = channelObj.channelsOrder.concat(currentChannel.channelId);
 
-		const completeCurrent = Object.assign({}, currentChannel, {selected: false});
-
 		channelObj.channelsOrder = channelOrder;
-		channelObj.channels[currentChannel.channelId] = completeCurrent;
+		channelObj.channels[currentChannel.channelId] = currentChannel;
 
 		return channelObj;
 	}, state);

@@ -15,10 +15,8 @@ function channels (state = initialState, action) {
 
 				const channelOrder = channelObj.channelsOrder.concat(currentChannel.channelId);
 
-				const completeCurrent = Object.assign({}, currentChannel, {selected: false});
-
 				channelObj.channelsOrder = channelOrder;
-				channelObj.channels[currentChannel.channelId] = completeCurrent;
+				channelObj.channels[currentChannel.channelId] = currentChannel;
 
 				return channelObj;
 			}, state);
@@ -26,31 +24,22 @@ function channels (state = initialState, action) {
 			return Object.assign({}, state, newState);
 		}
 		case 'SELECT_ITEM' : {
-			const isSelected = !state.channels[action.index].selected;
 			const selectedChannels	= new Set(state.selectedChannels);
+			const isSelected = selectedChannels.has(action.index);
 
 			if (isSelected) {
-				selectedChannels.add(action.index);
-			} else {
 				selectedChannels.delete(action.index);
+			} else {
+				selectedChannels.add(action.index);
 			}
 
-			const newState = {
-				channels: {
-					[action.index] : {}
-				}
-			};
-			newState.channels[action.index].selected = isSelected;
-
-			const channelState = Object.assign({}, state.channels[action.index], newState.channels[action.index]);
-			const channelsState = Object.assign({}, state.channels, {[action.index] : channelState});
-			return Object.assign({}, state, {channels: channelsState, selectedChannels});
+			return Object.assign({}, state, {selectedChannels});
 		}
 		case 'LOCK_ITEMS': {
 			const newChannelState = {};
 
 			state.selectedChannels.forEach((id) => {
-				newChannelState[id] = Object.assign({}, state.channels[id], {locked : true, selected: false});
+				newChannelState[id] = Object.assign({}, state.channels[id], {locked : true});
 			});
 
 			const channelsState = Object.assign({}, state.channels, newChannelState);
@@ -61,10 +50,8 @@ function channels (state = initialState, action) {
 			const newChannelState = {};
 
 			state.selectedChannels.forEach((id) => {
-				newChannelState[id] = Object.assign({}, state.channels[id], {locked : false, selected: false});
+				newChannelState[id] = Object.assign({}, state.channels[id], {locked : false});
 			});
-
-			state.selectedChannels.clear();
 
 			const channelsState = Object.assign({}, state.channels, newChannelState);
 

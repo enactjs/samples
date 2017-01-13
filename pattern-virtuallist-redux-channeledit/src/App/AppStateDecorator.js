@@ -8,12 +8,7 @@ const mapStateToProps = ({path}) => ({
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onNavigate: ({path}) => dispatch(navigate(path)),
-		getChannelList: () => dispatch(getChannelList({
-			'channelGroup': 'All',
-			'channelMode' : ['Tuner'],
-			'dataType':0,
-			'sort':0
-		}))
+		getChannelList: () => dispatch(getChannelList)
 	};
 };
 

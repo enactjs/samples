@@ -70,7 +70,7 @@ export const unlockItems = () => (dispatch, getState) => {
 };
 
 
-export const getChannelList = params => dispatch => {
+export const getChannelList = dispatch => {
 	// Mock Data
 	if (!window.PalmSystem) {
 		return dispatch(receiveChannelList(mockChannelList));
@@ -78,7 +78,12 @@ export const getChannelList = params => dispatch => {
 	return new LS2Request().send({
 		service: 'luna://com.webos.service.iepg',
 		method: 'getChannelList',
-		parameters: params,
+		parameters: {
+			'channelGroup': 'All',
+			'channelMode' : ['Tuner'],
+			'dataType':0,
+			'sort':0
+		},
 		onSuccess: (res) => {
 			dispatch(receiveChannelList(res));
 		},

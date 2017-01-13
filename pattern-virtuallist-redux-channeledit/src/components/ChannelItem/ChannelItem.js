@@ -30,8 +30,8 @@ const ChannelItem = kind({
 	}
 });
 
-const mapStateToProps = ({channels}, {dataIndex}) => ({
-	selected: channels.channels[dataIndex].selected,
+const mapStateToProps = ({channels, ...rest}, {dataIndex}) => ({
+	selected: channels.selectedChannels.has(dataIndex),
 	locked: channels.channels[dataIndex].locked,
 	channelNumber: channels.channels[dataIndex].channelNumber
 });
