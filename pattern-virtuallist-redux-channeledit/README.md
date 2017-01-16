@@ -160,7 +160,7 @@ Then in our `ChannelItem` component we can do this:
 
 ```javascript
 const mapStateToProps = ({channels}, {dataIndex}) => ({
-	selected: channels.channels[dataIndex].selected,
+	selected: channels.selectedChannels.has(dataIndex),
 	locked: channels.channels[dataIndex].locked,
 	//...Any other state that we need
 });
