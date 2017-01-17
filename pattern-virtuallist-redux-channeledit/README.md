@@ -1,6 +1,6 @@
 # List-Redux
 
-A sample Enact application that shows off how to use VirtualList + Redux + LS2Request. The app is a very stripped down version of ChannelEdit. This is designed to help developers connect the dots for a complete application. Also, we want to show off some differences between the newer `Enact` way and the `Enyo` way.
+A sample Enact application that shows off how to use VirtualList + Redux + LS2Request. The app is a very stripped down version of ChannelEdit. This is designed to help developers connect the dots for a complete application. Also, we want to show off some differences between the newer Enact way and the Enyo way.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Clone this repo. Run `npm install` then `npm run serve` to have the app running 
 
 ## Enyo Architecture vs Enact Architecture
 
-Even though `Enyo` and `Enact` are both component based `JavaScript` libraries, there are quite a few differences between the two.
+Even though Enyo and Enact are both component based JavaScript libraries, there are quite a few differences between the two.
 
 ### Mixins
 
@@ -36,11 +36,11 @@ In many apps like `ChannelEdit`, we need to use `VirtualList` and Redux together
 
 ### Redux State Shape
 
-#### The Naive Approach
+#### The Naïve Approach
 
 **Problem 1: Poor Redux Shape**
 
-Redux shape is a very important topic. The Redux store is just a single JavaScript object. The simplicity is great for developers. We can just put things into a Redux store and it will update our views with no problem. It can be tempting to make its shape look as simple as possible. However, there could be a very inefficient view that can potentially cost a lot of performance down the line.
+Redux shape is a very important topic. The Redux store is just a single JavaScript object. The simplicity is great for developers. We can just put things into a Redux store and it will update our views with no problem. It can be tempting to make its shape look as simple as possible. However, there could be a very inefficient view that can potentially be a performance problem down the line.
 
 When you first learn Redux through something like a TODO List sample, the example will just have an array of items to represent a list. This is very easy for the developer and if we need to make an update to a specific item we just traverse through the list making our needed updates.
 
@@ -69,7 +69,7 @@ case 'SELECT_ITEM' : {
 
 ```
 
-But what happens when our list grows to a very large amount? If we have 1000 channels, then we're looking at up to 1000 pieces of data every time when we just need to access 1 specific piece.
+But what happens when our list grows to a very large amount? If we have 1000 channels, then we're looking at up to 1000 pieces of data every time, when we just need to access 1 specific piece.
 
 **Problem 2: Sending out too much data to components**
 
