@@ -21,7 +21,7 @@ function channels (state = initialState, action) {
 				return channelObj;
 			}, state);
 
-			return Object.assign({}, state, newState);
+			return newState;
 		}
 		case 'SELECT_ITEM' : {
 			const selectedChannels	= new Set(state.selectedChannels);

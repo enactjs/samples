@@ -14,6 +14,19 @@ const updateLockItems = () => {
 	};
 };
 
+const updateUnlockItems = () => {
+	return {
+		type: 'UNLOCK_ITEMS'
+	};
+};
+
+const receiveChannelList = (res) => {
+	return {
+		type: 'RECEIVE_CHANNEL_LIST',
+		payload: res
+	};
+};
+
 const selectedChannelsToArray = (channelSet) => {
 	let channelArray = [];
 	channelSet.forEach((val) => {
@@ -43,12 +56,6 @@ export const lockItems = () => (dispatch, getState) => {
 	});
 };
 
-const updateUnlockItems = () => {
-	return {
-		type: 'UNLOCK_ITEMS'
-	};
-};
-
 export const unlockItems = () => (dispatch, getState) => {
 	const channelIds = getState().channels.selectedChannels;
 	const channelArray = selectedChannelsToArray(channelIds);
@@ -68,7 +75,6 @@ export const unlockItems = () => (dispatch, getState) => {
 		onFailure: (res) => console.error(res)
 	});
 };
-
 
 export const getChannelList = dispatch => {
 	// Mock Data
@@ -91,13 +97,6 @@ export const getChannelList = dispatch => {
 		onFailure: (res) => console.error(res)
 	});
 };
-
-function receiveChannelList (res) {
-	return {
-		type: 'RECEIVE_CHANNEL_LIST',
-		payload: res
-	};
-}
 
 export const navigate = (path) => {
 	return {
