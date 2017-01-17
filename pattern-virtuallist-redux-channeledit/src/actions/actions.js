@@ -28,7 +28,7 @@ const receiveChannelList = (res) => {
 };
 
 const selectedChannelsToArray = (channelSet) => {
-	let channelArray = [];
+	const channelArray = [];
 	channelSet.forEach((val) => {
 		channelArray.push(val);
 	});
