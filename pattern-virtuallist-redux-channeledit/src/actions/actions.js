@@ -76,7 +76,7 @@ export const unlockItems = () => (dispatch, getState) => {
 	});
 };
 
-export const getChannelList = dispatch => {
+export const getChannelList = () => dispatch => {
 	// Mock Data
 	if (!window.PalmSystem) {
 		return dispatch(receiveChannelList(mockChannelList));

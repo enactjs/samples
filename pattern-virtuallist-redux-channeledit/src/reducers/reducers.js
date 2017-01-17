@@ -77,5 +77,4 @@ const rootReducer = combineReducers({
 	path
 });
 
-export default rootReducer
-;
+export default rootReducer;

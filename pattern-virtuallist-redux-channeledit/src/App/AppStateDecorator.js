@@ -8,7 +8,7 @@ const mapStateToProps = ({path}) => ({
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onNavigate: ({path}) => dispatch(navigate(path)),
-		getChannelList: () => dispatch(getChannelList)
+		getChannelList: () => dispatch(getChannelList())
 	};
 };
 

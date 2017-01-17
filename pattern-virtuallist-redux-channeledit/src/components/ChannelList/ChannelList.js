@@ -6,25 +6,8 @@ import kind from '@enact/core/kind';
 import {VirtualList} from '@enact/moonstone/VirtualList';
 import ChannelItem from '../ChannelItem';
 
-const style = {
-	item: {
-		position: 'absolute',
-		width: '100%',
-		height: '100%',
-		padding: '0 0 ' + ri.scale(96) + 'px 0',
-		margin: '0',
-		border: ri.scale(6) + 'px solid transparent',
-		boxSizing: 'border-box',
-
-		color: '#fff'
-	},
-	listHeight: {
-		height: ri.scale(550) + 'px'
-	}
-};
-
 const renderComponent = ({data, index, key}) => {
-	return (<ChannelItem key={key} dataIndex={data[index]} />);
+	return <ChannelItem key={key} dataIndex={data[index]} />;
 };
 
 renderComponent.propTypes = {
@@ -49,9 +32,7 @@ const ChannelList = kind({
 				data={channels}
 				dataSize={channels.length}
 				direction="vertical"
-				itemSize={ri.scale(72)}
-				spacing={ri.scale(0)}
-				style={style.listHeight}
+				itemSize={60}
 				component={renderComponent}
 			/>
 		);

@@ -3,6 +3,7 @@ import kind from '@enact/core/kind';
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import {connect} from 'react-redux';
 import {selectItem} from '../../actions/';
+import css from './ChannelItem.less';
 
 const ChannelItem = kind({
 	name: 'ChannelItem',
@@ -14,9 +15,16 @@ const ChannelItem = kind({
 		selectChannel: React.PropTypes.func,
 		selected: React.PropTypes.bool
 	},
+
+	styles: {
+		css,
+		className: 'channelItem'
+	},
+
 	computed: {
 		content: ({locked, channelNumber}) => locked ? `${channelNumber} LOCKED` : `${channelNumber}`
 	},
+
 	render: ({content, selectChannel, selected, ...rest}) => {
 		delete rest.dataIndex;
 		delete rest.locked;
