@@ -1,6 +1,6 @@
 ## VirtualGridList add/remove/select/deselect pattern // My Gallery
 
-A sample Enact application that shows off how to add/remove/select/deselect item of VirtualGridList
+A sample Enact application that shows off how to add/remove/select/deselect items of VirtualGridList
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
@@ -11,7 +11,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `moonstone/Panels/Header`
 - `moonstone/IconButton`
 
-In this app, you can add/remove/select/deselect/selectAll/deselectAll item using redux. 
+In this app, you can add, remove, select, deselect, selectAll, and deselectAll items using redux.
 
 ---
 

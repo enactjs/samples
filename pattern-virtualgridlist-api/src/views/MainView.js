@@ -57,7 +57,7 @@ class MainView extends React.Component {
 			url: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + dataLength,
 			bgColor: '#' + color,
 			selectionEnable: this.showOverlay
-		}
+		};
 	}
 
 	renderItem = ({index, key}) => {
@@ -93,22 +93,22 @@ class MainView extends React.Component {
 	}
 
 	componentDidMount () {
-		//focusOnIndex, setInitialFocusIndex, scrollToItem
+		// focusOnIndex, setInitialFocusIndex, scrollToItem
 		this.scrollTo({index: 60, animate: false});
 		this.focusOnItem(60);
 	}
 
 	render = () => {
 		const
-			deleteButton = this.showOverlay ? <Button onClick={this.props.deleteItem}>Delete</Button> : null,
-			seleteAllButton = this.showOverlay ? <Button onClick={this.props.selectAll}>Select All</Button> : null,
-			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Go To Previous' onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
-			selectionButton = !this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Selection' onClick={this.showSelectionOverlayHandler}>check</IconButton> : null,
-			addButton = !this.showOverlay ? <IconButton tooltipText='Add Item' onClick={this.addItem}>plus</IconButton> : null;
+			deleteButton = this.showOverlay ? <Button small onClick={this.props.deleteItem}>Delete</Button> : null,
+			seleteAllButton = this.showOverlay ? <Button small onClick={this.props.selectAll}>Select All</Button> : null,
+			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Go To Previous" small onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
+			selectionButton = !this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Selection" small onClick={this.showSelectionOverlayHandler}>check</IconButton> : null,
+			addButton = !this.showOverlay ? <IconButton tooltipText="Add Item" small onClick={this.addItem}>plus</IconButton> : null;
 
 		return (
-			<div>
-				<Header title='My Gallery'>
+			<div className={css.mainView}>
+				<Header title="My Gallery">
 					{addButton}
 					{selectionButton}
 					{deleteButton}
@@ -118,6 +118,7 @@ class MainView extends React.Component {
 				<div className={css.content}>
 					<SideBar
 						albums={albums}
+						className={css.sideBar}
 						onAlbumChange={this.onChange}
 						selectedAlbum={this.currentAlbum}
 					/>
@@ -128,8 +129,8 @@ class MainView extends React.Component {
 						data={this.props.data}
 						data-my-list
 						dataSize={this.props.data.length}
-						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
-						spacing={ri.scale(20)}
+						itemSize={{minWidth: ri.unit(ri.scale(180), 'rem'), minHeight: ri.unit(ri.scale(270), 'rem')}}
+						spacing={ri.unit(ri.scale(21), 'rem')}
 					/>
 				</div>
 			</div>

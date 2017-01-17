@@ -32,7 +32,7 @@ const SideBar = kind({
 						>
 							{album}
 						</SelectableItem>
-						<Divider />
+						<Divider spacing="small" />
 					</div>
 				);
 			});
