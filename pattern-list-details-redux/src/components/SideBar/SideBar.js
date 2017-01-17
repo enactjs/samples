@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
-import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import CityItem from './CityItem';
 import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
 
@@ -10,7 +10,6 @@ const SideBar = kind({
 	propTypes: {
 		cities: PropTypes.array.isRequired,
 		onCityChange: PropTypes.func.isRequired,
-		selectedCity: PropTypes.string.isRequired,
 		zoom: PropTypes.bool
 	},
 
@@ -23,24 +22,20 @@ const SideBar = kind({
 		className: ({zoom, styler}) => {
 			return styler.append(css.sideBar, {zoom});
 		},
-		virtualListItem: ({onCityChange, selectedCity}) => ({data, index, key}) => {
+		virtualListItem: ({onCityChange}) => ({data, index, key}) => {
 			const city = data[index];
 			return (
-				<CheckboxItem
-					onToggle={onCityChange}
+				<CityItem
+					onCityChange={onCityChange}
 					key={key}
-					selected={selectedCity === city}
-					value={city}
-				>
-					{city}
-				</CheckboxItem>
-			)
+					city={city}
+				/>
+			);
 		}
 	},
 
 	render: ({cities, virtualListItem, ...rest}) => {
 		delete rest.onCityChange;
-		delete rest.selectedCity;
 		delete rest.zoom;
 
 		return (

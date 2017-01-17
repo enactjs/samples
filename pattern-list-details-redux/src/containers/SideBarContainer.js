@@ -5,7 +5,6 @@ import SideBar from '../components/SideBar';
 const mapStateToProps = (state) => {
 	return ({
 		cities: state.data[state.country],
-		selectedCity: state.city,
 		zoom: state.zoom
 	});
 };

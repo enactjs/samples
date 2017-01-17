@@ -4,8 +4,7 @@ import Nav from '../components/Nav';
 
 const mapStateToProps = (state) => {
 	return ({
-		data: state.data,
-		selectedCountry: state.country
+		data: state.data
 	});
 };
 

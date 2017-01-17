@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
+import CountryButton from './CountryButton';
 import css from './Nav.less';
 
 const Nav = kind({
@@ -8,8 +8,7 @@ const Nav = kind({
 
 	propTypes: {
 		data: PropTypes.object.isRequired,
-		onCountryChange: PropTypes.func.isRequired,
-		selectedCountry: PropTypes.string.isRequired
+		onCountryChange: PropTypes.func.isRequired
 	},
 
 	styles: {
@@ -18,7 +17,7 @@ const Nav = kind({
 	},
 
 	computed: {
-		countryButtons: ({data, selectedCountry, onCountryChange}) => {
+		countryButtons: ({data, onCountryChange}) => {
 			const countries = Object.keys(data);
 
 			const onClick = (ev) => {
@@ -30,15 +29,11 @@ const Nav = kind({
 
 			return countries.map((country, index) => {
 				return (
-					<Button
-						backgroundOpacity="translucent"
+					<CountryButton
 						key={index}
 						onClick={onClick}
-						selected={country === selectedCountry}
-						small
-					>
-						{country}
-					</Button>
+						country={country}
+					/>
 				);
 			});
 		}
@@ -47,7 +42,6 @@ const Nav = kind({
 	render: ({countryButtons, ...rest}) => {
 		delete rest.data;
 		delete rest.onCountryChange;
-		delete rest.selectedCountry;
 
 		return (
 			<div {...rest}>
