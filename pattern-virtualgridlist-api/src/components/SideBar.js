@@ -20,7 +20,6 @@ const SideBar = kind({
 	},
 
 	computed: {
-		className: ({styler}) => styler.append(css.sideBar),
 		albumList: ({albums, onAlbumChange, selectedAlbum}) => {
 			return albums.map((album, index) => {
 				return (

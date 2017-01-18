@@ -22,7 +22,7 @@ const createRecords = (album) => {
 	}
 
 	return records;
-}
+};
 
 const data = (state = createRecords('Family'), action) => {
 	switch (action.type) {
@@ -41,7 +41,7 @@ const data = (state = createRecords('Family'), action) => {
 		default:
 			return state;
 	}
-}
+};
 
 const rootReducer = combineReducers({
 	data
