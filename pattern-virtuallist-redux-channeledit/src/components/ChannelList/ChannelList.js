@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-import ri from '@enact/ui/resolution';
 import kind from '@enact/core/kind';
 import {VirtualList} from '@enact/moonstone/VirtualList';
 import ChannelItem from '../ChannelItem';

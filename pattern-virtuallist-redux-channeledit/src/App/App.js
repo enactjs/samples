@@ -28,8 +28,8 @@ class App extends React.Component {
 
 		return (
 			<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
-				<Route path="first" component={MainPanel} title="First" onClick={this.onSecondPanel}>
-					<Route path="second" component={EditChannelPanel} title="Second" />
+				<Route path="first" component={MainPanel} onClick={this.onSecondPanel}>
+					<Route path="second" component={EditChannelPanel} />
 				</Route>
 			</RoutablePanels>
 		);
