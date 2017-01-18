@@ -93,22 +93,24 @@ class MainView extends React.Component {
 	}
 
 	componentDidMount () {
-		// focusOnIndex, setInitialFocusIndex, scrollToItem
+		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
+		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
 		this.scrollTo({index: 60, animate: false});
+		// Also you can focus an item by index like below.
 		this.focusOnItem(60);
 	}
 
 	render = () => {
 		const
-			deleteButton = this.showOverlay ? <Button onClick={this.props.deleteItem}>Delete</Button> : null,
-			selectAllButton = this.showOverlay ? <Button onClick={this.props.selectAll}>Select All</Button> : null,
-			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Go To Previous' onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
-			selectionButton = !this.showOverlay ? <IconButton tooltipPosition='above' tooltipText='Selection' onClick={this.showSelectionOverlayHandler}>check</IconButton> : null,
-			addButton = !this.showOverlay ? <IconButton tooltipText='Add Item' onClick={this.addItem}>plus</IconButton> : null;
+			deleteButton = this.showOverlay ? <Button small onClick={this.props.deleteItem}>Delete</Button> : null,
+			selectAllButton = this.showOverlay ? <Button small onClick={this.props.selectAll}>Select All</Button> : null,
+			showPreviousButton = this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Go To Previous" small onClick={this.showSelectionOverlayHandler}>rollbackward</IconButton> : null,
+			selectionButton = !this.showOverlay ? <IconButton tooltipPosition="above" tooltipText="Selection" small onClick={this.showSelectionOverlayHandler}>check</IconButton> : null,
+			addButton = !this.showOverlay ? <IconButton tooltipText="Add Item" small onClick={this.addItem}>plus</IconButton> : null;
 
 		return (
-			<div>
-				<Header title='My Gallery'>
+			<div className={css.mainView}>
+				<Header title="My Gallery">
 					{addButton}
 					{selectionButton}
 					{deleteButton}
@@ -118,6 +120,7 @@ class MainView extends React.Component {
 				<div className={css.content}>
 					<SideBar
 						albums={albums}
+						className={css.sideBar}
 						onAlbumChange={this.onChange}
 						selectedAlbum={this.currentAlbum}
 					/>
@@ -129,7 +132,7 @@ class MainView extends React.Component {
 						data-my-list
 						dataSize={this.props.data.length}
 						itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
-						spacing={ri.scale(20)}
+						spacing={ri.scale(21)}
 					/>
 				</div>
 			</div>

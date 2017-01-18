@@ -1,7 +1,13 @@
+.mainView {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
 .content {
 	display: flex;
-	height: 80vh;
-	margin: 12px;
+	padding-top: 12px;
+	box-sizing: border-box;
+	flex: 1 0;
 }
 .gridListItem {
 	background-color: inherit;
@@ -11,9 +17,9 @@
 	box-sizing: border-box;
 	color: #fff;
 }
+.sideBar {
+	flex: 1;
+}
 .list {
-	display: flex;
-	height: 95%;
-	overflow-y: hidden;
 	flex: 3;
 }
