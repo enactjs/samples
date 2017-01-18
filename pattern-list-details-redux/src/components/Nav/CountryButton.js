@@ -9,10 +9,10 @@ const CountryButton = kind({
 	propTypes: {
 		country: PropTypes.string.isRequired,
 		onClick: PropTypes.func.isRequired,
-		selectedCountry: PropTypes.string.isRequired
+		selected: PropTypes.bool
 	},
 
-	render: ({country, onClick, selectedCountry, ...rest}) => {
+	render: ({country, onClick, selected, ...rest}) => {
 		delete rest.dispatch;
 
 		return (
@@ -20,7 +20,7 @@ const CountryButton = kind({
 				{...rest}
 				backgroundOpacity="translucent"
 				onClick={onClick}
-				selected={country === selectedCountry}
+				selected={selected}
 				small
 			>
 				{country}
@@ -29,9 +29,12 @@ const CountryButton = kind({
 	}
 });
 
-const mapStateToProps = (state) => ({
-	selectedCountry: state.country
-});
+const mapStateToProps = (state, ownProps) => {
+	const country = ownProps.country;
+	return {
+		selected: state.data[country].selected
+	};
+};
 
 const CountryButtonContainer = connect(mapStateToProps)(CountryButton);
 

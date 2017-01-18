@@ -24,6 +24,7 @@ const SideBar = kind({
 		},
 		virtualListItem: ({onCityChange}) => ({data, index, key}) => {
 			const city = data[index];
+
 			return (
 				<CityItem
 					onCityChange={onCityChange}

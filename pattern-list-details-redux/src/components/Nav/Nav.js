@@ -7,7 +7,7 @@ const Nav = kind({
 	name: 'Nav',
 
 	propTypes: {
-		data: PropTypes.object.isRequired,
+		countries: PropTypes.array.isRequired,
 		onCountryChange: PropTypes.func.isRequired
 	},
 
@@ -17,14 +17,11 @@ const Nav = kind({
 	},
 
 	computed: {
-		countryButtons: ({data, onCountryChange}) => {
-			const countries = Object.keys(data);
-
+		countryButtons: ({countries, onCountryChange}) => {
 			const onClick = (ev) => {
 				const nextCountry = ev.target.textContent.toLowerCase();
-				const nextCity = data[nextCountry][0];
 
-				onCountryChange(nextCountry, nextCity);
+				onCountryChange(nextCountry);
 			};
 
 			return countries.map((country, index) => {
@@ -40,7 +37,7 @@ const Nav = kind({
 	},
 
 	render: ({countryButtons, ...rest}) => {
-		delete rest.data;
+		delete rest.countries;
 		delete rest.onCountryChange;
 
 		return (

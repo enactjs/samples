@@ -1,19 +1,20 @@
 import {connect} from 'react-redux';
-import {changeCity, changeCountry} from '../actions';
+import {changeCountry} from '../actions';
 import Nav from '../components/Nav';
 
 const mapStateToProps = (state) => {
-	return ({
-		data: state.data
-	});
+	return {
+		countries: state.data.countryList
+	};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	onCountryChange: (country, city) => {
-		dispatch(changeCountry(country));
-		dispatch(changeCity(city));
-	}
-});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onCountryChange: (country) => {
+			dispatch(changeCountry(country));
+		}
+	};
+};
 
 const NavContainer = connect(
 	mapStateToProps,

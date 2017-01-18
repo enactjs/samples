@@ -5,11 +5,7 @@ import App from './App';
 
 import configureStore from './store';
 
-const initialState = {
-	country: 'korea',
-	city: 'Seoul'
-};
-const store = configureStore(initialState);
+const store = configureStore();
 
 render(
 	<Provider store={store}>
