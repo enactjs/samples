@@ -31,8 +31,8 @@ const AppBase = kind({
 		kitten: 0
 	},
 
-	computed: {
-		onSelectKitten: ({onNavigate, onSelectKitten}) => (ev) => {
+	handlers: {
+		onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
 			if (onSelectKitten) {
 				onSelectKitten({
 					kitten: ev.index

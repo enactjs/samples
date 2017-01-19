@@ -23,12 +23,15 @@ const KittenBase = kind({
 		className: 'kitten'
 	},
 
-	computed: {
-		onSelect: ({index, onSelect}) => {
+	handlers: {
+		onSelect: (ev, {index, onSelect}) => {
 			if (onSelect) {
-				return () => onSelect({index});
+				onSelect({index});
 			}
-		},
+		}
+	},
+
+	computed: {
 		url: ({index, size}) => {
 			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 		}
