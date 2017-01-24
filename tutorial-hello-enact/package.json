@@ -1,0 +1,40 @@
+{
+	"name": "tutorial-hello-enact",
+	"version": "1.0.0",
+	"description": "Most basic app for getting started with Enact",
+	"author": "",
+	"main": "src/index.js",
+	"scripts": {
+		"serve": "enact serve",
+		"pack": "enact pack",
+		"pack-p": "enact pack -p",
+		"watch": "enact pack --watch",
+		"clean": "enact clean",
+		"lint": "enact lint .",
+		"test": "enact test start --single-run --browsers PhantomJS",
+		"test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
+		"test-watch": "enact test start --browsers PhantomJS"
+	},
+	"license": "Apache-2.0",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"isomorphic": true,
+		"ri": {
+			"baseSize": 24
+		}
+	},
+	"eslintConfig": {
+		"extends": "enact"
+	},
+	"dependencies": {
+		"@enact/core": "^1.0.0-beta.1",
+		"@enact/ui": "^1.0.0-beta.1",
+		"@enact/moonstone": "^1.0.0-beta.1",
+		"@enact/spotlight": "^1.0.0-beta.1",
+		"@enact/i18n": "^1.0.0-beta.1",
+		"@enact/webos": "^1.0.0-beta.1",
+		"react": "^15.4.1",
+		"react-dom": "^15.4.1"
+	}
+}
