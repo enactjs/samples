@@ -18,7 +18,8 @@ class App extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			index: this.props.index
+			index: this.props.index,
+			listPositionY: 0
 		};
 	}
 
@@ -26,10 +27,12 @@ class App extends React.Component {
 
 	handleClick = () => this.setState({index: this.state.index + 1})
 
+	syncListPositionY = (y) => this.setState({listPositionY: y})
+
 	render () {
 		return (
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} />
+				<MainPanel title="First" onClick={this.handleClick} listPositionY={this.state.listPositionY} syncListPositionY={this.syncListPositionY} />
 				<BodyItemPanel title="Second" onClick={this.handleClick} />
 				<HeaderButtonPanel title="Third" onClick={this.handleClick} />
 				<MainPanel title="Fourth" />
