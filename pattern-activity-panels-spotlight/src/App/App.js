@@ -19,7 +19,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			index: this.props.index,
-			listPositionY: 0
+			focusStatus: null
 		};
 	}
 
@@ -27,15 +27,15 @@ class App extends React.Component {
 
 	handleClick = () => this.setState({index: this.state.index + 1})
 
-	syncListPositionY = (y) => this.setState({listPositionY: y})
+	preserveFocusStatus = (focusStatus) => this.setState({focusStatus})
 
 	render () {
 		return (
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} listPositionY={this.state.listPositionY} syncListPositionY={this.syncListPositionY} />
+				<MainPanel title="First" onClick={this.handleClick} focusStatus={this.state.focusStatus} preserveFocusStatus={this.preserveFocusStatus} />
 				<BodyItemPanel title="Second" onClick={this.handleClick} />
 				<HeaderButtonPanel title="Third" onClick={this.handleClick} />
-				<MainPanel title="Fourth" />
+				<HeaderButtonPanel title="Fourth" />
 			</ActivityPanels>
 		);
 	}

@@ -21,7 +21,7 @@ const
 			lineHeight: ri.scale(70) + 'px'
 		},
 		listHeight: {
-			height: ri.scale(200) + 'px'
+			height: ri.scale(360) + 'px'
 		}
 	},
 	items = [],
@@ -45,38 +45,34 @@ class MainPanel extends Component {
 		 */
 		title: PropTypes.string,
 
-		syncListPositionY: PropTypes.func,
+		preserveFocusStatus: PropTypes.func,
 
-		listPositionY: PropTypes.number
+		focusStatus: PropTypes.any
 	}
 
-	getFocusedItemPosition = nop
-	scrollTo = nop
+	getFocusStatus = nop
+	setFocusStatus = nop
 
 	constructor(props) {
 		super(props);
 	}
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
+	cbGetFocusStatus = (cbGetFocusStatus) => {
+		this.getFocusStatus = cbGetFocusStatus;
 	}
 
-	setScrollTo = () => {
-		this.scrollTo({position: {y: this.props.listPositionY}, animate: false});
-	}
-
-	cbGetFocusedItemPosition = (cbGetFocusedItemPosition) => {
-		this.getFocusedItemPosition = cbGetFocusedItemPosition;
-	}
-
-	componentDidMount () {
-		if (this.props.listPositionY) {
-			this.setScrollTo();
-		}
+	cbSetFocusStatus = (cbSetFocusStatus) => {
+		this.setFocusStatus = cbSetFocusStatus;
 	}
 
 	componentWillUnmount () {
-		this.props.syncListPositionY(this.getFocusedItemPosition().top);
+		this.props.preserveFocusStatus(this.getFocusStatus());
+	}
+
+	componentDidMount () {
+		if (this.props.focusStatus) {
+			this.setFocusStatus(this.props.focusStatus);
+		}
 	}
 
 	renderItem = (onClick) => (props) => {
@@ -98,8 +94,8 @@ class MainPanel extends Component {
 					<Button onClick={onClick}>{child}</Button>
 				</Header>
 				<VirtualList
-					cbGetFocusedItemPosition={this.cbGetFocusedItemPosition}
-					cbScrollTo={this.getScrollTo}
+					cbGetFocusStatus={this.cbGetFocusStatus}
+					cbSetFocusStatus={this.cbSetFocusStatus}
 					component={this.renderItem(onClick)}
 					data={items}
 					dataSize={items.length}
