@@ -4,14 +4,18 @@ import {Header, Panel} from '@enact/moonstone/Panels';
 import Body from './Body';
 import NavContainer from '../containers/NavContainer';
 
+import css from './Body.less';
+
 const MainView = kind({
 	name: 'MainView',
 
-	render: () => (
-		<Panel>
+	render: (props) => (
+		<Panel {...props}>
 			<Header title="City Viewer" type="compact" />
-			<NavContainer />
-			<Body />
+			<div className={css.panelBody}>
+				<NavContainer />
+				<Body />
+			</div>
 		</Panel>
 	)
 });
