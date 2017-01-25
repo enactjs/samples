@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import kind from '@enact/core/kind';
 import Slider from '@enact/moonstone/Slider';
+
 import css from './componentStyles.less';
 
 const PhotoSlider = kind({

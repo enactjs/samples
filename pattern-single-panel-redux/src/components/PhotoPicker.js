@@ -5,6 +5,8 @@ import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
 import Changeable from '@enact/ui/Changeable';
 
+import css from './componentStyles.less';
+
 const StatefulPicker = Changeable(Picker);
 
 const ProfilePhotoPickerContainer = kind({
@@ -19,7 +21,7 @@ const ProfilePhotoPickerContainer = kind({
 
 	computed: {
 		imageComponents: ({imageURLs}) => {
-			return imageURLs.map((url) => (<Image src={url} key={url} />));
+			return imageURLs.map((url) => (<Image className={css.photoPickerImage} src={url} key={url} />));
 		},
 		onChange: ({changePhotoIndex}) => {
 			return (ev) => {
