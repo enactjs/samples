@@ -1,3 +1,4 @@
+import {connect} from 'react-redux';
 import Divider from '@enact/moonstone/Divider';
 import kind from '@enact/core/kind';
 import React, {PropTypes} from 'react';
