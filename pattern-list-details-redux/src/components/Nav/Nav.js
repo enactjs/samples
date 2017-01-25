@@ -18,17 +18,11 @@ const Nav = kind({
 
 	computed: {
 		countryButtons: ({countries, onCountryChange}) => {
-			const onClick = (ev) => {
-				const nextCountry = ev.target.textContent.toLowerCase();
-
-				onCountryChange(nextCountry);
-			};
-
 			return countries.map((country, index) => {
 				return (
 					<CountryButton
 						key={index}
-						onClick={onClick}
+						onCountryChange={onCountryChange}
 						country={country}
 					/>
 				);

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onCountryChange: (country) => {
+		onCountryChange: ({country}) => {
 			dispatch(changeCountry(country));
 		}
 	};

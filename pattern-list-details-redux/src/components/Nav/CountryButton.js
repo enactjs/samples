@@ -8,12 +8,19 @@ const CountryButton = kind({
 
 	propTypes: {
 		country: PropTypes.string.isRequired,
-		onClick: PropTypes.func.isRequired,
+		onCountryChange: PropTypes.func.isRequired,
 		selected: PropTypes.bool
+	},
+
+	computed: {
+		onClick: ({onCountryChange, country}) => () => {
+			onCountryChange({country});
+		}
 	},
 
 	render: ({country, onClick, selected, ...rest}) => {
 		delete rest.dispatch;
+		delete rest.onCountryChange;
 
 		return (
 			<Button
