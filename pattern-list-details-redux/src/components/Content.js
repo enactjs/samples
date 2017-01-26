@@ -46,10 +46,13 @@ const Content = kind({
 		className: 'content'
 	},
 
-	computed: {
-		onZoom: ({onZoom, zoomState}) => () => {
+	handlers: {
+		onZoom: (_, {onZoom, zoomState}) => {
 			onZoom(!zoomState);
-		},
+		}
+	},
+
+	computed: {
 		cityPhoto: ({selectedCity}) => {
 			const cityImgSrc = cityPhotos[selectedCity.toLowerCase().replace(/\W/g, '')];
 			return (

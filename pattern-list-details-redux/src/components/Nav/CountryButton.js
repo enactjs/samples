@@ -12,8 +12,8 @@ const CountryButton = kind({
 		selected: PropTypes.bool
 	},
 
-	computed: {
-		onClick: ({onCountryChange, country}) => () => {
+	handlers: {
+		onClick: (_, {onCountryChange, country}) => {
 			onCountryChange({country});
 		}
 	},

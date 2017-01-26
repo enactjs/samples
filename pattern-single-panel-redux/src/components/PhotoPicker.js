@@ -19,15 +19,16 @@ const ProfilePhotoPickerContainer = kind({
 		photoIndex: PropTypes.number.isRequired
 	},
 
+	handlers: {
+		onChange: (ev, {changePhotoIndex}) => {
+			const index = ev.value;
+			changePhotoIndex(index);
+		}
+	},
+
 	computed: {
 		imageComponents: ({imageURLs}) => {
 			return imageURLs.map((url) => (<Image className={css.photoPickerImage} src={url} key={url} />));
-		},
-		onChange: ({changePhotoIndex}) => {
-			return (ev) => {
-				const index = ev.value;
-				changePhotoIndex(index);
-			};
 		}
 	},
 
