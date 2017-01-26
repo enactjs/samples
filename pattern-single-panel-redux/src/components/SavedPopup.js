@@ -15,7 +15,7 @@ const SavedPopup = kind({
 	},
 
 	handlers: {
-		onChange: (_, {saved, saveToState}) => {
+		onChange: (ev, {saved, saveToState}) => {
 			saveToState(!saved);
 		}
 	},

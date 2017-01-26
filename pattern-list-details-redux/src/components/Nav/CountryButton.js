@@ -13,7 +13,7 @@ const CountryButton = kind({
 	},
 
 	handlers: {
-		onClick: (_, {onCountryChange, country}) => {
+		onClick: (ev, {onCountryChange, country}) => {
 			onCountryChange({country});
 		}
 	},

@@ -47,7 +47,7 @@ const Content = kind({
 	},
 
 	handlers: {
-		onZoom: (_, {onZoom, zoomState}) => {
+		onZoom: (ev, {onZoom, zoomState}) => {
 			onZoom(!zoomState);
 		}
 	},
