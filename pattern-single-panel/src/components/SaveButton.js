@@ -24,7 +24,7 @@ class SaveButton extends React.Component {
 	}
 
 	render = () => (
-		<div className={css.saveButton}>
+		<div {...this.props} className={css.saveButton}>
 			<Button onClick={this.handleOnSave}>
 				Save
 			</Button>
