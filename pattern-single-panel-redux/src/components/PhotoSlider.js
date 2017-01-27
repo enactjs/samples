@@ -17,11 +17,9 @@ const PhotoSlider = kind({
 		className: 'slider'
 	},
 
-	computed: {
-		onChange: ({changePhotoPosition}) => {
-			return (ev) => {
-				changePhotoPosition(ev.value);
-			};
+	handlers: {
+		onChange: (ev, {changePhotoPosition}) => {
+			changePhotoPosition(ev.value);
 		}
 	},
 
