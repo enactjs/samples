@@ -28,8 +28,8 @@ const imageURLs = Object.values(images);
 const MainPanel = kind({
 	name: 'MainPanel',
 
-	render: () => (
-		<Panel>
+	render: (props) => (
+		<Panel {...props}>
 			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" preserveCase />
 			<div className={css.profilePhotoPicker}>
 				<PhotoPreviewContainer imageURLs={imageURLs} />
