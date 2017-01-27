@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@enact/moonstone/Button';
-import {Panel} from '@enact/moonstone/Panels';
 import Popup from '@enact/moonstone/Popup';
 import css from './SaveButton.less';
 
@@ -25,7 +24,7 @@ class SaveButton extends React.Component {
 	}
 
 	render = () => (
-		<Panel className={css.saveButton}>
+		<div {...this.props} className={css.saveButton}>
 			<Button onClick={this.handleOnSave}>
 				Save
 			</Button>
@@ -34,7 +33,7 @@ class SaveButton extends React.Component {
 					Saved!
 				</small>
 			</Popup>
-		</Panel>
+		</div>
 	)
 }
 
