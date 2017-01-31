@@ -1,19 +1,14 @@
 import {connect} from 'react-redux';
 
-import {addItem, changeAlbum, deleteItem, selectAll, selectionEnable, toggleItem} from '../actions';
+import {changeAlbum} from '../actions';
 
-const mapStateToProps = ({data}) => ({
-	data
+const mapStateToProps = ({datas}) => ({
+	album: datas.album
 });
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addItem: (item) => dispatch(addItem(item)),
-		deleteItem: () => dispatch(deleteItem()),
-		onChangeAlbum: (album) => dispatch(changeAlbum(album)),
-		selectionEnable: () => dispatch(selectionEnable()),
-		selectAll: () => dispatch(selectAll()),
-		toggleItem: (id) => dispatch(toggleItem(id))
+		onChangeAlbum: (album) => dispatch(changeAlbum(album))
 	};
 };
 
