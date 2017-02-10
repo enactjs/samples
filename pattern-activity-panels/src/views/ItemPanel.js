@@ -1,11 +1,10 @@
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React, {PropTypes} from 'react';
 
-const MainPanel = kind({
-	name: 'MainPanel',
+const ItemPanel = kind({
+	name: 'ItemPanel',
 
 	propTypes: {
 		/**
@@ -23,10 +22,7 @@ const MainPanel = kind({
 
 	render: ({title, onClick, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title}>
-				<Button onClick={onClick}>Click me</Button>
-				<Button onClick={onClick}>Click me</Button>
-			</Header>
+			<Header title={title} />
 			<Item onClick={onClick}>Click me</Item>
 			<Item onClick={onClick}>Click me</Item>
 			<Item onClick={onClick}>Click me</Item>
@@ -35,4 +31,4 @@ const MainPanel = kind({
 	)
 });
 
-export default MainPanel;
+export default ItemPanel;
