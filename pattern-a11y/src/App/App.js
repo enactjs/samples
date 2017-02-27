@@ -12,12 +12,14 @@ import Home from './Home';
 import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
+import Picker from '../views/Picker';
 
 const
 	titles = R.map(R.prop('title')),
 	views = [
 		{title: 'About A11y', view: Home},
-		{title: 'A11yDecorator', view: A11yDecorator}
+		{title: 'A11yDecorator', view: A11yDecorator},
+		{title: 'Picker', view: Picker}
 	];
 
 class App extends React.Component {
