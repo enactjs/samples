@@ -12,14 +12,24 @@ import Home from './Home';
 import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
+import DayPicker from '../views/DayPicker';
+import ExpandableItem from '../views/ExpandableItem';
+import ExpandableList from '../views/ExpandableList';
 import Picker from '../views/Picker';
+import ProgressBar from '../views/ProgressBar';
+import Slider from '../views/Slider';
 
 const
 	titles = R.map(R.prop('title')),
 	views = [
 		{title: 'About A11y', view: Home},
 		{title: 'A11yDecorator', view: A11yDecorator},
-		{title: 'Picker', view: Picker}
+		{title: 'DayPicker', view: DayPicker},
+		{title: 'ExpandableItem', view: ExpandableItem},
+		{title: 'ExpandableList', view: ExpandableList},
+		{title: 'Picker', view: Picker},
+		{title: 'ProgressBar', view: ProgressBar},
+		{title: 'Slider', view: Slider}
 	];
 
 class App extends Component {
