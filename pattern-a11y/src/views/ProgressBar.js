@@ -6,16 +6,18 @@ class ProgressBarView extends React.Component {
 	constructor () {
 		super();
 		this.state = {
-			progressVal: 30
+			progressVal: 0.3
 		};
 	}
 
 	onInc = () => {
-		this.setState({progressVal : Math.min((this.state.progressVal += 10), 100)});
+		const value = Math.min((this.state.progressVal + 0.1).toFixed(1), 1);
+		this.setState({progressVal :value});
 	}
 
 	onDec = () =>  {
-		this.setState({progressVal : Math.max((this.state.progressVal -= 10), 0)});
+		const value = Math.max((this.state.progressVal - 0.1).toFixed(1), 0);
+		this.setState({progressVal :value});
 	}
 
 	initRef = (node) => {
@@ -23,20 +25,18 @@ class ProgressBarView extends React.Component {
 	}
 
 	render = () => {
-		const
-			{progressVal} = this.state,
-			value = progressVal/100;
-		
+		const {progressVal} = this.state
+		//FIXME When aria-valuetext is changed to null, screen reader reads default `0`(zero) by `progressbar` role
+		// To prevent this, set to value as one space.
 		let a11yText = ' ';
-		if (progressVal === 50) {
+		if (progressVal === 0.5) {
 			a11yText = '50% progressing';
-		} else if (progressVal === 100) {
+		} else if (progressVal === 1) {
 			a11yText = 'Completed';
 		}
 
-
 		return (<section>
-			<ProgressBar aria-valuetext={a11yText} progress={value}/>
+			<ProgressBar aria-valuetext={a11yText} progress={progressVal}/>
 			<br/>
 			<IconButton aria-label="Increase" onClick={this.onInc}>plus</IconButton>
 			<IconButton aria-label="Decrease" onClick={this.onDec}>minus</IconButton>
