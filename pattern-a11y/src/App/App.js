@@ -13,29 +13,12 @@ import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
 
-const titles = R.map(R.prop('title'));
-
-const views = [
-	{title: 'About A11y', view: Home},
-	{title: 'AccessibilityDecorator', view: A11yDecorator},
-	{title: 'Button', view: Home},
-	{title: 'CheckboxItem', view: Home},
-	{title: 'Dialog', view: Home},
-	{title: 'Group', view: Home},
-	{title: 'Input', view: Home},
-	{title: 'Item', view: Home},
-	{title: 'Picker', view: Home},
-	{title: 'Popup', view: Home},
-	{title: 'RadioItem', view: Home},
-	{title: 'RangePicker', view: Home},
-	{title: 'Scroller', view: Home},
-	{title: 'Spinner', view: Home},
-	{title: 'SwitchItem', view: Home},
-	{title: 'ToggleItem', view: Home},
-	{title: 'TooltipDecorator', view: Home},
-	{title: 'VideoPlayer', view: Home},
-	{title: 'VirtualList', view: Home}
-];
+const
+	titles = R.map(R.prop('title')),
+	views = [
+		{title: 'About A11y', view: Home},
+		{title: 'A11yDecorator', view: A11yDecorator}
+	];
 
 class App extends React.Component {
 	constructor () {
