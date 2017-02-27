@@ -1,51 +1,13 @@
-.content {
-	position: relative;
-
-	.view {
-		position: absolute;
-		top: 0;
-		left: 0;
-
-		&.enter {
-			transform: translateX(100%);
-			opacity: 0.01;
-			transition: transform .3s ease-in, opacity .3s ease-out;
-		}
-
-		&.enterActive {
-			opacity: 1;
-			transform: translateX(0);
-		}
-
-		&.leave {
-			opacity: 1;
-			transform: translateY(0);
-			transition: transform .3s ease-in, opacity .3s ease-out;
-		}
-
-		&.leaveActive {
-			opacity: 0;
-			transform: translateY(-10%) scale(0.9);
-		}
-	}
-}
-
-
-
 @media (min-width: 1024px) {
 	.nav, .content {
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		padding: 0;
-		box-sizing: border-box;
 		font-size: 24px;
 	}
 
 	.nav {
 		width: 20%;
-		left: 0;
-		z-index: 1;
 	}
 
 	.view {
@@ -57,11 +19,5 @@
 		left: 20%;
 		right: 0;
 		overflow: hidden;
-
-		.view {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-		}
 	}
 }

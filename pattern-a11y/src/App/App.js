@@ -3,7 +3,7 @@ import {GroupBase as Group} from '@enact/ui/Group';
 import Item from '@enact/moonstone/Item';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import R from 'ramda';
-import React from 'react';
+import React, {Component} from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 import ViewManager from '@enact/ui/ViewManager';
 
@@ -22,7 +22,7 @@ const
 		{title: 'Picker', view: Picker}
 	];
 
-class App extends React.Component {
+class App extends Component {
 	constructor () {
 		super();
 		this.state = {
