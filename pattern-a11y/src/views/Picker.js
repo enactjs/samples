@@ -61,20 +61,27 @@ const airports = [
 	'נמל התעופה בן גוריון טרמינל הבינלאומי'
 ];
 
-const spanStyle = {
-	display: 'inline-block',
-	width: '33%',
-	verticalAlign: 'top'
-};
+const
+	pickerSpanStyle = {
+		display: 'inline-block',
+		width: '30%',
+		verticalAlign: 'top'
+	},
+	expandableSpanStyle = {
+		display: 'inline-block',
+		width: '40%',
+		verticalAlign: 'top'
+	};
+
 class PickerView extends Component {
 	render = () => (
 		<div>
-			<span style={spanStyle}>
+			<span style={pickerSpanStyle}>
 				<div><Divider>Picker</Divider></div>
 				<div>
 					<StatefulPicker
 						orientation="horizontal"
-						width="large"
+						width="medium"
 					>
 						{airports}
 					</StatefulPicker>
@@ -85,7 +92,7 @@ class PickerView extends Component {
 					<StatefulPicker
 						joined
 						orientation="horizontal"
-						width="large"
+						width="medium"
 					>
 						{airports}
 					</StatefulPicker>
@@ -107,7 +114,7 @@ class PickerView extends Component {
 				</StatefulPicker>
 			</span>
 
-			<span style={spanStyle}>
+			<span style={pickerSpanStyle}>
 				<div><Divider>RangePicker</Divider></div>
 				<div>
 					<StatefulRangePicker
@@ -116,7 +123,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="horizontal"
 						step={5}
-						width="large"
+						width="medium"
 					/>
 				</div>
 
@@ -129,7 +136,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="horizontal"
 						step={5}
-						width="large"
+						width="medium"
 					/>
 				</div>
 
@@ -155,7 +162,7 @@ class PickerView extends Component {
 				</div>
 			</span>
 
-			<span style={spanStyle}>
+			<span style={expandableSpanStyle}>
 				<div><Divider>ExpandablePicker</Divider></div>
 				<ChangeableExpandablePicker
 					open={false}
