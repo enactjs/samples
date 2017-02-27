@@ -1,8 +1,11 @@
 import {Header, Panel} from '@enact/moonstone/Panels';
+import React from 'react';
 
-export default (React) => ({title, view: View, className}) => (
+const View = ({title, view: Views, className}) => (
 	<Panel className={className}>
 		<Header title={title} type='compact' />
-		<View />
+		<Views />
 	</Panel>
 );
+
+export default View;

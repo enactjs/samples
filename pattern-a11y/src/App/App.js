@@ -9,13 +9,11 @@ import ViewManager from '@enact/ui/ViewManager';
 
 import css from './App.less';
 import Home from './Home';
-import fView from './View';
+import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
 
-const
-	titles = R.map(R.prop('title')),
-	View = fView(React);
+const titles = R.map(R.prop('title'));
 
 const views = [
 	{title: 'About A11y', view: Home},
