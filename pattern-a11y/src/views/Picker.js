@@ -63,6 +63,7 @@ const airports = [
 
 const spanStyle = {
 	display: 'inline-block',
+	width: '33%',
 	verticalAlign: 'top'
 };
 class PickerView extends Component {
@@ -73,7 +74,7 @@ class PickerView extends Component {
 				<div>
 					<StatefulPicker
 						orientation="horizontal"
-						width="small"
+						width="large"
 					>
 						{airports}
 					</StatefulPicker>
@@ -84,7 +85,7 @@ class PickerView extends Component {
 					<StatefulPicker
 						joined
 						orientation="horizontal"
-						width="small"
+						width="large"
 					>
 						{airports}
 					</StatefulPicker>
@@ -93,14 +94,14 @@ class PickerView extends Component {
 				<div><Divider>Vertical Picker</Divider></div>
 				<StatefulPicker
 					orientation="vertical"
-					width="small"
+					width="medium"
 				>
 					{airports}
 				</StatefulPicker>
 				<StatefulPicker
 					joined
 					orientation="vertical"
-					width="small"
+					width="medium"
 				>
 					{airports}
 				</StatefulPicker>
@@ -115,7 +116,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="horizontal"
 						step={5}
-						width="small"
+						width="large"
 					/>
 				</div>
 
@@ -128,7 +129,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="horizontal"
 						step={5}
-						width="small"
+						width="large"
 					/>
 				</div>
 
@@ -140,7 +141,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="vertical"
 						step={5}
-						width="small"
+						width="medium"
 					/>
 					<StatefulRangePicker
 						defaultValue={0}
@@ -149,7 +150,7 @@ class PickerView extends Component {
 						min={0}
 						orientation="vertical"
 						step={5}
-						width="small"
+						width="medium"
 					/>
 				</div>
 			</span>
@@ -159,7 +160,7 @@ class PickerView extends Component {
 				<ChangeableExpandablePicker
 					open={false}
 					title="Favorite Emoji"
-					width="large"
+					width="medium"
 				>
 					{emoticons}
 				</ChangeableExpandablePicker>
