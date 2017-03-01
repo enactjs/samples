@@ -20,11 +20,18 @@ const AboutPanel = kind({
 
 	propTypes: {
 		onClick: React.PropTypes.func,
+		onPath: React.PropTypes.func,
 		title: React.PropTypes.string
 	},
 
-	render: ({title, onClick, ...rest}) => (
-		<Panel {...rest}>
+	handlers: {
+		onClick: (ev, {onPath}) => onPath({path: '/first/second'})
+	},
+
+	render: ({title, onClick, ...rest}) => {
+		delete rest.onPath;
+
+		return <Panel {...rest}>
 			<Header title={title}>
 				<Button onClick={onClick}>To Second Panel</Button>
 			</Header>
@@ -52,8 +59,8 @@ const AboutPanel = kind({
 
 				<pre><code>{example}</code></pre>
 			</Scroller>
-		</Panel>
-	)
+		</Panel>;
+	}
 });
 
 export default AboutPanel;

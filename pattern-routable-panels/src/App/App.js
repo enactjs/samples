@@ -19,22 +19,47 @@ const App = kind({
 		path: React.PropTypes.string
 	},
 
+	computed: {
+		routes: ({path, onNavigate}) => {
+			let parents = path.split('/');
+			let child;
+
+			while (parents.length > 2) {
+				let part = parents.pop();
+				child = <Route
+					component={MainPanel}
+					path={part}
+					title={part}
+					onPath={onNavigate}
+					parents={parents.join('/')}
+				>
+					{child}
+				</Route>;
+			}
+			return (<Route
+				component={AboutPanel}
+				path={`${parents[1]}`}
+				title="About Dynamic Routable Panels"
+				onPath={onNavigate}
+			>
+				{child}
+			</Route>);
+		}
+	},
+
+	/*
 	handlers: {
 		onFirstPanel: (ev, {onNavigate}) => onNavigate({path: '/first'}),
 		onSecondPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second'}),
 		onThirdPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third'}),
 		onFourthPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third/fourth'})
 	},
+	*/
 
-	render: ({onFirstPanel, onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
+	render: ({routes, onNavigate, path, ...rest}) => {
 		return (
 			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
-				<Route path="first" component={AboutPanel} title="About Routable Panels Pattern" onClick={onSecondPanel}>
-					<Route path="second" component={MainPanel} next="fourth" title="Second" onClick={onFourthPanel} />
-					<Route path="third" component={MainPanel} next="first" title="Third" onClick={onFirstPanel}>
-						<Route path="fourth" component={MainPanel} next="third" title="Fourth" onClick={onThirdPanel} />
-					</Route>
-				</Route>
+				{routes}
 			</RoutablePanels>
 		);
 	}
