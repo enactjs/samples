@@ -3,7 +3,7 @@ import {GridListImageItem} from '@enact/moonstone/VirtualList';
 import kind from '@enact/core/kind';
 import React from 'react';
 
-import {selectItem} from '../../actions/';
+import {selectItem} from '../../actions';
 
 import css from './ImageItem.less';
 

@@ -11,11 +11,11 @@ class ImageList extends React.Component {
 		dispatch: PropTypes.func
 	}
 
-	renderItem = ({data, index, key}) => {
+	renderItem = ({data, index, ...rest}) => {
 		return (
 			<ImageItem
-				key={key}
 				dataIndex={data[index]}
+				{...rest}
 			/>
 		);
 	}

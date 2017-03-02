@@ -35,7 +35,7 @@ const initialState = createRecords('Family');
 
 const datas = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_ITEM : {
+		case ADD_ITEM: {
 			const addedKey = Object.keys(state.datas).length;
 			let
 				newDatas = Object.assign({}, state.datas),
@@ -46,14 +46,14 @@ const datas = (state = initialState, action) => {
 
 			return Object.assign({}, state, {datas: newDatas, datasOrder: newDatasOrder, selectedItems: new Set()});
 		}
-		case CHANGE_ALBUM : {
+		case CHANGE_ALBUM: {
 			if (state.album !== action.album) {
 				return Object.assign({}, state, createRecords(action.album));
 			} else {
 				return state;
 			}
 		}
-		case DELETE_ITEM : {
+		case DELETE_ITEM: {
 			const
 				selectedItems	= new Set(state.selectedItems),
 				filteredDatasOrder = state.datasOrder.filter((item) => !selectedItems.has(item));
@@ -62,7 +62,7 @@ const datas = (state = initialState, action) => {
 				newDatas = {},
 				newDatasOrder =[];
 
-			for (let i = 0; i < filteredDatasOrder.length; i++ ) {
+			for (let i = 0; i < filteredDatasOrder.length; i++) {
 				const newId = filteredDatasOrder[i];
 				newDatas[i] = state.datas[newId];
 				newDatasOrder.push(i);
@@ -70,7 +70,7 @@ const datas = (state = initialState, action) => {
 
 			return Object.assign({}, state, {datas: newDatas, datasOrder: newDatasOrder, selectedItems: new Set()});
 		}
-		case SELECTION_ENABLE : {
+		case SELECTION_ENABLE: {
 			let newdatas = {};
 
 			Object.keys(state.datas).forEach((id) => {
@@ -79,22 +79,22 @@ const datas = (state = initialState, action) => {
 
 			return Object.assign({}, state, {datas: newdatas, showOverlay: !state.showOverlay});
 		}
-		case SELECT_ALL : {
+		case SELECT_ALL: {
 			const selectedItems = new Set(state.selectedItems);
 
 			if (selectedItems.size === state.datasOrder.length) {
 				selectedItems.clear();
 			} else {
-				for (let i=0 ; i < state.datasOrder.length ; i++) {
+				for (let i=0; i < state.datasOrder.length; i++) {
 					selectedItems.add(i);
 				}
 			}
 
 			return Object.assign({}, state, {selectedItems});
 		}
-		case SELECT_ITEM : {
+		case SELECT_ITEM: {
 			const
-				selectedItems	= new Set(state.selectedItems),
+				selectedItems = new Set(state.selectedItems),
 				isSelected = selectedItems.has(action.index);
 
 			if (state.showOverlay) {

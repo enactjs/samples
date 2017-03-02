@@ -9,9 +9,7 @@ import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import AppStateDecorator from './AppStateDecorator';
 import css from './MainView.less';
 
-const
-	albums = ['Family', 'Car', 'Travel'],
-	doc = (typeof window === 'object') ? window.document : {};
+const albums = ['Family', 'Car', 'Travel'];
 
 class MainView extends React.Component {
 	static propTypes = {
@@ -22,31 +20,17 @@ class MainView extends React.Component {
 	onChange = (ev) => {
 		const album = ev.value;
 		this.props.onChangeAlbum(album);
-		this.scrollTo({index: 0, animate: false});
-		this.focusOnItem(0);
+		this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
 	getScrollTo = (scrollTo) => {
 		this.scrollTo = scrollTo;
 	}
 
-	focusOnItem = (index) => {
-		startJob('focusing', () => {
-			const item = doc.querySelector(`[data-my-list] [data-index='${index}'].spottable`);
-
-			if (item) {
-				Spotlight.setPointerMode(false);
-				Spotlight.focus(item);
-			}
-		}, 0);
-	}
-
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false});
-		// Also you can focus an item by index like below.
-		this.focusOnItem(60);
+		this.scrollTo({index: 60, animate: false, focus: true});
 	}
 
 	render = () => {
@@ -65,7 +49,6 @@ class MainView extends React.Component {
 					<ImageList
 						cbScrollTo={this.getScrollTo}
 						className={css.list}
-						data-my-list
 					/>
 				</div>
 			</div>
