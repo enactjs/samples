@@ -4,16 +4,16 @@ import IncrementSlider from '@enact/moonstone/IncrementSlider';
 import React from 'react';
 import Slider from '@enact/moonstone/Slider';
 
-const ChangebaleSlier = Changeable({mutable: true}, Slider);
-const ChangebaleIncrementSlier = Changeable({mutable: true}, IncrementSlider);
+const ChangebaleSlider = Changeable({mutable: true}, Slider);
+const ChangebaleIncrementSlider = Changeable({mutable: true}, IncrementSlider);
 
 const SliderView = () => (
-	<section>
+	<div>
 		<Divider>Default Sliders</Divider>
-		<ChangebaleSlier />
+		<ChangebaleSlider />
 		<Divider>IncrementSlider</Divider>
-		<ChangebaleIncrementSlier />
-	</section>
+		<ChangebaleIncrementSlider />
+	</div>
 );
 
 export default SliderView;

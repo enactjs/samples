@@ -21,6 +21,7 @@ import ItemView from '../views/Item';
 import Picker from '../views/Picker';
 import ProgressBar from '../views/ProgressBar';
 import Slider from '../views/Slider';
+import Switch from '../views/Switch';
 
 const views = [
 	{title: 'About A11y', view: Home},
@@ -33,7 +34,8 @@ const views = [
 	{title: 'Item', view: ItemView},
 	{title: 'Picker', view: Picker},
 	{title: 'ProgressBar', view: ProgressBar},
-	{title: 'Slider', view: Slider}
+	{title: 'Slider', view: Slider},
+	{title: 'Switch', view: Switch}
 ];
 
 const AppBase = kind({
