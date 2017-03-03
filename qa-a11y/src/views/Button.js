@@ -12,17 +12,17 @@ const StatefulToggleButton = Toggleable({toggle: 'onClick', prop: 'selected'}, T
 const ButtonView = () => (
 	<div>
 		<Divider>Default Buttons</Divider>
-		<Button role="button">Button</Button>
-		<StatefulButton color="red" role="button">Red Button</StatefulButton>
-		<StatefulButton color="blue" role="button">Blue Button</StatefulButton>
-		<StatefulButton disabled role="button" aria-disabled="true">Disabled Button</StatefulButton>
+		<Button aria-label="default button">Button</Button>
+		<StatefulButton color="red" aria-label="red button">Red Button</StatefulButton>
+		<StatefulButton color="blue" aria-label="blue button">Blue Button</StatefulButton>
+		<StatefulButton disabled aria-label="disabled button" aria-disabled="true">Disabled Button</StatefulButton>
 		<Divider>Icon Buttons</Divider>
-		<StatefulIconButton role="button">play</StatefulIconButton>
-		<StatefulIconButton role="button">plus</StatefulIconButton>
+		<StatefulIconButton aria-label="play button">play</StatefulIconButton>
+		<StatefulIconButton aria-label="plus button">plus</StatefulIconButton>
 		<Divider>Toggle Buttons</Divider>
-		<StatefulToggleButton role="button">Toggle Button</StatefulToggleButton>
-		<StatefulToggleButton disabled role="button" aria-disabled="true">Disabled Toggle Button</StatefulToggleButton>
-		<StatefulToggleButton toggleOffLabel="Off" toggleOnLabel="On" role="button" />
+		<StatefulToggleButton aria-label="toggle button">Toggle Button</StatefulToggleButton>
+		<StatefulToggleButton disabled aria-label="disabled toggle button" aria-disabled="true">Disabled Toggle Button</StatefulToggleButton>
+		<StatefulToggleButton toggleOffLabel="Off" toggleOnLabel="On" aria-label="on off button" />
 	</div>
 );
 
