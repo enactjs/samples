@@ -12,6 +12,7 @@ import Home from './Home';
 import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
+import Button from '../views/Button';
 import DayPicker from '../views/DayPicker';
 import ExpandableItem from '../views/ExpandableItem';
 import ExpandableList from '../views/ExpandableList';
@@ -23,6 +24,7 @@ const
 	titles = R.map(R.prop('title')),
 	views = [
 		{title: 'About A11y', view: Home},
+		{title: 'Button', view: Button},
 		{title: 'A11yDecorator', view: A11yDecorator},
 		{title: 'DayPicker', view: DayPicker},
 		{title: 'ExpandableItem', view: ExpandableItem},
