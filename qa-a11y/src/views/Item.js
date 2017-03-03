@@ -15,23 +15,36 @@ const SelectableItem = Toggleable({prop: 'selected'}, SelectItemBase);
 const SwitchItem = Toggleable({prop: 'selected'}, SwitchItemBase);
 const ToggleItem = Toggleable({prop: 'selected'}, ToggleItemBase);
 
+const itemColumn = {
+	display: 'inline-block',
+	width: '50%',
+	verticalAlign: 'top'
+};
+
 const ItemView = () => (
 	<div>
-		<Divider>Default Item</Divider>
-		<Item aria-label="Default item" role="item">Item</Item>
-		<Item disabled aria-disabled="true" aria-label="disabled item" role="item">Disabled Item</Item>
-		<Divider>Checkbox Item</Divider>
-		<CheckboxItem aria-label="checkbox item" role="checkbox">Checkbox</CheckboxItem>
-		<Divider>Labeled Item</Divider>
-		<LabeledItem label="This is a label" aria-label="label item" role="label">Labeled item</LabeledItem>
-		<Divider>Radio Item</Divider>
-		<RadioItem aria-label="radio item" role="radio">Radio item</RadioItem>
-		<Divider>Selectable Item</Divider>
-		<SelectableItem aria-label="select item" role="option">Selectable item</SelectableItem>
-		<Divider>Switch Item</Divider>
-		<SwitchItem aria-label="switch item" role="switch">Switch item</SwitchItem>
-		<Divider>Toggle Item</Divider>
-		<ToggleItem icon="lock" aria-label="toggle lock item" role="toggle">Toggle item</ToggleItem>
+		<div style={itemColumn}>
+			<Divider>Default Item</Divider>
+			<Item>Item</Item>
+			<Item disabled>Disabled Item</Item>
+			<Divider>Checkbox Item</Divider>
+			<CheckboxItem>Checkbox</CheckboxItem>
+			<Divider>Labeled Item</Divider>
+			<LabeledItem label="This is a label">Labeled item</LabeledItem>
+			<Divider>Radio Item</Divider>
+			<RadioItem>Radio item</RadioItem>
+			<Divider>Selectable Item</Divider>
+			<SelectableItem>Selectable item</SelectableItem>
+		</div>
+		<div style={itemColumn}>
+			<Divider>Switch Item</Divider>
+			<SwitchItem>Switch item</SwitchItem>
+			<Divider>Toggle Item</Divider>
+			<ToggleItem icon="lock">Toggle item</ToggleItem>
+			<Divider>Aria-labled Items</Divider>
+			<Item aria-label="item">Item</Item>
+			<LabeledItem label="This is a label" aria-label="labeled item">Labeled item</LabeledItem>
+		</div>
 	</div>
 );
 

@@ -8,8 +8,9 @@ const Switch = Toggleable({toggle: 'onClick', prop: 'selected'}, SwitchBase);
 const SwitchView = () => (
 	<section>
 		<Divider>Default switch</Divider>
-		<Switch role="switch" />
-		<Switch disabled aria-disabled="true" role="switch" />
+		<Switch />
+		<Switch disabled  />
+		<Switch aria-label="switch" />
 	</section>
 );
 

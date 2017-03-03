@@ -12,22 +12,25 @@ const InputView = () => (
 		<Divider>Default Input</Divider>
 		<ul>
 			<li>
-				<StatefulInput role="input" />
+				<StatefulInput />
 			</li>
 			<li>
-				<StatefulInput disabled aria-disabled="true" role="input" />
+				<StatefulInput disabled />
 			</li>
 			<li>
-				<StatefulInput iconAfter="lock" aria-label="lock input" role="input" />
+				<StatefulInput iconAfter="lock" />
 			</li>
 			<li>
-				<StatefulInput iconBefore="plus" aria-label="plus input" role="input" />
+				<StatefulInput iconBefore="plus" />
 			</li>
 		</ul>
 		<Divider>Expandable Input</Divider>
-		<StatefulExpandableInput role="input" />
-		<StatefulExpandableInput noneText="Nothing inputted" role="input" />
-		<StatefulExpandableInput title="Expandable Input" role="input" />
+		<StatefulExpandableInput />
+		<StatefulExpandableInput noneText="Nothing inputted" />
+		<StatefulExpandableInput title="Expandable Input" />
+		<Divider>Aria-labeled Input</Divider>
+		<StatefulInput iconBefore="plus" aria-label="add input" />
+		<StatefulExpandableInput title="Expandable Input" aria-label="expandable input" />
 	</div>
 );
 

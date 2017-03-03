@@ -16,7 +16,7 @@ class ProgressBarView extends React.Component {
 		this.setState({progressVal :value});
 	}
 
-	onDec = () =>  {
+	onDec = () => {
 		const value = Math.max((this.state.progressVal - 0.1).toFixed(1), 0);
 		this.setState({progressVal :value});
 	}
