@@ -19,7 +19,7 @@ const ItemView = () => (
 	<div>
 		<Divider>Default Item</Divider>
 		<Item aria-label="Default item" role="item">Item</Item>
-		<Item disabled aria-label="disabled item" role="item">Disabled Item</Item>
+		<Item disabled aria-disabled="true" aria-label="disabled item" role="item">Disabled Item</Item>
 		<Divider>Checkbox Item</Divider>
 		<CheckboxItem aria-label="checkbox item" role="checkbox">Checkbox</CheckboxItem>
 		<Divider>Labeled Item</Divider>

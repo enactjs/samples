@@ -9,7 +9,7 @@ const SwitchView = () => (
 	<section>
 		<Divider>Default switch</Divider>
 		<Switch role="switch" />
-		<Switch disabled aria-disable="true" role="switch" />
+		<Switch disabled aria-disabled="true" role="switch" />
 	</section>
 );
 
