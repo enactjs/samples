@@ -4,10 +4,10 @@ import ExpandableInput from '@enact/moonstone/ExpandableInput';
 import React from 'react';
 import Changeable from '@enact/ui/Changeable'
 
-const StatefulInput= Changeable({toggle: 'onClick', prop: 'selected'}, Input);
-const StatefulExpandableInput= Changeable({toggle: 'onClick', prop: 'selected'}, ExpandableInput);
+const StatefulInput = Changeable({toggle: 'onClick', prop: 'selected'}, Input);
+const StatefulExpandableInput = Changeable({toggle: 'onClick', prop: 'selected'}, ExpandableInput);
 
-const ButtonView = () => (
+const InputView = () => (
 	<div>
 		<Divider>Default Input</Divider>
 		<ul>
@@ -31,4 +31,4 @@ const ButtonView = () => (
 	</div>
 );
 
-export default ButtonView;
+export default InputView;
