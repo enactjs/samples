@@ -1,27 +1,21 @@
-@media (min-width: 1024px) {
-	.nav, .content {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		font-size: 24px;
-	}
+body {
+	margin: 0;
+}
 
-	.nav {
-		width: 20%;
-	}
+.nav {
+	position: absolute;
+	width: 300px;
+}
 
-	.item {
-		width: 100%;
-		height: 69px;
-		box-sizing: border-box;
-		border-bottom: 3px solid #202328;
-		overflow: hidden;
-	}
+.content {
+	position: relative;
+	height: 100%;
+	margin-left: 300px;
+}
 
-	.content {
-		width: auto;
-		left: 20%;
-		right: 0;
-		overflow: hidden;
-	}
+.navItem {
+	height: 69px;
+	box-sizing: border-box;
+	border-bottom: 3px solid #202328;
+	overflow: hidden;
 }

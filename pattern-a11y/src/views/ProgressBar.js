@@ -1,3 +1,4 @@
+import Divider from '@enact/moonstone/Divider';
 import IconButton from '@enact/moonstone/IconButton';
 import ProgressBar from '@enact/moonstone/ProgressBar';
 import React from 'react';
@@ -20,27 +21,27 @@ class ProgressBarView extends React.Component {
 		this.setState({progressVal :value});
 	}
 
-	initRef = (node) => {
-		this.progressRef = node;
-	}
-
 	render = () => {
-		const {progressVal} = this.state
+		const {progressVal} = this.state;
 		//FIXME When aria-valuetext is changed to null, screen reader reads default `0`(zero) by `progressbar` role
 		// To prevent this, set to value as one space.
-		let a11yText = ' ';
+		let a11yValueText = ' ';
+
 		if (progressVal === 0.5) {
-			a11yText = '50% progressing';
+			a11yValueText = '50% progressing';
 		} else if (progressVal === 1) {
-			a11yText = 'Completed';
+			a11yValueText = 'Completed';
 		}
 
-		return (<section>
-			<ProgressBar aria-valuetext={a11yText} progress={progressVal}/>
-			<br/>
-			<IconButton aria-label="Increase" onClick={this.onInc}>plus</IconButton>
-			<IconButton aria-label="Decrease" onClick={this.onDec}>minus</IconButton>
-		</section>);
+		return (
+			<div>
+				<Divider>Default ProgressBars</Divider>
+				<ProgressBar aria-valuetext={a11yValueText} progress={progressVal} />
+				<br />
+				<IconButton aria-label="Increase" onClick={this.onInc}>plus</IconButton>
+				<IconButton aria-label="Decrease" onClick={this.onDec}>minus</IconButton>
+			</div>
+		);
 	}
 }
 

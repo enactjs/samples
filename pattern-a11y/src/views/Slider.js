@@ -9,11 +9,11 @@ const ChangebaleIncrementSlier = Changeable({mutable: true}, IncrementSlider);
 
 const SliderView = () => (
 	<section>
-		<Divider>Default Slider</Divider>
-		<ChangebaleSlier/>
+		<Divider>Default Sliders</Divider>
+		<ChangebaleSlier />
 		<Divider>IncrementSlider</Divider>
-		<ChangebaleIncrementSlier/>
+		<ChangebaleIncrementSlier />
 	</section>
-)
+);
 
 export default SliderView;

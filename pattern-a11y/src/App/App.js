@@ -1,9 +1,9 @@
-import classNames from 'classnames';
-import {GroupBase as Group} from '@enact/ui/Group';
+import Changeable from '@enact/ui/Changeable';
+import Group from '@enact/ui/Group';
 import Item from '@enact/moonstone/Item';
+import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import R from 'ramda';
-import React, {Component} from 'react';
+import React from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 import ViewManager from '@enact/ui/ViewManager';
 
@@ -20,47 +20,36 @@ import Picker from '../views/Picker';
 import ProgressBar from '../views/ProgressBar';
 import Slider from '../views/Slider';
 
-const
-	titles = R.map(R.prop('title')),
-	views = [
-		{title: 'About A11y', view: Home},
-		{title: 'Button', view: Button},
-		{title: 'A11yDecorator', view: A11yDecorator},
-		{title: 'DayPicker', view: DayPicker},
-		{title: 'ExpandableItem', view: ExpandableItem},
-		{title: 'ExpandableList', view: ExpandableList},
-		{title: 'Picker', view: Picker},
-		{title: 'ProgressBar', view: ProgressBar},
-		{title: 'Slider', view: Slider}
-	];
+const views = [
+	{title: 'About A11y', view: Home},
+	{title: 'A11yDecorator', view: A11yDecorator},
+	{title: 'Button', view: Button},
+	{title: 'DayPicker', view: DayPicker},
+	{title: 'ExpandableItem', view: ExpandableItem},
+	{title: 'ExpandableList', view: ExpandableList},
+	{title: 'Picker', view: Picker},
+	{title: 'ProgressBar', view: ProgressBar},
+	{title: 'Slider', view: Slider}
+];
 
-class App extends Component {
-	constructor () {
-		super();
-		this.state = {
-			index: 0
-		};
-	}
-
-	handleChange = ({selected}) => {
-		if (selected !== null) {
-			this.setState({
-				index: selected
-			});
+const AppBase = kind({
+	computed: {
+		handleChange: ({onIndex}) => ({selected}) => {
+			if (selected !== null) {
+				onIndex({index: selected});
+			}
 		}
-	}
+	},
 
-	render = () => {
-		const {index} = this.state;
-
+	render: ({handleChange, index, ...rest}) => {
 		return (
-			<div className={classNames(this.props.className, css.app)}>
+			<div {...rest}>
 				<Scroller className={css.nav}>
-					{<Group childComponent={Item} selected={index} onSelect={this.handleChange} itemProps={{className: css.item}}>
-						{titles(views)}
-					</Group>}
+					<Group childComponent={Item} itemProps={{className: css.navItem}} onSelect={handleChange} selected={index}>
+						{views.map((view) => view.title)}
+					</Group>
 				</Scroller>
-				<ViewManager className={css.content} index={index} component="main">
+				<ViewManager className={css.content} index={index}>
 					{views.map((view, i) => (
 						<View {...view} key={i} />
 					))}
@@ -68,6 +57,8 @@ class App extends Component {
 			</div>
 		);
 	}
-}
+});
 
-export default MoonstoneDecorator(App);
+const App = MoonstoneDecorator(Changeable({prop: 'index', change: 'onIndex'}, AppBase));
+
+export default App;

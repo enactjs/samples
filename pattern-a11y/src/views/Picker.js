@@ -76,7 +76,7 @@ const
 const PickerView = () => (
 	<div>
 		<span style={pickerSpanStyle}>
-			<div><Divider>Picker</Divider></div>
+			<Divider>Picker</Divider>
 			<div>
 				<StatefulPicker
 					orientation="horizontal"
@@ -86,7 +86,7 @@ const PickerView = () => (
 				</StatefulPicker>
 			</div>
 
-			<div><Divider>Joined Picker</Divider></div>
+			<Divider>Joined Picker</Divider>
 			<div>
 				<StatefulPicker
 					joined
@@ -97,7 +97,7 @@ const PickerView = () => (
 				</StatefulPicker>
 			</div>
 
-			<div><Divider>Vertical Picker</Divider></div>
+			<Divider>Vertical Picker</Divider>
 			<StatefulPicker
 				orientation="vertical"
 				width="medium"
@@ -114,7 +114,7 @@ const PickerView = () => (
 		</span>
 
 		<span style={pickerSpanStyle}>
-			<div><Divider>RangePicker</Divider></div>
+			<Divider>RangePicker</Divider>
 			<div>
 				<StatefulRangePicker
 					defaultValue={0}
@@ -126,7 +126,7 @@ const PickerView = () => (
 				/>
 			</div>
 
-			<div><Divider>Joined RangePicker</Divider></div>
+			<Divider>Joined RangePicker</Divider>
 			<div>
 				<StatefulRangePicker
 					defaultValue={0}
@@ -139,7 +139,7 @@ const PickerView = () => (
 				/>
 			</div>
 
-			<div><Divider>Vertical RangePicker</Divider></div>
+			<Divider>Vertical RangePicker</Divider>
 			<div>
 				<StatefulRangePicker
 					defaultValue={0}
@@ -162,7 +162,7 @@ const PickerView = () => (
 		</span>
 
 		<span style={expandableSpanStyle}>
-			<div><Divider>ExpandablePicker</Divider></div>
+			<Divider>ExpandablePicker</Divider>
 			<ChangeableExpandablePicker
 				open={false}
 				title="Favorite Emoji"
@@ -171,14 +171,14 @@ const PickerView = () => (
 				{emoticons}
 			</ChangeableExpandablePicker>
 
-			<div><Divider>DatePicker</Divider></div>
+			<Divider>DatePicker</Divider>
 			<ChangeableDatePicker
 				noLabels={false}
 				noneText="Nothing Selected"
 				title="Date"
 			/>
 
-			<div><Divider>TimePicker</Divider></div>
+			<Divider>TimePicker</Divider>
 			<ChangeableTimePicker
 				noLabels={false}
 				noneText="Nothing Selected"
@@ -186,6 +186,6 @@ const PickerView = () => (
 			/>
 		</span>
 	</div>
-)
+);
 
 export default PickerView;

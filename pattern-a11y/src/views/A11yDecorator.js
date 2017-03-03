@@ -15,6 +15,6 @@ const A11yDecoratorView = () => (
 		<p><strong>aria-label=accessibility</strong></p>
 		<A11yButton aria-label='accessibility' backgroundOpacity='transparent'>Hard</A11yButton>
 	</div>
-)
+);
 
 export default A11yDecoratorView;
