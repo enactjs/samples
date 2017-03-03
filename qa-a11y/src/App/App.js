@@ -16,6 +16,7 @@ import Button from '../views/Button';
 import DayPicker from '../views/DayPicker';
 import ExpandableItem from '../views/ExpandableItem';
 import ExpandableList from '../views/ExpandableList';
+import Input from '../views/Input';
 import Picker from '../views/Picker';
 import ProgressBar from '../views/ProgressBar';
 import Slider from '../views/Slider';
@@ -27,6 +28,7 @@ const views = [
 	{title: 'DayPicker', view: DayPicker},
 	{title: 'ExpandableItem', view: ExpandableItem},
 	{title: 'ExpandableList', view: ExpandableList},
+	{title: 'Input', view: Input},
 	{title: 'Picker', view: Picker},
 	{title: 'ProgressBar', view: ProgressBar},
 	{title: 'Slider', view: Slider}
