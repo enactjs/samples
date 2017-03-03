@@ -56,13 +56,13 @@ class App extends Component {
 		return (
 			<div className={classNames(this.props.className, css.app)}>
 				<Scroller className={css.nav}>
-					{<Group childComponent={Item} selected={index} onSelect={this.handleChange} itemProps={{className: css.view}}>
+					{<Group childComponent={Item} selected={index} onSelect={this.handleChange} itemProps={{className: css.item}}>
 						{titles(views)}
 					</Group>}
 				</Scroller>
 				<ViewManager className={css.content} index={index} component="main">
 					{views.map((view, i) => (
-						<View className={css.view} {...view} key={i} />
+						<View {...view} key={i} />
 					))}
 				</ViewManager>
 			</div>

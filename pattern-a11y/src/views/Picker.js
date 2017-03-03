@@ -4,7 +4,7 @@ import Divider from '@enact/moonstone/Divider';
 import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
 import Picker, {PickerBase} from '@enact/moonstone/Picker';
 import RangePicker, {RangePickerBase} from '@enact/moonstone/RangePicker';
-import React, {Component} from 'react';
+import React from 'react';
 import {TimePicker, TimePickerBase} from '@enact/moonstone/TimePicker';
 
 const StatefulPicker = Changeable(Picker);
@@ -73,121 +73,119 @@ const
 		verticalAlign: 'top'
 	};
 
-class PickerView extends Component {
-	render = () => (
-		<div>
-			<span style={pickerSpanStyle}>
-				<div><Divider>Picker</Divider></div>
-				<div>
-					<StatefulPicker
-						orientation="horizontal"
-						width="medium"
-					>
-						{airports}
-					</StatefulPicker>
-				</div>
-
-				<div><Divider>Joined Picker</Divider></div>
-				<div>
-					<StatefulPicker
-						joined
-						orientation="horizontal"
-						width="medium"
-					>
-						{airports}
-					</StatefulPicker>
-				</div>
-
-				<div><Divider>Vertical Picker</Divider></div>
+const PickerView = () => (
+	<div>
+		<span style={pickerSpanStyle}>
+			<div><Divider>Picker</Divider></div>
+			<div>
 				<StatefulPicker
-					orientation="vertical"
+					orientation="horizontal"
 					width="medium"
 				>
 					{airports}
 				</StatefulPicker>
+			</div>
+
+			<div><Divider>Joined Picker</Divider></div>
+			<div>
 				<StatefulPicker
 					joined
-					orientation="vertical"
+					orientation="horizontal"
 					width="medium"
 				>
 					{airports}
 				</StatefulPicker>
-			</span>
+			</div>
 
-			<span style={pickerSpanStyle}>
-				<div><Divider>RangePicker</Divider></div>
-				<div>
-					<StatefulRangePicker
-						defaultValue={0}
-						max={100}
-						min={0}
-						orientation="horizontal"
-						step={5}
-						width="medium"
-					/>
-				</div>
+			<div><Divider>Vertical Picker</Divider></div>
+			<StatefulPicker
+				orientation="vertical"
+				width="medium"
+			>
+				{airports}
+			</StatefulPicker>
+			<StatefulPicker
+				joined
+				orientation="vertical"
+				width="medium"
+			>
+				{airports}
+			</StatefulPicker>
+		</span>
 
-				<div><Divider>Joined RangePicker</Divider></div>
-				<div>
-					<StatefulRangePicker
-						defaultValue={0}
-						joined
-						max={100}
-						min={0}
-						orientation="horizontal"
-						step={5}
-						width="medium"
-					/>
-				</div>
-
-				<div><Divider>Vertical RangePicker</Divider></div>
-				<div>
-					<StatefulRangePicker
-						defaultValue={0}
-						max={100}
-						min={0}
-						orientation="vertical"
-						step={5}
-						width="medium"
-					/>
-					<StatefulRangePicker
-						defaultValue={0}
-						joined
-						max={100}
-						min={0}
-						orientation="vertical"
-						step={5}
-						width="medium"
-					/>
-				</div>
-			</span>
-
-			<span style={expandableSpanStyle}>
-				<div><Divider>ExpandablePicker</Divider></div>
-				<ChangeableExpandablePicker
-					open={false}
-					title="Favorite Emoji"
+		<span style={pickerSpanStyle}>
+			<div><Divider>RangePicker</Divider></div>
+			<div>
+				<StatefulRangePicker
+					defaultValue={0}
+					max={100}
+					min={0}
+					orientation="horizontal"
+					step={5}
 					width="medium"
-				>
-					{emoticons}
-				</ChangeableExpandablePicker>
-
-				<div><Divider>DatePicker</Divider></div>
-				<ChangeableDatePicker
-					noLabels={false}
-					noneText="Nothing Selected"
-					title="Date"
 				/>
+			</div>
 
-				<div><Divider>TimePicker</Divider></div>
-				<ChangeableTimePicker
-					noLabels={false}
-					noneText="Nothing Selected"
-					title="Time"
+			<div><Divider>Joined RangePicker</Divider></div>
+			<div>
+				<StatefulRangePicker
+					defaultValue={0}
+					joined
+					max={100}
+					min={0}
+					orientation="horizontal"
+					step={5}
+					width="medium"
 				/>
-			</span>
-		</div>
-	)
-}
+			</div>
+
+			<div><Divider>Vertical RangePicker</Divider></div>
+			<div>
+				<StatefulRangePicker
+					defaultValue={0}
+					max={100}
+					min={0}
+					orientation="vertical"
+					step={5}
+					width="medium"
+				/>
+				<StatefulRangePicker
+					defaultValue={0}
+					joined
+					max={100}
+					min={0}
+					orientation="vertical"
+					step={5}
+					width="medium"
+				/>
+			</div>
+		</span>
+
+		<span style={expandableSpanStyle}>
+			<div><Divider>ExpandablePicker</Divider></div>
+			<ChangeableExpandablePicker
+				open={false}
+				title="Favorite Emoji"
+				width="medium"
+			>
+				{emoticons}
+			</ChangeableExpandablePicker>
+
+			<div><Divider>DatePicker</Divider></div>
+			<ChangeableDatePicker
+				noLabels={false}
+				noneText="Nothing Selected"
+				title="Date"
+			/>
+
+			<div><Divider>TimePicker</Divider></div>
+			<ChangeableTimePicker
+				noLabels={false}
+				noneText="Nothing Selected"
+				title="Time"
+			/>
+		</span>
+	</div>
+)
 
 export default PickerView;
