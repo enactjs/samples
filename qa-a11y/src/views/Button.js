@@ -23,7 +23,7 @@ const ButtonView = () => (
 		<Divider>Toggle Buttons</Divider>
 		<StatefulToggleButton>Toggle Button</StatefulToggleButton>
 		<StatefulToggleButton disabled>Disabled Toggle Button</StatefulToggleButton>
-		<StatefulToggleButton toggleOffLabel="Off" toggleOnLabel="On" />
+		<StatefulToggleButton toggleOffLabel="Close" toggleOnLabel="Open" />
 		<Divider>Aria-labeled Buttons</Divider>
 		<StatefulButton color="yellow" aria-label="yellow button">yellow Button</StatefulButton>
 		<StatefulIconButton aria-label="plug icon button">plug</StatefulIconButton>
