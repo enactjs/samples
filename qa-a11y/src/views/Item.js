@@ -25,6 +25,7 @@ const ItemView = () => (
 	<div>
 		<div style={itemColumn}>
 			<Divider>Default Item</Divider>
+			<Item />
 			<Item>Item</Item>
 			<Item disabled>Disabled Item</Item>
 			<Divider>Checkbox Item</Divider>

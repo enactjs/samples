@@ -12,6 +12,7 @@ const StatefulToggleButton = Toggleable({toggle: 'onClick', prop: 'selected'}, T
 const ButtonView = () => (
 	<div>
 		<Divider>Default Buttons</Divider>
+		<Button />
 		<Button>Button</Button>
 		<StatefulButton color="red">Red Button</StatefulButton>
 		<StatefulButton color="blue">Blue Button</StatefulButton>
