@@ -48,7 +48,7 @@ const FileBrowserBase = kind({
 			console.log('LIST ITEM OUTER PROPS', props);
 			console.log('LIST ITEM INNER PROPS', Object.assign({data, index, key}, inner));
 			return (
-				<Item key={key} onClick={props.onNavigateY} >
+				<Item key={key} onClick={props.onNavigate} >
 					{data[index].name}
 				</Item>
 			);
@@ -85,10 +85,7 @@ const FB = class extends React.Component {
 	}
 
 	render () {
-		const props = Object.assign({
-			onNavigateX: (p) => this.navigate(p),
-			onNavigateY: this.navigate
-		}, this.props);
+		const props = Object.assign({}, this.props);
 		console.log('STATEFUL FileBrowser RENDERING', props);
 		return (
 			<FileBrowserBase {...props} />
