@@ -36,11 +36,30 @@ const c = {
 
 const scale = ri.scale;
 
+const FileItem = kind({
+	name: 'FileItem',
+	render: (props) => {
+		return (
+			<Item {...props} />
+		);
+	}
+});
+
+const DirectoryItem = kind({
+	name: 'DirectoryItem',
+	render: (props) => {
+		return (
+			<Item directory {...props} />
+		);
+	}
+});
+
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	handlers: {
 		// create a cached event handler forwarding to onNavigate
 		onNavigate: (ev, props) => {
+			console.log('NAVIGATING', props, {...ev});
 			// extract the index provided by VirtualList
 			const index = ev.currentTarget.dataset.index;
 			// map it to the name from the hardcoded list of files
@@ -48,32 +67,50 @@ const FileBrowserBase = kind({
 			// make the new path
 			const path = `${props.path}/${name}`;
 			// and notify the handler
-			props.onNavigate({path});
+			props.onNavigate({path, foo: 'bar'});
+		},
+		onView: (ev, props) => {
+			console.log('WILL IT GO?', props);
 		}
 	},
 	computed: {
 		// this double function is messy but i'm assuming it's a requirement of VirtualList ... we
 		// should fix that API
 		listItem: (props) => ({data, index, key, ...rest}) => {
+			if (data[index].directory) {
+				console.log('THIS LIST ITEM IS A DIRECTORY', props);
+			}
 			return (
-				<Item key={key} onClick={props.onNavigate} {...rest}>
+				<Item key={key} onClick={data[index].directory ? props.onNavigate : props.onView}>
 					{data[index].name}
 				</Item>
 			);
+		},
+		renderItem: () => (props) => {
+			const {listItem, ...rest} = props;
+			const isDir = true;
+			console.log('RENDER ITEM GETS', props, 'NEED TO KNOW IF WE SHOULD BE RENDERING LIST (CAME FROM DIR) OR VIEWING MEDIA');
+			const component = isDir ? <VirtualList
+				itemSize={scale(72)}
+				component={listItem}
+				data={a.files}
+				dataSize={a.files.length}
+			/> : null;
+			if (true) {}
+
+			return (
+				<DynamicPanel {...rest}>
+					{component}
+				</DynamicPanel>
+			);
+
 		}
 	},
 	render: (props) => {
-		const {listItem, ...rest} = props;
+		const {renderItem: Component, ...rest} = props;
 
 		return (
-			<DynamicPanel {...rest}>
-				<VirtualList
-					itemSize={scale(72)}
-					component={listItem}
-					data={a.files}
-					dataSize={a.files.length}
-				/>
-			</DynamicPanel>
+			<Component {...rest} />
 		);
 	}
 });
