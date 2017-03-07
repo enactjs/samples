@@ -4,8 +4,8 @@ import ExpandableInput from '@enact/moonstone/ExpandableInput';
 import React from 'react';
 import Changeable from '@enact/ui/Changeable'
 
-const StatefulInput = Changeable({toggle: 'onClick', prop: 'selected'}, Input);
-const StatefulExpandableInput = Changeable({toggle: 'onClick', prop: 'selected'}, ExpandableInput);
+const StatefulInput = Changeable({toggle: 'onClick', prop: 'value'}, Input);
+const StatefulExpandableInput = Changeable({toggle: 'onClick', prop: 'value'}, ExpandableInput);
 
 const inputColumn = {
 	display: 'inline-block',
