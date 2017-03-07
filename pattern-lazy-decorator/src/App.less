@@ -1,0 +1,125 @@
+body {
+	.message:not(:last-child) {
+		border-bottom: 2px solid #313131;
+	}
+}
+
+.scroller {
+	height: 552px;
+}
+
+.message {
+	height: 81px;
+	padding-bottom: 32px;
+
+	white-space: nowrap;
+
+	&.messageMore {
+		height: 108px;
+	}
+
+	&.messageMore.messageExpand {
+		height: initial;
+	}
+
+	& > div {
+		display: inline-block;
+		margin-right: 75px;
+		margin-top: 15px;
+	}
+
+	& > div:last-child {
+		margin-right: 0;
+	}
+
+	/* icon container */
+
+	& > div:nth-child(1) {
+		position: static;
+		width: 93px;
+		height: 50px;
+		vertical-align: top;
+
+		font-size: 93px;
+	}
+
+	/* received container */
+
+	& > div:nth-child(2) {
+		width: 100px;
+		vertical-align: top;
+
+		color: #c4c4c4;
+		font-size: 15px;
+		line-height: 24px;
+	}
+
+	/* content container */
+
+	& > div:nth-child(3) {
+		width: 978px;
+		margin-top: 0;
+
+		font-size: 0;
+
+		& > img {
+			display: none;
+			width: 0;
+			height: 0;
+		}
+
+		.contentText {
+			display: -webkit-inline-box;
+			padding: 0;
+			margin: 0;
+			overflow: hidden;
+
+			direction: ltr;
+			text-overflow: clip;
+			white-space: initial;
+			word-break: break-word;
+			word-wrap: break-word;
+			word-spacing: 0;
+			letter-spacing: 0;
+
+			font-size: 24px;
+			line-height: 27px;
+			color: #fff;
+			align-self: center;
+
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+
+			&.more {
+				-webkit-line-clamp: 4;
+			}
+
+			&.more.expand {
+				display: block;
+			}
+		}
+	}
+
+	/* moreLess container */
+
+	& > div:nth-child(4) {
+		width: 180px;
+		vertical-align: text-bottom;
+	}
+
+	/* action container */
+
+	& > div:nth-child(5) {
+		width: 168px;
+		vertical-align: top;
+
+		& > div:only-child {
+			margin-left: 96px;
+		}
+	}
+}
+
+.button {
+	display: block;
+	margin: 10px auto;
+}
