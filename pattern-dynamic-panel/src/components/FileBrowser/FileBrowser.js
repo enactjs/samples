@@ -2,7 +2,7 @@ import React from 'react';
 import kind from '@enact/core/kind';
 import ri from '@enact/ui/resolution'
 import {Item} from '@enact/moonstone/Item';
-import {Spottable} from '@enact/spotlight';
+import Cancelable from '@enact/ui/Cancelable';
 import {VirtualList} from '@enact/moonstone/VirtualList'
 
 import DynamicPanel from '../DynamicPanel';
@@ -37,18 +37,27 @@ const c = {
 
 const scale = ri.scale;
 
-const clickTest = ({...rest}) => {
-	console.log('CLICKY CLICKY', rest);
-}
-
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
+	handlers: {
+		// create a cached event handler forwarding to onNavigate
+		onNavigate: (ev, props) => {
+			// extract the index provided by VirtualList
+			const index = ev.currentTarget.dataset.index;
+			// map it to the name from the hardcoded list of files
+			const name = a.files[index].name;
+			// make the new path
+			const path = `${props.path}/${name}`;
+			// and notify the handler
+			props.onNavigate({path});
+		}
+	},
 	computed: {
-		listItem: (props) => ({data, index, key, ...inner}) => {
-			console.log('LIST ITEM OUTER PROPS', props);
-			console.log('LIST ITEM INNER PROPS', Object.assign({data, index, key}, inner));
+		// this double function is messy but i'm assuming it's a requirement of VirtualList ... we
+		// should fix that API
+		listItem: (props) => ({data, index, key, ...rest}) => {
 			return (
-				<Item key={key} onClick={props.onNavigateY} >
+				<Item key={key} onClick={props.onNavigate} {...rest}>
 					{data[index].name}
 				</Item>
 			);
@@ -56,9 +65,9 @@ const FileBrowserBase = kind({
 	},
 	render: (props) => {
 		const {listItem, ...rest} = props;
-		console.log('FileBrowserBase', props);
+
 		return (
-			<DynamicPanel {...rest} >
+			<DynamicPanel {...rest}>
 				<VirtualList
 					itemSize={scale(72)}
 					component={listItem}
@@ -70,33 +79,51 @@ const FileBrowserBase = kind({
 	}
 });
 
-const FB = class extends React.Component {
-	// constructor (props) {
-	// 	super(props);
-	//
-	// 	this.state = {
-	// 		path: props.path
-	// 	}
-	// }
+const popPath = (path) => {
+	let newPath = '/';
+	let lastPath = path;
 
-	navigate ({path}) {
-		console.log('FileBrowser onNavigate', path);
-		this.setState({path: path});
+	if (path) {
+		const parts = path.split('/').filter((e) => e);
+		lastPath = parts.pop();
+		if (parts.length) {
+			newPath += parts.join('/');
+			if (!newPath) {
+				newPath = '/';
+			}
+		} else {
+			// nowhere to go
+			newPath += lastPath ? lastPath : '';
+		}
 	}
+	return newPath;
+};
 
-	render () {
-		const props = Object.assign({
-			onNavigateX: (p) => this.navigate(p),
-			onNavigateY: this.navigate
-		}, this.props);
-		console.log('STATEFUL FileBrowser RENDERING', props);
-		return (
-			<FileBrowserBase {...props} />
-		);
+// the onCancel callback from the Cancelable config receives the Cancelable's props to both
+// determine if it should cancel and how to handle the cancel. here, we're calling the onNavigate
+// event callback.
+const handleCancel = (props) => {
+	const {path, onNavigate} = props;
+	// pop the path
+	const newPath = popPath(path);
+	// and if there's an onNavigate callback
+	if (onNavigate) {
+		// call it with the new path
+		onNavigate({
+			path: newPath
+		});
+
+		// then return true to indicate it was handled
+		return true;
 	}
 };
 
-const FileBrowser = Navigable(Spottable(FB));
+const FileBrowser = Cancelable(
+	// modal lets it handle any cancel event that isn't handled by the spotted component. Useful for
+	// full-screen containers like Panels (or Panel in this case)
+	{modal: true, onCancel: handleCancel},
+	FileBrowserBase
+);
 
 export default FileBrowser;
 export {FileBrowser, FileBrowserBase};

@@ -35,14 +35,14 @@ const Navigable = hoc({}, (config, Wrapped) => {
 			};
 		}
 
-		cancel (props) {
+		cancel = (props) => {
 			const {onNavigate, path} = props;
 			if (onNavigate) {
 				onNavigate({path: popPath(path)});
 			}
 		}
 
-		navigate ({path}) {
+		navigate = ({path}) => {
 			this.setState({path});
 		}
 
