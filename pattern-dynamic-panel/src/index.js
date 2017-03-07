@@ -1,8 +1,17 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
 import App from './App';
 
-let appElement = (<App />);
+import configureStore from './store';
+
+const store = configureStore();
+
+let appElement = (
+	<Provider store={store}>
+		<App />
+	</Provider>
+);
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {
