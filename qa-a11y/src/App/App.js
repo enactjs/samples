@@ -46,6 +46,8 @@ const AppBase = kind({
 	},
 
 	render: ({handleChange, index, ...rest}) => {
+		delete rest.onIndex;
+
 		return (
 			<div {...rest}>
 				<Scroller className={css.nav}>
