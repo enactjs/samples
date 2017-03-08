@@ -34,8 +34,8 @@ const InputView = () => (
 		</div>
 		<div style={inputColumn}>
 			<Divider>Expandable Input</Divider>
-			<StatefulExpandableInput />
-			<StatefulExpandableInput noneText="Nothing inputted" />
+			<StatefulExpandableInput title="No none text" />
+			<StatefulExpandableInput title="No input" noneText="Nothing inputted" />
 			<StatefulExpandableInput title="Expandable Input" />
 			<Divider>Aria-labeled Input</Divider>
 			<StatefulInput iconBefore="plus" aria-label="add input" />

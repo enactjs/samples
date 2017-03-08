@@ -3,7 +3,7 @@ import React from 'react';
 
 const View = ({className, title, view: ComponentView}) => (
 	<Panel className={className}>
-		<Header title={title} type='compact' />
+		<Header title={title} type="compact" />
 		<ComponentView />
 	</Panel>
 );
