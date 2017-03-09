@@ -20,6 +20,7 @@ import Input from '../views/Input';
 import ItemView from '../views/Item';
 import Picker from '../views/Picker';
 import ProgressBar from '../views/ProgressBar';
+import ReadOrder from '../views/ReadOrder';
 import Slider from '../views/Slider';
 
 const views = [
@@ -33,6 +34,7 @@ const views = [
 	{title: 'Item', view: ItemView},
 	{title: 'Picker', view: Picker},
 	{title: 'ProgressBar', view: ProgressBar},
+	{title: 'ReadOrder', view: ReadOrder},
 	{title: 'Slider', view: Slider}
 ];
 
