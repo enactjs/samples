@@ -2,6 +2,7 @@
 
 import Button from '@enact/moonstone/Button'
 import kind from '@enact/core/kind';
+import Region from '@enact/moonstone/Region';
 import React from 'react';
 import Scroller from '@enact/moonstone/Scroller'
 
@@ -12,83 +13,77 @@ const ReadOrder = kind({
 		<Scroller {...props}>
 			<h2>Single Level</h2>
 
-			<h3>With aria-label</h3>
-			<div role="region" aria-label="The Panel">
-				<p>Focusing the "button" should read "The Panel, Button"</p>
-				<Button>Button</Button>
-			</div>
-
-			<h3>With aria-labelledby</h3>
-			<div role="region" aria-labelledby="header">
-				<div id="header">The Panel</div>
-				<p>Focusing the "button" should read "The Panel, Button"</p>
-				<Button>Button</Button>
-			</div>
-
-			<h3>With aria-labelledby + aria-label</h3>
-			<div role="region" aria-labelledby="header">
-				<div id="header" aria-label="The Panel">Header</div>
-				<p>Focusing the "button" should read "The Panel, Button"</p>
-				<Button>Button</Button>
-			</div>
-
-			<h3>Switching Focus Within Level</h3>
-			<div role="region" aria-label="The Panel">
-				<p>Focusing the "button" should read "The Panel, Button 1"</p>
+			<Region title="With aria-label">
+				<p>Focusing Button 1 should read "With aria-label, Button 1, button"</p>
 				<Button>Button 1</Button>
-				<p>Focusing the next "button" should read "Button 2"</p>
+			</Region>
+
+			<Region title="With aria-labelledby" aria-labelledby="header1">
+				<div id="header1">The Panel</div>
+				<p>Focusing Button 2 should read "The Panel, Button 2, button"</p>
 				<Button>Button 2</Button>
-			</div>
+			</Region>
+
+			<Region title="With aria-labelledby + aria-label" aria-labelledby="header2">
+				<div id="header2" aria-label="The Panel">Header (with aria-label="The Panel")</div>
+				<p>Focusing Button 3 should read "The Panel, Button 3, button"</p>
+				<Button>Button 3</Button>
+			</Region>
+
+			<Region title="Switching Focus Within Level">
+				<p>Focusing Button 4 should read "Switching Focus Within Level, Button 4, button"</p>
+				<Button>Button 4</Button>
+				<p>Focusing Button 5 should read "Button 5, button"</p>
+				<Button>Button 5</Button>
+			</Region>
 
 			<h2>Multi Level</h2>
 
-			<h3>With aria-label</h3>
-			<div role="region" aria-label="The Panel">
-				<p>Focusing the "button" should read "The Panel, Popup, Button"</p>
+			<Region title="With aria-label">
+				<p>Focusing Button 6 should read "With aria-label, Popup, Button 6, button"</p>
 				<div role="dialog" aria-label="Popup">
-					<Button>Button</Button>
+					<p>Dialog with aria-label="Popup"</p>
+					<Button>Button 6</Button>
 				</div>
-			</div>
+			</Region>
 
-			<h3>With aria-labelledby</h3>
-			<div role="region" aria-labelledby="header">
-				<div id="header">The Panel</div>
-				<p>Focusing the "button" should read "The Panel, Popup, Button"</p>
-				<div role="dialog" aria-labelledby="dialogtitle">
-					<div id="dialogtitle">Popup</div>
-					<Button>Button</Button>
+			<Region title="With aria-labelledby" aria-labelledby="header3">
+				<div id="header3">The Panel</div>
+				<p>Focusing Button 7 should read "The Panel, Popup, Button 7, button"</p>
+				<div role="dialog" aria-labelledby="dialogtitle1">
+					<div id="dialogtitle1">Popup</div>
+					<Button>Button 7</Button>
 				</div>
-			</div>
+			</Region>
 
-			<h3>With aria-labelledby + aria-label</h3>
-			<div role="region" aria-labelledby="header">
-				<div id="header" aria-label="The Panel">Header</div>
-				<p>Focusing the "button" should read "The Panel, Popup, Button"</p>
+			<Region title="With aria-labelledby + aria-label" aria-labelledby="header4">
+				<div id="header4" aria-label="The Panel">Header</div>
+				<p>Focusing Button 8 should read "The Panel, Popup, Button 8, button"</p>
 				<div role="dialog" aria-label="Popup">
-					<div id="dialogtitle" aria-label="Popup">Dialog Title</div>
-					<Button>Button</Button>
+					<p>Dialog with aria-label="Popup"</p>
+					<Button>Button 8</Button>
 				</div>
-			</div>
+			</Region>
 
-			<h3>Moving down a Level</h3>
-			<div role="region" aria-label="The Panel">
-				<p>Focusing the "button" should read "The Panel, Button 2"</p>
-				<Button>Button 2</Button>
-				<p>Focusing the "button" should read "Popup, Button 1"</p>
+			<Region title="Moving down a Level">
+				<p>Focusing Button 9 should read "Moving down a Level, Button 9, button"</p>
+				<Button>Button 9</Button>
+				<p>Focusing Button 10 should read "Popup, Button 10, button"</p>
 				<div role="dialog" aria-label="Popup">
-					<Button>Button 1</Button>
+					<p>Dialog with aria-label="Popup"</p>
+					<Button>Button 10</Button>
 				</div>
-			</div>
+			</Region>
 
-			<h3>Moving up a Level</h3>
-			<div role="region" aria-label="The Panel">
-				<p>Focusing the "button" should read "The Panel, Popup, Button 1"</p>
+			<Region title="Moving up a Level">
+				<p>Focusing Button 11 should read "Moving up a Level, Popup, Button 11, button"</p>
 				<div role="dialog" aria-label="Popup">
-					<Button>Button 1</Button>
+					<p>Dialog with aria-label="Popup"</p>
+					<Button>Button 11</Button>
 				</div>
-				<p>Focusing the "button" should read "The Panel, Button 2"</p>
-				<Button>Button 2</Button>
-			</div>
+				<p>Focusing Button 12 should read "Moving up a Level, Button 12, button"</p>
+				<Button>Button 12</Button>
+			</Region>
 		</Scroller>
 	)
 });
