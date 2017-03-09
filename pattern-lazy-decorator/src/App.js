@@ -7,7 +7,7 @@ import Icon from '@enact/moonstone/Icon';
 import IconButton from '@enact/moonstone/IconButton';
 import {ItemBase} from '@enact/moonstone/Item';
 import kind from '@enact/core/kind';
-import LazyDecorator from '@enact/moonstone/LazyDecorator';
+import LazyChildrenDecorator from '@enact/moonstone/LazyChildrenDecorator';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React, {Component, PropTypes} from 'react';
 import Repeater from '@enact/ui/Repeater';
@@ -15,6 +15,7 @@ import Resizable from '@enact/ui/Resizable';
 import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
 import {Spottable} from '@enact/spotlight';
+import VirtualList from '@enact/moonstone/VirtualList';
 
 import css from './App.less';
 
@@ -114,11 +115,11 @@ const Message = kind({
 		onDelete: ({onDelete}) => (index) => () => onDelete(index)
 	},
 
-	render: ({children, contentText, contentTextClassName, 'data-index': index, messageClassName, moreLessIcon, moreLessText, onClick, onDelete}) => {
+	render: ({children, contentText, contentTextClassName, 'data-index': index, messageClassName, moreLessIcon, moreLessText, onClick, onDelete, style}) => {
 		const {action, iconType, more, received} = children;
 
 		return (
-			<div className={messageClassName} data-index={index} key={index}>
+			<div className={messageClassName} data-index={index} key={index} style={style}>
 				<Icon small={false}>{iconType}</Icon>
 				<div>{received}</div>
 				<div>
@@ -138,24 +139,19 @@ const ExpandableMessage = Resizable(
 	{resize: 'onOpen'},
 	Changeable({prop: 'open', change: 'onOpen'}, Message)
 );
-const LazyRepeater = LazyDecorator(Repeater);
+const LazyRepeater = LazyChildrenDecorator(Repeater);
 
-const iconData = ['gear', 'star', 'lock', 'plug', 'flag'];
-const shortText = $L('Welcome to your new LG webOS TV! We appreciate you choosing LG and have designed your new TV to make enjoying an unparalleled entertainment experience as simple as possible.<br><br>- Simple Switching: Easily switch between channels, input sources and apps all from your customizable Home screen.<br>- Simple Connections: It’s never been easier to set up your TV and connect all the devices you use to watch your favorite shows and movies, play games, listen to music and more.<br>- Simple Discovery: Find programming from all your live and streaming sources that match your taste and interests.<br><br>Visit the LG store to find a wide selection of apps, games, VODs and more. You can also find content by using your TV’s built-in search and recommendation functions.');
 const longText = $L('Welcome to your new LG webOS UHD Broadcast Box! We appreciate you choosing LG and have designed your new UHD Broadcast Box to make enjoying an unparalleled entertainment experience as simple as possible.<br><br>- Simple Switching: Easily switch between channels, input sources and apps all from your customizable Home screen.<br>- Simple Connections: It’s never been easier to set up your UHD Broadcast Box and connect all the devices you use to watch your favorite shows and movies, play games, listen to music and more.<br>- Simple Discovery: Find programming from all your live and streaming sources that match your taste and interests.<br><br>Visit the LG store to find a wide selection of apps, games, VODs and more. You can also find content by using your UHD Broadcast Box’s built-in search and recommendation functions.');
-const receivedData = ['3/1, 11:27 PM', '6/3, 04:21 AM', '1/1, 01:01 PM', '12/11, 11:11 AM', '3/31, 11:59 PM'];
 const items = [];
 const getNewItem = (index) => {
-	const isShortMessage = !!(Math.round(Math.random()));
-
 	return {
-		action: !!(Math.round(Math.random())),
-		iconType: iconData[parseInt(Math.random() * 5)],
-		message: isShortMessage ? (`[${index}] ${shortText}`) : (`[${index}] ${longText}`),
-		more: !isShortMessage,
+		action: true,
+		iconType: 'gear',
+		message: (`[${index}] ${longText}`),
+		more: true,
 		moreOpen: false,
-		height: (isShortMessage ? ri.scale(115) : ri.scale(142)),
-		received: receivedData[parseInt(Math.random() * 5)]
+		height: ri.scale(142),
+		received: '3/1, 11:27 PM'
 	};
 };
 for (let i = 0; i < 50; i++) {
@@ -183,6 +179,16 @@ const reducer = (state = items, action) => {
 const addItem    = (child)  => ({type: types.ADD_ITEM, child});
 const deleteItem = (index) => ({type: types.DELETE_ITEM, index});
 
+const renderItem = ({data, index, ...rest}) => {
+	return (
+		<ExpandableMessage {...rest} data-index={index}>
+			{data[index]}
+		</ExpandableMessage>
+	);
+};
+
+const testCase = 0;
+
 class NotificationCenterSample extends Component {
 	constructor (props) {
 		super(props);
@@ -208,17 +214,38 @@ class NotificationCenterSample extends Component {
 
 		return (
 			<div {...this.props}>
-				<Scroller horizontal="hidden" className={css.scroller}>
-					<LazyRepeater
-						childComponent={ExpandableMessage}
-						className={css.lazyList}
-						itemProps={{
-							onDelete: this.deleteItem
-						}}
-					>
-						{data}
-					</LazyRepeater>
-				</Scroller>
+				{
+					(testCase === 0) ?
+						<Scroller horizontal="hidden" className={css.scroller}>
+							<LazyRepeater
+								childComponent={ExpandableMessage}
+								itemProps={{
+									onDelete: this.deleteItem
+								}}
+							>
+								{data}
+							</LazyRepeater>
+						</Scroller>
+					: (testCase === 1) ?
+						<Scroller horizontal="hidden" className={css.scroller}>
+							<Repeater
+								childComponent={ExpandableMessage}
+								itemProps={{
+									onDelete: this.deleteItem
+								}}
+							>
+								{data}
+							</Repeater>
+						</Scroller>
+					:
+						<VirtualList
+							component={renderItem}
+							data={data}
+							dataSize={data.length}
+							itemSize={ri.scale(142)}
+							className={css.scroller}
+						/>
+				}
 				<Button onClick={this.addItem} className={css.button}>Add</Button>
 			</div>
 		);
