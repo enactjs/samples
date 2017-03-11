@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 
 const lunaService = (state = {}, action) => {
 	switch (action.type) {
-		case 'LS2REQUEST_COMPLETE':
+		case 'LS2REQUEST_SUCCESS':
 			return {
 				...state,
 				...action.payload

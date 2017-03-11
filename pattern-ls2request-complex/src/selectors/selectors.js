@@ -5,7 +5,7 @@ const getCurrentCountryGroup = (state) =>  state.lunaService.shortName || '';
 const getTvSystemName = (state) =>  state.lunaService.tvSystemName || '';
 const getDeviceAuthenticationStatus = (state) =>  state.lunaService.isDeviceAuthenticated || '';
 
-const getValue = createSelector(
+const getComplexValue = createSelector(
 	[getAppId, getCurrentCountryGroup, getTvSystemName, getDeviceAuthenticationStatus],
 	(appId, shortName, tvSystemName, isDeviceAuthenticated) => {
 		// do complex logic to select value
@@ -23,4 +23,4 @@ const getValue = createSelector(
 	}
 );
 
-export {getValue};
+export {getComplexValue};

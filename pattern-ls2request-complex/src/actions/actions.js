@@ -25,9 +25,9 @@ const services = [
 	}
 ];
 
-const handleLS2RequestSuccessBatch = payload => {
+const handleLS2RequestSuccess = payload => {
 	return {
-		type: 'LS2REQUEST_COMPLETE',
+		type: 'LS2REQUEST_SUCCESS',
 		payload
 	};
 };
@@ -38,7 +38,7 @@ const sendLS2Request = () => dispatch => {
 			service,
 			method,
 			parameters,
-			onSuccess: (res) => dispatch(handleLS2RequestSuccessBatch(res)),
+			onSuccess: (res) => dispatch(handleLS2RequestSuccess(res)),
 			onFailure: (res) => console.error(res)
 		});
 	});

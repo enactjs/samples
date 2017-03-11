@@ -5,7 +5,7 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 import {connect} from 'react-redux';
 
 import {sendLS2Request} from '../actions';
-import {getValue} from '../selectors';
+import {getComplexValue} from '../selectors';
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -26,7 +26,7 @@ const MainPanel = kind({
 
 const mapStatesToProps = (state) => {
 	return {
-		value: getValue(state)
+		value: getComplexValue(state)
 	};
 };
 
