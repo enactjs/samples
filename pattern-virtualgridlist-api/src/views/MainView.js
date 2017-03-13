@@ -1,6 +1,4 @@
 import React from 'react';
-import {Spotlight} from '@enact/spotlight';
-import {startJob} from '@enact/core/jobs';
 
 import SideBar from '../components/SideBar';
 import ImageList from '../components/ImageList';
@@ -20,7 +18,7 @@ class MainView extends React.Component {
 	onChange = (ev) => {
 		const album = ev.value;
 		this.props.onChangeAlbum(album);
-		this.scrollTo({index: 0, animate: false, focus: true});
+		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
 	}
 
 	getScrollTo = (scrollTo) => {
@@ -30,7 +28,7 @@ class MainView extends React.Component {
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, focus: true});
+		this.scrollTo({index: 60, animate: false, indexToFocus: 60});
 	}
 
 	render = () => {
