@@ -18,13 +18,13 @@ for (let i = 0; i < 1000; i++) {
 
 class PatternListBase extends Component {
 	static propTypes = {
-		onClick: PropTypes.func,
-		onWillUnmount: PropTypes.func,
 		lastScrollInfo: PropTypes.shape({
 			lastScrollLeft: PropTypes.number,
 			lastScrollTop:  PropTypes.number,
 			lastFocusedIndex: PropTypes.number
-		})
+		}),
+		onClick: PropTypes.func,
+		onWillUnmount: PropTypes.func
 	}
 
 	static defaultProps = {
@@ -35,14 +35,11 @@ class PatternListBase extends Component {
 		}
 	}
 
-	renderItem = (onClick) => (props) => {
-		const {data, index, ...rest} = props;
-		return (
-			<Item {...rest} onClick={onClick}>
-				{data[index]}
-			</Item>
-		);
-	}
+	renderItem = ({data, index, ...rest}) => (
+		<Item {...rest} onClick={this.props.onClick}>
+			{data[index]}
+		</Item>
+	)
 
 	getScrollTo = (fn) => {
 		this.scrollTo = fn;
@@ -54,17 +51,17 @@ class PatternListBase extends Component {
 	}
 
 	render = () => {
-		const {onWillUnmount, onClick, index, ...rest} = this.props;
+		const {onWillUnmount, ...rest} = this.props;
 		delete rest.lastScrollInfo;
 
 		return (
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
-				component={this.renderItem(onClick)}
+				component={this.renderItem}
 				data={items}
 				dataSize={items.length}
 				itemSize={ri.scale(72)}
-				onWillUnmount={onWillUnmount(index)}
+				onWillUnmount={onWillUnmount}
 				style={listStyle}
 			/>
 		);
@@ -72,15 +69,13 @@ class PatternListBase extends Component {
 
 }
 
-const mapStateToProps = ({lastScrollInfo, index}) => ({
+const mapStateToProps = ({lastScrollInfo}, {index}) => ({
 	lastScrollInfo: lastScrollInfo[index]
 });
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onWillUnmount: (index) => (info) => dispatch(saveLastScrollInfo(index, info))
-	};
-};
+const mapDispatchToProps = (dispatch, {index}) => ({
+	onWillUnmount: (info) => dispatch(saveLastScrollInfo(index, info))
+});
 
 const PatternList = connect(mapStateToProps, mapDispatchToProps)(PatternListBase);
 
