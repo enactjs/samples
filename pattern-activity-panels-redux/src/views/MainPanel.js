@@ -27,7 +27,7 @@ const MainPanel = kind({
 			<Header title={title}>
 				<Button onClick={onClick}>Click me</Button>
 			</Header>
-			<PatternList onClick={onClick} index={rest['data-index']} />
+			<PatternList index={rest['data-index']} onClick={onClick} />
 		</Panel>
 	)
 });

@@ -5,12 +5,9 @@ import ri from '@enact/ui/resolution';
 import {VirtualList} from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
+import css from './PatternList.less';
 
-const
-	listStyle = {
-		height: ri.scale(360) + 'px'
-	},
-	items = [];
+const items = [];
 
 for (let i = 0; i < 1000; i++) {
 	items.push('Item ' + ('00' + i).slice(-3));
@@ -62,7 +59,7 @@ class PatternListBase extends Component {
 				dataSize={items.length}
 				itemSize={ri.scale(72)}
 				onWillUnmount={onWillUnmount}
-				style={listStyle}
+				className={css.list}
 			/>
 		);
 	}
