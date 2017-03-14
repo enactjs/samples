@@ -27,13 +27,17 @@ class LocaleSwitch extends Component {
 		this.context.updateLocale(this.state.value);
 	}
 
+	updateReduxLocale = () => {
+		this.props.updateReduxLocale(this.state.value);
+	}
+
 	render () {
 		return (
 			<div>
 				<p>This locale {this.context.rtl ? 'is' : 'isn\'t'} RTL</p>
 				<Input value={this.state.value} onChange={this.handleChange} placeholder="Try 'ar-SA'" />
 				<Button onClick={this.updateContextLocale}>Update Context</Button>
-				<Button onClick={() => this.props.updateReduxLocale(this.state.value)}>Update Redux</Button>
+				<Button onClick={this.updateReduxLocale}>Update Redux</Button>
 			</div>
 		);
 	}
