@@ -187,7 +187,33 @@ const renderItem = ({data, index, ...rest}) => {
 	);
 };
 
-const testCase = 0;
+const renderSimpleDivItem = ({children, data, index, ...rest}) => {
+	let child = children || data;
+
+	child = child[index] || child;
+
+	return (
+		<div {...rest} className={css.simpleDiv} data-index={index} key={index}>
+			{child.received}
+		</div>
+	);
+};
+
+// const testCase = 0; // Scroller + LazyChildrenDecorator + Repeater + 50 ExpandableMessage
+// const testCase = 1; // Scroller + Repeater + 50 ExpandableMessage
+// const testCase = 2; // VirtualList + 50 ExpandableMessage
+// const testCase = 3; // Repeater + 50 ExpandableMessage
+// const testCase = 4; // Array.map + 50 ExpandableMessage
+// const testCase = 5; // 1 ExpandableMessage
+
+// const testCase = 10; // Scroller + LazyChildrenDecorator + Repeater + 50 div
+// const testCase = 11; // Scroller + Repeater + 50 div
+// const testCase = 12; // VirtualList + 50 div
+// const testCase = 13; // Repeater + 50 div
+// const testCase = 14; // Array.map + 50 div
+// const testCase = 15; // 1 div
+
+const testCase = 99; // null
 
 class NotificationCenterSample extends Component {
 	constructor (props) {
@@ -212,40 +238,111 @@ class NotificationCenterSample extends Component {
 	render () {
 		const data = this.state.data;
 
+		const children = (
+			(testCase === 0) ?
+				<Scroller horizontal="hidden" className={css.scroller}>
+					<LazyRepeater
+						childComponent={ExpandableMessage}
+						itemProps={{
+							onDelete: this.deleteItem
+						}}
+					>
+						{data}
+					</LazyRepeater>
+				</Scroller>
+			: (testCase === 1) ?
+				<Scroller horizontal="hidden" className={css.scroller}>
+					<Repeater
+						childComponent={ExpandableMessage}
+						itemProps={{
+							onDelete: this.deleteItem
+						}}
+					>
+						{data}
+					</Repeater>
+				</Scroller>
+			: (testCase === 2) ?
+				<VirtualList
+					component={renderItem}
+					data={data}
+					dataSize={data.length}
+					itemSize={ri.scale(142)}
+					className={css.scroller}
+				/>
+			: (testCase === 3) ?
+				<Repeater
+					childComponent={ExpandableMessage}
+					className={css.scroller}
+					itemProps={{
+						onDelete: this.deleteItem
+					}}
+				>
+					{data}
+				</Repeater>
+			: (testCase === 4) ?
+				<div className={css.scroller}>
+					{data.map((value, index, data) => renderItem({data, index}))}
+				</div>
+			: (testCase === 5) ?
+				<div className={css.scroller}>
+					{renderItem({data, index: 0})}
+				</div>
+			: (testCase === 10) ?
+				<Scroller horizontal="hidden" className={css.scroller}>
+					<LazyRepeater
+						childComponent={renderSimpleDivItem}
+						itemProps={{
+							onDelete: this.deleteItem
+						}}
+					>
+						{data}
+					</LazyRepeater>
+				</Scroller>
+			: (testCase === 11) ?
+				<Scroller horizontal="hidden" className={css.scroller}>
+					<Repeater
+						childComponent={renderSimpleDivItem}
+						itemProps={{
+							onDelete: this.deleteItem
+						}}
+					>
+						{data}
+					</Repeater>
+				</Scroller>
+			: (testCase === 12) ?
+				<VirtualList
+					component={renderSimpleDivItem}
+					data={data}
+					dataSize={data.length}
+					itemSize={ri.scale(142)}
+					className={css.scroller}
+				/>
+			: (testCase === 13) ?
+				<Repeater
+					childComponent={renderSimpleDivItem}
+					className={css.scroller}
+					itemProps={{
+						onDelete: this.deleteItem
+					}}
+				>
+					{data}
+				</Repeater>
+			: (testCase === 14) ?
+				<div className={css.scroller}>
+					{data.map((value, index, data) => renderSimpleDivItem({children: data, index}))}
+				</div>
+			: (testCase === 15) ?
+				<div className={css.scroller}>
+					{renderSimpleDivItem({children: data, index: 0})}
+				</div>
+			: (testCase === 99) ?
+				null
+			: ''
+		);
+
 		return (
 			<div {...this.props}>
-				{
-					(testCase === 0) ?
-						<Scroller horizontal="hidden" className={css.scroller}>
-							<LazyRepeater
-								childComponent={ExpandableMessage}
-								itemProps={{
-									onDelete: this.deleteItem
-								}}
-							>
-								{data}
-							</LazyRepeater>
-						</Scroller>
-					: (testCase === 1) ?
-						<Scroller horizontal="hidden" className={css.scroller}>
-							<Repeater
-								childComponent={ExpandableMessage}
-								itemProps={{
-									onDelete: this.deleteItem
-								}}
-							>
-								{data}
-							</Repeater>
-						</Scroller>
-					:
-						<VirtualList
-							component={renderItem}
-							data={data}
-							dataSize={data.length}
-							itemSize={ri.scale(142)}
-							className={css.scroller}
-						/>
-				}
+				{children}
 				<Button onClick={this.addItem} className={css.button}>Add</Button>
 			</div>
 		);
