@@ -18,8 +18,8 @@ const MainPanel = kind({
 		text: ({next}) => `To ${next} Panel`
 	},
 
-	render: ({title, onClick, text}) => (
-		<Panel>
+	render: ({title, onClick, text, ...rest}) => (
+		<Panel {...rest}>
 			<Header title={title} />
 			<RouteTree />
 			<Button onClick={onClick}>{text}</Button>

@@ -20,8 +20,8 @@ const MainPanel = kind({
 		title: PropTypes.string
 	},
 
-	render: ({title, onClick}) => (
-		<Panel>
+	render: ({title, onClick, ...rest}) => (
+		<Panel {...rest}>
 			<Header title={title} />
 			<Button onClick={onClick}>Click me</Button>
 		</Panel>

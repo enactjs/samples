@@ -17,10 +17,10 @@ const App = kind({
 		path: React.PropTypes.string
 	},
 
-	computed: {
-		onSecondPanel: ({onNavigate}) => () => onNavigate({path: '/first/second'}),
-		onThirdPanel: ({onNavigate}) => () => onNavigate({path: '/first/second/third'}),
-		onFourthPanel: ({onNavigate}) => () => onNavigate({path: '/first/second/third/fourth'})
+	handlers: {
+		onSecondPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second'}),
+		onThirdPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second/third'}),
+		onFourthPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second/third/fourth'})
 	},
 
 	render: ({onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {

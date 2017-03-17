@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
+import ButtonPanel from '../views/ButtonPanel';
+import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
 class App extends React.Component {
@@ -28,8 +30,8 @@ class App extends React.Component {
 		return (
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
 				<MainPanel title="First" onClick={this.handleClick} />
-				<MainPanel title="Second" onClick={this.handleClick} />
-				<MainPanel title="Third" onClick={this.handleClick} />
+				<ItemPanel title="Second" onClick={this.handleClick} />
+				<ButtonPanel title="Third" onClick={this.handleClick} />
 				<MainPanel title="Fourth" />
 			</ActivityPanels>
 		);
