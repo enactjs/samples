@@ -1,7 +1,7 @@
 {
   "name": "pattern-locale-switching",
   "version": "1.0.0",
-  "description": "A sample app to show off locale switching in an enact app",
+  "description": "A sample app to show off locale switching in an Enact app",
   "author": "",
   "main": "src/index.js",
   "scripts": {
