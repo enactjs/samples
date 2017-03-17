@@ -9,9 +9,9 @@ const SideBar = kind({
 	name: 'SideBar',
 
 	propTypes: {
+		albums: PropTypes.array,
 		onAlbumChange: PropTypes.func.isRequired,
-		selectedAlbum: PropTypes.string.isRequired,
-		albums: PropTypes.array
+		selectedAlbum: PropTypes.string.isRequired
 	},
 
 	styles: {
@@ -20,22 +20,20 @@ const SideBar = kind({
 	},
 
 	computed: {
-		albumList: ({albums, onAlbumChange, selectedAlbum}) => {
-			return albums.map((album, index) => {
-				return (
-					<div key={index}>
-						<SelectableItem
-							onToggle={onAlbumChange}
-							selected={selectedAlbum === album}
-							value={album}
-						>
-							{album}
-						</SelectableItem>
-						<Divider spacing="small" />
-					</div>
-				);
-			});
-		}
+		albumList: ({albums, onAlbumChange, selectedAlbum}) => albums.map((album, index) => {
+			return (
+				<div key={index}>
+					<SelectableItem
+						onToggle={onAlbumChange}
+						selected={selectedAlbum === album}
+						value={album}
+					>
+						{album}
+					</SelectableItem>
+					<Divider spacing="small" />
+				</div>
+			);
+		})
 	},
 
 	render: ({albumList, ...rest}) => {

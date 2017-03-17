@@ -12,9 +12,9 @@ const ImageItem = kind({
 
 	propTypes: {
 		caption: React.PropTypes.string,
-		dataIndex: React.PropTypes.number,
 		selected: React.PropTypes.bool,
 		selectImageItem: React.PropTypes.func,
+		selectionOverlayShowing: React.PropTypes.bool,
 		source: React.PropTypes.string,
 		subCaption: React.PropTypes.string
 	},
@@ -25,7 +25,7 @@ const ImageItem = kind({
 	},
 
 	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
-		delete rest.dataIndex;
+		delete rest.index;
 
 		return (
 			<GridListImageItem
@@ -41,16 +41,15 @@ const ImageItem = kind({
 	}
 });
 
-const mapStateToProps = ({datas, ...rest}, {dataIndex}) => ({
-	caption: datas.datas[dataIndex].caption,
-	selected: datas.selectedItems.has(dataIndex),
-	selectionOverlayShowing: datas.datas[dataIndex].selectionOverlayShowing,
-	source: datas.datas[dataIndex].source,
-	subCaption: datas.datas[dataIndex].subCaption
+const mapStateToProps = ({data}, {['data-index']: dataIndex}) => ({
+	caption: data.data[dataIndex].caption,
+	selected: data.selectedItems.has(dataIndex),
+	selectionOverlayShowing: data.data[dataIndex].selectionOverlayShowing,
+	source: data.data[dataIndex].source,
+	subCaption: data.data[dataIndex].subCaption
 });
 
-
-const mapDispatchToProps = (dispatch, {dataIndex}) => {
+const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
 	return {
 		selectImageItem: () => dispatch(selectItem(dataIndex))
 	};

@@ -2,8 +2,8 @@ import {connect} from 'react-redux';
 
 import {changeAlbum} from '../actions';
 
-const mapStateToProps = ({datas}) => ({
-	album: datas.album
+const mapStateToProps = ({data}) => ({
+	album: data.album
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SideBar from '../components/SideBar';
-import ImageList from '../components/ImageList';
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
+import ImageList from '../components/ImageList';
+import SideBar from '../components/SideBar';
 
 import AppStateDecorator from './AppStateDecorator';
 import css from './MainView.less';
@@ -24,7 +24,7 @@ class MainView extends React.Component {
 		this.scrollTo = scrollTo;
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate () {
 		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
 	}
 
@@ -39,7 +39,7 @@ class MainView extends React.Component {
 
 		return (
 			<div className={css.mainView}>
-				<GalleryPanelHeader title="My Gallery"/>
+				<GalleryPanelHeader title="My Gallery" />
 				<div className={css.content}>
 					<SideBar
 						albums={albums}

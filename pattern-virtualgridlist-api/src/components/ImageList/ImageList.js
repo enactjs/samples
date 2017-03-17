@@ -7,18 +7,11 @@ import ImageItem from '../ImageItem';
 
 class ImageList extends React.Component {
 	static propTypes = {
-		imageitems: PropTypes.array,
-		dispatch: PropTypes.func
+		dispatch: PropTypes.func,
+		imageitems: PropTypes.array
 	}
 
-	renderItem = ({data, index, ...rest}) => {
-		return (
-			<ImageItem
-				dataIndex={data[index]}
-				{...rest}
-			/>
-		);
-	}
+	renderItem = ({...rest}) => (<ImageItem {...rest} />)
 
 	render = () => {
 		const
@@ -34,16 +27,15 @@ class ImageList extends React.Component {
 				component={this.renderItem}
 				data={imageitems}
 				dataSize={imageitems.length}
-				itemSize={{minWidth: ri.scale(180), minHeight: ri.scale(270)}}
+				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
 				spacing={ri.scale(21)}
 			/>
 		);
-
 	}
 }
 
-const mapStateToProps = ({datas}) => ({
-	imageitems: datas.datasOrder
+const mapStateToProps = ({data}) => ({
+	imageitems: data.dataOrder
 });
 
 export default connect(mapStateToProps)(ImageList);
