@@ -2,9 +2,9 @@ import React, {PropTypes} from 'react';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
-import ButtonPanel from '../views/ButtonPanel';
-import ItemPanel from '../views/ItemPanel';
-import MainPanel from '../views/MainPanel';
+import FirstPanel from '../views/FirstPanel';
+import SecondPanel from '../views/SecondPanel';
+import ThirdPanel from '../views/ThirdPanel';
 
 class App extends React.Component {
 	static propTypes = {
@@ -24,15 +24,15 @@ class App extends React.Component {
 
 	handleSelectBreadcrumb = ({index}) => this.setState({index})
 
-	handleClick = () => this.setState({index: this.state.index + 1})
+	handleNext = () => this.setState({index: this.state.index + 1})
+
+	handlePrevious = () => this.setState({index: this.state.index - 1})
 
 	render () {
 		return (
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} />
-				<ItemPanel title="Second" onClick={this.handleClick} />
-				<ButtonPanel title="Third" onClick={this.handleClick} />
-				<MainPanel title="Fourth" />
+				<FirstPanel title="USING ES5" onClick={this.handleNext} />
+				<SecondPanel title="USING ES6" onClick={this.handlePrevious} />
 			</ActivityPanels>
 		);
 	}
