@@ -41,9 +41,8 @@ const views = [
 const AppBase = kind({
 	computed: {
 		handleChange: ({onIndex}) => ({selected}) => {
-			if (selected !== null) {
-				onIndex({index: selected});
-			}
+			console.log("selected value: " + selected);
+			onIndex({index: selected});
 		}
 	},
 
