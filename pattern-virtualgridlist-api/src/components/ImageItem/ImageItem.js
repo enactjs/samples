@@ -12,6 +12,7 @@ const ImageItem = kind({
 
 	propTypes: {
 		caption: React.PropTypes.string,
+		index: React.PropTypes.number,
 		selected: React.PropTypes.bool,
 		selectImageItem: React.PropTypes.func,
 		selectionOverlayShowing: React.PropTypes.bool,

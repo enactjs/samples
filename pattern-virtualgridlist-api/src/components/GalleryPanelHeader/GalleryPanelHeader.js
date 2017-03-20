@@ -5,7 +5,12 @@ import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
 import React, {PropTypes} from 'react';
 
-import {addItem, deleteItem, selectAll, selectionEnable} from '../../actions';
+import {
+	addItem as addAction,
+	deleteItem as deleteAction,
+	selectAll as selectAllAction,
+	selectionEnable as selectionEnableAction
+} from '../../actions';
 
 const createMockItem = (album, albumSize, showOverlay) => {
 	const
@@ -80,10 +85,10 @@ const mapStateToProps = ({data}) => ({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addItem: (item) => dispatch(addItem(item)),
-		deleteItem: () => dispatch(deleteItem()),
-		selectionEnable: () => dispatch(selectionEnable()),
-		selectAll: () => dispatch(selectAll())
+		addItem: (item) => dispatch(addAction(item)),
+		deleteItem: () => dispatch(deleteAction()),
+		selectionEnable: () => dispatch(selectionEnableAction()),
+		selectAll: () => dispatch(selectAllAction())
 	};
 };
 

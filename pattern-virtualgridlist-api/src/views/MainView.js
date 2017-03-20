@@ -15,6 +15,16 @@ class MainView extends React.Component {
 		onChangeAlbum: React.PropTypes.func
 	}
 
+	componentDidMount () {
+		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
+		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
+		this.scrollTo({index: 60, animate: false, indexToFocus: 60});
+	}
+
+	componentDidUpdate () {
+		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
+	}
+
 	onChange = (ev) => {
 		const album = ev.value;
 		this.props.onChangeAlbum(album);
@@ -22,16 +32,6 @@ class MainView extends React.Component {
 
 	getScrollTo = (scrollTo) => {
 		this.scrollTo = scrollTo;
-	}
-
-	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
-	}
-
-	componentDidMount () {
-		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
-		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, indexToFocus: 60});
 	}
 
 	render = () => {

@@ -9,9 +9,9 @@ const SideBar = kind({
 	name: 'SideBar',
 
 	propTypes: {
-		albums: PropTypes.array,
 		onAlbumChange: PropTypes.func.isRequired,
-		selectedAlbum: PropTypes.string.isRequired
+		selectedAlbum: PropTypes.string.isRequired,
+		albums: PropTypes.array
 	},
 
 	styles: {
