@@ -7,11 +7,10 @@ import Icon from '@enact/moonstone/Icon';
 import IconButton from '@enact/moonstone/IconButton';
 import {ItemBase} from '@enact/moonstone/Item';
 import kind from '@enact/core/kind';
-import LazyChildrenDecorator from '@enact/moonstone/LazyChildrenDecorator';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React, {Component, PropTypes} from 'react';
 import Repeater from '@enact/ui/Repeater';
-import Resizable from '@enact/ui/Resizable';
+import LazyChildDecorator from '@enact/moonstone/LazyChildDecorator';
 import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
 import {Spottable} from '@enact/spotlight';
@@ -135,11 +134,11 @@ const Message = kind({
 		);
 	}
 });
-const ExpandableMessage = Resizable(
+const ExpandableMessage = LazyChildDecorator(
 	{resize: 'onOpen'},
 	Changeable({prop: 'open', change: 'onOpen'}, Message)
 );
-const LazyRepeater = LazyChildrenDecorator(Repeater);
+// const LazyRepeater = LazyChildrenDecorator(Repeater);
 
 const longText = $L('Welcome to your new LG webOS UHD Broadcast Box! We appreciate you choosing LG and have designed your new UHD Broadcast Box to make enjoying an unparalleled entertainment experience as simple as possible.<br><br>- Simple Switching: Easily switch between channels, input sources and apps all from your customizable Home screen.<br>- Simple Connections: It’s never been easier to set up your UHD Broadcast Box and connect all the devices you use to watch your favorite shows and movies, play games, listen to music and more.<br>- Simple Discovery: Find programming from all your live and streaming sources that match your taste and interests.<br><br>Visit the LG store to find a wide selection of apps, games, VODs and more. You can also find content by using your UHD Broadcast Box’s built-in search and recommendation functions.');
 const items = [];
@@ -213,7 +212,7 @@ const renderSimpleDivItem = ({children, data, index, ...rest}) => {
 // const testCase = 14; // Array.map + 50 div
 // const testCase = 15; // 1 div
 
-const testCase = 99; // null
+const testCase = 1; // null
 
 class NotificationCenterSample extends Component {
 	constructor (props) {
@@ -239,18 +238,7 @@ class NotificationCenterSample extends Component {
 		const data = this.state.data;
 
 		const children = (
-			(testCase === 0) ?
-				<Scroller horizontal="hidden" className={css.scroller}>
-					<LazyRepeater
-						childComponent={ExpandableMessage}
-						itemProps={{
-							onDelete: this.deleteItem
-						}}
-					>
-						{data}
-					</LazyRepeater>
-				</Scroller>
-			: (testCase === 1) ?
+			(testCase === 1) ?
 				<Scroller horizontal="hidden" className={css.scroller}>
 					<Repeater
 						childComponent={ExpandableMessage}
@@ -287,17 +275,6 @@ class NotificationCenterSample extends Component {
 				<div className={css.scroller}>
 					{renderItem({data, index: 0})}
 				</div>
-			: (testCase === 10) ?
-				<Scroller horizontal="hidden" className={css.scroller}>
-					<LazyRepeater
-						childComponent={renderSimpleDivItem}
-						itemProps={{
-							onDelete: this.deleteItem
-						}}
-					>
-						{data}
-					</LazyRepeater>
-				</Scroller>
 			: (testCase === 11) ?
 				<Scroller horizontal="hidden" className={css.scroller}>
 					<Repeater
