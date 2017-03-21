@@ -137,10 +137,20 @@ const Message = kind({
 });
 const ExpandableMessage = LazyChildDecorator(
 	{
-		resize: 'onOpen',
 		initialHeight: 142
 	},
-	Changeable({prop: 'open', change: 'onOpen'}, Message)
+	Resizable(
+		{
+			resize: 'onOpen'
+		},
+		Changeable(
+			{
+				prop: 'open',
+				change: 'onOpen'
+			},
+			Message
+		)
+	)
 );
 
 const longText = $L('Welcome to your new LG webOS UHD Broadcast Box! We appreciate you choosing LG and have designed your new UHD Broadcast Box to make enjoying an unparalleled entertainment experience as simple as possible.<br><br>- Simple Switching: Easily switch between channels, input sources and apps all from your customizable Home screen.<br>- Simple Connections: It’s never been easier to set up your UHD Broadcast Box and connect all the devices you use to watch your favorite shows and movies, play games, listen to music and more.<br>- Simple Discovery: Find programming from all your live and streaming sources that match your taste and interests.<br><br>Visit the LG store to find a wide selection of apps, games, VODs and more. You can also find content by using your UHD Broadcast Box’s built-in search and recommendation functions.');
