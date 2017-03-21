@@ -252,7 +252,7 @@ class NotificationCenterSample extends Component {
 
 		const children = (
 			(testCase === 1) ?
-				<Scroller horizontal="hidden" className={css.scroller}>
+				<Scroller className={css.scroller} horizontal="hidden" lazyChild={true}>
 					<Repeater
 						childComponent={ExpandableMessage}
 						itemProps={{
