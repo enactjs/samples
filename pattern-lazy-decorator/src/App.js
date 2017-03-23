@@ -1,4 +1,4 @@
-import {$L} from '@enact/i18n';
+import $L from '@enact/i18n/$L';
 import Button from '@enact/moonstone/Button';
 import Changeable from '@enact/ui/Changeable';
 import classNames from 'classnames';
@@ -10,14 +10,20 @@ import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React, {Component, PropTypes} from 'react';
 import Repeater from '@enact/ui/Repeater';
-import LazyChildDecorator from '@enact/moonstone/LazyChildDecorator';
+import {PlaceholderContainer, PlaceholderDecorator} from '@enact/ui/Placeholder';
 import Resizable from '@enact/ui/Resizable';
 import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
-import {Spottable} from '@enact/spotlight';
+import Spottable from '@enact/spotlight/Spottable';
 import VirtualList from '@enact/moonstone/VirtualList';
 
 import css from './App.less';
+
+const
+	clientHeight = ri.scale(552),
+	itemHeight = ri.scale(142);
+
+const PlaceholderScroller = PlaceholderContainer({clientHeight}, Scroller);
 
 const SpottableItem = Spottable(ItemBase);
 const MoreLessButton = kind({
@@ -96,17 +102,17 @@ const Message = kind({
 	},
 
 	computed: {
-		messageClassName: ({children, className, open}) => classNames(
+		messageClassName: ({className, more, open}) => classNames(
 			className,
-			children.more ? css.messageMore : null,
+			more ? css.messageMore : null,
 			open ? css.messageExpand : null
 		),
-		contentTextClassName: ({children, open}) => classNames(
+		contentTextClassName: ({more, open}) => classNames(
 			css.contentText,
-			children.more ? css.more : null,
+			more ? css.more : null,
 			open ? css.expand : null
 		),
-		contentText: ({children}) => children.message,
+		contentText: ({message}) => message,
 		moreLessText: ({open}) => (open ? 'less' : 'more'),
 		moreLessIcon: ({open}) => (open ? 'arrowsmallup' : 'arrowsmalldown'),
 		onClick: ({onOpen, open}) => () => {
@@ -115,9 +121,7 @@ const Message = kind({
 		onDelete: ({onDelete}) => (index) => () => onDelete(index)
 	},
 
-	render: ({children, contentText, contentTextClassName, 'data-index': index, messageClassName, moreLessIcon, moreLessText, onClick, onDelete, style}) => {
-		const {action, iconType, more, received} = children;
-
+	render: ({action, contentText, contentTextClassName, 'data-index': index, iconType, messageClassName, more, moreLessIcon, moreLessText, onClick, onDelete, received, style}) => {
 		return (
 			<div className={messageClassName} data-index={index} key={index} style={style}>
 				<Icon small={false}>{iconType}</Icon>
@@ -135,9 +139,9 @@ const Message = kind({
 		);
 	}
 });
-const ExpandableMessage = LazyChildDecorator(
+const ExpandableMessage = PlaceholderDecorator(
 	{
-		initialHeight: 142
+		initialHeight: itemHeight
 	},
 	Resizable(
 		{
@@ -162,22 +166,25 @@ const getNewItem = (index) => {
 		message: (`[${index}] ${longText}`),
 		more: true,
 		moreOpen: false,
-		height: ri.scale(142),
+		height: itemHeight,
 		received: '3/1, 11:27 PM'
 	};
 };
-for (let i = 0; i < 50; i++) {
-	items[i] = getNewItem(i);
-}
+// for (let i = 0; i < 50; i++) {
+// 	items[i] = getNewItem(i);
+// }
 
 const types = {
-	ADD_ITEM   : 'ADD_ITEM',
+	ADD_ITEM: 'ADD_ITEM',
+	ADD_ITEMS: 'ADD_ITEMS',
 	DELETE_ITEM: 'DELETE_ITEM'
 };
-const reducer = (state = items, action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
 		case types.ADD_ITEM:
 			return [action.child, ...state];
+		case types.ADD_ITEMS:
+			return [...action.child, ...state];
 		case types.DELETE_ITEM:
 			if (0 <= action.index && action.index < state.length) {
 				return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
@@ -188,7 +195,8 @@ const reducer = (state = items, action) => {
 			return state;
 	}
 };
-const addItem    = (child)  => ({type: types.ADD_ITEM, child});
+const addItem = (child) => ({type: types.ADD_ITEM, child});
+const addItems = (child) => ({type: types.ADD_ITEMS, child});
 const deleteItem = (index) => ({type: types.DELETE_ITEM, index});
 
 const renderItem = ({data, index, ...rest}) => {
@@ -237,11 +245,21 @@ class NotificationCenterSample extends Component {
 		};
 		this.unsubscribe = this.store.subscribe(this.updateData);
 		this.newCount = 0;
+
+		window.setTimeout(() => {
+			for (let i = 0; i < 50; i++) {
+				items[i] = getNewItem(i);
+			}
+			this.store.dispatch(addItems(items));
+			console.log('added');
+		}, 10);
 	}
 
 	componentWillUnmount = () => this.unsubscribe()
 
-	updateData = () => this.setState({data: this.store.getState()})
+	updateData = () => {
+		this.setState({data: this.store.getState()});
+	}
 
 	addItem = () => this.store.dispatch(addItem(getNewItem('NEW ' + this.newCount++)))
 
@@ -252,7 +270,12 @@ class NotificationCenterSample extends Component {
 
 		const children = (
 			(testCase === 1) ?
-				<Scroller className={css.scroller} horizontal="hidden" lazyChild={true}>
+				(data.length === 0) ? null :
+				<PlaceholderScroller
+					className={css.scroller}
+					horizontalScrollbar="hidden"
+					verticalScrollbar={(itemHeight * data.length > clientHeight) ? 'visible' : 'auto'}
+				>
 					<Repeater
 						childComponent={ExpandableMessage}
 						itemProps={{
@@ -261,13 +284,13 @@ class NotificationCenterSample extends Component {
 					>
 						{data}
 					</Repeater>
-				</Scroller>
+				</PlaceholderScroller>
 			: (testCase === 2) ?
 				<VirtualList
 					component={renderItem}
 					data={data}
 					dataSize={data.length}
-					itemSize={ri.scale(142)}
+					itemSize={itemHeight}
 					className={css.scroller}
 				/>
 			: (testCase === 3) ?
@@ -304,7 +327,7 @@ class NotificationCenterSample extends Component {
 					component={renderSimpleDivItem}
 					data={data}
 					dataSize={data.length}
-					itemSize={ri.scale(142)}
+					itemSize={itemHeight}
 					className={css.scroller}
 				/>
 			: (testCase === 13) ?
