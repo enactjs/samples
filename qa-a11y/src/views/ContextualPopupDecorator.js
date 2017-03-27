@@ -61,10 +61,10 @@ class ContextualPopupDecoratorView extends React.Component {
 	renderPopup3 = () => (
 		<SelectableGroup
 			childComponent={RadioItem}
+			defaultSelected={0}
 			itemProps={{inline: false}}
 			select="radio"
 			selectedProp="selected"
-			defaultSelected={0}
 		>
 			{['Creek', 'River', 'Ocean']}
 		</SelectableGroup>
