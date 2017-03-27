@@ -16,7 +16,7 @@ class ContextualPopupDecoratorView extends React.Component {
 			open1: false,
 			open2: false,
 			open3: false
-		}
+		};
 
 		this.handleClick1 = this.handleClick(1);
 		this.handleClick2 = this.handleClick(2);
@@ -62,8 +62,8 @@ class ContextualPopupDecoratorView extends React.Component {
 		<SelectableGroup
 			childComponent={RadioItem}
 			itemProps={{inline: false}}
-			select='radio'
-			selectedProp='selected'
+			select="radio"
+			selectedProp="selected"
 			defaultSelected={0}
 		>
 			{['Creek', 'River', 'Ocean']}
@@ -77,7 +77,7 @@ class ContextualPopupDecoratorView extends React.Component {
 			<div>
 				<div style={{position: 'absolute', left: '0'}}>
 					<ContextualButton
-						direction='right'
+						direction="right"
 						onClick={this.handleClick1}
 						onClose={this.handleClose1}
 						open={open1}
@@ -88,13 +88,13 @@ class ContextualPopupDecoratorView extends React.Component {
 				</div>
 				<div style={{position: 'absolute', bottom: '0'}}>
 					<ContextualButton
-						direction='up'
+						direction="up"
 						onClick={this.handleClick2}
 						onClose={this.handleClose2}
 						open={open2}
 						popupComponent={this.renderPopup2}
 						showCloseButton
-						spotlightRestrict='self-only'
+						spotlightRestrict="self-only"
 					>
 						Spotlight Modal
 					</ContextualButton>
@@ -102,7 +102,7 @@ class ContextualPopupDecoratorView extends React.Component {
 
 				<div style={{position: 'absolute', right: '0'}}>
 					<ContextualButton
-						direction='left'
+						direction="left"
 						onClick={this.handleClick3}
 						onClose={this.handleClose3}
 						open={open3}

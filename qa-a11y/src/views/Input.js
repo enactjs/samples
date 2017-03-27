@@ -2,7 +2,7 @@ import Divider from '@enact/moonstone/Divider';
 import Input from '@enact/moonstone/Input';
 import ExpandableInput from '@enact/moonstone/ExpandableInput';
 import React from 'react';
-import Changeable from '@enact/ui/Changeable'
+import Changeable from '@enact/ui/Changeable';
 
 const StatefulInput = Changeable({toggle: 'onClick', prop: 'value'}, Input);
 const StatefulExpandableInput = Changeable({toggle: 'onClick', prop: 'value'}, ExpandableInput);

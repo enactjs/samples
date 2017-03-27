@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import Button from '@enact/moonstone/Button'
+import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
 import Region from '@enact/moonstone/Region';
 import React from 'react';
-import Scroller from '@enact/moonstone/Scroller'
+import Scroller from '@enact/moonstone/Scroller';
 
 const ReadOrder = kind({
 	name: 'ReadOrder',

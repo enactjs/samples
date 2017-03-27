@@ -8,7 +8,7 @@ class NotificationView extends React.Component {
 		this.state = {
 			open1: false,
 			open2: false
-		}
+		};
 
 		this.handleOpen1 = this.handleOpen(1);
 		this.handleOpen2 = this.handleOpen(2);

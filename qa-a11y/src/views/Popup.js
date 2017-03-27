@@ -13,7 +13,7 @@ class PopupView extends React.Component {
 			open2: false,
 			open3: false,
 			open4: false
-		}
+		};
 
 		this.handleOpen1 = this.handleOpen(1);
 		this.handleOpen2 = this.handleOpen(2);
@@ -60,15 +60,23 @@ class PopupView extends React.Component {
 					onClose={this.handleClose2}
 				>
 					<span>
-						{`Enact is a framework designed to be performant, customizable and well structured.\
-						The goal in creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework and to incorporate the latest advances in JavaScript and Web engine technology.\
-						Enact is designed to be used by both novice and expert developers.\
-						Why Enact?\
-						Ease of Use\
-						Enact builds atop the excellent React library, and provides a full framework to the developer.\
-						The recent boom of web technologies and related tools has led to a plethora of options available.\
-						In fact, getting started might be the most difficult part of building a modern web application.\
-						Enact allows developers to avoid this pain by providing an opinionated collection of libraries and tools that have been thoroughly vetted to work well together.`}
+						Enact is a framework designed to be performant, customizable and well structured.
+						<br />
+						The goal in creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework and to incorporate the latest advances in JavaScript and Web engine technology.
+						<br />
+						Enact is designed to be used by both novice and expert developers.
+						<br />
+						Why Enact?
+						<br />
+						Ease of Use
+						<br />
+						Enact builds atop the excellent React library, and provides a full framework to the developer.
+						<br />
+						The recent boom of web technologies and related tools has led to a plethora of options available.
+						<br />
+						In fact, getting started might be the most difficult part of building a modern web application.
+						<br />
+						Enact allows developers to avoid this pain by providing an opinionated collection of libraries and tools that have been thoroughly vetted to work well together.
 					</span>
 				</Popup>
 

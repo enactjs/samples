@@ -7,7 +7,7 @@ import React from 'react';
 import {SelectableItem as SelectItemBase} from '@enact/moonstone/SelectableItem';
 import {SwitchItem as SwitchItemBase} from '@enact/moonstone/SwitchItem';
 import {ToggleItem as ToggleItemBase} from '@enact/moonstone/ToggleItem';
-import Toggleable from '@enact/ui/Toggleable'
+import Toggleable from '@enact/ui/Toggleable';
 
 const CheckboxItem = Toggleable({prop: 'selected'}, CheckboxItemBase);
 const RadioItem = Toggleable({prop: 'selected'}, RadioItemBase);

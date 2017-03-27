@@ -7,7 +7,7 @@ class DialogView extends React.Component {
 		super(props);
 		this.state = {
 			open: false
-		}
+		};
 	}
 
 	handleOpen = () => {
@@ -28,7 +28,7 @@ class DialogView extends React.Component {
 					onClose={this.handleClose}
 					open={open}
 				>
-					<title>{`You've been watching TV for a very long time so let's do a quick check-in.`}</title>
+					<title>You&#39;ve been watching TV for a very long time so let&#39;s do a quick check-in.</title>
 					<titleBelow>This TV has been active for 10 hours.</titleBelow>
 					<span>Perhaps it is time to take a break and get some fresh air. There is a nice coffee shop around the corner</span>
 					<buttons>
