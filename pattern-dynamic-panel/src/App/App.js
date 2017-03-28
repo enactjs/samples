@@ -22,7 +22,7 @@ const App = kind({
 
 	render: (props) => (
 		<div {...props}>
-			<Browser defaultPath="/a" />
+			<Browser defaultPath={{path: '/a', directory: true}} />
 		</div>
 	)
 });

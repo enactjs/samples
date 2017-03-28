@@ -1,15 +1,19 @@
 import React from 'react';
 import kind from '@enact/core/kind';
-import ri from '@enact/ui/resolution'
+import ri from '@enact/ui/resolution';
+import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
 import Cancelable from '@enact/ui/Cancelable';
 import {VirtualList} from '@enact/moonstone/VirtualList'
 
-import DynamicPanel from '../DynamicPanel';
+import butterfly from '../../../assets/images/butterfly.jpg';
+import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';
+import jellyfish from '../../../assets/images/jellyfish.jpg';
+import macaw from '../../../assets/images/macaw.jpg';
+import ornaments from '../../../assets/images/ornaments.jpg';
+import rainbow from '../../../assets/images/rainbow.jpg';
 
-const cDir = ['foo3.txt'];
-const bDir = [cDir, 'bar.txt'];
-const aDir = [bDir, 'foo.txt'];
+import DynamicPanel from '../DynamicPanel';
 
 const a = {
 	files: [
@@ -30,76 +34,68 @@ const b = {
 const c = {
 	files: [
 		{name: 'ornaments.jpg'},
-		{name: 'frozen-waterfall.jpg'}
+		{name: 'frozenwaterfall.jpg'}
 	]
 };
 
+const mockFiles = {a, b, c};
+
+const filePhotos = {
+	butterfly,
+	frozenwaterfall,
+	jellyfish,
+	macaw,
+	ornaments,
+	rainbow
+};
+
 const scale = ri.scale;
-
-const FileItem = kind({
-	name: 'FileItem',
-	render: (props) => {
-		return (
-			<Item {...props} />
-		);
-	}
-});
-
-const DirectoryItem = kind({
-	name: 'DirectoryItem',
-	render: (props) => {
-		return (
-			<Item directory {...props} />
-		);
-	}
-});
 
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	handlers: {
 		// create a cached event handler forwarding to onNavigate
 		onNavigate: (ev, props) => {
-			console.log('NAVIGATING', props, {...ev});
 			// extract the index provided by VirtualList
 			const index = ev.currentTarget.dataset.index;
+			// extract the path object from props
+			const pathInfo = props.path;
+			// for mock system to know where to get files
+			const leaf = pathInfo.path.split('/').pop();
+			const file = mockFiles[leaf].files[index];
 			// map it to the name from the hardcoded list of files
-			const name = a.files[index].name;
+			const name = file.name;
 			// make the new path
-			const path = `${props.path}/${name}`;
+			const path = `${pathInfo.path}/${name}`;
+			const pathData = {path, directory: file.directory || false};
 			// and notify the handler
-			props.onNavigate({path, foo: 'bar'});
-		},
-		onView: (ev, props) => {
-			console.log('WILL IT GO?', props);
+			props.onNavigate({path: pathData});
 		}
 	},
 	computed: {
 		// this double function is messy but i'm assuming it's a requirement of VirtualList ... we
 		// should fix that API
 		listItem: (props) => ({data, index, key, ...rest}) => {
-			if (data[index].directory) {
-				console.log('THIS LIST ITEM IS A DIRECTORY', props);
-			}
 			return (
-				<Item key={key} onClick={data[index].directory ? props.onNavigate : props.onView}>
+				<Item key={key} onClick={props.onNavigate} {...rest}>
 					{data[index].name}
 				</Item>
 			);
 		},
 		renderItem: () => (props) => {
-			const {listItem, ...rest} = props;
-			const isDir = true;
-			console.log('RENDER ITEM GETS', props, 'NEED TO KNOW IF WE SHOULD BE RENDERING LIST (CAME FROM DIR) OR VIEWING MEDIA');
-			const component = isDir ? <VirtualList
+			const {listItem, path: pathData, ...rest} = props;
+			const {path, directory} = pathData;
+			const leaf = path.split('/').pop();
+
+			const component = directory ? <VirtualList
 				itemSize={scale(72)}
 				component={listItem}
-				data={a.files}
-				dataSize={a.files.length}
-			/> : null;
-			if (true) {}
+				data={mockFiles[leaf].files}
+				dataSize={mockFiles[leaf].files.length}
+			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
-				<DynamicPanel {...rest}>
+				<DynamicPanel path={path} {...rest}>
 					{component}
 				</DynamicPanel>
 			);
@@ -115,7 +111,8 @@ const FileBrowserBase = kind({
 	}
 });
 
-const popPath = (path) => {
+const popPath = (pathData) => {
+	const path = pathData.path;
 	let newPath = '/';
 	let lastPath = path;
 
@@ -132,7 +129,7 @@ const popPath = (path) => {
 			newPath += lastPath ? lastPath : '';
 		}
 	}
-	return newPath;
+	return {path: newPath, directory: true}; // assume you can't drill "up" into a file above the current location
 };
 
 // the onCancel callback from the Cancelable config receives the Cancelable's props to both
