@@ -3,15 +3,12 @@ import BodyText from '@enact/moonstone/BodyText';
 import Image from '@enact/moonstone/Image';
 import Slider from '@enact/moonstone/Slider';
 import Picker from '@enact/moonstone/Picker';
-import Changeable from '@enact/ui/Changeable';
 import css from './ProfilePhotoPicker.less';
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
 import mural from '../../assets/images/mural.jpeg';
 import spaceShuttle from '../../assets/images/space-shuttle.jpg';
 import violin from '../../assets/images/violin.jpeg';
-
-const StatefulPicker = Changeable(Picker);
 
 const imageURLs = [
 	car,
@@ -60,9 +57,9 @@ class ProfilePhotoPicker extends React.Component {
 
 			<BodyText centered>{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos</BodyText>
 
-			<StatefulPicker onChange={this.handlePickerChange} width="large" >
+			<Picker onChange={this.handlePickerChange} width="large" >
 				{imageComponents}
-			</StatefulPicker>
+			</Picker>
 		</div>
 	)
 }
