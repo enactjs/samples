@@ -1,9 +1,9 @@
 import Divider from '@enact/moonstone/Divider';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import React from 'react';
-import Selectable from '@enact/ui/Selectable';
+import Changeable from '@enact/ui/Changeable';
 
-const List = Selectable(ExpandableList);
+const List = Changeable(ExpandableList);
 
 const ExpandableListView = () => (
 	<div>
