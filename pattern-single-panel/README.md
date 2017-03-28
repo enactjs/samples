@@ -10,23 +10,9 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `moonstone/Button`
 - `moonstone/Popup`
 - `moonstone/Picker`
-- `ui/Changeable` (Higher Order Component)
 
 Take a look at the custom component  `./src/components/ProfilePhotoPicker.js`
-
-On line 11, `Picker` is used with `Changeable` to create a functional Picker
-```javascript
-const StatefulPicker = Changeable(Picker);
-```
-
-which is then used in line 57
-```jsx
-<StatefulPicker onChange={this.handlePickerChange} width="large" >
-  {imageComponents}
-</StatefulPicker>
-```
-
-The rest is straightforward: Slider controls the position of the main photo using `handleSliderChange()` which changes the state of `photoPosition`
+Slider controls the position of the main photo using `handleSliderChange()` which changes the state of `photoPosition`
 
 The `Popup` component is used in   `./src/components/SaveButton.js`
 

@@ -3,11 +3,8 @@ import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
-import Changeable from '@enact/ui/Changeable';
 
 import css from './componentStyles.less';
-
-const StatefulPicker = Changeable(Picker);
 
 const ProfilePhotoPickerContainer = kind({
 	name: 'ProfilePhotoPickerContainer',
@@ -41,9 +38,9 @@ const ProfilePhotoPickerContainer = kind({
 				<BodyText centered>
 					{imageNames[photoIndex]} :: {photoIndex + 1} of {imageNames.length} photos
 				</BodyText>
-				<StatefulPicker onChange={onChange} width="large">
+				<Picker onChange={onChange} width="large">
 					{imageComponents}
-				</StatefulPicker>
+				</Picker>
 			</div>
 		);
 	}
