@@ -13,30 +13,42 @@ import View from './View';
 
 import A11yDecorator from '../views/A11yDecorator';
 import Button from '../views/Button';
+import ContextualPopupDecorator from '../views/ContextualPopupDecorator';
 import DayPicker from '../views/DayPicker';
+import Dialog from '../views/Dialog';
 import ExpandableItem from '../views/ExpandableItem';
 import ExpandableList from '../views/ExpandableList';
 import Input from '../views/Input';
 import ItemView from '../views/Item';
+import Notification from '../views/Notification';
 import Picker from '../views/Picker';
+import Popup from '../views/Popup';
 import ProgressBar from '../views/ProgressBar';
 import ReadOrder from '../views/ReadOrder';
 import Slider from '../views/Slider';
+import Spinner from '../views/Spinner';
+import TooltipDecorator from '../views/TooltipDecorator';
 import VirtualList from '../views/VirtualList';
 
 const views = [
 	{title: 'About A11y', view: Home},
 	{title: 'A11yDecorator', view: A11yDecorator},
 	{title: 'Button', view: Button},
+	{title: 'ContextualPopupDecorator', view: ContextualPopupDecorator},
 	{title: 'DayPicker', view: DayPicker},
+	{title: 'Dialog', view: Dialog},
 	{title: 'ExpandableItem', view: ExpandableItem},
 	{title: 'ExpandableList', view: ExpandableList},
 	{title: 'Input', view: Input},
 	{title: 'Item', view: ItemView},
+	{title: 'Notification', view: Notification},
 	{title: 'Picker', view: Picker},
+	{title: 'Popup', view: Popup},
 	{title: 'ProgressBar', view: ProgressBar},
 	{title: 'ReadOrder', view: ReadOrder},
 	{title: 'Slider', view: Slider},
+	{title: 'Spinner', view: Spinner},
+	{title: 'TooltipDecorator', view: TooltipDecorator},
 	{title: 'VirtualList', view: VirtualList}
 ];
 

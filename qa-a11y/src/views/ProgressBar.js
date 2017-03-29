@@ -23,7 +23,7 @@ class ProgressBarView extends React.Component {
 
 	render = () => {
 		const {progressVal} = this.state;
-		//FIXME When aria-valuetext is changed to null, screen reader reads default `0`(zero) by `progressbar` role
+		// FIXME When aria-valuetext is changed to null, screen reader reads default `0`(zero) by `progressbar` role
 		// To prevent this, set to value as one space.
 		let a11yValueText = ' ';
 
