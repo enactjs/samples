@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import Divider from '@enact/moonstone/Divider';
 import IconButton from '@enact/moonstone/IconButton';
 import React from 'react';
-import Toggleable from '@enact/ui/Toggleable'
+import Toggleable from '@enact/ui/Toggleable';
 import ToggleButton from '@enact/moonstone/ToggleButton';
 
 const StatefulButton = Toggleable({toggle: 'onClick', prop: 'selected'}, Button);
@@ -27,7 +27,7 @@ const ButtonView = () => (
 		<Divider>Aria-labeled Buttons</Divider>
 		<StatefulButton color="yellow" aria-label="yellow button">yellow Button</StatefulButton>
 		<StatefulIconButton aria-label="plug icon button">plug</StatefulIconButton>
-		<StatefulToggleButton toggleOffLabel="Off" toggleOnLabel="On" aria-label="Toggle button"/>
+		<StatefulToggleButton toggleOffLabel="Off" toggleOnLabel="On" aria-label="Toggle button" />
 	</div>
 );
 
