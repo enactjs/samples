@@ -3,38 +3,16 @@ import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator'
 import Group from '@enact/ui/Group';
 import RadioItem from '@enact/moonstone/RadioItem';
 import React from 'react';
+import Toggleable from '@enact/ui/Toggleable';
 
-const ContextualButton = ContextualPopupDecorator(Button);
+const ContextualButton = Toggleable(
+	{prop: 'open', toggle: 'onClick', deactivate: 'onClose'},
+	ContextualPopupDecorator(
+		Button
+	)
+);
 
 class ContextualPopupDecoratorView extends React.Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			open1: false,
-			open2: false,
-			open3: false
-		};
-
-		this.handleClick1 = this.handleClick(1);
-		this.handleClick2 = this.handleClick(2);
-		this.handleClick3 = this.handleClick(3);
-
-		this.handleClose1 = this.handleClose(1);
-		this.handleClose2 = this.handleClose(2);
-		this.handleClose3 = this.handleClose(3);
-	}
-
-	handleClick = (expNum) => () => {
-		this.setState({
-			['open' + expNum]: !this.state['open' + expNum]
-		});
-	}
-
-	handleClose = (expNum) => () => {
-		this.setState({
-			['open' + expNum]: false
-		});
-	}
 
 	renderPopup1 = () => (
 		<div>
@@ -56,7 +34,7 @@ class ContextualPopupDecoratorView extends React.Component {
 	)
 
 	renderPopup3 = () => (
-		<SelectableGroup
+		<Group
 			childComponent={RadioItem}
 			defaultSelected={0}
 			itemProps={{inline: false}}
@@ -64,20 +42,15 @@ class ContextualPopupDecoratorView extends React.Component {
 			selectedProp="selected"
 		>
 			{['Creek', 'River', 'Ocean']}
-		</SelectableGroup>
+		</Group>
 	)
 
 	render () {
-		const {open1, open2, open3} = this.state;
-
 		return (
 			<div>
 				<div style={{position: 'absolute', left: '0'}}>
 					<ContextualButton
 						direction="right"
-						onClick={this.handleClick1}
-						onClose={this.handleClose1}
-						open={open1}
 						popupComponent={this.renderPopup1}
 					>
 						Average
@@ -86,9 +59,6 @@ class ContextualPopupDecoratorView extends React.Component {
 				<div style={{position: 'absolute', bottom: '0'}}>
 					<ContextualButton
 						direction="up"
-						onClick={this.handleClick2}
-						onClose={this.handleClose2}
-						open={open2}
 						popupComponent={this.renderPopup2}
 						showCloseButton
 						spotlightRestrict="self-only"
@@ -100,9 +70,6 @@ class ContextualPopupDecoratorView extends React.Component {
 				<div style={{position: 'absolute', right: '0'}}>
 					<ContextualButton
 						direction="left"
-						onClick={this.handleClick3}
-						onClose={this.handleClose3}
-						open={open3}
 						popupComponent={this.renderPopup3}
 					>
 						Nested Radio
