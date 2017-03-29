@@ -3,11 +3,8 @@ import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator'
 import Group from '@enact/ui/Group';
 import RadioItem from '@enact/moonstone/RadioItem';
 import React from 'react';
-import Selectable from '@enact/ui/Selectable';
 
-const
-	ContextualButton = ContextualPopupDecorator(Button),
-	SelectableGroup = Selectable(Group);
+const ContextualButton = ContextualPopupDecorator(Button);
 
 class ContextualPopupDecoratorView extends React.Component {
 	constructor (props) {
