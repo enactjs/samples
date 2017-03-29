@@ -28,6 +28,7 @@ import ReadOrder from '../views/ReadOrder';
 import Slider from '../views/Slider';
 import Spinner from '../views/Spinner';
 import TooltipDecorator from '../views/TooltipDecorator';
+import VirtualList from '../views/VirtualList';
 
 const views = [
 	{title: 'About A11y', view: Home},
@@ -47,7 +48,8 @@ const views = [
 	{title: 'ReadOrder', view: ReadOrder},
 	{title: 'Slider', view: Slider},
 	{title: 'Spinner', view: Spinner},
-	{title: 'TooltipDecorator', view: TooltipDecorator}
+	{title: 'TooltipDecorator', view: TooltipDecorator},
+	{title: 'VirtualList', view: VirtualList}
 ];
 
 const AppBase = kind({
