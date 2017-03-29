@@ -22,6 +22,7 @@ import Picker from '../views/Picker';
 import ProgressBar from '../views/ProgressBar';
 import ReadOrder from '../views/ReadOrder';
 import Slider from '../views/Slider';
+import VirtualList from '../views/VirtualList';
 
 const views = [
 	{title: 'About A11y', view: Home},
@@ -35,7 +36,8 @@ const views = [
 	{title: 'Picker', view: Picker},
 	{title: 'ProgressBar', view: ProgressBar},
 	{title: 'ReadOrder', view: ReadOrder},
-	{title: 'Slider', view: Slider}
+	{title: 'Slider', view: Slider},
+	{title: 'VirtualList', view: VirtualList}
 ];
 
 const AppBase = kind({
