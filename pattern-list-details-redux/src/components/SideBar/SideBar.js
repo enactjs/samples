@@ -22,14 +22,14 @@ const SideBar = kind({
 		className: ({zoom, styler}) => {
 			return styler.append(css.sideBar, {zoom});
 		},
-		virtualListItem: ({onCityChange}) => ({data, index, key}) => {
+		virtualListItem: ({onCityChange}) => ({data, index, ...rest}) => {
 			const city = data[index];
 
 			return (
 				<CityItem
-					onCityChange={onCityChange}
-					key={key}
+					{...rest}
 					city={city}
+					onCityChange={onCityChange}
 				/>
 			);
 		}
