@@ -26,6 +26,7 @@ import Popup from '../views/Popup';
 import ProgressBar from '../views/ProgressBar';
 import ReadOrder from '../views/ReadOrder';
 import Slider from '../views/Slider';
+import Spinner from '../views/Spinner';
 import TooltipDecorator from '../views/TooltipDecorator';
 
 const views = [
@@ -45,6 +46,7 @@ const views = [
 	{title: 'ProgressBar', view: ProgressBar},
 	{title: 'ReadOrder', view: ReadOrder},
 	{title: 'Slider', view: Slider},
+	{title: 'Spinner', view: Spinner},
 	{title: 'TooltipDecorator', view: TooltipDecorator}
 ];
 
