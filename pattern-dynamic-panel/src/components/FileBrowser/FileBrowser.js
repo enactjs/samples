@@ -38,7 +38,7 @@ const c = {
 	]
 };
 
-const mockFiles = {a, b, c};
+const mockFolders = {a, b, c};
 
 const filePhotos = {
 	butterfly,
@@ -62,7 +62,7 @@ const FileBrowserBase = kind({
 			const pathInfo = props.path;
 			// for mock system to know where to get files
 			const leaf = pathInfo.path.split('/').pop();
-			const file = mockFiles[leaf].files[index];
+			const file = mockFolders[leaf].files[index];
 			// map it to the name from the hardcoded list of files
 			const name = file.name;
 			// make the new path
@@ -73,8 +73,6 @@ const FileBrowserBase = kind({
 		}
 	},
 	computed: {
-		// this double function is messy but i'm assuming it's a requirement of VirtualList ... we
-		// should fix that API
 		listItem: (props) => ({data, index, key, ...rest}) => {
 			return (
 				<Item key={key} onClick={props.onNavigate} {...rest}>
@@ -90,8 +88,8 @@ const FileBrowserBase = kind({
 			const component = directory ? <VirtualList
 				itemSize={scale(72)}
 				component={listItem}
-				data={mockFiles[leaf].files}
-				dataSize={mockFiles[leaf].files.length}
+				data={mockFolders[leaf].files}
+				dataSize={mockFolders[leaf].files.length}
 			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
