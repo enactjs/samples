@@ -1,14 +1,14 @@
 import DayPicker from '@enact/moonstone/DayPicker';
 import Divider from '@enact/moonstone/Divider';
 import React from 'react';
-import Selectable from '@enact/ui/Selectable';
+import Changeable from '@enact/ui/Changeable';
 
-const SelectableDayPicker = Selectable(DayPicker);
+const ChangeableDayPicker = Changeable(DayPicker);
 
 const DayPickerView = () => (
 	<div>
 		<Divider>Default DayPickers</Divider>
-		<SelectableDayPicker
+		<ChangeableDayPicker
 			noneText="none"
 			title="Day Picker"
 		/>
