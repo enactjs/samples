@@ -1,8 +1,10 @@
 import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
-import Item from '@enact/moonstone/Item';
+import ItemPure from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React, {PropTypes} from 'react';
+import pure from 'recompose/pure';
+// const ItemPure = pure(Item);
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -27,10 +29,87 @@ const MainPanel = kind({
 				<Button onClick={onClick}>Click me</Button>
 				<Button onClick={onClick}>Click me</Button>
 			</Header>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			<ItemPure onClick={onClick}>Click me</ItemPure>
+			
 		</Panel>
 	)
 });

@@ -1,34 +1,31 @@
-import kind from '@enact/core/kind';
-import Item from '@enact/moonstone/Item';
-import {Panel, Header} from '@enact/moonstone/Panels';
 import React, {PropTypes} from 'react';
+import ExpandableList from '@enact/moonstone/ExpandableList';
+import Button from '@enact/moonstone/Button';
+import {Panel, Header} from '@enact/moonstone/Panels';
+import Scroller from '@enact/moonstone/Scroller';
+let a = [];
 
-const ItemPanel = kind({
-	name: 'ItemPanel',
+for (let i = 0; i < 50; i++) {
+	a.push(`${i}`);
+}
 
-	propTypes: {
-		/**
-		 * A function to run on click event
-		 * @type {Function}
-		 */
-		onClick: PropTypes.func,
+class ItemPanel extends React.Component {
+	render () {
+		const {title, onClick, ...rest} = this.props;
 
-		/**
-		 * A title string appear on header
-		 * @type {String}
-		 */
-		title: PropTypes.string
-	},
+		return (
+			<Panel {...rest}>
+				<Header title={title} />
+				<Button onClick={onClick}>Click</Button>
+				<ExpandableList
+					title="Listings"
+				>
+					{a}
+				</ExpandableList>
 
-	render: ({title, onClick, ...rest}) => (
-		<Panel {...rest}>
-			<Header title={title} />
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-		</Panel>
-	)
-});
+			</Panel>
+		);
+	}
+}
 
 export default ItemPanel;
