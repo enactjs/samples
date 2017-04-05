@@ -73,15 +73,12 @@ const FileBrowserBase = kind({
 		}
 	},
 	computed: {
-		listItem: (props) => ({data, index, key, ...rest}) => {
-			return (
-				<Item key={key} onClick={props.onNavigate} {...rest}>
-					{data[index].name}
-				</Item>
-			);
-		},
-		renderItem: () => (props) => {
-			const {listItem, path: pathData, ...rest} = props;
+		listItem: (props) => ({data, index, key, ...rest}) => (
+			<Item key={key} onClick={props.onNavigate} {...rest}>
+				{data[index].name}
+			</Item>
+		),
+		renderItem: () => ({listItem, path: pathData, ...rest}) => {
 			const {path, directory} = pathData;
 			const leaf = path.split('/').pop();
 
@@ -100,13 +97,9 @@ const FileBrowserBase = kind({
 
 		}
 	},
-	render: (props) => {
-		const {renderItem: Component, ...rest} = props;
-
-		return (
-			<Component {...rest} />
-		);
-	}
+	render: ({renderItem: Component, ...rest}) => (
+		<Component {...rest} />
+	)
 });
 
 const popPath = (pathData) => {
@@ -133,8 +126,7 @@ const popPath = (pathData) => {
 // the onCancel callback from the Cancelable config receives the Cancelable's props to both
 // determine if it should cancel and how to handle the cancel. here, we're calling the onNavigate
 // event callback.
-const handleCancel = (props) => {
-	const {path, onNavigate} = props;
+const handleCancel = ({path, onNavigate}) => {
 	// pop the path
 	const newPath = popPath(path);
 	// and if there's an onNavigate callback
