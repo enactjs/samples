@@ -55,6 +55,7 @@ const scale = ri.scale;
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	propTypes: {
+		onNavigate: PropTypes.func,
 		path: PropTypes.string
 	},
 	handlers: {
@@ -77,11 +78,15 @@ const FileBrowserBase = kind({
 		}
 	},
 	computed: {
+		// computed component pattern is not currently Enact eslint friendly
+		// eslint-disable-next-line
 		listItem: (props) => ({data, index, key, ...rest}) => (
 			<Item key={key} onClick={props.onNavigate} {...rest}>
 				{data[index].name}
 			</Item>
 		),
+		// computed component pattern is not currently Enact eslint friendly
+		// eslint-disable-next-line
 		renderItem: () => ({listItem, path: pathData, ...rest}) => {
 			const {path, directory} = pathData;
 			const leaf = path.split('/').pop();
