@@ -4,7 +4,8 @@ import ri from '@enact/ui/resolution';
 import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
 import Cancelable from '@enact/ui/Cancelable';
-import {VirtualList} from '@enact/moonstone/VirtualList'
+import {VirtualList} from '@enact/moonstone/VirtualList';
+import PropTypes from 'prop-types';
 
 import butterfly from '../../../assets/images/butterfly.jpg';
 import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';
@@ -53,6 +54,9 @@ const scale = ri.scale;
 
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
+	propTypes: {
+		path: PropTypes.string
+	},
 	handlers: {
 		// create a cached event handler forwarding to onNavigate
 		onNavigate: (ev, props) => {
