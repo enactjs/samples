@@ -14,7 +14,7 @@ const DynamicPanelBase = kind({
 
 		return (
 			<Panel {...rest} >
-				<Header title={path} />
+				<Header title={path} titleBelow="Press [ESC] to return to previous path" />
 				{children}
 			</Panel>
 		);

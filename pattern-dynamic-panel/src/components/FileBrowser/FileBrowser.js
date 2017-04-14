@@ -56,7 +56,7 @@ const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	propTypes: {
 		onNavigate: PropTypes.func,
-		path: PropTypes.string
+		path: PropTypes.object
 	},
 	handlers: {
 		// create a cached event handler forwarding to onNavigate
