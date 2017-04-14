@@ -34,7 +34,7 @@ class App extends React.Component {
 				<MainPanel title="First" onSelectTheme={onSelectTheme} onClick={this.handleClick} />
 				<ItemPanel title="Second" onClick={this.handleClick} />
 				<ButtonPanel title="Third" onClick={this.handleClick} />
-				<MainPanel title="Fourth" />
+				<MainPanel title="Fourth" onSelectTheme={onSelectTheme} />
 			</ActivityPanels>
 		);
 	}
