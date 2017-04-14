@@ -22,7 +22,7 @@ const ButtonPanel = kind({
 
 	render: ({title, onClick, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title}>
+			<Header title={title} preserveCase>
 				<Button onClick={onClick}>Click me</Button>
 				<Button onClick={onClick}>Click me</Button>
 			</Header>

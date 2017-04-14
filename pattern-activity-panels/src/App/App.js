@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import Changeable from '@enact/ui/Changeable';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
@@ -27,9 +28,10 @@ class App extends React.Component {
 	handleClick = () => this.setState({index: this.state.index + 1})
 
 	render () {
+		const {onSelectTheme, ...rest} = {...this.props};
 		return (
-			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} />
+			<ActivityPanels {...rest} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
+				<MainPanel title="First" onSelectTheme={onSelectTheme} onClick={this.handleClick} />
 				<ItemPanel title="Second" onClick={this.handleClick} />
 				<ButtonPanel title="Third" onClick={this.handleClick} />
 				<MainPanel title="Fourth" />
@@ -38,4 +40,4 @@ class App extends React.Component {
 	}
 }
 
-export default MoonstoneDecorator(App);
+export default Changeable({change: 'onSelectTheme', prop: 'theme'}, MoonstoneDecorator(App));
