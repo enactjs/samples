@@ -13,7 +13,6 @@ Run `npm install` then
 - `moonstone/Button`
 - `moonstone/Popup`
 - `moonstone/Picker`
-- `ui/Changeable` (Higher Order Component)
 
 #### Running Tests
 
