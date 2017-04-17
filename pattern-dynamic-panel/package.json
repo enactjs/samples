@@ -35,7 +35,7 @@
 		"@enact/i18n": "^1.0.0",
 		"@enact/webos": "^1.0.0",
 		"prop-types": "^15.5.8",
-		"react": "^15.4.2",
-		"react-dom": "^15.4.2"
+		"react": "^15.5.0",
+		"react-dom": "^15.5.0"
 	}
 }

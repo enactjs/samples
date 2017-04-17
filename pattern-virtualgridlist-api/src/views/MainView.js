@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
@@ -11,8 +12,8 @@ const albums = ['Family', 'Car', 'Travel'];
 
 class MainView extends React.Component {
 	static propTypes = {
-		album: React.PropTypes.string,
-		onChangeAlbum: React.PropTypes.func
+		album: PropTypes.string,
+		onChangeAlbum: PropTypes.func
 	}
 
 	componentDidMount () {

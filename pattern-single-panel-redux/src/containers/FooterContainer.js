@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';

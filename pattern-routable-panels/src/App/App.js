@@ -1,7 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {Panels, Routable, Route} from '@enact/moonstone/Panels';
-import React from 'react';
 import {SlideLeftArranger} from '@enact/ui/ViewManager';
 
 import AboutPanel from '../views/AboutPanel';
@@ -15,8 +16,8 @@ const App = kind({
 	name: 'App',
 
 	propTypes: {
-		onNavigate: React.PropTypes.func,
-		path: React.PropTypes.string
+		onNavigate: PropTypes.func,
+		path: PropTypes.string
 	},
 
 	handlers: {

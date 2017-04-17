@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Button from '@enact/moonstone/Button';
@@ -7,10 +8,10 @@ import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from 
 
 class App extends React.Component {
 	static propTypes = {
-		dispatch: React.PropTypes.func.isRequired,
-		eyeComfortMode: React.PropTypes.string,
-		smartPictureMode: React.PropTypes.string
-	}
+		dispatch: PropTypes.func.isRequired,
+		eyeComfortMode: PropTypes.string,
+		smartPictureMode: PropTypes.string
+	};
 
 	componentDidMount () {
 		// This LS2Request is WITHOUT subscription
@@ -32,7 +33,7 @@ class App extends React.Component {
 		settings: {
 			smartPictureMode: this.props.smartPictureMode === 'on' ? 'off' : 'on'
 		}
-	}))
+	}));
 
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
 	onEyeComfortModeToggle = () => setSystemSettingsSubscribed({
@@ -40,13 +41,13 @@ class App extends React.Component {
 		settings: {
 			'eyeComfortMode': this.props.eyeComfortMode === 'on' ? 'off' : 'on'
 		}
-	})
+	});
 
 	checkSystem = () => {
 		if (typeof window.PalmSystem === 'undefined') {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
-	}
+	};
 
 	render () {
 		const {smartPictureMode, eyeComfortMode} = this.props;

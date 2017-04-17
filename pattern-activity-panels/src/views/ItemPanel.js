@@ -1,7 +1,8 @@
 import kind from '@enact/core/kind';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const ItemPanel = kind({
 	name: 'ItemPanel',

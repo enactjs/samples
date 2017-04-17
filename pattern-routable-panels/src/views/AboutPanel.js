@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
@@ -19,8 +20,8 @@ const AboutPanel = kind({
 	name: 'AboutPanel',
 
 	propTypes: {
-		onClick: React.PropTypes.func,
-		title: React.PropTypes.string
+		onClick: PropTypes.func,
+		title: PropTypes.string
 	},
 
 	render: ({title, onClick, ...rest}) => (
