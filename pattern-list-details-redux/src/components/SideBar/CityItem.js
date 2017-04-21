@@ -26,7 +26,7 @@ const CityItem = kind({
 				>
 					{city}
 				</SelectableItem>
-				<Divider/>
+				<Divider />
 			</div>
 		)
 	}

@@ -29,8 +29,8 @@ const SideBar = kind({
 				return (
 					<CityItem
 						{...rest}
-						key={index}
 						city={city}
+						key={index}
 						onCityChange={onCityChange}
 					/>
 				);
