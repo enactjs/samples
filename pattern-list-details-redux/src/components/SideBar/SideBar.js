@@ -23,10 +23,13 @@ const SideBar = kind({
 			return styler.append(css.sideBar, {zoom});
 		},
 		cityList: ({cities, onCityChange, ...rest}) => {
-			return cities.map((city) => {
+			delete rest.zoom;
+
+			return cities.map((city, index) => {
 				return (
 					<CityItem
 						{...rest}
+						key={index}
 						city={city}
 						onCityChange={onCityChange}
 					/>
