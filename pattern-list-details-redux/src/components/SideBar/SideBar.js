@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import CityItem from './CityItem';
-import VirtualList from '@enact/moonstone/VirtualList';
 import css from './SideBar.less';
 
 const SideBar = kind({
@@ -23,32 +22,28 @@ const SideBar = kind({
 		className: ({zoom, styler}) => {
 			return styler.append(css.sideBar, {zoom});
 		},
-		virtualListItem: ({onCityChange}) => ({data, index, ...rest}) => {
-			const city = data[index];
-
-			return (
-				<CityItem
-					{...rest}
-					city={city}
-					onCityChange={onCityChange}
-				/>
-			);
+		cityList: ({cities, onCityChange, ...rest}) => {
+			return cities.map((city) => {
+				return (
+					<CityItem
+						{...rest}
+						city={city}
+						onCityChange={onCityChange}
+					/>
+				);
+			});
 		}
 	},
 
-	render: ({cities, virtualListItem, ...rest}) => {
+	render: ({cityList, ...rest}) => {
+		delete rest.cities;
 		delete rest.onCityChange;
 		delete rest.zoom;
 
 		return (
-			<VirtualList
-				{...rest}
-				data={cities}
-				dataSize={cities.length}
-				itemSize={100}
-				spacing={0}
-				component={virtualListItem}
-			/>
+			<div {...rest}>
+				{cityList}
+			</div>
 		);
 	}
 });
