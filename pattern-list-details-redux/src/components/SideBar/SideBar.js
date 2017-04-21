@@ -45,7 +45,7 @@ const SideBar = kind({
 				{...rest}
 				data={cities}
 				dataSize={cities.length}
-				itemSize={5}
+				itemSize={100}
 				spacing={0}
 				component={virtualListItem}
 			/>
