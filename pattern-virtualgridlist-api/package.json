@@ -28,20 +28,19 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^1.0.0-beta.4",
-    "@enact/i18n": "^1.0.0-beta.4",
-    "@enact/moonstone": "^1.0.0-beta.4",
-    "@enact/spotlight": "^1.0.0-beta.4",
-    "@enact/ui": "^1.0.0-beta.4",
-    "@enact/webos": "^1.0.0-beta.4",
-    "react": "^15.4.0",
-    "react-dom": "^15.4.0",
-    "react-redux": "^5.0.1",
+    "@enact/core": "^1.0.0",
+    "@enact/i18n": "^1.0.0",
+    "@enact/moonstone": "^1.0.0",
+    "@enact/spotlight": "^1.0.0",
+    "@enact/ui": "^1.0.0",
+    "@enact/webos": "^1.0.0",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-redux": "^5.0.3",
     "redux": "^3.6.0"
   },
   "devDependencies": {
-    "react-redux": "^5.0.1",
-    "redux": "^3.6.0",
     "ilib-webpack-plugin": "enyojs/ilib-webpack-plugin#0.1.0"
   }
 }

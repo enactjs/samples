@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import ri from '@enact/ui/resolution';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
 
 import ImageItem from '../ImageItem';

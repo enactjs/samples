@@ -1,6 +1,7 @@
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import css from './Kitten.less';
 
@@ -8,10 +9,10 @@ const KittenBase = kind({
 	name: 'Kitten',
 
 	propTypes: {
-		children: React.PropTypes.string,
-		index: React.PropTypes.number,
-		onSelect: React.PropTypes.func,
-		size: React.PropTypes.number
+		children: PropTypes.string,
+		index: PropTypes.number,
+		onSelect: PropTypes.func,
+		size: PropTypes.number
 	},
 
 	defaultProps: {
