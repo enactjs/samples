@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
-import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React, {PropTypes} from 'react';
+
 
 const ItemPanel = kind({
 	name: 'ItemPanel',
@@ -23,10 +23,7 @@ const ItemPanel = kind({
 	render: ({title, onClick, ...rest}) => (
 		<Panel {...rest}>
 			<Header title={title} />
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
+
 		</Panel>
 	)
 });

@@ -1,6 +1,5 @@
 import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
-import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React, {PropTypes} from 'react';
 
@@ -27,10 +26,6 @@ const MainPanel = kind({
 				<Button onClick={onClick}>Click me</Button>
 				<Button onClick={onClick}>Click me</Button>
 			</Header>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
 		</Panel>
 	)
 });

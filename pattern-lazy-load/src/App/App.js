@@ -1,27 +1,38 @@
-import kind from '@enact/core/kind';
+import React, {PropTypes} from 'react';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import Panels from '@enact/moonstone/Panels';
-import React from 'react';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 
+import NextPanel from '../views/NextPanel';
 import MainPanel from '../views/MainPanel';
 
-import css from './App.less';
+class App extends React.Component {
+	static propTypes = {
+		index: PropTypes.number
+	}
 
-const App = kind({
-	name: 'App',
+	static defaultProps = {
+		index: 0
+	}
 
-	styles: {
-		css,
-		className: 'app'
-	},
+	constructor (props) {
+		super(props);
+		this.state = {
+			index: this.props.index
+		};
+	}
 
-	render: (props) => (
-		<div {...props}>
-			<Panels>
-				<MainPanel />
-			</Panels>
-		</div>
-	)
-});
+	handleSelectBreadcrumb = ({index}) => this.setState({index})
+
+	handleClick = () => this.setState({index: this.state.index + 1})
+
+	render () {
+		return (
+			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
+				<MainPanel title="First" onClick={this.handleClick} />
+				<NextPanel title="Third" onClick={this.handleClick} />
+			</ActivityPanels>
+		);
+	}
+}
 
 export default MoonstoneDecorator(App);

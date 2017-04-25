@@ -29,8 +29,10 @@ class ClosePopup extends React.Component {
 	}
 
 	render () {
+		const {onClick, ...rest} = this.props;
+
 		return(
-				<Panel>
+				<Panel {...rest}>
 					<Header title='Close Popup' />
 						<LazilyLoad modules={{
 							Popup: () => importLazy(import('@enact/moonstone/Popup')),
@@ -39,7 +41,7 @@ class ClosePopup extends React.Component {
 							{({Popup, Button}) => (
 								<div>
 									<Button onClick={this.openPopup}>Open Popup</Button>
-									<Button>A</Button>
+									<Button onClick={onClick}>A</Button>
 									<Button>B</Button>
 									<Popup
 										open={this.state.isPopupShow}
