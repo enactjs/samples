@@ -82,7 +82,7 @@ const data = (state = initialState, action) => {
 
 			return newData;
 		}
-		case 'CHANGE_COUNTRY':{
+		case 'CHANGE_COUNTRY': {
 			const nextCountry = action.country;
 			const prevCountry = state.country;
 			const prevCity = state.city

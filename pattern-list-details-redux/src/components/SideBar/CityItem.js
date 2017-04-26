@@ -15,8 +15,6 @@ const CityItem = kind({
 	},
 
 	render: ({city, onCityChange, selected, ...rest}) => {
-		delete rest.dispatch;
-
 		return (
 			<div {...rest}>
 				<SelectableItem
@@ -28,9 +26,9 @@ const CityItem = kind({
 				</SelectableItem>
 				<Divider />
 			</div>
-		)
+		);
 	}
-})
+});
 
 const mapStateToProps = (state, ownProps) => {
 	const country = state.country;
@@ -42,6 +40,6 @@ const mapStateToProps = (state, ownProps) => {
 	return city in state.data[country] ? {selected: state.data[country][city].selected} : {selected : false};
 };
 
-const CityItemContainer = connect(mapStateToProps)(CityItem);
+const CityItemContainer = connect(mapStateToProps, {})(CityItem);
 
 export default CityItemContainer;

@@ -39,7 +39,8 @@ const Content = kind({
 
 	propTypes: {
 		onZoom: PropTypes.func.isRequired,
-		selectedCity: PropTypes.string.isRequired
+		selectedCity: PropTypes.string.isRequired,
+		zoomState: PropTypes.bool.isRequired
 	},
 
 	styles: {
@@ -80,7 +81,7 @@ const Content = kind({
 				</Marquee >
 				{cityPhoto}
 			</div>
-		)
+		);
 	}
 });
 

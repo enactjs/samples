@@ -20,7 +20,6 @@ const CountryButton = kind({
 	},
 
 	render: ({country, onClick, selected, ...rest}) => {
-		delete rest.dispatch;
 		delete rest.onCountryChange;
 
 		return (
@@ -44,6 +43,6 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const CountryButtonContainer = connect(mapStateToProps)(CountryButton);
+const CountryButtonContainer = connect(mapStateToProps, {})(CountryButton);
 
 export default CountryButtonContainer;
