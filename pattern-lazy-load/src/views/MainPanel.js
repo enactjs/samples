@@ -2,6 +2,8 @@ import React from 'react';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import Spotlight from '@enact/spotlight';
 import LazilyLoad, {importLazy} from '../components/LazilyLoad';
+import Popup from '@enact/moonstone/Popup';
+import Button from '@enact/moonstone/Button';
 
 class ClosePopup extends React.Component {
 	constructor(props){
@@ -34,28 +36,19 @@ class ClosePopup extends React.Component {
 		return(
 				<Panel {...rest}>
 					<Header title='Close Popup' />
-						<LazilyLoad modules={{
-							Popup: () => importLazy(import('@enact/moonstone/Popup')),
-							Button: () => importLazy(import('@enact/moonstone/Button')),
-						}}>
-							{({Popup, Button}) => (
-								<div>
-									<Button onClick={this.openPopup}>Open Popup</Button>
-									<Button onClick={onClick}>A</Button>
-									<Button>B</Button>
-									<Popup
-										open={this.state.isPopupShow}
-										onClose={this.closePopup}
-										showCloseButton
-									>
-										<div>This is Popup</div>
-										<br />
-										<Button onClick={this.closePopup}>ok</Button>
-										<Button onClick={this.closePopup}>cancel</Button>
-									</Popup>
-								</div>
-							)}
-						</LazilyLoad>
+						<Button onClick={this.openPopup}>Open Popup</Button>
+						<Button onClick={onClick}>A</Button>
+						<Button>B</Button>
+						<Popup
+							open={this.state.isPopupShow}
+							onClose={this.closePopup}
+							showCloseButton
+						>
+							<div>This is Popup</div>
+							<br />
+							<Button onClick={this.closePopup}>ok</Button>
+							<Button onClick={this.closePopup}>cancel</Button>
+						</Popup>
 				</Panel>
 		);
 	}
