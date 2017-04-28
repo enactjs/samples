@@ -1,33 +1,8 @@
 import React from 'react';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import Spotlight from '@enact/spotlight';
 import LazilyLoad, {importLazy} from '../components/LazilyLoad';
 
-class ClosePopup extends React.Component {
-	constructor(props){
-		super(props);
-
-		this.state = {
-			isPopupShow: false
-		};
-	}
-
-	componentWillMount () {
-		Spotlight.setPointerMode(false);
-	}
-
-	openPopup = () => {
-		this.setState({
-			isPopupShow: true
-		})
-	}
-
-	closePopup = () => {
-		this.setState({
-			isPopupShow: false
-		})
-	}
-
+export default class extends React.Component {
 	render () {
 		return(
 				<Panel>
@@ -43,5 +18,3 @@ class ClosePopup extends React.Component {
 		);
 	}
 }
-
-export default ClosePopup;
