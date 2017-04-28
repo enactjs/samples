@@ -32,9 +32,9 @@ class App extends React.Component {
 		return (
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
 				<MainPanel title="First" onClick={this.handleClick} />
+				<PickerPanel title="Third" onClick={this.handleClick} />
 				<NextPanel title="Third" onClick={this.handleClick} />
 				<OnePanel title="Third" onClick={this.handleClick} />
-				<PickerPanel title="Third" onClick={this.handleClick} />
 				<AnotherPanel title="Third" onClick={this.handleClick} />
 			</ActivityPanels>
 		);
