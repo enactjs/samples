@@ -24,11 +24,14 @@ const App = kind({
 			<div {...props}>
 				<Scroller>
 					{routes.map(({path}, index) => {
-						return (
-							<SampleItem key={index} path={path} history={history}>
-								{path.substr(1)}
-							</SampleItem>
-						)
+						if (path !== '/') {
+							return (
+								<SampleItem key={index} path={path} history={history}>
+									{path.substr(1)}
+								</SampleItem>
+							)
+						}
+						return null;
 					})}
 				</Scroller>
 			</div>
