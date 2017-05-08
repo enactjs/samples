@@ -45,7 +45,7 @@ export const routes = [
 const originalConsoleError = console.error;
 
 console.error = (...args) => {
-	return args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') ? null : originalConsoleError(args);
+	return args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') ? null : originalConsoleError(args.join(' '));
 };
 
 let appElement = (
