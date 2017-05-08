@@ -2,11 +2,9 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
+import ButtonToSamples from './components/ButtonToSamples';
 
-import {
-  HashRouter as Router,
-  Route
-} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 
 import PatternActivityPanels from '../../pattern-activity-panels/src/App';
 import PatternActivityPanelsDeepLinking from '../../pattern-activity-panels-deep-linking/src/main';
@@ -41,10 +39,10 @@ export const routes = [
 	{ path: '/TutorialKittenBrowser', component: TutorialKittenBrowser}
 ];
 
-
 let appElement = (
 	<Router>
 		<div>
+			<ButtonToSamples />
 			{routes.map((route, index) => <Route key={index} {...route} />)}
 		</div>
 	</Router>
