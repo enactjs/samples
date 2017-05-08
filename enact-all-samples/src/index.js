@@ -39,6 +39,15 @@ export const routes = [
 	{ path: '/TutorialKittenBrowser', component: TutorialKittenBrowser}
 ];
 
+
+// Router causes an error with our samples, but we don't want our samples to know about router.
+// To avoid this for now we're just surpressing the error.
+const originalConsoleError = console.error;
+
+console.error = (...args) => {
+	return args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') ? null : originalConsoleError(args);
+};
+
 let appElement = (
 	<Router>
 		<div>
