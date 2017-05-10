@@ -1,6 +1,6 @@
 ## Enact ExpandableList with data in Object format
 
-The sample which shows the ExpandableList with the data in Object format in provided here.
+Sample which shows the ExpandableList with data in Object format is provided here.
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
