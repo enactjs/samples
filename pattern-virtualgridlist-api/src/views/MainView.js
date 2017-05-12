@@ -19,11 +19,11 @@ class MainView extends React.Component {
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, indexToFocus: 60});
+		this.scrollTo({index: 60, animate: false, focus: true});
 	}
 
 	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
+		this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
 	onChange = (ev) => {
