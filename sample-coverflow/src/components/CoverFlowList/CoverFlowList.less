@@ -1,0 +1,19 @@
+/* CoverFlowList */
+
+.container {
+	perspective: 600px;
+	-webkit-perspective: 600px;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	perspective-origin: 50% -50%;
+	-webkit-perspective-origin: 50% -50%;
+}
+
+.listItem {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+
+	will-change: transform;
+	/*-webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent) , to(rgba(250, 250, 250, 0.1)));*/
+}
