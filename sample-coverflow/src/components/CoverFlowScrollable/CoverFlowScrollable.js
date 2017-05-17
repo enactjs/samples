@@ -32,11 +32,11 @@ const
 	nop = () => {},
 	perf = (typeof window === 'object') ? window.performance : {now: Date.now},
 	holdTime = 50,
-	scrollWheelMultiplierForDeltaPixel = 2,
+	scrollWheelMultiplierForDeltaPixel = 1,
 	pixelPerLine = ri.scale(39) * scrollWheelMultiplierForDeltaPixel,
 	paginationPageMultiplier = 0.8,
 	epsilon = 1,
-	animationDuration = 1000;
+	animationDuration = 600;
 
 /**
  * {@link moonstone/Scroller.dataIndexAttribute} is the name of a custom attribute
@@ -337,7 +337,7 @@ const CoverFlowScrollableHoC = hoc((config, Wrapped) => {
 			let delta = (wheelDeltaY || e.deltaY);
 
 			if (deltaMode === 0) {
-				delta = ri.scale(delta);
+				delta = ri.scale(delta) * scrollWheelMultiplierForDeltaPixel;
 			} else if (deltaMode === 1) { // line; firefox
 				delta = ri.scale(delta) * pixelPerLine;
 			} else if (deltaMode === 2) { // page

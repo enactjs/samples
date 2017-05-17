@@ -23,7 +23,7 @@ class CoverFlow extends Component {
 		return (
 			<GridListImageItem
 				{...rest}
-				style={{width: ri.scale(264), height: ri.scale(171)}}
+				className={css.item}
 				source={source}
 			/>
 		);
@@ -34,10 +34,19 @@ class CoverFlow extends Component {
 		return (
 			<CoverFlowList
 				component={this.renderItem}
+				coverFlowParams={{
+					rotation: -10,
+					depth: ri.scale(700),
+					density: 5,
+					gap: 2.25,
+					spread: 0.26,
+					centerGravity: 9
+				}}
+				overhang={5}
+				className={css.list}
 				data={data}
 				dataSize={dataSize}
 				itemSize={ri.scale(264)}
-				style={{height: ri.scale(350), top: ri.scale(100)}}
 			/>
 		);
 	}

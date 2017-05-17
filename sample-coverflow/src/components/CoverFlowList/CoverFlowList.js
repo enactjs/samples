@@ -78,6 +78,17 @@ class VirtualListCore extends Component {
 		]).isRequired,
 
 		/**
+		 * Parameters for cover flow
+		 * You may pass below like information
+		 * rotation: -10,
+		   depth: ri.scale(500),
+		   density: 9, // should be an odd number
+		   gap: 2.25,
+		   spread: 0.16
+		 */
+		coverFlowParams: PropTypes.object,
+
+		/**
 		 * Callback method of scrollTo.
 		 * Normally, `Scrollable` should set this value.
 		 *
@@ -161,6 +172,14 @@ class VirtualListCore extends Component {
 
 	static defaultProps = {
 		cbScrollTo: nop,
+		coverFlowParams: {
+			rotation: -10,
+			depth: ri.scale(500),
+			density: 9,
+			gap: 2.25,
+			spread: 0.16,
+			centerGravity: 2
+		},
 		data: [],
 		dataSize: 0,
 		direction: 'horizontal',
@@ -311,7 +330,7 @@ class VirtualListCore extends Component {
 
 	calculateMetrics (props) {
 		const
-			{clientSize, direction, itemSize, spacing} = props,
+			{clientSize, coverFlowParams, direction, itemSize, spacing} = props,
 			node = this.containerRef;
 
 		if (!clientSize && !node) {
@@ -334,12 +353,8 @@ class VirtualListCore extends Component {
 
 		// CrazyCoverFlow parity
 		this.animationParams = this.getCoverFlowParams({
+			...coverFlowParams,
 			itemSize,
-			rotation: -10,
-			depth: ri.scale(500),
-			density: 9,
-			gap: 2.25,
-			spread: 0.16,
 			distance: clientWidth
 		});
 		widthInfo.itemSize = this.animationParams.avgItemSize;
@@ -370,7 +385,7 @@ class VirtualListCore extends Component {
 
 		primary.gridSize = primary.itemSize + spacing;
 		secondary.gridSize = secondary.itemSize + spacing;
-		thresholdBase = primary.gridSize * 9;
+		thresholdBase = primary.gridSize * this.animationParams.density;
 
 		this.threshold = {min: -Infinity, max: thresholdBase, base: thresholdBase};
 		this.dimensionToExtent = dimensionToExtent;
@@ -452,7 +467,7 @@ class VirtualListCore extends Component {
 		}
 	}
 
-	getCoverFlowParams ({itemSize = 300, rotation = 60, depth = 1000, density = 5, spread = 0.16, gap = 2, distance = ri.scale(1920)}) {
+	getCoverFlowParams ({itemSize = 300, rotation = 60, depth = 1000, density = 5, spread = 0.16, gap = 2, distance = ri.scale(1920), centerGravity = 2}) {
 		const
 			gapSize = itemSize * gap,
 			avgItemSize = distance / density,
@@ -464,6 +479,8 @@ class VirtualListCore extends Component {
 			offset = spread * distance,
 			params = {
 				avgItemSize,
+				density,
+				centerGravity,
 				// constants
 				k0: 0 - (0.8 * inc),
 				k1: 0.5 - inc,
@@ -507,8 +524,6 @@ class VirtualListCore extends Component {
 			pos = x;
 			dir = dirX;
 		}
-
-		console.log(pos);
 
 		if (dir === 1 && pos > threshold.max) {
 			delta = pos - threshold.max;
@@ -571,37 +586,47 @@ class VirtualListCore extends Component {
 
 	positionItems ({updateFrom, updateTo}) {
 		const
-			{primary, scrollPosition} = this,
-			distance = (primary.clientSize + primary.itemSize);
+			{primary, scrollPosition, moreInfo, animationParams} = this,
+			distance = (primary.clientSize + primary.itemSize),
+			offsetIndex = Math.ceil(animationParams.density / 2);
+		let
+			{primaryPosition} = this.getGridPosition(updateFrom),
+			firstVisibleIndex = null, lastVisibleIndex = null;
+
+		primaryPosition -= scrollPosition;
 
 		// positioning items
 		for (let i = updateFrom; i < updateTo; i++) {
 			const
-				enterPos = primary.itemSize * (i - 5),
+				enterPos = primary.itemSize * (i - offsetIndex),
 				t = (scrollPosition - enterPos) / distance;
 			// determine the first and the last visible item
-			/*if (firstVisibleIndex === null && (primaryPosition + primary.itemSize) > 0) {
+			if (firstVisibleIndex === null && (primaryPosition + (primary.itemSize * offsetIndex)) > 0) {
 				firstVisibleIndex = i;
 			}
-			if (primaryPosition < primary.clientSize) {
+			if (primaryPosition < primary.clientSize - primary.itemSize) {
 				lastVisibleIndex = i;
-			}*/
+			}
 
 			if (this.updateFrom === null || this.updateTo === null || this.updateFrom > i || this.updateTo <= i) {
 				this.applyStyleToNewNode(i, t, this.animationParams);
 			} else {
 				this.applyStyleToExistingNode(i, t, this.animationParams);
 			}
+
+			primaryPosition += primary.gridSize;
 		}
 
 		this.updateFrom = updateFrom;
 		this.updateTo = updateTo;
+		moreInfo.firstVisibleIndex = firstVisibleIndex;
+		moreInfo.lastVisibleIndex = lastVisibleIndex;
 	}
 
 	composeStyle (style, t, p) {
 		let
 			_t0, _t1, _p0, _p1, _z0, _z1, _r0, _r1,
-			duration, deltaP, deltaZ, deltaR, tt, pos, rot, zPos, yPos;
+			duration, deltaP, deltaZ, deltaR, tt, pos, rot, zPos, yPos, op;
 
 		if (t < p.k1) {
 			_t0 = 0;
@@ -612,8 +637,7 @@ class VirtualListCore extends Component {
 			_z1 = p.z1;
 			_r0 = p.rot0;
 			_r1 = p.rot0;
-		}
-		else if (t < p.k2) {
+		} else if (t < p.k2) {
 			_t0 = p.k1;
 			_t1 = p.k2;
 			_p0 = p.pos1;
@@ -622,8 +646,7 @@ class VirtualListCore extends Component {
 			_z1 = p.z2;
 			_r0 = p.rot0;
 			_r1 = p.rot1;
-		}
-		else if (t < p.k3) {
+		} else if (t < p.k3) {
 			_t0 = p.k2;
 			_t1 = p.k3;
 			_p0 = p.pos2;
@@ -632,8 +655,7 @@ class VirtualListCore extends Component {
 			_z1 = p.z1;
 			_r0 = p.rot1;
 			_r1 = p.rot2;
-		}
-		else {
+		} else {
 			_t0 = p.k3;
 			_t1 = 1;
 			_p0 = p.pos3;
@@ -656,10 +678,19 @@ class VirtualListCore extends Component {
 		yPos = 0;
 
 		if (Math.abs(zPos) < ri.scale(75)) {
-			yPos = (ri.scale(75) - Math.abs(zPos)) / (-2) ;
+			yPos = (ri.scale(75) - Math.abs(zPos)) / (-p.centerGravity) ;
+		}
+
+		if (t < 0) {
+			op = Math.max(0, 1 - (t / p.k0));
+		} else if (t > 1) {
+			op = Math.max(0, 1 - ((t - 1) / (p.k4 - 1)));
+		} else {
+			op = 1;
 		}
 
 		style.transform = 'translate3d(' + pos + 'px,' + yPos + 'px,' + zPos + 'px) rotateY(' + rot + 'deg)';
+		style.opacity = op;
 	}
 
 	getXY = (primaryPosition, secondaryPosition) => {
@@ -803,6 +834,7 @@ class VirtualListCore extends Component {
 		delete props.cbScrollTo;
 		delete props.className;
 		delete props.clientSize;
+		delete props.coverFlowParams;
 		delete props.component;
 		delete props.data;
 		delete props.dataSize;
