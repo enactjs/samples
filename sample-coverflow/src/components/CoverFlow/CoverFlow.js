@@ -40,9 +40,9 @@ class CoverFlow extends Component {
 					density: 5,
 					gap: 2.25,
 					spread: 0.26,
-					centerGravity: 9
+					centerGravity: 9 // Larger number would give you the lower center image
 				}}
-				overhang={5}
+				overhang={5} // Make sure you pass the same number with the density
 				className={css.list}
 				data={data}
 				dataSize={dataSize}
