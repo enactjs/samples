@@ -1,7 +1,5 @@
 /*
- * Exports the {@link moonstone/Scroller.Scrollable} Higher-order Component (HOC) and
- * the {@link moonstone/Scroller.dataIndexAttribute} constant.
- * The default export is {@link moonstone/Scroller.Scrollable}.
+ * Exports the CoverFlowScrollable Higher-order Component (HOC).
  */
 
 import clamp from 'ramda/src/clamp';
@@ -39,12 +37,10 @@ const
 	animationDuration = 600;
 
 /**
- * {@link moonstone/Scroller.dataIndexAttribute} is the name of a custom attribute
- * which indicates the index of an item in {@link moonstone/VirtualList.VirtualList}
- * or {@link moonstone/VirtualList.VirtualGridList}.
+ * dataIndexAttribute is the name of a custom attribute
+ * which indicates the index of an item in CoverFlowList
  *
  * @constant dataIndexAttribute
- * @memberof moonstone/Scroller
  * @type {String}
  * @private
  */
@@ -68,7 +64,7 @@ const ScrollableSpotlightContainer = SpotlightContainerDecorator(
 );
 
 /**
- * {@link moonstone/Scroller.Scrollable} is a Higher-order Component
+ * CoverFlowScrollable is a Higher-order Component
  * that applies a Scrollable behavior to its wrapped component.
  *
  * Scrollable catches `onFocus` and `onKeyDown` events from its wrapped component for spotlight features,
@@ -77,16 +73,15 @@ const ScrollableSpotlightContainer = SpotlightContainerDecorator(
  *
  * Scrollable calls `onScrollStart`, `onScroll`, and `onScrollStop` callback functions during scroll.
  *
- * @class Scrollable
- * @memberof moonstone/Scroller
+ * @class CoverFlowScrollable
  * @hoc
  * @private
  */
 const CoverFlowScrollableHoC = hoc((config, Wrapped) => {
 	return class CoverFlowScrollable extends Component {
-		static displayName = 'Scrollable'
+		static displayName = 'CoverFlowScrollable'
 
-		static propTypes = /** @lends moonstone/Scroller.Scrollable.prototype */ {
+		static propTypes = {
 			/**
 			 * The callback function which is called for linking scrollTo function.
 			 * You should specify a callback function as the value of this prop

@@ -1,8 +1,5 @@
 /*
- * Exports the {@link moonstone/VirtualList.VirtualListBase} and
- * {@link moonstone/VirtualList.VirtualListCore} components and the
- * {@link moonstone/VirtualList.gridListItemSizeShape} validator. The default
- * export is {@link moonstone/VirtualList.VirtualListBase}.
+ * Exports the CoverFlowList
  */
 
 import classNames from 'classnames';
@@ -14,7 +11,7 @@ import ri from '@enact/ui/resolution';
 import Spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 
-import {dataIndexAttribute, CoverFlowScrollable} from '../CoverFlowScrollable';
+import {dataIndexAttribute, CoverFlowScrollable} from './CoverFlowScrollable';
 
 import css from './CoverFlowList.less';
 
@@ -28,10 +25,9 @@ const
 	nop = () => {};
 
 /**
- * The shape for the grid list item size in a list for {@link moonstone/VirtualList.listItemSizeShape}.
+ * The shape for the grid list item size in a list.
  *
  * @typedef {Object} gridListItemSizeShape
- * @memberof moonstone/VirtualList
  * @property {Number} minWidth - The minimum width of the grid list item.
  * @property {Number} minHeight - The minimum height of the grid list item.
  */
@@ -41,19 +37,14 @@ const gridListItemSizeShape = PropTypes.shape({
 });
 
 /**
- * {@link moonstone/VirtualList.VirtualListBase} is a base component for
- * {@link moonstone/VirtualList.VirtualList} and
- * {@link moonstone/VirtualList.VirtualGridList} with Scrollable and SpotlightContainerDecorator applied.
- *
- * @class VirtualListCore
- * @memberof moonstone/VirtualList
+ * @class CoverFlowListCore
  * @ui
  * @private
  */
-class VirtualListCore extends Component {
+class CoverFlowListCore extends Component {
 	static displayName = 'CoverFlowList'
 
-	static propTypes = /** @lends moonstone/VirtualList.VirtualListCore.prototype */ {
+	static propTypes = {
 		/**
 		 * The render function for an item of the list.
 		 * `index` is for accessing the index of the item.
@@ -865,7 +856,7 @@ class VirtualListCore extends Component {
  * @ui
  * @private
  */
-const CoverFlowList = SpotlightContainerDecorator({restrict: 'self-first'}, CoverFlowScrollable(VirtualListCore));
+const CoverFlowList = SpotlightContainerDecorator({restrict: 'self-first'}, CoverFlowScrollable(CoverFlowListCore));
 
 export default CoverFlowList;
 export {CoverFlowList};
