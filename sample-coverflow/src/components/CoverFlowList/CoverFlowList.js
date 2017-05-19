@@ -169,7 +169,7 @@ class CoverFlowListCore extends Component {
 			density: 9,
 			gap: 2.25,
 			spread: 0.16,
-			centerGravity: 2
+			centerGravity: 3
 		},
 		data: [],
 		dataSize: 0,
