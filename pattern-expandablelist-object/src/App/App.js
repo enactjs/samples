@@ -10,7 +10,7 @@ const App = kind({
 	render: (props) => (
 		<div {...props}>
 			<Panels>
-				<MainPanel title="Expandable List"/>
+				<MainPanel title="Expandable List" />
 			</Panels>
 		</div>
 	)

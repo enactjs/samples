@@ -14,7 +14,11 @@ const MainPanel = kind({
 				select={'multiple'}
 				title={'ExpandableList with Data in Object format'}
 			>
-				{[{disabled:false, children: 'option1'}, {disabled:false, children: 'option2'}, {disabled:false, children: 'option3'}]}
+				{[
+					{disabled:false, children: 'option1'},
+					{disabled:false, children: 'option2'},
+					{disabled:true, children: 'option3'}
+				]}
 			</ExpandableList>
 		</Panel>
 	)

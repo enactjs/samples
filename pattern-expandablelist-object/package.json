@@ -15,7 +15,7 @@
 		"test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
 		"test-watch": "enact test start --browsers PhantomJS"
 	},
-	"license": "UNLICENSED",
+	"license": "Apache-2.0",
 	"private": true,
 	"repository": "",
 	"enact": {
@@ -25,7 +25,7 @@
 		}
 	},
 	"eslintConfig": {
-		"extends": "enact"
+		"extends": "enact/strict"
 	},
 	"dependencies": {
 		"@enact/core": "^1.2.0",
