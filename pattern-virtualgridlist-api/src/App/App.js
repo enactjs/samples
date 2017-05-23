@@ -21,4 +21,4 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator(App);
+export default MoonstoneDecorator({noAutoFocus: true}, App);
