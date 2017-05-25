@@ -27,6 +27,7 @@ const ImageItem = kind({
 	},
 
 	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
+		delete rest.data;
 		delete rest.index;
 
 		return (
