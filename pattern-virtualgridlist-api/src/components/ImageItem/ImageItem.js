@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 
 import {selectItem} from '../../actions';
 
-import css from './ImageItem.less';
-
 const ImageItem = kind({
 	name: 'ImageItem',
 
@@ -21,12 +19,8 @@ const ImageItem = kind({
 		subCaption: PropTypes.string
 	},
 
-	styles: {
-		css,
-		className: 'imageItem'
-	},
-
 	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
+		delete rest.data;
 		delete rest.index;
 
 		return (
