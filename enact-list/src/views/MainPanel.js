@@ -4,6 +4,7 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 import LocaleSwitch from '../components/LocaleSwitch';
 
 import {VirtualList, VirtualGridList} from '@enact/moonstone/VirtualList';
+// import {VirtualListNative as VirtualList, VirtualGridListNative as VirtualGridList} from '@enact/moonstone/VirtualList/VirtualListNative.js';
 import Item from '@enact/moonstone/Item';
 
 const
@@ -21,6 +22,7 @@ const
 	},
 	items = [],
 	isItemDisabled = (index) => !(index % 5 === 0),
+	isGridItemDisabled = (index) => !(index % 20 === 0),
 	// eslint-disable-next-line enact/prop-types, enact/display-name
 	renderItem = ({data, index, ...rest}) => {
 		const itemStyle = {height: '72px', ...style.item};
@@ -32,8 +34,18 @@ const
 			</Item>
 		);
 	},
+	renderGridItem = ({data, index, ...rest}) => {
+		const itemStyle = {height: '72px', ...style.item};
+		const disabled = isGridItemDisabled(index);
+
+		return (
+			<Item {...rest} disabled={disabled} style={itemStyle}>
+				{data[index]}
+			</Item>
+		);
+	},
 	renderHorizontalItem = ({data, index, ...rest}) => {
-		const itemStyle = {width: '100px', height: '100%', overflow: 'hidden', ...style.item};
+		const itemStyle = {width: '150px', height: '100%', ...style.item};
 		const disabled = isItemDisabled(index);
 
 		return (
@@ -67,10 +79,10 @@ const MainPanel = kind({
 					style={style.list}
 				/>
 				<VirtualGridList
-					component={renderItem}
+					component={renderGridItem}
 					data={items}
 					dataSize={items.length}
-					isItemDisabled={isItemDisabled}
+					isItemDisabled={isGridItemDisabled}
 					itemSize={{minWidth: 100, minHeight: 100}}
 					style={style.list}
 				/>
@@ -80,7 +92,7 @@ const MainPanel = kind({
 					dataSize={items.length}
 					direction="horizontal"
 					isItemDisabled={isItemDisabled}
-					itemSize={itemSize}
+					itemSize={150}
 					style={{height: '200px'}}
 				/>
 			</Panel>
