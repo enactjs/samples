@@ -29,16 +29,16 @@ class App extends React.Component {
 	handleClick = () => this.setState({index: this.state.index + 1})
 
 	render () {
-		const {onSelectTheme, ...rest} = {...this.props};
+		const {onSelectSkin, ...rest} = {...this.props};
 		return (
 			<ActivityPanels {...rest} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onSelectTheme={onSelectTheme} onClick={this.handleClick} />
+				<MainPanel title="First" onSelectSkin={onSelectSkin} onClick={this.handleClick} />
 				<ItemPanel title="Second" onClick={this.handleClick} />
 				<ButtonPanel title="Third" onClick={this.handleClick} />
-				<MainPanel title="Fourth" onSelectTheme={onSelectTheme} />
+				<MainPanel title="Fourth" onSelectSkin={onSelectSkin} />
 			</ActivityPanels>
 		);
 	}
 }
 
-export default Changeable({change: 'onSelectTheme', prop: 'theme'}, MoonstoneDecorator(App));
+export default Changeable({change: 'onSelectSkin', prop: 'skin'}, MoonstoneDecorator(App));
