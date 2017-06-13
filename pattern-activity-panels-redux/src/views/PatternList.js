@@ -1,7 +1,8 @@
 import {connect} from 'react-redux';
 import Item from '@enact/moonstone/Item';
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 import {VirtualList} from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
@@ -15,10 +16,10 @@ for (let i = 0; i < 1000; i++) {
 
 class PatternListBase extends Component {
 	static propTypes = {
+		id: PropTypes.string,
 		lastScrollInfo: PropTypes.shape({
 			lastScrollLeft: PropTypes.number,
-			lastScrollTop:  PropTypes.number,
-			lastFocusedIndex: PropTypes.number
+			lastScrollTop:  PropTypes.number
 		}),
 		onClick: PropTypes.func,
 		onWillUnmount: PropTypes.func
@@ -27,8 +28,7 @@ class PatternListBase extends Component {
 	static defaultProps = {
 		lastScrollInfo: {
 			lastScrollLeft: 0,
-			lastScrollTop: 0,
-			lastFocusedIndex: 0
+			lastScrollTop: 0
 		}
 	}
 
@@ -43,23 +43,24 @@ class PatternListBase extends Component {
 	}
 
 	componentDidMount () {
-		const {lastScrollLeft, lastScrollTop, lastFocusedIndex} = this.props.lastScrollInfo;
-		this.scrollTo({position: {x: lastScrollLeft, y: lastScrollTop}, indexToFocus: lastFocusedIndex, animate: false});
+		const {lastScrollLeft, lastScrollTop} = this.props.lastScrollInfo;
+		this.scrollTo({position: {x: lastScrollLeft, y: lastScrollTop}, animate: false});
 	}
 
 	render = () => {
-		const {onWillUnmount, ...rest} = this.props;
+		const {onWillUnmount, id, ...rest} = this.props;
 		delete rest.lastScrollInfo;
 
 		return (
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
+				className={css.list}
 				component={this.renderItem}
+				containerId={id}
 				data={items}
 				dataSize={items.length}
 				itemSize={ri.scale(72)}
 				onWillUnmount={onWillUnmount}
-				className={css.list}
 			/>
 		);
 	}
