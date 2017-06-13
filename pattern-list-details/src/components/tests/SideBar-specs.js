@@ -12,7 +12,7 @@ describe('SideBar specs', () => {
 		};
 
 		const subject = mount(
-			<Body selectedCountry='japan' cities={cities} />
+			<Body selectedCountry="japan" cities={cities} />
 		);
 
 		const SideBar = subject.find('SideBar');

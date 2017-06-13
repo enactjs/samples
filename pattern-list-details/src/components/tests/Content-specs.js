@@ -12,7 +12,7 @@ describe('Content specs', () => {
 		};
 
 		const subject = mount(
-			<Body selectedCountry='korea' cities={cities} />
+			<Body selectedCountry="korea" cities={cities} />
 		);
 
 		const SideBar = subject.find('SideBar');

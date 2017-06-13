@@ -2,30 +2,25 @@ import {connect} from 'react-redux';
 import {GridListImageItem} from '@enact/moonstone/VirtualList';
 import kind from '@enact/core/kind';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {selectItem} from '../../actions';
-
-import css from './ImageItem.less';
 
 const ImageItem = kind({
 	name: 'ImageItem',
 
 	propTypes: {
-		caption: React.PropTypes.string,
-		index: React.PropTypes.number,
-		selected: React.PropTypes.bool,
-		selectImageItem: React.PropTypes.func,
-		selectionOverlayShowing: React.PropTypes.bool,
-		source: React.PropTypes.string,
-		subCaption: React.PropTypes.string
-	},
-
-	styles: {
-		css,
-		className: 'imageItem'
+		caption: PropTypes.string,
+		index: PropTypes.number,
+		selected: PropTypes.bool,
+		selectImageItem: PropTypes.func,
+		selectionOverlayShowing: PropTypes.bool,
+		source: PropTypes.string,
+		subCaption: PropTypes.string
 	},
 
 	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
+		delete rest.data;
 		delete rest.index;
 
 		return (

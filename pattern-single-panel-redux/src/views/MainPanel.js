@@ -14,16 +14,20 @@ import mural from '../../assets/images/mural.jpeg';
 import spaceShuttle from '../../assets/images/space-shuttle.jpg';
 import violin from '../../assets/images/violin.jpeg';
 
-const images = {
+const imageNames = [
+	'mural',
+	'violin',
+	'car',
+	'city',
+	'spaceShuttle'
+];
+const imageURLs = [
 	mural,
 	violin,
 	car,
 	city,
 	spaceShuttle
-};
-
-const imageNames = Object.keys(images);
-const imageURLs = Object.values(images);
+];
 
 const MainPanel = kind({
 	name: 'MainPanel',

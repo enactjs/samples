@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
@@ -11,18 +12,18 @@ const albums = ['Family', 'Car', 'Travel'];
 
 class MainView extends React.Component {
 	static propTypes = {
-		album: React.PropTypes.string,
-		onChangeAlbum: React.PropTypes.func
+		album: PropTypes.string,
+		onChangeAlbum: PropTypes.func
 	}
 
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, indexToFocus: 60});
+		this.scrollTo({index: 60, animate: false, focus: true});
 	}
 
 	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, indexToFocus: 0});
+		this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
 	onChange = (ev) => {

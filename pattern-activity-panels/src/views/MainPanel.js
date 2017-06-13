@@ -4,7 +4,8 @@ import Button from '@enact/moonstone/Button';
 import Slider from '@enact/moonstone/Slider';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const themeStack = ['moonstone', 'aqua', 'car', 'material'];
 let themeIndex = 0;

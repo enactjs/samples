@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BodyText from '@enact/moonstone/BodyText';
 import Image from '@enact/moonstone/Image';
 import Slider from '@enact/moonstone/Slider';
@@ -26,7 +27,7 @@ const imageComponents = imageURLs.map(url => {
 
 class ProfilePhotoPicker extends React.Component {
 	static propTypes = {
-		className: React.PropTypes.string
+		className: PropTypes.string
 	}
 
 	constructor (props) {
