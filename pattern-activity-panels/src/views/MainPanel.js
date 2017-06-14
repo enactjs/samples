@@ -4,7 +4,6 @@ import Button from '@enact/moonstone/Button';
 import Slider from '@enact/moonstone/Slider';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import Input from '@enact/moonstone/Input';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -54,7 +53,6 @@ const MainPanel = kind({
 				<Item onClick={onClick}>Click me</Item>
 				<Item onClick={onClick}>Click me</Item>
 				<Item onClick={onClick}>Click me</Item>
-				<Input placeholder="some text that's real long">Click me</Input>
 				<Slider defaultValue={25} />
 			</Panel>
 		);
