@@ -28,8 +28,9 @@ class ImageList extends React.Component {
 				component={this.renderItem}
 				data={imageitems}
 				dataSize={imageitems.length}
-				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
-				spacing={ri.scale(21)}
+				direction='horizontal'
+				focusableScrollbar
+				itemSize={{minHeight: ri.scale(500), minWidth: ri.scale(400)}}
 			/>
 		);
 	}

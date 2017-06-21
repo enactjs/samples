@@ -26,12 +26,10 @@ const ImageItem = kind({
 		return (
 			<GridListImageItem
 				{...rest}
-				caption={caption}
 				onClick={selectImageItem}
 				selected={selected}
 				selectionOverlayShowing={selectionOverlayShowing}
 				source={source}
-				subCaption={subCaption}
 			/>
 		);
 	}
