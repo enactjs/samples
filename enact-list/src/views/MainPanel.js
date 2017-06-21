@@ -4,6 +4,7 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 import LocaleSwitch from '../components/LocaleSwitch';
 
 import {VirtualList, VirtualGridList} from '@enact/moonstone/VirtualList';
+import {VirtualListFlexbox, VirtualGridListFlexbox} from '@enact/moonstone/VirtualList/VirtualListFlexbox';
 // import {VirtualListNative as VirtualList, VirtualGridListNative as VirtualGridList} from '@enact/moonstone/VirtualList/VirtualListNative.js';
 import Item from '@enact/moonstone/Item';
 
@@ -12,7 +13,13 @@ const
 		item: {
 			borderBottom: 2 + 'px solid #202328',
 			boxSizing: 'border-box',
-			position: 'absolute'
+			position: 'absolute',
+			fontSize: '0.3rem'
+		},
+		itemFlex: {
+			borderBottom: 2 + 'px solid #202328',
+			boxSizing: 'border-box',
+			fontSize: '0.3rem'
 		},
 		list: {
 			display: 'inline-block',
@@ -22,7 +29,7 @@ const
 	},
 	items = [],
 	isItemDisabled = (index) => !(index % 5 === 0),
-	isGridItemDisabled = (index) => !(index % 20 === 0),
+	isGridItemDisabled = (index) => false,// !(index % 20 === 0),
 	// eslint-disable-next-line enact/prop-types, enact/display-name
 	renderItem = ({data, index, ...rest}) => {
 		const itemStyle = {height: '72px', ...style.item};
@@ -36,6 +43,17 @@ const
 	},
 	renderGridItem = ({data, index, ...rest}) => {
 		const itemStyle = {height: '72px', ...style.item};
+		const disabled = isGridItemDisabled(index);
+
+		return (
+			<Item {...rest} disabled={disabled} style={itemStyle}>
+				{data[index]}
+			</Item>
+		);
+	},
+	renderGridFlexItem = ({data, index, ...rest}) => {
+		// const itemStyle = {height: '72px', ...style.item};
+		const itemStyle = {flex: '1 1 100px', height: '72px', ...style.itemFlex};
 		const disabled = isGridItemDisabled(index);
 
 		return (
@@ -70,14 +88,6 @@ const MainPanel = kind({
 				<Header title="Locale Switch" type="compact">
 					<LocaleSwitch />
 				</Header>
-				<VirtualList
-					component={renderItem}
-					data={items}
-					dataSize={items.length}
-					isItemDisabled={isItemDisabled}
-					itemSize={itemSize}
-					style={style.list}
-				/>
 				<VirtualGridList
 					component={renderGridItem}
 					data={items}
@@ -86,14 +96,13 @@ const MainPanel = kind({
 					itemSize={{minWidth: 100, minHeight: 100}}
 					style={style.list}
 				/>
-				<VirtualList
-					component={renderHorizontalItem}
+				<VirtualGridListFlexbox
+					component={renderGridFlexItem}
 					data={items}
 					dataSize={items.length}
-					direction="horizontal"
-					isItemDisabled={isItemDisabled}
-					itemSize={150}
-					style={{height: '200px'}}
+					isItemDisabled={isGridItemDisabled}
+					itemSize={{minWidth: 100, minHeight: 100}}
+					style={style.list}
 				/>
 			</Panel>
 		);
