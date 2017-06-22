@@ -11,30 +11,34 @@ import css from './PatternList.less';
 const items = [];
 
 for (let i = 0; i < 1000; i++) {
-	items.push('Item ' + ('00' + i).slice(-3));
+	items.push({
+		disabled: i % 2 === 0,
+		children: 'Item ' + ('00' + i).slice(-3)
+	});
 }
 
 class PatternListBase extends Component {
 	static propTypes = {
 		id: PropTypes.string,
-		lastScrollInfo: PropTypes.shape({
-			lastScrollLeft: PropTypes.number,
-			lastScrollTop:  PropTypes.number
-		}),
 		onClick: PropTypes.func,
-		onWillUnmount: PropTypes.func
+		onScrollStop: PropTypes.func,
+		scrollLeft: PropTypes.number,
+		scrollTop: PropTypes.number
 	}
 
 	static defaultProps = {
-		lastScrollInfo: {
-			lastScrollLeft: 0,
-			lastScrollTop: 0
-		}
+		scrollLeft: 0,
+		scrollTop: 0
+	}
+
+	componentDidMount () {
+		const {scrollLeft, scrollTop} = this.props;
+		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
 	}
 
 	renderItem = ({data, index, ...rest}) => (
-		<Item {...rest} onClick={this.props.onClick}>
-			{data[index]}
+		<Item {...rest} disabled={data[index].disabled} onClick={this.props.onClick}>
+			{data[index].children}
 		</Item>
 	)
 
@@ -42,14 +46,10 @@ class PatternListBase extends Component {
 		this.scrollTo = fn;
 	}
 
-	componentDidMount () {
-		const {lastScrollLeft, lastScrollTop} = this.props.lastScrollInfo;
-		this.scrollTo({position: {x: lastScrollLeft, y: lastScrollTop}, animate: false});
-	}
-
 	render = () => {
-		const {onWillUnmount, id, ...rest} = this.props;
-		delete rest.lastScrollInfo;
+		const {onScrollStop, id, ...rest} = this.props;
+		delete rest.scrollLeft;
+		delete rest.scrollTop;
 
 		return (
 			<VirtualList
@@ -60,19 +60,23 @@ class PatternListBase extends Component {
 				data={items}
 				dataSize={items.length}
 				itemSize={ri.scale(72)}
-				onWillUnmount={onWillUnmount}
+				onScrollStop={onScrollStop}
 			/>
 		);
 	}
 
 }
 
-const mapStateToProps = ({lastScrollInfo}, {index}) => ({
-	lastScrollInfo: lastScrollInfo[index]
-});
+const mapStateToProps = ({lastScrollInfo}, {index}) => {
+	const info = lastScrollInfo[index];
+	return {
+		scrollLeft: info ? info.scrollLeft : 0,
+		scrollTop: info ? info.scrollTop : 0
+	};
+};
 
 const mapDispatchToProps = (dispatch, {index}) => ({
-	onWillUnmount: (info) => dispatch(saveLastScrollInfo(index, info))
+	onScrollStop: (info) => dispatch(saveLastScrollInfo(index, info))
 });
 
 const PatternList = connect(mapStateToProps, mapDispatchToProps)(PatternListBase);
