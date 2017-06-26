@@ -3,19 +3,12 @@ import Item from '@enact/moonstone/Item';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {VirtualList} from '@enact/moonstone/VirtualList';
+import VirtualList from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
 import css from './PatternList.less';
 
-const items = [];
-
-for (let i = 0; i < 1000; i++) {
-	items.push({
-		disabled: i % 2 === 0,
-		children: 'Item ' + ('00' + i).slice(-3)
-	});
-}
+const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
 
 class PatternListBase extends Component {
 	static propTypes = {
@@ -37,8 +30,8 @@ class PatternListBase extends Component {
 	}
 
 	renderItem = ({data, index, ...rest}) => (
-		<Item {...rest} disabled={data[index].disabled} onClick={this.props.onClick}>
-			{data[index].children}
+		<Item {...rest} onClick={this.props.onClick}>
+			{data[index]}
 		</Item>
 	)
 
