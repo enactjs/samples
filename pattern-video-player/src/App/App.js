@@ -15,12 +15,12 @@ const getVideo = (index) => videos[index];
 
 class App extends React.Component {
 	static propTypes = {
-		index: PropTypes.number,
+		panelIndex: PropTypes.number,
 		videoIndex: PropTypes.number
 	}
 
 	static defaultProps = {
-		index: 0,
+		panelIndex: 0,
 		videoIndex: 0
 	}
 
@@ -28,17 +28,18 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			index: this.props.index,
+			panelIndex: this.props.panelIndex,
 			panelsVisible: true,
 			videoIndex: this.props.videoIndex
 		};
 	}
 
-	handleSelectBreadcrumb = ({index}) => this.setState({index})
+	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
 
-	handleClick = () => this.setState({index: this.state.index + 1})
+	handleSelectBreadcrumb = ({panelIndex}) => this.setState({panelIndex})
 
 	handleShowPanelsClick = () => this.setState({panelsVisible: true})
+
 	handleHidePanelsClick = () => this.setState({panelsVisible: false})
 
 	setVideoIndex = (videoIndex) => this.setState({videoIndex})
@@ -46,7 +47,7 @@ class App extends React.Component {
 	render () {
 		const {className, ...rest} = this.props;
 		const {source, desc, ...restVideo} = getVideo(this.state.videoIndex);
-		delete rest.index;
+		delete rest.panelIndex;
 		delete rest.videoIndex;
 		return (
 			<div {...rest} className={className + ' ' + css.app}>
@@ -60,11 +61,11 @@ class App extends React.Component {
 					</rightComponents>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
-					<AlwaysViewingPanels onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-						<MainPanel title="Videos" videoIndex={this.state.videoIndex} setVideoIndex={this.setVideoIndex} hidePanels={this.handleHidePanelsClick} nextPanel={this.handleClick} />
-						<ItemPanel title="Second" onClick={this.handleClick} />
+					<AlwaysViewingPanels onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.panelIndex}>
+						<MainPanel title="Videos" videoIndex={this.state.videoIndex} setVideoIndex={this.setVideoIndex} onHidePanels={this.handleHidePanelsClick} onNextPanel={this.handleNextPanelClick} />
+						<ItemPanel title="Second" />
 					</AlwaysViewingPanels> :
-				null}
+					null}
 			</div>
 		);
 	}
