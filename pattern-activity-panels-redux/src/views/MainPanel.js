@@ -4,6 +4,8 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {PatternList} from './PatternList';
+
 const MainPanel = kind({
 	name: 'MainPanel',
 
