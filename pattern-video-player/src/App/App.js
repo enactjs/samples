@@ -15,7 +15,22 @@ const getVideo = (index) => videos[index];
 
 class App extends React.Component {
 	static propTypes = {
+		/**
+		 * Assign an alternate panel index to start on.
+		 *
+		 * @type {Number}
+		 * @default 0
+		 * @public
+		 */
 		panelIndex: PropTypes.number,
+
+		/**
+		 * Assign an alternate initial video to load first.
+		 *
+		 * @type {Number}
+		 * @default 0
+		 * @public
+		 */
 		videoIndex: PropTypes.number
 	}
 
