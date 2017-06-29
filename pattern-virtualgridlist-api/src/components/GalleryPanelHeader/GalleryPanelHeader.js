@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
 	addItem as addAction,
@@ -56,22 +57,49 @@ const GalleryPanelHeader = kind({
 		}
 	},
 
-	render: ({addMockItem, deleteItem, selectAll, showOverlay, showSelectionOverlayHandler, ...rest}) => {
+	computed: {
+		selectionPreviousButton: ({showOverlay, showSelectionOverlayHandler}) => {
+			const
+				tooltipText = showOverlay ? "Previous" : "Selection",
+				icon = showOverlay ? "rollbackward" : "check";
+			return (
+				<IconButton tooltipText={tooltipText} small onClick={showSelectionOverlayHandler}>{icon}</IconButton>
+			);
+		},
+		addButton: ({addMockItem, showOverlay}) => {
+			if (!showOverlay) {
+				return (<IconButton tooltipText="Add Item" small onClick={addMockItem}>plus</IconButton>);
+			}
+		},
+		deleteButton: ({deleteItem, showOverlay}) => {
+			if (showOverlay) {
+				return (<Button small onClick={deleteItem}>Delete</Button>);
+			}
+		},
+		selectAllButton: ({selectAll, showOverlay}) => {
+			if (showOverlay) {
+				return (<Button small onClick={selectAll}>Select All</Button>);
+			}
+		}
+	},
+
+	render: ({addButton, deleteButton, selectAllButton, selectionPreviousButton, ...rest}) => {
 		delete rest.album;
 		delete rest.albumSize;
 		delete rest.addItem;
+		delete rest.addMockItem;
 		delete rest.deleteItem;
 		delete rest.selectAll;
 		delete rest.selectionEnable;
 		delete rest.showOverlay;
+		delete rest.showSelectionOverlayHandler;
 
 		return (
 			<Header {...rest}>
-				{!showOverlay && <IconButton tooltipText="Add Item" small onClick={addMockItem}>plus</IconButton>}
-				{showOverlay && <Button small onClick={deleteItem}>Delete</Button>}
-				{showOverlay && <Button small onClick={selectAll}>Select All</Button>}
-				{!showOverlay && <IconButton tooltipPosition="above" tooltipText="Selection" small onClick={showSelectionOverlayHandler}>check</IconButton>}
-				{showOverlay && <IconButton tooltipPosition="above" tooltipText="Go To Previous" small onClick={showSelectionOverlayHandler}>rollbackward</IconButton>}
+				{addButton}
+				{deleteButton}
+				{selectAllButton}
+				{selectionPreviousButton}
 			</Header>
 		);
 	}

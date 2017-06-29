@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Image from '@enact/moonstone/Image';
 import IconButton from '@enact/moonstone/IconButton';
@@ -38,7 +39,8 @@ const Content = kind({
 
 	propTypes: {
 		onZoom: PropTypes.func.isRequired,
-		selectedCity: PropTypes.string.isRequired
+		selectedCity: PropTypes.string.isRequired,
+		zoomState: PropTypes.bool.isRequired
 	},
 
 	styles: {
@@ -79,7 +81,7 @@ const Content = kind({
 				</Marquee >
 				{cityPhoto}
 			</div>
-		)
+		);
 	}
 });
 

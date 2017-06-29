@@ -3,6 +3,7 @@ import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 import Changeable from '@enact/ui/Changeable';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
@@ -20,10 +21,10 @@ const AppBase = kind({
 	name: 'App',
 
 	propTypes: {
-		index: React.PropTypes.number,
-		kitten: React.PropTypes.number,
-		onNavigate: React.PropTypes.func,
-		onSelectKitten: React.PropTypes.func
+		index: PropTypes.number,
+		kitten: PropTypes.number,
+		onNavigate: PropTypes.func,
+		onSelectKitten: PropTypes.func
 	},
 
 	defaultProps: {

@@ -1,7 +1,9 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
-import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import Divider from '@enact/moonstone/Divider';
+import SelectableItem from '@enact/moonstone/SelectableItem';
 
 const CityItem = kind({
 	name: 'CityItem',
@@ -13,20 +15,20 @@ const CityItem = kind({
 	},
 
 	render: ({city, onCityChange, selected, ...rest}) => {
-		delete rest.dispatch;
-
 		return (
-			<CheckboxItem
-				{...rest}
-				onToggle={onCityChange}
-				selected={selected}
-				value={city}
-			>
-				{city}
-			</CheckboxItem>
-		)
+			<div {...rest}>
+				<SelectableItem
+					onToggle={onCityChange}
+					selected={selected}
+					value={city}
+				>
+					{city}
+				</SelectableItem>
+				<Divider />
+			</div>
+		);
 	}
-})
+});
 
 const mapStateToProps = (state, ownProps) => {
 	const country = state.country;
@@ -38,6 +40,6 @@ const mapStateToProps = (state, ownProps) => {
 	return city in state.data[country] ? {selected: state.data[country][city].selected} : {selected : false};
 };
 
-const CityItemContainer = connect(mapStateToProps)(CityItem);
+const CityItemContainer = connect(mapStateToProps, {})(CityItem);
 
 export default CityItemContainer;

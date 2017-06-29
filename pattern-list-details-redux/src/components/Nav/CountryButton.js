@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
@@ -19,7 +20,6 @@ const CountryButton = kind({
 	},
 
 	render: ({country, onClick, selected, ...rest}) => {
-		delete rest.dispatch;
 		delete rest.onCountryChange;
 
 		return (
@@ -43,6 +43,6 @@ const mapStateToProps = (state, ownProps) => {
 	};
 };
 
-const CountryButtonContainer = connect(mapStateToProps)(CountryButton);
+const CountryButtonContainer = connect(mapStateToProps, {})(CountryButton);
 
 export default CountryButtonContainer;
