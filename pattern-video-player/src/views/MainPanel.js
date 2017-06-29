@@ -34,7 +34,7 @@ const MainPanel = kind({
 		 * A function that receives the selected video's index.
 		 * @type {Function}
 		 */
-		setVideoIndex: PropTypes.func,
+		onVideoIndexChange: PropTypes.func,
 
 		/**
 		 * A title string appear on header
@@ -51,13 +51,12 @@ const MainPanel = kind({
 	},
 
 	handlers: {
-		setVideoIndex: handle(
-			(ev, {setVideoIndex}) => setVideoIndex(ev.selected)
+		onVideoIndexChange: handle(
+			(ev, {onVideoIndexChange}) => onVideoIndexChange(ev.selected)
 		)
 	},
 
-	render: ({title, onNextPanel, onHidePanels, setVideoIndex, videoIndex, ...rest}) => {
-		delete rest.setVideoIndex;
+	render: ({title, onNextPanel, onHidePanels, onVideoIndexChange, videoIndex, ...rest}) => {
 		return (
 			<Panel {...rest}>
 				<Header title={title} titleBelow={videos[videoIndex].title}>
@@ -65,7 +64,13 @@ const MainPanel = kind({
 					<Button onClick={onHidePanels} small>Hide Panels</Button>
 				</Header>
 				<Scroller>
-					<Group select="radio" selectedProp="selected" childComponent={RadioItem} defaultSelected={videoIndex} onSelect={setVideoIndex}>
+					<Group
+						select="radio"
+						selectedProp="selected"
+						childComponent={RadioItem}
+						defaultSelected={videoIndex}
+						onSelect={onVideoIndexChange}
+					>
 						{videosList}
 					</Group>
 				</Scroller>

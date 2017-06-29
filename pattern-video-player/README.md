@@ -10,7 +10,11 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `moonstone/Panels/Panel`
 - `moonstone/Panels/Header`
 - `moonstone/Button`
+- `moonstone/Group`
 - `moonstone/IconButton`
+- `moonstone/Item`
+- `moonstone/RadioItem`
+- `moonstone/Scroller`
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 

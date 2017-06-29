@@ -57,12 +57,26 @@ class App extends React.Component {
 						{desc}
 					</infoComponents>
 					<rightComponents>
-						<IconButton backgroundOpacity="translucent" onClick={this.handleShowPanelsClick}>list</IconButton>
+						<IconButton
+							backgroundOpacity="translucent"
+							onClick={this.handleShowPanelsClick}
+						>
+							list
+						</IconButton>
 					</rightComponents>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
-					<AlwaysViewingPanels onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.panelIndex}>
-						<MainPanel title="Videos" videoIndex={this.state.videoIndex} setVideoIndex={this.setVideoIndex} onHidePanels={this.handleHidePanelsClick} onNextPanel={this.handleNextPanelClick} />
+					<AlwaysViewingPanels
+						onSelectBreadcrumb={this.handleSelectBreadcrumb}
+						index={this.state.panelIndex}
+					>
+						<MainPanel
+							title="Videos"
+							videoIndex={this.state.videoIndex}
+							onVideoIndexChange={this.setVideoIndex}
+							onHidePanels={this.handleHidePanelsClick}
+							onNextPanel={this.handleNextPanelClick}
+						/>
 						<ItemPanel title="Second" />
 					</AlwaysViewingPanels> :
 					null}

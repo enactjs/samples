@@ -19,8 +19,8 @@
   "private": true,
   "repository": "https://github.com/enyojs/enact-samples",
   "enact": {
-    "title": "VideoPlayer sample",
-    "isomorphic": "src/iso.js",
+    "title": "VideoPlayer Pattern Sample",
+    "isomorphic": true,
     "ri": {
       "baseSize": 24
     }
