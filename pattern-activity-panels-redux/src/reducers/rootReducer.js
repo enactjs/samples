@@ -11,8 +11,18 @@ function index (state = 0, action) {
 	}
 }
 
+function lastScrollInfo (state = [], action) {
+	switch (action.type) {
+		case 'SAVE_LAST_SCROLL_INFO':
+			return [...state.slice(0, action.index), action.info, ...state.slice(action.index + 1)];
+		default:
+			return state;
+	}
+}
+
 const rootReducer = combineReducers({
-	index
+	index,
+	lastScrollInfo
 });
 
 export default rootReducer;

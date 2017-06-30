@@ -4,6 +4,8 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {PatternList} from './PatternList';
+
 const MainPanel = kind({
 	name: 'MainPanel',
 
@@ -23,8 +25,10 @@ const MainPanel = kind({
 
 	render: ({title, onClick, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title} />
-			<Button onClick={onClick}>Click me</Button>
+			<Header title={title}>
+				<Button onClick={onClick}>Click me</Button>
+			</Header>
+			<PatternList index={rest['data-index']} onClick={onClick} id={title} />
 		</Panel>
 	)
 });
