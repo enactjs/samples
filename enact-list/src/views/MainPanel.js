@@ -10,9 +10,10 @@ import Item from '@enact/moonstone/Item';
 const
 	style = {
 		item: {
+			position: 'absolute',
+			padding: '0',
 			borderBottom: 2 + 'px solid #202328',
-			boxSizing: 'border-box',
-			position: 'absolute'
+			boxSizing: 'border-box'
 		},
 		list: {
 			display: 'inline-block',
@@ -21,42 +22,31 @@ const
 		}
 	},
 	items = [],
+	gridItems = [],
 	isItemDisabled = (index) => !(index % 15 === 0),
 	isGridItemDisabled = (index) => !(index % 40 === 0),
 	// eslint-disable-next-line enact/prop-types, enact/display-name
 	renderItem = ({data, index, ...rest}) => {
-		const itemStyle = {height: '72px', ...style.item};
-		const disabled = isItemDisabled(index);
-
 		return (
-			<Item {...rest} disabled={disabled} style={itemStyle}>
-				{data[index]}
+			<Item {...rest} disabled={data[index].disabled} style={style.item}>
+				{data[index].content}
 			</Item>
 		);
 	},
-	renderGridItem = ({data, index, ...rest}) => {
-		const itemStyle = {height: '72px', ...style.item};
-		const disabled = isGridItemDisabled(index);
-
+	renderItem2 = ({data, index, ...rest}) => {
 		return (
-			<Item {...rest} disabled={disabled} style={itemStyle}>
-				{data[index]}
-			</Item>
-		);
-	},
-	renderHorizontalItem = ({data, index, ...rest}) => {
-		const itemStyle = {width: '150px', height: '100%', ...style.item};
-		const disabled = isItemDisabled(index);
-
-		return (
-			<Item {...rest} disabled={disabled} style={itemStyle}>
-				{data[index]}
+			<Item {...rest} disabled={data[index].disabled} style={{...style.item, width: '150px'}}>
+				{data[index].content}
 			</Item>
 		);
 	};
 
 for (let i = 0; i < 1000; i++) {
-	items.push('Item ' + ('00' + i).slice(-3));
+	items.push({content: 'Item ' + ('00' + i).slice(-3), disabled: isItemDisabled(i)});
+}
+
+for (let i = 0; i < 1000; i++) {
+	gridItems.push({content: 'Item ' + ('00' + i).slice(-3), disabled: isGridItemDisabled(i)});
 }
 
 const MainPanel = kind({
@@ -74,24 +64,21 @@ const MainPanel = kind({
 					component={renderItem}
 					data={items}
 					dataSize={items.length}
-					isItemDisabled={isItemDisabled}
 					itemSize={itemSize}
 					style={style.list}
 				/>
 				<VirtualGridList
-					component={renderGridItem}
-					data={items}
-					dataSize={items.length}
-					isItemDisabled={isGridItemDisabled}
+					component={renderItem}
+					data={gridItems}
+					dataSize={gridItems.length}
 					itemSize={{minWidth: 100, minHeight: 100}}
 					style={style.list}
 				/>
 				<VirtualList
-					component={renderHorizontalItem}
+					component={renderItem2}
 					data={items}
 					dataSize={items.length}
 					direction="horizontal"
-					isItemDisabled={isItemDisabled}
 					itemSize={150}
 					style={{height: '200px'}}
 				/>
