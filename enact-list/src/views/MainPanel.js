@@ -21,8 +21,8 @@ const
 		}
 	},
 	items = [],
-	isItemDisabled = (index) => !(index % 5 === 0),
-	isGridItemDisabled = (index) => !(index % 20 === 0),
+	isItemDisabled = (index) => !(index % 15 === 0),
+	isGridItemDisabled = (index) => !(index % 40 === 0),
 	// eslint-disable-next-line enact/prop-types, enact/display-name
 	renderItem = ({data, index, ...rest}) => {
 		const itemStyle = {height: '72px', ...style.item};
