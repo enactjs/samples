@@ -25,6 +25,7 @@ class PatternListBase extends Component {
 	}
 
 	componentDidMount () {
+		// Get the last scroll position and restore it with `scrollTo` method
 		const {scrollLeft, scrollTop} = this.props;
 		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
 	}
@@ -49,11 +50,11 @@ class PatternListBase extends Component {
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
 				component={this.renderItem}
-				containerId={id}
+				containerId={id} // Set a unique ID to preserve last focus
 				data={items}
 				dataSize={items.length}
 				itemSize={ri.scale(72)}
-				onScrollStop={onScrollStop}
+				onScrollStop={onScrollStop} // Set this to save last scroll position when unmount
 			/>
 		);
 	}
@@ -61,6 +62,7 @@ class PatternListBase extends Component {
 }
 
 const mapStateToProps = ({lastScrollInfo}, {index}) => {
+	// Get the last scroll information from store
 	const info = lastScrollInfo[index];
 	return {
 		scrollLeft: info ? info.scrollLeft : 0,
@@ -69,6 +71,7 @@ const mapStateToProps = ({lastScrollInfo}, {index}) => {
 };
 
 const mapDispatchToProps = (dispatch, {index}) => ({
+	// When `onScrollStop` called, dispatching `saveLastScrollInfo` to save the last scroll position
 	onScrollStop: (info) => dispatch(saveLastScrollInfo(index, info))
 });
 
