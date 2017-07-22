@@ -1,4 +1,4 @@
-import Button from '@enact/moonstone/Button';
+import Button from '../components/MyButt';
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React from 'react';
@@ -22,7 +22,7 @@ const MainPanel = kind({
 	},
 
 	render: ({title, onClick, ...rest}) => (
-		<Panel {...rest}>
+		<Panel {...rest} className="myApp">
 			<Header title={title} />
 			<Button onClick={onClick}>Click me</Button>
 		</Panel>
