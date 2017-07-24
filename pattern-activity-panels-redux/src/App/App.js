@@ -1,47 +1,19 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import {increaseIndex, decreaseIndex} from '../actions';
-import MainPanel from '../views/MainPanel';
+import Button, {CustomButton} from '../components/MyButt';
 
 const App = kind({
 	name: 'App',
 
-	propTypes: {
-		index: PropTypes.number,
-		popPanel: PropTypes.func,
-		pushPanel: PropTypes.func
-	},
-
-	defaultProps: {
-		index: 0
-	},
-
-	render: ({index, pushPanel, popPanel, ...rest}) => {
+	render: ({...rest}) => {
 		return (
-			<ActivityPanels {...rest} onSelectBreadcrumb={popPanel} index={index} noCloseButton>
-				<MainPanel title="First" onClick={pushPanel} />
-				<MainPanel title="Second" onClick={pushPanel} />
-				<MainPanel title="Third" onClick={pushPanel} />
-				<MainPanel title="Fourth" />
-			</ActivityPanels>
+			<div {...rest}>
+				<Button>Uncustom button</Button>
+				<CustomButton>custom button</CustomButton>
+			</div>
 		);
 	}
 });
 
-const mapStateToProps = ({index}) => ({
-	index
-});
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		pushPanel: () => dispatch(increaseIndex()),
-		popPanel: () => dispatch(decreaseIndex())
-	};
-};
-
-export default MoonstoneDecorator(connect(mapStateToProps, mapDispatchToProps)(App));
+export default MoonstoneDecorator(App);
