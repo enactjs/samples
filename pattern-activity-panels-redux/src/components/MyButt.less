@@ -1,10 +1,24 @@
-.bg {
-	/* FACTORY-EXPORT */
-	background-color: teal !important;
-	border-left-width: 18px !important;	// This doesn't have high enough precedence to apply
-}
-.client {
-	font-size: 200% !important;
-	color: brown !important;
-}
+@import "~@enact/moonstone/styles/skin.less";
 
+// Using a wrapper class name is important for precedence. This can be the same name the inherited
+// component uses or it can be a custom on ethat is applied by the custom component.
+.button {
+	// This attaches a non-color based override to the .bg class.
+	.bg {
+		border-left-width: 18px;	// This doesn't have high enough precedence to apply
+	}
+
+	// This will be ignored because it is not a permitted override.
+	.client {
+		font-size: 200%;
+		color: brown;
+	}
+
+	// ApplySkins adds the level of precedence that the below .bg will need to overcome
+	// and apply its color override.
+	.applySkins({
+		.bg {
+			background-color: teal;
+		}
+	});
+}
