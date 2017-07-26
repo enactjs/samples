@@ -11,6 +11,8 @@ const App = kind({
 			<div {...rest}>
 				<Button>Uncustom button</Button>
 				<CustomButton>custom button</CustomButton>
+				<Button small color="green">Uncustom button</Button>
+				<CustomButton small color="red">custom button</CustomButton>
 			</div>
 		);
 	}
