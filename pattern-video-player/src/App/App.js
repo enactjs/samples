@@ -51,7 +51,7 @@ class App extends React.Component {
 
 	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
 
-	handleSelectBreadcrumb = ({panelIndex}) => this.setState({panelIndex})
+	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index})
 
 	handleShowPanelsClick = () => this.setState({panelsVisible: true})
 
