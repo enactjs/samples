@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Spotlight from '@enact/spotlight';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
 import VideoPlayer from '@enact/moonstone/VideoPlayer';
@@ -48,21 +47,6 @@ class App extends React.Component {
 			panelsVisible: true,
 			videoIndex: this.props.videoIndex
 		};
-
-		this.panelRef = null;
-	}
-
-	componentDidMount () {
-		const containerId = this.panelRef.props.containerId;
-		if (containerId) {
-			Spotlight.setActiveContainer(containerId);
-		}
-	}
-
-	componentDidUpdate (prevProps, prevState) {
-		if (!prevState.panelsVisible && this.state.panelsVisible && this.panelRef && !Spotlight.getPointerMode()) {
-			Spotlight.focus(this.panelRef.props.containerId);
-		}
 	}
 
 	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
@@ -75,10 +59,6 @@ class App extends React.Component {
 
 	setVideoIndex = (videoIndex) => this.setState({videoIndex})
 
-	initPanelRef = (ref) => {
-		this.panelRef = ref;
-	};
-
 	render () {
 		const {className, ...rest} = this.props;
 		const {source, desc, ...restVideo} = getVideo(this.state.videoIndex);
@@ -86,7 +66,7 @@ class App extends React.Component {
 		delete rest.videoIndex;
 		return (
 			<div {...rest} className={className + ' ' + css.app}>
-				<VideoPlayer {...restVideo} className={css.player + ' enact-fit'}>
+				<VideoPlayer spotlightDisabled={this.state.panelsVisible} {...restVideo} className={css.player + ' enact-fit'}>
 					<source src={source} type="video/mp4" />
 					<infoComponents>
 						{desc}
@@ -111,7 +91,6 @@ class App extends React.Component {
 							onVideoIndexChange={this.setVideoIndex}
 							onHidePanels={this.handleHidePanelsClick}
 							onNextPanel={this.handleNextPanelClick}
-							ref={this.initPanelRef}
 						/>
 						<ItemPanel title="Second" />
 					</AlwaysViewingPanels> :
