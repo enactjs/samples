@@ -82,6 +82,7 @@ class App extends React.Component {
 						<IconButton
 							backgroundOpacity="translucent"
 							onClick={this.handleShowPanelsClick}
+							spotlightDisabled={this.state.panelsVisible}
 						>
 							list
 						</IconButton>
