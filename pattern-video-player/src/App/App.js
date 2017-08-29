@@ -53,11 +53,18 @@ class App extends React.Component {
 
 	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index})
 
-	handleShowPanelsClick = () => this.setState({panelsVisible: true})
-
 	handleHidePanelsClick = () => this.setState({panelsVisible: false})
 
+	handleShowPanelsClick = () => {
+		this.videoRef.hideControls();
+		this.setState({panelsVisible: true});
+	}
+
 	setVideoIndex = (videoIndex) => this.setState({videoIndex})
+
+	setVideoRef = (ref) => {
+		this.videoRef = ref;
+	}
 
 	render () {
 		const {className, ...rest} = this.props;
@@ -66,7 +73,7 @@ class App extends React.Component {
 		delete rest.videoIndex;
 		return (
 			<div {...rest} className={className + ' ' + css.app}>
-				<VideoPlayer {...restVideo} className={css.player + ' enact-fit'}>
+				<VideoPlayer ref={this.setVideoRef} spotlightDisabled={this.state.panelsVisible} {...restVideo} className={css.player + ' enact-fit'}>
 					<source src={source} type="video/mp4" />
 					<infoComponents>
 						{desc}
@@ -75,6 +82,7 @@ class App extends React.Component {
 						<IconButton
 							backgroundOpacity="translucent"
 							onClick={this.handleShowPanelsClick}
+							spotlightDisabled={this.state.panelsVisible}
 						>
 							list
 						</IconButton>
