@@ -4,6 +4,7 @@ import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
 import VideoPlayer from '@enact/moonstone/VideoPlayer';
 import IconButton from '@enact/moonstone/IconButton';
+import Spotlight from '@enact/Spotlight';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -47,6 +48,10 @@ class App extends React.Component {
 			panelsVisible: true,
 			videoIndex: this.props.videoIndex
 		};
+	}
+
+	componentDidUpdate () {
+		Spotlight.focus();
 	}
 
 	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
