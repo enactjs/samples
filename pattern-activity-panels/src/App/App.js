@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Changeable from '@enact/ui/Changeable';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
@@ -28,15 +29,16 @@ class App extends React.Component {
 	handleClick = () => this.setState({index: this.state.index + 1})
 
 	render () {
+		const {onSelectSkin, ...rest} = {...this.props};
 		return (
-			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} />
+			<ActivityPanels {...rest} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
+				<MainPanel title="First" onSelectSkin={onSelectSkin} onClick={this.handleClick} />
 				<ItemPanel title="Second" onClick={this.handleClick} />
 				<ButtonPanel title="Third" onClick={this.handleClick} />
-				<MainPanel title="Fourth" />
+				<MainPanel title="Fourth" onSelectSkin={onSelectSkin} />
 			</ActivityPanels>
 		);
 	}
 }
 
-export default MoonstoneDecorator(App);
+export default Changeable({change: 'onSelectSkin', prop: 'skin'}, MoonstoneDecorator(App));

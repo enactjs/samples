@@ -3,6 +3,6 @@ import {render} from 'react-dom';
 import App from './App';
 
 render(
-	<App />,
+	<App defaultSkin="dark" />,
 	document.getElementById('root')
 );

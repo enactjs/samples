@@ -1,9 +1,20 @@
 import kind from '@enact/core/kind';
+import IconButton from '@enact/moonstone/IconButton';
 import Button from '@enact/moonstone/Button';
+import Slider from '@enact/moonstone/Slider';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import React from 'react';
 import PropTypes from 'prop-types';
+
+const themeStack = ['dark', 'light', 'aqua', 'car', 'material'];
+let themeIndex = 0;
+
+const onClickSkinButton = ({onSelectSkin}) => (/* ev */) => {
+	themeIndex++;
+	const nextSkin = themeStack[themeIndex % themeStack.length];
+	return onSelectSkin({skin: nextSkin});
+};
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -15,6 +26,8 @@ const MainPanel = kind({
 		 */
 		onClick: PropTypes.func,
 
+		onSelectSkin: PropTypes.func,
+
 		/**
 		 * A title string appear on header
 		 * @type {String}
@@ -22,18 +35,28 @@ const MainPanel = kind({
 		title: PropTypes.string
 	},
 
-	render: ({title, onClick, ...rest}) => (
-		<Panel {...rest}>
-			<Header title={title}>
-				<Button onClick={onClick}>Click me</Button>
-				<Button onClick={onClick}>Click me</Button>
-			</Header>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-		</Panel>
-	)
+	computed: {
+		skinPicker: onClickSkinButton
+	},
+
+	render: ({title, onClick, skinPicker, ...rest}) => {
+		delete rest.onSelectSkin;
+		return (
+			<Panel {...rest}>
+				<Header title={title} casing="preserve">
+					<IconButton casing="preserve" onClick={onClick}>gear</IconButton>
+					<Button casing="preserve" onClick={onClick}>Click me</Button>
+					<Button casing="preserve" onClick={onClick}>Click me</Button>
+					<Button casing="preserve" onClick={skinPicker}>Change Skin!</Button>
+				</Header>
+				<Item onClick={onClick}>Click me</Item>
+				<Item onClick={onClick}>Click me</Item>
+				<Item onClick={onClick}>Click me</Item>
+				<Item onClick={onClick}>Click me</Item>
+				<Slider defaultValue={25} />
+			</Panel>
+		);
+	}
 });
 
 export default MainPanel;
