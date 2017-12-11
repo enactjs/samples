@@ -1,6 +1,7 @@
 import React from 'react';
 import kind from '@enact/core/kind';
 import Changeable from '@enact/ui/Changeable';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 
 import FileBrowser from '../components/FileBrowser';
@@ -21,9 +22,9 @@ const App = kind({
 	},
 
 	render: (props) => (
-		<div {...props}>
+		<ActivityPanels {...props}>
 			<Browser defaultPath={{path: '/a', directory: true}} />
-		</div>
+		</ActivityPanels>
 	)
 });
 
