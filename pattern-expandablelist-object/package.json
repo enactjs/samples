@@ -19,6 +19,7 @@
   "private": true,
   "repository": "",
   "enact": {
+    "isomorphic": true,
     "ri": {
       "baseSize": 24
     }

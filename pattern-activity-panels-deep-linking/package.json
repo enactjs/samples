@@ -20,6 +20,7 @@
   "repository": "https://github.com/enyojs/enact-samples",
   "enact": {
     "title": "Deep linking ActivityPanels sample",
+    "isomorphic": true,
     "ri": {
       "baseSize": 24
     }
