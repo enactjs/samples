@@ -1,16 +1,20 @@
 import React from 'react';
 import {render} from 'react-dom';
-import App from './main';
+import {Provider} from 'react-redux';
+import App from './App';
+import configureStore from './store';
 
-let appElement = <App />;
+const store = configureStore();
 
-// In a browser environment, render instead of exporting
+const appElement = (
+	<Provider store={store}>
+		<App />
+	</Provider>
+);
+
+// In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(
-		appElement,
-		document.getElementById('root')
-	);
-	appElement = null;
+	render(appElement, document.getElementById('root'));
 }
 
 export default appElement;

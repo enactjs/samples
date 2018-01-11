@@ -19,7 +19,7 @@
   "private": true,
   "repository": "",
   "enact": {
-    "isomorphic": "src/iso.js",
+    "isomorphic": true,
     "ri": {
       "baseSize": 24
     }

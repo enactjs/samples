@@ -20,7 +20,7 @@
   "repository": "https://github.com/enyojs/rigby",
   "enact": {
     "title": "Profile Photo Picker",
-    "isomorphic": "src/iso.js",
+    "isomorphic": true,
     "ri": {
       "baseSize": 24
     }

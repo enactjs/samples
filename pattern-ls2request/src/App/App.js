@@ -44,7 +44,7 @@ class App extends React.Component {
 	});
 
 	checkSystem = () => {
-		if (typeof window.PalmSystem === 'undefined') {
+		if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
 	};
