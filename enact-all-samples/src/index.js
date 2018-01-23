@@ -50,7 +50,7 @@ console.error = (...args) => {
 	return args[0].includes('React does not recognize the `staticContext` prop on a DOM element.') || args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') || args[0].includes('Warning: Hash history cannot PUSH the same path') ? null : originalConsoleError(args.join(' '));
 };
 
-let appElement = (
+const appElement = (
 	<Router>
 		<div>
 			<ButtonToSamples />
@@ -59,12 +59,9 @@ let appElement = (
 	</Router>
 );
 
-// In a browser environment, render instead of exporting
+// In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(
-		appElement,
-		document.getElementById('root')
-	);
+	render(appElement, document.getElementById('root'));
 }
 
 export default appElement;

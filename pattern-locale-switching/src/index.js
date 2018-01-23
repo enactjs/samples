@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+
 import App from './main';
 
 let appElement = <App />;
@@ -10,7 +11,6 @@ if (typeof window !== 'undefined') {
 		appElement,
 		document.getElementById('root')
 	);
-	appElement = null;
 }
 
 export default appElement;
