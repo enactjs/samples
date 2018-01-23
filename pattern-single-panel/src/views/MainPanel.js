@@ -9,7 +9,7 @@ const MainPanel = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" preserveCase />
+			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" casing="preserve" />
 			<ProfilePhotoPicker />
 			<SaveButton />
 		</Panel>
