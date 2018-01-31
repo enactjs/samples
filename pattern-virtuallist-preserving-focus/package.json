@@ -18,7 +18,7 @@
 	},
 	"license": "Apache-2.0",
 	"private": true,
-	"repository": "",
+	"repository": "https://github.com/enactjs/samples",
 	"enact": {
 		"isomorphic": true,
 		"ri": {

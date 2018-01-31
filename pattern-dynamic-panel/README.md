@@ -22,4 +22,4 @@ All images were obtained from [http://www.publicdomainpictures.net/](http://www.
 
 ---
 
-This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).
+This project was bootstrapped with the Enact [cli](https://github.com/enactjs/cli).

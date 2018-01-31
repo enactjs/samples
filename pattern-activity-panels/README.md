@@ -38,4 +38,4 @@ You can find a more detailed view inside of [App.js](src/App/App.js)
 
 ---
 
-This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).
+This project was bootstrapped with the Enact [cli](https://github.com/enactjs/cli).

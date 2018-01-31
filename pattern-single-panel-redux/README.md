@@ -28,4 +28,4 @@ All photos are found in [Pexels.com](https://www.pexels.com) under Public Domain
 
 ---
 
-This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).
+This project was bootstrapped with the Enact [cli](https://github.com/enactjs/cli).

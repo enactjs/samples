@@ -17,7 +17,7 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "repository": "https://github.com/enyojs/rigby",
+  "repository": "https://github.com/enactjs/samples",
   "enact": {
     "title": "Profile Photo Picker",
     "isomorphic": true,
