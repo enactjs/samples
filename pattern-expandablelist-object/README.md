@@ -10,4 +10,4 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 
 ---
 
-This project was bootstrapped with [enact-dev](https://github.com/enyojs/enact-dev).
+This project was bootstrapped with the Enact [cli](https://github.com/enactjs/cli).
