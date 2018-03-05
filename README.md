@@ -1,5 +1,5 @@
-# enact-samples
-Samples applications demonstrating the features and style of Enact
+# Enact Samples
+Sample applications demonstrating the features and style of Enact
 
 ## Prerequisites
 
