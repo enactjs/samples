@@ -34,7 +34,7 @@ const MainPanel = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" preserveCase />
+			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" casing="preserve" />
 			<div className={css.profilePhotoPicker}>
 				<PhotoPreviewContainer imageURLs={imageURLs} />
 				<PhotoSliderContainer />
