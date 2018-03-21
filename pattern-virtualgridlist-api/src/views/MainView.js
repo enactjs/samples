@@ -42,12 +42,6 @@ class MainView extends React.Component {
 			<div className={css.mainView}>
 				<GalleryPanelHeader title="My Gallery" />
 				<div className={css.content}>
-					<SideBar
-						albums={albums}
-						className={css.sideBar}
-						onAlbumChange={this.onChange}
-						selectedAlbum={album}
-					/>
 					<ImageList
 						cbScrollTo={this.getScrollTo}
 						className={css.list}

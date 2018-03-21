@@ -1,0 +1,26 @@
+/* ImageList.less */
+@import '~@enact/moonstone/styles/skin.less';
+
+.applySkins({
+	.imageList {
+		position: absolute;
+		height: 501px;
+		bottom: 0;
+		margin: 0;
+
+		// To make full bleed to the scrollbar
+		padding: 0;
+
+		>:nth-child(2) {
+			position: absolute;
+			bottom: 0;
+			width: 1908px;
+			padding: 0 6px 6px;
+			z-index: 1;
+			div[role="button"] {
+				color: #a6a6a6;
+				background-color: transparent !important;
+			}
+		}
+	}
+});

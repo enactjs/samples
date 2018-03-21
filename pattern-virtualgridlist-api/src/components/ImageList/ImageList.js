@@ -6,6 +6,8 @@ import {VirtualGridList} from '@enact/moonstone/VirtualList';
 
 import ImageItem from '../ImageItem';
 
+import css from './ImageList.less';
+
 class ImageList extends React.Component {
 	static propTypes = {
 		dispatch: PropTypes.func,
@@ -25,11 +27,13 @@ class ImageList extends React.Component {
 		return (
 			<VirtualGridList
 				{...rest}
+				className={css.imageList}
 				data={imageitems}
 				dataSize={imageitems.length}
+				direction="horizontal"
+				focusableScrollbar={true}
 				itemRenderer={this.renderItem}
-				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
-				spacing={ri.scale(21)}
+				itemSize={{minHeight: ri.scale(384), minWidth: ri.scale(501)}}
 			/>
 		);
 	}
