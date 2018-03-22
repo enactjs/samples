@@ -60,8 +60,8 @@ const GalleryPanelHeader = kind({
 	computed: {
 		selectionPreviousButton: ({showOverlay, showSelectionOverlayHandler}) => {
 			const
-				tooltipText = showOverlay ? "Previous" : "Selection",
-				icon = showOverlay ? "rollbackward" : "check";
+				tooltipText = showOverlay ? 'Previous' : 'Selection',
+				icon = showOverlay ? 'rollbackward' : 'check';
 			return (
 				<IconButton tooltipText={tooltipText} small onClick={showSelectionOverlayHandler}>{icon}</IconButton>
 			);
