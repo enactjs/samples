@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const process = require('process'),
 	readdirp = require('readdirp'),
 	shell = require('shelljs');
@@ -22,7 +23,6 @@ findApps()
 			if (file.parentDir) { // Ignore our own package.json
 				console.log(`Building ${file.parentDir}`);
 				shell.cd(file.fullParentDir);
-				shell.rm('-r', 'node_modules');
 				shell.exec('npm install && npm run pack', {silent: true}, (code, stdout) => {
 					if (code) {
 						console.log(`${file.parentDir} failed to build: ${stdout}`);
