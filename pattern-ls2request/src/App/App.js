@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Button from '@enact/moonstone/Button';
 import LabeledItem from '@enact/moonstone/LabeledItem';
-import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
+import { getSystemSettings, setSystemSettings, setSystemSettingsSubscribed } from '../actions';
 
 class App extends React.Component {
 	static propTypes = {
@@ -13,20 +13,20 @@ class App extends React.Component {
 		smartPictureMode: PropTypes.string
 	};
 
-	componentDidMount () {
+	componentDidMount() {
 		// This LS2Request is WITHOUT subscription
 		if (typeof window.PalmSystem !== 'undefined') {
-		this.props.dispatch(getSystemSettings({
-			category: 'picture',
-			key: 'smartPictureMode'
-		}));
+			this.props.dispatch(getSystemSettings({
+				category: 'picture',
+				key: 'smartPictureMode'
+			}));
 
-		// This LS2Request is WITH subscription
-		this.props.dispatch(getSystemSettings({
-			category: 'picture',
-			key: 'eyeComfortMode',
-			subscribe: true
-		}));
+			// This LS2Request is WITH subscription
+			this.props.dispatch(getSystemSettings({
+				category: 'picture',
+				key: 'eyeComfortMode',
+				subscribe: true
+			}));
 		}
 	}
 
@@ -51,9 +51,9 @@ class App extends React.Component {
 		}
 	};
 
-	render () {
-		const {smartPictureMode, eyeComfortMode} = this.props;
-		if (typeof window.PalmSystem === 'undefined'){
+	render() {
+		const { smartPictureMode, eyeComfortMode } = this.props;
+		if (typeof window.PalmSystem === 'undefined') {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
 
@@ -69,8 +69,8 @@ class App extends React.Component {
 	}
 }
 
-const mapStateToProps = ({systemSettings}) => {
-	const {smartPictureMode, eyeComfortMode} = systemSettings;
+const mapStateToProps = ({ systemSettings }) => {
+	const { smartPictureMode, eyeComfortMode } = systemSettings;
 	return {
 		smartPictureMode,
 		eyeComfortMode
