@@ -15,6 +15,7 @@ class App extends React.Component {
 
 	componentDidMount () {
 		// This LS2Request is WITHOUT subscription
+		if (typeof window.PalmSystem !== 'undefined') {
 		this.props.dispatch(getSystemSettings({
 			category: 'picture',
 			key: 'smartPictureMode'
@@ -26,6 +27,7 @@ class App extends React.Component {
 			key: 'eyeComfortMode',
 			subscribe: true
 		}));
+		}
 	}
 
 	onSmartPictureToggle = () => this.props.dispatch(setSystemSettings({
@@ -51,6 +53,9 @@ class App extends React.Component {
 
 	render () {
 		const {smartPictureMode, eyeComfortMode} = this.props;
+		if (typeof window.PalmSystem === 'undefined'){
+			return <div>This test will only function correctly on webOS systems!</div>;
+		}
 
 		return (
 			<div>
