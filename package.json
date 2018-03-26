@@ -1,0 +1,20 @@
+{
+  "name": "samples",
+  "version": "1.0.0",
+  "description": "A collection of Enact sample apps",
+  "author": "",
+  "scripts": {
+    "lint": "node scripts/lint.js",
+    "build": "node scripts/build.js"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "eslintConfig": {
+    "extends": "enact/strict"
+  },
+  "dependencies": {
+    "readdirp": "^2.1.0",
+    "shelljs": "^0.8.1"
+  }
+}

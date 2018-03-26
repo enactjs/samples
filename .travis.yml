@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+    - "node"
+sudo: false
+install:
+    - npm install -g enyojs/enact-cli#develop
+    - npm install
+script:
+    - echo -e "\x1b\x5b35;1m*** Starting eslint...\x1b\x5b0m"
+    - npm run lint
+    - echo -e "\x1b\x5b35;1m*** eslint complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting all-sample build...\x1b\x5b0m"
+    - cd enact-all-samples
+    - npm install
+    - npm run pack
+    - echo -e "\x1b\x5b35;1m*** sampler build complete\x1b\x5b0m"
