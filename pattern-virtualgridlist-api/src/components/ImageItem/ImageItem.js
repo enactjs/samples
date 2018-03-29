@@ -10,6 +10,9 @@ const ImageItem = kind({
 	name: 'ImageItem',
 
 	propTypes: {
+		a: PropTypes.number,
+		b: PropTypes.number,
+		c: PropTypes.number,
 		caption: PropTypes.string,
 		index: PropTypes.number,
 		selected: PropTypes.bool,
@@ -19,8 +22,13 @@ const ImageItem = kind({
 		subCaption: PropTypes.string
 	},
 
-	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
+	render: ({a, b, c, caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
 		delete rest.index;
+		delete rest.a;
+		delete rest.b;
+		delete rest.c;
+
+		console.log('ImageItem.render() coolCustomProps a, b, c:', a, b, c);
 
 		return (
 			<GridListImageItem

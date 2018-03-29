@@ -16,6 +16,19 @@ class MainView extends React.Component {
 		onChangeAlbum: PropTypes.func
 	}
 
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			cnt: 0
+		};
+
+		setInterval(() => {
+			this.state.cnt++;
+			this.setState({cnt: this.state.cnt});
+		}, 1000);
+	}
+
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
@@ -49,6 +62,9 @@ class MainView extends React.Component {
 						selectedAlbum={album}
 					/>
 					<ImageList
+						a={this.state.cnt + 1}
+						b={this.state.cnt + 2}
+						c={this.state.cnt + 3}
 						cbScrollTo={this.getScrollTo}
 						className={css.list}
 					/>
