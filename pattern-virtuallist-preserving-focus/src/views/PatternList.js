@@ -30,9 +30,9 @@ class PatternListBase extends Component {
 		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
 	}
 
-	renderItem = ({data, index, ...rest}) => (
+	renderItem = ({index, ...rest}) => (
 		<Item {...rest} onClick={this.props.onClick}>
-			{data[index]}
+			{items[index]}
 		</Item>
 	)
 
@@ -50,7 +50,6 @@ class PatternListBase extends Component {
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
 				containerId={id} // Set a unique ID to preserve last focus
-				data={items}
 				dataSize={items.length}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
