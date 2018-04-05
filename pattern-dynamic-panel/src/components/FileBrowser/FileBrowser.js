@@ -94,9 +94,9 @@ const FileBrowserBase = kind({
 			const leaf = path.split('/').pop();
 
 			const component = directory ? <VirtualList
-				itemSize={ri.scale(72)}
-				itemRenderer={listItem}
 				dataSize={mockFolders[leaf].files.length}
+				itemRenderer={listItem}
+				itemSize={ri.scale(72)}
 			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
