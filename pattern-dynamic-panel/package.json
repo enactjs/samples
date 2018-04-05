@@ -11,6 +11,7 @@
     "watch": "enact pack --watch",
     "clean": "enact clean",
     "lint": "enact lint --strict .",
+    "license": "enact license",
     "test": "enact test start --single-run --browsers PhantomJS",
     "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
     "test-watch": "enact test start --browsers PhantomJS"
@@ -19,6 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
+    "title": "DynamicPanel sample",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

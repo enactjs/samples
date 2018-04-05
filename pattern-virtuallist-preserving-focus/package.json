@@ -20,6 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
+    "title": "VirtualList preserving focus sample",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
