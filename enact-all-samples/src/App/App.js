@@ -12,7 +12,7 @@ const App = kind({
 	name: 'App',
 
 	propTypes: {
-		history: PropTypes.any,
+		history: PropTypes.Array,
 		location: PropTypes.any,
 		match: PropTypes.any,
 		staticContext: PropTypes.any
@@ -37,7 +37,7 @@ const App = kind({
 								<SampleItem key={index} path={path} history={history}>
 									{path.substr(1)}
 								</SampleItem>
-							)
+							);
 						}
 						return null;
 					})}

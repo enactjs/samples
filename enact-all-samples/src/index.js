@@ -42,11 +42,13 @@ export const routes = [
 
 // Router causes an error with our samples, but we don't want our samples to know about router.
 // To avoid this for now we're just surpressing the error.
+/* eslint-disable no-console */
 const originalConsoleError = console.error;
 
 console.error = (...args) => {
 	return args[0].includes('React does not recognize the `staticContext` prop on a DOM element.') || args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') || args[0].includes('Warning: Hash history cannot PUSH the same path') ? null : originalConsoleError(args.join(' '));
 };
+/* eslint-enable no-console */
 
 const appElement = (
 	<Router>

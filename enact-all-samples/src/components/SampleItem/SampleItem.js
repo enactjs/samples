@@ -4,11 +4,11 @@ import React from 'react';
 
 class SampleItem extends React.Component {
 	static propTypes = {
-		history: PropTypes.any,
+		history: PropTypes.Array,
 		path: PropTypes.any
 	}
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
 	}
 
