@@ -1,7 +1,7 @@
 import Button from '@enact/moonstone/Button';
-
-import React from 'react';
 import {Link} from 'react-router-dom';
+import React from 'react';
+
 import css from './ButtonToSamples.less'
 
 const ButtonToSamples = () => (

@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import {
 	addItem as addAction,

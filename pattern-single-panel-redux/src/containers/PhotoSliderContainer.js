@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {changePhotoPosition} from '../actions';
 import PhotoSlider from '../components/PhotoSlider';
 

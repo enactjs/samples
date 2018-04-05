@@ -1,5 +1,6 @@
-import React from 'react';
 import kind from '@enact/core/kind';
+import React from 'react';
+
 import SideBarContainer from '../containers/SideBarContainer';
 import ContentContainer from '../containers/ContentContainer';
 

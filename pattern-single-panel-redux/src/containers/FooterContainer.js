@@ -1,11 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import {save} from '../actions';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
+
 import css from './containerStyles.less';
-import {connect} from 'react-redux';
-import {save} from '../actions';
 
 const Footer = kind({
 	name: 'Footer',

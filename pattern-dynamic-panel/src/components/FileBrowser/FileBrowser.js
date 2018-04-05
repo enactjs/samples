@@ -1,11 +1,11 @@
-import React from 'react';
-import kind from '@enact/core/kind';
-import ri from '@enact/ui/resolution';
+import Cancelable from '@enact/ui/Cancelable';
 import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
-import Cancelable from '@enact/ui/Cancelable';
-import {VirtualList} from '@enact/moonstone/VirtualList';
+import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
+import React from 'react';
+import ri from '@enact/ui/resolution';
+import {VirtualList} from '@enact/moonstone/VirtualList';
 
 import butterfly from '../../../assets/images/butterfly.jpg';
 import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';

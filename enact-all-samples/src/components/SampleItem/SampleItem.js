@@ -1,5 +1,5 @@
-import React from 'react';
 import Item from '@enact/moonstone/Item';
+import React from 'react';
 
 class SampleItem extends React.Component {
 	constructor(props) {

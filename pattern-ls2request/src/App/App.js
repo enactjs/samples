@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Button from '@enact/moonstone/Button';
+import {connect} from 'react-redux';
 import LabeledItem from '@enact/moonstone/LabeledItem';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 
 class App extends React.Component {

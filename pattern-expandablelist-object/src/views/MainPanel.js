@@ -1,7 +1,7 @@
-import React from 'react';
-import kind from '@enact/core/kind';
 import ExpandableList from '@enact/moonstone/ExpandableList';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
+import React from 'react';
 
 const MainPanel = kind({
 	name: 'MainPanel',

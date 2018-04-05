@@ -1,12 +1,12 @@
-import kind from '@enact/core/kind';
-import {handle} from '@enact/core/handle';
-import Group from '@enact/ui/Group';
 import Button from '@enact/moonstone/Button';
-import RadioItem from '@enact/moonstone/RadioItem';
-import Scroller from '@enact/moonstone/Scroller';
-import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react';
+import Group from '@enact/ui/Group';
+import {handle} from '@enact/core/handle';
+import {Header, Panel} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
+import RadioItem from '@enact/moonstone/RadioItem';
+import React from 'react';
+import Scroller from '@enact/moonstone/Scroller';
 
 import videos from '../App/videos.js';
 

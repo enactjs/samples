@@ -1,12 +1,12 @@
-const increaseIndex = () => {
-	return {
-		type: 'INCREASE_INDEX'
-	};
-};
-
 const decreaseIndex = () => {
 	return {
 		type: 'DECREASE_INDEX'
+	};
+};
+
+const increaseIndex = () => {
+	return {
+		type: 'INCREASE_INDEX'
 	};
 };
 
@@ -19,7 +19,7 @@ const saveLastScrollInfo = (index, info) => {
 };
 
 export {
-	increaseIndex,
 	decreaseIndex,
+	increaseIndex,
 	saveLastScrollInfo
 };
