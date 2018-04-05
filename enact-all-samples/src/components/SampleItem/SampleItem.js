@@ -1,9 +1,15 @@
 import Item from '@enact/moonstone/Item';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class SampleItem extends React.Component {
+	static propTypes = {
+		history: PropTypes.any,
+		path: PropTypes.any
+	}
+
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	itemSelect = () => {
@@ -11,13 +17,13 @@ class SampleItem extends React.Component {
 	}
 
 	render () {
-		const {children, rest} = this.props;
+		const {children, ...rest} = this.props;
 
 		return (
 			<Item {...rest} onClick={this.itemSelect}>
 				{children}
 			</Item>
-		)
+		);
 	}
 }
 

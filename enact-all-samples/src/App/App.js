@@ -1,5 +1,6 @@
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {routes} from  '../index';
 import SampleItem from '../components/SampleItem';
@@ -9,6 +10,13 @@ import css from './App.less';
 
 const App = kind({
 	name: 'App',
+
+	propTypes: {
+		history: PropTypes.any,
+		location: PropTypes.any,
+		match: PropTypes.any,
+		staticContext: PropTypes.any
+	},
 
 	styles: {
 		css,
@@ -35,7 +43,7 @@ const App = kind({
 					})}
 				</Scroller>
 			</div>
-		)
+		);
 	}
 });
 
