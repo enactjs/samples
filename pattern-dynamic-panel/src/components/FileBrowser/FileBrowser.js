@@ -78,26 +78,22 @@ const FileBrowserBase = kind({
 	computed: {
 		// computed component pattern is not currently Enact eslint friendly
 		// eslint-disable-next-line
-		listItem: (props) => ({index, key, ...rest}) => {
-			const leaf = props.path.path.split('/').pop();
-
-			return (
-				<Item key={key} onClick={props.onNavigate} {...rest}>
-					{mockFolders[leaf].files[index].name}
-				</Item>
-			);
-		},
-		// computed component pattern is not currently Enact eslint friendly
-		// eslint-disable-next-line
-		renderItem: () => ({listItem, path: pathData, ...rest}) => {
+		renderItem: () => ({listItem, onNavigate, path: pathData, ...rest}) => {
 			const {path, directory} = pathData;
 			const leaf = path.split('/').pop();
 
-			const component = directory ? <VirtualList
-				dataSize={mockFolders[leaf].files.length}
-				itemRenderer={listItem}
-				itemSize={ri.scale(72)}
-			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
+			const component = directory ?
+				<VirtualList
+					dataSize={mockFolders[leaf].files.length}
+					// eslint-disable-next-line
+					itemRenderer={({index, key, ...itemRest}) => (
+						<Item key={key} onClick={onNavigate} {...itemRest}>
+							{mockFolders[leaf].files[index].name}
+						</Item>
+					)}
+					itemSize={ri.scale(72)}
+				/> :
+				<Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
 				<DynamicPanel path={path} {...rest}>

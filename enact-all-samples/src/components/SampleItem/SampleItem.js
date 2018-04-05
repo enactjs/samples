@@ -8,10 +8,6 @@ class SampleItem extends React.Component {
 		path: PropTypes.any
 	}
 
-	constructor (props) {
-		super(props);
-	}
-
 	itemSelect = () => {
 		this.props.history.push({pathname: this.props.path});
 	}
