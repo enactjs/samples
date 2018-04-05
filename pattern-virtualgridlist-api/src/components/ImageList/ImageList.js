@@ -25,7 +25,6 @@ class ImageList extends React.Component {
 		return (
 			<VirtualGridList
 				{...rest}
-				data={imageitems}
 				dataSize={imageitems.length}
 				itemRenderer={this.renderItem}
 				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}

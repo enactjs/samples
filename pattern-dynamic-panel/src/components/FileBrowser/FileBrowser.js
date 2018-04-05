@@ -80,11 +80,15 @@ const FileBrowserBase = kind({
 	computed: {
 		// computed component pattern is not currently Enact eslint friendly
 		// eslint-disable-next-line
-		listItem: (props) => ({data, index, key, ...rest}) => (
-			<Item key={key} onClick={props.onNavigate} {...rest}>
-				{data[index].name}
-			</Item>
-		),
+		listItem: (props) => ({index, key, ...rest}) => {
+			const leaf = props.path.path.split('/').pop();
+
+			return (
+				<Item key={key} onClick={props.onNavigate} {...rest}>
+					{mockFolders[leaf].files[index].name}
+				</Item>
+			);
+		},
 		// computed component pattern is not currently Enact eslint friendly
 		// eslint-disable-next-line
 		renderItem: () => ({listItem, path: pathData, ...rest}) => {
@@ -93,8 +97,7 @@ const FileBrowserBase = kind({
 
 			const component = directory ? <VirtualList
 				itemSize={scale(72)}
-				component={listItem}
-				data={mockFolders[leaf].files}
+				itemRenderer={listItem}
 				dataSize={mockFolders[leaf].files.length}
 			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
