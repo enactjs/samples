@@ -50,8 +50,6 @@ const filePhotos = {
 	rainbow
 };
 
-const scale = ri.scale;
-
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	propTypes: {
@@ -96,7 +94,7 @@ const FileBrowserBase = kind({
 			const leaf = path.split('/').pop();
 
 			const component = directory ? <VirtualList
-				itemSize={scale(72)}
+				itemSize={ri.scale(72)}
 				itemRenderer={listItem}
 				dataSize={mockFolders[leaf].files.length}
 			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
