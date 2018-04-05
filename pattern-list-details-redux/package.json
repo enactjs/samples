@@ -1,7 +1,7 @@
 {
-  "name": "CityViewer",
+  "name": "pattern-list-details-redux",
   "version": "1.0.0",
-  "description": "Sample list details Enact application.",
+  "description": "A list details with redux sample Enact Moonstone application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "CityViewer sample redux",
+    "title": "List Details Pattern with Redux",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels-deep-linking",
   "version": "1.0.0",
-  "description": "Deep linking ActivityPanels sample Enact Moonstone application.",
+  "description": "A sample activity panels with redux and deep linking Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Deep linking ActivityPanels sample",
+    "title": "Activity Panels Deep Link Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

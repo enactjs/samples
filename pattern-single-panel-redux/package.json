@@ -1,7 +1,7 @@
 {
-  "name": "ProfilePhotoPicker",
+  "name": "pattern-single-panel-redux",
   "version": "1.0.0",
-  "description": "A sample single panel Enact application.",
+  "description": "A sample single panel with redux Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Profile Photo Picker",
+    "title": "Single Panel Pattern with Redux",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

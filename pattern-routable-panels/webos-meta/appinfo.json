@@ -1,10 +1,10 @@
 {
-  "id": "pattern-expandablelist-object",
+  "id": "pattern-routable-panels",
   "version": "1.0.0",
   "vendor": "LGE-SVL",
   "type": "web",
   "main": "index.html",
-  "title": "ExpandableList Object Pattern",
+  "title": "Routable Panels Pattern",
   "icon": "icon.png",
   "miniicon": "icon-mini.png",
   "largeIcon": "icon-large.png",

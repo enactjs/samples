@@ -1,7 +1,7 @@
 {
   "name": "pattern-ls2request",
   "version": "1.0.0",
-  "description": "An Enact Moonstone application demonstrating LS2Request",
+  "description": "A sample ls2request with redux Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "ls2request sample",
+    "title": "LS2Request Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

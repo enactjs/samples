@@ -1,7 +1,7 @@
 {
   "name": "pattern-dynamic-panel",
   "version": "1.0.0",
-  "description": "A general template for an Enact Moonstone application.",
+  "description": "A sample dynamic panel Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "DynamicPanel sample",
+    "title": "Dynamic Panel Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

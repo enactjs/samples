@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels",
   "version": "1.0.0",
-  "description": "ActivityPanels sample Enact Moonstone application.",
+  "description": "A sample activity panels Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "ActivityPanels sample",
+    "title": "Activity Panels Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

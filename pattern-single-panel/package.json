@@ -1,5 +1,5 @@
 {
-  "name": "ProfilePhotoPicker",
+  "name": "pattern-single-panel",
   "version": "1.0.0",
   "description": "A sample single panel Enact application.",
   "author": "",
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Profile Photo Picker",
+    "title": "Single Panel Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

@@ -1,7 +1,7 @@
 {
-  "name": "panel-routable-sample",
+  "name": "pattern-routable-panels",
   "version": "1.0.0",
-  "description": "A sample demonstrating routable panels",
+  "description": "A sample routable panels with redux Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Routable sample",
+    "title": "Routable Panels Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

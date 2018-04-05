@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels-redux",
   "version": "1.0.0",
-  "description": "ActivityPanels with redux sample Enact Moonstone application.",
+  "description": "A sample activity panels with redux Enact application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "ActivityPanels with redux sample",
+    "title": "Activity Panels Pattern with Redux",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

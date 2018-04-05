@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "VideoPlayer Pattern Sample",
+    "title": "Video Player Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "HelloEnact sample",
+    "title": "Hello, Enact",
     "isomorphic": true,
     "ri": {
       "baseSize": 24

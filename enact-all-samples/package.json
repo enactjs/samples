@@ -20,14 +20,14 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Enact all samples",
+    "title": "Enact QA Samples",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
     }
   },
   "eslintConfig": {
-    "extends": "enact"
+    "extends": "enact/strict"
   },
   "dependencies": {
     "@enact/core": "next",

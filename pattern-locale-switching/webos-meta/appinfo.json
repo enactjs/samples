@@ -1,10 +1,10 @@
 {
-  "id": "com.lgsvl.app.pattern-locale-switching",
+  "id": "pattern-locale-switching",
   "version": "1.0.0",
   "vendor": "LGE-SVL",
   "type": "web",
   "main": "index.html",
-  "title": "Enact App Template",
+  "title": "Locale Switching Pattern",
   "icon": "icon.png",
   "miniicon": "icon-mini.png",
   "largeIcon": "icon-large.png",

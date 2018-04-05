@@ -1,7 +1,7 @@
 {
-  "name": "virtualgridlist-sample",
+  "name": "pattern-virtualgridlist-api",
   "version": "1.0.0",
-  "description": "A sample virtualgridlist with redux",
+  "description": "A VirtualGridList with redux sample Enact Moonstone application.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "VirtualGridList sample",
+    "title": "VirtualGridList API Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
