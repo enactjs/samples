@@ -4,7 +4,7 @@ import React from 'react';
 
 class SampleItem extends React.Component {
 	static propTypes = {
-		history: PropTypes.Array,
+		history: PropTypes.object,
 		path: PropTypes.any
 	}
 
