@@ -3,7 +3,8 @@ import Item from '@enact/moonstone/Item';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import VirtualList from '@enact/moonstone/VirtualList';
+//import VirtualList from '@enact/moonstone/VirtualList';
+import {VirtualListNative as VirtualList} from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
 import css from './PatternList.less';
@@ -27,12 +28,12 @@ class PatternListBase extends Component {
 	componentDidMount () {
 		// Get the last scroll position and restore it with `scrollTo` method
 		const {scrollLeft, scrollTop} = this.props;
-		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
+		//this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
 	}
 
-	renderItem = ({data, index, ...rest}) => (
+	renderItem = ({index, ...rest}) => (
 		<Item {...rest} onClick={this.props.onClick}>
-			{data[index]}
+			{items[index]}
 		</Item>
 	)
 
@@ -49,8 +50,8 @@ class PatternListBase extends Component {
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
-				containerId={id} // Set a unique ID to preserve last focus
-				data={items}
+				spotlightId={id} // Set a unique ID to preserve last focus
+				focusableScrollbar
 				dataSize={items.length}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
