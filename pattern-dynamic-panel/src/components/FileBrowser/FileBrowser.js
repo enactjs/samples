@@ -86,8 +86,8 @@ const FileBrowserBase = kind({
 				<VirtualList
 					dataSize={mockFolders[leaf].files.length}
 					// eslint-disable-next-line
-					itemRenderer={({index, key, ...itemRest}) => (
-						<Item key={key} onClick={onNavigate} {...itemRest}>
+					itemRenderer={({index, ...itemRest}) => (
+						<Item {...itemRest} onClick={onNavigate}>
 							{mockFolders[leaf].files[index].name}
 						</Item>
 					)}
