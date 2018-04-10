@@ -1,5 +1,5 @@
 {
-  "id": "tutorial-kitten-browser",
+  "id": "com.enactjs.app.tutorial-kitten-browser",
   "version": "1.0.0",
   "vendor": "LGE-SVL",
   "type": "web",

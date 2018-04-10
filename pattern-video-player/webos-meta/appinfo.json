@@ -1,5 +1,5 @@
 {
-  "id": "pattern-video-player",
+  "id": "com.enactjs.app.pattern-video-player",
   "version": "1.0.0",
   "vendor": "LGE-SVL",
   "type": "web",

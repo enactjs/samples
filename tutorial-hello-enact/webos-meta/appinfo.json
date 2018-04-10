@@ -1,5 +1,5 @@
 {
-  "id": "tutorial-hello-enact",
+  "id": "com.enactjs.app.tutorial-hello-enact",
   "version": "1.0.0",
   "vendor": "LGE-SVL",
   "type": "web",
