@@ -1,3 +1,3 @@
 ### enact-all-samples
 
-This app is a wrapper app that links to all of the other sample apps.
+This application is a wrapper application that links to all of the other sample applications.

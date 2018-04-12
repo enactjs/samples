@@ -32,10 +32,9 @@ render = () => {
     <VirtualList
       cbScrollTo={this.getScrollTo}
       className={css.list}
-      component={this.renderItem}
       containerId={id}
-      data={items}
       dataSize={items.length}
+      itemRenderer={this.renderItem}
       itemSize={ri.scale(72)}
       onScrollStop={onScrollStop}
     />

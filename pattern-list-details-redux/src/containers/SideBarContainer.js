@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {changeCity} from '../actions';
 import SideBar from '../components/SideBar';
 

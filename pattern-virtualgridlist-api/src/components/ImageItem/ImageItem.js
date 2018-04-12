@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import kind from '@enact/core/kind';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import {selectItem} from '../../actions';
 

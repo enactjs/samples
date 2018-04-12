@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
-import Spottable from '@enact/spotlight/Spottable';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Spottable from '@enact/spotlight/Spottable';
 
 import css from './Kitten.less';
 

@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
-import VideoPlayer from '@enact/moonstone/VideoPlayer';
 import IconButton from '@enact/moonstone/IconButton';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import PropTypes from 'prop-types';
+import React from 'react';
+import VideoPlayer from '@enact/moonstone/VideoPlayer';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-import videos from './videos.js';
 import css from './App.less';
+import videos from './videos.js';
 
 const getVideo = (index) => videos[index];
 

@@ -1,5 +1,6 @@
-import React from 'react';
 import {mount} from 'enzyme';
+import React from 'react';
+
 import Body from '../../views/Body.js';
 
 describe('Content specs', () => {

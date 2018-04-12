@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import kind from '@enact/core/kind';
 import Divider from '@enact/moonstone/Divider';
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 
 const CityItem = kind({

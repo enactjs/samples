@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
-import ri from '@enact/ui/resolution';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import ri from '@enact/ui/resolution';
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
 
 import ImageItem from '../ImageItem';
@@ -25,7 +25,6 @@ class ImageList extends React.Component {
 		return (
 			<VirtualGridList
 				{...rest}
-				data={imageitems}
 				dataSize={imageitems.length}
 				itemRenderer={this.renderItem}
 				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}

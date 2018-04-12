@@ -1,8 +1,9 @@
-import React from 'react';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import SaveButton from '../components/SaveButton';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import React from 'react';
+
 import ProfilePhotoPicker from '../components/ProfilePhotoPicker';
+import SaveButton from '../components/SaveButton';
 
 const MainPanel = kind({
 	name: 'MainPanel',

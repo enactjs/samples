@@ -1,8 +1,8 @@
+import {Provider} from 'react-redux';
 import React from 'react';
 
 import App from './App';
 import configureStore from './store';
-import {Provider} from 'react-redux';
 
 // set default launch path
 const store = configureStore();

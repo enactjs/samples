@@ -1,7 +1,7 @@
 {
-  "name": "CityViewer",
+  "name": "pattern-list-details",
   "version": "1.0.0",
-  "description": "Sample list details Enact application.",
+  "description": "An Enact application demonstrating List details.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "watch": "enact pack --watch",
     "clean": "enact clean",
     "lint": "enact lint --strict .",
+    "license": "enact license",
     "test": "enact test start --single-run --browsers PhantomJS",
     "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
     "test-watch": "enact test start --browsers PhantomJS"
@@ -19,6 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
+    "title": "List Details Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
@@ -33,7 +35,6 @@
     "@enact/moonstone": "next",
     "@enact/spotlight": "next",
     "@enact/ui": "next",
-    "@enact/webos": "next",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"

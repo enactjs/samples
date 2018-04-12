@@ -1,0 +1,12 @@
+{
+  "id": "com.enactjs.app.pattern-list-details",
+  "version": "1.0.0",
+  "vendor": "LGE-SVL",
+  "type": "web",
+  "main": "index.html",
+  "title": "List Details Pattern",
+  "icon": "icon.png",
+  "miniicon": "icon-mini.png",
+  "largeIcon": "icon-large.png",
+  "uiRevision": 2
+}

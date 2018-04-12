@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Popup from '@enact/moonstone/Popup';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const SavedPopup = kind({
 	name: 'SavedPopup',
