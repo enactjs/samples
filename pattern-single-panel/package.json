@@ -1,7 +1,7 @@
 {
   "name": "pattern-single-panel",
   "version": "1.0.0",
-  "description": "A sample single panel Enact application.",
+  "description": "An Enact application demonstrating SinglePanel.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

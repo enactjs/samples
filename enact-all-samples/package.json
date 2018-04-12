@@ -1,7 +1,7 @@
 {
   "name": "enact-all-samples",
   "version": "1.0.0",
-  "description": "A general template for an Enact Moonstone application.",
+  "description": "A collection of Enact sample applications.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

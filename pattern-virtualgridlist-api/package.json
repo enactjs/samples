@@ -1,7 +1,7 @@
 {
   "name": "pattern-virtualgridlist-api",
   "version": "1.0.0",
-  "description": "A VirtualGridList with redux sample Enact Moonstone application.",
+  "description": "An Enact application demonstrating VirtualGridList API with Redux.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

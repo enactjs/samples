@@ -1,7 +1,7 @@
 {
   "name": "pattern-expandablelist-object",
   "version": "1.0.0",
-  "description": "A sample demonstrating ExpandableList with data in Object format in an Enact Moonstone application.",
+  "description": "An Enact application demonstrating ExpandableList with data in object.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

@@ -1,7 +1,7 @@
 {
   "name": "pattern-list-details-redux",
   "version": "1.0.0",
-  "description": "A list details with redux sample Enact Moonstone application.",
+  "description": "An Enact application demonstrating List details with Redux.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

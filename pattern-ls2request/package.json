@@ -1,7 +1,7 @@
 {
   "name": "pattern-ls2request",
   "version": "1.0.0",
-  "description": "A sample ls2request with redux Enact application.",
+  "description": "An Enact application demonstrating LS2Request.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

@@ -1,7 +1,7 @@
 {
   "name": "pattern-video-player",
   "version": "1.0.0",
-  "description": "An example pattern for a VideoPlayer with an AlwaysViewing panels component.",
+  "description": "An Enact application demonstrating AlwaysViewingPanels with VideoPlayer.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

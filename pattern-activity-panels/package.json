@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels",
   "version": "1.0.0",
-  "description": "A sample activity panels Enact application.",
+  "description": "An Enact application demonstrating ActivityPanels.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

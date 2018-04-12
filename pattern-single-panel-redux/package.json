@@ -1,7 +1,7 @@
 {
   "name": "pattern-single-panel-redux",
   "version": "1.0.0",
-  "description": "A sample single panel with redux Enact application.",
+  "description": "An Enact application demonstrating SinglePanel with Redux.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

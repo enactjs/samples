@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels-deep-linking",
   "version": "1.0.0",
-  "description": "A sample activity panels with redux and deep linking Enact application.",
+  "description": "An Enact application demonstrating deep linking with ActivityPanels.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

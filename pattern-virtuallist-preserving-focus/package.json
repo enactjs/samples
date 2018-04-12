@@ -1,7 +1,7 @@
 {
   "name": "pattern-virtuallist-preserving-focus",
   "version": "1.0.0",
-  "description": "An example of preserving focus in VirtualList for an Enact Moonstone application.",
+  "description": "An Enact application demonstrating VirtualList with preserving focus.",
   "author": "",
   "main": "src/index.js",
   "scripts": {

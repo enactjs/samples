@@ -1,7 +1,7 @@
 {
   "name": "pattern-list-details",
   "version": "1.0.0",
-  "description": "A list details sample Enact Moonstone application.",
+  "description": "An Enact application demonstrating List details.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
