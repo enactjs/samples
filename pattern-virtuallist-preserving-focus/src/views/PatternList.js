@@ -50,7 +50,7 @@ class PatternListBase extends Component {
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
-				containerId={id} // Set a unique ID to preserve last focus
+				spotlightId={id} // Set a unique ID to preserve last focus
 				dataSize={items.length}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
