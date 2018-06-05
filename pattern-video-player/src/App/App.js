@@ -3,7 +3,7 @@ import IconButton from '@enact/moonstone/IconButton';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
 import React from 'react';
-import VideoPlayer from '@enact/moonstone/VideoPlayer';
+import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -44,7 +44,7 @@ class App extends React.Component {
 
 		this.state = {
 			panelIndex: this.props.panelIndex,
-			panelsVisible: true,
+			panelsVisible: false,
 			videoIndex: this.props.videoIndex
 		};
 	}
@@ -78,15 +78,17 @@ class App extends React.Component {
 					<infoComponents>
 						{desc}
 					</infoComponents>
-					<rightComponents>
-						<IconButton
-							backgroundOpacity="translucent"
-							onClick={this.handleShowPanelsClick}
-							spotlightDisabled={this.state.panelsVisible}
-						>
-							list
-						</IconButton>
-					</rightComponents>
+					<MediaControls>
+						<rightComponents>
+							<IconButton
+								backgroundOpacity="translucent"
+								onClick={this.handleShowPanelsClick}
+								spotlightDisabled={this.state.panelsVisible}
+							>
+								list
+							</IconButton>
+						</rightComponents>
+					</MediaControls>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
 					<AlwaysViewingPanels
