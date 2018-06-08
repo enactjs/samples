@@ -1,9 +1,10 @@
-import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
+import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
+import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import React from 'react';
-import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -47,6 +48,13 @@ class App extends React.Component {
 			panelsVisible: false,
 			videoIndex: this.props.videoIndex
 		};
+	}
+
+	componentDidUpdate (prevProps, prevState) {
+		// After displaying the panels, move the focus to the main panel
+		if (!prevState.panelsVisible && this.state.panelsVisible) {
+			Spotlight.focus('main-panel');
+		}
 	}
 
 	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
@@ -96,11 +104,12 @@ class App extends React.Component {
 						index={this.state.panelIndex}
 					>
 						<MainPanel
-							title="Videos"
-							videoIndex={this.state.videoIndex}
 							onVideoIndexChange={this.setVideoIndex}
 							onHidePanels={this.handleHidePanelsClick}
 							onNextPanel={this.handleNextPanelClick}
+							spotlightId="main-panel"
+							title="Videos"
+							videoIndex={this.state.videoIndex}
 						/>
 						<ItemPanel title="Second" />
 					</AlwaysViewingPanels> :
