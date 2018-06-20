@@ -1,0 +1,46 @@
+{
+	"name": "newapp",
+	"version": "1.0.0",
+	"description": "A general template for an Enact Moonstone application.",
+	"author": "Hailey HanGyeol Ryu",
+	"main": "src/index.js",
+	"scripts": {
+		"serve": "enact serve",
+		"pack": "enact pack",
+		"pack-p": "enact pack -p",
+		"watch": "enact pack --watch",
+		"clean": "enact clean",
+		"lint": "enact lint .",
+		"license": "enact license",
+		"test": "enact test start --single-run",
+		"test-watch": "enact test start"
+	},
+	"license": "UNLICENSED",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"theme": "moonstone"
+	},
+	"eslintConfig": {
+		"extends": "enact/strict"
+	},
+	"eslintIgnore": [
+		"node_modules/*",
+		"build/*",
+		"dist/*"
+	],
+	"dependencies": {
+		"@enact/core": "^2.0.0-beta.7",
+		"@enact/i18n": "^2.0.0-beta.7",
+		"@enact/moonstone": "^2.0.0-beta.7",
+		"@enact/spotlight": "^2.0.0-beta.7",
+		"@enact/ui": "^2.0.0-beta.7",
+		"apollo-boost": "^0.1.8",
+		"graphql": "^0.13.2",
+		"graphql-tag": "^2.9.2",
+		"prop-types": "^15.6.0",
+		"react": "^16.4.0",
+		"react-apollo": "^2.1.5",
+		"react-dom": "^16.4.0"
+	}
+}
