@@ -39,15 +39,17 @@ const SearchBase = kind({
 	render: ({apiToken, onInputChange, onSearch, onRepoSelection, onFolSelection, onOrgSelection, ...rest}) => {
 		delete rest.onUserIdChange;
 		delete rest.onListSelectionChange;
-		return (<Panel {...rest}>
-			{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
-			<Header title="Dev checks" type="compact" />
-			<Input placeholder="Github id" onChange={onInputChange} dismissOnEnter />
-			<IconButton onClick={onSearch} small={false} backgroundOpacity="transparent">search</IconButton>
-			<FormCheckboxItem onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
-			<FormCheckboxItem onToggle={onFolSelection}>Followers</FormCheckboxItem>
-			<FormCheckboxItem onToggle={onOrgSelection}>Organizations</FormCheckboxItem>
-		</Panel>);
+		return (
+			<Panel {...rest}>
+				{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
+				<Header title="Dev checks" type="compact" />
+				<Input placeholder="Github id" onChange={onInputChange} dismissOnEnter />
+				<IconButton onClick={onSearch} small={false} backgroundOpacity="transparent">search</IconButton>
+				<FormCheckboxItem onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
+				<FormCheckboxItem onToggle={onFolSelection}>Followers</FormCheckboxItem>
+				<FormCheckboxItem onToggle={onOrgSelection}>Organizations</FormCheckboxItem>
+			</Panel>
+		);
 	}
 });
 

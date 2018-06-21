@@ -79,17 +79,19 @@ class AppBase extends Component {
 	render () {
 		const {index, userId, lists} = this.state;
 
-		return <ApolloProvider client={client}>
-			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
-				<Search
-					apiToken={config.token}
-					onUserIdChange={this.onUserIdChange}
-					onListSelectionChange={this.onListSelectionChange}
-					onSearch={this.onSearch}
-				/>
-				<Detail userId={userId} lists={lists} />
-			</ActivityPanels>
-		</ApolloProvider>;
+		return (
+			<ApolloProvider client={client}>
+				<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
+					<Search
+						apiToken={config.token}
+						onUserIdChange={this.onUserIdChange}
+						onListSelectionChange={this.onListSelectionChange}
+						onSearch={this.onSearch}
+					/>
+					<Detail userId={userId} lists={lists} />
+				</ActivityPanels>
+			</ApolloProvider>
+		);
 	}
 }
 
