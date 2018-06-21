@@ -39,7 +39,7 @@ const SearchBase = kind({
 		delete rest.onListSelectionChange;
 		return (<Panel {...rest}>
 			<Header title="Dev checks" type="compact" />
-			<Input placeholder="Github id" onChange={onInputChange} />
+			<Input placeholder="Github id" onChange={onInputChange} dismissOnEnter />
 			<IconButton onClick={onSearch} small={false} backgroundOpacity="transparent">search</IconButton>
 			<FormCheckboxItem onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
 			<FormCheckboxItem onToggle={onFolSelection}>Followers</FormCheckboxItem>

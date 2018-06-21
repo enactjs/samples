@@ -45,11 +45,11 @@ const DetailBase = kind({
 		<Query query={GET_USER} variables={{login: userId}}>
 			{({loading, data}) => {
 				if (loading) {
-					return (<Panel {...rest}><p>Loading...</p></Panel>);
+					return <Panel {...rest}><p>Loading...</p></Panel>;
 				} else if (!data && !data.user) {
 					return <Panel {...rest}><p>User not found...</p></Panel>;
 				} else {
-					return (<Panel {...rest}>
+					return <Panel {...rest}>
 						<Header type="compact" title={data.user.name}>
 							<Image src={data.user.avatarUrl} style={{height: '3rem'}} sizing="fit" />
 						</Header>
@@ -58,7 +58,7 @@ const DetailBase = kind({
 							{lists.org && <List list={data.user.organizations.nodes} />}
 							{lists.fol &&  <List list={data.user.followers.nodes} />}
 						</Column>
-					</Panel>);
+					</Panel>;
 				}
 			}}
 		</Query>

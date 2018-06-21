@@ -36,11 +36,11 @@ class AppBase extends Component {
 
 	constructor (props) {
 		super(props);
-		this.userId = 'haileyr';
+		this.userId = '';
 		this.lists = {
-			repo: true,
-			fol: true,
-			org: true
+			repo: false,
+			fol: false,
+			org: false
 		};
 
 		this.state = {
@@ -78,17 +78,16 @@ class AppBase extends Component {
 	render () {
 		const {index, userId, lists} = this.state;
 
-		return (
-			<ApolloProvider client={client}>
-				<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
-					<Search
-						onUserIdChange={this.onUserIdChange}
-						onListSelectionChange={this.onListSelectionChange}
-						onSearch={this.onSearch}
-					/>
-					<Detail userId={userId} lists={lists} />
-				</ActivityPanels>
-			</ApolloProvider>);
+		return <ApolloProvider client={client}>
+			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
+				<Search
+					onUserIdChange={this.onUserIdChange}
+					onListSelectionChange={this.onListSelectionChange}
+					onSearch={this.onSearch}
+				/>
+				<Detail userId={userId} lists={lists} />
+			</ActivityPanels>
+		</ApolloProvider>;
 	}
 }
 

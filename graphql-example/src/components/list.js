@@ -23,7 +23,7 @@ const ListBase = kind({
 	name: 'Detail',
 
 	propTypes: {
-		list: PropTypes.object,
+		list: PropTypes.arrayOf(PropTypes.object),
 		userId: PropTypes.string
 	},
 
