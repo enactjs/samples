@@ -10,6 +10,7 @@ import Detail from '../views/Detail';
 import Search from '../views/Search';
 import config from '../config.json';
 
+
 const client = new ApolloClient({
 	uri: 'https://api.github.com/graphql',
 	request: operation => {
@@ -81,6 +82,7 @@ class AppBase extends Component {
 		return <ApolloProvider client={client}>
 			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
 				<Search
+					apiToken={config.token}
 					onUserIdChange={this.onUserIdChange}
 					onListSelectionChange={this.onListSelectionChange}
 					onSearch={this.onSearch}

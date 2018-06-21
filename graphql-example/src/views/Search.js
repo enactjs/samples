@@ -2,6 +2,7 @@ import {Header, Panel} from '@enact/moonstone/Panels';
 import Input from '@enact/moonstone/Input';
 import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import IconButton from '@enact/moonstone/IconButton';
+import Notification from '@enact/moonstone/Notification';
 import kind from '@enact/core/kind';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,6 +11,7 @@ const SearchBase = kind({
 	name: 'Detail',
 
 	propTypes: {
+		apiToken: PropTypes.string,
 		onListSelectionChange: PropTypes.func,
 		onSearch: PropTypes.func,
 		onUserIdChange: PropTypes.func,
@@ -34,10 +36,11 @@ const SearchBase = kind({
 		}
 	},
 
-	render: ({onInputChange, onSearch, onRepoSelection, onFolSelection, onOrgSelection, ...rest}) => {
+	render: ({apiToken, onInputChange, onSearch, onRepoSelection, onFolSelection, onOrgSelection, ...rest}) => {
 		delete rest.onUserIdChange;
 		delete rest.onListSelectionChange;
 		return (<Panel {...rest}>
+			{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
 			<Header title="Dev checks" type="compact" />
 			<Input placeholder="Github id" onChange={onInputChange} dismissOnEnter />
 			<IconButton onClick={onSearch} small={false} backgroundOpacity="transparent">search</IconButton>
