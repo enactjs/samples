@@ -10,7 +10,7 @@
 		"pack-p": "enact pack -p",
 		"watch": "enact pack --watch",
 		"clean": "enact clean",
-		"lint": "enact lint .",
+		"lint": "enact lint --strict .",
 		"license": "enact license",
 		"test": "enact test start --single-run",
 		"test-watch": "enact test start"
