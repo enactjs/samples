@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
-import List from '../components/list';
+import List from '../components/List';
 import PropTypes from 'prop-types';
 import {Query} from 'react-apollo';
 import React from 'react';

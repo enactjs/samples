@@ -23,15 +23,11 @@ const List = kind({
 	name: 'Detail',
 
 	propTypes: {
-		list: PropTypes.arrayOf(PropTypes.object),
+		list: PropTypes.arrayOf(PropTypes.object).isRequired,
 		userId: PropTypes.string
 	},
 
-	computed: {
-		itemRenderer: renderItem
-	},
-
-	render: ({itemRenderer, list}) => {
+	render: ({list}) => {
 		return [
 			<Cell key="header" shrink><Divider>Repositories</Divider></Cell>,
 			<Cell
@@ -39,7 +35,7 @@ const List = kind({
 				key="list"
 				dataSize={list.length}
 				focusableScrollbar={null}
-				itemRenderer={itemRenderer}
+				itemRenderer={renderItem}
 				itemSize={scale(60)}
 				spacing={0}
 			/>];
