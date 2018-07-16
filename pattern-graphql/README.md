@@ -1,4 +1,4 @@
-## Use Apollo with Enact and Github GraphqQL API
+## Use Apollo with Enact and GitHub GraphqQL API
 
 A sample application that demonstrates how to use GraphqQL with Enact components. It uses [Apollo Client](https://github.com/apollographql/apollo-client), (GraphqQL client.)
 
@@ -19,27 +19,27 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `ui/resolution/scale`
 
 ## Setup and use
-1. Get a personal access token for the GitHub API from https://github.com/settings/tokens/new.
-  - Select repo for scopes.
-2. Replace the dummy token in [src/config.json](src/config.json) with your token.
-3. Install node_modules
+1. Get a personal access token for the [GitHub API](https://github.com/settings/tokens/new).
+  - Assign a name to the token and select the "read:org" scope.
+2. Replace the dummy token in [src/config.json](src/config.json) with the token generated above.
+3. Install npm modules.
 
 ```bash
 npm install
 ```
-4. Serve
+4. Serve.
 
 ```bash
 npm run serve
 ```
 
-5. Open http://localhost:8080/.
-6. Search for a github id, selecting which information you wish to retrieve.
+5. Open [localhost](http://localhost:8080/).
+6. Search for a GitHub id, selecting which information you wish to retrieve.
 
 
 ### How Apollo is used.
 
-In **App.js**, a new ApolloClient is created with github uri and request setup:
+In **App.js**, a new `ApolloClient` is created with GitHub URI and request setup:
 
 [src/App/App.js]
 ```javascript
@@ -67,7 +67,7 @@ import { ApolloProvider } from "react-apollo";
 </ApolloProvider>
 ```
 
-Finally, a graphql query (`GET_USER`) is created using `gql` and is passed as the `query` prop to the `Query` component:
+Finally, a GraphQL query (`GET_USER`) is created using `gql` and is passed as the `query` prop to the `Query` component:
 
 [src/views/Detail.js](src/views/Detail.js)
 ```javascript
