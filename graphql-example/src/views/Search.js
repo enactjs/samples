@@ -7,7 +7,7 @@ import Notification from '@enact/moonstone/Notification';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const SearchBase = kind({
+const Search = kind({
 	name: 'Detail',
 
 	propTypes: {
@@ -25,14 +25,14 @@ const SearchBase = kind({
 		onInputChange: (ev, props) => {
 			props.onUserIdChange(ev.value);
 		},
-		onRepoSelection: (value, props) => {
-			props.onListSelectionChange('repo', value.selected);
+		onRepoSelection: (ev, props) => {
+			props.onListSelectionChange('repo', ev.selected);
 		},
-		onFolSelection: (value, props) => {
-			props.onListSelectionChange('fol', value.selected);
+		onFolSelection: (ev, props) => {
+			props.onListSelectionChange('fol', ev.selected);
 		},
-		onOrgSelection: (value, props) => {
-			props.onListSelectionChange('org', value.selected);
+		onOrgSelection: (ev, props) => {
+			props.onListSelectionChange('org', ev.selected);
 		}
 	},
 
@@ -53,5 +53,4 @@ const SearchBase = kind({
 	}
 });
 
-export default SearchBase;
-export {SearchBase as Search, SearchBase};
+export default Search;

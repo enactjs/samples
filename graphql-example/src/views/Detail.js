@@ -33,7 +33,7 @@ const GET_USER = gql`
   }
 `;
 
-const DetailBase = kind({
+const Detail = kind({
 	name: 'Detail',
 
 	propTypes: {
@@ -46,7 +46,7 @@ const DetailBase = kind({
 			{({loading, data}) => {
 				if (loading) {
 					return <Panel {...rest}><p>Loading...</p></Panel>;
-				} else if (!data && !data.user) {
+				} else if (!data || !data.user) {
 					return <Panel {...rest}><p>User not found...</p></Panel>;
 				} else {
 					return <Panel {...rest}>
@@ -64,5 +64,4 @@ const DetailBase = kind({
 		</Query>
 	)
 });
-export default DetailBase;
-export {DetailBase as Detail, DetailBase};
+export default Detail;

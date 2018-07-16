@@ -96,4 +96,3 @@ class AppBase extends Component {
 const App = MoonstoneDecorator(AppBase);
 
 export default App;
-export {App, AppBase};

@@ -19,7 +19,7 @@ const renderItem = ({list}) => ({index, ...rest}) => {
 	);
 };
 
-const ListBase = kind({
+const List = kind({
 	name: 'Detail',
 
 	propTypes: {
@@ -46,5 +46,4 @@ const ListBase = kind({
 	}
 });
 
-export default ListBase;
-export {ListBase as List, ListBase};
+export default List;
