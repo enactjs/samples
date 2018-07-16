@@ -1,11 +1,11 @@
-import VirtualList from '@enact/moonstone/VirtualList';
-import Item from '@enact/moonstone/Item';
-import Divider from '@enact/moonstone/Divider';
 import {Cell} from '@enact/ui/Layout';
-import {scale} from '@enact/ui/resolution';
+import Divider from '@enact/moonstone/Divider';
 import kind from '@enact/core/kind';
-import React from 'react';
+import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
+import React from 'react';
+import {scale} from '@enact/ui/resolution';
+import VirtualList from '@enact/moonstone/VirtualList';
 
 // eslint-disable-next-line enact/display-name, enact/prop-types
 const renderItem = ({list}) => ({index, ...rest}) => {

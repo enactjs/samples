@@ -19,41 +19,45 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `ui/resolution/scale`
 
 ## Setup and use
-1. Get Personal access token for github API from https://github.com/settings/tokens/new.
+1. Get a personal access token for the GitHub API from https://github.com/settings/tokens/new.
   - Select repo for scopes.
 2. Replace the dummy token in [src/config.json](src/config.json) with your token.
 3. Install node_modules
-```
+
+```bash
 npm install
 ```
 4. Serve
-```
+
+```bash
 npm run serve
 ```
+
 5. Open http://localhost:8080/.
-6. Search a github id with selections of repositories, followers, and/or organizations.
+6. Search for a github id, selecting which information you wish to retrieve.
 
 
 ### How Apollo is used.
 
-You need to make a new ApolloClient with uri and request setup.
+In **App.js**, a new ApolloClient is created with github uri and request setup:
+
 [src/App/App.js]
 ```javascript
 import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
-  uri: 'https://api.github.com/graphql',
+	uri: 'https://api.github.com/graphql',
 	request: operation => {
-    operation.setContext({
-      headers: {
-        authorization: `Bearer ${config.token}`,
-      },
-    });
-  },
+		operation.setContext({
+			headers: {
+				authorization: `Bearer ${config.token}`
+			}
+		});
+	}
 });
 ```
 
-Pass the client as a prop to the ApolloProvider component which wraps your components which will need the data from Query.
+Next, the `client` prop is passed to the `ApolloProvider` component, which wraps the components that need the queried data:
 [src/App/App.js](src/App/App.js)
 ```javascript
 import { ApolloProvider } from "react-apollo";
@@ -63,7 +67,7 @@ import { ApolloProvider } from "react-apollo";
 </ApolloProvider>
 ```
 
-Write a query (GET_USER) using gql and pass it as query prop for the Query component.
+Finally, a graphql query (`GET_USER`) is created using `gql` and is passed as the `query` prop to the `Query` component:
 
 [src/views/Detail.js](src/views/Detail.js)
 ```javascript
@@ -95,7 +99,7 @@ const GET_USER = gql`
   }
 `;
 
-<Query query={GET_USER} variables={{ login: formData.userId }}>
+<Query query={GET_USER} variables={{login: userId}}>
   {({loading, data}) => {
     ...
   }}

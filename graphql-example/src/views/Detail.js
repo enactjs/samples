@@ -1,12 +1,12 @@
+import {Column} from '@enact/ui/Layout';
+import gql from 'graphql-tag';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import Image from '@enact/moonstone/Image';
-import {Column} from '@enact/ui/Layout';
 import kind from '@enact/core/kind';
-import React from 'react';
+import List from '../components/list';
 import PropTypes from 'prop-types';
 import {Query} from 'react-apollo';
-import gql from 'graphql-tag';
-import List from '../components/list';
+import React from 'react';
 
 const GET_USER = gql`
   query($login: String!) {
@@ -37,8 +37,8 @@ const DetailBase = kind({
 	name: 'Detail',
 
 	propTypes: {
-		lists: PropTypes.object,
-		userId: PropTypes.string
+		lists: PropTypes.object.isRequired,
+		userId: PropTypes.string.isRequired
 	},
 
 	render: ({userId, lists, ...rest}) => (

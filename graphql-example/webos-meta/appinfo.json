@@ -1,10 +1,10 @@
 {
-	"id": "newapp",
+	"id": "com.enactjs.graphql",
 	"version": "1.0.0",
 	"vendor": "LGE-SVL",
 	"type": "web",
 	"main": "index.html",
-	"title": "Enact App Template",
+	"title": "Enact GraphQL Sample",
 	"icon": "icon.png",
 	"miniicon": "icon-mini.png",
 	"largeIcon": "icon-large.png",

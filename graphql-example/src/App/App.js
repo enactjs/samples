@@ -1,10 +1,9 @@
-import {ApolloProvider} from 'react-apollo';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 import ApolloClient from 'apollo-boost';
-
+import {ApolloProvider} from 'react-apollo';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ActivityPanels} from '@enact/moonstone/Panels';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 
 import Detail from '../views/Detail';
 import Search from '../views/Search';
@@ -34,33 +33,32 @@ class AppBase extends Component {
 		index: 0
 	};
 
-
 	constructor (props) {
 		super(props);
 		this.userId = '';
 		this.lists = {
-			repo: false,
 			fol: false,
-			org: false
+			org: false,
+			repo: false
 		};
 
 		this.state = {
-			userId: '',
+			index: this.props.index,
 			lists: {},
-			index: this.props.index
+			userId: ''
 		};
 	}
 
 	handleSelectBreadcrumb = ({index}) => {
 		this.lists = {
-			repo: false,
 			fol: false,
-			org: false
+			org: false,
+			repo: false
 		};
 		this.setState({
 			index,
-			userId: '',
-			lists: this.lists
+			lists: this.lists,
+			userId: ''
 		});
 	};
 
@@ -81,21 +79,21 @@ class AppBase extends Component {
 
 		return (
 			<ApolloProvider client={client}>
-				<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={index}>
+				<ActivityPanels {...this.props} index={index} onSelectBreadcrumb={this.handleSelectBreadcrumb}>
 					<Search
 						apiToken={config.token}
-						onUserIdChange={this.onUserIdChange}
 						onListSelectionChange={this.onListSelectionChange}
 						onSearch={this.onSearch}
+						onUserIdChange={this.onUserIdChange}
 					/>
-					<Detail userId={userId} lists={lists} />
+					<Detail lists={lists} userId={userId} />
 				</ActivityPanels>
 			</ApolloProvider>
 		);
 	}
 }
 
-const App =	MoonstoneDecorator(AppBase);
+const App = MoonstoneDecorator(AppBase);
 
 export default App;
 export {App, AppBase};
