@@ -27,12 +27,13 @@ class List extends Component {
 		return [
 			<Cell key="header" shrink><Divider>Repositories</Divider></Cell>,
 			<Cell
-				component={VirtualList} size={list.length <= 4 ? (60 * list.length) : null}
+				component={VirtualList}
 				key="list"
 				dataSize={list.length}
 				focusableScrollbar={null}
 				itemRenderer={this.renderItem}
 				itemSize={scale(60)}
+				size={list.length <= 4 ? (60 * list.length) : null}
 				spacing={0}
 			/>];
 	}
