@@ -30,11 +30,11 @@
     "dist/*"
   ],
   "dependencies": {
-    "@enact/core": "^2.0.0-rc.1",
-    "@enact/i18n": "^2.0.0-rc.1",
-    "@enact/moonstone": "^2.0.0-rc.1",
-    "@enact/spotlight": "^2.0.0-rc.1",
-    "@enact/ui": "^2.0.0-rc.1",
+    "@enact/core": "next",
+    "@enact/i18n": "next",
+    "@enact/moonstone": "next",
+    "@enact/spotlight": "next",
+    "@enact/ui": "next",
     "apollo-boost": "^0.1.8",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
