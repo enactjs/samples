@@ -33,19 +33,24 @@ const Search = kind({
 		},
 		onOrgSelection: (ev, props) => {
 			props.onListSelectionChange('org', ev.selected);
+		},
+		onKeyUp: (ev, props) => {
+			if (ev.keyCode === 13) {
+				props.onSearch();
+			}
 		}
 	},
 
-	render: ({apiToken, onFolSelection, onInputChange, onRepoSelection, onOrgSelection, onSearch, ...rest}) => {
+	render: ({apiToken, onFolSelection, onInputChange, onRepoSelection, onOrgSelection, onSearch, onKeyUp, ...rest}) => {
 		delete rest.onUserIdChange;
 		delete rest.onListSelectionChange;
 		return (
 			<Panel {...rest}>
 				{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
 				<Header title="Dev checks" type="compact" />
-				<Input placeholder="Github id" onChange={onInputChange} dismissOnEnter />
+				<Input placeholder="Github id" onChange={onInputChange} onKeyUp={onKeyUp} />
 				<IconButton onClick={onSearch} backgroundOpacity="transparent">search</IconButton>
-				<FormCheckboxItem onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
+				<FormCheckboxItem defaultSelected onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
 				<FormCheckboxItem onToggle={onFolSelection}>Followers</FormCheckboxItem>
 				<FormCheckboxItem onToggle={onOrgSelection}>Organizations</FormCheckboxItem>
 			</Panel>
