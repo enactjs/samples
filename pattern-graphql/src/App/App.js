@@ -39,7 +39,7 @@ class AppBase extends Component {
 		this.lists = {
 			fol: false,
 			org: false,
-			repo: false
+			repo: true
 		};
 
 		this.state = {
@@ -53,7 +53,7 @@ class AppBase extends Component {
 		this.lists = {
 			fol: false,
 			org: false,
-			repo: false
+			repo: true
 		};
 		this.setState({
 			index,
