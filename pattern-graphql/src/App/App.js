@@ -44,7 +44,6 @@ class AppBase extends Component {
 
 		this.state = {
 			index: this.props.index,
-			lists: {},
 			userId: ''
 		};
 	}
@@ -57,7 +56,6 @@ class AppBase extends Component {
 		};
 		this.setState({
 			index,
-			lists: this.lists,
 			userId: ''
 		});
 	};
@@ -71,11 +69,11 @@ class AppBase extends Component {
 	};
 
 	onSearch = () => {
-		this.setState({index: 1, userId: this.userId, lists: this.lists});
+		this.setState({index: 1, userId: this.userId});
 	};
 
 	render () {
-		const {index, userId, lists} = this.state;
+		const {index, userId} = this.state;
 
 		return (
 			<ApolloProvider client={client}>
@@ -86,7 +84,7 @@ class AppBase extends Component {
 						onSearch={this.onSearch}
 						onUserIdChange={this.onUserIdChange}
 					/>
-					<Detail lists={lists} userId={userId} />
+					<Detail lists={this.lists} userId={userId} />
 				</ActivityPanels>
 			</ApolloProvider>
 		);
