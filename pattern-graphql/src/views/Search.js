@@ -2,60 +2,73 @@ import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import Input from '@enact/moonstone/Input';
-import kind from '@enact/core/kind';
 import Notification from '@enact/moonstone/Notification';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 
-const Search = kind({
-	name: 'Detail',
-
-	propTypes: {
+class Search extends Component {
+	static propTypes = {
 		apiToken: PropTypes.string,
-		onListSelectionChange: PropTypes.func,
 		onSearch: PropTypes.func,
 		onUserIdChange: PropTypes.func,
 		userId: PropTypes.string
-	},
+	};
 
-	handlers: {
-		onSearch: (ev, props) => {
-			props.onSearch();
-		},
-		onInputChange: (ev, props) => {
-			props.onUserIdChange(ev.value);
-		},
-		onRepoSelection: (ev, props) => {
-			props.onListSelectionChange('repo', ev.selected);
-		},
-		onFolSelection: (ev, props) => {
-			props.onListSelectionChange('fol', ev.selected);
-		},
-		onOrgSelection: (ev, props) => {
-			props.onListSelectionChange('org', ev.selected);
-		},
-		onKeyUp: (ev, props) => {
-			if (ev.keyCode === 13) {
-				props.onSearch();
-			}
+	constructor (props) {
+		super(props);
+		this.userId = React.createRef();
+		this.state = {
+			fol: false,
+			org: false,
+			repo: true,
+			userId: ''
+		};
+	}
+
+	onUserIdChange = (ev) => {
+		this.setState({userId: ev.value});
+	};
+
+	onSearch = () => {
+		this.props.onSearch(this.state);
+	}
+
+	onRepoToggle = () => {
+		this.setState(prevState => ({repo: !prevState.repo}));
+	}
+
+	onFolToggle = () => {
+		this.setState(prevState => ({fol: !prevState.fol}));
+	}
+
+	onOrgToggle = () => {
+		this.setState(prevState => ({org: !prevState.org}));
+	}
+
+	onKeyUp = (ev) => {
+		if (ev.keyCode === 13) {
+			this.props.onSearch(this.state);
 		}
-	},
+	}
 
-	render: ({apiToken, onFolSelection, onInputChange, onRepoSelection, onOrgSelection, onSearch, onKeyUp, ...rest}) => {
+	render = () => {
+		const {apiToken, ...rest} = this.props;
+		const {repo, org, fol} = this.state;
+		delete rest.onSearch;
 		delete rest.onUserIdChange;
 		delete rest.onListSelectionChange;
 		return (
 			<Panel {...rest}>
 				{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
 				<Header title="Dev checks" type="compact" />
-				<Input placeholder="Github id" onChange={onInputChange} onKeyUp={onKeyUp} />
-				<IconButton onClick={onSearch} backgroundOpacity="transparent">search</IconButton>
-				<FormCheckboxItem defaultSelected onToggle={onRepoSelection}>Repositories</FormCheckboxItem>
-				<FormCheckboxItem onToggle={onFolSelection}>Followers</FormCheckboxItem>
-				<FormCheckboxItem onToggle={onOrgSelection}>Organizations</FormCheckboxItem>
+				<Input placeholder="Github id" ref={this.userId} onChange={this.onUserIdChange} onKeyUp={this.onKeyUp} />
+				<IconButton onClick={this.onSearch} backgroundOpacity="transparent">search</IconButton>
+				<FormCheckboxItem defaultSelected={repo} onToggle={this.onRepoToggle}>Repositories</FormCheckboxItem>
+				<FormCheckboxItem defaultSelected={org} onToggle={this.onOrgToggle}>Organizations</FormCheckboxItem>
+				<FormCheckboxItem defaultSelected={fol} onToggle={this.onFolToggle}>Followers</FormCheckboxItem>
 			</Panel>
 		);
 	}
-});
+}
 
 export default Search;

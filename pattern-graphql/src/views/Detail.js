@@ -37,11 +37,13 @@ const Detail = kind({
 	name: 'Detail',
 
 	propTypes: {
-		lists: PropTypes.object.isRequired,
-		userId: PropTypes.string.isRequired
+		userId: PropTypes.string.isRequired,
+		fol: PropTypes.bool,
+		org: PropTypes.bool,
+		repo: PropTypes.bool
 	},
 
-	render: ({userId, lists, ...rest}) => (
+	render: ({userId, repo, org, fol, ...rest}) => (
 		<Query query={GET_USER} variables={{login: userId}}>
 			{({loading, data}) => {
 				if (loading) {
@@ -54,9 +56,9 @@ const Detail = kind({
 							<Image src={data.user.avatarUrl} style={{height: '3rem'}} sizing="fit" />
 						</Header>
 						<Column>
-							{lists.repo && <List title="Repositories" list={data.user.repositories.nodes} />}
-							{lists.org && <List title="Organizations" list={data.user.organizations.nodes} />}
-							{lists.fol &&  <List title="Followers" list={data.user.followers.nodes} />}
+							{repo && <List title="Repositories" list={data.user.repositories.nodes} />}
+							{org && <List title="Organizations" list={data.user.organizations.nodes} />}
+							{fol &&  <List title="Followers" list={data.user.followers.nodes} />}
 						</Column>
 					</Panel>;
 				}

@@ -24,9 +24,7 @@ const client = new ApolloClient({
 class AppBase extends Component {
 	static propTypes = {
 		index: PropTypes.number,
-		onListSelectionChange: PropTypes.func,
-		onSearch: PropTypes.func,
-		onUserIdChange: PropTypes.func
+		onSearch: PropTypes.func
 	};
 
 	static defaultProps = {
@@ -35,56 +33,41 @@ class AppBase extends Component {
 
 	constructor (props) {
 		super(props);
-		this.userId = '';
-		this.lists = {
-			fol: false,
-			org: false,
-			repo: true
-		};
 
 		this.state = {
 			index: this.props.index,
+			fol: false,
+			org: false,
+			repo: true,
 			userId: ''
 		};
 	}
 
 	handleSelectBreadcrumb = ({index}) => {
-		this.lists = {
-			fol: false,
-			org: false,
-			repo: true
-		};
+		this.setState({index});
+	};
+
+	onSearch = (formItems) => {
 		this.setState({
-			index,
-			userId: ''
+			index: 1,
+			userId: formItems.userId,
+			repo: formItems.repo,
+			fol: formItems.fol,
+			org: formItems.org
 		});
 	};
 
-	onUserIdChange = (userId) => {
-		this.userId = userId;
-	};
-
-	onListSelectionChange = (target, value) => {
-		this.lists[target] = value;
-	};
-
-	onSearch = () => {
-		this.setState({index: 1, userId: this.userId});
-	};
-
 	render () {
-		const {index, userId} = this.state;
+		const {index, userId, repo, org, fol} = this.state;
 
 		return (
 			<ApolloProvider client={client}>
 				<ActivityPanels {...this.props} index={index} onSelectBreadcrumb={this.handleSelectBreadcrumb}>
 					<Search
 						apiToken={config.token}
-						onListSelectionChange={this.onListSelectionChange}
 						onSearch={this.onSearch}
-						onUserIdChange={this.onUserIdChange}
 					/>
-					<Detail lists={this.lists} userId={userId} />
+					<Detail repo={repo} org={org} fol={fol} userId={userId} />
 				</ActivityPanels>
 			</ApolloProvider>
 		);
