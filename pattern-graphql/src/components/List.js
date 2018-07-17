@@ -9,6 +9,7 @@ import VirtualList from '@enact/moonstone/VirtualList';
 class List extends Component {
 	static propTypes = {
 		list: PropTypes.arrayOf(PropTypes.object).isRequired,
+		title: PropTypes.string,
 		userId: PropTypes.string
 	}
 
@@ -22,10 +23,10 @@ class List extends Component {
 	);
 
 	render = () => {
-		const list = this.props.list;
+		const {list, title} = this.props;
 
 		return [
-			<Cell key="header" shrink><Divider>Repositories</Divider></Cell>,
+			<Cell key="header" shrink><Divider>{title}</Divider></Cell>,
 			<Cell
 				component={VirtualList}
 				key="list"

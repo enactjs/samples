@@ -54,9 +54,9 @@ const Detail = kind({
 							<Image src={data.user.avatarUrl} style={{height: '3rem'}} sizing="fit" />
 						</Header>
 						<Column>
-							{lists.repo && <List list={data.user.repositories.nodes} />}
-							{lists.org && <List list={data.user.organizations.nodes} />}
-							{lists.fol &&  <List list={data.user.followers.nodes} />}
+							{lists.repo && <List title="Repositories" list={data.user.repositories.nodes} />}
+							{lists.org && <List title="Organizations" list={data.user.organizations.nodes} />}
+							{lists.fol &&  <List title="Followers" list={data.user.followers.nodes} />}
 						</Column>
 					</Panel>;
 				}
