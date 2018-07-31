@@ -1,7 +1,7 @@
 {
   "name": "enact-all-samples",
   "version": "1.0.0",
-  "description": "A general template for an Enact Moonstone application.",
+  "description": "A collection of Enact sample applications.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "pack-p": "enact pack -p",
     "watch": "enact pack --watch",
     "clean": "enact clean",
-    "lint": "enact lint .",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
     "test": "enact test start --single-run --browsers PhantomJS",
     "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
     "test-watch": "enact test start --browsers PhantomJS"
@@ -19,13 +20,14 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
+    "title": "Enact QA Samples",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
     }
   },
   "eslintConfig": {
-    "extends": "enact"
+    "extends": "enact/strict"
   },
   "dependencies": {
     "@enact/core": "next",
@@ -35,10 +37,9 @@
     "@enact/ui": "next",
     "@enact/webos": "next",
     "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-redux": "^5.0.3",
-    "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"

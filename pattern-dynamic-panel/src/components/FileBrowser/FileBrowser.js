@@ -1,11 +1,11 @@
-import React from 'react';
-import kind from '@enact/core/kind';
-import ri from '@enact/ui/resolution';
+import Cancelable from '@enact/ui/Cancelable';
 import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
-import Cancelable from '@enact/ui/Cancelable';
-import {VirtualList} from '@enact/moonstone/VirtualList';
+import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
+import React from 'react';
+import ri from '@enact/ui/resolution';
+import VirtualList from '@enact/moonstone/VirtualList';
 
 import butterfly from '../../../assets/images/butterfly.jpg';
 import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';
@@ -50,8 +50,6 @@ const filePhotos = {
 	rainbow
 };
 
-const scale = ri.scale;
-
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
 	propTypes: {
@@ -80,23 +78,22 @@ const FileBrowserBase = kind({
 	computed: {
 		// computed component pattern is not currently Enact eslint friendly
 		// eslint-disable-next-line
-		listItem: (props) => ({data, index, key, ...rest}) => (
-			<Item key={key} onClick={props.onNavigate} {...rest}>
-				{data[index].name}
-			</Item>
-		),
-		// computed component pattern is not currently Enact eslint friendly
-		// eslint-disable-next-line
-		renderItem: () => ({listItem, path: pathData, ...rest}) => {
+		renderItem: () => ({listItem, onNavigate, path: pathData, ...rest}) => {
 			const {path, directory} = pathData;
 			const leaf = path.split('/').pop();
 
-			const component = directory ? <VirtualList
-				itemSize={scale(72)}
-				component={listItem}
-				data={mockFolders[leaf].files}
-				dataSize={mockFolders[leaf].files.length}
-			/> : <Image src={filePhotos[leaf.replace('.jpg', '')]} />;
+			const component = directory ?
+				<VirtualList
+					dataSize={mockFolders[leaf].files.length}
+					// eslint-disable-next-line
+					itemRenderer={({index, ...itemRest}) => (
+						<Item {...itemRest} onClick={onNavigate}>
+							{mockFolders[leaf].files[index].name}
+						</Item>
+					)}
+					itemSize={ri.scale(72)}
+				/> :
+				<Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
 				<DynamicPanel path={path} {...rest}>

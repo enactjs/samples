@@ -1,9 +1,9 @@
-import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 import Changeable from '@enact/ui/Changeable';
-import React from 'react';
+import kind from '@enact/core/kind';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Detail from '../views/Detail';
 import List from '../views/List';

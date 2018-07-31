@@ -1,7 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import SideBar from '../components/SideBar';
+import React from 'react';
+
 import Content from '../components/Content';
+import SideBar from '../components/SideBar';
+
 import css from './Body.less';
 
 class Body extends React.Component {

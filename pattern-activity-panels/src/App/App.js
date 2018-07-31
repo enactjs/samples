@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import ButtonPanel from '../views/ButtonPanel';
 import ItemPanel from '../views/ItemPanel';

@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import kind from '@enact/core/kind';
-import Image from '@enact/moonstone/Image';
-import css from './containerStyles.less';
 import {connect} from 'react-redux';
+import Image from '@enact/moonstone/Image';
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import css from './containerStyles.less';
 
 const PhotoPreview = kind({
 	name: 'PhotoPreview',

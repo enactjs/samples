@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Slider from '@enact/moonstone/Slider';
 
 import css from './componentStyles.less';

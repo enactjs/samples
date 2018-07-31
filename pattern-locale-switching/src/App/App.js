@@ -1,10 +1,12 @@
-import React from 'react';
+import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {Panels} from '@enact/moonstone/Panels';
+import React from 'react';
+
 import MainPanel from '../views/MainPanel';
+
 import css from './App.less';
-import {connect} from 'react-redux';
 
 const App = kind({
 	name: 'App',

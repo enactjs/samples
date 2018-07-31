@@ -1,7 +1,7 @@
 {
   "name": "pattern-activity-panels-deep-linking",
   "version": "1.0.0",
-  "description": "Deep linking ActivityPanels sample Enact Moonstone application.",
+  "description": "An Enact application demonstrating deep linking with ActivityPanels.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "watch": "enact pack --watch",
     "clean": "enact clean",
     "lint": "enact lint --strict .",
+    "license": "enact license",
     "test": "enact test start --single-run --browsers PhantomJS",
     "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
     "test-watch": "enact test start --browsers PhantomJS"
@@ -19,7 +20,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Deep linking ActivityPanels sample",
+    "title": "Activity Panels Deep Link Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
@@ -34,10 +35,9 @@
     "@enact/moonstone": "next",
     "@enact/spotlight": "next",
     "@enact/ui": "next",
-    "@enact/webos": "next",
     "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0"
   }

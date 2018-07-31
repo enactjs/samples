@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {changeZoom} from '../actions';
 import Content from '../components/Content';
 
