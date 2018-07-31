@@ -28,7 +28,7 @@ class Body extends React.Component {
 	}
 
 	handleZoom = () => {
-		this.setState({zoom: !this.state.zoom});
+		this.setState(prevState => ({zoom: !prevState.zoom}));
 	}
 
 	render () {

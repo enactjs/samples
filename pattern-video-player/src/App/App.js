@@ -49,7 +49,7 @@ class App extends React.Component {
 		};
 	}
 
-	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
+	handleNextPanelClick = () => this.setState(prevState => ({panelIndex: prevState.panelIndex + 1}))
 
 	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index})
 
