@@ -25,7 +25,7 @@ class App extends React.Component {
 
 	handleSelectBreadcrumb = ({index}) => this.setState({index})
 
-	handleClick = () => this.setState({index: this.state.index + 1})
+	handleClick = () => this.setState(prevState => ({index: prevState.index + 1}))
 
 	render () {
 		return (
