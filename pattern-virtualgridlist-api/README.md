@@ -7,7 +7,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 #### Enact Components Used
 - `moonstone/Button`
 - `moonstone/VirtualList/VirtualGridList`
-- `moonstone/VirtualList/GridListImageItem`
+- `moonstone/GridListImageItem`
 - `moonstone/Panels/Header`
 - `moonstone/IconButton`
 

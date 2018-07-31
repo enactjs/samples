@@ -49,10 +49,10 @@ class PatternListBase extends Component {
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
-				component={this.renderItem}
 				containerId={id} // Set a unique ID to preserve last focus
 				data={items}
 				dataSize={items.length}
+				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
 				onScrollStop={onScrollStop} // Set this to save last scroll position when unmount
 			/>
