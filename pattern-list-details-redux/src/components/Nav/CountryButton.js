@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import Button from '@enact/moonstone/Button';
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const CountryButton = kind({
 	name: 'countryButton',

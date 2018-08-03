@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import Input from '@enact/moonstone/Input';
 import Button from '@enact/moonstone/Button';
 import {contextTypes} from '@enact/i18n/I18nDecorator';
 import {connect} from 'react-redux';
+import Input from '@enact/moonstone/Input';
+import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+
 import {updateLocale} from '../../actions';
 
 class LocaleSwitch extends Component {

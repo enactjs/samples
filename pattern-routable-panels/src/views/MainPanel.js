@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import RouteTree from './RouteTree';
 

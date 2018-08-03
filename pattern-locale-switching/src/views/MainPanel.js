@@ -1,6 +1,7 @@
-import React from 'react';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import React from 'react';
+
 import LocaleSwitch from '../components/LocaleSwitch';
 
 const MainPanel = kind({

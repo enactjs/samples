@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import IconButton from '@enact/moonstone/IconButton';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
-import VideoPlayer from '@enact/moonstone/VideoPlayer';
-import IconButton from '@enact/moonstone/IconButton';
+import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
+import Spotlight from '@enact/spotlight';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-import videos from './videos.js';
 import css from './App.less';
+import videos from './videos.js';
 
 const getVideo = (index) => videos[index];
 
@@ -44,12 +45,19 @@ class App extends React.Component {
 
 		this.state = {
 			panelIndex: this.props.panelIndex,
-			panelsVisible: true,
+			panelsVisible: false,
 			videoIndex: this.props.videoIndex
 		};
 	}
 
-	handleNextPanelClick = () => this.setState({panelIndex: this.state.panelIndex + 1})
+	componentDidUpdate (prevProps, prevState) {
+		// After displaying the panels, move the focus to the main panel
+		if (!prevState.panelsVisible && this.state.panelsVisible) {
+			Spotlight.focus('main-panel');
+		}
+	}
+
+	handleNextPanelClick = () => this.setState(prevState => ({panelIndex: prevState.panelIndex + 1}))
 
 	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index})
 
@@ -78,15 +86,17 @@ class App extends React.Component {
 					<infoComponents>
 						{desc}
 					</infoComponents>
-					<rightComponents>
-						<IconButton
-							backgroundOpacity="translucent"
-							onClick={this.handleShowPanelsClick}
-							spotlightDisabled={this.state.panelsVisible}
-						>
-							list
-						</IconButton>
-					</rightComponents>
+					<MediaControls>
+						<rightComponents>
+							<IconButton
+								backgroundOpacity="translucent"
+								onClick={this.handleShowPanelsClick}
+								spotlightDisabled={this.state.panelsVisible}
+							>
+								list
+							</IconButton>
+						</rightComponents>
+					</MediaControls>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
 					<AlwaysViewingPanels
@@ -94,11 +104,12 @@ class App extends React.Component {
 						index={this.state.panelIndex}
 					>
 						<MainPanel
-							title="Videos"
-							videoIndex={this.state.videoIndex}
 							onVideoIndexChange={this.setVideoIndex}
 							onHidePanels={this.handleHidePanelsClick}
 							onNextPanel={this.handleNextPanelClick}
+							spotlightId="main-panel"
+							title="Videos"
+							videoIndex={this.state.videoIndex}
 						/>
 						<ItemPanel title="Second" />
 					</AlwaysViewingPanels> :

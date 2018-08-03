@@ -1,7 +1,9 @@
-import React from 'react';
-import Body from './Body';
 import {Header} from '@enact/moonstone/Panels';
+import React from 'react';
+
 import Nav from '../components/Nav';
+
+import Body from './Body';
 
 const cities = {
 	usa: ['San Francisco', 'Los Angeles', 'New York City'],

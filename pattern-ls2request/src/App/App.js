@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Button from '@enact/moonstone/Button';
+import {connect} from 'react-redux';
 import LabeledItem from '@enact/moonstone/LabeledItem';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 
 class App extends React.Component {
@@ -15,17 +16,19 @@ class App extends React.Component {
 
 	componentDidMount () {
 		// This LS2Request is WITHOUT subscription
-		this.props.dispatch(getSystemSettings({
-			category: 'picture',
-			key: 'smartPictureMode'
-		}));
+		if (typeof window.PalmSystem !== 'undefined') {
+			this.props.dispatch(getSystemSettings({
+				category: 'picture',
+				key: 'smartPictureMode'
+			}));
 
-		// This LS2Request is WITH subscription
-		this.props.dispatch(getSystemSettings({
-			category: 'picture',
-			key: 'eyeComfortMode',
-			subscribe: true
-		}));
+			// This LS2Request is WITH subscription
+			this.props.dispatch(getSystemSettings({
+				category: 'picture',
+				key: 'eyeComfortMode',
+				subscribe: true
+			}));
+		}
 	}
 
 	onSmartPictureToggle = () => this.props.dispatch(setSystemSettings({
@@ -51,6 +54,9 @@ class App extends React.Component {
 
 	render () {
 		const {smartPictureMode, eyeComfortMode} = this.props;
+		if (typeof window.PalmSystem === 'undefined') {
+			return <div>This test will only function correctly on webOS systems!</div>;
+		}
 
 		return (
 			<div>

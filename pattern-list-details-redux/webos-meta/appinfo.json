@@ -1,0 +1,12 @@
+{
+  "id": "com.enactjs.app.pattern-list-details-redux",
+  "version": "1.0.0",
+  "vendor": "LGE-SVL",
+  "type": "web",
+  "main": "index.html",
+  "title": "List Details Pattern with Redux",
+  "icon": "icon.png",
+  "miniicon": "icon-mini.png",
+  "largeIcon": "icon-large.png",
+  "uiRevision": 2
+}

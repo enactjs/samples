@@ -1,6 +1,4 @@
 // Videos List
-//
-
 const videos = [
 	{
 		title: 'Sintel',

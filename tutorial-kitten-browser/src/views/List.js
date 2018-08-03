@@ -1,8 +1,8 @@
-import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/moonstone/Panels';
-import Repeater from '@enact/ui/Repeater';
-import React from 'react';
+import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Repeater from '@enact/ui/Repeater';
 
 import Kitten from '../components/Kitten';
 

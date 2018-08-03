@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 import Item from '@enact/moonstone/Item';
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
-import PropTypes from 'prop-types';
 import VirtualList from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
+
 import css from './PatternList.less';
 
 const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
@@ -30,9 +31,9 @@ class PatternListBase extends Component {
 		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
 	}
 
-	renderItem = ({data, index, ...rest}) => (
+	renderItem = ({index, ...rest}) => (
 		<Item {...rest} onClick={this.props.onClick}>
-			{data[index]}
+			{items[index]}
 		</Item>
 	)
 
@@ -49,10 +50,9 @@ class PatternListBase extends Component {
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
-				component={this.renderItem}
-				containerId={id} // Set a unique ID to preserve last focus
-				data={items}
+				spotlightId={id} // Set a unique ID to preserve last focus
 				dataSize={items.length}
+				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
 				onScrollStop={onScrollStop} // Set this to save last scroll position when unmount
 			/>
