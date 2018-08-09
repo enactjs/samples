@@ -22,7 +22,7 @@ class List extends Component {
 		</Item>
 	);
 
-	render = () => {
+	render () {
 		const {list, title} = this.props;
 
 		return [

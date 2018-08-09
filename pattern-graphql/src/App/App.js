@@ -2,6 +2,7 @@ import {ActivityPanels} from '@enact/moonstone/Panels';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Notification from '@enact/moonstone/Notification';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
@@ -47,13 +48,13 @@ class AppBase extends Component {
 		this.setState({index});
 	};
 
-	onSearch = (formItems) => {
+	onSearch = ({userId, repo, fol, org}) => {
 		this.setState({
 			index: 1,
-			userId: formItems.userId,
-			repo: formItems.repo,
-			fol: formItems.fol,
-			org: formItems.org
+			userId,
+			repo,
+			fol,
+			org
 		});
 	};
 
@@ -62,9 +63,9 @@ class AppBase extends Component {
 
 		return (
 			<ApolloProvider client={client}>
+				{!config.token && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
 				<ActivityPanels {...this.props} index={index} onSelectBreadcrumb={this.handleSelectBreadcrumb}>
 					<Search
-						apiToken={config.token}
 						onSearch={this.onSearch}
 					/>
 					<Detail repo={repo} org={org} fol={fol} userId={userId} />

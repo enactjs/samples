@@ -20,7 +20,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 
 ## Setup and use
 1. Get a personal access token for the [GitHub API](https://github.com/settings/tokens/new).
-  - Assign a name to the token and select the "read:org" scope.
+  - Assign a name to the token and select the "read:org" under "admin:org" scope.
 2. Replace the dummy token in [src/config.json](src/config.json) with the token generated above.
 3. Install npm modules.
 

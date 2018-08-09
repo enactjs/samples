@@ -2,21 +2,19 @@ import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import Input from '@enact/moonstone/Input';
-import Notification from '@enact/moonstone/Notification';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 
 class Search extends Component {
 	static propTypes = {
 		apiToken: PropTypes.string,
+		handleIdChange: PropTypes.func,
 		onSearch: PropTypes.func,
-		onUserIdChange: PropTypes.func,
 		userId: PropTypes.string
 	};
 
 	constructor (props) {
 		super(props);
-		this.userId = React.createRef();
 		this.state = {
 			fol: false,
 			org: false,
@@ -25,7 +23,7 @@ class Search extends Component {
 		};
 	}
 
-	onUserIdChange = (ev) => {
+	handleIdChange = (ev) => {
 		this.setState({userId: ev.value});
 	};
 
@@ -51,17 +49,19 @@ class Search extends Component {
 		}
 	}
 
-	render = () => {
-		const {apiToken, ...rest} = this.props;
+	render () {
+		const {...rest} = this.props;
 		const {repo, org, fol} = this.state;
 		delete rest.onSearch;
-		delete rest.onUserIdChange;
-		delete rest.onListSelectionChange;
+		delete rest.handleIdChange;
+
 		return (
 			<Panel {...rest}>
-				{!apiToken && <Notification open><p>Please set your github token in src/config.json.</p></Notification>}
-				<Header title="Dev checks" type="compact" />
-				<Input placeholder="Github id" ref={this.userId} onChange={this.onUserIdChange} onKeyUp={this.onKeyUp} />
+				<Header
+					title="Developer Information"
+					titleBelow="Check a developer's repositories, organizations and/or followers."
+				/>
+				<Input placeholder="Github id" onChange={this.handleIdChange} onKeyUp={this.onKeyUp} />
 				<IconButton onClick={this.onSearch} backgroundOpacity="transparent">search</IconButton>
 				<FormCheckboxItem defaultSelected={repo} onToggle={this.onRepoToggle}>Repositories</FormCheckboxItem>
 				<FormCheckboxItem defaultSelected={org} onToggle={this.onOrgToggle}>Organizations</FormCheckboxItem>
