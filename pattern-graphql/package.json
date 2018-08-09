@@ -1,8 +1,8 @@
 {
-  "name": "enact-all-samples",
+  "name": "pattern-graphql",
   "version": "1.0.0",
-  "description": "A collection of Enact sample applications.",
-  "author": "",
+  "description": "An Enact Moonstone GraphQL application.",
+  "author": "Hailey HanGyeol Ryu",
   "main": "src/index.js",
   "scripts": {
     "serve": "enact serve",
@@ -12,40 +12,35 @@
     "clean": "enact clean",
     "lint": "enact lint --strict .",
     "license": "enact license",
-    "test": "enact test start --single-run --browsers PhantomJS",
-    "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
-    "test-watch": "enact test start --browsers PhantomJS"
+    "test": "enact test start --single-run",
+    "test-watch": "enact test start"
   },
   "license": "Apache-2.0",
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Enact QA Samples",
-    "isomorphic": true,
-    "ri": {
-      "baseSize": 24
-    }
+    "theme": "moonstone"
   },
   "eslintConfig": {
     "extends": "enact/strict"
   },
+  "eslintIgnore": [
+    "node_modules/*",
+    "build/*",
+    "dist/*"
+  ],
   "dependencies": {
     "@enact/core": "next",
     "@enact/i18n": "next",
     "@enact/moonstone": "next",
     "@enact/spotlight": "next",
     "@enact/ui": "next",
-    "@enact/webos": "next",
     "apollo-boost": "^0.1.8",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "prop-types": "^15.6.0",
-    "react": "^16.3.2",
+    "react": "^16.4.0",
     "react-apollo": "^2.1.5",
-    "react-dom": "^16.3.2",
-    "react-redux": "^5.0.3",
-    "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "react-dom": "^16.4.0"
   }
 }
