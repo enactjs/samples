@@ -12,7 +12,7 @@ import PhotoSliderContainer from '../containers/PhotoSliderContainer';
 import spaceShuttle from '../../assets/images/space-shuttle.jpg';
 import violin from '../../assets/images/violin.jpeg';
 
-import css from './MainPanel.less';
+import css from './MainPanel.module.less';
 
 const imageNames = [
 	'mural',
