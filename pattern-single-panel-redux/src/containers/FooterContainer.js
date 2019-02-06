@@ -7,7 +7,7 @@ import {save} from '../actions';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 
-import css from './containerStyles.less';
+import css from './containerStyles.module.less';
 
 const Footer = kind({
 	name: 'Footer',

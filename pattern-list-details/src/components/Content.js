@@ -18,7 +18,7 @@ import seoul from '../../assets/images/seoul.jpeg';
 import tokyo from '../../assets/images/tokyo.jpeg';
 import valencia from '../../assets/images/valencia.jpg';
 
-import css from './Content.less';
+import css from './Content.module.less';
 
 const cityPhotos = {
 	barcelona,
