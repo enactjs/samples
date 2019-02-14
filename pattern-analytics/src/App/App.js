@@ -15,7 +15,7 @@ configure({
 	enabled: true,
 	selector: '.spottable',
 	format: (node, {type}) => (node && {time: Date.now(), type, node}),
-	log: console.log
+	log: console.log // eslint-disable-line
 });
 
 const App = kind({
