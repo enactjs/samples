@@ -132,7 +132,7 @@ const popPath = (pathData) => {
 // the onCancel callback from the Cancelable config receives the Cancelable's props to both
 // determine if it should cancel and how to handle the cancel. here, we're calling the onNavigate
 // event callback.
-const handleCancel = ({path, onNavigate}) => {
+const handleCancel = (ev, {path, onNavigate}) => {
 	// pop the path
 	const newPath = popPath(path);
 	// and if there's an onNavigate callback
@@ -143,7 +143,7 @@ const handleCancel = ({path, onNavigate}) => {
 		});
 
 		// then return true to indicate it was handled
-		return true;
+		ev.stopPropagation();
 	}
 };
 
