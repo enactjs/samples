@@ -1,7 +1,39 @@
+import {configure} from '@enact/analytics/preset/webostv';
 import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
+
+// The webOS and webOS TV presets will log entries to PmLogLib.
+configure({
+	// Normally this defaults to `/mnt/lg/cmn_data/whitelist/dr/enact/${appId}.json`,
+	// however for the purposes of this demo, using a local JSON-formatted file.
+	path: require('../analytics.cfg')
+});
+
+/*
+	For reference, the external JSON-formatted file includes the following setup:
+	{
+		// Enables the usage of analytics
+		"enabled": true,
+		// Option custom message ID for PmLogLib. Defaults to NL_ENACT
+		"messageId": "MYCUSTOMID",
+		// Example custom data to include on click/enter-key events.
+		// This includes a `panel` property with the Panel header text.
+		"data": {
+			"panel": {
+				// find the first Panel ancestor
+				"closest": "article[role='region']",
+				"value": {
+					// from that Panel node, find the first h1 descendant
+					"selector": "header h1",
+					// and retrieve its textContent
+					"value": "<text>"
+				}
+			}
+		}
+	}
+*/
 
 const appElement = (<App />);
 
