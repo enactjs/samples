@@ -9,8 +9,19 @@ import App from './App';
 // is being formatted, and were to log the entries.
 configure({
 	enabled: true,
+	// A target selector for events
 	selector: '.spottable',
-	format: (node, {type}) => (node && {time: Date.now(), type, node}),
+	// Example of adding optional custom listeners
+	// Could alternatively use a simple string array of events
+	// when not needing any custom filters/adapters
+	listeners: {
+		keydown: {
+			// Filter to only listen for space key
+			filter: (ev) => ev.keyCode === 32,
+			// Adapter to add additional properties to message payload.
+			adapter: () => ({spaceKey:true})
+		}
+	},
 	log: console.log // eslint-disable-line
 });
 
