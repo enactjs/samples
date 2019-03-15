@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@enact/moonstone/Button';
 import Popup from '@enact/moonstone/Popup';
-import css from './SaveButton.less';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+import css from './SaveButton.module.less';
 
 class SaveButton extends React.Component {
 	static propTypes = {

@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {changePhotoIndex} from '../actions';
 import PhotoPicker from '../components/PhotoPicker';
 

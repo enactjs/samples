@@ -1,8 +1,8 @@
 import Button from '@enact/moonstone/Button';
-
-import React from 'react';
 import {Link} from 'react-router-dom';
-import css from './ButtonToSamples.less'
+import React from 'react';
+
+import css from './ButtonToSamples.module.less';
 
 const ButtonToSamples = () => (
 	<div className={css.buttonContainer}>
@@ -15,6 +15,6 @@ const ButtonToSamples = () => (
 			</Button>
 		</Link>
 	</div>
-)
+);
 
 export default ButtonToSamples;

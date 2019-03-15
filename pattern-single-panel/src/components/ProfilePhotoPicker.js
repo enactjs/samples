@@ -1,15 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import BodyText from '@enact/moonstone/BodyText';
 import Image from '@enact/moonstone/Image';
-import Slider from '@enact/moonstone/Slider';
 import Picker from '@enact/moonstone/Picker';
-import css from './ProfilePhotoPicker.less';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Slider from '@enact/moonstone/Slider';
+
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
 import mural from '../../assets/images/mural.jpeg';
 import spaceShuttle from '../../assets/images/space-shuttle.jpg';
 import violin from '../../assets/images/violin.jpeg';
+
+import css from './ProfilePhotoPicker.module.less';
 
 const imageURLs = [
 	car,
@@ -66,5 +68,4 @@ class ProfilePhotoPicker extends React.Component {
 }
 
 export default ProfilePhotoPicker;
-
 export {imageURLs};

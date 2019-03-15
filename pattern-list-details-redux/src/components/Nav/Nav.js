@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import CountryButton from './CountryButton';
-import css from './Nav.less';
+import css from './Nav.module.less';
 
 const Nav = kind({
 	name: 'Nav',

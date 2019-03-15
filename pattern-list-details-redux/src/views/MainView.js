@@ -1,10 +1,11 @@
-import React from 'react';
-import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/moonstone/Panels';
-import Body from './Body';
+import kind from '@enact/core/kind';
+import React from 'react';
+
 import NavContainer from '../containers/NavContainer';
 
-import css from './Body.less';
+import css from './Body.module.less';
+import Body from './Body';
 
 const MainView = kind({
 	name: 'MainView',

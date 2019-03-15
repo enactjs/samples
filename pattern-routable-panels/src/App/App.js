@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {Panels, Routable, Route} from '@enact/moonstone/Panels';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {SlideLeftArranger} from '@enact/ui/ViewManager';
 
 import AboutPanel from '../views/AboutPanel';

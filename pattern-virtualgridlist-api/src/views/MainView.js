@@ -1,12 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
 import SideBar from '../components/SideBar';
 
 import AppStateDecorator from './AppStateDecorator';
-import css from './MainView.less';
+import css from './MainView.module.less';
 
 const albums = ['Family', 'Car', 'Travel'];
 

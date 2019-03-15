@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import kind from '@enact/core/kind';
-import Image from '@enact/moonstone/Image';
 import IconButton from '@enact/moonstone/IconButton';
+import Image from '@enact/moonstone/Image';
+import kind from '@enact/core/kind';
 import Marquee from '@enact/moonstone/Marquee';
-import css from './Content.less';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import barcelona from '../../assets/images/barcelona.jpeg';
 import busan from '../../assets/images/busan.jpeg';
@@ -18,6 +17,8 @@ import sanfrancisco from '../../assets/images/sanfrancisco.jpg';
 import seoul from '../../assets/images/seoul.jpeg';
 import tokyo from '../../assets/images/tokyo.jpeg';
 import valencia from '../../assets/images/valencia.jpg';
+
+import css from './Content.module.less';
 
 const cityPhotos = {
 	barcelona,

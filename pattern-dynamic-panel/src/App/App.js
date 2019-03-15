@@ -1,10 +1,11 @@
-import React from 'react';
-import kind from '@enact/core/kind';
 import Changeable from '@enact/ui/Changeable';
+import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import React from 'react';
 
 import FileBrowser from '../components/FileBrowser';
-import css from './App.less';
+
+import css from './App.module.less';
 
 // This would be replaced by redux but Changeable is a handy single-value, single-event state HOC
 const Browser = Changeable(

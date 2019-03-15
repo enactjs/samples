@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Slider from '@enact/moonstone/Slider';
 
-import css from './componentStyles.less';
+import css from './componentStyles.module.less';
 
 const PhotoSlider = kind({
 	name: 'PhotoSlider',

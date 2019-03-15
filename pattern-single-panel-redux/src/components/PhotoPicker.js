@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Image from '@enact/moonstone/Image';
+import kind from '@enact/core/kind';
 import Picker from '@enact/moonstone/Picker';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import css from './componentStyles.less';
+import css from './componentStyles.module.less';
 
 const ProfilePhotoPickerContainer = kind({
 	name: 'ProfilePhotoPickerContainer',

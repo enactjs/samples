@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {navigate} from '../actions';
 
 const mapStateToProps = ({path}) => ({

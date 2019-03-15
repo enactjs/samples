@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import Item from '@enact/moonstone/Item';
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
-import PropTypes from 'prop-types';
 import VirtualList from '@enact/moonstone/VirtualList';
 
 import {saveLastScrollInfo} from '../actions';
-import css from './PatternList.less';
+
+import css from './PatternList.module.less';
 
 const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
 
@@ -49,7 +50,7 @@ class PatternListBase extends Component {
 			<VirtualList
 				cbScrollTo={this.getScrollTo}
 				className={css.list}
-				containerId={id} // Set a unique ID to preserve last focus
+				spotlightId={id} // Set a unique ID to preserve last focus
 				dataSize={items.length}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}

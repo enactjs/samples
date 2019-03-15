@@ -1,8 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import SideBar from '../components/SideBar';
+import React from 'react';
+
 import Content from '../components/Content';
-import css from './Body.less';
+import SideBar from '../components/SideBar';
+
+import css from './Body.module.less';
 
 class Body extends React.Component {
 	static propTypes = {
@@ -28,7 +30,7 @@ class Body extends React.Component {
 	}
 
 	handleZoom = () => {
-		this.setState({zoom: !this.state.zoom});
+		this.setState(prevState => ({zoom: !prevState.zoom}));
 	}
 
 	render () {

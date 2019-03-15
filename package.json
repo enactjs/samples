@@ -1,7 +1,7 @@
 {
   "name": "samples",
   "version": "1.0.0",
-  "description": "A collection of Enact sample apps",
+  "description": "A collection of Enact sample applications.",
   "author": "",
   "scripts": {
     "lint": "node scripts/lint.js",
