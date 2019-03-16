@@ -1,9 +1,9 @@
 import React from 'react';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
+import {adaptEvent, forward, handle} from '@enact/core/handle';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import Toggleable from '@enact/ui/Toggleable';
 import Button from '@enact/moonstone/Button';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
@@ -18,7 +18,7 @@ import MainPanel from '../views/MainPanel';
 // https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
 function importAll (r) {
 	let images = {};
-	r.keys().map((item, index) => {
+	r.keys().map((item) => {
 		images[item.replace('./', '')] = r(item);
 	});
 	return images;
@@ -41,37 +41,52 @@ const itemPusher = (title, subTitle, component, image) => {
 itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.png']);
 itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.png']);
 
+const Placeholder = kind({name: 'Placeholder'});
 
 const App = kind({
 	name: 'LayoutApp',
 
 	propTypes: {
 		debug: PropTypes.bool,
+		itemIndex: PropTypes.number,
 		onChangePanel: PropTypes.func,
-		SecondaryPanel: PropTypes.func,
-		selectedItem: PropTypes.object,
-		toggleDebug: PropTypes.func
+		onToggleDebug: PropTypes.func
 	},
 
 	computed: {
-		DebugButton: ({toggleDebug, debug}) => <Button onClick={toggleDebug} selected={debug} small>Layout Borders</Button>
+		DebugButton: ({onToggleDebug, debug}) => (<Button onClick={onToggleDebug} selected={debug} small>Layout Borders</Button>)
 	},
 
-	render: ({debug, DebugButton, onChangePanel, SecondaryPanel, selectedItem, ...rest}) => {
-		delete rest.toggleDebug;
+	handlers: {
+		onSelectBreadcrumb: handle(
+			adaptEvent((ev, props) => ({index: (props.index - 1), itemIndex: null}), forward('onChangePanel')),
+			forward('onSelectBreadcrumb')
+		),
+		onChangePanel: handle(
+			adaptEvent(({index}) => ({index: 1, itemIndex: index}), forward('onChangePanel'))
+		)
+	},
+
+	render: ({debug, DebugButton, itemIndex, onChangePanel, ...rest}) => {
+		delete rest.onToggleDebug;
+
+		let secondaryPanel = <Placeholder />;
+		const item = items[itemIndex];
+		if (item) {
+			const ItemPanel = item.component;
+			secondaryPanel = (
+				<ItemPanel
+					className={debug ? 'debug layout' : ''}
+					DebugButton={DebugButton}
+					title={item.title}
+					titleBelow={item.subTitle}
+				/>
+			);
+		}
 		return (
 			<ActivityPanels {...rest}>
-				<MainPanel onChangePanel={onChangePanel} items={items} />
-				{
-					SecondaryPanel ?
-						<SecondaryPanel
-							className={debug ? 'debug' : ''}
-							DebugButton={DebugButton}
-							title={selectedItem.title}
-							titleBelow={selectedItem.subTitle}
-						/> :
-						null
-				}
+				<MainPanel items={items} onChangePanel={onChangePanel} />
+				{secondaryPanel}
 			</ActivityPanels>
 		);
 	}
@@ -82,36 +97,47 @@ const AppDecorator = hoc((config, Wrapped) => {
 		static displayName = 'AppDecorator'
 
 		static propTypes = {
-			index: PropTypes.number,
-			itemIndex: PropTypes.number
+			debug: PropTypes.bool,
+			defaultIndex: PropTypes.number,
+			defaultItemIndex: PropTypes.number
 		}
 
 		static defaultProps = {
-			index: 0
+			debug: false,
+			defaultIndex: 0,
+			defaultItemIndex: 0
 		}
 
 		constructor (props) {
 			super(props);
 			this.state = {
-				index: this.props.index,
-				itemIndex: 0
+				debug: this.props.debug,
+				index: this.props.defaultIndex,
+				itemIndex: this.props.defaultItemIndex
 			};
 		}
 
-		handleSelectBreadcrumb = ({index}) => this.setState({index})
+		handleChangePanel = (ev) => {
+			forward('onChangePanel', ev, this.props);
+			this.setState({index: ev.index, itemIndex: ev.itemIndex});
+		}
 
-		onChangePanel = (props) => {
-			this.setState({itemIndex: props.index, index: this.state.index + 1});
+		handleToggleDebug = () => {
+			this.setState(state => ({debug: !state.debug}));
 		}
 
 		render () {
+			const {...rest} = this.props;
+			delete rest.defaultIndex;
+			delete rest.defaultItemIndex;
+
 			return <Wrapped
-				{...this.props}
+				{...rest}
+				debug={this.state.debug}
 				index={this.state.index}
-				onChangePanel={this.onChangePanel}
-				onSelectBreadcrumb={this.handleSelectBreadcrumb}
-				SecondaryPanel={items[this.state.itemIndex].component}
-				selectedItem={items[this.state.itemIndex]}
+				itemIndex={this.state.itemIndex}
+				onChangePanel={this.handleChangePanel}
+				onToggleDebug={this.handleToggleDebug}
 			/>;
 		}
 	};
@@ -119,6 +145,5 @@ const AppDecorator = hoc((config, Wrapped) => {
 
 export default compose(
 	MoonstoneDecorator,
-	AppDecorator,
-	Toggleable({prop: 'debug', toggle: 'toggleDebug'})
+	AppDecorator
 )(App);
