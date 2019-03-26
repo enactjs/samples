@@ -28,12 +28,12 @@
     "extends": "enact/strict"
   },
   "dependencies": {
+    "@enact/analytics": "^1.0.0",
     "@enact/core": "^2.0.0",
     "@enact/i18n": "^2.0.0",
     "@enact/moonstone": "^2.0.0",
     "@enact/spotlight": "^2.0.0",
     "@enact/ui": "^2.0.0",
-    "@enact/analytics": "enactjs/analytics#poc",
     "prop-types": "^15.6.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0"

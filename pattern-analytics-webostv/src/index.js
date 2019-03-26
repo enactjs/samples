@@ -18,20 +18,24 @@ configure({
 		"enabled": true,
 		// Option custom message ID for PmLogLib. Defaults to NL_ENACT
 		"messageId": "MYCUSTOMID",
-		// Example custom data to include on click/enter-key events.
-		// This includes a `panel` property with the Panel header text.
-		"data": {
-			"panel": {
-				// find the first Panel ancestor
-				"closest": "article[role='region']",
-				"value": {
-					// from that Panel node, find the first h1 descendant
-					"selector": "header h1",
-					// and retrieve its textContent
-					"value": "<text>"
+		"entries": [
+			{
+				// Example custom data to include on click/enter-key events.
+				// This includes a `panel` property with the Panel header text.
+				"data": {
+					"panel": {
+						// find the first Panel ancestor
+						"closest": "article[role='region']",
+						"value": {
+							// from that Panel node, find the first h1 descendant
+							"selector": "header h1",
+							// and retrieve its textContent
+							"value": "<text>"
+						}
+					}
 				}
 			}
-		}
+		]
 	}
 */
 
