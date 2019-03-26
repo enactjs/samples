@@ -18,9 +18,20 @@ configure({
 		"enabled": true,
 		// Option custom message ID for PmLogLib. Defaults to NL_ENACT
 		"messageId": "MYCUSTOMID",
-		"entries": [
+		"rules": [
+			// the first matching rule will be used
 			{
+				// only match messages that include ZOOM in the label field
+				"include": {
+					"label": ["ZOOM"]
+				},
 				// Example custom data to include on click/enter-key events.
+				"data": {
+					// add messageId to the message with the value NL_ZOOM
+					"messageId": "NL_ZOOM"
+				}
+			},
+			{
 				// This includes a `panel` property with the Panel header text.
 				"data": {
 					"panel": {
