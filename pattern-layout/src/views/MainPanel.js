@@ -8,6 +8,10 @@ import GridListImageItem from '@enact/moonstone/GridListImageItem';
 
 const GridItem = kind({
 	name: 'GridItem',
+	propTypes: {
+		index: PropTypes.number,
+		items: PropTypes.array
+	},
 	handlers: {
 		onSelect: (ev, {index, onSelect}) => onSelect({index})
 	},
@@ -26,6 +30,7 @@ const GridItem = kind({
 	}
 });
 
+// eslint-disable-next-line enact/display-name, enact/prop-types
 const renderItem = ({items, onChangePanel}) => ({index, ...rest}) => {
 	if (items && items[index]) {
 		return (

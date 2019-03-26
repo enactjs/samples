@@ -13,6 +13,10 @@ import {Panel, Header} from '@enact/moonstone/Panels';
 
 
 const FieldRow = kind({
+	name: 'FieldRow',
+	propTypes: {
+		label: PropTypes.string
+	},
 	render: ({label, ...rest}) => (
 		<Cell shrink>
 			<Row align="center">
@@ -31,6 +35,7 @@ const Details = kind({
 		changeOrientation: PropTypes.func,
 		DebugButton: PropTypes.object,
 		orientation: PropTypes.bool,
+
 		/**
 		 * A title string appear on header
 		 * @type {String}
