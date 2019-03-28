@@ -5,15 +5,18 @@ import {adaptEvent, forward, handle} from '@enact/core/handle';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 import Button from '@enact/moonstone/Button';
+import IconButton from '@enact/moonstone/IconButton';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
+import {importAll} from '../components/util';
 import FavoritesList from '../views/FavoritesList';
 import Details from '../views/Details';
+import ButtonTestbed from '../views/ButtonTestbed';
+import TooltipView from '../views/TooltipView';
 import MainPanel from '../views/MainPanel';
 
-import detailsThumb from '../views/thumbs/details.png';
-import favoritesThumb from '../views/thumbs/favorites-list.png';
+const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
 
 const items = [];
 
@@ -27,8 +30,10 @@ const itemPusher = (title, subTitle, component, image) => {
 };
 
 // Add all of our Layout Patterns
-itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, favoritesThumb);
-itemPusher('Details View', 'Show off details about an item', Details, detailsThumb);
+itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.png']);
+itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.png']);
+itemPusher('Button Testbed', 'See all the iterations of Button', ButtonTestbed, thumbs['details.png']);
+itemPusher('Tooltip', 'Every orientation of Tooltip', TooltipView, thumbs['details.png']);
 
 const Placeholder = kind({name: 'Placeholder'});
 
@@ -74,6 +79,9 @@ const App = kind({
 		}
 		return (
 			<ActivityPanels {...rest}>
+				<controls>
+					<IconButton small>search</IconButton>
+				</controls>
 				<MainPanel items={items} onChangePanel={onChangePanel} />
 				{secondaryPanel}
 			</ActivityPanels>
@@ -86,19 +94,22 @@ const AppDecorator = hoc((config, Wrapped) => {
 		static displayName = 'AppDecorator'
 
 		static propTypes = {
+			defaultDebug: PropTypes.bool,
 			defaultIndex: PropTypes.number,
 			defaultItemIndex: PropTypes.number
 		}
 
 		static defaultProps = {
+			defaultDebug: false,
 			defaultIndex: 0,
 			defaultItemIndex: 0
 		}
 
 		constructor (props) {
 			super(props);
+
 			this.state = {
-				debug: false,
+				debug: this.props.defaultDebug,
 				index: this.props.defaultIndex,
 				itemIndex: this.props.defaultItemIndex
 			};
@@ -110,11 +121,16 @@ const AppDecorator = hoc((config, Wrapped) => {
 		}
 
 		handleToggleDebug = () => {
-			this.setState(state => ({debug: !state.debug}));
+			this.setState(state => {
+				const newState = {debug: !state.debug};
+				forward('onToggleDebug', newState, this.props);
+				return newState;
+			});
 		}
 
 		render () {
 			const {...rest} = this.props;
+			delete rest.defaultDebug;
 			delete rest.defaultIndex;
 			delete rest.defaultItemIndex;
 
