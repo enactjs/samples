@@ -5,7 +5,6 @@ import {adaptEvent, forward, handle} from '@enact/core/handle';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 import Button from '@enact/moonstone/Button';
-import IconButton from '@enact/moonstone/IconButton';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 
