@@ -75,9 +75,6 @@ const App = kind({
 		}
 		return (
 			<ActivityPanels {...rest}>
-				<controls>
-					<IconButton small>search</IconButton>
-				</controls>
 				<MainPanel items={items} onChangePanel={onChangePanel} />
 				{secondaryPanel}
 			</ActivityPanels>
