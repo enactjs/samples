@@ -21,7 +21,6 @@ const FieldRow = kind({
 		<Cell shrink>
 			<Row align="center">
 				<Cell component={Marquee} alignment="right">{label}</Cell>
-				{/* <Cell component="label" style={{textAlign: 'end'}}><Marquee>{label}</Marquee></Cell>*/}
 				<Cell {...rest} />
 			</Row>
 		</Cell>
