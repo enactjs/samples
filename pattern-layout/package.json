@@ -11,15 +11,14 @@
     "watch": "enact pack --watch",
     "clean": "enact clean",
     "lint": "enact lint --strict .",
-    "test": "enact test start --single-run --browsers PhantomJS",
-    "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
-    "test-watch": "enact test start --browsers PhantomJS"
+    "test": "enact test",
+    "test-watch": "enact test --watch"
   },
   "license": "Apache-2.0",
   "private": true,
   "repository": "https://github.com/enyojs/enact-samples",
   "enact": {
-    "title": "ActivityPanels sample",
+    "title": "Layout sample",
     "isomorphic": "src/iso.js",
     "ri": {
       "baseSize": 24
@@ -35,9 +34,9 @@
     "@enact/spotlight": "next",
     "@enact/ui": "next",
     "@enact/webos": "next",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.2",
     "query-string": "^6.4.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   }
 }

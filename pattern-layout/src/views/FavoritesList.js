@@ -47,7 +47,7 @@ const ItemPanel = kind({
 			</Header>
 			<Row style={{height: '100%'}}>
 				<Cell size={300}>
-					<SelectableItem selected>Photo Items</SelectableItem>
+					<SelectableItem defaultSelected>Photo Items</SelectableItem>
 					<SelectableItem>Video Items</SelectableItem>
 					<SelectableItem>Audio Items</SelectableItem>
 				</Cell>

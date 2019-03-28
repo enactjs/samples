@@ -12,19 +12,8 @@ import FavoritesList from '../views/FavoritesList';
 import Details from '../views/Details';
 import MainPanel from '../views/MainPanel';
 
-// import css from './App.less';
-
-// Import a directory of images fromStackOverflow
-// https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
-function importAll (r) {
-	let images = {};
-	r.keys().map((item) => {
-		images[item.replace('./', '')] = r(item);
-	});
-	return images;
-}
-const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
-
+import detailsThumb from '../views/thumbs/details.png';
+import favoritesThumb from '../views/thumbs/favorites-list.png';
 
 const items = [];
 
@@ -38,8 +27,8 @@ const itemPusher = (title, subTitle, component, image) => {
 };
 
 // Add all of our Layout Patterns
-itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.png']);
-itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.png']);
+itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, favoritesThumb);
+itemPusher('Details View', 'Show off details about an item', Details, detailsThumb);
 
 const Placeholder = kind({name: 'Placeholder'});
 
@@ -97,13 +86,11 @@ const AppDecorator = hoc((config, Wrapped) => {
 		static displayName = 'AppDecorator'
 
 		static propTypes = {
-			debug: PropTypes.bool,
 			defaultIndex: PropTypes.number,
 			defaultItemIndex: PropTypes.number
 		}
 
 		static defaultProps = {
-			debug: false,
 			defaultIndex: 0,
 			defaultItemIndex: 0
 		}
@@ -111,7 +98,7 @@ const AppDecorator = hoc((config, Wrapped) => {
 		constructor (props) {
 			super(props);
 			this.state = {
-				debug: this.props.debug,
+				debug: false,
 				index: this.props.defaultIndex,
 				itemIndex: this.props.defaultItemIndex
 			};
