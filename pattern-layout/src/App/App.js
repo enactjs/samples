@@ -12,8 +12,6 @@ import {ActivityPanels} from '@enact/moonstone/Panels';
 import {importAll} from '../components/util';
 import FavoritesList from '../views/FavoritesList';
 import Details from '../views/Details';
-import ButtonTestbed from '../views/ButtonTestbed';
-import TooltipView from '../views/TooltipView';
 import MainPanel from '../views/MainPanel';
 
 const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
