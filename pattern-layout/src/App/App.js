@@ -30,10 +30,8 @@ const itemPusher = (title, subTitle, component, image) => {
 };
 
 // Add all of our Layout Patterns
-itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.png']);
-itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.png']);
-itemPusher('Button Testbed', 'See all the iterations of Button', ButtonTestbed, thumbs['details.png']);
-itemPusher('Tooltip', 'Every orientation of Tooltip', TooltipView, thumbs['details.png']);
+itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.jpg']);
+itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.jpg']);
 
 const Placeholder = kind({name: 'Placeholder'});
 
