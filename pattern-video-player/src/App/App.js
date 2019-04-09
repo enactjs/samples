@@ -9,7 +9,7 @@ import React from 'react';
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-import css from './App.less';
+import css from './App.module.less';
 import videos from './videos.js';
 
 const getVideo = (index) => videos[index];

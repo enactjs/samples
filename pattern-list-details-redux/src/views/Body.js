@@ -4,7 +4,7 @@ import React from 'react';
 import SideBarContainer from '../containers/SideBarContainer';
 import ContentContainer from '../containers/ContentContainer';
 
-import css from './Body.less';
+import css from './Body.module.less';
 
 const Body = kind({
 	name: 'Body',

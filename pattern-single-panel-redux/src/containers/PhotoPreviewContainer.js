@@ -4,7 +4,7 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import css from './containerStyles.less';
+import css from './containerStyles.module.less';
 
 const PhotoPreview = kind({
 	name: 'PhotoPreview',

@@ -3,7 +3,7 @@ import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import css from './SaveButton.less';
+import css from './SaveButton.module.less';
 
 class SaveButton extends React.Component {
 	static propTypes = {

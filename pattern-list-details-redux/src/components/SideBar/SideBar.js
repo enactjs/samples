@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import CityItem from './CityItem';
-import css from './SideBar.less';
+import css from './SideBar.module.less';
 
 const SideBar = kind({
 	name: 'SideBar',

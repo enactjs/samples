@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React from 'react';
 
-import css from './App.less';
+import css from './App.module.less';
 
 const AppBase = kind({
 	name: 'App',

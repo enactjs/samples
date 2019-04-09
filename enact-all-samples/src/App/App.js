@@ -6,7 +6,7 @@ import {routes} from  '../index';
 import SampleItem from '../components/SampleItem';
 import Scroller from '@enact/moonstone/Scroller';
 
-import css from './App.less';
+import css from './App.module.less';
 
 const App = kind({
 	name: 'App',

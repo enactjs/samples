@@ -7,6 +7,7 @@ import PatternActivityPanelsDeepLinking from '../../pattern-activity-panels-deep
 import PatternActivityPanelsRedux from '../../pattern-activity-panels-redux/src/main';
 import PatternDynamicPanel from '../../pattern-dynamic-panel/src/App';
 import PatternExpandableList from '../../pattern-expandablelist-object/src/App';
+import PatternLayout from '../../pattern-layout/src/App';
 import PatternListDetails from '../../pattern-list-details/src/App';
 import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';
 import PatternLocaleSwitching from '../../pattern-locale-switching/src/main';
@@ -28,6 +29,7 @@ export const routes = [
 	{path: '/PatternActivityPanelsRedux', component: PatternActivityPanelsRedux},
 	{path: '/PatternDynamicPanel', component: PatternDynamicPanel},
 	{path: '/PatternExpandableList', component: PatternExpandableList},
+	{path: '/PatternLayout', component: PatternLayout},
 	{path: '/PatternListDetails', component: PatternListDetails},
 	{path: '/PatternListDetailsRedux', component: PatternListDetailsRedux},
 	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},

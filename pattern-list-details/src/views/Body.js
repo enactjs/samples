@@ -4,7 +4,7 @@ import React from 'react';
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
 
-import css from './Body.less';
+import css from './Body.module.less';
 
 class Body extends React.Component {
 	static propTypes = {
