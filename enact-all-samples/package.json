@@ -37,6 +37,7 @@
     "@enact/ui": "^2.0.0",
     "@enact/webos": "^2.0.0",
     "prop-types": "^15.6.0",
+    "query-string": "^6.4.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^5.0.3",
