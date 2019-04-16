@@ -28,12 +28,12 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "next",
-    "@enact/i18n": "next",
-    "@enact/moonstone": "next",
-    "@enact/spotlight": "next",
-    "@enact/ui": "next",
-    "@enact/webos": "next",
+    "@enact/core": "^2.0.0",
+    "@enact/i18n": "^2.0.0",
+    "@enact/moonstone": "^2.0.0",
+    "@enact/spotlight": "^2.0.0",
+    "@enact/ui": "^2.0.0",
+    "@enact/webos": "^2.0.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.4.0",
     "react": "^16.7.0",
