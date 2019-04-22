@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {Row, Cell} from '@enact/ui/Layout';
 
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
@@ -25,37 +26,35 @@ class Body extends React.Component {
 		this.setState({city: nextCity});
 	}
 
-	handleCityChange = ({value}) => {
-		this.setState({city: value});
-	}
+	handleCityChange = ({data: city}) => this.setState({city})
 
 	handleZoom = () => {
-		this.setState(prevState => ({zoom: !prevState.zoom}));
+		this.setState(({zoom}) => ({zoom: !zoom}));
 	}
 
 	render () {
-		const cities = this.props.cities;
-		const onChange = this.handleCityChange;
-		const onZoom = this.handleZoom;
+		const {cities, selectedCountry, ...rest} = this.props;
 		const selectedCity = this.state.city;
-		const selectedCountry = this.props.selectedCountry;
-		const zoom = this.state.zoom;
 
 		return (
-			<div className={css.body}>
-				<SideBar
+			<Row className={css.body} {...rest}>
+				<Cell
+					size="30%"
+					component={SideBar}
+					className={css.sidebar}
 					cities={cities}
-					onCityChange={onChange}
-					selectedCity={selectedCity}
+					defaultSelected={0}
+					onCityChange={this.handleCityChange}
 					selectedCountry={selectedCountry}
-					zoom={zoom}
 				/>
-				<Content
-					className={css.content}
-					selectedCity={selectedCity}
-					onZoom={onZoom}
-				/>
-			</div>
+				<Cell className={css.content}>
+					<Content
+						selectedCity={selectedCity}
+						onZoom={this.handleZoom}
+						zoom={this.state.zoom}
+					/>
+				</Cell>
+			</Row>
 		);
 	}
 }
