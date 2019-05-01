@@ -28,7 +28,7 @@ const CountryButton = kind({
 				backgroundOpacity="translucent"
 				onClick={onClick}
 				selected={selected}
-				small
+				size="small"
 			>
 				{country}
 			</Button>

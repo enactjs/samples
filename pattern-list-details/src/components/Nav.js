@@ -29,7 +29,7 @@ const Nav = kind({
 						key={index}
 						onClick={onCountryChange}
 						selected={country === selectedCountry}
-						small
+						size="small"
 					>
 						{country}
 					</Button>

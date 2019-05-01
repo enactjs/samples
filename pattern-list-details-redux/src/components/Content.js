@@ -73,7 +73,7 @@ const Content = kind({
 					backgroundOpacity="translucent"
 					className={css.maximizePhotoButton}
 					onClick={onZoom}
-					small
+					size="small"
 				>
 					fullscreen
 				</IconButton>

@@ -60,8 +60,8 @@ const MainPanel = kind({
 		return (
 			<Panel {...rest}>
 				<Header title={title} titleBelow={videos[videoIndex].title}>
-					<Button onClick={onNextPanel} small>Next Panel</Button>
-					<Button onClick={onHidePanels} small>Hide Panels</Button>
+					<Button onClick={onNextPanel} size="small">Next Panel</Button>
+					<Button onClick={onHidePanels} size="small">Hide Panels</Button>
 				</Header>
 				<Scroller>
 					<Group
