@@ -1,4 +1,5 @@
 import BodyText from '@enact/moonstone/BodyText';
+import {Cell, Column} from '@enact/ui/Layout';
 import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
 import PropTypes from 'prop-types';
@@ -21,7 +22,7 @@ const imageURLs = [
 	violin
 ];
 
-const imageNames = ['Mural', 'Violin', 'Vintage Car', 'City', 'Space Shuttle'];
+const imageNames = ['Vintage Car', 'City', 'Mural', 'Space Shuttle', 'Violin'];
 
 const imageComponents = imageURLs.map(url => {
 	return (<Image src={url} key={url} />);
@@ -53,17 +54,41 @@ class ProfilePhotoPicker extends React.Component {
 	}
 
 	render = () => (
-		<div className={css.profilePhotoPicker}>
-			<Image className={css.profilePhoto} src={imageURLs[this.state.photoIndex]} style={{backgroundPosition: this.state.photoPosition + 'px'}} />
-
-			<Slider className={css.slider} min={-100} max={0} value={this.state.photoPosition} onChange={this.handleSliderChange} />
-
-			<BodyText centered>{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos</BodyText>
-
-			<Picker onChange={this.handlePickerChange} width="large" >
+		<Column
+			align="center center"
+		>
+			<Cell
+				className={css.profilePhoto}
+				component={Image}
+				shrink
+				src={imageURLs[this.state.photoIndex]}
+				style={{backgroundPosition: this.state.photoPosition + 'px'}}
+			/>
+			<Cell
+				className={css.slider}
+				component={Slider}
+				max={0}
+				min={-100}
+				onChange={this.handleSliderChange}
+				shrink
+				value={this.state.photoPosition}
+			/>
+			<Cell
+				centered
+				component={BodyText}
+				shrink
+			>
+				{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos
+			</Cell>
+			<Cell
+				component={Picker}
+				onChange={this.handlePickerChange}
+				shrink
+				width="large"
+			>
 				{imageComponents}
-			</Picker>
-		</div>
+			</Cell>
+		</Column>
 	)
 }
 

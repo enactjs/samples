@@ -1,6 +1,7 @@
-import React from 'react';
+import {Cell, Column} from '@enact/ui/Layout';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import React from 'react';
 
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
@@ -11,8 +12,6 @@ import PhotoPreviewContainer from '../containers/PhotoPreviewContainer';
 import PhotoSliderContainer from '../containers/PhotoSliderContainer';
 import spaceShuttle from '../../assets/images/space-shuttle.jpg';
 import violin from '../../assets/images/violin.jpeg';
-
-import css from './MainPanel.module.less';
 
 const imageNames = [
 	'mural',
@@ -35,15 +34,29 @@ const MainPanel = kind({
 	render: (props) => (
 		<Panel {...props}>
 			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" casing="preserve" />
-			<div className={css.profilePhotoPicker}>
-				<PhotoPreviewContainer imageURLs={imageURLs} />
-				<PhotoSliderContainer />
-				<PhotoPickerContainer
+			<Column
+				align="center center"
+			>
+				<Cell
+					component={PhotoPreviewContainer}
+					imageURLs={imageURLs}
+					shrink
+				/>
+				<Cell
+					component={PhotoSliderContainer}
+					shrink
+				/>
+				<Cell
+					component={PhotoPickerContainer}
 					imageNames={imageNames}
 					imageURLs={imageURLs}
+					shrink
 				/>
-			</div>
-			<FooterContainer />
+				<Cell
+					component={FooterContainer}
+					shrink
+				/>
+			</Column>
 		</Panel>
 	)
 });
