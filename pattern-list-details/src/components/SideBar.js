@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 
-import css from './SideBar.module.less';
-
 const SideBar = kind({
 	name: 'SideBar',
 
@@ -13,11 +11,6 @@ const SideBar = kind({
 		onCityChange: PropTypes.func.isRequired,
 		selectedCountry: PropTypes.string.isRequired,
 		cities: PropTypes.object
-	},
-
-	styles: {
-		css,
-		className: 'sideBar'
 	},
 
 	render: ({cities, onCityChange, selectedCountry, ...rest}) => {
