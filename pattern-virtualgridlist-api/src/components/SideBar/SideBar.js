@@ -26,7 +26,7 @@ const SideBar = kind({
 				return (
 					<div key={index}>
 						<SelectableItem
-							onToggle={onAlbumChange}
+							onToggle={onAlbumChange(album)}
 							selected={selectedAlbum === album}
 							value={album}
 						>

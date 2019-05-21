@@ -26,8 +26,8 @@ class MainView extends React.Component {
 		this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
-	onChange = (ev) => {
-		const album = ev.value;
+	onChange = (albumName) => (ev) => {
+		const album = ev.value || albumName;
 		this.props.onChangeAlbum(album);
 	}
 
