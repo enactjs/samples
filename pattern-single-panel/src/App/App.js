@@ -16,11 +16,9 @@ const App = kind({
 	},
 
 	render: (props) => (
-		<div {...props}>
-			<Panels>
-				<MainPanel />
-			</Panels>
-		</div>
+		<Panels {...props}>
+			<MainPanel />
+		</Panels>
 	)
 });
 

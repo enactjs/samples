@@ -56,6 +56,7 @@ class ProfilePhotoPicker extends React.Component {
 	render = () => (
 		<Column
 			align="center center"
+			{...this.props}
 		>
 			<Cell
 				className={css.profilePhoto}

@@ -12,9 +12,11 @@ const MainPanel = kind({
 	render: (props) => (
 		<Panel {...props}>
 			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" casing="preserve" />
-			<Column>
-				<Cell component={ProfilePhotoPicker} />
-				<Cell component={SaveButton} />
+			<Column align="center">
+				<Cell>
+					<ProfilePhotoPicker />
+				</Cell>
+				<Cell shrink component={SaveButton} />
 			</Column>
 		</Panel>
 	)
