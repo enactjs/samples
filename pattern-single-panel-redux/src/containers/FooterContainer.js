@@ -7,19 +7,12 @@ import {save} from '../actions';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 
-import css from './containerStyles.module.less';
-
 const Footer = kind({
 	name: 'Footer',
 
 	propTypes: {
 		saved: PropTypes.bool,
 		saveToState: PropTypes.func
-	},
-
-	styles: {
-		css,
-		className: 'saveButton'
 	},
 
 	render: ({saved, saveToState, ...rest}) => {

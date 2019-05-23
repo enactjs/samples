@@ -26,9 +26,7 @@ const SavedPopup = kind({
 
 		return (
 			<Popup open={saved} onClose={onChange} showCloseButton>
-				<small>
-					Saved!
-				</small>
+				Saved!
 			</Popup>
 		);
 	}

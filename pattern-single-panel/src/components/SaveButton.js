@@ -3,8 +3,6 @@ import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import css from './SaveButton.module.less';
-
 class SaveButton extends React.Component {
 	static propTypes = {
 		className: PropTypes.string
@@ -26,14 +24,12 @@ class SaveButton extends React.Component {
 	}
 
 	render = () => (
-		<div {...this.props} className={css.saveButton}>
+		<div {...this.props}>
 			<Button onClick={this.handleOnSave}>
 				Save
 			</Button>
 			<Popup open={this.state.saved} onClose={this.handleOnClose} showCloseButton>
-				<small>
-					Saved!
-				</small>
+				Saved!
 			</Popup>
 		</div>
 	)
