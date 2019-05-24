@@ -5,16 +5,13 @@ import SideBar from '../components/SideBar';
 
 const mapStateToProps = (state) => {
 	return {
-		cities: state.data[state.country].cityList,
-		zoom: state.zoom
+		cities: state.data[state.country].cityList
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onCityChange: (city) => {
-			dispatch(changeCity(city.value));
-		}
+		onCityChange: ({city}) => dispatch(changeCity(city))
 	};
 };
 

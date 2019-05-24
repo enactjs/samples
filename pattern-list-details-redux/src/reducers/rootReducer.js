@@ -68,12 +68,10 @@ const data = (state = initialState, action) => {
 		case 'CHANGE_CITY': {
 			const currentCountry = state.country;
 			const prevCity = state.city
-				.split(' ')
-				.join('')
+				.replace(/ /g, '')
 				.toLowerCase();
 			const nextCity = action.city
-				.split(' ')
-				.join('')
+				.replace(/ /g, '')
 				.toLowerCase();
 			let newData = Object.assign({}, sampleData);
 
@@ -86,12 +84,10 @@ const data = (state = initialState, action) => {
 			const nextCountry = action.country;
 			const prevCountry = state.country;
 			const prevCity = state.city
-				.split(' ')
-				.join('')
+				.replace(/ /g, '')
 				.toLowerCase();
 			const nextCity = sampleData[nextCountry].cityList[0]
-				.split(' ')
-				.join('')
+				.replace(/ /g, '')
 				.toLowerCase();
 			let newData = Object.assign({}, sampleData);
 

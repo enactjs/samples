@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const CountryButton = kind({
-	name: 'countryButton',
+	name: 'CountryButton',
 
 	propTypes: {
 		country: PropTypes.string.isRequired,
@@ -28,7 +28,6 @@ const CountryButton = kind({
 				backgroundOpacity="translucent"
 				onClick={onClick}
 				selected={selected}
-				size="small"
 			>
 				{country}
 			</Button>
