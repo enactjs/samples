@@ -1,4 +1,3 @@
-import Divider from '@enact/moonstone/Divider';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -13,7 +12,6 @@ const SideBar = kind({
 
 	propTypes: {
 		onAlbumChange: PropTypes.func.isRequired,
-		selectedAlbum: PropTypes.string.isRequired,
 		albums: PropTypes.array
 	},
 
@@ -27,16 +25,14 @@ const SideBar = kind({
 			adaptEvent(ev => ({type: 'onChangeAlbum', album: ev.data}), forward('onAlbumChange')))
 	},
 
-	render: ({albums, onAlbumChange, selectedAlbum, ...rest}) => {
+	render: ({albums, onAlbumChange, ...rest}) => {
 		delete rest.albums;
 		delete rest.onAlbumChange;
-		delete rest.selectedAlbum;
 
 		return (
-			<Group 
+			<Group
 				childComponent={SelectableItem}
 				selectedProp="selected"
-				defaultSelected={0}
 				onSelect={onAlbumChange}
 				select="radio"
 				{...rest}
