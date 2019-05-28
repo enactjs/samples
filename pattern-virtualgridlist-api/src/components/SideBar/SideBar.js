@@ -1,8 +1,9 @@
-import Divider from '@enact/moonstone/Divider';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {adaptEvent, handle, forward} from '@enact/core/handle';
 import SelectableItem from '@enact/moonstone/SelectableItem';
+import Group from '@enact/ui/Group';
 
 import css from './SideBar.module.less';
 
@@ -11,7 +12,6 @@ const SideBar = kind({
 
 	propTypes: {
 		onAlbumChange: PropTypes.func.isRequired,
-		selectedAlbum: PropTypes.string.isRequired,
 		albums: PropTypes.array
 	},
 
@@ -20,34 +20,25 @@ const SideBar = kind({
 		className: 'sideBar'
 	},
 
-	computed: {
-		albumList: ({albums, onAlbumChange, selectedAlbum}) => {
-			return albums.map((album, index) => {
-				return (
-					<div key={index}>
-						<SelectableItem
-							onToggle={onAlbumChange}
-							selected={selectedAlbum === album}
-							value={album}
-						>
-							{album}
-						</SelectableItem>
-						<Divider spacing="small" />
-					</div>
-				);
-			});
-		}
+	handlers: {
+		onAlbumChange: handle(
+			adaptEvent(ev => ({type: 'onChangeAlbum', album: ev.data}), forward('onAlbumChange')))
 	},
 
-	render: ({albumList, ...rest}) => {
+	render: ({albums, onAlbumChange, ...rest}) => {
 		delete rest.albums;
 		delete rest.onAlbumChange;
-		delete rest.selectedAlbum;
 
 		return (
-			<div {...rest}>
-				{albumList}
-			</div>
+			<Group
+				childComponent={SelectableItem}
+				selectedProp="selected"
+				onSelect={onAlbumChange}
+				select="radio"
+				{...rest}
+			>
+				{albums}
+			</Group>
 		);
 	}
 });
