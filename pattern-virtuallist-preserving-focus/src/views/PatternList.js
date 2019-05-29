@@ -1,34 +1,17 @@
-import {connect} from 'react-redux';
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/moonstone/VirtualList';
 
-import {saveLastScrollInfo} from '../actions';
-
 import css from './PatternList.module.less';
 
 const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
 
-class PatternListBase extends Component {
+class PatternList extends Component {
 	static propTypes = {
 		id: PropTypes.string,
-		onClick: PropTypes.func,
-		onScrollStop: PropTypes.func,
-		scrollLeft: PropTypes.number,
-		scrollTop: PropTypes.number
-	}
-
-	static defaultProps = {
-		scrollLeft: 0,
-		scrollTop: 0
-	}
-
-	componentDidMount () {
-		// Get the last scroll position and restore it with `scrollTo` method
-		const {scrollLeft, scrollTop} = this.props;
-		this.scrollTo({position: {x: scrollLeft, y: scrollTop}, animate: false});
+		onClick: PropTypes.func
 	}
 
 	renderItem = ({index, ...rest}) => (
@@ -37,45 +20,24 @@ class PatternListBase extends Component {
 		</Item>
 	)
 
-	getScrollTo = (fn) => {
-		this.scrollTo = fn;
-	}
-
-	render = () => {
-		const {onScrollStop, id, ...rest} = this.props;
-		delete rest.scrollLeft;
-		delete rest.scrollTop;
+	render () {
+		const {id, ...rest} = this.props;
+		delete rest.onClick;
 
 		return (
 			<VirtualList
-				cbScrollTo={this.getScrollTo}
+				{...rest}
 				className={css.list}
-				spotlightId={id} // Set a unique ID to preserve last focus
 				dataSize={items.length}
+				id={id}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
-				onScrollStop={onScrollStop} // Set this to save last scroll position when unmount
+				spotlightId={id}
 			/>
 		);
 	}
 
 }
-
-const mapStateToProps = ({lastScrollInfo}, {index}) => {
-	// Get the last scroll information from store
-	const info = lastScrollInfo[index];
-	return {
-		scrollLeft: info ? info.scrollLeft : 0,
-		scrollTop: info ? info.scrollTop : 0
-	};
-};
-
-const mapDispatchToProps = (dispatch, {index}) => ({
-	// When `onScrollStop` called, dispatching `saveLastScrollInfo` to save the last scroll position
-	onScrollStop: (info) => dispatch(saveLastScrollInfo(index, info))
-});
-
-const PatternList = connect(mapStateToProps, mapDispatchToProps)(PatternListBase);
 
 export default PatternList;
 export {PatternList};
