@@ -16,7 +16,7 @@ const saveObjToQueryString = (obj) => {
 	Object.keys(allParams).forEach((p) => (allParams[p] == null) && delete allParams[p]);
 
 	const stringified = qs.stringify(allParams);
-	window.history.pushState(obj, '', (stringified ? `?${stringified}` : '/'));
+	window.history.pushState(obj, '', (stringified ? `?${stringified}` : ''));
 };
 
 /*
