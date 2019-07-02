@@ -45,7 +45,7 @@ const ItemsPanel = kind({
 								<Icon size="small">star</Icon>
 							</slotBefore>
 							An Item that will show icons
-							<Icon slot="slotAfter" size="small">trash</Icon>
+							<Icon slot="slotAfter" size="small">delete</Icon>
 						</SlotItem>
 					</section>
 

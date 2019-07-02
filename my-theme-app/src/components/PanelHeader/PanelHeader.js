@@ -23,7 +23,7 @@ const PanelHeader = kind({
 	render: ({children, onNavHomePanel, ...rest}) => (
 		<Row align="center" {...rest}>
 			{onNavHomePanel ? <Cell shrink>
-				<Button size="small" onClick={onNavHomePanel} icon="arrowlargeleft" />
+				<Button size="small" onClick={onNavHomePanel} icon="arrow_back" />
 			</Cell> : null}
 			<Cell>
 				<Heading size="title" spacing="none">

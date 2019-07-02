@@ -38,8 +38,8 @@ const ButtonsIconsPanel = kind({
 
 			<section>
 				<Heading>Icons</Heading>
-				<Icon>gear</Icon>
-				<Icon size="small">gear</Icon>
+				<Icon>drafts</Icon>
+				<Icon size="small">drafts</Icon>
 				<Checkbox selected />
 			</section>
 
@@ -47,8 +47,8 @@ const ButtonsIconsPanel = kind({
 				<Heading>Icons In Buttons</Heading>
 				<Button icon="star" />
 				<Button size="small" icon="star" />
-				<Button icon="hollowstar">0/5 Stars</Button>
-				<Button size="small" icon="hollowstar">0/5 Stars</Button>
+				<Button icon="star_border">0/5 Stars</Button>
+				<Button size="small" icon="star_border">0/5 Stars</Button>
 			</section>
 		</Panel>
 	)

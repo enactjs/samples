@@ -26,8 +26,8 @@ const MainPanel = kind({
 			<BodyText>
 				Choose a category below to see a demonstration of components using &quot;my-theme&quot;.
 			</BodyText>
-			<SlotItem onClick={onNavButtonsPanel}><slotBefore><Icon size="small">series</Icon></slotBefore>Buttons & Icons</SlotItem>
-			<SlotItem onClick={onNavItemsPanel}><slotBefore><Icon size="small">bulletlist</Icon></slotBefore>Items</SlotItem>
+			<SlotItem onClick={onNavButtonsPanel}><slotBefore><Icon size="small">layers</Icon></slotBefore>Buttons & Icons</SlotItem>
+			<SlotItem onClick={onNavItemsPanel}><slotBefore><Icon size="small">menu</Icon></slotBefore>Items</SlotItem>
 		</Panel>
 	)
 });
