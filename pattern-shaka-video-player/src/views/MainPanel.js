@@ -4,6 +4,10 @@ import React from 'react';
 import ShakaVideoPlayer from '../components/ShakaVideoPlayer';
 
 const sintelManifestUri = 'https://storage.googleapis.com/shaka-demo-assets/sintel/dash.mpd';
+const playerConfig = {
+	preferredAudioLanguage: 'en-US',
+	playRangeStart: 420
+};
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -11,7 +15,11 @@ const MainPanel = kind({
 	render: (props) => (
 		<Panel {...props}>
 			<Header title="VideoPlayer" titleBelow="powered by Shaka Player" />
-			<ShakaVideoPlayer autoPlay manifestUri={sintelManifestUri} />
+			<ShakaVideoPlayer
+				autoPlay
+				config={playerConfig}
+				manifestUri={sintelManifestUri}
+			/>
 		</Panel>
 	)
 });

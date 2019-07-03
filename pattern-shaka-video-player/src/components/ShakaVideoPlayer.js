@@ -4,27 +4,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shaka from 'shaka-player';
 
-function onErrorEvent(event) {
-	// Extract the shaka.util.Error object from the event.
-	onError(event.detail);
-}
-
-function onError(error) {
-	// Log the error.
-	console.error('Error code', error.code, 'object', error);
-}
-
-const defaultConfig = {
-	preferredAudioLanguage: 'en-US',
-	playRangeStart: 420
-};
-
-const ShakaPlayerDecorator = hoc(defaultConfig, (config, Wrapped) => {
+const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 	return class extends React.Component {
 		static displayName = 'ShakaPlayerDecorator';
 
 		static propTypes = {
-			manifestUri: PropTypes.string
+			manifestUri: PropTypes.string,
+			config: PropTypes.object
 		};
 
 		componentDidMount () {
@@ -41,12 +27,22 @@ const ShakaPlayerDecorator = hoc(defaultConfig, (config, Wrapped) => {
 			}
 		}
 
+		onErrorEvent = (event) => {
+			// Extract the shaka.util.Error object from the event.
+			this.onError(event.detail);
+		}
+
+		onError = (error) => {
+			// Log the error.
+			console.error('Error code', error.code, 'object', error);
+		}
+
 		initPlayer = () => {
 			// Create a Player instance.
 			const player = new shaka.Player(this.videoNode);
 
 			// Listen for error events.
-			player.addEventListener('error', onErrorEvent);
+			player.addEventListener('error', this.onErrorEvent);
 
 			// Try to load a manifest.
 			// This is an asynchronous process.
@@ -56,9 +52,10 @@ const ShakaPlayerDecorator = hoc(defaultConfig, (config, Wrapped) => {
 					// This runs if the asynchronous load is successful.
 					console.log('The video has now been loaded!');
 				})
-				.catch(onError); // onError is executed if the asynchronous load fails.
-			// Configure player
-			player.configure(config);
+				.catch(this.onError); // onError is executed if the asynchronous load fails.
+			// Configuration for the player here https://shaka-player-demo.appspot.com/docs/api/tutorial-config.html
+			const playerConfig = {...config, ...this.props.config};
+			player.configure(playerConfig);
 		}
 
 		setWrappedRef = (node) => {
