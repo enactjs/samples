@@ -1,17 +1,19 @@
+import {forward, handle} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import VideoPlayer from "@enact/moonstone/VideoPlayer";
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import shaka from 'shaka-player';
 
 const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 	return class extends React.Component {
-		static displayName = 'ShakaPlayerDecorator';
+		static displayName = 'ShakaPlayerDecorator'
 
 		static propTypes = {
+			config: PropTypes.object,
 			manifestUri: PropTypes.string,
-			config: PropTypes.object
-		};
+			onError: PropTypes.func
+		}
 
 		componentDidMount () {
 			// Install built-in polyfills to patch browser incompatibilities.
@@ -20,7 +22,7 @@ const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 			// Check to see if the browser supports the basic APIs Shaka needs.
 			if (shaka.Player.isBrowserSupported()) {
 				// Everything looks good!
-				this.initPlayer(this.props.manifestUri, this.videoNode);
+				this.initPlayer();
 			} else {
 				// This browser does not have the minimum set of APIs we need.
 				console.error('Browser not supported!');
@@ -32,10 +34,9 @@ const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 			this.onError(event.detail);
 		}
 
-		onError = (error) => {
-			// Log the error.
-			console.error('Error code', error.code, 'object', error);
-		}
+		onError = handle(
+			forward('onError')
+		).bindAs(this, 'handleError')
 
 		initPlayer = () => {
 			// Create a Player instance.
@@ -48,24 +49,30 @@ const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 			// This is an asynchronous process.
 			player
 				.load(this.props.manifestUri)
-				.then(function() {
+				.then(function () {
 					// This runs if the asynchronous load is successful.
 					console.log('The video has now been loaded!');
 				})
 				.catch(this.onError); // onError is executed if the asynchronous load fails.
-			// Configuration for the player here https://shaka-player-demo.appspot.com/docs/api/tutorial-config.html
+
+			// Configuration for the player here
+			// https://shaka-player-demo.appspot.com/docs/api/tutorial-config.html
 			const playerConfig = {...config, ...this.props.config};
 			player.configure(playerConfig);
 		}
 
 		setWrappedRef = (node) => {
-		if (node && node.getVideoNode) {
-			this.videoNode = node.getVideoNode().media;
+			if (node && node.getVideoNode) {
+				// By default, moonstone/VideoPlayer using ui/Media for its videoComponent. To get
+				// the underlying <vidoe> node, we're using the private `media` member.
+				this.videoNode = node.getVideoNode().media;
+			}
 		}
-	}
 
 		render () {
-			const props = Object.assign({}, this.props);
+			const props = {...this.props};
+
+			delete props.config;
 			delete props.manifestUri;
 
 			return <Wrapped {...props} ref={this.setWrappedRef} />
