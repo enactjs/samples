@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import shaka from 'shaka-player';
 
-const ShakaPlayerDecorator = hoc((config, Wrapped) => {
+const ShakaVideoPlayerDecorator = hoc((config, Wrapped) => {
 	return class extends React.Component {
-		static displayName = 'ShakaPlayerDecorator'
+		static displayName = 'ShakaVideoPlayerDecorator'
 
 		static propTypes = {
 			config: PropTypes.object,
@@ -80,6 +80,10 @@ const ShakaPlayerDecorator = hoc((config, Wrapped) => {
 	}
 });
 
-const ShakaVideoPlayer = ShakaPlayerDecorator(VideoPlayer);
+const ShakaVideoPlayer = ShakaVideoPlayerDecorator(VideoPlayer);
 
 export default ShakaVideoPlayer;
+export {
+	ShakaVideoPlayer,
+	ShakaVideoPlayerDecorator
+};

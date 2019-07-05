@@ -16,7 +16,6 @@ const MainPanel = kind({
 		<Panel {...props}>
 			<Header title="VideoPlayer" titleBelow="powered by Shaka Player" />
 			<ShakaVideoPlayer
-				autoPlay
 				config={playerConfig}
 				manifestUri={sintelManifestUri}
 			/>
