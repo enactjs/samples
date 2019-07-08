@@ -45,8 +45,8 @@ const ButtonsIconsPanel = kind({
 
 			<section>
 				<Heading>Icons In Buttons</Heading>
-				<Button icon="star" />
-				<Button size="small" icon="star" />
+				<Button icon="star_half" />
+				<Button size="small" icon="star_half" />
 				<Button icon="star_border">0/5 Stars</Button>
 				<Button size="small" icon="star_border">0/5 Stars</Button>
 			</section>

@@ -42,7 +42,7 @@ const ItemsPanel = kind({
 						<SlotItem autoHide="after">
 							<slotBefore>
 								<Icon size="small">flag</Icon>
-								<Icon size="small">star</Icon>
+								<Icon size="small">person_add</Icon>
 							</slotBefore>
 							An Item that will show icons
 							<Icon slot="slotAfter" size="small">delete</Icon>
