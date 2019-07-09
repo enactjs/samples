@@ -1,0 +1,45 @@
+{
+	"name": "my-theme-app",
+	"version": "1.0.0",
+	"description": "A demonstration of a 'my-theme' application.",
+	"author": "",
+	"main": "src/index.js",
+	"scripts": {
+		"serve": "enact serve",
+		"pack": "enact pack",
+		"pack-p": "enact pack -p",
+		"watch": "enact pack --watch",
+		"clean": "enact clean",
+		"lint": "enact lint .",
+		"license": "enact license",
+		"test": "enact test",
+		"test-watch": "enact test --watch"
+	},
+	"license": "UNLICENSED",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"theme": "my-theme",
+		"ri": {
+			"baseSize": 24
+		}
+	},
+	"eslintConfig": {
+		"extends": "enact"
+	},
+	"eslintIgnore": [
+		"node_modules/*",
+		"build/*",
+		"dist/*"
+	],
+	"dependencies": {
+		"@enact/core": "next",
+		"@enact/i18n": "next",
+		"@enact/my-theme": "enactjs/my-theme#develop",
+		"@enact/spotlight": "next",
+		"@enact/ui": "next",
+		"prop-types": "^15.6.2",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0"
+	}
+}
