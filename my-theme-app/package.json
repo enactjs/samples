@@ -25,7 +25,7 @@
 		}
 	},
 	"eslintConfig": {
-	  "extends": "enact"
+		"extends": "enact"
 	},
 	"eslintIgnore": [
 		"node_modules/*",
@@ -33,11 +33,11 @@
 		"dist/*"
 	],
 	"dependencies": {
-		"@enact/core": "^3.0.0",
-		"@enact/i18n": "^3.0.0",
-		"@enact/my-theme": "enactjs/my-theme",
-		"@enact/spotlight": "^3.0.0",
-		"@enact/ui": "^3.0.0",
+		"@enact/core": "next",
+		"@enact/i18n": "next",
+		"@enact/my-theme": "enactjs/my-theme#develop",
+		"@enact/spotlight": "next",
+		"@enact/ui": "next",
 		"prop-types": "^15.6.2",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0"
