@@ -38,6 +38,7 @@
 		"@enact/my-theme": "enactjs/my-theme#develop",
 		"@enact/spotlight": "next",
 		"@enact/ui": "next",
+		"ilib": "^14.2.0",
 		"prop-types": "^15.6.2",
 		"react": "^16.7.0",
 		"react-dom": "^16.7.0"
