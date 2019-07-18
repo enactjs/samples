@@ -36,7 +36,7 @@ const ShakaVideoPlayerDecorator = hoc((config, Wrapped) => {
 
 		onError = handle(
 			forward('onError')
-		).bindAs(this, 'handleError')
+		).bindAs(this, 'onError')
 
 		initPlayer = () => {
 			// Create a Player instance with videoNode.
