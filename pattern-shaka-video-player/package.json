@@ -1,8 +1,8 @@
 {
 	"name": "shaka-app",
 	"version": "1.0.0",
-	"description": "A general template for an Enact Moonstone application.",
-	"author": "",
+	"description": "A sample Enact app that showcases a VideoPlayer powered by Shaka Player",
+	"author": "@teckliew",
 	"main": "src/index.js",
 	"scripts": {
 		"serve": "enact serve",
@@ -15,7 +15,7 @@
 		"test": "enact test",
 		"test-watch": "enact test --watch"
 	},
-	"license": "UNLICENSED",
+	"license": "Apache-2.0",
 	"private": true,
 	"repository": "",
 	"enact": {
@@ -30,14 +30,15 @@
 		"dist/*"
 	],
 	"dependencies": {
-		"@enact/core": "^2.0.0",
-		"@enact/i18n": "^2.0.0",
-		"@enact/moonstone": "^2.0.0",
-		"@enact/spotlight": "^2.0.0",
+		"@enact/core": "^3.0.0-beta.1",
+		"@enact/i18n": "^3.0.0-beta.1",
+		"@enact/moonstone": "^3.0.0-beta.1",
+		"@enact/spotlight": "^3.0.0-beta.1",
 		"@enact/ui": "^2.0.0",
+		"ilib": "^14.3.0",
 		"prop-types": "^15.6.2",
-		"react": "^16.7.0",
-		"react-dom": "^16.7.0",
+		"react": "^16.8.0",
+		"react-dom": "^16.8.0",
 		"shaka-player": "^2.5.2"
 	}
 }

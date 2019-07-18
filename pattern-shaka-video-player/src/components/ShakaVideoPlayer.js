@@ -39,7 +39,7 @@ const ShakaVideoPlayerDecorator = hoc((config, Wrapped) => {
 		).bindAs(this, 'handleError')
 
 		initPlayer = () => {
-			// Create a Player instance.
+			// Create a Player instance with videoNode.
 			const player = new shaka.Player(this.videoNode);
 
 			// Listen for error events.
@@ -63,8 +63,8 @@ const ShakaVideoPlayerDecorator = hoc((config, Wrapped) => {
 
 		setWrappedRef = (node) => {
 			if (node && node.getVideoNode) {
-				// By default, moonstone/VideoPlayer using ui/Media for its videoComponent. To get
-				// the underlying <vidoe> node, we're using the private `media` member.
+				// By default, moonstone/VideoPlayer uses ui/Media for its videoComponent. To get
+				// the underlying <video> node, we're using the private `media` member.
 				this.videoNode = node.getVideoNode().media;
 			}
 		}
