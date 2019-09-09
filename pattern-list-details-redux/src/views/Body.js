@@ -1,5 +1,6 @@
 import kind from '@enact/core/kind';
 import React from 'react';
+import {Row, Cell} from '@enact/ui/Layout';
 
 import SideBarContainer from '../containers/SideBarContainer';
 import ContentContainer from '../containers/ContentContainer';
@@ -15,10 +16,14 @@ const Body = kind({
 	},
 
 	render: ({...rest}) => (
-		<div {...rest}>
-			<SideBarContainer className={css.sideBar} />
-			<ContentContainer className={css.content} />
-		</div>
+		<Row {...rest}>
+			<Cell size="30%" className={css.sidebar}>
+				<SideBarContainer />
+			</Cell>
+			<Cell className={css.content}>
+				<ContentContainer />
+			</Cell>
+		</Row>
 	)
 });
 

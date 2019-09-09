@@ -7,8 +7,8 @@ const SaveButton = kind({
 	name: 'SaveButton',
 
 	propTypes: {
-		saved: PropTypes.bool.isRequired,
-		saveToState: PropTypes.func.isRequired
+		saveToState: PropTypes.func.isRequired,
+		saved: PropTypes.bool
 	},
 
 	defaultProps: {
@@ -26,9 +26,7 @@ const SaveButton = kind({
 		delete rest.saveToState;
 
 		return (
-			<Button onClick={onChange}>
-				Save
-			</Button>
+			<Button onClick={onChange}>Save</Button>
 		);
 	}
 });

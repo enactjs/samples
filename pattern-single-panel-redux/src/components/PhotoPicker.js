@@ -5,8 +5,6 @@ import Picker from '@enact/moonstone/Picker';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import css from './componentStyles.module.less';
-
 const ProfilePhotoPickerContainer = kind({
 	name: 'ProfilePhotoPickerContainer',
 
@@ -26,7 +24,7 @@ const ProfilePhotoPickerContainer = kind({
 
 	computed: {
 		imageComponents: ({imageURLs}) => {
-			return imageURLs.map((url) => (<Image className={css.photoPickerImage} src={url} key={url} />));
+			return imageURLs.map((url) => (<Image src={url} key={url} />));
 		}
 	},
 

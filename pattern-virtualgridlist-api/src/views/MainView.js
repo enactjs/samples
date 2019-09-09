@@ -26,8 +26,7 @@ class MainView extends React.Component {
 		this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
-	onChange = (ev) => {
-		const album = ev.value;
+	onChange = ({album}) => {
 		this.props.onChangeAlbum(album);
 	}
 
@@ -36,8 +35,6 @@ class MainView extends React.Component {
 	}
 
 	render = () => {
-		const {album} = this.props;
-
 		return (
 			<div className={css.mainView}>
 				<GalleryPanelHeader title="My Gallery" />
@@ -46,7 +43,7 @@ class MainView extends React.Component {
 						albums={albums}
 						className={css.sideBar}
 						onAlbumChange={this.onChange}
-						selectedAlbum={album}
+						defaultSelected={0}
 					/>
 					<ImageList
 						cbScrollTo={this.getScrollTo}

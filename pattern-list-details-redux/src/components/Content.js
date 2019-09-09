@@ -56,6 +56,7 @@ const Content = kind({
 	},
 
 	computed: {
+		className: ({zoomState, styler}) => styler.append({zoom: zoomState}),
 		cityPhoto: ({selectedCity}) => {
 			const cityImgSrc = cityPhotos[selectedCity.toLowerCase().replace(/\W/g, '')];
 			return (
@@ -64,26 +65,22 @@ const Content = kind({
 		}
 	},
 
-	render: ({cityPhoto, onZoom, selectedCity, ...rest}) => {
-		delete rest.zoomState;
-
-		return (
-			<div {...rest}>
-				<IconButton
-					backgroundOpacity="translucent"
-					className={css.maximizePhotoButton}
-					onClick={onZoom}
-					small
-				>
-					fullscreen
-				</IconButton>
-				<Marquee className={css.cityName}>
-					{selectedCity}
-				</Marquee >
-				{cityPhoto}
-			</div>
-		);
-	}
+	render: ({cityPhoto, onZoom, selectedCity, zoomState, ...rest}) => (
+		<div {...rest}>
+			<IconButton
+				backgroundOpacity="translucent"
+				className={css.maximizePhotoButton}
+				onClick={onZoom}
+				selected={zoomState}
+			>
+				{zoomState ? 'exitfullscreen' : 'fullscreen'}
+			</IconButton>
+			<Marquee className={css.cityName}>
+				{selectedCity}
+			</Marquee >
+			{cityPhoto}
+		</div>
+	)
 });
 
 export default Content;

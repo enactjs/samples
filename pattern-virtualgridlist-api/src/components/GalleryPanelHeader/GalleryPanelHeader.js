@@ -63,22 +63,22 @@ const GalleryPanelHeader = kind({
 				tooltipText = showOverlay ? 'Previous' : 'Selection',
 				icon = showOverlay ? 'rollbackward' : 'check';
 			return (
-				<IconButton tooltipText={tooltipText} small onClick={showSelectionOverlayHandler}>{icon}</IconButton>
+				<IconButton tooltipText={tooltipText} size="small" onClick={showSelectionOverlayHandler}>{icon}</IconButton>
 			);
 		},
 		addButton: ({addMockItem, showOverlay}) => {
 			if (!showOverlay) {
-				return (<IconButton tooltipText="Add Item" small onClick={addMockItem}>plus</IconButton>);
+				return (<IconButton tooltipText="Add Item" size="small" onClick={addMockItem}>plus</IconButton>);
 			}
 		},
 		deleteButton: ({deleteItem, showOverlay}) => {
 			if (showOverlay) {
-				return (<Button small onClick={deleteItem}>Delete</Button>);
+				return (<Button size="small" onClick={deleteItem}>Delete</Button>);
 			}
 		},
 		selectAllButton: ({selectAll, showOverlay}) => {
 			if (showOverlay) {
-				return (<Button small onClick={selectAll}>Select All</Button>);
+				return (<Button size="small" onClick={selectAll}>Select All</Button>);
 			}
 		}
 	},

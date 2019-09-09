@@ -4,7 +4,7 @@ import kind from '@enact/core/kind';
 import {Cell, Column, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
-import Divider from '@enact/moonstone/Divider';
+import Heading from '@enact/moonstone/Heading';
 import IconButton from '@enact/moonstone/IconButton';
 import Item from '@enact/moonstone/Item';
 import {Panel, Header} from '@enact/moonstone/Panels';
@@ -54,7 +54,7 @@ const ItemPanel = kind({
 				<Cell>
 					<Column>
 						<Cell shrink>
-							<Divider>All Items</Divider>
+							<Heading showLine>All Items</Heading>
 						</Cell>
 						<Cell>
 							<VirtualList
@@ -73,7 +73,7 @@ const ItemPanel = kind({
 					</Column>
 				</Cell>
 				<Cell>
-					<Divider>Selected Items</Divider>
+					<Heading showLine>Selected Items</Heading>
 					<Item>Item 1</Item>
 					<Item>Item 2</Item>
 				</Cell>

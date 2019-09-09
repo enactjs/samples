@@ -1,20 +1,34 @@
 .content {
-	display: flex;
-	flex: 2;
-}
-
-.image {
-	flex: 1;
 	height: 100%;
-}
 
-.maximizePhotoButton {
-	position: absolute;
-	margin: 24px;
-	color: white;
-}
+	&.zoom {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
 
-.cityName {
-	.maximizePhotoButton;
-	right: 24px;
+		.cityName {
+			top: auto;
+			bottom: 12px;
+		}
+	}
+
+	.image {
+		margin: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	.maximizePhotoButton,
+	.cityName {
+		position: absolute;
+		top: 12px;
+		color: white;
+	}
+
+	.cityName {
+		right: 12px;
+		text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+	}
 }

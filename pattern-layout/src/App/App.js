@@ -43,7 +43,7 @@ const App = kind({
 	},
 
 	computed: {
-		DebugButton: ({onToggleDebug, debug}) => (<Button onClick={onToggleDebug} selected={debug} small>Layout Borders</Button>)
+		DebugButton: ({onToggleDebug, debug}) => (<Button onClick={onToggleDebug} selected={debug} size="small">Layout Borders</Button>)
 	},
 
 	handlers: {

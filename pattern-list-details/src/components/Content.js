@@ -40,7 +40,8 @@ const Content = kind({
 
 	propTypes: {
 		onZoom: PropTypes.func.isRequired,
-		selectedCity: PropTypes.string.isRequired
+		selectedCity: PropTypes.string.isRequired,
+		zoom: PropTypes.bool
 	},
 
 	styles: {
@@ -49,23 +50,26 @@ const Content = kind({
 	},
 
 	computed: {
+		className: ({zoom, styler}) => styler.append({zoom}),
 		cityPhoto: ({selectedCity}) => {
-			const cityImgSrc = cityPhotos[selectedCity.toLowerCase().replace(/\W/g, '')];
-			return (
-				<Image className={css.image} src={cityImgSrc} />
-			);
+			if (selectedCity) {
+				const cityImgSrc = cityPhotos[selectedCity.toLowerCase().replace(/\W/g, '')];
+				return (
+					<Image className={css.image} src={cityImgSrc} />
+				);
+			}
 		}
 	},
 
-	render: ({cityPhoto, onZoom, selectedCity, ...rest}) => (
+	render: ({cityPhoto, onZoom, selectedCity, zoom, ...rest}) => (
 		<div {...rest}>
 			<IconButton
 				backgroundOpacity="translucent"
 				className={css.maximizePhotoButton}
 				onClick={onZoom}
-				small
+				selected={zoom}
 			>
-				fullscreen
+				{zoom ? 'exitfullscreen' : 'fullscreen'}
 			</IconButton>
 			<Marquee className={css.cityName}>
 				{selectedCity}

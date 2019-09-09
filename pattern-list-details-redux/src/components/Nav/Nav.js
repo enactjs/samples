@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import CountryButton from './CountryButton';
-import css from './Nav.module.less';
 
 const Nav = kind({
 	name: 'Nav',
@@ -13,35 +12,17 @@ const Nav = kind({
 		onCountryChange: PropTypes.func.isRequired
 	},
 
-	styles: {
-		css,
-		className: 'nav'
-	},
-
-	computed: {
-		countryButtons: ({countries, onCountryChange}) => {
-			return countries.map((country, index) => {
-				return (
-					<CountryButton
-						key={index}
-						onCountryChange={onCountryChange}
-						country={country}
-					/>
-				);
-			});
-		}
-	},
-
-	render: ({countryButtons, ...rest}) => {
-		delete rest.countries;
-		delete rest.onCountryChange;
-
-		return (
-			<div {...rest}>
-				{countryButtons}
-			</div>
-		);
-	}
+	render: ({countries, onCountryChange}) => (
+		<React.Fragment>
+			{countries.map((country, index) => (
+				<CountryButton
+					key={'countryButton' + index}
+					onCountryChange={onCountryChange}
+					country={country}
+				/>
+			))}
+		</React.Fragment>
+	)
 });
 
 export default Nav;

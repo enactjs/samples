@@ -1,52 +1,28 @@
 import Button from '@enact/moonstone/Button';
+import Group from '@enact/ui/Group';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import css from './Nav.module.less';
 
 const Nav = kind({
 	name: 'Nav',
 
 	propTypes: {
 		countryList: PropTypes.array.isRequired,
-		onCountryChange: PropTypes.func.isRequired,
-		selectedCountry: PropTypes.string.isRequired
+		onCountryChange: PropTypes.func.isRequired
 	},
 
-	styles: {
-		css,
-		className: 'nav'
-	},
-
-	computed: {
-		countryButtons: ({countryList, selectedCountry, onCountryChange}) => {
-			return countryList.map((country, index) => {
-				return (
-					<Button
-						backgroundOpacity="translucent"
-						className={css.button}
-						key={index}
-						onClick={onCountryChange}
-						selected={country === selectedCountry}
-						small
-					>
-						{country}
-					</Button>
-				);
-			});
-		}
-	},
-
-	render: ({countryButtons, ...rest}) => {
-		delete rest.countryList;
-		delete rest.onCountryChange;
-		delete rest.selectedCountry;
-
+	render: ({countryList, onCountryChange, ...rest}) => {
 		return (
-			<div {...rest}>
-				{countryButtons}
-			</div>
+			<Group
+				childComponent={Button}
+				selectedProp="selected"
+				onSelect={onCountryChange}
+				select="radio"
+				{...rest}
+			>
+				{countryList}
+			</Group>
 		);
 	}
 });

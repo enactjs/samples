@@ -47,7 +47,7 @@ const Details = kind({
 		<Panel {...rest}>
 			<Header title={title} titleBelow={titleBelow}>
 				{DebugButton}
-				<Button onClick={changeOrientation} selected={orientation} small>Flip Orientation</Button>
+				<Button onClick={changeOrientation} selected={orientation} size="small">Flip Orientation</Button>
 			</Header>
 			<Row style={{height: '100%'}}>
 				<Cell>

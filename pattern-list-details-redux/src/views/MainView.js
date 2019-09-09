@@ -4,7 +4,6 @@ import React from 'react';
 
 import NavContainer from '../containers/NavContainer';
 
-import css from './Body.module.less';
 import Body from './Body';
 
 const MainView = kind({
@@ -12,11 +11,11 @@ const MainView = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="City Viewer" type="compact" />
-			<div className={css.panelBody}>
+			<Header type="compact">
+				<title>City Viewer Redux</title>
 				<NavContainer />
-				<Body />
-			</div>
+			</Header>
+			<Body />
 		</Panel>
 	)
 });
