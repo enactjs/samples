@@ -74,9 +74,9 @@ const CounterBase = kind({
 	render: ({onIncrementClick, onDecrementClick, onResetClick, count}) => (
         <div>
             <h1>{count}</h1>
-            <Button onClick={onIncrementClick}>Increment ++</Button>
-            <Button onClick={onResetClick}>Reset</Button>
             <Button onClick={onDecrementClick}>Decrement --</Button>
+            <Button onClick={onResetClick}>Reset</Button>
+            <Button onClick={onIncrementClick}>Increment ++</Button>
         </div>
 	)
 });
