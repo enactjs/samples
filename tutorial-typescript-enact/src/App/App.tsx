@@ -19,7 +19,7 @@ const App = kind({
 	},
 
 	render: (props) => (
-		<div className={props.className}>
+		<div {...props}>
 			<BodyText skin="light" centered>Hello Enact + TypeScript!</BodyText>
 			<Counter />
 		</div>
