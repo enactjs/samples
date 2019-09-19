@@ -49,9 +49,9 @@ const CounterBase = kind<countableStateProps>({
 });
 
 // @ts-ignore
-const Counter = Changeable({prop: 'count' , change: 'onCounterChange'});
+const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
-export default CounterBase;
+export default Counter;
 export {
     CounterBase,
     Counter
