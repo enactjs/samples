@@ -1,74 +1,54 @@
-import kind from '@enact/core/kind';
-import hoc from '@enact/core/hoc';
-import Button from '@enact/moonstone/Button';
-import {adaptEvent, forward, handle} from '@enact/core/handle';
-import PropTypes from 'prop-types';
-import Slider from '@enact/ui/Slider';
 import React from 'react';
+import PropTypes from 'prop-types';
+import kind from '@enact/core/kind';
+import Button from '@enact/moonstone/Button';
 
 
 interface countableStateProps {
- count : number,
+    count : number,
 }
 
-interface configInterface {
-    prop: 'data-count',
-    count: 0,
-    increment? : string,
-    decrement ? : string,
-    reset ? : string
-}
-interface countType {
-    [key:string] : any
-}
-const defaultConfig: countType = {
-    prop: 'data-count',
-    count: 0,
-    increment:  void 0,
-    decrement: void 0,
-    reset : void 0
-}
+class Counter extends React.Component < {}, countableStateProps> {
+    state : countableStateProps = {
+        count: 0
+    };
+    increment = () => this.setState({count: this.state.count + 1})
+    decrement = () => this.setState({count: this.state.count - 1})
+    reset = () => this.setState({count: 0})
 
-//Counter component using HOC (Higher order component)
-const Countable = hoc({defaultConfig}, (config: configInterface, Wrapped: React.ComponentType<countType>) => {
-	return class extends React.Component < {}, countableStateProps> {
-	    state = {
-			count: 0
-		};
-        inc = () => this.setState({count: this.state.count + 1})
-        dec = () => this.setState({count: this.state.count - 1})
-        reset = () => this.setState({count: 0})
-		render () {
-			const props: countType = Object.assign({}, this.props, {
-                [config.prop]: this.state.count,
-            });
-            if (config.increment) props[config.increment] = this.inc
-            if (config.decrement) props[config.decrement] = this.dec
-            if (config.reset) props[config.reset] = this.reset
+    render () {
+        return(
 
-			return <Wrapped {...props} />
-		}
-	}
-});
+            //Just render the component ? Do we need CounterBase
+            // <div>
+            //     <h1>{this.state.count}</h1>
+            //     <Button onClick={this.decrement}>Decrement --</Button>
+            //     <Button onClick={this.reset}>Reset</Button>
+            //     <Button onClick={this.increment}>Increment ++</Button>
+            // </div>
+            
+            //pass the props to CounterBase 
+            <CounterBase onIncrementClick={this.increment} />
+
+
+
+        )
+    }
+
+}
 
 const CounterBase = kind({
 	name: 'Counter',
 
 	propTypes: {
-		children: PropTypes.string,
-        count: PropTypes.number,
         onIncrementClick: PropTypes.func.isRequired,
-        onDecrementClick : PropTypes.func.isRequired
+        onDecrementClick: PropTypes.func.isRequired,
+        onResetClick: PropTypes.func.isRequired,
+        count: PropTypes.number,
 	},
 
 	defaultProps: {
         count: 0
-    },
-
-    handlers: {
-		onIncrementClick: handle(adaptEvent(() => ({type: 'onClick'}), forward('onIncrementClick'))),
-        onDecrementClick: handle(adaptEvent(() => ({type: 'onClick'}), forward('onDecrementClick'))),
-        onResetClick: handle(adaptEvent(() => ({type: 'onClick'}), forward('onResetClick')))
     },
 
 	render: ({onIncrementClick, onDecrementClick, onResetClick, count}) => (
@@ -78,14 +58,13 @@ const CounterBase = kind({
             <Button onClick={onResetClick}>Reset</Button>
             <Button onClick={onIncrementClick}>Increment ++</Button>
         </div>
+
+        //OR render Component Counter with props
 	)
 });
 
-const Counter = Countable({prop: 'count', increment: 'onIncrementClick', decrement: 'onDecrementClick', reset: 'onResetClick'}, CounterBase);
-
-export default Counter;
+export default CounterBase;
 export {
     Counter,
-    CounterBase,
-    Countable
+    CounterBase
 };

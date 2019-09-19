@@ -1,13 +1,10 @@
-import React from 'react';
-//enact import
 import kind from '@enact/core/kind';
-//enact Moonstone import
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import BodyText from '@enact/moonstone/BodyText';
-//Custom component
-import Counter from '../components/Counter';
+import Panels from '@enact/moonstone/Panels';
+import React from 'react';
 
-//css
+import MainPanel from '../views/MainPanel';
+
 import css from './App.module.less';
 
 const App = kind({
@@ -20,8 +17,9 @@ const App = kind({
 
 	render: (props) => (
 		<div {...props}>
-			<BodyText skin="light" centered>Hello Enact + TypeScript!</BodyText>
-			<Counter />
+			<Panels>
+				<MainPanel />
+			</Panels>
 		</div>
 	)
 });
