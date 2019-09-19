@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 interface countableStateProps {
-    count : number,
+    count? : number,
 }
 
 const CounterBase = kind<countableStateProps>({
@@ -24,15 +24,12 @@ const CounterBase = kind<countableStateProps>({
     },
 
     handlers: {
-        // @ts-ignore
         onDecrementClick: (ev, {count, onCounterChange}) => {
             onCounterChange({count: count - 1});
         },
-        // @ts-ignore
         onResetClick: (ev, {count, onCounterChange}) => {
             onCounterChange({count: 0});
         },
-        // @ts-ignore
         onIncrementClick: (ev, {count, onCounterChange}) => {
             onCounterChange({count: count + 1});
         }

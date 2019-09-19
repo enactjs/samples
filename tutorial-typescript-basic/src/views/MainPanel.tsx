@@ -11,7 +11,7 @@ const MainPanel = kind({
 	render: (props) => (
 		<Panel {...props}>
 			<Header title="Hello Enact + TypeScript!" />
-			<Counter count={1} />
+			<Counter />
 		</Panel>
 	)
 });
