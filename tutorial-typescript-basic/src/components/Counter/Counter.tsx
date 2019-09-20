@@ -4,11 +4,11 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-interface countableStateProps {
+interface counterProps {
     count? : number,
 }
 
-const CounterBase = kind<countableStateProps>({
+const CounterBase = kind<counterProps>({
 	name: 'Counter',
 
 	propTypes: {
@@ -45,7 +45,6 @@ const CounterBase = kind<countableStateProps>({
 	)
 });
 
-// @ts-ignore
 const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
 export default Counter;
