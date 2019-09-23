@@ -1,11 +1,18 @@
 import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
+import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import React from 'react';
 
+//Using the type keyword
+type MyFunctionType = (count: number) => number;
 interface counterProps {
     count? : number,
+    onResetClick? : MyFunctionType,
+    onCounterChange? : MyFunctionType,
+    onDecrementClick? : MyFunctionType,
+    onIncrementClick? : MyFunctionType
 }
 
 const CounterBase = kind<counterProps>({
@@ -25,12 +32,12 @@ const CounterBase = kind<counterProps>({
 
     handlers: {
         onDecrementClick: (ev, {count, onCounterChange}) => {
-            onCounterChange({count: count - 1});
+             onCounterChange({count: count - 1});
         },
         onResetClick: (ev, {count, onCounterChange}) => {
             onCounterChange({count: 0});
         },
-        onIncrementClick: (ev, {count, onCounterChange}) => {
+         onIncrementClick: (ev, {count, onCounterChange}) => {
             onCounterChange({count: count + 1});
         }
 	},
