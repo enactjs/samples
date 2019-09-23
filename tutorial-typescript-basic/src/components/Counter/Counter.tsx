@@ -1,6 +1,6 @@
 import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
-import {handle, forward, adaptEvent, log} from '@enact/core/handle';
+import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import PropTypes, { number } from 'prop-types';
 import React from 'react';
