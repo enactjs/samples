@@ -14,11 +14,12 @@ type handlerFunctionType = (count: number) => number;
 
 function createHandler(fn:handlerFunctionType) {
     return handle(
-        adaptEvent((ev, {count}) => ({
-            type: 'onCounterChange',
-            count: fn(count)
-        }),
-        forward('onCounterChange')
+        adaptEvent(
+            (ev, {count}) => ({
+                type: 'onCounterChange',
+                count: fn(count)
+            }),
+            forward('onCounterChange')
         )
     )
 }
