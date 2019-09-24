@@ -5,12 +5,9 @@ import kind from '@enact/core/kind';
 import PropTypes, { number } from 'prop-types';
 import React from 'react';
 
-interface counterProps {
+interface CounterProps {
     count? : number,
-    onResetClick? : void,
-    onCounterChange? : void,
-    onDecrementClick? : void,
-    onIncrementClick? : void
+    onCounterChange? : void
 }
 
 type handlerFunctionType = (count: number) => number;
@@ -26,7 +23,7 @@ function createHandler(fn:handlerFunctionType) {
     )
 }
 
-const CounterBase = kind<counterProps>({
+const CounterBase = kind<CounterProps>({
 	name: 'Counter',
 
 	defaultProps: {
