@@ -37,6 +37,7 @@
     "ilib": "^14.2.0",
     "prop-types": "^15.6.0",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "web-animations-js": "^2.3.2"
   }
 }
