@@ -2,7 +2,6 @@ import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
 import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import PropTypes, { number } from 'prop-types';
 import React from 'react';
 
 interface CounterProps {
@@ -10,9 +9,9 @@ interface CounterProps {
 	onCounterChange? : void
 }
 
-type handlerFunctionType = (count: number) => number;
+type HandlerFunctionType = (count: number) => number;
 
-function createHandler(fn:handlerFunctionType) {
+function createHandler(fn: HandlerFunctionType) {
 	return handle(
 		adaptEvent(
 			(ev, {count}) => ({
