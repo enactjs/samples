@@ -4,7 +4,7 @@ import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import React from 'react';
 
-interface CounterProps {
+interface Props {
 	count? : number,
 	onCounterChange? : void
 }
@@ -23,7 +23,7 @@ function createHandler(fn: HandlerFunctionType) {
 	)
 }
 
-const CounterBase = kind<CounterProps>({
+const CounterBase = kind<Props>({
 	name: 'Counter',
 
 	defaultProps: {
