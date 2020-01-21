@@ -9,7 +9,6 @@ const ButtonToSamples = () => (
 		<Link to="/" className={css.backLink}>
 			<Button
 				className={css.backButton}
-				style={{zIndex: 1}}
 			>
 				Back To Samples
 			</Button>
