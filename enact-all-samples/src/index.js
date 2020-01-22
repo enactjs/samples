@@ -1,3 +1,5 @@
+import kind from '@enact/core/kind';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import React from 'react';
 import {render} from 'react-dom';
@@ -52,14 +54,22 @@ console.error = (...args) => {
 };
 /* eslint-enable no-console */
 
-const appElement = (
-	<Router>
-		<div>
-			<ButtonToSamples />
-			{routes.map((route, index) => <Route key={index} {...route} />)}
-		</div>
-	</Router>
-);
+const SampleRoutes = MoonstoneDecorator(kind({
+	name:  'SampleRoutes',
+
+	render: () => {
+		return (
+			<Router>
+				<div>
+					<ButtonToSamples />
+					{routes.map((route, index) => <Route key={index} {...route} />)}
+				</div>
+			</Router>
+		);
+	}
+}));
+
+const appElement =  <SampleRoutes />;
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {

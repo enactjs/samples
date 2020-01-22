@@ -1,4 +1,4 @@
-import Button from '@enact/moonstone/Button';
+import IconButton from '@enact/moonstone/IconButton';
 import {Link} from 'react-router-dom';
 import React from 'react';
 
@@ -7,12 +7,11 @@ import css from './ButtonToSamples.module.less';
 const ButtonToSamples = () => (
 	<div className={css.buttonContainer}>
 		<Link to="/" className={css.backLink}>
-			<Button
-				className={css.backButton}
-				style={{zIndex: 1}}
+			<IconButton
+				aria-label="Back To Samples"
 			>
-				Back To Samples
-			</Button>
+				arrowhookleft
+			</IconButton>
 		</Link>
 	</div>
 );
