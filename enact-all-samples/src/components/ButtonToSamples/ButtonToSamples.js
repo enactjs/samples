@@ -9,7 +9,6 @@ const ButtonToSamples = () => (
 		<Link to="/" className={css.backLink}>
 			<IconButton
 				aria-label="Back To Samples"
-				className={css.backButton}
 			>
 				arrowhookleft
 			</IconButton>
