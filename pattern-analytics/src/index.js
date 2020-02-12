@@ -1,3 +1,4 @@
+import 'web-animations-js';
 import {forKeyCode} from '@enact/core/handle';
 import {configure} from '@enact/analytics';
 import React from 'react';
