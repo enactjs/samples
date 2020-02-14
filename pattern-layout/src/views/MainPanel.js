@@ -10,7 +10,8 @@ const GridItem = kind({
 	name: 'GridItem',
 	propTypes: {
 		index: PropTypes.number,
-		items: PropTypes.array
+		items: PropTypes.array,
+		onSelect: PropTypes.function
 	},
 	handlers: {
 		onSelect: (ev, {index, onSelect}) => onSelect({index})
