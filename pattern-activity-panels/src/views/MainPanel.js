@@ -1,9 +1,11 @@
-import Button from '@enact/moonstone/Button';
-import Item from '@enact/moonstone/Item';
+import Button from '@enact/sandstone/Button';
+import Item from '@enact/sandstone/Item';
 import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Panel, Header} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
 import React from 'react';
+
+import css from './Panel.module.less';
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -20,6 +22,11 @@ const MainPanel = kind({
 		 * @type {String}
 		 */
 		title: PropTypes.string
+	},
+
+	styles: {
+		css,
+		className: 'panel'
 	},
 
 	render: ({title, onClick, ...rest}) => (

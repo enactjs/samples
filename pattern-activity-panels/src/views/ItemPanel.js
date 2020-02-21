@@ -1,8 +1,10 @@
-import Item from '@enact/moonstone/Item';
+import Item from '@enact/sandstone/Item';
 import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Panel, Header} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
 import React from 'react';
+
+import css from './Panel.module.less';
 
 const ItemPanel = kind({
 	name: 'ItemPanel',
@@ -19,6 +21,11 @@ const ItemPanel = kind({
 		 * @type {String}
 		 */
 		title: PropTypes.string
+	},
+
+	styles: {
+		css,
+		className: 'panel'
 	},
 
 	render: ({title, onClick, ...rest}) => (

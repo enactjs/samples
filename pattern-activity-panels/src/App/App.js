@@ -1,5 +1,6 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import {Panels} from '@enact/sandstone/Panels';
+import {SlideLeftArranger} from '@enact/ui/ViewManager';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,13 +8,15 @@ import ButtonPanel from '../views/ButtonPanel';
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
+import css from './App.module.less';
+
 class App extends React.Component {
 	static propTypes = {
 		index: PropTypes.number
 	}
 
 	static defaultProps = {
-		index: 0
+		index: -1
 	}
 
 	constructor (props) {
@@ -22,6 +25,14 @@ class App extends React.Component {
 			index: this.props.index
 		};
 	}
+	
+	componentDidMount () {
+		setTimeout(() => {
+			this.setState({
+				index: 0
+			});
+		}, 100);
+	}
 
 	handleSelectBreadcrumb = ({index}) => this.setState({index})
 
@@ -29,14 +40,14 @@ class App extends React.Component {
 
 	render () {
 		return (
-			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
+			<Panels {...this.props} arranger={SlideLeftArranger} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index} className={css.app} noCloseButton>
 				<MainPanel title="First" onClick={this.handleClick} />
 				<ItemPanel title="Second" onClick={this.handleClick} />
 				<ButtonPanel title="Third" onClick={this.handleClick} />
 				<MainPanel title="Fourth" />
-			</ActivityPanels>
+			</Panels>
 		);
 	}
 }
 
-export default MoonstoneDecorator(App);
+export default ThemeDecorator(App);
