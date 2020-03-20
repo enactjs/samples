@@ -13,7 +13,7 @@ const MainPanel = kind({
 		 * A function to run on click event
 		 * @type {Function}
 		 */
-		onClick: PropTypes.func,
+		onNextPanel: PropTypes.func,
 
 		/**
 		 * A title string appear on header
@@ -22,16 +22,16 @@ const MainPanel = kind({
 		title: PropTypes.string
 	},
 
-	render: ({title, onClick, ...rest}) => (
+	render: ({title, onNextPanel, ...rest}) => (
 		<Panel {...rest}>
 			<Header title={title}>
-				<Button onClick={onClick}>Click me</Button>
-				<Button onClick={onClick}>Click me</Button>
+				<Button onClick={onNextPanel}>Click me</Button>
+				<Button onClick={onNextPanel}>Click me</Button>
 			</Header>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
-			<Item onClick={onClick}>Click me</Item>
+			<Item onClick={onNextPanel}>Click me</Item>
+			<Item onClick={onNextPanel}>Click me</Item>
+			<Item onClick={onNextPanel}>Click me</Item>
+			<Item onClick={onNextPanel}>Click me</Item>
 		</Panel>
 	)
 });

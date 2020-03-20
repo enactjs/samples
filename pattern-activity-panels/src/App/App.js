@@ -1,42 +1,55 @@
+import kind from '@enact/core/kind';
+import {handle, adaptEvent, forward} from '@enact/core/handle';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Changeable from '@enact/ui/Changeable';
 
 import ButtonPanel from '../views/ButtonPanel';
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-class App extends React.Component {
-	static propTypes = {
-		index: PropTypes.number
-	}
+import css from './App.module.less';
 
-	static defaultProps = {
+const App = kind({
+	name: 'App',
+
+	propTypes: {
+		index: PropTypes.number,
+		onNavigate: PropTypes.func
+	},
+
+	defaultProps: {
 		index: 0
-	}
+	},
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			index: this.props.index
-		};
-	}
+	styles: {
+		css,
+		className: 'app'
+	},
 
-	handleSelectBreadcrumb = ({index}) => this.setState({index})
+	handlers: {
+		onNextPanel: handle(
+			adaptEvent(
+				(ev, {index}) => ({index: index + 1}),
+				forward('onNavigate')
+			)
+		),
+		onSelectBreadcrumb: forward('onNavigate')
+	},
 
-	handleClick = () => this.setState(prevState => ({index: prevState.index + 1}))
-
-	render () {
+	render: ({index, onNextPanel, onSelectBreadcrumb, ...rest}) => {
+		delete rest.onNavigate;
 		return (
-			<ActivityPanels {...this.props} onSelectBreadcrumb={this.handleSelectBreadcrumb} index={this.state.index}>
-				<MainPanel title="First" onClick={this.handleClick} />
-				<ItemPanel title="Second" onClick={this.handleClick} />
-				<ButtonPanel title="Third" onClick={this.handleClick} />
+			<ActivityPanels {...rest} onSelectBreadcrumb={onSelectBreadcrumb} index={index}>
+				<MainPanel title="First" onNextPanel={onNextPanel} />
+				<ItemPanel title="Second" onNextPanel={onNextPanel} />
+				<ButtonPanel title="Third" onNextPanel={onNextPanel} />
 				<MainPanel title="Fourth" />
 			</ActivityPanels>
 		);
 	}
-}
+});
 
-export default MoonstoneDecorator(App);
+export default MoonstoneDecorator(Changeable({prop: 'index', change: 'onNavigate'}, App));
