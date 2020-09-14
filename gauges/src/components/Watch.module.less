@@ -1,0 +1,61 @@
+// Watch.less
+//
+@import "~@enact/agate/styles/skin.less";
+
+.watch {
+	// Skin colors
+	.applySkins({
+
+		@watch-back-color: #ffe;
+		@watch-tick-color: #333;
+		@watch-tick-width: 3px;
+
+		height: 300px;
+		width: 300px;
+		position: relative;
+		margin: @agate-component-spacing;
+		border-radius: 50%;
+		display: inline-block;
+		background-color: @watch-back-color;
+
+		.handMajor,
+		.handMinor,
+		.handSubMinor {
+			height: 100%;
+			width: 100%;
+		}
+
+		.ticksMajor,
+		.ticksMinor,
+		.ticksSubMinor {
+			.tick {
+				background-color: @watch-tick-color;
+				width: @watch-tick-width;
+			}
+		}
+
+		.ticksMajor .tick {
+			height: 45px;
+		}
+
+		.ticksMajorNumerals .tick {
+			color: @watch-tick-color;
+			font-size: 21px;
+		}
+
+		.ticksMinor .tick {
+			height: 21px;
+		}
+
+		.ticksSubMinor {
+			.tick {
+				height: 9px;
+			}
+			.fill::before {
+				width: 1px;
+				background-color: red;
+				background-image: none;
+			}
+		}
+	});
+}
