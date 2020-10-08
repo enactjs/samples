@@ -1,16 +1,15 @@
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Panels, Routable, Route} from '@enact/moonstone/Panels';
+import Routable, {Route} from '@enact/ui/Routable';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SlideLeftArranger} from '@enact/ui/ViewManager';
+import {SlideLeftArranger, ViewManager} from '@enact/ui/ViewManager';
 
 import AboutPanel from '../views/AboutPanel';
 import MainPanel from '../views/MainPanel';
 
 import AppStateDecorator from './AppStateDecorator';
 
-const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
+const RoutableViewManager = Routable({navigate: 'onBack'}, ViewManager);
 
 const App = kind({
 	name: 'App',
@@ -29,19 +28,19 @@ const App = kind({
 
 	render: ({onFirstPanel, onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
 		return (
-			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
+			<RoutableViewManager {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 				<Route path="first" component={AboutPanel} title="About Routable Panels Pattern" onClick={onSecondPanel}>
 					<Route path="second" component={MainPanel} next="fourth" title="Second" onClick={onFourthPanel} />
 					<Route path="third" component={MainPanel} next="first" title="Third" onClick={onFirstPanel}>
 						<Route path="fourth" component={MainPanel} next="third" title="Fourth" onClick={onThirdPanel} />
 					</Route>
 				</Route>
-			</RoutablePanels>
+			</RoutableViewManager>
 		);
 	}
 });
 
-export default MoonstoneDecorator(
+export default (
 	AppStateDecorator(
 		App
 	)

@@ -1,10 +1,6 @@
-import Button from '@enact/moonstone/Button';
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import RouteTree from './RouteTree';
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -19,14 +15,15 @@ const MainPanel = kind({
 		text: ({next}) => `To ${next} Panel`
 	},
 
-	render: ({title, onClick, text, ...rest}) => {
+	render: ({onClick, text, title, ...rest}) => {
 		delete rest.next;
+		delete rest.spotlightId;
+
 		return (
-			<Panel {...rest}>
-				<Header title={title} />
-				<RouteTree />
-				<Button onClick={onClick}>{text}</Button>
-			</Panel>
+			<div {...rest}>
+				<h1>{title}</h1>
+				<button onClick={onClick}>{text}</button>
+			</div>
 		);
 	}
 });
