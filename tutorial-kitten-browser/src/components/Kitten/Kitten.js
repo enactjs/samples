@@ -6,49 +6,48 @@ import Spottable from '@enact/spotlight/Spottable';
 import css from './Kitten.module.less';
 
 const KittenBase = kind({
-	name: 'Kitten',
+    name: 'Kitten',
 
-	propTypes: {
-		children: PropTypes.string,
-		index: PropTypes.number,
-		onSelect: PropTypes.func,
-		size: PropTypes.number
-	},
+    propTypes: {
+        children: PropTypes.string,
+        index: PropTypes.number,
+        onSelect: PropTypes.func,
+        size: PropTypes.number
+    },
 
-	defaultProps: {
-		size: 300
+    defaultProps: {
+        size: 300
 	},
 
 	styles: {
-		css,
-		className: 'kitten'
+        css,
+        className: 'kitten'
 	},
 
-	handlers: {
-		onSelect: (ev, {index, onSelect}) => {
-			if (onSelect) {
-				onSelect({index});
-			}
-		}
-	},
+    handlers: {
+        onSelect: (ev, {index, onSelect}) => {
+            if (onSelect) {
+                onSelect({index});
+            }
+        }
+    },
 
-	computed: {
-		url: ({index, size}) => {
-			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
-		}
-	},
+    computed: {
+        url: ({index, size}) => {
+            return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
+        }
+    },
 
-	render: ({children, onSelect, url, ...rest}) => {
-		delete rest.size;
+    render: ({children, onSelect, url, size, ...rest}) => {
 		delete rest.index;
 
-		return (
-			<div {...rest} onClick={onSelect}>
-				<img src={url} />
-				<div>{children}</div>
-			</div>
-		);
-	}
+        return (
+            <div {...rest} onClick={onSelect}>
+                <img src={url} width={size} height={size}/>
+                <div>{children}</div>
+            </div>
+        );
+    }
 });
 
 const Kitten = Spottable(KittenBase);

@@ -1,37 +1,37 @@
-import {Header, Panel} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/sandstone/Panels';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const genders = {
-	m: 'Male',
-	f: 'Female'
+    m: 'Male',
+    f: 'Female'
 };
 
 const DetailBase = kind({
-	name: 'Detail',
+    name: 'Detail',
 
-	propTypes: {
-		color: PropTypes.string,
-		gender: PropTypes.string,
-		name: PropTypes.string,
-		weight: PropTypes.number
-	},
+    propTypes: {
+        color: PropTypes.string,
+        gender: PropTypes.oneOf(['m', 'f']),
+        name: PropTypes.string,
+        weight: PropTypes.number
+    },
 
-	defaultProps: {
-		gender: 'm',
-		color: 'Tabby',
-		weight: 9
-	},
+    defaultProps: {
+        gender: 'm',
+        color: 'Tabby',
+        weight: 9
+    },
 
-	render: ({color, gender, name, weight, ...rest}) => (
-		<Panel {...rest}>
-			<Header title={name} />
-			<div>Gender: {genders[gender]}</div>
-			<div>Color: {color}</div>
-			<div>Weight: {weight}oz</div>
-		</Panel>
-	)
+    render: ({color, gender, name, weight, ...rest}) => (
+        <Panel {...rest}>
+            <Header title={name} />
+            <div>Gender: {genders[gender]}</div>
+            <div>Color: {color}</div>
+            <div>Weight: {weight}oz</div>
+        </Panel>
+    )
 });
 
 export default DetailBase;

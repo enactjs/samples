@@ -1,7 +1,7 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
+import {Panels} from '@enact/sandstone/Panels';
 import Changeable from '@enact/ui/Changeable';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -51,17 +51,17 @@ const AppBase = kind({
 
 	render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
 		<div {...rest}>
-			<ActivityPanels index={index} onSelectBreadcrumb={onNavigate}>
+			<Panels index={index} onBack={onNavigate}>
 				<List onSelectKitten={onSelectKitten}>{kittens}</List>
 				<Detail name={kittens[kitten]} />
-			</ActivityPanels>
+			</Panels>
 		</div>
 	)
 });
 
 const App = Changeable({prop: 'index', change: 'onNavigate'},
 	Changeable({prop: 'kitten', change: 'onSelectKitten'},
-		MoonstoneDecorator(AppBase)
+		ThemeDecorator(AppBase)
 	)
 );
 
