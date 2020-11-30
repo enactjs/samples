@@ -1,8 +1,8 @@
-import Item from '@enact/moonstone/Item';
+import Item from '@enact/sandstone/Item';
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
-import VirtualList from '@enact/moonstone/VirtualList';
+import VirtualList from '@enact/sandstone/VirtualList';
 
 import css from './PatternList.module.less';
 
@@ -15,7 +15,7 @@ class PatternList extends Component {
 	}
 
 	renderItem = ({index, ...rest}) => (
-		<Item {...rest} onClick={this.props.onClick}>
+		<Item {...rest} onClick={this.props.onClick} style={{margin: 0}}>
 			{items[index]}
 		</Item>
 	)
@@ -31,7 +31,7 @@ class PatternList extends Component {
 				dataSize={items.length}
 				id={id}
 				itemRenderer={this.renderItem}
-				itemSize={ri.scale(72)}
+				itemSize={ri.scale(156)}
 				spotlightId={id}
 			/>
 		);

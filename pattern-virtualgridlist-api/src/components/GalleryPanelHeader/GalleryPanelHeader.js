@@ -1,7 +1,7 @@
-import Button from '@enact/moonstone/Button';
+import Button from '@enact/sandstone/Button';
 import {connect} from 'react-redux';
-import {Header} from '@enact/moonstone/Panels';
-import IconButton from '@enact/moonstone/IconButton';
+import {Header} from '@enact/sandstone/Panels';
+import IconButton from '@enact/sandstone/IconButton';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -95,7 +95,7 @@ const GalleryPanelHeader = kind({
 		delete rest.showSelectionOverlayHandler;
 
 		return (
-			<Header {...rest}>
+			<Header {...rest} style={{'height': '200px'}}>
 				{addButton}
 				{deleteButton}
 				{selectAllButton}

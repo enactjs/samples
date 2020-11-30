@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {adaptEvent, handle, forward} from '@enact/core/handle';
-import SelectableItem from '@enact/moonstone/SelectableItem';
+import SelectableItem from '@enact/sandstone/SelectableItem';
 import Group from '@enact/ui/Group';
 
 import css from './SideBar.module.less';

@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import React from 'react';
 
 import MainView from '../views/MainView';
@@ -21,4 +21,4 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator({noAutoFocus: true}, App);
+export default ThemeDecorator({noAutoFocus: true}, App);

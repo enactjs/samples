@@ -1,7 +1,7 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
+import {ActivityPanels} from '@enact/sandstone/Panels';
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -44,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default MoonstoneDecorator(connect(mapStateToProps, mapDispatchToProps)(App));
+export default ThemeDecorator(connect(mapStateToProps, mapDispatchToProps)(App));

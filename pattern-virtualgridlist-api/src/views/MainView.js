@@ -19,11 +19,11 @@ class MainView extends React.Component {
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, focus: true});
+		//this.scrollTo({index: 60, animate: false, focus: true});
 	}
 
 	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, focus: true});
+		//this.scrollTo({index: 0, animate: false, focus: true});
 	}
 
 	onChange = ({album}) => {
@@ -37,7 +37,7 @@ class MainView extends React.Component {
 	render = () => {
 		return (
 			<div className={css.mainView}>
-				<GalleryPanelHeader title="My Gallery" />
+				<GalleryPanelHeader />
 				<div className={css.content}>
 					<SideBar
 						albums={albums}

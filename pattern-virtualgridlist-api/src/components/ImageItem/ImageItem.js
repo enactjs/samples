@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import {ImageItem as ImageItemComp} from '@enact/sandstone/ImageItem';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -19,18 +19,20 @@ const ImageItem = kind({
 		subCaption: PropTypes.string
 	},
 
-	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
-		delete rest.index;
+	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, index, ...rest}) => {
 
 		return (
-			<GridListImageItem
+			<ImageItemComp
 				{...rest}
 				caption={caption}
 				onClick={selectImageItem}
+				disabled={(index%2 === 0)}
 				selected={selected}
 				selectionOverlayShowing={selectionOverlayShowing}
 				source={source}
 				subCaption={subCaption}
+				orientation='horizontal'
+				//imageIconSource={source}
 			/>
 		);
 	}
