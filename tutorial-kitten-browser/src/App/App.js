@@ -1,9 +1,9 @@
-import {Panels} from '@enact/sandstone/Panels';
 import Changeable from '@enact/ui/Changeable';
 import kind from '@enact/core/kind';
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import {Panels} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
@@ -49,7 +49,7 @@ const AppBase = kind({
 		}
 	},
 
-	render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
+	render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
 		<div {...rest}>
 			<Panels index={index} onBack={onNavigate}>
 				<List onSelectKitten={onSelectKitten}>{kittens}</List>
@@ -66,4 +66,7 @@ const App = Changeable({prop: 'index', change: 'onNavigate'},
 );
 
 export default App;
-export {App, AppBase};
+export {
+	App, 
+	AppBase
+};

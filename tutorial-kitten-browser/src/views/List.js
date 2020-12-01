@@ -8,24 +8,27 @@ import Scroller from '@enact/sandstone/Scroller';
 import Kitten from '../components/Kitten';
 
 const ListBase = kind({
-    name: 'List',
+	name: 'List',
 
-    propTypes: {
-        children: PropTypes.array,
-        onSelectKitten: PropTypes.func
-    },
+	propTypes: {
+		children: PropTypes.array,
+		onSelectKitten: PropTypes.func
+	},
 
-    render: ({children, onSelectKitten, ...rest}) => (
-        <Panel {...rest}>
-            <Header title="Kittens!" />
-            <Scroller>
-                <Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
-                    {children}
-                </Repeater>
-            </Scroller>
-        </Panel>
-    )
+	render: ({children, onSelectKitten, ...rest}) => (
+		<Panel {...rest}>
+			<Header title="Kittens!" />
+			<Scroller>
+				<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
+					{children}
+				</Repeater>
+			</Scroller>
+		</Panel>
+	)
 });
 
 export default ListBase;
-export {ListBase as List, ListBase};
+export {
+	ListBase as List, 
+	ListBase
+};
