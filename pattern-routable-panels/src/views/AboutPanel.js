@@ -1,10 +1,11 @@
-import BodyText from '@enact/moonstone/BodyText';
-import Button from '@enact/moonstone/Button';
+import BodyText from '@enact/agate/BodyText';
+import Button from '@enact/agate/Button';
 import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Panel} from '@enact/agate/Panels';
+import {Header} from '@enact/agate/Header';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Scroller from '@enact/moonstone/Scroller';
+import Scroller from '@enact/agate/Scroller';
 
 const example =
 `<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>

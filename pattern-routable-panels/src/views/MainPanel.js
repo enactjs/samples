@@ -1,5 +1,6 @@
-import Button from '@enact/moonstone/Button';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import Button from '@enact/agate/Button';
+import {Panel} from '@enact/agate/Panels';
+import {Header} from '@enact/agate/Header';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
