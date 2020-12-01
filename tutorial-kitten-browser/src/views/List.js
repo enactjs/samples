@@ -29,6 +29,6 @@ const ListBase = kind({
 
 export default ListBase;
 export {
-	ListBase as List, 
+	ListBase as List,
 	ListBase
 };

@@ -43,7 +43,7 @@ const KittenBase = kind({
 
 		return (
 			<div {...rest} onClick={onSelect}>
-				<img src={url} width={size} height={size}/>
+				<img src={url} alt="Kitten" width={size} height={size} />
 				<div>{children}</div>
 			</div>
 		);
@@ -54,6 +54,6 @@ const Kitten = Spottable(KittenBase);
 
 export default Kitten;
 export {
-	Kitten, 
+	Kitten,
 	KittenBase
 };

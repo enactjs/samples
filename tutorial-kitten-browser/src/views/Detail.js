@@ -36,6 +36,6 @@ const DetailBase = kind({
 
 export default DetailBase;
 export {
-	DetailBase as Detail, 
+	DetailBase as Detail,
 	DetailBase
 };

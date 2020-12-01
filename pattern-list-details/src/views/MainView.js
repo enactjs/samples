@@ -22,7 +22,7 @@ class MainView extends React.Component {
 	handleCountryChange = ({data: country}) => {
 		country = country.toLowerCase();
 		this.setState({country});
-	}
+	};
 
 	render () {
 		const selectedCountry = this.state.country;

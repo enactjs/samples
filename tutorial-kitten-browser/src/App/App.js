@@ -67,6 +67,6 @@ const App = Changeable({prop: 'index', change: 'onNavigate'},
 
 export default App;
 export {
-	App, 
+	App,
 	AppBase
 };
