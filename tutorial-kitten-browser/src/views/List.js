@@ -1,9 +1,9 @@
-import {Header, Panel} from '@enact/sandstone/Panels';
 import kind from '@enact/core/kind';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import Scroller from '@enact/sandstone/Scroller';
+import Repeater from '@enact/ui/Repeater';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Repeater from '@enact/ui/Repeater';
-import Scroller from '@enact/sandstone/Scroller';
 
 import Kitten from '../components/Kitten';
 
