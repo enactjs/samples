@@ -30,13 +30,13 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^3.4.7",
-    "@enact/i18n": "^3.4.7",
+    "@enact/core": "^3.4.9",
+    "@enact/i18n": "^3.4.9",
     "@enact/moonstone": "^3.0.0",
     "@enact/sandstone": "enyojs/sandstone#1.4.4",
-    "@enact/spotlight": "^3.4.7",
-    "@enact/ui": "^3.4.7",
-    "@enact/webos": "^3.4.7",
+    "@enact/spotlight": "^3.4.9",
+    "@enact/ui": "^3.4.9",
+    "@enact/webos": "^3.4.9",
     "ilib": "^14.4.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.4.0",
