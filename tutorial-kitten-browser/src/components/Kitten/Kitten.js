@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
+import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Spottable from '@enact/spotlight/Spottable';
 
 import css from './Kitten.module.less';
 
@@ -38,13 +38,12 @@ const KittenBase = kind({
 		}
 	},
 
-	render: ({children, onSelect, url, ...rest}) => {
-		delete rest.size;
+	render: ({children, onSelect, size, url, ...rest}) => {
 		delete rest.index;
 
 		return (
 			<div {...rest} onClick={onSelect}>
-				<img src={url} />
+				<img src={url} alt="Kitten" width={size} height={size} />
 				<div>{children}</div>
 			</div>
 		);
@@ -54,4 +53,7 @@ const KittenBase = kind({
 const Kitten = Spottable(KittenBase);
 
 export default Kitten;
-export {Kitten, KittenBase};
+export {
+	Kitten,
+	KittenBase
+};

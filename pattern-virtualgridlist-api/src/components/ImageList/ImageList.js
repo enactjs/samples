@@ -10,9 +10,9 @@ class ImageList extends React.Component {
 	static propTypes = {
 		dispatch: PropTypes.func,
 		imageitems: PropTypes.array
-	}
+	};
 
-	renderItem = ({...rest}) => (<ImageItem {...rest} />)
+	renderItem = ({...rest}) => (<ImageItem {...rest} />);
 
 	render = () => {
 		const
@@ -31,7 +31,7 @@ class ImageList extends React.Component {
 				spacing={ri.scale(21)}
 			/>
 		);
-	}
+	};
 }
 
 const mapStateToProps = ({data}) => ({

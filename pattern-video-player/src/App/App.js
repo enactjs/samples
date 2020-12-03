@@ -33,12 +33,12 @@ class App extends React.Component {
 		 * @public
 		 */
 		videoIndex: PropTypes.number
-	}
+	};
 
 	static defaultProps = {
 		panelIndex: 0,
 		videoIndex: 0
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -57,22 +57,22 @@ class App extends React.Component {
 		}
 	}
 
-	handleNextPanelClick = () => this.setState(prevState => ({panelIndex: prevState.panelIndex + 1}))
+	handleNextPanelClick = () => this.setState(prevState => ({panelIndex: prevState.panelIndex + 1}));
 
-	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index})
+	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index});
 
-	handleHidePanelsClick = () => this.setState({panelsVisible: false})
+	handleHidePanelsClick = () => this.setState({panelsVisible: false});
 
 	handleShowPanelsClick = () => {
 		this.videoRef.hideControls();
 		this.setState({panelsVisible: true});
-	}
+	};
 
-	setVideoIndex = (videoIndex) => this.setState({videoIndex})
+	setVideoIndex = (videoIndex) => this.setState({videoIndex});
 
 	setVideoRef = (ref) => {
 		this.videoRef = ref;
-	}
+	};
 
 	render () {
 		const {className, ...rest} = this.props;
