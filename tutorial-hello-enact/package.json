@@ -21,24 +21,21 @@
   "repository": "https://github.com/enactjs/samples",
   "enact": {
     "title": "Hello, Enact",
-    "isomorphic": true,
-    "ri": {
-      "baseSize": 24
-    }
+    "theme": "sandstone"
   },
   "eslintConfig": {
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^3.0.0",
-    "@enact/i18n": "^3.0.0",
-    "@enact/moonstone": "^3.0.0",
-    "@enact/spotlight": "^3.0.0",
-    "@enact/ui": "^3.0.0",
-    "ilib": "^14.2.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "@enact/core": "^3.4.9",
+    "@enact/i18n": "^3.4.9",
+    "@enact/sandstone": "enyojs/sandstone",
+    "@enact/spotlight": "^3.4.9",
+    "@enact/ui": "^3.4.9",
+    "ilib": "^14.4.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "web-animations-js": "^2.3.2"
   }
 }
