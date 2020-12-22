@@ -21,16 +21,16 @@ class Body extends React.Component {
 		};
 	}
 
-	componentWillReceiveProps (nextProps) {
+	UNSAFE_componentWillReceiveProps (nextProps) {
 		const nextCity = this.props.cities[nextProps.selectedCountry][0];
 		this.setState({city: nextCity});
 	}
 
-	handleCityChange = ({data: city}) => this.setState({city})
+	handleCityChange = ({data: city}) => this.setState({city});
 
 	handleZoom = () => {
 		this.setState(({zoom}) => ({zoom: !zoom}));
-	}
+	};
 
 	render () {
 		const {cities, selectedCountry, ...rest} = this.props;

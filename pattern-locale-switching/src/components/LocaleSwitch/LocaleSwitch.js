@@ -10,7 +10,7 @@ import {updateLocale} from '../../actions';
 class LocaleSwitch extends Component {
 	static propTypes = {
 		updateReduxLocale: PropTypes.func
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -23,15 +23,15 @@ class LocaleSwitch extends Component {
 		this.setState({
 			value: ev.value
 		});
-	}
+	};
 
 	updateContextLocale = () => {
 		this.context.updateLocale(this.state.value);
-	}
+	};
 
 	updateReduxLocale = () => {
 		this.props.updateReduxLocale(this.state.value);
-	}
+	};
 
 	render () {
 		return (
