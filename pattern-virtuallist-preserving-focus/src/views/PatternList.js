@@ -1,8 +1,8 @@
 import Item from '@enact/moonstone/Item';
-import PropTypes from 'prop-types';
-import React, {Component} from 'react';
-import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
+import {Component} from 'react';
 
 import css from './PatternList.module.less';
 
