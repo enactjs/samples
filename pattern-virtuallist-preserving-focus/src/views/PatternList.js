@@ -12,13 +12,13 @@ class PatternList extends Component {
 	static propTypes = {
 		id: PropTypes.string,
 		onClick: PropTypes.func
-	}
+	};
 
 	renderItem = ({index, ...rest}) => (
 		<Item {...rest} onClick={this.props.onClick}>
 			{items[index]}
 		</Item>
-	)
+	);
 
 	render () {
 		const {id, ...rest} = this.props;
