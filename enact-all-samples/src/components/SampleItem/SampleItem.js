@@ -6,11 +6,11 @@ class SampleItem extends React.Component {
 	static propTypes = {
 		history: PropTypes.object,
 		path: PropTypes.any
-	}
+	};
 
 	itemSelect = () => {
 		this.props.history.push({pathname: this.props.path});
-	}
+	};
 
 	render () {
 		const {children, ...rest} = this.props;

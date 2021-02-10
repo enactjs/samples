@@ -83,19 +83,19 @@ const App = kind({
 
 const AppDecorator = hoc((config, Wrapped) => {
 	return class extends React.Component {
-		static displayName = 'AppDecorator'
+		static displayName = 'AppDecorator';
 
 		static propTypes = {
 			defaultDebug: PropTypes.bool,
 			defaultIndex: PropTypes.number,
 			defaultItemIndex: PropTypes.number
-		}
+		};
 
 		static defaultProps = {
 			defaultDebug: false,
 			defaultIndex: 0,
 			defaultItemIndex: 0
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -110,7 +110,7 @@ const AppDecorator = hoc((config, Wrapped) => {
 		handleChangePanel = (ev) => {
 			forward('onChangePanel', ev, this.props);
 			this.setState({index: ev.index, itemIndex: ev.itemIndex});
-		}
+		};
 
 		handleToggleDebug = () => {
 			this.setState(state => {
@@ -118,7 +118,7 @@ const AppDecorator = hoc((config, Wrapped) => {
 				forward('onToggleDebug', newState, this.props);
 				return newState;
 			});
-		}
+		};
 
 		render () {
 			const {...rest} = this.props;

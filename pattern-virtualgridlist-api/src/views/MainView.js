@@ -14,7 +14,7 @@ class MainView extends React.Component {
 	static propTypes = {
 		album: PropTypes.string,
 		onChangeAlbum: PropTypes.func
-	}
+	};
 
 	componentDidMount () {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
@@ -28,11 +28,11 @@ class MainView extends React.Component {
 
 	onChange = ({album}) => {
 		this.props.onChangeAlbum(album);
-	}
+	};
 
 	getScrollTo = (scrollTo) => {
 		this.scrollTo = scrollTo;
-	}
+	};
 
 	render = () => {
 		return (
@@ -52,7 +52,7 @@ class MainView extends React.Component {
 				</div>
 			</div>
 		);
-	}
+	};
 }
 
 export default AppStateDecorator(MainView);

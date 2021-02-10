@@ -44,7 +44,7 @@ const KittenBase = kind({
 
 		return (
 			<div {...rest} onClick={onSelect}>
-				<img src={url} />
+				<img src={url} alt="" />
 				<div>{children}</div>
 			</div>
 		);
