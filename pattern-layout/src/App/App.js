@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
 import {adaptEvent, forward, handle} from '@enact/core/handle';

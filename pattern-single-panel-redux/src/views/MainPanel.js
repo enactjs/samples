@@ -1,7 +1,7 @@
 import {Cell, Column} from '@enact/ui/Layout';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import FooterContainer from '../containers/FooterContainer';
 import PhotoPickerContainer from '../containers/PhotoPickerContainer';

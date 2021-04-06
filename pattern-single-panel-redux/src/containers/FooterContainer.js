@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import {save} from '../actions';
 import SaveButton from '../components/SaveButton';

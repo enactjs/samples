@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
 import Panels from '@enact/moonstone/Panels';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import MainView from '../views/MainView';
 

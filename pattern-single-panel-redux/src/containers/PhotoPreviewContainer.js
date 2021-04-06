@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import css from './containerStyles.module.less';
 

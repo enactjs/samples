@@ -1,7 +1,7 @@
 import Button from '@enact/moonstone/Button';
 import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 class SaveButton extends React.Component {
 	static propTypes = {

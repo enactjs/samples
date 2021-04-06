@@ -1,5 +1,5 @@
 import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import Nav from '../components/Nav';
 import Body from './Body';

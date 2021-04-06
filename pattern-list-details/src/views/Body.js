@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import {Row, Cell} from '@enact/ui/Layout';
 
 import Content from '../components/Content';

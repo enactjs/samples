@@ -2,7 +2,7 @@ import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import MainPanel from '../views/MainPanel';
 
