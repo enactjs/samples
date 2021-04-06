@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import {PatternList} from './PatternList';
 

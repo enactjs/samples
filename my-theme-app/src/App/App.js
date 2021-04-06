@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {handle, adaptEvent, forward} from '@enact/core/handle';

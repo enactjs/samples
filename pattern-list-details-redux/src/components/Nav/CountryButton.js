@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 const CountryButton = kind({
 	name: 'CountryButton',

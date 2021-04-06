@@ -1,6 +1,6 @@
 import Button from '@enact/moonstone/Button';
 import {Link} from 'react-router-dom';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 import css from './ButtonToSamples.module.less';
 

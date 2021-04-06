@@ -3,7 +3,7 @@ import Item from '@enact/moonstone/Item';
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 const MainPanel = kind({
 	name: 'MainPanel',

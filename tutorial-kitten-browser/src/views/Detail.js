@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 const genders = {
 	m: 'Male',

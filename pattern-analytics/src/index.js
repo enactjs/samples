@@ -1,7 +1,7 @@
 import 'web-animations-js';
 import {forKeyCode} from '@enact/core/handle';
 import {configure} from '@enact/analytics';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import {render} from 'react-dom';
 
 import App from './App';

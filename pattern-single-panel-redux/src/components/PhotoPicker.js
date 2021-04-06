@@ -3,7 +3,7 @@ import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
 import Picker from '@enact/moonstone/Picker';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 const ProfilePhotoPickerContainer = kind({
 	name: 'ProfilePhotoPickerContainer',

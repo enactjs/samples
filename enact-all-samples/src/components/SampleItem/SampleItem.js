@@ -1,6 +1,6 @@
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 
 class SampleItem extends React.Component {
 	static propTypes = {

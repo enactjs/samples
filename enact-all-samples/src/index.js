@@ -1,6 +1,6 @@
 import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import {render} from 'react-dom';
 
 import PatternActivityPanels from '../../pattern-activity-panels/src/App';

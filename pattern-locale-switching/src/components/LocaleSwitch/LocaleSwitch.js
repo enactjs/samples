@@ -3,7 +3,7 @@ import {contextTypes} from '@enact/i18n/I18nDecorator';
 import {connect} from 'react-redux';
 import Input from '@enact/moonstone/Input';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React, {Component} from 'react'; // eslint-disable-line no-unused-vars
 
 import {updateLocale} from '../../actions';
 
