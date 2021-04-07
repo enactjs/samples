@@ -3,7 +3,6 @@ import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Changeable from '@enact/ui/Changeable';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
