@@ -33,7 +33,7 @@
     "@enact/core": "^3.4.9",
     "@enact/i18n": "^3.4.9",
     "@enact/moonstone": "^3.0.0",
-    "@enact/sandstone": "^1.5.1",
+    "@enact/sandstone": "^2.0.0-alpha.2",
     "@enact/spotlight": "^3.4.9",
     "@enact/ui": "^3.4.9",
     "@enact/webos": "^3.4.9",
