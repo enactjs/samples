@@ -4,7 +4,7 @@ import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import {
 	addItem as addAction,

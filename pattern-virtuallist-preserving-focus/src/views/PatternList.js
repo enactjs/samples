@@ -1,6 +1,6 @@
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react'; // eslint-disable-line no-unused-vars
+import React, {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/moonstone/VirtualList';
 

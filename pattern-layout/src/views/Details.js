@@ -1,4 +1,4 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import ri from '@enact/ui/resolution';

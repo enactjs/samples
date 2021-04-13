@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 //Custom component
 import Counter from '../components/Counter'

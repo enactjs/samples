@@ -1,7 +1,7 @@
 import {Cell, Column} from '@enact/ui/Layout';
 import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import ProfilePhotoPicker from '../components/ProfilePhotoPicker';
 import SaveButton from '../components/SaveButton';

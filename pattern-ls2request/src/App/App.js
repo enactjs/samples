@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import LabeledItem from '@enact/moonstone/LabeledItem';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 

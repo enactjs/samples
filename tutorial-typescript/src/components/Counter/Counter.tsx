@@ -2,7 +2,7 @@ import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
 import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 interface Props {
 	count? : number,

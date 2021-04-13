@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import {decreaseIndex, increaseIndex} from '../actions';
 import MainPanel from '../views/MainPanel';

@@ -3,7 +3,7 @@ import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/moonstone/VirtualList';
 

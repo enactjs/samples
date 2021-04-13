@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';

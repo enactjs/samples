@@ -5,7 +5,7 @@ import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import RadioItem from '@enact/moonstone/RadioItem';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 
 import videos from '../App/videos.js';
