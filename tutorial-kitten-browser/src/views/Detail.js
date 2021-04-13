@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const genders = {
 	m: 'Male',
