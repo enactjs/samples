@@ -1,5 +1,5 @@
 import {Provider} from 'react-redux';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import App from './App';
 import configureStore from './store';

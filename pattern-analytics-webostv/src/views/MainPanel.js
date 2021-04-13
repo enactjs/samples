@@ -3,7 +3,7 @@ import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import IconButton from '@enact/moonstone/IconButton';
 import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 const MainPanel = kind({
 	name: 'MainPanel',

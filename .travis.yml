@@ -6,11 +6,26 @@ install:
     - npm install -g enyojs/enact-cli#develop
     - npm install
 script:
+    # - echo -e "\x1b\x5b35;1m*** Starting eslint...\x1b\x5b0m"
+    # - npm run lint
+    # - echo -e "\x1b\x5b35;1m*** eslint complete\x1b\x5b0m"
+    # - echo -e "\x1b\x5b35;1m*** Starting all-sample build...\x1b\x5b0m"
+    # - cd enact-all-samples
+    # - npm install
+    # - npm run pack
+    # - echo -e "\x1b\x5b35;1m*** sampler build complete\x1b\x5b0m"
+
+    # Temporarily check only two folders. (PLAT-128528)
     - echo -e "\x1b\x5b35;1m*** Starting eslint...\x1b\x5b0m"
     - npm run lint
     - echo -e "\x1b\x5b35;1m*** eslint complete\x1b\x5b0m"
-    - echo -e "\x1b\x5b35;1m*** Starting all-sample build...\x1b\x5b0m"
-    - cd enact-all-samples
+    - echo -e "\x1b\x5b35;1m*** Starting tutorial-hello-enact build...\x1b\x5b0m"
+    - cd tutorial-hello-enact
     - npm install
     - npm run pack
-    - echo -e "\x1b\x5b35;1m*** sampler build complete\x1b\x5b0m"
+    - cd ..
+    - echo -e "\x1b\x5b35;1m*** Starting tutorial-kitten-browser build...\x1b\x5b0m"
+    - cd tutorial-kitten-browser
+    - npm install
+    - npm run pack
+    - echo -e "\x1b\x5b35;1m*** sample build complete\x1b\x5b0m"

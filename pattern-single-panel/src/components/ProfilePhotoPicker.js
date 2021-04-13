@@ -3,7 +3,7 @@ import {Cell, Column} from '@enact/ui/Layout';
 import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import Slider from '@enact/moonstone/Slider';
 
 import car from '../../assets/images/car.jpeg';

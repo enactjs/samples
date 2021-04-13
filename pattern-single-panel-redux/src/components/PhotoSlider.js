@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import Slider from '@enact/moonstone/Slider';
 
 import css from './componentStyles.module.less';

@@ -4,7 +4,7 @@ import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
 import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';

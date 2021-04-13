@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
 
 import css from './Kitten.module.less';
 

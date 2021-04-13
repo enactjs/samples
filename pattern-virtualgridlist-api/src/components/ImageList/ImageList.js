@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import ri from '@enact/ui/resolution';
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
 

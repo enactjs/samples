@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import Group from '@enact/ui/Group';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 const Nav = kind({
 	name: 'Nav',

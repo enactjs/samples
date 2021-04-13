@@ -1,5 +1,5 @@
 import {mount} from 'enzyme';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import Body from '../../views/Body.js';
 

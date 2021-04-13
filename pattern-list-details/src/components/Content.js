@@ -3,7 +3,7 @@ import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
 import Marquee from '@enact/moonstone/Marquee';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 
 import barcelona from '../../assets/images/barcelona.jpeg';
 import busan from '../../assets/images/busan.jpeg';

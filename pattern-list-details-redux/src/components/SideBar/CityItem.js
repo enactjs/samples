@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import {adaptEvent, handle, forward} from '@enact/core/handle';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 
 const CityItem = kind({

@@ -3,7 +3,6 @@ import {Header, Panel} from '@enact/sandstone/Panels';
 import Scroller from '@enact/sandstone/Scroller';
 import Repeater from '@enact/ui/Repeater';
 import PropTypes from 'prop-types';
-import React from 'react'; // eslint-disable-line no-unused-vars
 
 import Kitten from '../components/Kitten';
 
