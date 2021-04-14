@@ -10,11 +10,11 @@ import MainPanel from '../views/MainPanel';
 class App extends React.Component {
 	static propTypes = {
 		index: PropTypes.number
-	}
+	};
 
 	static defaultProps = {
 		index: 0
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -23,9 +23,9 @@ class App extends React.Component {
 		};
 	}
 
-	handleSelectBreadcrumb = ({index}) => this.setState({index})
+	handleSelectBreadcrumb = ({index}) => this.setState({index});
 
-	handleClick = () => this.setState(prevState => ({index: prevState.index + 1}))
+	handleClick = () => this.setState(prevState => ({index: prevState.index + 1}));
 
 	render () {
 		return (

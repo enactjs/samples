@@ -31,7 +31,7 @@ const imageComponents = imageURLs.map(url => {
 class ProfilePhotoPicker extends React.Component {
 	static propTypes = {
 		className: PropTypes.string
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -45,13 +45,13 @@ class ProfilePhotoPicker extends React.Component {
 		this.setState({
 			photoIndex: ev.value
 		});
-	}
+	};
 
 	handleSliderChange = (ev) => {
 		if (ev.value) {
 			this.setState({photoPosition: ev.value});
 		}
-	}
+	};
 
 	render = () => (
 		<Column
@@ -90,7 +90,7 @@ class ProfilePhotoPicker extends React.Component {
 				{imageComponents}
 			</Cell>
 		</Column>
-	)
+	);
 }
 
 export default ProfilePhotoPicker;

@@ -22,24 +22,22 @@
   "enact": {
     "title": "Kitten Browser",
     "isomorphic": true,
-    "ri": {
-      "baseSize": 24
-    }
+    "theme": "sandstone"
   },
   "eslintConfig": {
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^3.0.0",
-    "@enact/i18n": "^3.0.0",
-    "@enact/moonstone": "^3.0.0",
-    "@enact/spotlight": "^3.0.0",
-    "@enact/ui": "^3.0.0",
-    "@enact/webos": "^3.0.0",
-    "ilib": "^14.2.0",
-    "prop-types": "^15.6.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "@enact/core": "^4.0.0",
+    "@enact/i18n": "^4.0.0",
+    "@enact/sandstone": "^2.0.0-alpha.3",
+    "@enact/spotlight": "^4.0.0",
+    "@enact/ui": "^4.0.0",
+    "@enact/webos": "^4.0.0",
+    "ilib": "^14.4.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "web-animations-js": "^2.3.2"
   }
 }

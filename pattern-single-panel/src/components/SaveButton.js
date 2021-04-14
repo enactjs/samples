@@ -6,7 +6,7 @@ import React from 'react';
 class SaveButton extends React.Component {
 	static propTypes = {
 		className: PropTypes.string
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -17,11 +17,11 @@ class SaveButton extends React.Component {
 
 	handleOnSave = () => {
 		this.setState({saved: true});
-	}
+	};
 
 	handleOnClose = () => {
 		this.setState({saved: false});
-	}
+	};
 
 	render = () => (
 		<div {...this.props}>
@@ -32,7 +32,7 @@ class SaveButton extends React.Component {
 				Saved!
 			</Popup>
 		</div>
-	)
+	);
 }
 
 export default SaveButton;

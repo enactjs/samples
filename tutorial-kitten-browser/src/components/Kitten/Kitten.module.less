@@ -1,5 +1,12 @@
+@import "~@enact/sandstone/styles/mixins.less";
+
 .kitten {
 	display: inline-block;
-	padding: 12px;
+	padding: 24px;
 	text-align: center;
+	background-color: transparent;
+	.focus({
+		background-color:  #e6e6e6; // light-grey
+		color: black;
+	});
 }
