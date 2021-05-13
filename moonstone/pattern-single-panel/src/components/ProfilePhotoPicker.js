@@ -1,10 +1,10 @@
 import BodyText from '@enact/moonstone/BodyText';
-import {Cell, Column} from '@enact/ui/Layout';
 import Image from '@enact/moonstone/Image';
 import Picker from '@enact/moonstone/Picker';
+import Slider from '@enact/moonstone/Slider';
+import {Cell, Column} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Slider from '@enact/moonstone/Slider';
 
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
@@ -55,8 +55,8 @@ class ProfilePhotoPicker extends React.Component {
 
 	render = () => (
 		<Column
-			align="center center"
 			{...this.props}
+			align="center center"
 		>
 			<Cell
 				className={css.profilePhoto}

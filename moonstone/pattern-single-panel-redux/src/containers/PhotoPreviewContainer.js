@@ -1,8 +1,7 @@
-import {connect} from 'react-redux';
-import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
+import Image from '@enact/moonstone/Image';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {connect} from 'react-redux';
 
 import css from './containerStyles.module.less';
 

@@ -1,12 +1,12 @@
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import React from 'react';
-import ri from '@enact/ui/resolution';
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
+import {Component} from 'react';
+import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-class ImageList extends React.Component {
+class ImageList extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func,
 		imageitems: PropTypes.array

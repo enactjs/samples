@@ -1,9 +1,9 @@
 import Button from '@enact/moonstone/Button';
 import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
-class SaveButton extends React.Component {
+class SaveButton extends Component {
 	static propTypes = {
 		className: PropTypes.string
 	};
@@ -28,7 +28,7 @@ class SaveButton extends React.Component {
 			<Button onClick={this.handleOnSave}>
 				Save
 			</Button>
-			<Popup open={this.state.saved} onClose={this.handleOnClose} showCloseButton>
+			<Popup onClose={this.handleOnClose} open={this.state.saved} showCloseButton>
 				Saved!
 			</Popup>
 		</div>

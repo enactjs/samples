@@ -5,10 +5,10 @@ A sample Enact application that demonstrates how to use ActivityPanels with Redu
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Panels/ActivityPanels`
-- `moonstone/Panels/Panel`
-- `moonstone/Panels/Header`
 - `moonstone/Button`
+- `moonstone/Panels/ActivityPanels`
+- `moonstone/Panels/Header`
+- `moonstone/Panels/Panel`
 
 If you have a list of panels defined as children of `ActivityPanels`, then you can navigate panels
 by setting `index` prop in `ActivityPanels`.
@@ -16,10 +16,10 @@ by setting `index` prop in `ActivityPanels`.
 ```javascript
 render: ({index, pushPanel, popPanel, ...rest}) => {
 	return (
-		<ActivityPanels {...rest} onSelectBreadcrumb={popPanel} index={index}>
-			<MainPanel title="First" onClick={pushPanel} />
-			<MainPanel title="Second" onClick={pushPanel} />
-			<MainPanel title="Third" onClick={pushPanel} />
+		<ActivityPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
+			<MainPanel onClick={pushPanel} title="First" />
+			<MainPanel onClick={pushPanel} title="Second" />
+			<MainPanel onClick={pushPanel} title="Third" />
 			<MainPanel title="Fourth" />
 		</ActivityPanels>
 	);

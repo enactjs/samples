@@ -1,9 +1,8 @@
+import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import Item from '@enact/moonstone/Item';
-import kind from '@enact/core/kind';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const MainPanel = kind({
 	name: 'MainPanel',

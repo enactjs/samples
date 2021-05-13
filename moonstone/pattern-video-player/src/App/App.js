@@ -81,7 +81,7 @@ class App extends React.Component {
 		delete rest.videoIndex;
 		return (
 			<div {...rest} className={className + ' ' + css.app}>
-				<VideoPlayer ref={this.setVideoRef} spotlightDisabled={this.state.panelsVisible} {...restVideo} className={css.player + ' enact-fit'}>
+				<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={this.setVideoRef} spotlightDisabled={this.state.panelsVisible}>
 					<source src={source} type="video/mp4" />
 					<infoComponents>
 						{desc}
@@ -100,13 +100,13 @@ class App extends React.Component {
 				</VideoPlayer>
 				{this.state.panelsVisible ?
 					<AlwaysViewingPanels
-						onSelectBreadcrumb={this.handleSelectBreadcrumb}
 						index={this.state.panelIndex}
+						onSelectBreadcrumb={this.handleSelectBreadcrumb}
 					>
 						<MainPanel
-							onVideoIndexChange={this.setVideoIndex}
 							onHidePanels={this.handleHidePanelsClick}
 							onNextPanel={this.handleNextPanelClick}
+							onVideoIndexChange={this.setVideoIndex}
 							spotlightId="main-panel"
 							title="Videos"
 							videoIndex={this.state.videoIndex}

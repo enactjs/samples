@@ -5,12 +5,12 @@ A sample Enact application that shows off how to use Routable, Routes and Activi
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
+- `moonstone/Button`
 - `moonstone/Panels/ActivityPanels`
+- `moonstone/Panels/Header`
 - `moonstone/Panels/Panel`
 - `moonstone/Panels/Routable` (Higher Order Component)
 - `moonstone/Panels/Route`
-- `moonstone/Panels/Header`
-- `moonstone/Button`
 
 Similar to routable panels pattern sample, using `Routes` and `Routable` you will have a very simple,
 declarative way to view and navigate through your panels. Just set up your routes and `RoutablePanels`
@@ -20,10 +20,10 @@ Here's what your panels' JSX will end up looking like:
 
 ```jsx
 <RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
-	<Route path="first" component={MainPanel} title="First" onClick={onSecondPanel}>
-		<Route path="second" component={MainPanel} title="Second" onClick={onThirdPanel}>
-			<Route path="third" component={MainPanel} title="Third" onClick={onFourthPanel}>
-				<Route path="fourth" component={MainPanel} title="Fourth" />
+	<Route component={MainPanel} onClick={onSecondPanel} path="first" title="First">
+		<Route component={MainPanel} onClick={onThirdPanel} path="second" title="Second">
+			<Route component={MainPanel} onClick={onFourthPanel} path="third" title="Third">
+				<Route component={MainPanel} path="fourth" title="Fourth" />
 			</Route>
 		</Route>
 	</Route>

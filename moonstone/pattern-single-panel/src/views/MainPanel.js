@@ -1,7 +1,6 @@
-import {Cell, Column} from '@enact/ui/Layout';
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import React from 'react';
+import {Header, Panel} from '@enact/moonstone/Panels';
+import {Cell, Column} from '@enact/ui/Layout';
 
 import ProfilePhotoPicker from '../components/ProfilePhotoPicker';
 import SaveButton from '../components/SaveButton';
@@ -11,12 +10,12 @@ const MainPanel = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="Profile Photo" titleBelow="Choose your profile picture" type="compact" casing="preserve" />
+			<Header casing="preserve" title="Profile Photo" titleBelow="Choose your profile picture" type="compact" />
 			<Column align="center">
 				<Cell>
 					<ProfilePhotoPicker />
 				</Cell>
-				<Cell shrink component={SaveButton} />
+				<Cell component={SaveButton} shrink />
 			</Column>
 		</Panel>
 	)

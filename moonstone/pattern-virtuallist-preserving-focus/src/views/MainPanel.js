@@ -1,8 +1,7 @@
+import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import {Header, Panel} from '@enact/moonstone/Panels';
-import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import {PatternList} from './PatternList';
 
@@ -28,7 +27,7 @@ const MainPanel = kind({
 			<Header title={title}>
 				<Button onClick={onClick}>Click me</Button>
 			</Header>
-			<PatternList index={rest['data-index']} onClick={onClick} id={title} />
+			<PatternList id={title} index={rest['data-index']} onClick={onClick} />
 		</Panel>
 	)
 });

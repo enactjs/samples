@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const SavedPopup = kind({
 	name: 'SavedPopup',
@@ -25,7 +24,7 @@ const SavedPopup = kind({
 		delete rest.saveToState;
 
 		return (
-			<Popup open={saved} onClose={onChange} showCloseButton>
+			<Popup onClose={onChange} open={saved} showCloseButton>
 				Saved!
 			</Popup>
 		);

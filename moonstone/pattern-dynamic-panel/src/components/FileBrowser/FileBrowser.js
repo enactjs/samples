@@ -1,11 +1,10 @@
-import Cancelable from '@enact/ui/Cancelable';
+import kind from '@enact/core/kind';
 import {Image} from '@enact/moonstone/Image';
 import {Item} from '@enact/moonstone/Item';
-import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import React from 'react';
-import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/moonstone/VirtualList';
+import Cancelable from '@enact/ui/Cancelable';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 
 import butterfly from '../../../assets/images/butterfly.jpg';
 import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';
@@ -52,10 +51,12 @@ const filePhotos = {
 
 const FileBrowserBase = kind({
 	name: 'FileBrowserBase',
+
 	propTypes: {
 		onNavigate: PropTypes.func,
 		path: PropTypes.object
 	},
+
 	handlers: {
 		// create a cached event handler forwarding to onNavigate
 		onNavigate: (ev, props) => {
@@ -96,7 +97,7 @@ const FileBrowserBase = kind({
 				<Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
-				<DynamicPanel path={path} {...rest}>
+				<DynamicPanel {...rest} path={path}>
 					{component}
 				</DynamicPanel>
 			);

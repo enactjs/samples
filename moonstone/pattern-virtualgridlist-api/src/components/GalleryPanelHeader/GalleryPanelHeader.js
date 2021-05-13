@@ -1,10 +1,9 @@
-import Button from '@enact/moonstone/Button';
-import {connect} from 'react-redux';
-import {Header} from '@enact/moonstone/Panels';
-import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
+import Button from '@enact/moonstone/Button';
+import IconButton from '@enact/moonstone/IconButton';
+import {Header} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {connect} from 'react-redux';
 
 import {
 	addItem as addAction,
@@ -63,22 +62,22 @@ const GalleryPanelHeader = kind({
 				tooltipText = showOverlay ? 'Previous' : 'Selection',
 				icon = showOverlay ? 'rollbackward' : 'check';
 			return (
-				<IconButton tooltipText={tooltipText} size="small" onClick={showSelectionOverlayHandler}>{icon}</IconButton>
+				<IconButton onClick={showSelectionOverlayHandler} size="small" tooltipText={tooltipText}>{icon}</IconButton>
 			);
 		},
 		addButton: ({addMockItem, showOverlay}) => {
 			if (!showOverlay) {
-				return (<IconButton tooltipText="Add Item" size="small" onClick={addMockItem}>plus</IconButton>);
+				return (<IconButton onClick={addMockItem} size="small" tooltipText="Add Item">plus</IconButton>);
 			}
 		},
 		deleteButton: ({deleteItem, showOverlay}) => {
 			if (showOverlay) {
-				return (<Button size="small" onClick={deleteItem}>Delete</Button>);
+				return (<Button onClick={deleteItem} size="small">Delete</Button>);
 			}
 		},
 		selectAllButton: ({selectAll, showOverlay}) => {
 			if (showOverlay) {
-				return (<Button size="small" onClick={selectAll}>Select All</Button>);
+				return (<Button onClick={selectAll} size="small">Select All</Button>);
 			}
 		}
 	},

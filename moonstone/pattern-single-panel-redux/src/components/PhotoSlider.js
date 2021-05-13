@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import React from 'react';
 import Slider from '@enact/moonstone/Slider';
+import PropTypes from 'prop-types';
 
 import css from './componentStyles.module.less';
 
@@ -28,7 +27,7 @@ const PhotoSlider = kind({
 		delete rest.changePhotoPosition;
 
 		return (
-			<Slider {...rest} min={-100} max={0} value={photoPosition} onChange={onChange} />
+			<Slider {...rest} max={0} min={-100} onChange={onChange} value={photoPosition} />
 		);
 	}
 });

@@ -1,12 +1,11 @@
-import Button from '@enact/moonstone/Button';
-import Group from '@enact/ui/Group';
 import {handle} from '@enact/core/handle';
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
+import Button from '@enact/moonstone/Button';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import RadioItem from '@enact/moonstone/RadioItem';
-import React from 'react';
 import Scroller from '@enact/moonstone/Scroller';
+import Group from '@enact/ui/Group';
+import PropTypes from 'prop-types';
 
 import videos from '../App/videos.js';
 
@@ -65,11 +64,11 @@ const MainPanel = kind({
 				</Header>
 				<Scroller>
 					<Group
-						select="radio"
-						selectedProp="selected"
 						childComponent={RadioItem}
 						defaultSelected={videoIndex}
 						onSelect={onVideoIndexChange}
+						select="radio"
+						selectedProp="selected"
 					>
 						{videosList}
 					</Group>

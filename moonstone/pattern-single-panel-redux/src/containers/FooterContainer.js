@@ -1,7 +1,6 @@
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {connect} from 'react-redux';
 
 import {save} from '../actions';
 import SaveButton from '../components/SaveButton';

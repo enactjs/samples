@@ -1,8 +1,7 @@
-import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import {ActivityPanels, Routable, Route} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import MainPanel from '../views/MainPanel';
 
@@ -27,10 +26,10 @@ const App = kind({
 	render: ({onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
 		return (
 			<RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
-				<Route path="first" component={MainPanel} title="First" onClick={onSecondPanel}>
-					<Route path="second" component={MainPanel} title="Second" onClick={onThirdPanel}>
-						<Route path="third" component={MainPanel} title="Third" onClick={onFourthPanel}>
-							<Route path="fourth" component={MainPanel} title="Fourth" />
+				<Route component={MainPanel} onClick={onSecondPanel} path="first" title="First">
+					<Route component={MainPanel} onClick={onThirdPanel} path="second" title="Second">
+						<Route component={MainPanel} onClick={onFourthPanel} path="third" title="Third">
+							<Route component={MainPanel} path="fourth" title="Fourth" />
 						</Route>
 					</Route>
 				</Route>

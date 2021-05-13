@@ -5,8 +5,8 @@ Sample which shows the ExpandableList with data in Object format is provided her
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Panels/Panel`
 - `moonstone/ExpandableList`
+- `moonstone/Panels/Panel`
 
 ---
 

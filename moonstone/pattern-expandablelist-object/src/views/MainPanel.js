@@ -1,8 +1,7 @@
+import kind from '@enact/core/kind';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import {Header, Panel} from '@enact/moonstone/Panels';
-import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const MainPanel = kind({
 	name: 'MainPanel',

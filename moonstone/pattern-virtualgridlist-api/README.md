@@ -6,10 +6,10 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 
 #### Enact Components Used
 - `moonstone/Button`
-- `moonstone/VirtualList/VirtualGridList`
 - `moonstone/GridListImageItem`
-- `moonstone/Panels/Header`
 - `moonstone/IconButton`
+- `moonstone/Panels/Header`
+- `moonstone/VirtualList/VirtualGridList`
 
 In this app, you can add, remove, select, deselect, selectAll, and deselectAll items using redux.
 

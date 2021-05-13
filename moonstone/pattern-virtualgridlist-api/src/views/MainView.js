@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
 import SideBar from '../components/SideBar';
 
 import AppStateDecorator from './AppStateDecorator';
+
 import css from './MainView.module.less';
 
 const albums = ['Family', 'Car', 'Travel'];
 
-class MainView extends React.Component {
+class MainView extends Component {
 	static propTypes = {
 		album: PropTypes.string,
 		onChangeAlbum: PropTypes.func
@@ -42,8 +43,8 @@ class MainView extends React.Component {
 					<SideBar
 						albums={albums}
 						className={css.sideBar}
-						onAlbumChange={this.onChange}
 						defaultSelected={0}
+						onAlbumChange={this.onChange}
 					/>
 					<ImageList
 						cbScrollTo={this.getScrollTo}

@@ -1,7 +1,6 @@
-import 'web-animations-js';
-import {Provider} from 'react-redux';
-import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import 'web-animations-js';
 
 import App from './App';
 import configureStore from './store';

@@ -1,14 +1,15 @@
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const DynamicPanelBase = kind({
 	name: 'DynamicPanelBase',
+
 	propTypes: {
 		onNavigate: PropTypes.func,
 		path: PropTypes.string
 	},
+
 	render: ({children, path, ...rest}) => {
 		delete rest.onNavigate;
 

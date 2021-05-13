@@ -5,11 +5,11 @@ A sample Enact application that shows how to preserve focus in `VirtualList` whe
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Panels/ActivityPanels`
-- `moonstone/Panels/Panel`
-- `moonstone/Panels/Header`
 - `moonstone/Button`
 - `moonstone/Item`
+- `moonstone/Panels/ActivityPanels`
+- `moonstone/Panels/Header`
+- `moonstone/Panels/Panel`
 - `moonstone/VirtualList`
 
 To preserve the last focus, you need to set a unique `containerId` to `VirtualList`.

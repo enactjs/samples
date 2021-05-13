@@ -1,9 +1,8 @@
+import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import React from 'react';
-import {adaptEvent, handle, forward} from '@enact/core/handle';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import Group from '@enact/ui/Group';
+import PropTypes from 'prop-types';
 
 import css from './SideBar.module.less';
 
@@ -31,11 +30,11 @@ const SideBar = kind({
 
 		return (
 			<Group
+				{...rest}
 				childComponent={SelectableItem}
-				selectedProp="selected"
 				onSelect={onAlbumChange}
 				select="radio"
-				{...rest}
+				selectedProp="selected"
 			>
 				{albums}
 			</Group>

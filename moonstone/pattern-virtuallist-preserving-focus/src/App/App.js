@@ -1,9 +1,8 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {connect} from 'react-redux';
 
 import {decreaseIndex, increaseIndex} from '../actions';
 import MainPanel from '../views/MainPanel';
@@ -23,10 +22,10 @@ const App = kind({
 
 	render: ({index, pushPanel, popPanel, ...rest}) => {
 		return (
-			<ActivityPanels {...rest} onSelectBreadcrumb={popPanel} index={index}>
-				<MainPanel title="First" onClick={pushPanel} />
-				<MainPanel title="Second" onClick={pushPanel} />
-				<MainPanel title="Third" onClick={pushPanel} />
+			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
+				<MainPanel onClick={pushPanel} title="First" />
+				<MainPanel onClick={pushPanel} title="Second" />
+				<MainPanel onClick={pushPanel} title="Third" />
 				<MainPanel title="Fourth" />
 			</ActivityPanels>
 		);

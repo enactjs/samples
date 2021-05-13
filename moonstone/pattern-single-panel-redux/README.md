@@ -8,11 +8,11 @@ Run `npm install` then
 `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Moonstone Components used
-- `moonstone/Image`
-- `moonstone/Slider`
 - `moonstone/Button`
-- `moonstone/Popup`
+- `moonstone/Image`
 - `moonstone/Picker`
+- `moonstone/Popup`
+- `moonstone/Slider`
 
 #### Running Tests
 

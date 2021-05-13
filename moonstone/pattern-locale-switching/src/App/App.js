@@ -1,8 +1,7 @@
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {Panels} from '@enact/moonstone/Panels';
-import React from 'react';
+import {connect} from 'react-redux';
 
 import MainPanel from '../views/MainPanel';
 
