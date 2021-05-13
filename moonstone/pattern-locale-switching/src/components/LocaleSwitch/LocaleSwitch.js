@@ -1,14 +1,15 @@
 import Button from '@enact/moonstone/Button';
-import {contextTypes} from '@enact/i18n/I18nDecorator';
-import {connect} from 'react-redux';
 import Input from '@enact/moonstone/Input';
+import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import {Component} from 'react';
+import {connect} from 'react-redux';
 
 import {updateLocale} from '../../actions';
 
-class LocaleSwitch extends Component {
+class LocaleSwitchBase extends Component {
 	static propTypes = {
+		updateLocale: PropTypes.func,
 		updateReduxLocale: PropTypes.func
 	};
 
@@ -26,7 +27,7 @@ class LocaleSwitch extends Component {
 	};
 
 	updateContextLocale = () => {
-		this.context.updateLocale(this.state.value);
+		this.props.updateLocale(this.state.value);
 	};
 
 	updateReduxLocale = () => {
@@ -36,7 +37,7 @@ class LocaleSwitch extends Component {
 	render () {
 		return (
 			<div>
-				<p>This locale {this.context.rtl ? 'is' : 'isn\'t'} RTL</p>
+				<p>This locale {this.props.rtl ? 'is' : 'isn\'t'} RTL</p>
 				<Input value={this.state.value} onChange={this.handleChange} placeholder="Try 'ar-SA'" />
 				<Button onClick={this.updateContextLocale}>Update Context</Button>
 				<Button onClick={this.updateReduxLocale}>Update Redux</Button>
@@ -45,6 +46,9 @@ class LocaleSwitch extends Component {
 	}
 }
 
-LocaleSwitch.contextTypes = contextTypes;
+const LocaleSwitch = I18nContextDecorator(
+	{updateLocaleProp: 'updateLocale', 'rtlProp': 'rtl'},
+	LocaleSwitchBase
+);
 
 export default connect(null, {updateReduxLocale: updateLocale}, null, {pure: false})(LocaleSwitch);
