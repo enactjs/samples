@@ -1,6 +1,6 @@
+import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
-import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {connect} from 'react-redux';
