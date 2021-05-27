@@ -4,7 +4,7 @@ import Picker from '@enact/moonstone/Picker';
 import Slider from '@enact/moonstone/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
@@ -28,7 +28,7 @@ const imageComponents = imageURLs.map(url => {
 	return (<Image src={url} key={url} />);
 });
 
-class ProfilePhotoPicker extends React.Component {
+class ProfilePhotoPicker extends Component {
 	static propTypes = {
 		className: PropTypes.string
 	};

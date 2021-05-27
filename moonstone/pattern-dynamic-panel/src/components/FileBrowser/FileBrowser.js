@@ -76,6 +76,7 @@ const FileBrowserBase = kind({
 			props.onNavigate({path: pathData});
 		}
 	},
+
 	computed: {
 		// computed component pattern is not currently Enact eslint friendly
 		// eslint-disable-next-line
@@ -104,6 +105,7 @@ const FileBrowserBase = kind({
 
 		}
 	},
+
 	render: ({renderItem: Component, ...rest}) => (
 		<Component {...rest} />
 	)
