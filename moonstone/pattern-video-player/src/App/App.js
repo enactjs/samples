@@ -4,7 +4,7 @@ import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
 import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -15,7 +15,7 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-class App extends React.Component {
+class App extends Component {
 	static propTypes = {
 		/**
 		 * Assign an alternate panel index to start on.
