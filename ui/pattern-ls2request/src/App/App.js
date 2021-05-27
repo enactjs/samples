@@ -1,13 +1,14 @@
-import Button from '@enact/moonstone/Button';
-import {connect} from 'react-redux';
-import LabeledItem from '@enact/moonstone/LabeledItem';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Button from '@enact/ui/Button';
+import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
+import {connect} from 'react-redux';
 
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 
-class App extends React.Component {
+import css from './App.module.less';
+
+class App extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
 		eyeComfortMode: PropTypes.string,
@@ -59,12 +60,16 @@ class App extends React.Component {
 		}
 
 		return (
-			<div>
+			<div style={{position: 'absolute', inset: '18px 24px', overflow: 'hidden'}}>
 				{this.checkSystem()}
-				<LabeledItem label={smartPictureMode}>Smart Picture Mode</LabeledItem>
-				<Button onClick={this.onSmartPictureToggle}>Toggle</Button>
-				<LabeledItem label={eyeComfortMode}>Eye Comfort Mode</LabeledItem>
-				<Button onClick={this.onEyeComfortModeToggle}>Toggle</Button>
+				<Item>
+					Smart Picture Mode : {smartPictureMode}
+				</Item>
+				<Button className={css.button} onClick={this.onSmartPictureToggle}>Toggle</Button>
+				<Item>
+					Eye Comfort Mode : {eyeComfortMode}
+				</Item>
+				<Button className={css.button} onClick={this.onEyeComfortModeToggle}>Toggle</Button>
 			</div>
 		);
 	}
@@ -78,4 +83,4 @@ const mapStateToProps = ({systemSettings}) => {
 	};
 };
 
-export default connect(mapStateToProps)(MoonstoneDecorator(App));
+export default connect(mapStateToProps)(App);

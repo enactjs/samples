@@ -1,13 +1,13 @@
+import {Cell, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import React from 'react';
-import {Row, Cell} from '@enact/ui/Layout';
+import {Component} from 'react';
 
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
 
 import css from './Body.module.less';
 
-class Body extends React.Component {
+class Body extends Component {
 	static propTypes = {
 		selectedCountry: PropTypes.string.isRequired,
 		cities: PropTypes.object
@@ -37,20 +37,20 @@ class Body extends React.Component {
 		const selectedCity = this.state.city;
 
 		return (
-			<Row className={css.body} {...rest}>
+			<Row {...rest} className={css.body}>
 				<Cell
-					size="30%"
-					component={SideBar}
-					className={css.sidebar}
 					cities={cities}
+					className={css.sidebar}
+					component={SideBar}
 					defaultSelected={0}
 					onCityChange={this.handleCityChange}
 					selectedCountry={selectedCountry}
+					size="30%"
 				/>
 				<Cell className={css.content}>
 					<Content
-						selectedCity={selectedCity}
 						onZoom={this.handleZoom}
+						selectedCity={selectedCity}
 						zoom={this.state.zoom}
 					/>
 				</Cell>

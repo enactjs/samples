@@ -1,7 +1,4 @@
 import kind from '@enact/core/kind';
-import Panels from '@enact/moonstone/Panels';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import React from 'react';
 
 import MainView from '../views/MainView';
 
@@ -16,10 +13,10 @@ const App = kind({
 	},
 
 	render: (props) => (
-		<Panels {...props}>
+		<div {...props}>
 			<MainView />
-		</Panels>
+		</div>
 	)
 });
 
-export default MoonstoneDecorator(App);
+export default App;

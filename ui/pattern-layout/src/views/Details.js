@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import BodyText from '@enact/ui/BodyText';
+import Button from '@enact/ui/Button';
+import Heading from '@enact/ui/Heading';
+import Image from '@enact/ui/Image';
+import Item from '@enact/ui/Item';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import Marquee from '@enact/ui/Marquee';
 import ri from '@enact/ui/resolution';
-import {Layout, Cell, Column, Row} from '@enact/ui/Layout';
 import Toggleable from '@enact/ui/Toggleable';
-import Marquee from '@enact/moonstone/Marquee';
-import BodyText from '@enact/moonstone/BodyText';
-import Button from '@enact/moonstone/Button';
-import Image from '@enact/moonstone/Image';
-import Item from '@enact/moonstone/Item';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import PropTypes from 'prop-types';
 
+import css from './Details.module.less';
 
 const FieldRow = kind({
 	name: 'FieldRow',
@@ -20,7 +20,7 @@ const FieldRow = kind({
 	render: ({label, ...rest}) => (
 		<Cell shrink>
 			<Row align="center">
-				<Cell component={Marquee} alignment="right">{label}</Cell>
+				<Cell alignment="right" component={Marquee}>{label}</Cell>
 				<Cell {...rest} />
 			</Row>
 		</Cell>
@@ -43,34 +43,45 @@ const Details = kind({
 		titleBelow: PropTypes.string
 	},
 
-	render: ({DebugButton, changeOrientation, orientation, title, titleBelow, ...rest}) => (
-		<Panel {...rest}>
-			<Header title={title} titleBelow={titleBelow}>
-				{DebugButton}
-				<Button onClick={changeOrientation} selected={orientation} size="small">Flip Orientation</Button>
-			</Header>
-			<Row style={{height: '100%'}}>
-				<Cell>
-					<BodyText style={{margin: '0 ' + ri.unit(12, 'rem')}}>The alumni cast of a space opera television series have to play their roles as the real thing when an alien race needs their help. However, they also have to defend both Earth and the alien race from a reptilian warlord.</BodyText>
-				</Cell>
-				<Cell size="60%">
-					<Layout orientation={orientation ? 'horizontal' : 'vertical'} style={{height: '100%'}}>
-						<Cell component={Image} style={{height: '100%', width: '100%', minWidth: '10%', margin: 0}} src="http://picsum.photos/480/320/" />
-						<Cell shrink style={{padding: '0 1em', width: (orientation ? '80%' : null)}}>
-							<Column>
-								<Cell shrink>
-									<BodyText>By Grabthar&apos;s hammer, by the sons of Warvan, you shall be avenged.</BodyText>
-								</Cell>
-								<FieldRow size="80%" label="Director:" component={Item}>Dean Parisot</FieldRow>
-								<FieldRow size="80%" label="Writers:" component={Item}>David Howard (story), David Howard (screenplay)</FieldRow>
-								<FieldRow size="80%" label="Stars:" component={Item}>Tim Allen, Sigourney Weaver, Alan Rickman</FieldRow>
-							</Column>
-						</Cell>
-					</Layout>
-				</Cell>
-			</Row>
-		</Panel>
-	)
+	render: ({DebugButton, changeOrientation, orientation, title, titleBelow, ...rest}) => {
+		delete rest.spotlightId;
+		delete rest.hideChildren;
+
+		return (
+			<div {...rest} style={{height: '100%'}}>
+				<Heading size="title" style={{width: 'calc(100% - 2em)', borderBottom: '3px solid grey'}}>
+					{title}
+					<div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 'normal', fontSize: '18px'}}>
+						{titleBelow}
+						<div>
+							{DebugButton}
+							<Button className={css.button} selected={orientation} size="small" onClick={changeOrientation}>Flip Orientation</Button>
+						</div>
+					</div>
+				</Heading>
+				<Row style={{width: 'calc(100% - 4em)', height: 'calc(100% - 10em)'}}>
+					<Cell>
+						<BodyText style={{marginRight: ri.unit(12, 'rem')}}>The alumni cast of a space opera television series have to play their roles as the real thing when an alien race needs their help. However, they also have to defend both Earth and the alien race from a reptilian warlord.</BodyText>
+					</Cell>
+					<Cell size="60%">
+						<Layout orientation={orientation ? 'horizontal' : 'vertical'} style={{height: '100%'}}>
+							<Cell component={Image} style={{height: '100%', width: '100%', minWidth: '10%', margin: 0}} src="http://picsum.photos/480/320/" />
+							<Cell shrink style={{padding: '0 1em', width: (orientation ? '80%' : null)}}>
+								<Column>
+									<Cell shrink>
+										<BodyText>By Grabthar&apos;s hammer, by the sons of Warvan, you shall be avenged.</BodyText>
+									</Cell>
+									<FieldRow component={Item} label="Director:" size="80%">Dean Parisot</FieldRow>
+									<FieldRow component={Item} label="Writers:" size="80%">David Howard (story), David Howard (screenplay)</FieldRow>
+									<FieldRow component={Item} label="Stars:" size="80%">Tim Allen, Sigourney Weaver, Alan Rickman</FieldRow>
+								</Column>
+							</Cell>
+						</Layout>
+					</Cell>
+				</Row>
+			</div>
+		);
+	}
 });
 
 export default Toggleable({prop: 'orientation', toggle: 'changeOrientation'}, Details);

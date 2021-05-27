@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import Heading from '@enact/ui/Heading';
+import ImageItem from '@enact/ui/ImageItem';
 import ri from '@enact/ui/resolution';
-import {Panel, Header} from '@enact/moonstone/Panels';
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import {VirtualGridList} from '@enact/ui/VirtualList';
+import PropTypes from 'prop-types';
 
 const GridItem = kind({
 	name: 'GridItem',
 	propTypes: {
 		index: PropTypes.number,
 		items: PropTypes.array,
-		onSelect: PropTypes.function
+		onSelect: PropTypes.func
 	},
 	handlers: {
 		onSelect: (ev, {index, onSelect}) => onSelect({index})
@@ -19,13 +18,11 @@ const GridItem = kind({
 	render: ({index, items, onSelect, ...rest}) => {
 		if (items && items[index]) {
 			return (
-				<GridListImageItem
+				<ImageItem
 					{...rest}
-					caption={items[index].title}
-					source={items[index].image}
-					subCaption={items[index].subTitle}
 					onClick={onSelect}
-				/>
+					src={items[index].image.default}
+				>{items[index].title}</ImageItem>
 			);
 		}
 	}
@@ -37,8 +34,8 @@ const renderItem = ({items, onChangePanel}) => ({index, ...rest}) => {
 		return (
 			<GridItem
 				{...rest}
-				items={items}
 				index={index}
+				items={items}
 				onSelect={onChangePanel}
 			/>
 		);
@@ -68,24 +65,28 @@ const MainPanel = kind({
 
 	render: ({items, itemRenderer, ...rest}) => {
 		delete rest.onChangePanel;
+		delete rest.spotlightId;
+		delete rest.hideChildren;
+
 		return (
-			<Panel {...rest}>
-				<Header type="compact">
-					<title>Example Layouts</title>
-					<titleBelow>Choose a layout</titleBelow>
-				</Header>
+			<div style={{margin: '24px 18px'}} {...rest}>
+				<Heading size="title" style={{borderBottom: '3px solid grey'}}>
+					Example Layouts
+					<div style={{fontWeight: 'normal', fontSize: '18px'}}>
+						Choose a layout
+					</div>
+				</Heading>
 
 				<VirtualGridList
-					itemRenderer={itemRenderer}
 					dataSize={items.length}
-					focusableScrollbar
+					itemRenderer={itemRenderer}
 					itemSize={{minWidth: ri.scale(300), minHeight: ri.scale(270)}}
 					spacing={ri.scale(18)}
 					style={{
 						height: '100%'
 					}}
 				/>
-			</Panel>
+			</div>
 		);
 	}
 });

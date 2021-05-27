@@ -1,8 +1,7 @@
-import Group from '@enact/ui/Group';
 import kind from '@enact/core/kind';
+import Group from '@enact/ui/Group';
+import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
-import React from 'react';
-import SelectableItem from '@enact/moonstone/SelectableItem';
 
 const SideBar = kind({
 	name: 'SideBar',
@@ -16,11 +15,12 @@ const SideBar = kind({
 	render: ({cities, onCityChange, selectedCountry, ...rest}) => {
 		return (
 			<Group
-				childComponent={SelectableItem}
-				selectedProp="selected"
+				{...rest}
+				childComponent={Item}
+				itemProps={{style: {margin: '12px 0px', fontSize: '24px', cursor: 'default'}}}
 				onSelect={onCityChange}
 				select="radio"
-				{...rest}
+				selectedProp="selected"
 			>
 				{cities[selectedCountry]}
 			</Group>

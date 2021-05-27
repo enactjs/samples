@@ -1,8 +1,9 @@
-import Button from '@enact/moonstone/Button';
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
+import Button from '@enact/ui/Button';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {connect} from 'react-redux';
+
+import css from './CountryButton.module.less';
 
 const CountryButton = kind({
 	name: 'CountryButton',
@@ -25,7 +26,7 @@ const CountryButton = kind({
 		return (
 			<Button
 				{...rest}
-				backgroundOpacity="translucent"
+				className={css.button}
 				onClick={onClick}
 				selected={selected}
 			>

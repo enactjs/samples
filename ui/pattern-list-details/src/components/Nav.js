@@ -1,8 +1,9 @@
-import Button from '@enact/moonstone/Button';
-import Group from '@enact/ui/Group';
 import kind from '@enact/core/kind';
+import Button from '@enact/ui/Button';
+import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
-import React from 'react';
+
+import css from './Nav.module.less';
 
 const Nav = kind({
 	name: 'Nav',
@@ -15,11 +16,12 @@ const Nav = kind({
 	render: ({countryList, onCountryChange, ...rest}) => {
 		return (
 			<Group
+				{...rest}
 				childComponent={Button}
-				selectedProp="selected"
+				itemProps={{css}}
 				onSelect={onCountryChange}
 				select="radio"
-				{...rest}
+				selectedProp="selected"
 			>
 				{countryList}
 			</Group>

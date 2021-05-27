@@ -1,9 +1,8 @@
-import IconButton from '@enact/moonstone/IconButton';
-import Image from '@enact/moonstone/Image';
 import kind from '@enact/core/kind';
-import Marquee from '@enact/moonstone/Marquee';
+import Icon from '@enact/ui/Icon';
+import Image from '@enact/ui/Image';
+import Marquee from '@enact/ui/Marquee';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import barcelona from '../../assets/images/barcelona.jpeg';
 import busan from '../../assets/images/busan.jpeg';
@@ -67,17 +66,17 @@ const Content = kind({
 
 	render: ({cityPhoto, onZoom, selectedCity, zoomState, ...rest}) => (
 		<div {...rest}>
-			<IconButton
-				backgroundOpacity="translucent"
+			<Icon
 				className={css.maximizePhotoButton}
 				onClick={onZoom}
 				selected={zoomState}
+				style={{paddingLeft: '12px', fontSize: '48px', cursor: 'pointer'}}
 			>
-				{zoomState ? 'exitfullscreen' : 'fullscreen'}
-			</IconButton>
+				{zoomState ? '0x0002D' : '0x0002B'}
+			</Icon>
 			<Marquee className={css.cityName}>
 				{selectedCity}
-			</Marquee >
+			</Marquee>
 			{cityPhoto}
 		</div>
 	)

@@ -1,8 +1,7 @@
-import 'web-animations-js';
-import {forKeyCode} from '@enact/core/handle';
 import {configure} from '@enact/analytics';
-import React from 'react';
+import {forKeyCode} from '@enact/core/handle';
 import {render} from 'react-dom';
+import 'web-animations-js';
 
 import App from './App';
 
@@ -13,7 +12,7 @@ configure({
 	enabled: true,
 
 	// A target selector for events
-	selector: '.spottable',
+	selector: '.enact_ui_Button_Button_button',
 
 	// Example of adding optional custom listeners
 	// Could alternatively use a simple string array of events

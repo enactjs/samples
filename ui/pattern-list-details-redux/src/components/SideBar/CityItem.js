@@ -1,9 +1,8 @@
-import {connect} from 'react-redux';
-import kind from '@enact/core/kind';
 import {adaptEvent, handle, forward} from '@enact/core/handle';
+import kind from '@enact/core/kind';
+import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
-import React from 'react';
-import SelectableItem from '@enact/moonstone/SelectableItem';
+import {connect} from 'react-redux';
 
 const CityItem = kind({
 	name: 'CityItem',
@@ -21,14 +20,15 @@ const CityItem = kind({
 	},
 
 	render: ({city, onCityChange, selected, ...rest}) => (
-		<SelectableItem
+		<Item
 			{...rest}
-			onToggle={onCityChange}
+			onClick={onCityChange}
 			selected={selected}
+			style={{margin: '12px 0px', fontSize: '24px', cursor: 'default'}}
 			value={city}
 		>
 			{city}
-		</SelectableItem>
+		</Item>
 	)
 });
 

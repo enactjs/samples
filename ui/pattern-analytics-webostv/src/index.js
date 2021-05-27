@@ -1,7 +1,6 @@
-import 'web-animations-js';
 import {configure} from '@enact/analytics/preset/webostv';
-import React from 'react';
 import {render} from 'react-dom';
+import 'web-animations-js';
 
 import App from './App';
 

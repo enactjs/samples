@@ -16,9 +16,9 @@ const Nav = kind({
 		<React.Fragment>
 			{countries.map((country, index) => (
 				<CountryButton
+					country={country}
 					key={'countryButton' + index}
 					onCountryChange={onCountryChange}
-					country={country}
 				/>
 			))}
 		</React.Fragment>

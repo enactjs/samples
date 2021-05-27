@@ -1,9 +1,8 @@
 import kind from '@enact/core/kind';
-import React from 'react';
-import {Row, Cell} from '@enact/ui/Layout';
+import {Cell, Row} from '@enact/ui/Layout';
 
-import SideBarContainer from '../containers/SideBarContainer';
 import ContentContainer from '../containers/ContentContainer';
+import SideBarContainer from '../containers/SideBarContainer';
 
 import css from './Body.module.less';
 
@@ -17,7 +16,7 @@ const Body = kind({
 
 	render: ({...rest}) => (
 		<Row {...rest}>
-			<Cell size="30%" className={css.sidebar}>
+			<Cell className={css.sidebar} size="30%">
 				<SideBarContainer />
 			</Cell>
 			<Cell className={css.content}>

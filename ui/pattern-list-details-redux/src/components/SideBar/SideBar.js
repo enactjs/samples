@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Fragment} from 'react';
 
 import CityItem from './CityItem';
 
@@ -13,7 +13,7 @@ const SideBar = kind({
 	},
 
 	render: ({cities, onCityChange}) => (
-		<React.Fragment>
+		<Fragment>
 			{cities.map((city, index) => (
 				<CityItem
 					city={city}
@@ -21,7 +21,7 @@ const SideBar = kind({
 					onCityChange={onCityChange}
 				/>
 			))}
-		</React.Fragment>
+		</Fragment>
 	)
 });
 

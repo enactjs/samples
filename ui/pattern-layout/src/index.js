@@ -1,7 +1,6 @@
 import 'web-animations-js';
 /* eslint-disable react/jsx-no-bind */
 
-import React from 'react';
 import qs from 'query-string';
 import {render} from 'react-dom';
 

@@ -1,17 +1,18 @@
-import React from 'react';
 import kind from '@enact/core/kind';
-import hoc from '@enact/core/hoc';
 import {adaptEvent, forward, handle} from '@enact/core/handle';
+import hoc from '@enact/core/hoc';
+import {ActivityPanels} from '@enact/moonstone/Panels';
+import Button from '@enact/ui/Button';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import Button from '@enact/moonstone/Button';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels} from '@enact/moonstone/Panels';
+import React from 'react';
 
 import {importAll} from '../components/util';
-import FavoritesList from '../views/FavoritesList';
 import Details from '../views/Details';
+import FavoritesList from '../views/FavoritesList';
 import MainPanel from '../views/MainPanel';
+
+import css from './App.module.less';
 
 const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
 
@@ -43,7 +44,7 @@ const App = kind({
 	},
 
 	computed: {
-		DebugButton: ({onToggleDebug, debug}) => (<Button onClick={onToggleDebug} selected={debug} size="small">Layout Borders</Button>)
+		DebugButton: ({onToggleDebug, debug}) => (<Button className={css.button} onClick={onToggleDebug} selected={debug} size="small">Layout Borders</Button>)
 	},
 
 	handlers: {
@@ -73,7 +74,7 @@ const App = kind({
 			);
 		}
 		return (
-			<ActivityPanels {...rest}>
+			<ActivityPanels {...rest} noCloseButton>
 				<MainPanel items={items} onChangePanel={onChangePanel} />
 				{secondaryPanel}
 			</ActivityPanels>
@@ -139,6 +140,5 @@ const AppDecorator = hoc((config, Wrapped) => {
 });
 
 export default compose(
-	MoonstoneDecorator,
 	AppDecorator
 )(App);

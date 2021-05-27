@@ -1,7 +1,8 @@
-import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react';
+import Heading from '@enact/ui/Heading';
+import {Component} from 'react';
 
 import Nav from '../components/Nav';
+
 import Body from './Body';
 
 const cities = {
@@ -13,7 +14,7 @@ const cities = {
 
 const countryList = Object.keys(cities);
 
-class MainView extends React.Component {
+class MainView extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {country: countryList[0]};
@@ -29,17 +30,28 @@ class MainView extends React.Component {
 		const onChange = this.handleCountryChange;
 
 		return (
-			<Panel {...this.props}>
-				<Header type="compact">
-					<title>City Viewer</title>
-					<Nav
-						countryList={countryList}
-						onCountryChange={onChange}
-						defaultSelected={0}
-					/>
-				</Header>
-				<Body selectedCountry={selectedCountry} cities={cities} />
-			</Panel>
+			<div {...this.props} style={{position: 'absolute', inset: '0px 18px 24px', overflow: 'hidden'}}>
+				<Heading size="title">
+					<div
+						style={{
+							display: 'flex',
+							borderBottom: '3px solid grey',
+							alignItems: 'center',
+							justifyContent: 'space-between'
+						}}
+					>
+						City Viewer
+						<div>
+							<Nav
+								countryList={countryList}
+								defaultSelected={0}
+								onCountryChange={onChange}
+							/>
+						</div>
+					</div>
+				</Heading>
+				<Body cities={cities} selectedCountry={selectedCountry} />
+			</div>
 		);
 	}
 }
