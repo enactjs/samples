@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Panels, Routable, Route} from '@enact/moonstone/Panels';
+import {Panels, Routable, Route} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {SlideLeftArranger} from '@enact/ui/ViewManager';
 import PropTypes from 'prop-types';
 
@@ -40,7 +40,7 @@ const App = kind({
 	}
 });
 
-export default MoonstoneDecorator(
+export default ThemeDecorator(
 	AppStateDecorator(
 		App
 	)

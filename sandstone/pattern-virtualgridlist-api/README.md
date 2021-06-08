@@ -5,11 +5,10 @@ A sample Enact application that shows off how to add/remove/select/deselect item
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Button`
-- `moonstone/GridListImageItem`
-- `moonstone/IconButton`
-- `moonstone/Panels/Header`
-- `moonstone/VirtualList/VirtualGridList`
+- `sandstone/Button`
+- `sandstone/ImageItem`
+- `sandstone/Panels/Header`
+- `sandstone/VirtualList/VirtualGridList`
 
 In this app, you can add, remove, select, deselect, selectAll, and deselectAll items using redux.
 

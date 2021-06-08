@@ -1,5 +1,5 @@
-import Item from '@enact/moonstone/Item';
-import VirtualList from '@enact/moonstone/VirtualList';
+import Item from '@enact/sandstone/Item';
+import VirtualList from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
@@ -31,7 +31,7 @@ class PatternList extends Component {
 				dataSize={items.length}
 				id={id}
 				itemRenderer={this.renderItem}
-				itemSize={ri.scale(72)}
+				itemSize={ri.scale(144)}
 				spotlightId={id}
 			/>
 		);

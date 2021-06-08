@@ -1,8 +1,8 @@
 import kind from '@enact/core/kind';
-import BodyText from '@enact/moonstone/BodyText';
-import Button from '@enact/moonstone/Button';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import Scroller from '@enact/moonstone/Scroller';
+import BodyText from '@enact/sandstone/BodyText';
+import Button from '@enact/sandstone/Button';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import Scroller from '@enact/sandstone/Scroller';
 import PropTypes from 'prop-types';
 
 const example =

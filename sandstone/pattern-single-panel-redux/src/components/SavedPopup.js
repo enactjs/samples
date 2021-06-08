@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import Popup from '@enact/moonstone/Popup';
+import Popup from '@enact/sandstone/Popup';
 import PropTypes from 'prop-types';
 
 const SavedPopup = kind({

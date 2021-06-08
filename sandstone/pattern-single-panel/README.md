@@ -5,11 +5,11 @@ A sample single panel Enact application where you can pick a profile photo from 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Button`
-- `moonstone/Image`
-- `moonstone/Picker`
-- `moonstone/Popup`
-- `moonstone/Slider`
+- `sandstone/Button`
+- `sandstone/Image`
+- `sandstone/Picker`
+- `sandstone/Popup`
+- `sandstone/Slider`
 
 Take a look at the custom component  `./src/components/ProfilePhotoPicker.js`
 Slider controls the position of the main photo using `handleSliderChange()` which changes the state of `photoPosition`

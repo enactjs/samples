@@ -1,11 +1,11 @@
 import kind from '@enact/core/kind';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import ImageItem from '@enact/sandstone/ImageItem';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {selectItem} from '../../actions';
 
-const ImageItem = kind({
+const ImageItems = kind({
 	name: 'ImageItem',
 
 	propTypes: {
@@ -22,15 +22,17 @@ const ImageItem = kind({
 		delete rest.index;
 
 		return (
-			<GridListImageItem
+			<ImageItem
 				{...rest}
-				caption={caption}
+				label={subCaption}
 				onClick={selectImageItem}
 				selected={selected}
-				selectionOverlayShowing={selectionOverlayShowing}
-				source={source}
-				subCaption={subCaption}
-			/>
+				showSelection={selectionOverlayShowing}
+				src={source}
+				style={{padding: '18px'}}
+			>
+				{caption}
+			</ImageItem>
 		);
 	}
 });
@@ -49,4 +51,4 @@ const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageItems);

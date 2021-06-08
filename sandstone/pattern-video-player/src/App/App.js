@@ -1,7 +1,8 @@
-import IconButton from '@enact/moonstone/IconButton';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {AlwaysViewingPanels} from '@enact/moonstone/Panels';
-import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
+import Icon from '@enact/sandstone/Icon';
+import {MediaControls} from '@enact/sandstone/MediaPlayer';
+import {Panels} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
@@ -88,21 +89,21 @@ class App extends Component {
 						{desc}
 					</infoComponents>
 					<MediaControls>
-						<rightComponents>
-							<IconButton
+						<buttomComponents>
+							<Icon
 								backgroundOpacity="translucent"
 								onClick={this.handleShowPanelsClick}
 								spotlightDisabled={this.state.panelsVisible}
 							>
 								list
-							</IconButton>
-						</rightComponents>
+							</Icon>
+						</buttomComponents>
 					</MediaControls>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
-					<AlwaysViewingPanels
+					<Panels
 						index={this.state.panelIndex}
-						onSelectBreadcrumb={this.handleSelectBreadcrumb}
+						onBack={this.handleSelectBreadcrumb}
 					>
 						<MainPanel
 							onHidePanels={this.handleHidePanelsClick}
@@ -113,11 +114,11 @@ class App extends Component {
 							videoIndex={this.state.videoIndex}
 						/>
 						<ItemPanel title="Second" />
-					</AlwaysViewingPanels> :
+					</Panels> :
 					null}
 			</div>
 		);
 	}
 }
 
-export default MoonstoneDecorator(App);
+export default ThemeDecorator(App);

@@ -7,12 +7,12 @@ This is a more scalable version of the Profile Photo Picker. It is hooked up wit
 Run `npm install` then
 `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
-#### Enact Moonstone Components used
-- `moonstone/Button`
-- `moonstone/Image`
-- `moonstone/Picker`
-- `moonstone/Popup`
-- `moonstone/Slider`
+#### Enact Sandstone Components used
+- `sandstone/Button`
+- `sandstone/Image`
+- `sandstone/Picker`
+- `sandstone/Popup`
+- `sandstone/Slider`
 
 #### Running Tests
 

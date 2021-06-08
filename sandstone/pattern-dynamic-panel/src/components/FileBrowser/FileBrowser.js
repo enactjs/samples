@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
-import {Image} from '@enact/moonstone/Image';
-import {Item} from '@enact/moonstone/Item';
-import VirtualList from '@enact/moonstone/VirtualList';
+import {Image} from '@enact/sandstone/Image';
+import {Item} from '@enact/sandstone/Item';
+import VirtualList from '@enact/sandstone/VirtualList';
 import Cancelable from '@enact/ui/Cancelable';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
@@ -93,7 +93,7 @@ const FileBrowserBase = kind({
 							{mockFolders[leaf].files[index].name}
 						</Item>
 					)}
-					itemSize={ri.scale(72)}
+					itemSize={ri.scale(144)}
 				/> :
 				<Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 

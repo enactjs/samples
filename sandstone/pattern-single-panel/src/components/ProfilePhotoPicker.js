@@ -1,7 +1,7 @@
-import BodyText from '@enact/moonstone/BodyText';
-import Image from '@enact/moonstone/Image';
-import Picker from '@enact/moonstone/Picker';
-import Slider from '@enact/moonstone/Slider';
+import BodyText from '@enact/sandstone/BodyText';
+import Image from '@enact/sandstone/Image';
+import Picker from '@enact/sandstone/Picker';
+import Slider from '@enact/sandstone/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 import {Component} from 'react';

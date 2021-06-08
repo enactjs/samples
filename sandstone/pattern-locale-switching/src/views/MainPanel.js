@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/sandstone/Panels';
 
 import LocaleSwitch from '../components/LocaleSwitch';
 

@@ -1,4 +1,4 @@
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
@@ -27,8 +27,8 @@ class ImageList extends Component {
 				{...rest}
 				dataSize={imageitems.length}
 				itemRenderer={this.renderItem}
-				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
-				spacing={ri.scale(21)}
+				itemSize={{minHeight: ri.scale(540), minWidth: ri.scale(360)}}
+				spacing={ri.scale(42)}
 			/>
 		);
 	};

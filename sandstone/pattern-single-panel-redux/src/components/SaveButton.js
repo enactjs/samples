@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
+import Button from '@enact/sandstone/Button';
 import PropTypes from 'prop-types';
 
 const SaveButton = kind({

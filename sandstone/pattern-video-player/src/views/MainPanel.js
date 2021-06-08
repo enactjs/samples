@@ -1,9 +1,9 @@
 import {handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import RadioItem from '@enact/moonstone/RadioItem';
-import Scroller from '@enact/moonstone/Scroller';
+import Button from '@enact/sandstone/Button';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import RadioItem from '@enact/sandstone/RadioItem';
+import Scroller from '@enact/sandstone/Scroller';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
 

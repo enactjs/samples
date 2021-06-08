@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
 
 const DynamicPanelBase = kind({
@@ -15,7 +15,7 @@ const DynamicPanelBase = kind({
 
 		return (
 			<Panel {...rest} >
-				<Header title={path} titleBelow="Press [ESC] to return to previous path" />
+				<Header subtitle="Press [ESC] to return to previous path" title={path} />
 				{children}
 			</Panel>
 		);

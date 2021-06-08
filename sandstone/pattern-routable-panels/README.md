@@ -5,12 +5,12 @@ A sample Enact application that shows off how to use Routable, Routes and Panels
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/BodyText`
-- `moonstone/Button`
-- `moonstone/Panels/Panel`
-- `moonstone/Panels/Routable` (Higher Order Component)
-- `moonstone/Panels/Route`
-- `moonstone/Scroller`
+- `sandstone/BodyText`
+- `sandstone/Button`
+- `sandstone/Panels/Panel`
+- `sandstone/Panels/Routable` (Higher Order Component)
+- `sandstone/Panels/Route`
+- `sandstone/Scroller`
 - `ui/ViewManager/SlideLeftArranger`
 
 Using `Routes` and `Routable` you will have a very simple, declarative way to view and navigate through your panels. Just set up your routes and `RoutablePanels` will take care of the history logic.

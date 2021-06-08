@@ -1,5 +1,5 @@
-import Button from '@enact/moonstone/Button';
-import Popup from '@enact/moonstone/Popup';
+import Button from '@enact/sandstone/Button';
+import Popup from '@enact/sandstone/Popup';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 

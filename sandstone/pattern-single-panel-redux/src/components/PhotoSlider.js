@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import Slider from '@enact/moonstone/Slider';
+import Slider from '@enact/sandstone/Slider';
 import PropTypes from 'prop-types';
 
 import css from './componentStyles.module.less';

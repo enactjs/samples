@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Changeable from '@enact/ui/Changeable';
 
 import FileBrowser from '../components/FileBrowser';
@@ -27,4 +27,4 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator(App);
+export default ThemeDecorator(App);
