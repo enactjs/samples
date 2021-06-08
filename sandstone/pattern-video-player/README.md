@@ -7,7 +7,6 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 #### Enact Components Used
 - `sandstone/Button`
 - `sandstone/Group`
-- `sandstone/Icon`
 - `sandstone/Item`
 - `sandstone/Panels/Header`
 - `sandstone/Panels/Panel`

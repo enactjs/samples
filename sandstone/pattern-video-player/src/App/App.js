@@ -1,4 +1,4 @@
-import Icon from '@enact/sandstone/Icon';
+import Button from '@enact/sandstone/Button';
 import {MediaControls} from '@enact/sandstone/MediaPlayer';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
@@ -88,16 +88,14 @@ class App extends Component {
 					<infoComponents>
 						{desc}
 					</infoComponents>
-					<MediaControls>
-						<buttomComponents>
-							<Icon
-								backgroundOpacity="translucent"
-								onClick={this.handleShowPanelsClick}
-								spotlightDisabled={this.state.panelsVisible}
-							>
-								list
-							</Icon>
-						</buttomComponents>
+					<MediaControls
+						actionGuideLabel="Press Down Button">	
+						<Button
+							icon="list"
+							backgroundOpacity="translucent"
+							onClick={this.handleShowPanelsClick}
+							spotlightDisabled={this.state.panelsVisible}
+						/>
 					</MediaControls>
 				</VideoPlayer>
 				{this.state.panelsVisible ?
