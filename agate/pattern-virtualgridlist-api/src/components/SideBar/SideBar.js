@@ -1,6 +1,6 @@
+import RadioItem from '@enact/agate/RadioItem';
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import SelectableItem from '@enact/moonstone/SelectableItem';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
 
@@ -31,7 +31,7 @@ const SideBar = kind({
 		return (
 			<Group
 				{...rest}
-				childComponent={SelectableItem}
+				childComponent={RadioItem}
 				onSelect={onAlbumChange}
 				select="radio"
 				selectedProp="selected"

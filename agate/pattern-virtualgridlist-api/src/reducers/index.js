@@ -11,11 +11,10 @@ const createRecords = (album) => {
 			selectedItems: new Set(),
 			showOverlay: false
 		},
-		caption, subCaption, color;
+		caption, color;
 
 	for (let idx = 0; idx < 500; ++idx) {
 		caption = (idx % 8 === 0) ? ' with long title' : '';
-		subCaption = (idx % 8 === 0) ? 'Lorem ipsum dolor sit amet' : 'Subtitle';
 		color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16);
 
 		records.dataOrder.push(idx);
@@ -23,7 +22,6 @@ const createRecords = (album) => {
 			selected: false,
 			selectionOverlayShowing: false,
 			caption: album + ' ' + idx + caption,
-			subCaption: subCaption,
 			source: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + idx
 		};
 	}

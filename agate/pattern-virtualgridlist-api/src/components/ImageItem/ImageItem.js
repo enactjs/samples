@@ -1,11 +1,11 @@
+import ImageItem from '@enact/agate/ImageItem';
 import kind from '@enact/core/kind';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {selectItem} from '../../actions';
 
-const ImageItem = kind({
+const ImageItems = kind({
 	name: 'ImageItem',
 
 	propTypes: {
@@ -15,22 +15,21 @@ const ImageItem = kind({
 		selectImageItem: PropTypes.func,
 		selectionOverlayShowing: PropTypes.bool,
 		source: PropTypes.string,
-		subCaption: PropTypes.string
 	},
 
-	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, subCaption, ...rest}) => {
+	render: ({caption, selected, selectImageItem, source, ...rest}) => {
 		delete rest.index;
+		delete rest.selectionOverlayShowing;
 
 		return (
-			<GridListImageItem
+			<ImageItem
 				{...rest}
-				caption={caption}
 				onClick={selectImageItem}
 				selected={selected}
-				selectionOverlayShowing={selectionOverlayShowing}
-				source={source}
-				subCaption={subCaption}
-			/>
+				src={source}
+			>
+				{caption}
+			</ImageItem>
 		);
 	}
 });
@@ -40,7 +39,6 @@ const mapStateToProps = ({data}, {['data-index']: dataIndex}) => ({
 	selected: data.selectedItems.has(dataIndex),
 	selectionOverlayShowing: data.data[dataIndex].selectionOverlayShowing,
 	source: data.data[dataIndex].source,
-	subCaption: data.data[dataIndex].subCaption
 });
 
 const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
@@ -49,4 +47,4 @@ const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageItems);

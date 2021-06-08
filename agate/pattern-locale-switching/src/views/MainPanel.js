@@ -1,5 +1,6 @@
+import Header from '@enact/agate/Header';
+import {Panel} from '@enact/agate/Panels';
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/moonstone/Panels';
 
 import LocaleSwitch from '../components/LocaleSwitch';
 

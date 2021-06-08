@@ -1,5 +1,6 @@
+import Header from '@enact/agate/Header';
+import {Panel} from '@enact/agate/Panels';
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/moonstone/Panels';
 import {Cell, Column} from '@enact/ui/Layout';
 
 import FooterContainer from '../containers/FooterContainer';
@@ -32,10 +33,17 @@ const MainPanel = kind({
 	name: 'MainPanel',
 
 	render: (props) => (
-		<Panel {...props}>
-			<Header casing="preserve" title="Profile Photo Redux" titleBelow="Choose your profile picture" type="compact" />
-			<Column align="center">
-				<Cell>
+		<Panel {...props} style={{paddingTop: '0px'}}>
+			<Column>
+				<Cell
+					casing="preserve"
+					component={Header}
+					shrink
+					subtitle="Choose your profile picture"
+					title="Profile Photo"
+					type="compact"
+				/>
+				<Cell shrink>
 					<Column align="center center">
 						<Cell
 							component={PhotoPreviewContainer}
@@ -55,6 +63,7 @@ const MainPanel = kind({
 					</Column>
 				</Cell>
 				<Cell
+					align="center"
 					component={FooterContainer}
 					shrink
 				/>

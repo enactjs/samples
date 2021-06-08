@@ -1,7 +1,6 @@
+import Button from '@enact/agate/Button';
+import Header from '@enact/agate/Header';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
-import IconButton from '@enact/moonstone/IconButton';
-import {Header} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -16,14 +15,12 @@ const createMockItem = (album, albumSize, showOverlay) => {
 	const
 		dataLength = albumSize,
 		caption = (dataLength % 8 === 0) ? ' with long title' : '',
-		subCaption = (dataLength % 8 === 0) ? 'Lorem ipsum dolor sit amet' : 'Subtitle',
 		color = Math.floor((Math.random() * 0xEFEFF0) + 0x101010).toString(16);
 
 	return {
 		selected: false,
 		selectionOverlayShowing: showOverlay,
 		caption: album + ' ' + dataLength + caption,
-		subCaption: subCaption,
 		source: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + dataLength
 	};
 };
@@ -60,14 +57,14 @@ const GalleryPanelHeader = kind({
 		selectionPreviousButton: ({showOverlay, showSelectionOverlayHandler}) => {
 			const
 				tooltipText = showOverlay ? 'Previous' : 'Selection',
-				icon = showOverlay ? 'rollbackward' : 'check';
+				icon = showOverlay ? 'refresh' : 'check';
 			return (
-				<IconButton onClick={showSelectionOverlayHandler} size="small" tooltipText={tooltipText}>{icon}</IconButton>
+				<Button icon={icon} onClick={showSelectionOverlayHandler} size="small" tooltipText={tooltipText} />
 			);
 		},
 		addButton: ({addMockItem, showOverlay}) => {
 			if (!showOverlay) {
-				return (<IconButton onClick={addMockItem} size="small" tooltipText="Add Item">plus</IconButton>);
+				return (<Button icon="plus" onClick={addMockItem} size="small" tooltipText="Add Item" />);
 			}
 		},
 		deleteButton: ({deleteItem, showOverlay}) => {

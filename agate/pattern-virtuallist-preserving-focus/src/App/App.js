@@ -1,6 +1,6 @@
+import {BreadcrumbPanels} from '@enact/agate/Panels';
+import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -22,12 +22,12 @@ const App = kind({
 
 	render: ({index, pushPanel, popPanel, ...rest}) => {
 		return (
-			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
+			<BreadcrumbPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
 				<MainPanel onClick={pushPanel} title="First" />
 				<MainPanel onClick={pushPanel} title="Second" />
 				<MainPanel onClick={pushPanel} title="Third" />
 				<MainPanel title="Fourth" />
-			</ActivityPanels>
+			</BreadcrumbPanels>
 		);
 	}
 });
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default MoonstoneDecorator(connect(mapStateToProps, mapDispatchToProps)(App));
+export default ThemeDecorator(connect(mapStateToProps, mapDispatchToProps)(App));

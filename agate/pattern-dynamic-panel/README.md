@@ -5,10 +5,10 @@ A sample Enact application that uses `Changeable` and `Cancelable` HOCs on a `Pa
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Image`
-- `moonstone/Panels/Header`
-- `moonstone/Panels/Panel`
-- `moonstone/VirtualList`
+- `agate/Header`
+- `agate/Image`
+- `agate/Panels/Panel`
+- `agate/VirtualList`
 - `ui/Cancelable`
 - `ui/Changeable`
 

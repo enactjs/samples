@@ -1,7 +1,7 @@
+import BodyText from '@enact/agate/BodyText';
+import Image from '@enact/agate/Image';
+import Picker from '@enact/agate/Picker';
 import kind from '@enact/core/kind';
-import BodyText from '@enact/moonstone/BodyText';
-import Image from '@enact/moonstone/Image';
-import Picker from '@enact/moonstone/Picker';
 import PropTypes from 'prop-types';
 
 const ProfilePhotoPickerContainer = kind({
@@ -33,7 +33,7 @@ const ProfilePhotoPickerContainer = kind({
 
 		return (
 			<div {...rest}>
-				<BodyText centered>
+				<BodyText centered style={{margin: '0px'}}>
 					{imageNames[photoIndex]} :: {photoIndex + 1} of {imageNames.length} photos
 				</BodyText>
 				<Picker onChange={onChange} width="large">

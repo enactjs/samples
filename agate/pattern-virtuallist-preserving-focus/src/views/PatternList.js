@@ -1,5 +1,5 @@
-import Item from '@enact/moonstone/Item';
-import VirtualList from '@enact/moonstone/VirtualList';
+import Item from '@enact/agate/Item';
+import VirtualList from '@enact/agate/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';

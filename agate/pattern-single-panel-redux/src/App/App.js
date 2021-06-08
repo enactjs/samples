@@ -1,6 +1,6 @@
+import {Panels} from '@enact/agate/Panels';
+import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Panels} from '@enact/moonstone/Panels';
 
 import MainPanel from '../views/MainPanel';
 
@@ -21,4 +21,4 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator(App);
+export default ThemeDecorator(App);

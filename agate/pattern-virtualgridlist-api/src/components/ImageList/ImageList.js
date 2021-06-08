@@ -1,4 +1,4 @@
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import {VirtualGridList} from '@enact/agate/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';

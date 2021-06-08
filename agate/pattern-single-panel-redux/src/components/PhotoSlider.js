@@ -1,5 +1,6 @@
+import Slider from '@enact/agate/Slider';
 import kind from '@enact/core/kind';
-import Slider from '@enact/moonstone/Slider';
+import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 
 import css from './componentStyles.module.less';
@@ -27,7 +28,14 @@ const PhotoSlider = kind({
 		delete rest.changePhotoPosition;
 
 		return (
-			<Slider {...rest} max={0} min={-100} onChange={onChange} value={photoPosition} />
+			<Slider
+				{...rest}
+				max={0}
+				min={-100}
+				onChange={onChange}
+				style={{minWidth: ri.scale(360)}}
+				value={photoPosition}
+			/>
 		);
 	}
 });

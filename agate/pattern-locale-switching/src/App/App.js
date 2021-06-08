@@ -1,6 +1,6 @@
+import {Panels} from '@enact/agate/Panels';
+import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Panels} from '@enact/moonstone/Panels';
 import {connect} from 'react-redux';
 
 import MainPanel from '../views/MainPanel';
@@ -28,4 +28,4 @@ const App = kind({
 
 const mapStateToProps = ({locale}) => ({locale});
 
-export default connect(mapStateToProps, {})(MoonstoneDecorator(App));
+export default connect(mapStateToProps, {})(ThemeDecorator(App));

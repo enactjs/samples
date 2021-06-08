@@ -1,5 +1,5 @@
+import Image from '@enact/agate/Image';
 import kind from '@enact/core/kind';
-import Image from '@enact/moonstone/Image';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 

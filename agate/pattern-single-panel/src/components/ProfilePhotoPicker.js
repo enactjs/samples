@@ -1,8 +1,9 @@
-import BodyText from '@enact/moonstone/BodyText';
-import Image from '@enact/moonstone/Image';
-import Picker from '@enact/moonstone/Picker';
-import Slider from '@enact/moonstone/Slider';
+import BodyText from '@enact/agate/BodyText';
+import Image from '@enact/agate/Image';
+import Picker from '@enact/agate/Picker';
+import Slider from '@enact/agate/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 
@@ -72,10 +73,12 @@ class ProfilePhotoPicker extends Component {
 				min={-100}
 				onChange={this.handleSliderChange}
 				shrink
+				style={{minWidth: ri.scale(360)}}
 				value={this.state.photoPosition}
 			/>
 			<Cell
 				centered
+				className={css.bodytext}
 				component={BodyText}
 				shrink
 			>
