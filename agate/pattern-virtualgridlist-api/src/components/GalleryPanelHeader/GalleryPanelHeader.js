@@ -57,7 +57,7 @@ const GalleryPanelHeader = kind({
 		selectionPreviousButton: ({showOverlay, showSelectionOverlayHandler}) => {
 			const
 				tooltipText = showOverlay ? 'Previous' : 'Selection',
-				icon = showOverlay ? 'refresh' : 'check';
+				icon = showOverlay ? 'arrowlargeleft' : 'check';
 			return (
 				<Button icon={icon} onClick={showSelectionOverlayHandler} size="small" tooltipText={tooltipText} />
 			);
