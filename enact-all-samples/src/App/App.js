@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
-import React from 'react';
 import {routes} from  '../index';
 import SampleItem from '../components/SampleItem';
 import Scroller from '@enact/moonstone/Scroller';
