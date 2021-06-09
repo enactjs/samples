@@ -1,6 +1,5 @@
 import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import React from 'react';
 import {render} from 'react-dom';
 
 import PatternActivityPanels from '../../moonstone/pattern-activity-panels/src/App';
