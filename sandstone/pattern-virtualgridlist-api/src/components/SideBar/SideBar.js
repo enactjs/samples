@@ -1,6 +1,6 @@
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import CheckboxItem from '@enact/sandstone/CheckboxItem';
+import Button from '@enact/sandstone/Button';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
 
@@ -31,9 +31,8 @@ const SideBar = kind({
 		return (
 			<Group
 				{...rest}
-				childComponent={CheckboxItem}
+				childComponent={Button}
 				onSelect={onAlbumChange}
-				select="radio"
 				selectedProp="selected"
 			>
 				{albums}

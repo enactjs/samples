@@ -89,10 +89,10 @@ class App extends Component {
 						{desc}
 					</infoComponents>
 					<MediaControls
-						actionGuideLabel="Press Down Button">	
+						actionGuideLabel="Press Down Button">
 						<Button
 							icon="list"
-							backgroundOpacity="translucent"
+							backgroundOpacity="transparent"
 							onClick={this.handleShowPanelsClick}
 							spotlightDisabled={this.state.panelsVisible}
 						/>

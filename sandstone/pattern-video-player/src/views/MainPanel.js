@@ -58,7 +58,7 @@ const MainPanel = kind({
 	render: ({title, onNextPanel, onHidePanels, onVideoIndexChange, videoIndex, ...rest}) => {
 		return (
 			<Panel {...rest}>
-				<Header title={title} titleBelow={videos[videoIndex].title}>
+				<Header subtitle={videos[videoIndex].title} title={title}>
 					<Button onClick={onNextPanel} size="small">Next Panel</Button>
 					<Button onClick={onHidePanels} size="small">Hide Panels</Button>
 				</Header>

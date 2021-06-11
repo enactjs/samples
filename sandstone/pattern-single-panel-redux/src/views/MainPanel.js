@@ -33,7 +33,7 @@ const MainPanel = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header casing="preserve" subtitle="Choose your profile picture" title="Profile Photo Redux"  type="compact" />
+			<Header casing="preserve" subtitle="Choose your profile picture" title="Profile Photo Redux" type="compact" />
 			<Column align="center">
 				<Cell>
 					<Column align="center center">
