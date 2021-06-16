@@ -25,7 +25,7 @@ const SaveButton = kind({
 		delete rest.saveToState;
 
 		return (
-			<Button onClick={onChange}>Save</Button>
+			<Button onClick={onChange} size="small">Save</Button>
 		);
 	}
 });

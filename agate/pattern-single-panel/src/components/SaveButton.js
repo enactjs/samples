@@ -25,7 +25,7 @@ class SaveButton extends Component {
 
 	render = () => (
 		<div {...this.props}>
-			<Button onClick={this.handleOnSave}>
+			<Button onClick={this.handleOnSave} size="small">
 				Save
 			</Button>
 			<Popup closeButton onClose={this.handleOnClose} open={this.state.saved}>

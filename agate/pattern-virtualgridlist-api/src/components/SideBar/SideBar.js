@@ -1,4 +1,4 @@
-import RadioItem from '@enact/agate/RadioItem';
+import Item from '@enact/agate/Item';
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import Group from '@enact/ui/Group';
@@ -31,7 +31,7 @@ const SideBar = kind({
 		return (
 			<Group
 				{...rest}
-				childComponent={RadioItem}
+				childComponent={Item}
 				onSelect={onAlbumChange}
 				select="radio"
 				selectedProp="selected"

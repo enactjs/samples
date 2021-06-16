@@ -22,7 +22,7 @@ const App = kind({
 
 	render: ({index, pushPanel, popPanel, ...rest}) => {
 		return (
-			<BreadcrumbPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
+			<BreadcrumbPanels {...rest} index={index} noCloseButton onSelectBreadcrumb={popPanel}>
 				<MainPanel onClick={pushPanel} title="First" />
 				<MainPanel onClick={pushPanel} title="Second" />
 				<MainPanel onClick={pushPanel} title="Third" />

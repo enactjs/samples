@@ -67,7 +67,6 @@ class ProfilePhotoPicker extends Component {
 				style={{backgroundPosition: this.state.photoPosition + 'px'}}
 			/>
 			<Cell
-				className={css.slider}
 				component={Slider}
 				max={0}
 				min={-100}
@@ -78,9 +77,9 @@ class ProfilePhotoPicker extends Component {
 			/>
 			<Cell
 				centered
-				className={css.bodytext}
 				component={BodyText}
 				shrink
+				style={{margin: 0}}
 			>
 				{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos
 			</Cell>

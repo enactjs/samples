@@ -33,7 +33,7 @@ const MainPanel = kind({
 	name: 'MainPanel',
 
 	render: (props) => (
-		<Panel {...props} style={{paddingTop: '0px'}}>
+		<Panel {...props}>
 			<Column>
 				<Cell
 					casing="preserve"

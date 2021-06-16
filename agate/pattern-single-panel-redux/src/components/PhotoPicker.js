@@ -33,7 +33,7 @@ const ProfilePhotoPickerContainer = kind({
 
 		return (
 			<div {...rest}>
-				<BodyText centered style={{margin: '0px'}}>
+				<BodyText centered style={{margin: 0}}>
 					{imageNames[photoIndex]} :: {photoIndex + 1} of {imageNames.length} photos
 				</BodyText>
 				<Picker onChange={onChange} width="large">

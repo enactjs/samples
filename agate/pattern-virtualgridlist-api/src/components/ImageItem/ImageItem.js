@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {selectItem} from '../../actions';
 
-const ImageItems = kind({
+const GalleryItem = kind({
 	name: 'ImageItem',
 
 	propTypes: {
@@ -17,9 +17,8 @@ const ImageItems = kind({
 		source: PropTypes.string,
 	},
 
-	render: ({caption, selected, selectImageItem, source, ...rest}) => {
+	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, ...rest}) => {
 		delete rest.index;
-		delete rest.selectionOverlayShowing;
 
 		return (
 			<ImageItem
@@ -27,6 +26,7 @@ const ImageItems = kind({
 				onClick={selectImageItem}
 				selected={selected}
 				src={source}
+				style={selectionOverlayShowing && selected ? {background: "#8b7efe"} : null}
 			>
 				{caption}
 			</ImageItem>
@@ -47,4 +47,4 @@ const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageItems);
+export default connect(mapStateToProps, mapDispatchToProps)(GalleryItem);

@@ -2,7 +2,6 @@ import Button from '@enact/agate/Button';
 import Header from '@enact/agate/Header';
 import {Panel} from '@enact/agate/Panels';
 import kind from '@enact/core/kind';
-import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 
 import {PatternList} from './PatternList';
@@ -27,7 +26,7 @@ const MainPanel = kind({
 	render: ({title, onClick, ...rest}) => (
 		<Panel {...rest}>
 			<Header title={title}>
-				<Button onClick={onClick} style={{marginRight: ri.scale(90)}}>Click me</Button>
+				<Button onClick={onClick}>Click me</Button>
 			</Header>
 			<PatternList id={title} index={rest['data-index']} onClick={onClick} />
 		</Panel>

@@ -29,6 +29,7 @@ class PatternList extends Component {
 				{...rest}
 				className={css.list}
 				dataSize={items.length}
+				focusableScrollbar
 				id={id}
 				itemRenderer={this.renderItem}
 				itemSize={ri.scale(72)}
