@@ -2,13 +2,15 @@ import {configure} from '@enact/analytics/preset/webostv';
 import {render} from 'react-dom';
 import 'web-animations-js';
 
+import analytics from '../analytics.cfg';
+
 import App from './App';
 
 // The webOS and webOS TV presets will log entries to PmLogLib.
 configure({
 	// Normally this defaults to `/mnt/lg/cmn_data/whitelist/dr/enact/${appId}.json`,
 	// however for the purposes of this demo, using a local JSON-formatted file.
-	path: require('../analytics.cfg')
+	path: analytics
 });
 
 /*

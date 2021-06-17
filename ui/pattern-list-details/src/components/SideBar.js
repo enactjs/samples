@@ -3,6 +3,8 @@ import Group from '@enact/ui/Group';
 import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
 
+import css from './SideBar.module.less';
+
 const SideBar = kind({
 	name: 'SideBar',
 
@@ -17,7 +19,7 @@ const SideBar = kind({
 			<Group
 				{...rest}
 				childComponent={Item}
-				itemProps={{style: {margin: '12px 0px', fontSize: '24px', cursor: 'default'}}}
+				itemProps={{css}}
 				onSelect={onCityChange}
 				select="radio"
 				selectedProp="selected"

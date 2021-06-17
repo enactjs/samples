@@ -70,7 +70,6 @@ const Content = kind({
 				className={css.maximizePhotoButton}
 				onClick={onZoom}
 				selected={zoomState}
-				style={{paddingLeft: '12px', fontSize: '48px', cursor: 'pointer'}}
 			>
 				{zoomState ? '0x0002D' : '0x0002B'}
 			</Icon>

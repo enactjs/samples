@@ -4,6 +4,8 @@ import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import css from './CityItem.module.less';
+
 const CityItem = kind({
 	name: 'CityItem',
 
@@ -22,9 +24,9 @@ const CityItem = kind({
 	render: ({city, onCityChange, selected, ...rest}) => (
 		<Item
 			{...rest}
+			className={css.item}
 			onClick={onCityChange}
 			selected={selected}
-			style={{margin: '12px 0px', fontSize: '24px', cursor: 'default'}}
 			value={city}
 		>
 			{city}

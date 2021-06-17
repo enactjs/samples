@@ -5,6 +5,8 @@ import Nav from '../components/Nav';
 
 import Body from './Body';
 
+import css from './MainView.module.less';
+
 const cities = {
 	usa: ['San Francisco', 'Los Angeles', 'New York City'],
 	spain: ['Madrid', 'Barcelona', 'Valencia'],
@@ -30,16 +32,9 @@ class MainView extends Component {
 		const onChange = this.handleCountryChange;
 
 		return (
-			<div {...this.props} style={{position: 'absolute', inset: '0px 18px 24px', overflow: 'hidden'}}>
+			<div {...this.props} className={css.main}>
 				<Heading size="title">
-					<div
-						style={{
-							display: 'flex',
-							borderBottom: '3px solid grey',
-							alignItems: 'center',
-							justifyContent: 'space-between'
-						}}
-					>
+					<div className={css.heading}>
 						City Viewer
 						<div>
 							<Nav

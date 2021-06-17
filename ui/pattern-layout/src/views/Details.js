@@ -49,9 +49,9 @@ const Details = kind({
 
 		return (
 			<div {...rest} style={{height: '100%'}}>
-				<Heading size="title" style={{width: 'calc(100% - 2em)', borderBottom: '3px solid grey'}}>
+				<Heading className={css.heading} size="title">
 					{title}
-					<div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 'normal', fontSize: '18px'}}>
+					<div className={css.subtitle}>
 						{titleBelow}
 						<div>
 							{DebugButton}
@@ -59,13 +59,13 @@ const Details = kind({
 						</div>
 					</div>
 				</Heading>
-				<Row style={{width: 'calc(100% - 4em)', height: 'calc(100% - 10em)'}}>
+				<Row className={css.row}>
 					<Cell>
 						<BodyText style={{marginRight: ri.unit(12, 'rem')}}>The alumni cast of a space opera television series have to play their roles as the real thing when an alien race needs their help. However, they also have to defend both Earth and the alien race from a reptilian warlord.</BodyText>
 					</Cell>
 					<Cell size="60%">
 						<Layout orientation={orientation ? 'horizontal' : 'vertical'} style={{height: '100%'}}>
-							<Cell component={Image} style={{height: '100%', width: '100%', minWidth: '10%', margin: 0}} src="http://picsum.photos/480/320/" />
+							<Cell className={css.image} component={Image} src="http://picsum.photos/480/320/" />
 							<Cell shrink style={{padding: '0 1em', width: (orientation ? '80%' : null)}}>
 								<Column>
 									<Cell shrink>

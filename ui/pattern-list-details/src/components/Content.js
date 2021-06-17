@@ -66,7 +66,6 @@ const Content = kind({
 				className={css.maximizePhotoButton}
 				onClick={onZoom}
 				selected={zoom}
-				style={{paddingLeft: '12px', fontSize: '48px', cursor: 'pointer'}}
 			>
 				{zoom ? '0x0002D' : '0x0002B'}
 			</Icon>

@@ -9,7 +9,7 @@ const MainPanel = kind({
 	name: 'MainPanel',
 
 	render: (props) => (
-		<div {...props} style={{position: 'absolute', inset: '0px 18px 24px', overflow: 'hidden'}}>
+		<div {...props} className={css.main}>
 			<Heading size="title">Analytics Example</Heading>
 			<BodyText>
 				This app is hooked in to @enact/analytics and outputs log entries

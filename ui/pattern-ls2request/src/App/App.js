@@ -12,7 +12,7 @@ class App extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
 		eyeComfortMode: PropTypes.string,
-		smartPictureMode: PropTypes.string
+		brightness: PropTypes.string
 	};
 
 	componentDidMount () {
@@ -20,7 +20,7 @@ class App extends Component {
 		if (typeof window.PalmSystem !== 'undefined') {
 			this.props.dispatch(getSystemSettings({
 				category: 'picture',
-				key: 'smartPictureMode'
+				key: 'brightness'
 			}));
 
 			// This LS2Request is WITH subscription
@@ -32,12 +32,27 @@ class App extends Component {
 		}
 	}
 
-	onSmartPictureToggle = () => this.props.dispatch(setSystemSettings({
-		category: 'picture',
-		settings: {
-			smartPictureMode: this.props.smartPictureMode === 'on' ? 'off' : 'on'
-		}
-	}));
+	handleDecreaseBrightness = () => {
+		let brightness = Number(this.props.brightness);
+		brightness = brightness !== 0 ? brightness - 10 : brightness;
+		return this.props.dispatch(setSystemSettings({
+			category: 'picture',
+			settings: {
+				brightness: String(brightness)
+			}
+		}));
+	}
+
+	handleIncreaseBrightness = () => {
+		let brightness = Number(this.props.brightness);
+		brightness = brightness !== 100 ? brightness + 10 : brightness ;
+		return this.props.dispatch(setSystemSettings({
+			category: 'picture',
+			settings: {
+				brightness: String(brightness)
+			}
+		}));
+	}
 
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
 	onEyeComfortModeToggle = () => setSystemSettingsSubscribed({
@@ -54,18 +69,19 @@ class App extends Component {
 	};
 
 	render () {
-		const {smartPictureMode, eyeComfortMode} = this.props;
+		const {brightness, eyeComfortMode} = this.props;
 		if (typeof window.PalmSystem === 'undefined') {
-			return <div>This test will only function correctly on webOS systems!</div>;
+			return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
 		}
 
 		return (
-			<div style={{position: 'absolute', inset: '18px 24px', overflow: 'hidden'}}>
+			<div className={css.main}>
 				{this.checkSystem()}
 				<Item>
-					Smart Picture Mode : {smartPictureMode}
+					Brightness : {brightness}
 				</Item>
-				<Button className={css.button} onClick={this.onSmartPictureToggle}>Toggle</Button>
+				<Button className={css.button} onClick={this.handleDecreaseBrightness}>Decrease</Button>
+				<Button className={css.button} onClick={this.handleIncreaseBrightness}>Increase</Button>
 				<Item>
 					Eye Comfort Mode : {eyeComfortMode}
 				</Item>
@@ -76,9 +92,9 @@ class App extends Component {
 }
 
 const mapStateToProps = ({systemSettings}) => {
-	const {smartPictureMode, eyeComfortMode} = systemSettings;
+	const {brightness, eyeComfortMode} = systemSettings;
 	return {
-		smartPictureMode,
+		brightness,
 		eyeComfortMode
 	};
 };

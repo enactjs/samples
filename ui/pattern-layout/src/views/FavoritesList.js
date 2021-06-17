@@ -8,12 +8,14 @@ import ri from '@enact/ui/resolution';
 import VirtualList from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
 
+import css from './FavoritesList.module.less';
+
 const SpottableContainer = SpotlightContainerDecorator({enterTo: 'last-focused'}, 'div');
 
 const items = Array(80).fill().map((_, i) => 'Item ' + (i + 1));
 const itemStyle = {
-	margin: '12px 0px',
-	fontSize: '18px',
+	margin: '12px 0',
+	fontSize: '24px',
 	cursor: 'default'
 };
 
@@ -48,14 +50,14 @@ const ItemPanel = kind({
 
 		return (
 			<div {...rest} style={{height: '100%'}}>
-				<Heading size="title" style={{width: 'calc(100% - 2em)', borderBottom: '3px solid grey'}}>
+				<Heading className={css.heading} size="title">
 					{title}
-					<div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 'normal', fontSize: '18px'}}>
+					<div className={css.subtitle}>
 						{titleBelow}
 						{DebugButton}
 					</div>
 				</Heading>
-				<Row style={{height: 'calc(100% - 10em)', width: 'calc(100% - 4em)'}} >
+				<Row className={css.row}>
 					<Cell size={300}>
 						<Item style={itemStyle}>Photo Items</Item>
 						<Item style={itemStyle}>Video Items</Item>
@@ -64,7 +66,7 @@ const ItemPanel = kind({
 					<Cell>
 						<Column>
 							<Cell shrink>
-								<Heading size="large" style={{borderBottom: '1px solid grey'}}>All Items</Heading>
+								<Heading className={css.cellHeading} size="large">All Items</Heading>
 							</Cell>
 							<Cell>
 								<VirtualList
@@ -77,17 +79,17 @@ const ItemPanel = kind({
 						</Column>
 					</Cell>
 					<Cell component={SpottableContainer} shrink>
-						<Column style={{justifyContent: 'center'}}>
+						<Column className={css.column}>
 							<Cell shrink>
-								<Icon style={{fontSize: '36px'}}>{'&#x2190;'}</Icon>
+								<Icon className={css.icon}>{'&#x2190;'}</Icon>
 							</Cell>
 							<Cell shrink style={{marginTop: ri.unit(12, 'rem'), textAlign: 'center'}}>
-								<Icon style={{fontSize: '36px'}}>{'&#128465;'}</Icon>
+								<Icon className={css.icon}>{'&#128465;'}</Icon>
 							</Cell>
 						</Column>
 					</Cell>
 					<Cell>
-						<Heading size="large" style={{borderBottom: '1px solid grey'}}>Selected Items</Heading>
+						<Heading className={css.cellHeading} size="large">Selected Items</Heading>
 						<Item style={itemStyle}>Item 1</Item>
 						<Item style={itemStyle}>Item 2</Item>
 					</Cell>

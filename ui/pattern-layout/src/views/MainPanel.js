@@ -5,6 +5,8 @@ import ri from '@enact/ui/resolution';
 import {VirtualGridList} from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
 
+import css from './MainPanel.module.less';
+
 const GridItem = kind({
 	name: 'GridItem',
 	propTypes: {
@@ -69,10 +71,10 @@ const MainPanel = kind({
 		delete rest.hideChildren;
 
 		return (
-			<div style={{margin: '24px 18px'}} {...rest}>
-				<Heading size="title" style={{borderBottom: '3px solid grey'}}>
+			<div {...rest} className={css.main}>
+				<Heading className={css.heading} size="title">
 					Example Layouts
-					<div style={{fontWeight: 'normal', fontSize: '18px'}}>
+					<div className={css.subtitle}>
 						Choose a layout
 					</div>
 				</Heading>
@@ -81,10 +83,7 @@ const MainPanel = kind({
 					dataSize={items.length}
 					itemRenderer={itemRenderer}
 					itemSize={{minWidth: ri.scale(300), minHeight: ri.scale(270)}}
-					spacing={ri.scale(18)}
-					style={{
-						height: '100%'
-					}}
+					spacing={ri.scale(24)}
 				/>
 			</div>
 		);

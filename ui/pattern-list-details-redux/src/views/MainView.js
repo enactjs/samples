@@ -5,20 +5,15 @@ import NavContainer from '../containers/NavContainer';
 
 import Body from './Body';
 
+import css from './MainView.module.less';
+
 const MainView = kind({
 	name: 'MainView',
 
 	render: (props) => (
-		<div {...props} style={{position: 'absolute', inset: '0px 18px 24px', overflow: 'hidden'}}>
+		<div {...props} className={css.main}>
 			<Heading spacing="small" size="title">
-				<div
-					style={{
-						display: 'flex',
-						borderBottom: '3px solid grey',
-						alignItems: 'center',
-						justifyContent: 'space-between'
-					}}
-				>
+				<div className={css.heading}>
 					City Viewer Redux
 					<div>
 						<NavContainer />
