@@ -11,8 +11,8 @@ import css from './App.module.less';
 class App extends Component {
 	static propTypes = {
 		dispatch: PropTypes.func.isRequired,
-		eyeComfortMode: PropTypes.string,
-		brightness: PropTypes.string
+		brightness: PropTypes.string,
+		eyeComfortMode: PropTypes.string
 	};
 
 	componentDidMount () {
@@ -41,18 +41,18 @@ class App extends Component {
 				brightness: String(brightness)
 			}
 		}));
-	}
+	};
 
 	handleIncreaseBrightness = () => {
 		let brightness = Number(this.props.brightness);
-		brightness = brightness !== 100 ? brightness + 10 : brightness ;
+		brightness = brightness !== 100 ? brightness + 10 : brightness;
 		return this.props.dispatch(setSystemSettings({
 			category: 'picture',
 			settings: {
 				brightness: String(brightness)
 			}
 		}));
-	}
+	};
 
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
 	onEyeComfortModeToggle = () => setSystemSettingsSubscribed({

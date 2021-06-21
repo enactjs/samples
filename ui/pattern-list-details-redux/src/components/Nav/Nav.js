@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Fragment} from 'react';
 
 import CountryButton from './CountryButton';
 
@@ -13,7 +13,7 @@ const Nav = kind({
 	},
 
 	render: ({countries, onCountryChange}) => (
-		<React.Fragment>
+		<Fragment>
 			{countries.map((country, index) => (
 				<CountryButton
 					country={country}
@@ -21,7 +21,7 @@ const Nav = kind({
 					onCountryChange={onCountryChange}
 				/>
 			))}
-		</React.Fragment>
+		</Fragment>
 	)
 });
 
