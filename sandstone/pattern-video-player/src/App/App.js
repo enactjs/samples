@@ -88,8 +88,7 @@ class App extends Component {
 					<infoComponents>
 						{desc}
 					</infoComponents>
-					<MediaControls
-						actionGuideLabel="Press Down Button">
+					<MediaControls actionGuideLabel="Press Down Button">
 						<Button
 							icon="list"
 							backgroundOpacity="transparent"

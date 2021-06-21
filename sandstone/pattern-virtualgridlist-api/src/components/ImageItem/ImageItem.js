@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {selectItem} from '../../actions';
 
-const ImageItems = kind({
+const GalleryItem = kind({
 	name: 'ImageItem',
 
 	propTypes: {
@@ -51,4 +51,4 @@ const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageItems);
+export default connect(mapStateToProps, mapDispatchToProps)(GalleryItem);
