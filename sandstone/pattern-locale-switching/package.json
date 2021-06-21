@@ -1,0 +1,47 @@
+{
+  "name": "pattern-locale-switching",
+  "version": "1.0.0",
+  "description": "An Enact application demonstrating Locale switching.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test start --single-run --browsers PhantomJS",
+    "test-json": "enact test start --single-run --browsers PhantomJS --reporters json",
+    "test-watch": "enact test start --browsers PhantomJS"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "Locale Switching Pattern",
+    "isomorphic": true,
+    "ri": {
+      "baseSize": 24
+    }
+  },
+  "eslintConfig": {
+    "extends": "enact/strict"
+  },
+  "dependencies": {
+    "@enact/core": "^4.0.0",
+    "@enact/i18n": "^4.0.0",
+    "@enact/sandstone": "^2.0.0-beta.1",
+    "@enact/spotlight": "^4.0.0",
+    "@enact/ui": "^4.0.0",
+    "@enact/webos": "^4.0.0",
+    "ilib": "^14.4.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "web-animations-js": "^2.3.2"
+  }
+}
