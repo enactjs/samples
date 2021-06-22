@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import ri from '@enact/ui/resolution';
-import {Panel, Header} from '@enact/moonstone/Panels';
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import {Header, Panel} from '@enact/moonstone/Panels';
+import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 
 const GridItem = kind({
 	name: 'GridItem',
 	propTypes: {
 		index: PropTypes.number,
 		items: PropTypes.array,
-		onSelect: PropTypes.function
+		onSelect: PropTypes.func
 	},
 	handlers: {
 		onSelect: (ev, {index, onSelect}) => onSelect({index})
@@ -22,9 +21,9 @@ const GridItem = kind({
 				<GridListImageItem
 					{...rest}
 					caption={items[index].title}
-					source={items[index].image}
-					subCaption={items[index].subTitle}
 					onClick={onSelect}
+					source={items[index].image.default}
+					subCaption={items[index].subTitle}
 				/>
 			);
 		}
@@ -37,8 +36,8 @@ const renderItem = ({items, onChangePanel}) => ({index, ...rest}) => {
 		return (
 			<GridItem
 				{...rest}
-				items={items}
 				index={index}
+				items={items}
 				onSelect={onChangePanel}
 			/>
 		);
@@ -76,9 +75,9 @@ const MainPanel = kind({
 				</Header>
 
 				<VirtualGridList
-					itemRenderer={itemRenderer}
 					dataSize={items.length}
 					focusableScrollbar
+					itemRenderer={itemRenderer}
 					itemSize={{minWidth: ri.scale(300), minHeight: ri.scale(270)}}
 					spacing={ri.scale(18)}
 					style={{
