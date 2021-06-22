@@ -1,16 +1,16 @@
-import React from 'react';
-import kind from '@enact/core/kind';
-import hoc from '@enact/core/hoc';
 import {adaptEvent, forward, handle} from '@enact/core/handle';
-import PropTypes from 'prop-types';
-import compose from 'ramda/src/compose';
+import hoc from '@enact/core/hoc';
+import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
+import PropTypes from 'prop-types';
+import compose from 'ramda/src/compose';
+import {Component} from 'react';
 
 import {importAll} from '../components/util';
-import FavoritesList from '../views/FavoritesList';
 import Details from '../views/Details';
+import FavoritesList from '../views/FavoritesList';
 import MainPanel from '../views/MainPanel';
 
 const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
@@ -82,7 +82,7 @@ const App = kind({
 });
 
 const AppDecorator = hoc((config, Wrapped) => {
-	return class extends React.Component {
+	return class extends Component {
 		static displayName = 'AppDecorator';
 
 		static propTypes = {

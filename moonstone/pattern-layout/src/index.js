@@ -1,9 +1,7 @@
-import 'web-animations-js';
 /* eslint-disable react/jsx-no-bind */
-
-import React from 'react';
 import qs from 'query-string';
 import {render} from 'react-dom';
+import 'web-animations-js';
 
 import App from './App';
 import {saveObjToQueryString} from './components/util';

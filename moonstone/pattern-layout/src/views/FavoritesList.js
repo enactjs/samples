@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Cell, Column, Row} from '@enact/ui/Layout';
-import ri from '@enact/ui/resolution';
-import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
 import Heading from '@enact/moonstone/Heading';
 import IconButton from '@enact/moonstone/IconButton';
 import Item from '@enact/moonstone/Item';
-import {Panel, Header} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import VirtualList from '@enact/moonstone/VirtualList';
+import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
+import {Cell, Column, Row} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 
 const SpottableContainer = SpotlightContainerDecorator({enterTo: 'last-focused'}, 'div');
 
@@ -58,15 +57,15 @@ const ItemPanel = kind({
 						</Cell>
 						<Cell>
 							<VirtualList
-								itemRenderer={itemRenderer}
 								data={items}
 								dataSize={items.length}
+								itemRenderer={itemRenderer}
 								itemSize={ri.scale(60)}
 							/>
 						</Cell>
 					</Column>
 				</Cell>
-				<Cell shrink component={SpottableContainer}>
+				<Cell component={SpottableContainer} shrink>
 					<Column style={{justifyContent: 'center'}}>
 						<Cell component={IconButton} shrink>arrowlargeright</Cell>
 						<Cell component={IconButton} shrink style={{marginTop: ri.unit(12, 'rem')}}>trash</Cell>

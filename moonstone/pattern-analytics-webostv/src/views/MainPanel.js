@@ -2,8 +2,7 @@ import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import IconButton from '@enact/moonstone/IconButton';
-import {Panel, Header} from '@enact/moonstone/Panels';
-import React from 'react';
+import {Header, Panel} from '@enact/moonstone/Panels';
 
 const MainPanel = kind({
 	name: 'MainPanel',
