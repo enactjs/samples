@@ -1,10 +1,10 @@
 import kind from '@enact/core/kind';
-import BodyText from '@enact/moonstone/BodyText';
-import Button from '@enact/moonstone/Button';
-import Image from '@enact/moonstone/Image';
-import Item from '@enact/moonstone/Item';
-import Marquee from '@enact/moonstone/Marquee';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import BodyText from '@enact/sandstone/BodyText';
+import Button from '@enact/sandstone/Button';
+import Image from '@enact/sandstone/Image';
+import Item from '@enact/sandstone/Item';
+import Marquee from '@enact/sandstone/Marquee';
+import {Header, Panel} from '@enact/sandstone/Panels';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import Toggleable from '@enact/ui/Toggleable';
@@ -43,7 +43,7 @@ const Details = kind({
 
 	render: ({DebugButton, changeOrientation, orientation, title, titleBelow, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title} titleBelow={titleBelow}>
+			<Header subtitle={titleBelow} title={title}>
 				{DebugButton}
 				<Button onClick={changeOrientation} selected={orientation} size="small">Flip Orientation</Button>
 			</Header>

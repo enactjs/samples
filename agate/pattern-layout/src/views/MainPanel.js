@@ -1,7 +1,8 @@
 import kind from '@enact/core/kind';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import ImageItem from '@enact/agate/ImageItem';
+import Header from '@enact/agate/Header';
+import {Panel} from '@enact/agate/Panels';
+import {VirtualGridList} from '@enact/agate/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 
@@ -18,13 +19,13 @@ const GridItem = kind({
 	render: ({index, items, onSelect, ...rest}) => {
 		if (items && items[index]) {
 			return (
-				<GridListImageItem
+				<ImageItem
 					{...rest}
-					caption={items[index].title}
 					onClick={onSelect}
-					source={items[index].image.default}
-					subCaption={items[index].subTitle}
-				/>
+					src={items[index].image.default}
+				>
+					{items[index].title}
+				</ImageItem>
 			);
 		}
 	}
@@ -71,7 +72,7 @@ const MainPanel = kind({
 			<Panel {...rest}>
 				<Header type="compact">
 					<title>Example Layouts</title>
-					<titleBelow>Choose a layout</titleBelow>
+					<subtitle>Choose a layout</subtitle>
 				</Header>
 
 				<VirtualGridList

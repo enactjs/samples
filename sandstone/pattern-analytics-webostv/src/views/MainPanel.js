@@ -1,8 +1,7 @@
 import kind from '@enact/core/kind';
-import BodyText from '@enact/moonstone/BodyText';
-import Button from '@enact/moonstone/Button';
-import IconButton from '@enact/moonstone/IconButton';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import BodyText from '@enact/sandstone/BodyText';
+import Button from '@enact/sandstone/Button';
+import {Header, Panel} from '@enact/sandstone/Panels';
 
 const MainPanel = kind({
 	name: 'MainPanel',
@@ -15,7 +14,7 @@ const MainPanel = kind({
 				and outputs log entries via PmLogLib.
 			</BodyText>
 			<Button>Click me</Button>
-			<IconButton aria-label="ZOOM">livezoom</IconButton>
+			<Button aria-label="ZOOM" icon="zoomin" />
 		</Panel>
 	)
 });

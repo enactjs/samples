@@ -1,9 +1,9 @@
+import Button from '@enact/agate/Button';
+import {BreadcrumbPanels} from '@enact/agate/Panels';
+import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 import {Component} from 'react';
@@ -73,10 +73,10 @@ const App = kind({
 			);
 		}
 		return (
-			<ActivityPanels {...rest}>
+			<BreadcrumbPanels {...rest} noCloseButton>
 				<MainPanel items={items} onChangePanel={onChangePanel} />
 				{secondaryPanel}
-			</ActivityPanels>
+			</BreadcrumbPanels>
 		);
 	}
 });
@@ -139,6 +139,6 @@ const AppDecorator = hoc((config, Wrapped) => {
 });
 
 export default compose(
-	MoonstoneDecorator,
+	ThemeDecorator,
 	AppDecorator
 )(App);
