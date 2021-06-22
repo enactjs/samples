@@ -1,10 +1,10 @@
 import kind from '@enact/core/kind';
-import Heading from '@enact/moonstone/Heading';
-import IconButton from '@enact/moonstone/IconButton';
-import Item from '@enact/moonstone/Item';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import SelectableItem from '@enact/moonstone/SelectableItem';
-import VirtualList from '@enact/moonstone/VirtualList';
+import Heading from '@enact/agate/Heading';
+import Button from '@enact/agate/Button';
+import Item from '@enact/agate/Item';
+import Header from '@enact/agate/Header';
+import {Panel} from '@enact/agate/Panels';
+import VirtualList from '@enact/agate/VirtualList';
 import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
 import {Cell, Column, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
@@ -41,14 +41,14 @@ const ItemPanel = kind({
 
 	render: ({title, titleBelow, itemRenderer, DebugButton, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title} titleBelow={titleBelow}>
+			<Header subtitle={titleBelow} title={title}>
 				{DebugButton}
 			</Header>
 			<Row style={{height: '100%'}}>
 				<Cell size={300}>
-					<SelectableItem defaultSelected>Photo Items</SelectableItem>
-					<SelectableItem>Video Items</SelectableItem>
-					<SelectableItem>Audio Items</SelectableItem>
+					<Item>Photo Items</Item>
+					<Item>Video Items</Item>
+					<Item>Audio Items</Item>
 				</Cell>
 				<Cell>
 					<Column>
@@ -67,8 +67,8 @@ const ItemPanel = kind({
 				</Cell>
 				<Cell component={SpottableContainer} shrink>
 					<Column style={{justifyContent: 'center'}}>
-						<Cell component={IconButton} shrink>arrowlargeright</Cell>
-						<Cell component={IconButton} shrink style={{marginTop: ri.unit(12, 'rem')}}>trash</Cell>
+						<Cell component={Button} icon="arrowlargeright" shrink />
+						<Cell component={Button} icon="arrowlargeleft" shrink style={{marginTop: ri.unit(12, 'rem')}} />
 					</Column>
 				</Cell>
 				<Cell>

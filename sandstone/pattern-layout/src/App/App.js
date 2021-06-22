@@ -1,9 +1,9 @@
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
-import Button from '@enact/moonstone/Button';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels} from '@enact/moonstone/Panels';
+import Button from '@enact/sandstone/Button';
+import {Panels} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 import {Component} from 'react';
@@ -56,7 +56,7 @@ const App = kind({
 		)
 	},
 
-	render: ({debug, DebugButton, itemIndex, onChangePanel, ...rest}) => {
+	render: ({debug, DebugButton, itemIndex, onChangePanel, onSelectBreadcrumb, ...rest}) => {
 		delete rest.onToggleDebug;
 
 		let secondaryPanel = <Placeholder />;
@@ -73,10 +73,10 @@ const App = kind({
 			);
 		}
 		return (
-			<ActivityPanels {...rest}>
+			<Panels {...rest} onBack={onSelectBreadcrumb}>
 				<MainPanel items={items} onChangePanel={onChangePanel} />
 				{secondaryPanel}
-			</ActivityPanels>
+			</Panels>
 		);
 	}
 });
@@ -139,6 +139,6 @@ const AppDecorator = hoc((config, Wrapped) => {
 });
 
 export default compose(
-	MoonstoneDecorator,
+	ThemeDecorator,
 	AppDecorator
 )(App);

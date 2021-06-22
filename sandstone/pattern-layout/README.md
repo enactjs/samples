@@ -5,12 +5,11 @@ A sample application to demonstrate elaborate usages of the `ui/Layout` componen
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
 #### Enact Components Used
-- `moonstone/Panels/ActivityPanels`
-- `moonstone/Panels/Panel`
-- `moonstone/Panels/Header`
-- `moonstone/Button`
-- `moonstone/Item`
-- `moonstone/VirtualList`
+- `sandstone/Button`
+- `sandstone/Item`
+- `sandstone/Panels/Header`
+- `sandstone/Panels/Panel`
+- `sandstone/VirtualList`
 - `ui/Layout`
 
 ---

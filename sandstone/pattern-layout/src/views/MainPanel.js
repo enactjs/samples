@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import ImageItem from '@enact/sandstone/ImageItem';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 
@@ -18,13 +18,14 @@ const GridItem = kind({
 	render: ({index, items, onSelect, ...rest}) => {
 		if (items && items[index]) {
 			return (
-				<GridListImageItem
+				<ImageItem
 					{...rest}
-					caption={items[index].title}
 					onClick={onSelect}
-					source={items[index].image.default}
-					subCaption={items[index].subTitle}
-				/>
+					src={items[index].image.default}
+					label={items[index].subTitle}
+				>
+					{items[index].title}
+				</ImageItem>
 			);
 		}
 	}
@@ -71,15 +72,15 @@ const MainPanel = kind({
 			<Panel {...rest}>
 				<Header type="compact">
 					<title>Example Layouts</title>
-					<titleBelow>Choose a layout</titleBelow>
+					<subtitle>Choose a layout</subtitle>
 				</Header>
 
 				<VirtualGridList
 					dataSize={items.length}
 					focusableScrollbar
 					itemRenderer={itemRenderer}
-					itemSize={{minWidth: ri.scale(300), minHeight: ri.scale(270)}}
-					spacing={ri.scale(18)}
+					itemSize={{minWidth: ri.scale(600), minHeight: ri.scale(540)}}
+					spacing={ri.scale(36)}
 					style={{
 						height: '100%'
 					}}

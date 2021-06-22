@@ -1,10 +1,9 @@
 import kind from '@enact/core/kind';
-import Heading from '@enact/moonstone/Heading';
-import IconButton from '@enact/moonstone/IconButton';
-import Item from '@enact/moonstone/Item';
-import {Header, Panel} from '@enact/moonstone/Panels';
-import SelectableItem from '@enact/moonstone/SelectableItem';
-import VirtualList from '@enact/moonstone/VirtualList';
+import Button from '@enact/sandstone/Button';
+import Heading from '@enact/sandstone/Heading';
+import Item from '@enact/sandstone/Item';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import VirtualList from '@enact/sandstone/VirtualList';
 import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
 import {Cell, Column, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
@@ -41,14 +40,14 @@ const ItemPanel = kind({
 
 	render: ({title, titleBelow, itemRenderer, DebugButton, ...rest}) => (
 		<Panel {...rest}>
-			<Header title={title} titleBelow={titleBelow}>
+			<Header subtitle={titleBelow} title={title}>
 				{DebugButton}
 			</Header>
 			<Row style={{height: '100%'}}>
-				<Cell size={300}>
-					<SelectableItem defaultSelected>Photo Items</SelectableItem>
-					<SelectableItem>Video Items</SelectableItem>
-					<SelectableItem>Audio Items</SelectableItem>
+				<Cell size={600}>
+					<Item>Photo Items</Item>
+					<Item>Video Items</Item>
+					<Item>Audio Items</Item>
 				</Cell>
 				<Cell>
 					<Column>
@@ -60,15 +59,15 @@ const ItemPanel = kind({
 								data={items}
 								dataSize={items.length}
 								itemRenderer={itemRenderer}
-								itemSize={ri.scale(60)}
+								itemSize={ri.scale(120)}
 							/>
 						</Cell>
 					</Column>
 				</Cell>
 				<Cell component={SpottableContainer} shrink>
 					<Column style={{justifyContent: 'center'}}>
-						<Cell component={IconButton} shrink>arrowlargeright</Cell>
-						<Cell component={IconButton} shrink style={{marginTop: ri.unit(12, 'rem')}}>trash</Cell>
+						<Cell component={Button} icon="arrowlargeright" shrink />
+						<Cell component={Button} icon="trash" shrink style={{marginTop: ri.unit(24, 'rem')}} />
 					</Column>
 				</Cell>
 				<Cell>
