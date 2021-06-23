@@ -9,6 +9,7 @@ import {updateLocale} from '../../actions';
 
 class LocaleSwitchBase extends Component {
 	static propTypes = {
+		rtl: PropTypes.bool,
 		updateLocale: PropTypes.func,
 		updateReduxLocale: PropTypes.func
 	};

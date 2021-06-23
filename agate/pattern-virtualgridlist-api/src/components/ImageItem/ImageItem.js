@@ -14,7 +14,7 @@ const GalleryItem = kind({
 		selected: PropTypes.bool,
 		selectImageItem: PropTypes.func,
 		selectionOverlayShowing: PropTypes.bool,
-		source: PropTypes.string,
+		source: PropTypes.string
 	},
 
 	render: ({caption, selected, selectImageItem, selectionOverlayShowing, source, ...rest}) => {
@@ -26,7 +26,7 @@ const GalleryItem = kind({
 				onClick={selectImageItem}
 				selected={selected}
 				src={source}
-				style={selectionOverlayShowing && selected ? {background: "#8b7efe"} : null}
+				style={selectionOverlayShowing && selected ? {background: '#8b7efe'} : null}
 			>
 				{caption}
 			</ImageItem>
@@ -38,7 +38,7 @@ const mapStateToProps = ({data}, {['data-index']: dataIndex}) => ({
 	caption: data.data[dataIndex].caption,
 	selected: data.selectedItems.has(dataIndex),
 	selectionOverlayShowing: data.data[dataIndex].selectionOverlayShowing,
-	source: data.data[dataIndex].source,
+	source: data.data[dataIndex].source
 });
 
 const mapDispatchToProps = (dispatch, {['data-index']: dataIndex}) => {
