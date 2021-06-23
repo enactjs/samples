@@ -70,7 +70,7 @@ const MainPanel = kind({
 		delete rest.onChangePanel;
 		return (
 			<Panel {...rest}>
-				<Header type="compact">
+				<Header>
 					<title>Example Layouts</title>
 					<subtitle>Choose a layout</subtitle>
 				</Header>

@@ -44,10 +44,12 @@ const Details = kind({
 	render: ({DebugButton, changeOrientation, orientation, title, titleBelow, ...rest}) => (
 		<Panel {...rest}>
 			<Header subtitle={titleBelow} title={title}>
-				{DebugButton}
-				<Button onClick={changeOrientation} selected={orientation} size="small">Flip Orientation</Button>
+				<slotAfter>
+					{DebugButton}
+					<Button onClick={changeOrientation} selected={orientation} size="small">Flip Orientation</Button>
+				</slotAfter>
 			</Header>
-			<Row style={{height: '100%'}}>
+			<Row style={{height: `calc(100% - ${ri.scale(48)}px)`}}>
 				<Cell>
 					<BodyText style={{margin: '0 ' + ri.unit(12, 'rem')}}>The alumni cast of a space opera television series have to play their roles as the real thing when an alien race needs their help. However, they also have to defend both Earth and the alien race from a reptilian warlord.</BodyText>
 				</Cell>

@@ -4,6 +4,7 @@ import Button from '@enact/agate/Button';
 import Item from '@enact/agate/Item';
 import Header from '@enact/agate/Header';
 import {Panel} from '@enact/agate/Panels';
+import RadioItem from '@enact/agate/RadioItem';
 import VirtualList from '@enact/agate/VirtualList';
 import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
 import {Cell, Column, Row} from '@enact/ui/Layout';
@@ -45,10 +46,10 @@ const ItemPanel = kind({
 				{DebugButton}
 			</Header>
 			<Row style={{height: '100%'}}>
-				<Cell size={300}>
-					<Item>Photo Items</Item>
-					<Item>Video Items</Item>
-					<Item>Audio Items</Item>
+				<Cell size={360}>
+					<RadioItem defaultSelected>Photo Items</RadioItem>
+					<RadioItem>Video Items</RadioItem>
+					<RadioItem>Audio Items</RadioItem>
 				</Cell>
 				<Cell>
 					<Column>

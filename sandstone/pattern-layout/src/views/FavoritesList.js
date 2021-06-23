@@ -3,6 +3,7 @@ import Button from '@enact/sandstone/Button';
 import Heading from '@enact/sandstone/Heading';
 import Item from '@enact/sandstone/Item';
 import {Header, Panel} from '@enact/sandstone/Panels';
+import RadioItem from '@enact/sandstone/RadioItem';
 import VirtualList from '@enact/sandstone/VirtualList';
 import {SpotlightContainerDecorator} from '@enact/spotlight/SpotlightContainerDecorator';
 import {Cell, Column, Row} from '@enact/ui/Layout';
@@ -41,13 +42,15 @@ const ItemPanel = kind({
 	render: ({title, titleBelow, itemRenderer, DebugButton, ...rest}) => (
 		<Panel {...rest}>
 			<Header subtitle={titleBelow} title={title}>
-				{DebugButton}
+				<slotAfter>
+					{DebugButton}
+				</slotAfter>
 			</Header>
-			<Row style={{height: '100%'}}>
-				<Cell size={600}>
-					<Item>Photo Items</Item>
-					<Item>Video Items</Item>
-					<Item>Audio Items</Item>
+			<Row style={{height: `calc(100% - ${ri.scale(48)}px)`}}>
+				<Cell size={720}>
+					<RadioItem defaultSelected>Photo Items</RadioItem>
+					<RadioItem>Video Items</RadioItem>
+					<RadioItem>Audio Items</RadioItem>
 				</Cell>
 				<Cell>
 					<Column>
