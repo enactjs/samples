@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Group from '@enact/ui/Group';
