@@ -7,10 +7,7 @@ let error = false;
 
 function findApps () {
 	return new Promise((resolve, reject) => {
-		// Temporarily scan only two folders that the latest sandstone applied.
-		// If all others are applied, use the next line that scans all folders.
-		// readdirp({depth: 1, fileFilter: 'package.json'}, (err, res) => {
-		readdirp({depth: 1, fileFilter: 'package.json', directoryFilter: ['tutorial-hello-enact', 'tutorial-kitten-browser']}, (err, res) => {
+		readdirp({depth: 1, fileFilter: 'package.json'}, (err, res) => {
 			if (err) {
 				reject(err);
 			} else {
