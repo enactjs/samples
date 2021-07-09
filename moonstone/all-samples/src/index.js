@@ -2,22 +2,17 @@ import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import {render} from 'react-dom';
 
-import PatternActivityPanels from '../../moonstone/pattern-activity-panels/src/App';
-import PatternActivityPanelsDeepLinking from '../../moonstone/pattern-activity-panels-deep-linking/src/main';
-import PatternActivityPanelsRedux from '../../moonstone/pattern-activity-panels-redux/src/main';
-import PatternDynamicPanel from '../../moonstone/pattern-dynamic-panel/src/App';
-import PatternExpandableList from '../../moonstone/pattern-expandablelist-object/src/App';
-import PatternLayout from '../../pattern-layout/src/App';
-import PatternListDetails from '../../pattern-list-details/src/App';
-import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';
-import PatternLocaleSwitching from '../../moonstone/pattern-locale-switching/src/main';
-import PatternLs2request from '../../pattern-ls2request/src/main';
-import PatternRoutablePanels from '../../moonstone/pattern-routable-panels/src/main';
-import PatternSinglePanel from '../../moonstone/pattern-single-panel/src/App';
-import PatternSinglePanelRedux from '../../moonstone/pattern-single-panel-redux/src/main';
-import PatternVirtualgridlistApi from '../../moonstone/pattern-virtualgridlist-api/src/main';
-import TutorialHelloEnact from '../../tutorial-hello-enact/src/App';
-import TutorialKittenBrowser from '../../tutorial-kitten-browser/src/App';
+import PatternActivityPanels from '../../pattern-activity-panels/src/App/App';
+import PatternActivityPanelsDeepLinking from '../../pattern-activity-panels-deep-linking/src/main';
+import PatternActivityPanelsRedux from '../../pattern-activity-panels-redux/src/main';
+import PatternDynamicPanel from '../../pattern-dynamic-panel/src/App/App';
+import PatternExpandableList from '../../pattern-expandablelist-object/src/App/App';
+import PatternLayout from '../../pattern-layout/src/App/App';
+import PatternLocaleSwitching from '../../pattern-locale-switching/src/main';
+import PatternRoutablePanels from '../../pattern-routable-panels/src/main';
+import PatternSinglePanel from '../../pattern-single-panel/src/App/App';
+import PatternSinglePanelRedux from '../../pattern-single-panel-redux/src/main';
+import PatternVirtualgridlistApi from '../../pattern-virtualgridlist-api/src/main';
 
 import App from './App';
 import ButtonToSamples from './components/ButtonToSamples';
@@ -30,16 +25,11 @@ export const routes = [
 	{path: '/PatternDynamicPanel', component: PatternDynamicPanel},
 	{path: '/PatternExpandableList', component: PatternExpandableList},
 	{path: '/PatternLayout', component: PatternLayout},
-	{path: '/PatternListDetails', component: PatternListDetails},
-	{path: '/PatternListDetailsRedux', component: PatternListDetailsRedux},
 	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},
-	{path: '/PatternLs2request', component: PatternLs2request},
 	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
-	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi},
-	{path: '/TutorialHelloEnact', component: TutorialHelloEnact},
-	{path: '/TutorialKittenBrowser', component: TutorialKittenBrowser}
+	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi}
 ];
 
 // Router causes an error with our samples, but we don't want our samples to know about router.

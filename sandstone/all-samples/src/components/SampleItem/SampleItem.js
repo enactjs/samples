@@ -1,8 +1,8 @@
-import Item from '@enact/moonstone/Item';
+import Item from '@enact/sandstone/Item';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
-class SampleItem extends React.Component {
+class SampleItem extends Component {
 	static propTypes = {
 		history: PropTypes.object,
 		path: PropTypes.any
