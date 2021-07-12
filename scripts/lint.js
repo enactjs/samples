@@ -7,7 +7,7 @@ let error = false;
 
 function findApps () {
 	return new Promise((resolve, reject) => {
-		readdirp({depth: 1, fileFilter: 'package.json'}, (err, res) => {
+		readdirp({depth: 2, fileFilter: 'package.json', directoryFilter: ['!node_modules']}, (err, res) => {
 			if (err) {
 				reject(err);
 			} else {
