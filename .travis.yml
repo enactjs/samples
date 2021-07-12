@@ -13,29 +13,29 @@ script:
     - cd agate/all-samples
     - npm install
     - npm run pack
-    - cd ..
+    - cd ../../
     - echo -e "\x1b\x5b35;1m*** agate/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting moonstone/all-samples build...\x1b\x5b0m"
     - cd moonstone/all-samples
     - npm install
     - npm run pack
-    - cd ..
+    - cd ../../
     - echo -e "\x1b\x5b35;1m*** moonstone/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting sandstone/all-samples build...\x1b\x5b0m"
     - cd sandstone/all-samples
     - npm install
     - npm run pack
-    - cd ..
+    - cd ../../
     - echo -e "\x1b\x5b35;1m*** sandstone/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting ui/all-samples build...\x1b\x5b0m"
     - cd ui/all-samples
     - npm install
     - npm run pack
-    - cd ..
+    - cd ../../
     - echo -e "\x1b\x5b35;1m*** ui/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting my-theme-app build...\x1b\x5b0m"
     - cd my-theme-app
     - npm install
     - npm run pack
-    - cd ..
+    - cd ../../
     - echo -e "\x1b\x5b35;1m*** my-theme-app build complete\x1b\x5b0m"
