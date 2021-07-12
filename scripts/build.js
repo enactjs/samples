@@ -23,12 +23,11 @@ findApps()
 			if (file.parentDir) { // Ignore our own package.json
 				console.log(`Building ${file.parentDir}`);
 				shell.cd(file.fullParentDir);
-				shell.exec('npm install && npm run pack', {silent: true}, (code, stdout) => {
-					if (code) {
-						console.log(`${file.parentDir} failed to build: ${stdout}`);
-						error = true;
-					}
-				});
+				const result = shell.exec('npm install && npm run pack', {silent: true});
+				if (result.code !== 0) {
+					console.log(`${file.parentDir} failed to build: ${result.stdout}`);
+					error = true;
+				}
 			}
 		})
 	);
