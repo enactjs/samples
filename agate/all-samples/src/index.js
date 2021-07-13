@@ -8,6 +8,7 @@ import PatternLocaleSwitching from '../../pattern-locale-switching/src/main';
 import PatternSinglePanel from '../../pattern-single-panel/src/App/App';
 import PatternSinglePanelRedux from '../../pattern-single-panel-redux/src/main';
 import PatternVirtualgridlistApi from '../../pattern-virtualgridlist-api/src/main';
+import PatternVirtuallistPreservingFocus from '../../pattern-virtuallist-preserving-focus/src/main';
 
 import App from './App';
 import ButtonToSamples from './components/ButtonToSamples';
@@ -19,7 +20,8 @@ export const routes = [
 	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
-	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi}
+	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi},
+	{path: '/PatternVirtuallistPreservingFocus', component: PatternVirtuallistPreservingFocus}
 ];
 
 // Router causes an error with our samples, but we don't want our samples to know about router.

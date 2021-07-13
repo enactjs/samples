@@ -12,7 +12,9 @@ import PatternLocaleSwitching from '../../pattern-locale-switching/src/main';
 import PatternRoutablePanels from '../../pattern-routable-panels/src/main';
 import PatternSinglePanel from '../../pattern-single-panel/src/App/App';
 import PatternSinglePanelRedux from '../../pattern-single-panel-redux/src/main';
+import PatternVideoPlayer from '../../pattern-video-player/src/App/App';
 import PatternVirtualgridlistApi from '../../pattern-virtualgridlist-api/src/main';
+import PatternVirtuallistPreservingFocus from '../../pattern-virtuallist-preserving-focus/src/main';
 
 import App from './App';
 import ButtonToSamples from './components/ButtonToSamples';
@@ -29,7 +31,9 @@ export const routes = [
 	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
-	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi}
+	{path: '/PatternVideoPlayer', component: PatternVideoPlayer},
+	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi},
+	{path: '/PatternVirtuallistPreservingFocus', component: PatternVirtuallistPreservingFocus}
 ];
 
 // Router causes an error with our samples, but we don't want our samples to know about router.

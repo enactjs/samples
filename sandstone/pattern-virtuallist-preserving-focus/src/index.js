@@ -1,17 +1,9 @@
 import {render} from 'react-dom';
-import {Provider} from 'react-redux';
 import 'web-animations-js';
 
-import App from './App';
-import configureStore from './store';
+import App from './main';
 
-const store = configureStore();
-
-const appElement = (
-	<Provider store={store}>
-		<App />
-	</Provider>
-);
+const appElement = <App />;
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {

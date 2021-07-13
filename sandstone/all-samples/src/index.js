@@ -8,7 +8,9 @@ import PatternLocaleSwitching from '../../pattern-locale-switching/src/main';
 import PatternRoutablePanels from '../../pattern-routable-panels/src/main';
 import PatternSinglePanel from '../../pattern-single-panel/src/App/App';
 import PatternSinglePanelRedux from '../../pattern-single-panel-redux/src/main';
+import PatternVideoPlayer from '../../pattern-video-player/src/App/App';
 import PatternVirtualgridlistApi from '../../pattern-virtualgridlist-api/src/main';
+import PatternVirtuallistPreservingFocus from '../../pattern-virtuallist-preserving-focus/src/main';
 import TutorialHelloEnact from '../../../tutorial-hello-enact/src/App/App';
 import TutorialKittenBrowser from '../../../tutorial-kitten-browser/src/App/App';
 
@@ -23,7 +25,9 @@ export const routes = [
 	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
+	{path: '/PatternVideoPlayer', component: PatternVideoPlayer},
 	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi},
+	{path: '/PatternVirtuallistPreservingFocus', component: PatternVirtuallistPreservingFocus},
 	{path: '/TutorialHelloEnact', component: TutorialHelloEnact},
 	{path: '/TutorialKittenBrowser', component: TutorialKittenBrowser}
 ];
