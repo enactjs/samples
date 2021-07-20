@@ -39,4 +39,3 @@ script:
     - npm run pack
     - cd ../../
     - echo -e "\x1b\x5b35;1m*** my-theme-app build complete\x1b\x5b0m"
-    
