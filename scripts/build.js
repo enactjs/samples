@@ -7,7 +7,7 @@ let error = false;
 
 function findApps () {
 	return new Promise((resolve, reject) => {
-		readdirp({depth: 1, fileFilter: 'package.json'}, (err, res) => {
+		readdirp({depth: 2, fileFilter: 'package.json', directoryFilter: ['!node_modules']}, (err, res) => {
 			if (err) {
 				reject(err);
 			} else {
@@ -23,12 +23,11 @@ findApps()
 			if (file.parentDir) { // Ignore our own package.json
 				console.log(`Building ${file.parentDir}`);
 				shell.cd(file.fullParentDir);
-				shell.exec('npm install && npm run pack', {silent: true}, (code, stdout) => {
-					if (code) {
-						console.log(`${file.parentDir} failed to build: ${stdout}`);
-						error = true;
-					}
-				});
+				const result = shell.exec('npm install && npm run pack', {silent: true});
+				if (result.code !== 0) {
+					console.log(`${file.parentDir} failed to build: ${result.stdout}`);
+					error = true;
+				}
 			}
 		})
 	);

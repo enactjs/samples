@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {handle, adaptEvent, forward} from '@enact/core/handle';
