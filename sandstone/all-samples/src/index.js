@@ -38,7 +38,7 @@ export const routes = [
 const originalConsoleError = console.error;
 
 console.error = (...args) => {
-	return args[0].includes('React does not recognize the `staticContext` prop on a DOM element.') || args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') || args[0].includes('Warning: Hash history cannot PUSH the same path') ? null : originalConsoleError(args.join(' '));
+	return args[0].includes('React does not recognize the `%s` prop on a DOM element.') || args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') || args[0].includes('Warning: Hash history cannot PUSH the same path') ? null : originalConsoleError(args.join(' '));
 };
 /* eslint-enable no-console */
 
