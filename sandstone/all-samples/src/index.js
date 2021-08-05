@@ -11,8 +11,8 @@ import PatternSinglePanelRedux from '../../pattern-single-panel-redux/src/main';
 import PatternVideoPlayer from '../../pattern-video-player/src/App/App';
 import PatternVirtualgridlistApi from '../../pattern-virtualgridlist-api/src/main';
 import PatternVirtuallistPreservingFocus from '../../pattern-virtuallist-preserving-focus/src/main';
-import TutorialHelloEnact from '../../../tutorial-hello-enact/src/App/App';
-import TutorialKittenBrowser from '../../../tutorial-kitten-browser/src/App/App';
+import TutorialHelloEnact from '../../tutorial-hello-enact/src/App/App';
+import TutorialKittenBrowser from '../../tutorial-kitten-browser/src/App/App';
 
 import App from './App';
 import ButtonToSamples from './components/ButtonToSamples';
