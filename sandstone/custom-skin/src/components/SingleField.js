@@ -33,8 +33,8 @@ const SingleField = kind({
 		return(
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
-				<InputField size={'large'} className={css.inputField} onChange={onChangeInput} />
 				<Button disabled className={css.colorButton} style={{backgroundColor:color}} />
+				<InputField size={'large'} className={css.inputField} onChange={onChangeInput} />
 			</div>
 	)}
 });

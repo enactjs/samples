@@ -35,10 +35,13 @@ const MainPanelBase = kind({
 	defaultProps:{
 		BGColor: "red",
 		NTColor: "red",
+		FTCRed: 255,
+		FTCGreen: 0,
+		FTCBlue: 0,
 	},
 
 	handlers: {
-		onChangeInput: ({event, name}, {onChangeInput}) => {
+		onChangeInput: ({event, name, color, blue, red, green}, {onChangeInput}) => {
 			switch (name) {
 				case 'Background color': {
 					if(onChangeInput) {
@@ -52,19 +55,44 @@ const MainPanelBase = kind({
 					}
 					break;
 				}
+				case 'Focused text color (RGB)': {
+					switch (color) {
+						case 'red':{
+							if(onChangeInput) {
+								onChangeInput({FTCRed: event.value, FTCBlue: blue, FTCGreen: green});
+							}
+							break;
+						}
+						case 'green':{
+							if(onChangeInput) {
+								onChangeInput({FTCRed: red, FTCBlue: blue, FTCGreen: event.value});
+							}
+							break;
+						}
+						case 'blue':{
+							if(onChangeInput) {
+								onChangeInput({FTCBlue: event.value, FTCRed: red, FTCGreen: green});
+							}
+							break;
+						}
+						default:
+							break;
+					}
+					break;
+				}
 				default:
 					break;
 			}
 		}
 	},
 
-	render: ({onChangeInput, BGColor, NTColor, ...props}) => (
+	render: ({onChangeInput, BGColor, NTColor, FTCRed, FTCGreen, FTCBlue, ...props}) => (
 		<Scroller>
 			<div {...props}>
 				<SingleField color={BGColor} propName="Background color" onChangeInput={onChangeInput} />
 				<SingleField color={NTColor} propName="Normal Text color" onChangeInput={onChangeInput} />
 				<SingleField color="red" propName="Subtitle color" onChangeInput={onChangeInput} />
-				<TripleField propName="Focused text color (RGB)" onChangeInput={onChangeInput} />
+				<TripleField red={FTCRed} green={FTCGreen} blue={FTCBlue} propName="Focused text color (RGB)" onChangeInput={onChangeInput} />
 				<SingleField color="red" propName="Focused Background color" onChangeInput={onChangeInput} />
 				<TripleField propName="Selected color (RGB)" onChangeInput={onChangeInput} />
 				<SingleField color="red" propName="Selected Background Color" onChangeInput={onChangeInput} />
@@ -79,5 +107,11 @@ const MainPanelBase = kind({
 		</Scroller>
 	)
 });
-const MainPanel = Changeable({prop:'BGColor', change:'onChangeInput'}, Changeable({prop:'NTColor', change:'onChangeInput'}, MainPanelBase));
+const MainPanel = Changeable({prop:'BGColor', change:'onChangeInput'},
+	Changeable({prop:'NTColor', change:'onChangeInput'},
+	Changeable({prop:'FTCRed', change:'onChangeInput'},
+	Changeable({prop:'FTCGreen', change:'onChangeInput'},
+	Changeable({prop:'FTCBlue', change:'onChangeInput'},
+		MainPanelBase
+	)))));
 export default MainPanel;

@@ -9,13 +9,20 @@ const TripleField = kind({
 	name: 'TripleField',
 
 	handlers: {
-		onChangeInputR: (event) => ({red: event.value}),
-		onChangeInputG: (event) => ({green: event.value}),
-		onChangeInputB: (event) => ({blue: event.value}),
+		onChangeInputR: (event, {onChangeInput, propName, blue, green}) => {
+			onChangeInput({event, name:propName, blue, green, color:'red'})
+		},
+		onChangeInputG: (event, {onChangeInput, propName, blue, red}) => {
+			onChangeInput({event, name:propName, blue, red, color:'green'})
+		},
+		onChangeInputB: (event, {onChangeInput, propName, green, red}) => {
+			onChangeInput({event, name:propName, green, red, color:'blue'})
+		},
 	},
 
 	propTypes: {
 		propName: PropTypes.string,
+		onChangeInput: PropTypes.func,
 		red: PropTypes.string,
 		green: PropTypes.string,
 		blue: PropTypes.string,
@@ -32,17 +39,24 @@ const TripleField = kind({
 		className:'tripleField'
 	},
 
-	render: ({onChangeInputR, onChangeInputG, onChangeInputB, red, green, blue, ...rest}) => {
+	computed:{
+		getColor:({red, green, blue}) => {
+			console.log(`rgb(${red}, ${green}, ${blue})`);
+			return `rgb(${red}, ${green}, ${blue})`;
+		}
+	},
+
+	render: ({onChangeInputR, onChangeInputG, onChangeInputB, getColor, ...rest}) => {
 		return(
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
+				<Button disabled className={css.colorButton} style={{backgroundColor:getColor}} />
 				<BodyText className={css.bodyTextLetter}>R:</BodyText>
 				<InputField size={'large'} className={css.inputField} onChange={onChangeInputR} />
 				<BodyText className={css.bodyTextLetter}>G:</BodyText>
 				<InputField size={'large'} className={css.inputField} onChange={onChangeInputG} />
 				<BodyText className={css.bodyTextLetter}>B:</BodyText>
 				<InputField size={'large'} className={css.inputField} onChange={onChangeInputB} />
-				<Button disabled className={css.colorButton} style={{backgroundColor:`rgb(${red}, ${green}, ${blue})`}} />
 			</div>
 		)}
 });
