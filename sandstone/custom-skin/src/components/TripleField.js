@@ -10,14 +10,14 @@ const TripleField = kind({
 	name: 'TripleField',
 
 	handlers: {
-		onChangeInputB: (event, {onChangeInput, propName, green, red}) => {
-			onChangeInput({event, name:propName, green, red, color:'blue'})
+		onChangeInputB: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'blue'})
 		},
-		onChangeInputG: (event, {onChangeInput, propName, blue, red}) => {
-			onChangeInput({event, name:propName, blue, red, color:'green'})
+		onChangeInputG: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'green'})
 		},
-		onChangeInputR: (event, {onChangeInput, propName, blue, green}) => {
-			onChangeInput({event, name:propName, blue, green, color:'red'})
+		onChangeInputR: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'red'})
 		}
 	},
 
