@@ -1,16 +1,47 @@
-const outputField =
-`.sandstone-theme {
-	--sand-text-color: ${'#E6E6E6'};       	  /* Normal Text Color */
-	--sand-text-sub-color: ${'#848290'};           /* Subtitle Text Color */
-	--sand-focus-text-color-rgb: ${'77'}, ${'25'}, ${'142'}; /* Focused Text Color (Must be RGB comma separated format) */
-	--sand-focus-bg-color: ${'#E6E6E6'};           /* Focused Background Color */
-	--sand-selected-color-rgb: ${'230'}, ${'230'}, ${'230'}; /* Selected Color (Must be RGB comma separated format) */
-	--sand-selected-bg-color: ${'#76618E'};        /* Selected Background Color */
-	--sand-overlay-bg-color-rgb: ${'47'}, ${'31'}, ${'67'};  /* Overlay Panel Background Color (Must be RGB comma separated */
-						  /* format, will have alpha value based on this) */
-	--sand-toggle-on-bg-color: ${'#8A75A2'};       /* Toggle On Background Color */
-	--sand-toggle-off-color: ${'#80778C'};         /* Toggle Off Color */
-	--sand-toggle-off-bg-color: ${'#54416C'};      /* Toggle Off Background Color */
-}`
+import kind from "@enact/core/kind";
+import Button from "@enact/sandstone/Button";
+import PropTypes from 'prop-types';
 
-export default outputField;
+const OutputField = kind({
+	name: 'OutputField',
+
+	propTypes:{
+		colors: PropTypes.array,
+	},
+
+	computed: {
+		text: ({colors}) => {
+			return `.sandstone-theme {\n` +
+			`	--sand-background-color: ${colors[0]};      	  /* Normal Text Color */\n` +
+			`	--sand-text-color: ${colors[1]};       	  /* Normal Text Color */\n` +
+			`	--sand-text-sub-color: ${colors[2]};           /* Subtitle Text Color */\n` +
+			`	--sand-focus-text-color-rgb: ${colors[3]}, ${colors[4]}, ${colors[5]};   /* Focused Text Color (Must be RGB comma separated format) */\n` +
+			`	--sand-focus-bg-color: ${colors[6]};           /* Focused Background Color */\n` +
+			`	--sand-selected-color-rgb: ${colors[7]}, ${colors[8]}, ${colors[9]}; 	  /* Selected Color (Must be RGB comma separated format) */\n` +
+			`	--sand-selected-bg-color: ${colors[10]};        /* Selected Background Color */\n` +
+			`	--sand-overlay-bg-color-rgb: ${colors[11]}, ${colors[12]}, ${colors[13]};   /* Overlay Panel Background Color (Must be RGB comma separated */\n` +
+			`			  			  /* 	format, will have alpha value based on this) */\n` +
+			`	--sand-toggle-on-bg-color: ${colors[14]};       /* Toggle On Background Color */\n` +
+			`	--sand-toggle-off-color: ${colors[15]};         /* Toggle Off Color */\n` +
+			`	--sand-toggle-off-bg-color: ${colors[16]};      /* Toggle Off Background Color */\n` +
+			`}`
+		}
+	},
+
+	render: ({text}) => {
+		function copyToClipboard(){
+			/* global navigator */
+			return navigator.clipboard.writeText(text);
+		}
+
+		return(
+			<div>
+				<Button onClick={copyToClipboard}>Copy to Clipboard</Button>
+				<pre>
+					{text}
+				</pre>
+			</div>
+		);
+}});
+
+export default OutputField;

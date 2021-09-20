@@ -1,117 +1,144 @@
-import kind from '@enact/core/kind';
 import Scroller from "@enact/sandstone/Scroller";
+import {useState} from "react";
 
+import OutputField from "../components/OutputField";
 import SingleField from '../components/SingleField';
 import TripleField from '../components/TripleField';
-import outputField from "../components/OutputField";
-import PropTypes from "prop-types";
-import Changeable from "@enact/ui/Changeable";
 
 
-const MainPanelBase = kind({
-	name: 'MainPanel',
+const MainPanel = () => {
+	const [BGColor, setBGColor] = useState('#FF0000');
+	const [NTColor, setNTColor] = useState('#FF0000');
+	const [SCColor, setSCColor] = useState('#FF0000');
+	const [FTCRed, setFTCRed] = useState(255);
+	const [FTCGreen, setFTCGreen] = useState(0);
+	const [FTCBlue, setFTCBlue] = useState(0);
+	const [FBColor, setFBColor] = useState('#FF0000');
+	const [SCRed, setSCRed] = useState(255);
+	const [SCGreen, setSCGreen] = useState(0);
+	const [SCBlue, setSCBlue] = useState(0);
+	const [SBColor, setSBColor] = useState('#FF0000');
+	const [OPBCRed, setOPBCRed] = useState(255);
+	const [OPBCGreen, setOPBCGreen] = useState(0);
+	const [OPBCBlue, setOPBCBlue] = useState(0);
+	const [TOnBColor, setTOnBColor] = useState('#FF0000');
+	const [TOColor, setTOColor] = useState('#FF0000');
+	const [TOffBColor, setTOffBColor] = useState('#FF0000');
 
-	propTypes: {
-		Colors: PropTypes.array,
-		BGColor: PropTypes.string,
-		NTColor: PropTypes.string,
-		SCColor: PropTypes.string,
-		FTCRed: PropTypes.number,
-		FTCGreen: PropTypes.number,
-		FTCBlue: PropTypes.number,
-		FBColor: PropTypes.string,
-		SCRed: PropTypes.number,
-		SCGreen: PropTypes.number,
-		SCBlue: PropTypes.number,
-		SBColor: PropTypes.string,
-		OPBCRed: PropTypes.number,
-		OPBCGreen: PropTypes.number,
-		OPBCBlue: PropTypes.number,
-		TOnBColor: PropTypes.string,
-		TOColor: PropTypes.string,
-		TOffBColor: PropTypes.string,
-	},
-
-	defaultProps:{
-		BGColor: "red",
-		NTColor: "red",
-		FTCRed: 255,
-		FTCGreen: 0,
-		FTCBlue: 0,
-	},
-
-	handlers: {
-		onChangeInput: ({event, name, color, blue, red, green}, {onChangeInput}) => {
-			switch (name) {
-				case 'Background color': {
-					if(onChangeInput) {
-						onChangeInput({BGColor: event.value});
-					}
-					break;
-				}
-				case 'Normal Text color': {
-					if(onChangeInput) {
-						onChangeInput({NTColor: event.value});
-					}
-					break;
-				}
-				case 'Focused text color (RGB)': {
-					switch (color) {
-						case 'red':{
-							if(onChangeInput) {
-								onChangeInput({FTCRed: event.value, FTCBlue: blue, FTCGreen: green});
-							}
-							break;
-						}
-						case 'green':{
-							if(onChangeInput) {
-								onChangeInput({FTCRed: red, FTCBlue: blue, FTCGreen: event.value});
-							}
-							break;
-						}
-						case 'blue':{
-							if(onChangeInput) {
-								onChangeInput({FTCBlue: event.value, FTCRed: red, FTCGreen: green});
-							}
-							break;
-						}
-						default:
-							break;
-					}
-					break;
-				}
-				default:
-					break;
+	function onChangeInput (props) {
+		switch (props.name){
+			case 'Background color':{
+				setBGColor(props.event.value);
+				break;
 			}
+			case 'Normal Text color':{
+				setNTColor(props.event.value);
+				break;
+			}
+			case 'Subtitle color':{
+				setSCColor(props.event.value);
+				break;
+			}
+			case 'Focused text color (RGB)':{
+				switch (props.color){
+					case 'red' :{
+						setFTCRed(props.event.value);
+						break;
+					}
+					case 'green':{
+						setFTCGreen(props.event.value);
+						break;
+					}
+					case 'blue':{
+						setFTCBlue(props.event.value);
+						break;
+					}
+					default:
+						break;
+				}
+				break;
+			}
+			case 'Focused Background color':{
+				setFBColor(props.event.value);
+				break;
+			}
+			case 'Selected color (RGB)':{
+				switch (props.color){
+					case 'red' :{
+						setSCRed(props.event.value);
+						break;
+					}
+					case 'green':{
+						setSCGreen(props.event.value);
+						break;
+					}
+					case 'blue':{
+						setSCBlue(props.event.value);
+						break;
+					}
+					default:
+						break;
+				}
+				break;
+			}
+			case 'Selected Background Color':{
+				setSBColor(props.event.value);
+				break;
+			}
+			case 'Overlay Panel Background Color (RGB)':{
+				switch (props.color){
+					case 'red' :{
+						setOPBCRed(props.event.value);
+						break;
+					}
+					case 'green':{
+						setOPBCGreen(props.event.value);
+						break;
+					}
+					case 'blue':{
+						setOPBCBlue(props.event.value);
+						break;
+					}
+					default:
+						break;
+				}
+				break;
+			}
+			case 'Toggle On Background Color':{
+				setTOnBColor(props.event.value);
+				break;
+			}
+			case 'Toggle Off Color':{
+				setTOColor(props.event.value);
+				break;
+			}
+			case 'Toggle Off Background Color':{
+				setTOffBColor(props.event.value);
+				break;
+			}
+			default: break;
 		}
-	},
+	}
 
-	render: ({onChangeInput, BGColor, NTColor, FTCRed, FTCGreen, FTCBlue, ...props}) => (
+	return(
 		<Scroller>
-			<div {...props}>
+			<div>
 				<SingleField color={BGColor} propName="Background color" onChangeInput={onChangeInput} />
 				<SingleField color={NTColor} propName="Normal Text color" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Subtitle color" onChangeInput={onChangeInput} />
+				<SingleField color={SCColor} propName="Subtitle color" onChangeInput={onChangeInput} />
 				<TripleField red={FTCRed} green={FTCGreen} blue={FTCBlue} propName="Focused text color (RGB)" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Focused Background color" onChangeInput={onChangeInput} />
-				<TripleField propName="Selected color (RGB)" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Selected Background Color" onChangeInput={onChangeInput} />
-				<TripleField propName="Overlay Panel Background Color (RGB)" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Toggle On Background Color" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Toggle Off Color" onChangeInput={onChangeInput} />
-				<SingleField color="red" propName="Toggle Off Background Color" onChangeInput={onChangeInput} />
-				<pre>
-					{outputField}
-				</pre>
+				<SingleField color={FBColor} propName="Focused Background color" onChangeInput={onChangeInput} />
+				<TripleField red={SCRed} green={SCGreen} blue={SCBlue} propName="Selected color (RGB)" onChangeInput={onChangeInput} />
+				<SingleField color={SBColor} propName="Selected Background Color" onChangeInput={onChangeInput} />
+				<TripleField red={OPBCRed} green={OPBCGreen} blue={OPBCBlue} propName="Overlay Panel Background Color (RGB)" onChangeInput={onChangeInput} />
+				<SingleField color={TOnBColor} propName="Toggle On Background Color" onChangeInput={onChangeInput} />
+				<SingleField color={TOColor} propName="Toggle Off Color" onChangeInput={onChangeInput} />
+				<SingleField color={TOffBColor} propName="Toggle Off Background Color" onChangeInput={onChangeInput} />
+				<OutputField colors={[BGColor, NTColor, SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
+					SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor]} />
 			</div>
 		</Scroller>
 	)
-});
-const MainPanel = Changeable({prop:'BGColor', change:'onChangeInput'},
-	Changeable({prop:'NTColor', change:'onChangeInput'},
-	Changeable({prop:'FTCRed', change:'onChangeInput'},
-	Changeable({prop:'FTCGreen', change:'onChangeInput'},
-	Changeable({prop:'FTCBlue', change:'onChangeInput'},
-		MainPanelBase
-	)))));
+};
+
 export default MainPanel;

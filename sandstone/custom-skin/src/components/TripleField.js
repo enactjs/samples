@@ -1,37 +1,38 @@
-import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
-import {InputField} from '@enact/sandstone/Input';
 import BodyText from "@enact/sandstone/BodyText";
-import css from './TripleField.module.less';
+import Button from '@enact/sandstone/Button';
+import {InputField} from '@enact/sandstone/Input';
 import PropTypes from 'prop-types';
+
+import css from './TripleField.module.less';
 
 const TripleField = kind({
 	name: 'TripleField',
 
 	handlers: {
-		onChangeInputR: (event, {onChangeInput, propName, blue, green}) => {
-			onChangeInput({event, name:propName, blue, green, color:'red'})
+		onChangeInputB: (event, {onChangeInput, propName, green, red}) => {
+			onChangeInput({event, name:propName, green, red, color:'blue'})
 		},
 		onChangeInputG: (event, {onChangeInput, propName, blue, red}) => {
 			onChangeInput({event, name:propName, blue, red, color:'green'})
 		},
-		onChangeInputB: (event, {onChangeInput, propName, green, red}) => {
-			onChangeInput({event, name:propName, green, red, color:'blue'})
-		},
+		onChangeInputR: (event, {onChangeInput, propName, blue, green}) => {
+			onChangeInput({event, name:propName, blue, green, color:'red'})
+		}
 	},
 
 	propTypes: {
-		propName: PropTypes.string,
+		blue: PropTypes.number,
+		green: PropTypes.number,
 		onChangeInput: PropTypes.func,
-		red: PropTypes.string,
-		green: PropTypes.string,
-		blue: PropTypes.string,
+		propName: PropTypes.string,
+		red: PropTypes.number
 	},
 
 	defaultProps: {
-		red : 255,
-		green : 0,
 		blue : 0,
+		green : 0,
+		red : 255
 	},
 
 	styles:{
@@ -41,7 +42,6 @@ const TripleField = kind({
 
 	computed:{
 		getColor:({red, green, blue}) => {
-			console.log(`rgb(${red}, ${green}, ${blue})`);
 			return `rgb(${red}, ${green}, ${blue})`;
 		}
 	},

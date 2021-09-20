@@ -1,15 +1,16 @@
-import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
-import {InputField} from '@enact/sandstone/Input';
 import BodyText from "@enact/sandstone/BodyText";
-import css from './SingleField.module.less';
+import Button from '@enact/sandstone/Button';
+import {InputField} from '@enact/sandstone/Input';
 import PropTypes from 'prop-types';
+
+import css from './SingleField.module.less';
 
 const SingleField = kind({
 	name: 'SingleField',
 
 	handlers: {
-		onChangeInput: (event, {onChangeInput, propName}) => {
+		onChangeInputField: (event, {onChangeInput, propName}) => {
 			onChangeInput({event, name:propName})
 		},
 	},
@@ -29,12 +30,12 @@ const SingleField = kind({
 		className:'singleField'
 	},
 
-	render: ({onChangeInput, color, ...rest}) => {
+	render: ({onChangeInputField, color, ...rest}) => {
 		return(
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
 				<Button disabled className={css.colorButton} style={{backgroundColor:color}} />
-				<InputField size={'large'} className={css.inputField} onChange={onChangeInput} />
+				<InputField size={'large'} className={css.inputField} onChange={onChangeInputField} />
 			</div>
 	)}
 });
