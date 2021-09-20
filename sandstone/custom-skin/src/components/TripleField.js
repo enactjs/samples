@@ -10,17 +10,17 @@ const TripleField = kind({
 	name: 'TripleField',
 
 	propTypes: {
-		blue: PropTypes.number,
-		green: PropTypes.number,
+		blue: PropTypes.string,
+		green: PropTypes.string,
 		onChangeInput: PropTypes.func,
 		propName: PropTypes.string,
-		red: PropTypes.number
+		red: PropTypes.string
 	},
 
 	defaultProps: {
-		blue : 0,
-		green : 0,
-		red : 255
+		blue : '0',
+		green : '0',
+		red : '255'
 	},
 
 	styles:{
@@ -46,17 +46,17 @@ const TripleField = kind({
 		}
 	},
 
-	render: ({onChangeInputR, onChangeInputG, onChangeInputB, getColor, ...rest}) => {
+	render: ({blue, getColor, green, onChangeInputB, onChangeInputG, onChangeInputR, red, ...rest}) => {
 		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
 				<Button disabled className={css.colorButton} style={{backgroundColor:getColor}} />
 				<BodyText className={css.bodyTextLetter}>R:</BodyText>
-				<InputField size={'large'} className={css.inputField} onChange={onChangeInputR} />
+				<InputField value={red} size={'large'} className={css.inputField} onChange={onChangeInputR} />
 				<BodyText className={css.bodyTextLetter}>G:</BodyText>
-				<InputField size={'large'} className={css.inputField} onChange={onChangeInputG} />
+				<InputField value={green} size={'large'} className={css.inputField} onChange={onChangeInputG} />
 				<BodyText className={css.bodyTextLetter}>B:</BodyText>
-				<InputField size={'large'} className={css.inputField} onChange={onChangeInputB} />
+				<InputField value={blue} size={'large'} className={css.inputField} onChange={onChangeInputB} />
 			</div>
 		);
 	}
