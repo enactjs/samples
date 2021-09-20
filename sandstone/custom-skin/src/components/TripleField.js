@@ -9,18 +9,6 @@ import css from './TripleField.module.less';
 const TripleField = kind({
 	name: 'TripleField',
 
-	handlers: {
-		onChangeInputB: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'blue'});
-		},
-		onChangeInputG: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'green'});
-		},
-		onChangeInputR: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'red'});
-		}
-	},
-
 	propTypes: {
 		blue: PropTypes.number,
 		green: PropTypes.number,
@@ -43,6 +31,18 @@ const TripleField = kind({
 	computed:{
 		getColor:({red, green, blue}) => {
 			return `rgb(${red}, ${green}, ${blue})`;
+		}
+	},
+
+	handlers: {
+		onChangeInputB: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'blue'});
+		},
+		onChangeInputG: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'green'});
+		},
+		onChangeInputR: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName, color:'red'});
 		}
 	},
 

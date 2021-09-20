@@ -9,12 +9,6 @@ import css from './SingleField.module.less';
 const SingleField = kind({
 	name: 'SingleField',
 
-	handlers: {
-		onChangeInputField: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName});
-		}
-	},
-
 	propTypes: {
 		color: PropTypes.string,
 		onChangeInput: PropTypes.func,
@@ -28,6 +22,12 @@ const SingleField = kind({
 	styles:{
 		css,
 		className:'singleField'
+	},
+
+	handlers: {
+		onChangeInputField: (event, {onChangeInput, propName}) => {
+			onChangeInput({event, name:propName});
+		}
 	},
 
 	render: ({onChangeInputField, color, ...rest}) => {
