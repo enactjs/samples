@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import BodyText from "@enact/sandstone/BodyText";
+import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import {InputField} from '@enact/sandstone/Input';
 import PropTypes from 'prop-types';
@@ -11,18 +11,18 @@ const SingleField = kind({
 
 	handlers: {
 		onChangeInputField: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName})
-		},
+			onChangeInput({event, name:propName});
+		}
 	},
 
 	propTypes: {
-		onChangeInput: PropTypes.func,
-		propName: PropTypes.string,
 		color: PropTypes.string,
+		onChangeInput: PropTypes.func,
+		propName: PropTypes.string
 	},
 
 	defaultProps: {
-		color : 'red',
+		color : 'red'
 	},
 
 	styles:{
@@ -31,13 +31,14 @@ const SingleField = kind({
 	},
 
 	render: ({onChangeInputField, color, ...rest}) => {
-		return(
+		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
 				<Button disabled className={css.colorButton} style={{backgroundColor:color}} />
 				<InputField size={'large'} className={css.inputField} onChange={onChangeInputField} />
 			</div>
-	)}
+		);
+	}
 });
 
 export default SingleField;

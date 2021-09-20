@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import BodyText from "@enact/sandstone/BodyText";
+import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import {InputField} from '@enact/sandstone/Input';
 import PropTypes from 'prop-types';
@@ -11,13 +11,13 @@ const TripleField = kind({
 
 	handlers: {
 		onChangeInputB: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'blue'})
+			onChangeInput({event, name:propName, color:'blue'});
 		},
 		onChangeInputG: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'green'})
+			onChangeInput({event, name:propName, color:'green'});
 		},
 		onChangeInputR: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName, color:'red'})
+			onChangeInput({event, name:propName, color:'red'});
 		}
 	},
 
@@ -47,7 +47,7 @@ const TripleField = kind({
 	},
 
 	render: ({onChangeInputR, onChangeInputG, onChangeInputB, getColor, ...rest}) => {
-		return(
+		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
 				<Button disabled className={css.colorButton} style={{backgroundColor:getColor}} />
@@ -58,7 +58,8 @@ const TripleField = kind({
 				<BodyText className={css.bodyTextLetter}>B:</BodyText>
 				<InputField size={'large'} className={css.inputField} onChange={onChangeInputB} />
 			</div>
-		)}
+		);
+	}
 });
 
 export default TripleField;
