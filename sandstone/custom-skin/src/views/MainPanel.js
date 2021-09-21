@@ -143,8 +143,8 @@ const MainPanel = () => {
 	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
 		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
 
-	const AutoColors = ['AutoSCColor', 'AutoFTCRed', 'AutoFTCGreen', 'AutoFTCBlue', 'AutoFBColor', 'AutoSCRed', 'AutoSCGreen',
-		'AutoSCBlue', 'AutoSBColor', 'AutoOPBCRed', 'AutoOPBCGreen', 'AutoOPBCBlue', 'AutoTOnBColor', 'AutoTOColor', 'AutoTOffBColor'];
+	const AutoColors = ['#00FF00', '000', '255', '000', '#00FF00', '000', '255',
+		'000', '#00FF00', '000', '255', '000', '#00FF00', '#00FF00', '#00FF00'];
 
 	return (
 		<Scroller>
