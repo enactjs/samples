@@ -1,5 +1,10 @@
+import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
+import SwitchItem from '@enact/sandstone/SwitchItem';
+import BodyText from '@enact/sandstone/BodyText';
+import Button from '@enact/sandstone/Button';
 import {useState} from 'react';
+
 import OutputField from '../components/OutputField';
 import SingleField from '../components/SingleField';
 import TripleField from '../components/TripleField';
@@ -22,6 +27,9 @@ const MainPanel = () => {
 	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 	const [TOColor, setTOColor] = useState('#FF0000');
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
+
+	const [auto, setAuto] = useState(false);
+	const [openWarning, setOpenWarning]=useState(false);
 
 	function onChangeInput (props) {
 		const event = props?.event;
@@ -123,24 +131,106 @@ const MainPanel = () => {
 		}
 	}
 
-	const Colors = [BGColor, NTColor, SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
+	function onChangeSwitch () {
+		if(auto) {
+			setOpenWarning(true);
+		}
+		else {
+			setAuto(!auto);
+		}
+	}
+
+	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
 		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
+
+	const AutoColors = ['AutoSCColor', 'AutoFTCRed', 'AutoFTCGreen', 'AutoFTCBlue', 'AutoFBColor', 'AutoSCRed', 'AutoSCGreen',
+		'AutoSCBlue', 'AutoSBColor', 'AutoOPBCRed', 'AutoOPBCGreen', 'AutoOPBCBlue', 'AutoTOnBColor', 'AutoTOColor', 'AutoTOffBColor'];
 
 	return (
 		<Scroller>
 			<div>
-				<SingleField color={BGColor} onChangeInput={onChangeInput} propName="Background color" />
-				<SingleField color={NTColor} onChangeInput={onChangeInput} propName="Normal Text color" />
-				<SingleField color={SCColor} onChangeInput={onChangeInput} propName="Subtitle color" />
-				<TripleField blue={FTCBlue} green={FTCGreen} red={FTCRed} onChangeInput={onChangeInput} propName="Focused text color (RGB)" />
-				<SingleField color={FBColor} onChangeInput={onChangeInput} propName="Focused Background color" />
-				<TripleField blue={SCBlue} green={SCGreen} red={SCRed} onChangeInput={onChangeInput} propName="Selected color (RGB)" />
-				<SingleField color={SBColor} onChangeInput={onChangeInput} propName="Selected Background Color" />
-				<TripleField blue={OPBCBlue} green={OPBCGreen} red={OPBCRed} onChangeInput={onChangeInput} propName="Overlay Panel Background Color (RGB)" />
-				<SingleField color={TOnBColor} onChangeInput={onChangeInput} propName="Toggle On Background Color" />
-				<SingleField color={TOColor} onChangeInput={onChangeInput} propName="Toggle Off Color" />
-				<SingleField color={TOffBColor} onChangeInput={onChangeInput} propName="Toggle Off Background Color" />
-				<OutputField colors={Colors} />
+				<Popup open={openWarning}>
+					<BodyText>Do you want to switch from manual to auto?</BodyText>
+					<Button onClick={() => {
+						setAuto(!auto);
+						setOpenWarning(false);
+					}}>Yes</Button>
+					<Button onClick={() => {
+						setOpenWarning(false);
+					}}>No</Button>
+				</Popup>
+				<SwitchItem selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
+				<SingleField
+					color={BGColor}
+					onChangeInput={onChangeInput}
+					propName="Background color"
+				/>
+				<SingleField
+					color={NTColor}
+					onChangeInput={onChangeInput}
+					propName="Normal Text color"
+				/>
+				<SingleField
+					color={!auto ? Colors[0] : AutoColors[0]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Subtitle color"
+				/>
+				<TripleField
+					blue={!auto ? Colors[3] : AutoColors[3]}
+					disabled={auto}
+					green={!auto ? Colors[2] : AutoColors[2]}
+					red={!auto ? Colors[1] : AutoColors[1]}
+					onChangeInput={onChangeInput}
+					propName="Focused text color (RGB)"
+				/>
+				<SingleField
+					color={!auto ? Colors[4] : AutoColors[4]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Focused Background color"
+				/>
+				<TripleField
+					blue={!auto ? Colors[7] : AutoColors[7]}
+					disabled={auto}
+					green={!auto ? Colors[6] : AutoColors[6]}
+					red={!auto ? Colors[5] : AutoColors[5]}
+					onChangeInput={onChangeInput}
+					propName="Selected color (RGB)"
+				/>
+				<SingleField
+					color={!auto ? Colors[8] : AutoColors[8]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Selected Background Color"
+				/>
+				<TripleField
+					blue={!auto ? Colors[11] : AutoColors[11]}
+					disabled={auto}
+					green={!auto ? Colors[10] : AutoColors[10]}
+					red={!auto ? Colors[9] : AutoColors[9]}
+					onChangeInput={onChangeInput}
+					propName="Overlay Panel Background Color (RGB)"
+				/>
+				<SingleField
+					color={!auto ? Colors[12] : AutoColors[12]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Toggle On Background Color"
+				/>
+				<SingleField
+					color={!auto ? Colors[13] : AutoColors[13]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Toggle Off Color"
+				/>
+				<SingleField
+					color={!auto ? Colors[14] : AutoColors[14]}
+					disabled={auto}
+					onChangeInput={onChangeInput}
+					propName="Toggle Off Background Color"
+				/>
+				<OutputField colors={!auto ? [BGColor, NTColor, ...Colors] : [BGColor, NTColor, ...AutoColors]} />
 			</div>
 		</Scroller>
 	);
