@@ -1,13 +1,10 @@
-import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import BodyText from '@enact/sandstone/BodyText';
-import Button from '@enact/sandstone/Button';
 import {useState} from 'react';
 
+import AutoPopup from '../components/AutoPopup';
+import ColorFields from '../components/ColorFields';
 import OutputField from '../components/OutputField';
-import SingleField from '../components/SingleField';
-import TripleField from '../components/TripleField';
 
 const MainPanel = () => {
 	const [BGColor, setBGColor] = useState('#FF0000');
@@ -29,7 +26,7 @@ const MainPanel = () => {
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
 
 	const [auto, setAuto] = useState(false);
-	const [openWarning, setOpenWarning]=useState(false);
+	const [openWarning, setOpenWarning] = useState(false);
 
 	function onChangeInput (props) {
 		const event = props?.event;
@@ -132,10 +129,9 @@ const MainPanel = () => {
 	}
 
 	function onChangeSwitch () {
-		if(auto) {
+		if (auto) {
 			setAuto(!auto);
-		}
-		else {
+		} else {
 			setOpenWarning(true);
 		}
 	}
@@ -149,86 +145,20 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div>
-				<Popup open={openWarning}>
-					<BodyText>Do you want to switch from manual to auto?</BodyText>
-					<Button onClick={() => {
-						setAuto(!auto);
-						setOpenWarning(false);
-					}}>Yes</Button>
-					<Button onClick={() => {
-						setOpenWarning(false);
-					}}>No</Button>
-				</Popup>
+				<AutoPopup
+					auto={auto}
+					openWarning={openWarning}
+					setAuto={setAuto}
+					setOpenWarning={setOpenWarning}
+				/>
 				<SwitchItem selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
-				<SingleField
-					color={BGColor}
+				<ColorFields
+					auto={auto}
+					AutoColors={AutoColors}
+					BGColor={BGColor}
+					Colors={Colors}
+					NTColor={NTColor}
 					onChangeInput={onChangeInput}
-					propName="Background color"
-				/>
-				<SingleField
-					color={NTColor}
-					onChangeInput={onChangeInput}
-					propName="Normal Text color"
-				/>
-				<SingleField
-					color={!auto ? Colors[0] : AutoColors[0]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Subtitle color"
-				/>
-				<TripleField
-					blue={!auto ? Colors[3] : AutoColors[3]}
-					disabled={auto}
-					green={!auto ? Colors[2] : AutoColors[2]}
-					red={!auto ? Colors[1] : AutoColors[1]}
-					onChangeInput={onChangeInput}
-					propName="Focused text color (RGB)"
-				/>
-				<SingleField
-					color={!auto ? Colors[4] : AutoColors[4]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Focused Background color"
-				/>
-				<TripleField
-					blue={!auto ? Colors[7] : AutoColors[7]}
-					disabled={auto}
-					green={!auto ? Colors[6] : AutoColors[6]}
-					red={!auto ? Colors[5] : AutoColors[5]}
-					onChangeInput={onChangeInput}
-					propName="Selected color (RGB)"
-				/>
-				<SingleField
-					color={!auto ? Colors[8] : AutoColors[8]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Selected Background Color"
-				/>
-				<TripleField
-					blue={!auto ? Colors[11] : AutoColors[11]}
-					disabled={auto}
-					green={!auto ? Colors[10] : AutoColors[10]}
-					red={!auto ? Colors[9] : AutoColors[9]}
-					onChangeInput={onChangeInput}
-					propName="Overlay Panel Background Color (RGB)"
-				/>
-				<SingleField
-					color={!auto ? Colors[12] : AutoColors[12]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Toggle On Background Color"
-				/>
-				<SingleField
-					color={!auto ? Colors[13] : AutoColors[13]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Toggle Off Color"
-				/>
-				<SingleField
-					color={!auto ? Colors[14] : AutoColors[14]}
-					disabled={auto}
-					onChangeInput={onChangeInput}
-					propName="Toggle Off Background Color"
 				/>
 				<OutputField colors={!auto ? [BGColor, NTColor, ...Colors] : [BGColor, NTColor, ...AutoColors]} />
 			</div>

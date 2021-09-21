@@ -30,7 +30,7 @@ const SingleField = kind({
 		}
 	},
 
-	render: ({color, onChangeInputField, propName,...rest}) => {
+	render: ({color, onChangeInputField, propName, ...rest}) => {
 		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{propName}</BodyText>
