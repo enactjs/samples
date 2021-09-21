@@ -133,10 +133,10 @@ const MainPanel = () => {
 
 	function onChangeSwitch () {
 		if(auto) {
-			setOpenWarning(true);
+			setAuto(!auto);
 		}
 		else {
-			setAuto(!auto);
+			setOpenWarning(true);
 		}
 	}
 
