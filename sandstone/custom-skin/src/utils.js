@@ -56,13 +56,30 @@ const generateTextColors = (text) => {
 };
 
 const generateColors = (text, background) => {
-
 	const textColors = generateTextColors(text);
 	const bgColors = generateBGColors(background);
+
 	return [textColors[0], textColors[1], textColors[2], textColors[3], bgColors[0], textColors[4], textColors[5],
 		textColors[6], bgColors[1], bgColors[2], bgColors[3], bgColors[4], bgColors[5], textColors[7], bgColors[6]];
 };
 
+const hexColors = (color1, color2) => {
+	return color1.length === 7 && color2.length === 7 && color1[0] === '#' && color2[0] === '#' &&
+		color1.toUpperCase() <= '#FFFFFF' && color1.toUpperCase() >= '#000000' &&
+		color2.toUpperCase() <= '#FFFFFF' && color2.toUpperCase() >= '#000000';
+};
+
+const checkColors = (arr1, arr2) => {
+	for (let i = 0; i < arr1.length; ++i) {
+		if (arr1[i] !== arr2[i]) {
+			return false;
+		}
+	}
+	return true;
+};
+
 export {
-	generateColors
+	checkColors,
+	generateColors,
+	hexColors
 };

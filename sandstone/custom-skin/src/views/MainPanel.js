@@ -6,7 +6,7 @@ import AutoPopup from '../components/AutoPopup';
 import ColorFields from '../components/ColorFields';
 import OutputField from '../components/OutputField';
 
-import {generateColors} from '../utils';
+import {checkColors, generateColors, hexColors} from '../utils';
 
 const MainPanel = () => {
 	const [BGColor, setBGColor] = useState('#FF0000');
@@ -38,19 +38,10 @@ const MainPanel = () => {
 		setSCBlue, setSBColor, setOPBCRed, setOPBCGreen, setOPBCBlue, setTOnBColor, setTOColor, setTOffBColor];
 
 	useEffect(() => {
-		if (BGColor.length === 7 && NTColor.length === 7) {
+		if (hexColors(BGColor, NTColor)) {
 			setAutoColors(generateColors(BGColor, NTColor));
 		}
 	}, [BGColor, NTColor]);
-
-	const CheckColors = (arr1, arr2) => {
-		for (let i = 0; i < arr1.length; ++i) {
-			if (arr1[i] !== arr2[i]) {
-				return false;
-			}
-		}
-		return true;
-	};
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
@@ -163,7 +154,7 @@ const MainPanel = () => {
 			setAuto(!auto);
 		} else {
 			// eslint-disable-next-line
-			if (!CheckColors(Colors, AutoColors)) {
+			if (!checkColors(Colors, AutoColors)) {
 				setOpenWarning(true);
 			} else {
 				setAuto(!auto);
