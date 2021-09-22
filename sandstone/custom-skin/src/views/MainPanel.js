@@ -39,7 +39,7 @@ const MainPanel = () => {
 
 	useEffect(() => {
 		if (hexColors(BGColor, NTColor)) {
-			setAutoColors(generateColors(BGColor, NTColor));
+			setAutoColors(generateColors(NTColor, BGColor));
 		}
 	}, [BGColor, NTColor]);
 
@@ -172,7 +172,7 @@ const MainPanel = () => {
 					setColorsToAuto={setColorsToAuto}
 					setOpenWarning={setOpenWarning}
 				/>
-				<SwitchItem selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
+				<SwitchItem inline selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
 				<ColorFields
 					auto={auto}
 					AutoColors={AutoColors}
