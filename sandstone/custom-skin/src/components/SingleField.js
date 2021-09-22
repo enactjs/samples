@@ -30,12 +30,12 @@ const SingleField = kind({
 		}
 	},
 
-	render: ({color, onChangeInputField, ...rest}) => {
+	render: ({color, onChangeInputField, propName, ...rest}) => {
 		return (
 			<div className={css.contentContainer}>
-				<BodyText className={css.bodyText}>{rest.propName}</BodyText>
+				<BodyText className={css.bodyText}>{propName}</BodyText>
 				<Button className={css.colorButton} disabled style={{backgroundColor:color}} />
-				<InputField className={css.inputField} onChange={onChangeInputField} size={'large'} value={color} />
+				<InputField {...rest} className={css.inputField} onChange={onChangeInputField} size={'large'} value={color} />
 			</div>
 		);
 	}

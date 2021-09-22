@@ -1,8 +1,10 @@
 import Scroller from '@enact/sandstone/Scroller';
+import SwitchItem from '@enact/sandstone/SwitchItem';
 import {useState} from 'react';
+
+import AutoPopup from '../components/AutoPopup';
+import ColorFields from '../components/ColorFields';
 import OutputField from '../components/OutputField';
-import SingleField from '../components/SingleField';
-import TripleField from '../components/TripleField';
 
 const MainPanel = () => {
 	const [BGColor, setBGColor] = useState('#FF0000');
@@ -22,6 +24,9 @@ const MainPanel = () => {
 	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 	const [TOColor, setTOColor] = useState('#FF0000');
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
+
+	const [auto, setAuto] = useState(false);
+	const [openWarning, setOpenWarning] = useState(false);
 
 	function onChangeInput (props) {
 		const event = props?.event;
@@ -123,24 +128,39 @@ const MainPanel = () => {
 		}
 	}
 
-	const Colors = [BGColor, NTColor, SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
+	function onChangeSwitch () {
+		if (auto) {
+			setAuto(!auto);
+		} else {
+			setOpenWarning(true);
+		}
+	}
+
+	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
 		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
+
+	const AutoColors = ['#00FF00', '000', '255', '000', '#00FF00', '000', '255',
+		'000', '#00FF00', '000', '255', '000', '#00FF00', '#00FF00', '#00FF00'];
 
 	return (
 		<Scroller>
 			<div>
-				<SingleField color={BGColor} onChangeInput={onChangeInput} propName="Background color" />
-				<SingleField color={NTColor} onChangeInput={onChangeInput} propName="Normal Text color" />
-				<SingleField color={SCColor} onChangeInput={onChangeInput} propName="Subtitle color" />
-				<TripleField blue={FTCBlue} green={FTCGreen} red={FTCRed} onChangeInput={onChangeInput} propName="Focused text color (RGB)" />
-				<SingleField color={FBColor} onChangeInput={onChangeInput} propName="Focused Background color" />
-				<TripleField blue={SCBlue} green={SCGreen} red={SCRed} onChangeInput={onChangeInput} propName="Selected color (RGB)" />
-				<SingleField color={SBColor} onChangeInput={onChangeInput} propName="Selected Background Color" />
-				<TripleField blue={OPBCBlue} green={OPBCGreen} red={OPBCRed} onChangeInput={onChangeInput} propName="Overlay Panel Background Color (RGB)" />
-				<SingleField color={TOnBColor} onChangeInput={onChangeInput} propName="Toggle On Background Color" />
-				<SingleField color={TOColor} onChangeInput={onChangeInput} propName="Toggle Off Color" />
-				<SingleField color={TOffBColor} onChangeInput={onChangeInput} propName="Toggle Off Background Color" />
-				<OutputField colors={Colors} />
+				<AutoPopup
+					auto={auto}
+					openWarning={openWarning}
+					setAuto={setAuto}
+					setOpenWarning={setOpenWarning}
+				/>
+				<SwitchItem selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
+				<ColorFields
+					auto={auto}
+					AutoColors={AutoColors}
+					BGColor={BGColor}
+					Colors={Colors}
+					NTColor={NTColor}
+					onChangeInput={onChangeInput}
+				/>
+				<OutputField colors={!auto ? [BGColor, NTColor, ...Colors] : [BGColor, NTColor, ...AutoColors]} />
 			</div>
 		</Scroller>
 	);
