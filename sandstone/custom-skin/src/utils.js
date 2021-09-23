@@ -21,19 +21,41 @@ const convertHexToRGB = (hex) => {
 	] : null;
 };
 
+const convertRGBToHex = (RGBColor) => {
+	const [r, g, b] = RGBColor;
+	return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+const getRandomColor1 = (colorToBeConverted, inc) => {
+	const color = convertHexToRGB(colorToBeConverted)
+
+	const highestValue = Math.max(...color)
+
+	const newColor = color.map(value => {
+		if (value < 255 && value + 30 < highestValue) {
+			return value + 20 * inc;
+		}
+		return value;
+	});
+
+	return convertRGBToHex(newColor);
+}
+
 const generateBGColors = (background) => {
 	let color = background;
 	let colorsArray = [];
 
 	for (let i = 0; i < 5; i++) {
-		let rc = getRandomColor(color);
+		let rc = getRandomColor1(color, i);
 		colorsArray.push(rc);
 	}
 
 	const rgbFocusedTextColor = convertHexToRGB(colorsArray[2]);
 
+	console.log(colorsArray)
 	colorsArray.splice(2, 1, ...rgbFocusedTextColor);
 
+	// console.log(colorsArray)
 	return colorsArray;
 };
 
@@ -42,16 +64,18 @@ const generateTextColors = (text) => {
 	let colorsArray = [];
 
 	for (let i = 0; i < 4; i++) {
-		let rc = getRandomColor(color);
+		let rc = getRandomColor1(color, i);
 		colorsArray.push(rc);
 	}
 
 	const rgbFocusedTextColor = convertHexToRGB(colorsArray[1]);
 	const rgbSelectedColor = convertHexToRGB(colorsArray[2]);
 
+	console.log(colorsArray)
 	colorsArray.splice(1, 1, ...rgbFocusedTextColor);
 	colorsArray.splice(4, 1, ...rgbSelectedColor);
 
+	// console.log(colorsArray)
 	return colorsArray;
 };
 
