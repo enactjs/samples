@@ -88,9 +88,8 @@ const generateColors = (text, background) => {
 };
 
 const hexColors = (color1, color2) => {
-	return color1.length === 7 && color2.length === 7 && color1[0] === '#' && color2[0] === '#' &&
-		color1.toUpperCase() <= '#FFFFFF' && color1.toUpperCase() >= '#000000' &&
-		color2.toUpperCase() <= '#FFFFFF' && color2.toUpperCase() >= '#000000';
+	return /^#[0-9A-F]{6}$/i.test(color1) && /^#[0-9A-F]{6}$/i.test(color2);
+	// /^#[0-9A-F]{6}$/i.test(test_string) tests if test_string represents a color in hex
 };
 
 const checkColors = (arr1, arr2) => {
