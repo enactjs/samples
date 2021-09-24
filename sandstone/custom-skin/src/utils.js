@@ -1,16 +1,16 @@
-const getRandomColor = (color) => {
-	let p = 1,
-		temp,
-		random = Math.random(),
-		result = '#';
-
-	while (p < color.length) {
-		temp = parseInt(color.slice(p, p += 2), 16);
-		temp += Math.floor((255 - temp) * random);
-		result += temp.toString(16).padStart(2, '0');
-	}
-	return result;
-};
+// const getRandomColor = (color) => {
+// 	let p = 1,
+// 		temp,
+// 		random = Math.random(),
+// 		result = '#';
+//
+// 	while (p < color.length) {
+// 		temp = parseInt(color.slice(p, p += 2), 16);
+// 		temp += Math.floor((255 - temp) * random);
+// 		result += temp.toString(16).padStart(2, '0');
+// 	}
+// 	return result;
+// };
 
 const convertHexToRGB = (hex) => {
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -21,12 +21,32 @@ const convertHexToRGB = (hex) => {
 	] : null;
 };
 
+const convertRGBToHex = (RGBColor) => {
+	const [r, g, b] = RGBColor;
+	return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+};
+
+const getRandomColor1 = (colorToBeConverted, inc) => {
+	const color = convertHexToRGB(colorToBeConverted);
+
+	const highestValue = Math.max(...color);
+
+	const newColor = color.map(value => {
+		if (value < 255 && value + 30 < highestValue) {
+			return value + 20 * inc;
+		}
+		return value;
+	});
+
+	return convertRGBToHex(newColor);
+};
+
 const generateBGColors = (background) => {
 	let color = background;
 	let colorsArray = [];
 
 	for (let i = 0; i < 5; i++) {
-		let rc = getRandomColor(color);
+		let rc = getRandomColor1(color, i);
 		colorsArray.push(rc);
 	}
 
@@ -42,7 +62,7 @@ const generateTextColors = (text) => {
 	let colorsArray = [];
 
 	for (let i = 0; i < 4; i++) {
-		let rc = getRandomColor(color);
+		let rc = getRandomColor1(color, i);
 		colorsArray.push(rc);
 	}
 
