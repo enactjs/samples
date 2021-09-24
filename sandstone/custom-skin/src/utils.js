@@ -23,13 +23,13 @@ const convertHexToRGB = (hex) => {
 
 const convertRGBToHex = (RGBColor) => {
 	const [r, g, b] = RGBColor;
-	return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-}
+	return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+};
 
 const getRandomColor1 = (colorToBeConverted, inc) => {
-	const color = convertHexToRGB(colorToBeConverted)
+	const color = convertHexToRGB(colorToBeConverted);
 
-	const highestValue = Math.max(...color)
+	const highestValue = Math.max(...color);
 
 	const newColor = color.map(value => {
 		if (value < 255 && value + 30 < highestValue) {
@@ -39,7 +39,7 @@ const getRandomColor1 = (colorToBeConverted, inc) => {
 	});
 
 	return convertRGBToHex(newColor);
-}
+};
 
 const generateBGColors = (background) => {
 	let color = background;
