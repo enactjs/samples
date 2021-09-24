@@ -1,32 +1,53 @@
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
 import ColorFields from '../components/ColorFields';
 import OutputField from '../components/OutputField';
 
+import {checkColors, generateColors, hexColors} from '../utils';
+
 const MainPanel = () => {
 	const [BGColor, setBGColor] = useState('#FF0000');
-	const [NTColor, setNTColor] = useState('#FF0000');
-	const [SCColor, setSCColor] = useState('#FF0000');
-	const [FTCRed, setFTCRed] = useState('255');
-	const [FTCGreen, setFTCGreen] = useState('0');
-	const [FTCBlue, setFTCBlue] = useState('0');
 	const [FBColor, setFBColor] = useState('#FF0000');
-	const [SCRed, setSCRed] = useState('255');
-	const [SCGreen, setSCGreen] = useState('0');
-	const [SCBlue, setSCBlue] = useState('0');
-	const [SBColor, setSBColor] = useState('#FF0000');
-	const [OPBCRed, setOPBCRed] = useState('255');
-	const [OPBCGreen, setOPBCGreen] = useState('0');
+	const [FTCBlue, setFTCBlue] = useState('0');
+	const [FTCGreen, setFTCGreen] = useState('0');
+	const [FTCRed, setFTCRed] = useState('255');
+	const [NTColor, setNTColor] = useState('#FF0000');
 	const [OPBCBlue, setOPBCBlue] = useState('0');
-	const [TOnBColor, setTOnBColor] = useState('#FF0000');
+	const [OPBCGreen, setOPBCGreen] = useState('0');
+	const [OPBCRed, setOPBCRed] = useState('255');
+	const [SBColor, setSBColor] = useState('#FF0000');
+	const [SCBlue, setSCBlue] = useState('0');
+	const [SCColor, setSCColor] = useState('#FF0000');
+	const [SCGreen, setSCGreen] = useState('0');
+	const [SCRed, setSCRed] = useState('255');
 	const [TOColor, setTOColor] = useState('#FF0000');
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
+	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 
 	const [auto, setAuto] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
+	const [AutoColors, setAutoColors] = useState([]);
+
+	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
+		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
+
+	const setColors = [setSCColor, setFTCRed, setFTCGreen, setFTCBlue, setFBColor, setSCRed, setSCGreen,
+		setSCBlue, setSBColor, setOPBCRed, setOPBCGreen, setOPBCBlue, setTOnBColor, setTOColor, setTOffBColor];
+
+	useEffect(() => {
+		if (hexColors(BGColor, NTColor)) {
+			setAutoColors(generateColors(NTColor, BGColor));
+		}
+	}, [BGColor, NTColor]);
+
+	function setColorsToAuto () {
+		for (let i = 0; i < setColors.length; ++i) {
+			setColors[i](AutoColors[i]);
+		}
+	}
 
 	function onChangeInput (props) {
 		const event = props?.event;
@@ -132,15 +153,14 @@ const MainPanel = () => {
 		if (auto) {
 			setAuto(!auto);
 		} else {
-			setOpenWarning(true);
+			// eslint-disable-next-line
+			if (!checkColors(Colors, AutoColors)) {
+				setOpenWarning(true);
+			} else {
+				setAuto(!auto);
+			}
 		}
 	}
-
-	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
-		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
-
-	const AutoColors = ['#00FF00', '000', '255', '000', '#00FF00', '000', '255',
-		'000', '#00FF00', '000', '255', '000', '#00FF00', '#00FF00', '#00FF00'];
 
 	return (
 		<Scroller>
@@ -149,9 +169,10 @@ const MainPanel = () => {
 					auto={auto}
 					openWarning={openWarning}
 					setAuto={setAuto}
+					setColorsToAuto={setColorsToAuto}
 					setOpenWarning={setOpenWarning}
 				/>
-				<SwitchItem selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
+				<SwitchItem inline selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
 				<ColorFields
 					auto={auto}
 					AutoColors={AutoColors}

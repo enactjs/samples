@@ -12,13 +12,15 @@ const AutoPopup = kind({
 		auto:PropTypes.bool,
 		openWarning:PropTypes.bool,
 		setAuto:PropTypes.func,
+		setColorsToAuto:PropTypes.func,
 		setOpenWarning:PropTypes.func
 	},
 
 	handlers:{
-		onClickOk:(event, {auto, setAuto, setOpenWarning}) => {
+		onClickOk:(event, {auto, setAuto, setColorsToAuto, setOpenWarning}) => {
 			setAuto(!auto);
 			setOpenWarning(false);
+			setColorsToAuto();
 		},
 		onClickCancel:(event, {setOpenWarning}) => {
 			setOpenWarning(false);
