@@ -52,10 +52,8 @@ const generateBGColors = (background) => {
 
 	const rgbFocusedTextColor = convertHexToRGB(colorsArray[2]);
 
-	console.log(colorsArray)
 	colorsArray.splice(2, 1, ...rgbFocusedTextColor);
 
-	// console.log(colorsArray)
 	return colorsArray;
 };
 
@@ -71,11 +69,9 @@ const generateTextColors = (text) => {
 	const rgbFocusedTextColor = convertHexToRGB(colorsArray[1]);
 	const rgbSelectedColor = convertHexToRGB(colorsArray[2]);
 
-	console.log(colorsArray)
 	colorsArray.splice(1, 1, ...rgbFocusedTextColor);
 	colorsArray.splice(4, 1, ...rgbSelectedColor);
 
-	// console.log(colorsArray)
 	return colorsArray;
 };
 
