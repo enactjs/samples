@@ -3,6 +3,7 @@ node_js:
     - "node"
 sudo: false
 install:
+    - npm cache clean --force
     - npm install -g enactjs/cli#develop
     - npm install
 script:
