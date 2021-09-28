@@ -26,7 +26,7 @@ const SingleField = kind({
 
 	handlers: {
 		onChangeInputField: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name:propName});
+			onChangeInput({event, name: propName});
 		}
 	},
 

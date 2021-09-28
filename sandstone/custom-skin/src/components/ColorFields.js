@@ -1,9 +1,9 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
+import NameField from './NameField';
 import SingleField from './SingleField';
 import TripleField from './TripleField';
-import NameField from './NameField';
 
 
 const ColorFields = kind({
