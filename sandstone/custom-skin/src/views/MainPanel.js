@@ -9,6 +9,7 @@ import OutputField from '../components/OutputField';
 import {checkColors, generateColors, hexColors} from '../utils';
 
 const MainPanel = () => {
+	const [skinName, setSkinName] = useState('Custom Skin');
 	const [BGColor, setBGColor] = useState('#FF0000');
 	const [FBColor, setFBColor] = useState('#FF0000');
 	const [FTCBlue, setFTCBlue] = useState('0');
@@ -56,6 +57,10 @@ const MainPanel = () => {
 		const value = event?.value;
 
 		switch (name) {
+			case 'Skin Name': {
+				setSkinName(value);
+				break;
+			}
 			case 'Background color': {
 				setBGColor(value);
 				break;
@@ -179,10 +184,15 @@ const MainPanel = () => {
 					AutoColors={AutoColors}
 					BGColor={BGColor}
 					Colors={Colors}
+					name={skinName}
 					NTColor={NTColor}
 					onChangeInput={onChangeInput}
 				/>
-				<OutputField colors={!auto ? [BGColor, NTColor, ...Colors] : [BGColor, NTColor, ...AutoColors]} />
+				<OutputField
+					colors={
+						!auto ? [skinName, BGColor, NTColor, ...Colors] : [skinName, BGColor, NTColor, ...AutoColors]
+					}
+				/>
 			</div>
 		</Scroller>
 	);

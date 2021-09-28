@@ -1,6 +1,7 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
+import NameField from './NameField';
 import SingleField from './SingleField';
 import TripleField from './TripleField';
 
@@ -13,13 +14,19 @@ const ColorFields = kind({
 		AutoColors:PropTypes.array,
 		BGColor:PropTypes.string,
 		Colors:PropTypes.array,
+		name: PropTypes.string,
 		NTColor:PropTypes.string,
 		onChangeInput:PropTypes.func
 	},
 
-	render:({BGColor, NTColor, onChangeInput, auto, Colors, AutoColors, ...rest}) => {
+	render:({auto, AutoColors, BGColor, Colors, name, NTColor, onChangeInput, ...rest}) => {
 		return (
 			<div {...rest}>
+				<NameField
+					name={name}
+					onChangeInput={onChangeInput}
+					propName="Skin Name"
+				/>
 				<SingleField
 					color={BGColor}
 					onChangeInput={onChangeInput}
