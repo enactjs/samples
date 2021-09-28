@@ -27,7 +27,7 @@ const MainPanel = () => {
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
 	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 
-	const [auto, setAuto] = useState(false);
+	const [auto, setAuto] = useState(true);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
@@ -152,6 +152,7 @@ const MainPanel = () => {
 	function onChangeSwitch () {
 		if (auto) {
 			setAuto(!auto);
+			setColorsToAuto();
 		} else {
 			// eslint-disable-next-line
 			if (!checkColors(Colors, AutoColors)) {

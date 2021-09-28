@@ -12,7 +12,7 @@ const OutputField = kind({
 	computed: {
 		text: ({colors}) => {
 			return '.sandstone-theme {\n' +
-			`	--sand-background-color: ${colors[0]};      	  /* Normal Text Color */\n` +
+			`	background-color: ${colors[0]};      	  /* Normal Text Color */\n` +
 			`	--sand-text-color: ${colors[1]};       	  /* Normal Text Color */\n` +
 			`	--sand-text-sub-color: ${colors[2]};           /* Subtitle Text Color */\n` +
 			`	--sand-focus-text-color-rgb: ${colors[3]}, ${colors[4]}, ${colors[5]};   /* Focused Text Color (Must be RGB comma separated format) */\n` +
