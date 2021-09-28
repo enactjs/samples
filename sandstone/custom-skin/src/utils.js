@@ -33,7 +33,7 @@ const getRandomColor1 = (colorToBeConverted, inc) => {
 
 	const newColor = color.map(value => {
 		if (value < 255 && value + 30 < highestValue) {
-			return value + 20 * inc;
+			return value + 20 * (inc + 1);
 		}
 		return value;
 	});
