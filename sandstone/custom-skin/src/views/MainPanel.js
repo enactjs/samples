@@ -1,5 +1,10 @@
+import BodyText from '@enact/sandstone/BodyText';
+import Button from '@enact/sandstone/Button';
+import Heading from '@enact/sandstone/Heading';
 import Scroller from '@enact/sandstone/Scroller';
+import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
+import {Cell, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
@@ -8,25 +13,27 @@ import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, hexColors} from '../utils';
 
+import css from './MainPanel.module.less';
+
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('Custom Skin');
-	const [BGColor, setBGColor] = useState('#FF0000');
-	const [FBColor, setFBColor] = useState('#FF0000');
-	const [FTCBlue, setFTCBlue] = useState('0');
-	const [FTCGreen, setFTCGreen] = useState('0');
+	const [BGColor, setBGColor] = useState('#FFFFFF');
+	const [FBColor, setFBColor] = useState('#FFFFFF');
+	const [FTCBlue, setFTCBlue] = useState('255');
+	const [FTCGreen, setFTCGreen] = useState('255');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#FF0000');
-	const [OPBCBlue, setOPBCBlue] = useState('0');
-	const [OPBCGreen, setOPBCGreen] = useState('0');
+	const [NTColor, setNTColor] = useState('#FFFFFF');
+	const [OPBCBlue, setOPBCBlue] = useState('255');
+	const [OPBCGreen, setOPBCGreen] = useState('255');
 	const [OPBCRed, setOPBCRed] = useState('255');
-	const [SBColor, setSBColor] = useState('#FF0000');
-	const [SCBlue, setSCBlue] = useState('0');
-	const [SCColor, setSCColor] = useState('#FF0000');
-	const [SCGreen, setSCGreen] = useState('0');
+	const [SBColor, setSBColor] = useState('#FFFFFF');
+	const [SCBlue, setSCBlue] = useState('255');
+	const [SCColor, setSCColor] = useState('#FFFFFF');
+	const [SCGreen, setSCGreen] = useState('255');
 	const [SCRed, setSCRed] = useState('255');
-	const [TOColor, setTOColor] = useState('#FF0000');
-	const [TOffBColor, setTOffBColor] = useState('#FF0000');
-	const [TOnBColor, setTOnBColor] = useState('#FF0000');
+	const [TOColor, setTOColor] = useState('#FFFFFF');
+	const [TOffBColor, setTOffBColor] = useState('#FFFFFF');
+	const [TOnBColor, setTOnBColor] = useState('#FFFFFF');
 
 	const [auto, setAuto] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
@@ -169,29 +176,44 @@ const MainPanel = () => {
 
 	return (
 		<Scroller>
-			<div>
-				<AutoPopup
-					auto={auto}
-					openWarning={openWarning}
-					setAuto={setAuto}
-					setColorsToAuto={setColorsToAuto}
-					setOpenWarning={setOpenWarning}
-				/>
-				<SwitchItem inline selected={auto} onClick={onChangeSwitch}>Auto</SwitchItem>
-				<ColorFields
-					auto={auto}
-					AutoColors={AutoColors}
-					BGColor={BGColor}
-					Colors={Colors}
-					name={skinName}
-					NTColor={NTColor}
-					onChangeInput={onChangeInput}
-				/>
-				<OutputField
-					colors={
-						!auto ? [skinName, BGColor, NTColor, ...Colors] : [skinName, BGColor, NTColor, ...AutoColors]
-					}
-				/>
+			<div className={css.mainPanel}>
+				<Heading size="large">Custom skin generator_</Heading>
+				<Layout orientation="vertical">
+					<Row>
+						<Cell>
+							<AutoPopup
+								auto={auto}
+								openWarning={openWarning}
+								setAuto={setAuto}
+								setColorsToAuto={setColorsToAuto}
+								setOpenWarning={setOpenWarning}
+							/>
+							<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
+							<Switch selected={auto} onClick={onChangeSwitch} />
+							<ColorFields
+								auto={auto}
+								AutoColors={AutoColors}
+								BGColor={BGColor}
+								Colors={Colors}
+								name={skinName}
+								NTColor={NTColor}
+								onChangeInput={onChangeInput}
+							/>
+						</Cell>
+						<Cell size="30%">
+							<Heading>Component Preview</Heading>
+							<Button>Click me</Button>
+							<SwitchItem>Toggle me</SwitchItem>
+						</Cell>
+					</Row>
+					<Row>
+						<OutputField
+							colors={
+								!auto ? [skinName, BGColor, NTColor, ...Colors] : [skinName, BGColor, NTColor, ...AutoColors]
+							}
+						/>
+					</Row>
+				</Layout>
 			</div>
 		</Scroller>
 	);

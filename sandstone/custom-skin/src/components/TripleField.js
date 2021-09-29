@@ -1,10 +1,11 @@
 import kind from '@enact/core/kind';
 import BodyText from '@enact/sandstone/BodyText';
-import Button from '@enact/sandstone/Button';
 import {InputField} from '@enact/sandstone/Input';
+import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
-import css from './TripleField.module.less';
+import componentCss from './TripleField.module.less';
+import css from './styles.module.less';
 
 const TripleField = kind({
 	name: 'TripleField',
@@ -48,16 +49,20 @@ const TripleField = kind({
 
 	render: ({blue, getColor, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
 		return (
-			<div className={css.contentContainer}>
-				<BodyText className={css.bodyText}>{propName}</BodyText>
-				<Button disabled className={css.colorButton} style={{backgroundColor:getColor}} />
-				<BodyText className={css.bodyTextLetter}>R:</BodyText>
-				<InputField {...rest} value={red} size={'large'} className={css.inputField} onChange={onChangeInputR} />
-				<BodyText className={css.bodyTextLetter}>G:</BodyText>
-				<InputField {...rest} value={green} size={'large'} className={css.inputField} onChange={onChangeInputG} />
-				<BodyText className={css.bodyTextLetter}>B:</BodyText>
-				<InputField {...rest} value={blue} size={'large'} className={css.inputField} onChange={onChangeInputB} />
-			</div>
+			<Layout className={css.inputField}>
+				<Cell size="40%">
+					<BodyText className={css.labelField}>{propName}</BodyText>
+				</Cell>
+				<Cell className={componentCss.tripleField}>
+					<input className={css.colorBlock} style={{backgroundColor: getColor}} type="color" value={getColor} />
+					<span>R:</span>
+					<InputField {...rest} className={componentCss.tripleInput} value={red} onChange={onChangeInputR} />
+					<span>G:</span>
+					<InputField {...rest} className={componentCss.tripleInput} value={green} onChange={onChangeInputG} />
+					<span>B:</span>
+					<InputField {...rest} className={componentCss.tripleInput} value={blue} onChange={onChangeInputB} />
+				</Cell>
+			</Layout>
 		);
 	}
 });
