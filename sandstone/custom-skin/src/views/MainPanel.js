@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
 import ColorFields from '../components/ColorFields';
-import ImportSkin from "../components/ImportSkin";
+// import ImportSkin from "../components/ImportSkin";
 import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, hexColors} from '../utils';
@@ -16,7 +16,7 @@ const MainPanel = () => {
 	const [FTCBlue, setFTCBlue] = useState('0');
 	const [FTCGreen, setFTCGreen] = useState('0');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#FF0000');
+	const [NTColor, setNTColor] = useState('#00FF00');
 	const [OPBCBlue, setOPBCBlue] = useState('0');
 	const [OPBCGreen, setOPBCGreen] = useState('0');
 	const [OPBCRed, setOPBCRed] = useState('255');
@@ -172,7 +172,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div>
-				<ImportSkin />
+				{/*<ImportSkin />*/}
 				<AutoPopup
 					auto={auto}
 					openWarning={openWarning}
