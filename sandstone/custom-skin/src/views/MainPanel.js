@@ -4,12 +4,13 @@ import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
 import ColorFields from '../components/ColorFields';
+import ImportSkin from "../components/ImportSkin";
 import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, hexColors} from '../utils';
 
 const MainPanel = () => {
-	const [skinName, setSkinName] = useState('Custom Skin');
+	const [skinName, setSkinName] = useState('');
 	const [BGColor, setBGColor] = useState('#FF0000');
 	const [FBColor, setFBColor] = useState('#FF0000');
 	const [FTCBlue, setFTCBlue] = useState('0');
@@ -171,6 +172,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div>
+				<ImportSkin />
 				<AutoPopup
 					auto={auto}
 					openWarning={openWarning}

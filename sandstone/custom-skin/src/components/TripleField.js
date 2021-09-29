@@ -48,22 +48,10 @@ const TripleField = kind({
 
 	render: ({blue, getColor, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
 
-		const showFile = async (e) => {
-			e.preventDefault()
-			const reader = new window.FileReader()
-			reader.onload = async (e) => {
-				const text = (e.target.result).split("\n\t");
-				text.shift();
-				text.pop();
-				console.log(text)
-			};
-			reader.readAsText(e.target.files[0]);
-		}
 
 		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{propName}</BodyText>
-				<input type="file" onChange={(e) => showFile(e)} />
 				<Button disabled className={css.colorButton} style={{backgroundColor:getColor}} />
 				<BodyText className={css.bodyTextLetter}>R:</BodyText>
 				<InputField {...rest} value={red} size={'large'} className={css.inputField} onChange={onChangeInputR} />
