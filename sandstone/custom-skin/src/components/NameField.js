@@ -41,7 +41,8 @@ const NameField = kind({
 					onChange={onChangeInputField}
 					placeholder={placeholder}
 					size={'large'}
-					value={name} />
+					value={name}
+				/>
 			</div>
 		);
 	}

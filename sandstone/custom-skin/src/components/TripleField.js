@@ -48,7 +48,6 @@ const TripleField = kind({
 
 	render: ({blue, getColor, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
 
-
 		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{propName}</BodyText>
