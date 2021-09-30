@@ -107,8 +107,6 @@ const getColorsFromString = (colors) => {
 	} catch (err) {
 		// eslint-disable-next-line
 		console.log(err);
-		// eslint-disable-next-line
-		window.alert('Wrong type of file!');
 
 		return null;
 	}

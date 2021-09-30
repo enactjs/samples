@@ -1,3 +1,5 @@
+import Alert from '@enact/sandstone/Alert';
+import Button from '@enact/sandstone/Button';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {useEffect, useState} from 'react';
@@ -29,6 +31,7 @@ const MainPanel = () => {
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
 	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 
+	const [alert, setAlert] = useState(false);
 	const [auto, setAuto] = useState(true);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
@@ -43,7 +46,7 @@ const MainPanel = () => {
 		if (hexColors(BGColor, NTColor)) {
 			setAutoColors(generateColors(NTColor, BGColor));
 		}
-	}, [BGColor, NTColor, auto]);
+	}, [BGColor, NTColor, alert]);
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
@@ -115,6 +118,8 @@ const MainPanel = () => {
 					default: break;
 				}
 			});
+		} else {
+			setAlert(true);
 		}
 	}
 
@@ -236,9 +241,17 @@ const MainPanel = () => {
 		}
 	}
 
+	function turnAlertOff () {
+		setAlert(false);
+	}
+
 	return (
 		<Scroller>
 			<div>
+				<Alert open={alert} type="overlay">
+					<p>Wrong type of file imported!</p>
+					<Button onClick={turnAlertOff}>Close</Button>
+				</Alert>
 				<ImportSkin setColors={setColorsFromImport} />
 				<AutoPopup
 					auto={auto}
