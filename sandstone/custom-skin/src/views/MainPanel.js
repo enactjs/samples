@@ -46,7 +46,7 @@ const MainPanel = () => {
 		if (hexColors(BGColor, NTColor)) {
 			setAutoColors(generateColors(NTColor, BGColor));
 		}
-	}, [BGColor, NTColor, alert]);
+	}, [BGColor, NTColor]);
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
