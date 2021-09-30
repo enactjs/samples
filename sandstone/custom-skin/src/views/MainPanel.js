@@ -1,21 +1,24 @@
+import Alert from '@enact/sandstone/Alert';
+import Button from '@enact/sandstone/Button';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
 import ColorFields from '../components/ColorFields';
+import ImportSkin from '../components/ImportSkin';
 import OutputField from '../components/OutputField';
 
-import {checkColors, generateColors, hexColors} from '../utils';
+import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
 
 const MainPanel = () => {
-	const [skinName, setSkinName] = useState('Custom Skin');
+	const [skinName, setSkinName] = useState('');
 	const [BGColor, setBGColor] = useState('#FF0000');
 	const [FBColor, setFBColor] = useState('#FF0000');
 	const [FTCBlue, setFTCBlue] = useState('0');
 	const [FTCGreen, setFTCGreen] = useState('0');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#FF0000');
+	const [NTColor, setNTColor] = useState('#00FF00');
 	const [OPBCBlue, setOPBCBlue] = useState('0');
 	const [OPBCGreen, setOPBCGreen] = useState('0');
 	const [OPBCRed, setOPBCRed] = useState('255');
@@ -28,7 +31,8 @@ const MainPanel = () => {
 	const [TOffBColor, setTOffBColor] = useState('#FF0000');
 	const [TOnBColor, setTOnBColor] = useState('#FF0000');
 
-	const [auto, setAuto] = useState(false);
+	const [alert, setAlert] = useState(false);
+	const [auto, setAuto] = useState(true);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
@@ -47,6 +51,75 @@ const MainPanel = () => {
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
 			setColors[i](AutoColors[i]);
+		}
+	}
+
+	function setColorsFromImport (colors) {
+		const colorSet = getColorsFromString(colors);
+		if (colorSet !== null) {
+			setSkinName(colorSet.shift()[1]);
+
+			setAuto(false);
+			colorSet.forEach(set => {
+				switch (set[0]) {
+					case 'background-color': {
+						setBGColor(set[1]);
+						break;
+					}
+					case '--sand-text-color': {
+						setNTColor(set[1]);
+						break;
+					}
+					case '--sand-text-sub-color': {
+						setSCColor(set[1]);
+						break;
+					}
+					case '--sand-focus-text-color-rgb': {
+						const colorsRGB = set[1].split(',');
+						setFTCRed(colorsRGB[0]);
+						setFTCGreen(colorsRGB[1]);
+						setFTCBlue(colorsRGB[2]);
+						break;
+					}
+					case '--sand-focus-bg-color': {
+						setFBColor(set[1]);
+						break;
+					}
+					case '--sand-selected-color-rgb': {
+						const colorsRGB = set[1].split(',');
+						setSCRed(colorsRGB[0]);
+						setSCGreen(colorsRGB[1]);
+						setSCBlue(colorsRGB[2]);
+						break;
+					}
+					case '--sand-selected-bg-color': {
+						setSBColor(set[1]);
+						break;
+					}
+					case '--sand-overlay-bg-color-rgb': {
+						const colorsRGB = set[1].split(',');
+						setOPBCRed(colorsRGB[0]);
+						setOPBCGreen(colorsRGB[1]);
+						setOPBCBlue(colorsRGB[2]);
+						break;
+					}
+					case '--sand-toggle-on-bg-color': {
+						setTOnBColor(set[1]);
+						break;
+					}
+					case '--sand-toggle-off-color': {
+						setTOColor(set[1]);
+						break;
+					}
+					case '--sand-toggle-off-bg-color': {
+						setTOffBColor(set[1]);
+						break;
+					}
+					default: break;
+				}
+			});
+		} else {
+			setAlert(true);
 		}
 	}
 
@@ -157,6 +230,7 @@ const MainPanel = () => {
 	function onChangeSwitch () {
 		if (auto) {
 			setAuto(!auto);
+			setColorsToAuto();
 		} else {
 			// eslint-disable-next-line
 			if (!checkColors(Colors, AutoColors)) {
@@ -167,9 +241,18 @@ const MainPanel = () => {
 		}
 	}
 
+	function turnAlertOff () {
+		setAlert(false);
+	}
+
 	return (
 		<Scroller>
 			<div>
+				<Alert open={alert} type="overlay">
+					<p>Wrong type of file imported!</p>
+					<Button onClick={turnAlertOff}>Close</Button>
+				</Alert>
+				<ImportSkin setColors={setColorsFromImport} />
 				<AutoPopup
 					auto={auto}
 					openWarning={openWarning}

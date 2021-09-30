@@ -11,11 +11,13 @@ const NameField = kind({
 	propTypes: {
 		name: PropTypes.string,
 		onChangeInput: PropTypes.func,
+		placeholder: PropTypes.func,
 		propName: PropTypes.string
 	},
 
 	defaultProps: {
-		name : 'red'
+		name : '',
+		placeholder : 'Custom Skin'
 	},
 
 	styles:{
@@ -29,11 +31,18 @@ const NameField = kind({
 		}
 	},
 
-	render: ({name, onChangeInputField, propName, ...rest}) => {
+	render: ({name, onChangeInputField, placeholder, propName, ...rest}) => {
 		return (
 			<div className={css.contentContainer}>
 				<BodyText className={css.bodyText}>{propName}</BodyText>
-				<InputField {...rest} className={css.inputField} onChange={onChangeInputField} size={'large'} value={name} />
+				<InputField
+					{...rest}
+					className={css.inputField}
+					onChange={onChangeInputField}
+					placeholder={placeholder}
+					size={'large'}
+					value={name}
+				/>
 			</div>
 		);
 	}
