@@ -17,8 +17,6 @@ const ImportSkin = kind({
 				text.shift();
 				text.pop();
 				text = text.filter(string => {
-					// console.log(string);
-					// console.log(string.includes('/* Skin Name'));
 					if (string[0] !== '/' || string.includes('/* Skin Name')) {
 						return string;
 					}
