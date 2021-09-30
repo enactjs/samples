@@ -4,6 +4,8 @@ import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
+import {convertRGBToHex} from '../utils';
+
 import componentCss from './TripleField.module.less';
 import css from './styles.module.less';
 
@@ -30,8 +32,8 @@ const TripleField = kind({
 	},
 
 	computed:{
-		getColor:({red, green, blue}) => {
-			return `rgb(${red}, ${green}, ${blue})`;
+		getColorValue:({red, green, blue}) => {
+			return convertRGBToHex([red, green, blue]);
 		}
 	},
 
@@ -47,14 +49,14 @@ const TripleField = kind({
 		}
 	},
 
-	render: ({blue, getColor, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
+	render: ({blue, getColorValue, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.tripleField}>
-					<input className={css.colorBlock} style={{backgroundColor: getColor}} type="color" value={getColor} />
+					<input className={css.colorBlock} style={{backgroundColor: getColorValue}} type="color" value={getColorValue} />
 					<span>R:</span>
 					<InputField {...rest} className={componentCss.tripleInput} value={red} onChange={onChangeInputR} />
 					<span>G:</span>

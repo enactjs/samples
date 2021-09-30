@@ -114,6 +114,7 @@ const getColorsFromString = (colors) => {
 
 export {
 	checkColors,
+	convertRGBToHex,
 	generateColors,
 	getColorsFromString,
 	hexColors

@@ -265,16 +265,19 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<div>
-
-							</div>
-							<Alert open={alert} type="overlay">
-								<p>Wrong type of file imported!</p>
+							<Alert className={css.importAlert} css={css} open={alert} type="overlay">
+								<BodyText>Wrong type of file imported!</BodyText>
 								<Button onClick={turnAlertOff}>Close</Button>
 							</Alert>
-							<ImportSkin setColors={setColorsFromImport} />
-							<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
-							<Switch selected={auto} onClick={onChangeSwitch} />
+							<Row>
+								<Cell>
+									<ImportSkin setColors={setColorsFromImport} />
+								</Cell>
+								<Cell>
+									<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
+									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
+								</Cell>
+							</Row>
 							<ColorFields
 								auto={auto}
 								AutoColors={AutoColors}

@@ -45,7 +45,8 @@ const NameField = kind({
 						className={componentCss.nameField}
 						onChange={onChangeInputField}
 						placeholder={placeholder}
-						value={name} />
+						value={name}
+					/>
 				</Cell>
 			</Layout>
 		);

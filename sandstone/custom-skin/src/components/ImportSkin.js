@@ -1,6 +1,8 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
+import componentCss from './ImportSkin.module.less';
+
 const ImportSkin = kind({
 	name: 'ImportSkin',
 
@@ -33,7 +35,12 @@ const ImportSkin = kind({
 	},
 
 	render:({showFile}) => {
-		return <input type="file" onChange={showFile} />;
+		return (
+			<div className={componentCss.inputFile}>
+				<label htmlFor="inputStyle">Import your stylesheet</label>
+				<input name="inputStyle" onChange={showFile} type="file" />
+			</div>
+		);
 	}
 });
 
