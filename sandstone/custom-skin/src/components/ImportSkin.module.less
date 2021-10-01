@@ -1,0 +1,34 @@
+.inputFile {
+  margin: 0 0.75rem 1.25rem 0.75rem;
+
+  input[type=file]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  input[type=file] {
+    &::before {
+      content: 'Choose file';
+      -webkit-appearance: button;
+      -moz-appearance: button;
+      appearance: button;
+      font-family: "Sandstone";
+      font-size: 1.25rem;
+      font-weight: 600;
+      height: 2.25rem;
+      line-height: 2.25rem;
+      padding: 0 1rem;
+      margin-left: 0.75rem;
+      border-radius: 0.25rem;
+      color: #e6e6e6;
+      background-color: #7d848c;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      box-shadow: 0 0.75rem 0.75rem rgb(0 0 0 / 30%);
+      background-color: #e6e6e6;
+      color: #4c5059;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,9 +1,11 @@
 import kind from '@enact/core/kind';
 import BodyText from '@enact/sandstone/BodyText';
 import {InputField} from '@enact/sandstone/Input';
+import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
-import css from './NameField.module.less';
+import css from './styles.module.less';
+import componentCss from './NameField.module.less';
 
 const NameField = kind({
 	name: 'NameField',
@@ -33,17 +35,20 @@ const NameField = kind({
 
 	render: ({name, onChangeInputField, placeholder, propName, ...rest}) => {
 		return (
-			<div className={css.contentContainer}>
-				<BodyText className={css.bodyText}>{propName}</BodyText>
-				<InputField
-					{...rest}
-					className={css.inputField}
-					onChange={onChangeInputField}
-					placeholder={placeholder}
-					size={'large'}
-					value={name}
-				/>
-			</div>
+			<Layout className={css.inputField}>
+				<Cell size="40%">
+					<BodyText className={css.labelField}>{propName}</BodyText>
+				</Cell>
+				<Cell>
+					<InputField
+						{...rest}
+						className={componentCss.nameField}
+						onChange={onChangeInputField}
+						placeholder={placeholder}
+						value={name}
+					/>
+				</Cell>
+			</Layout>
 		);
 	}
 });
