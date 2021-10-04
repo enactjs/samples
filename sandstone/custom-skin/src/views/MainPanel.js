@@ -1,11 +1,16 @@
 import Alert from '@enact/sandstone/Alert';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
+import CheckboxItem from '@enact/sandstone/CheckboxItem';
+import Dropdown from '@enact/sandstone/Dropdown';
 import Heading from '@enact/sandstone/Heading';
+import Popup from '@enact/sandstone/Popup';
+import RangePicker from '@enact/sandstone/RangePicker';
 import Scroller from '@enact/sandstone/Scroller';
+import Slider from '@enact/sandstone/Slider';
 import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {Cell, Layout, Row} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
@@ -39,6 +44,7 @@ const MainPanel = () => {
 
 	const [alert, setAlert] = useState(false);
 	const [auto, setAuto] = useState(true);
+	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
@@ -317,8 +323,24 @@ const MainPanel = () => {
 						</Cell>
 						<Cell size="30%">
 							<Heading>Component Preview</Heading>
-							<Button>Click me</Button>
-							<SwitchItem>Toggle me</SwitchItem>
+							<Column className={css.previewComponents}>
+								<Button>Click</Button>
+								<Button disabled>Disabled</Button>
+								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
+								<SwitchItem>Toggle</SwitchItem>
+								<Slider />
+								<RangePicker max={13} min={0} />
+								<Dropdown>
+									{["Item 1", "Item 2", "Item 3"]}
+								</Dropdown>
+								<Button onClick={() => setOpenPopup(!openPopup)}>
+									Popup
+								</Button>
+								<Popup open={openPopup} position="right">
+									<BodyText>Hello</BodyText>
+									<Button onClick={() => setOpenPopup(!openPopup)}>Bye</Button>
+								</Popup>
+							</Column>
 						</Cell>
 					</Row>
 					<Row>
