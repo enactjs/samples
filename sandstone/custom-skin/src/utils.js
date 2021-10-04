@@ -26,14 +26,161 @@ const convertRGBToHex = (RGBColor) => {
 	return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
+const getRandomColor3 = (colorToBeConverted, inc) => {
+	const color = convertHexToRGB(colorToBeConverted);
+
+	const highestValue = Math.max(...color);
+	const lowerValues = color.filter(value => value !== highestValue);
+	let newColor = color;
+
+	switch (lowerValues.length) {
+		case 0: {
+			if (highestValue < 85) {
+				newColor = color.map(value => {
+					return value + 20 * (inc + 1);
+				})
+			} else if (highestValue < 170) {
+				if (inc % 2) {
+					newColor = color.map(value => {
+						return value - 20 * (inc + 1);
+					})
+				} else {
+					newColor = color.map(value => {
+						return value + 20 * inc;
+					})
+				}
+			} else {
+				newColor = color.map(value => {
+					return value - 20 * (inc + 1);
+				})
+			}
+			break;
+		}
+		case 1: {
+			if (highestValue < 85) {
+				console.log('222200')
+				newColor = color.map(value => {
+					if (value !== lowerValues[0]) {
+						return value + 20 * (inc + 1);
+					}
+					return value;
+				})
+			} else if (highestValue < 170) {
+				if (inc % 2) {
+					console.log('888800')
+					newColor = color.map(value => {
+						if (lowerValues[0] <= value) {
+							if (value !== lowerValues[0]) {
+								return value - 20 * (inc + 1);
+							}
+							return value;
+						} else {
+							if (value === lowerValues[0]) {
+								return value - 20 * (inc + 1);
+							}
+							return value;
+						}
+					})
+				} else {
+					newColor = color.map(value => {
+						if (value !== lowerValues[0]) {
+							return value + 20 * inc;
+						}
+						return value;
+					})
+				}
+			} else {
+				console.log('ffff00')
+				newColor = color.map(value => {
+					if (lowerValues[0] <= value) {
+						if (value !== lowerValues[0]) {
+							return value - 20 * (inc + 1);
+						}
+						return value;
+					} else {
+						if (value === lowerValues[0]) {
+							return value - 20 * (inc + 1);
+						}
+						return value;
+					}
+				})
+			}
+			break;
+		}
+		case 2: {
+			newColor = color.map((value, index) => {
+				if (index === 0) {
+					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
+						return value - 25 * (inc + 1);
+						// } else if (lowerValues[0] === highestValue || lowerValues[1] === highestValue && index === 1) {
+						// 	return value + 25 * (inc + 2);
+						// } else if (lowerValues[0] >= 170 && lowerValues[1] >= 180 && index === 1 || index === 2) {
+						// 	return value - 20 * (inc + 1);
+					}
+				}
+				if (index === 1) {
+					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
+						return value - 25 * (inc + 1);
+					}
+				}
+				if (index === 2) {
+					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
+						return value - 25 * (inc + 1);
+					}
+				}
+				return value;
+			});
+			break;
+		}
+	}
+
+	return convertRGBToHex(newColor);
+}
+
+const getRandomColor2 = (colorToBeConverted, inc) => {
+	const color = convertHexToRGB(colorToBeConverted);
+
+	const highestValue = Math.max(...color);
+	const lowerValues = color.filter(value => value !== highestValue);
+
+	const newColor = color.map(value => {
+		if (lowerValues[0] === lowerValues[1] && value !== highestValue) {
+			// console.log(value)
+			return value + 20 * (inc + 1);
+		} else if (value === highestValue && lowerValues[0] === lowerValues[1]) {
+			return value - 25 * (inc + 1);
+		} else if (value === lowerValues[0] && lowerValues[0] !== highestValue) {
+			return value + 25 * (inc + 1);
+		} else if (value === lowerValues[1] && lowerValues[1] !== highestValue) {
+			return value + 25 * (inc + 1);
+		} else if (value === highestValue && lowerValues[0] >= 25 && lowerValues[1] >= 67) {
+			return value + 20 * (inc + 1);
+		} else if (value === highestValue && value >= 180) {
+			return value - 20 * (inc + 1);
+		} else if (value !== highestValue && lowerValues[0] >= 170 && lowerValues[1] >= 180) {
+			return value - 30 * inc;
+		}
+		return value;
+	})
+
+	return convertRGBToHex(newColor);
+}
+
 const getRandomColor1 = (colorToBeConverted, inc) => {
 	const color = convertHexToRGB(colorToBeConverted);
 
 	const highestValue = Math.max(...color);
+	const lowerValues = color.filter(value => value !== highestValue);
 
 	const newColor = color.map(value => {
-		if (value < 255 && value + 30 < highestValue) {
-			return value + 20 * (inc + 1);
+		if (lowerValues[0] === lowerValues[1] && value !== highestValue) {
+			return value + 20 * (inc + 2)
+		} else if (value < 255 && value + 30 < highestValue && value === lowerValues[0] && lowerValues[0] <= 100) {
+			return value + 21 * (inc + 1);
+		} else if (value < 255 && value + 30 < highestValue && value === lowerValues[1] && lowerValues[0] <= 100) {
+			return value + 19 * (inc + 1);
+		} else if (value === highestValue && value > lowerValues[0] && value > lowerValues[1] && lowerValues[0] <= 100 && lowerValues[1] <= 100) {
+			return value - 25 * (inc + 1);
 		}
 		return value;
 	});
@@ -46,7 +193,7 @@ const generateBGColors = (background) => {
 	let colorsArray = [];
 
 	for (let i = 0; i < 5; i++) {
-		let rc = getRandomColor1(color, i);
+		let rc = getRandomColor3(color, i);
 		colorsArray.push(rc);
 	}
 
@@ -62,7 +209,7 @@ const generateTextColors = (text) => {
 	let colorsArray = [];
 
 	for (let i = 0; i < 4; i++) {
-		let rc = getRandomColor1(color, i);
+		let rc = getRandomColor3(color, i);
 		colorsArray.push(rc);
 	}
 
