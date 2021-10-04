@@ -5,7 +5,6 @@ import NameField from './NameField';
 import SingleField from './SingleField';
 import TripleField from './TripleField';
 
-
 const ColorFields = kind({
 	name: 'ColorFields',
 
@@ -16,10 +15,11 @@ const ColorFields = kind({
 		Colors:PropTypes.array,
 		name: PropTypes.string,
 		NTColor:PropTypes.string,
+		onChangeAllInput:PropTypes.func,
 		onChangeInput:PropTypes.func
 	},
 
-	render:({auto, AutoColors, BGColor, Colors, name, NTColor, onChangeInput, ...rest}) => {
+	render:({auto, AutoColors, BGColor, Colors, name, NTColor, onChangeAllInput, onChangeInput, ...rest}) => {
 		return (
 			<div {...rest}>
 				<NameField
@@ -48,6 +48,7 @@ const ColorFields = kind({
 					disabled={auto}
 					green={!auto ? Colors[2] : AutoColors[2]}
 					red={!auto ? Colors[1] : AutoColors[1]}
+					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Focused text color (RGB)"
 				/>
@@ -62,6 +63,7 @@ const ColorFields = kind({
 					disabled={auto}
 					green={!auto ? Colors[6] : AutoColors[6]}
 					red={!auto ? Colors[5] : AutoColors[5]}
+					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Selected color (RGB)"
 				/>
@@ -76,6 +78,7 @@ const ColorFields = kind({
 					disabled={auto}
 					green={!auto ? Colors[10] : AutoColors[10]}
 					red={!auto ? Colors[9] : AutoColors[9]}
+					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Overlay Panel Background Color (RGB)"
 				/>

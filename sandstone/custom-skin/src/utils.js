@@ -226,8 +226,9 @@ const generateColors = (text, background) => {
 	const textColors = generateTextColors(text);
 	const bgColors = generateBGColors(background);
 
-	return [textColors[0], textColors[1], textColors[2], textColors[3], bgColors[0], textColors[4], textColors[5],
-		textColors[6], bgColors[1], bgColors[2], bgColors[3], bgColors[4], bgColors[5], textColors[7], bgColors[6]];
+	return [textColors[0].toUpperCase(), textColors[1], textColors[2], textColors[3], bgColors[0].toUpperCase(),
+		textColors[4], textColors[5], textColors[6], bgColors[1].toUpperCase(), bgColors[2], bgColors[3], bgColors[4],
+		bgColors[5].toUpperCase(), textColors[7].toUpperCase(), bgColors[6].toUpperCase()];
 };
 
 const hexColors = (color1, color2) => {
@@ -244,8 +245,26 @@ const checkColors = (arr1, arr2) => {
 	return true;
 };
 
+const getColorsFromString = (colors) => {
+	try {
+		let colorSets = colors.map(color => color.split(':'));
+		colorSets = colorSets.map(colorSet => [colorSet[0], colorSet[1].split(';')[0].replace(/ /g, '')]);
+		colorSets[0][1] = colorSets[0][1].split('*/')[0];
+
+		return colorSets;
+	} catch (err) {
+		// eslint-disable-next-line
+		console.log(err);
+
+		return null;
+	}
+};
+
 export {
 	checkColors,
+	convertHexToRGB,
+	convertRGBToHex,
 	generateColors,
+	getColorsFromString,
 	hexColors
 };
