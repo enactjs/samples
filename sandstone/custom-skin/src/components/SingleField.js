@@ -28,17 +28,20 @@ const SingleField = kind({
 	handlers: {
 		onChangeInputField: (event, {onChangeInput, propName}) => {
 			onChangeInput({event, name: propName});
+		},
+		onChangeInput: (event, {onChangeInput, propName}) => {
+			onChangeInput({event: event.target, name: propName});
 		}
 	},
 
-	render: ({color, onChangeInputField, propName, ...rest}) => {
+	render: ({color, onChangeInput, onChangeInputField, propName, ...rest}) => {
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.singleField}>
-					<input className={css.colorBlock} style={{backgroundColor: color}} type="color" value={color} />
+					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
 					<InputField {...rest} className={componentCss.singleInput} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>

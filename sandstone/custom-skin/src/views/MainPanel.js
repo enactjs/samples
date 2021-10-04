@@ -129,11 +129,37 @@ const MainPanel = () => {
 		}
 	}
 
+	function onChangeAllInput (props) {
+		const name = props?.name;
+		const colors = props?.colors;
+		switch (name) {
+			case 'Focused text color (RGB)': {
+				setFTCRed(colors[0]);
+				setFTCGreen(colors[1]);
+				setFTCBlue(colors[2]);
+				break;
+			}
+			case 'Selected color (RGB)': {
+				setSCRed(colors[0]);
+				setSCGreen(colors[1]);
+				setSCBlue(colors[2]);
+				break;
+			}
+			case 'Overlay Panel Background Color (RGB)': {
+				setOPBCRed(colors[0]);
+				setOPBCGreen(colors[1]);
+				setOPBCBlue(colors[2]);
+				break;
+			}
+			default: break;
+		}
+	}
+
 	function onChangeInput (props) {
 		const event = props?.event;
 		const name = props?.name;
 		const color = props?.color;
-		const value = event?.value;
+		const value = event?.value.toUpperCase();
 
 		switch (name) {
 			case 'Skin Name': {
@@ -285,6 +311,7 @@ const MainPanel = () => {
 								Colors={Colors}
 								name={skinName}
 								NTColor={NTColor}
+								onChangeAllInput={onChangeAllInput}
 								onChangeInput={onChangeInput}
 							/>
 						</Cell>
