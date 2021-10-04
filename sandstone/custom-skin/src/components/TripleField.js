@@ -15,8 +15,8 @@ const TripleField = kind({
 	propTypes: {
 		blue: PropTypes.string,
 		green: PropTypes.string,
-		onChangeInput: PropTypes.func,
 		onChangeAllInput: PropTypes.func,
+		onChangeInput: PropTypes.func,
 		propName: PropTypes.string,
 		red: PropTypes.string
 	},
