@@ -24,7 +24,7 @@ import css from './MainPanel.module.less';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#FFFFFF');
+	const [BGColor, setBGColor] = useState('#AA0000');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
 	const [FTCBlue, setFTCBlue] = useState('255');
 	const [FTCGreen, setFTCGreen] = useState('255');
@@ -53,6 +53,13 @@ const MainPanel = () => {
 
 	const setColors = [setSCColor, setFTCRed, setFTCGreen, setFTCBlue, setFBColor, setSCRed, setSCGreen,
 		setSCBlue, setSBColor, setOPBCRed, setOPBCGreen, setOPBCBlue, setTOnBColor, setTOColor, setTOffBColor];
+
+	const getStyles = () => {
+		return {
+			backgroundColor: BGColor,
+
+		};
+	}
 
 	useEffect(() => {
 		if (hexColors(BGColor, NTColor)) {
@@ -279,6 +286,10 @@ const MainPanel = () => {
 		}
 	}
 
+	function handleOpenPopup () {
+		setOpenPopup(!openPopup);
+	}
+
 	function turnAlertOff () {
 		setAlert(false);
 	}
@@ -324,7 +335,7 @@ const MainPanel = () => {
 						<Cell size="30%">
 							<Heading>Component Preview</Heading>
 							<Column className={css.previewComponents}>
-								<Button>Click</Button>
+								<Button styles={{backgroundColor:BGColor}}>Click</Button>
 								<Button disabled>Disabled</Button>
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
@@ -333,12 +344,12 @@ const MainPanel = () => {
 								<Dropdown>
 									{["Item 1", "Item 2", "Item 3"]}
 								</Dropdown>
-								<Button onClick={() => setOpenPopup(!openPopup)}>
+								<Button onClick={handleOpenPopup}>
 									Popup
 								</Button>
 								<Popup open={openPopup} position="right">
 									<BodyText>Hello</BodyText>
-									<Button onClick={() => setOpenPopup(!openPopup)}>Bye</Button>
+									<Button onClick={handleOpenPopup}>Bye</Button>
 								</Popup>
 							</Column>
 						</Cell>
