@@ -4,7 +4,6 @@ import kind from '@enact/core/kind';
 import Button from '@enact/sandstone/Button';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 import {Component} from 'react';
@@ -30,13 +29,6 @@ const itemPusher = (title, subTitle, component, image) => {
 // Add all of our Layout Patterns
 itemPusher('Favorites List', 'Two list columns with focusable buttons in the center', FavoritesList, thumbs['favorites-list.jpg']);
 itemPusher('Details View', 'Show off details about an item', Details, thumbs['details.jpg']);
-
-const forceFocusElement = () => {
-	if (!Spotlight.getCurrent()) {
-		Spotlight.focus();
-		Spotlight.initialize();
-	}
-};
 
 const Placeholder = kind({name: 'Placeholder'});
 
@@ -65,9 +57,6 @@ const App = kind({
 	},
 
 	render: ({debug, DebugButton, itemIndex, onChangePanel, onSelectBreadcrumb, ...rest}) => {
-		// In order not to lose focus on the sample when navigating to the sample through all-samples, for now we manually focus the element
-		setTimeout(forceFocusElement, 100);
-
 		delete rest.onToggleDebug;
 
 		let secondaryPanel = <Placeholder />;

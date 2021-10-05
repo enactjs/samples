@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import {Panels, Routable, Route} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import Spotlight from '@enact/spotlight';
 import {SlideLeftArranger} from '@enact/ui/ViewManager';
 import PropTypes from 'prop-types';
 
@@ -11,13 +10,6 @@ import MainPanel from '../views/MainPanel';
 import AppStateDecorator from './AppStateDecorator';
 
 const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
-
-const forceFocusElement = () => {
-	if (!Spotlight.getCurrent()) {
-		Spotlight.focus();
-		Spotlight.initialize();
-	}
-};
 
 const App = kind({
 	name: 'App',
@@ -35,8 +27,6 @@ const App = kind({
 	},
 
 	render: ({onFirstPanel, onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
-		// In order not to lose focus on the sample when navigating to the sample through all-samples, for now we manually focus the element
-		setTimeout(forceFocusElement, 100);
 		return (
 			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 				<Route component={AboutPanel} onClick={onSecondPanel} path="first" title="About Routable Panels Pattern">

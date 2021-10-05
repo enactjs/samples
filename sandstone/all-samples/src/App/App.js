@@ -1,16 +1,11 @@
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import {routes} from  '../index';
 import SampleItem from '../components/SampleItem';
 import Scroller from '@enact/sandstone/Scroller';
 
 import css from './App.module.less';
-
-const forceFocusElement = () => {
-	Spotlight.initialize();
-};
 
 const App = kind({
 	name: 'App',
@@ -28,8 +23,6 @@ const App = kind({
 	},
 
 	render: ({history, ...props}) => {
-		setTimeout(forceFocusElement, 100);
-
 		delete props.match;
 		delete props.location;
 		delete props.staticContext;

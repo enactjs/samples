@@ -1,6 +1,5 @@
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import Spotlight from '@enact/spotlight';
 import Changeable from '@enact/ui/Changeable';
 
 import FileBrowser from '../components/FileBrowser';
@@ -13,13 +12,6 @@ const Browser = Changeable(
 	FileBrowser
 );
 
-const forceFocusElement = () => {
-	if (!Spotlight.getCurrent()) {
-		Spotlight.focus();
-		Spotlight.initialize();
-	}
-};
-
 const App = kind({
 	name: 'App',
 
@@ -28,15 +20,11 @@ const App = kind({
 		className: 'app'
 	},
 
-	render: (props) => {
-		// In order not to lose focus on the sample when navigating to the sample through all-samples, for now we manually focus the element
-		setTimeout(forceFocusElement, 100);
-		return (
-			<div {...props}>
-				<Browser defaultPath={{path: '/a', directory: true}} />
-			</div>
-		);
-	}
+	render: (props) => (
+		<div {...props}>
+			<Browser defaultPath={{path: '/a', directory: true}} />
+		</div>
+	)
 });
 
 export default ThemeDecorator(App);
