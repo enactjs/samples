@@ -40,7 +40,7 @@ const getRandomColor3 = (colorToBeConverted, inc) => {
 					return value + 20 * (inc + 1);
 				})
 			} else if (highestValue < 170) {
-				if (inc % 2) {
+				if (!inc % 2) {
 					newColor = color.map(value => {
 						return value - 20 * (inc + 1);
 					})
@@ -66,16 +66,17 @@ const getRandomColor3 = (colorToBeConverted, inc) => {
 					return value;
 				})
 			} else if (highestValue < 170) {
-				if (inc % 2) {
+				if (!inc % 2) {
 					console.log('888800')
 					newColor = color.map(value => {
-						if (lowerValues[0] <= value) {
-							if (value !== lowerValues[0]) {
+						if (value !== lowerValues[0])
+						{
+							if (lowerValues[0] <= value - 20 * (inc + 1)) {
 								return value - 20 * (inc + 1);
 							}
 							return value;
 						} else {
-							if (value === lowerValues[0]) {
+							if (value > highestValue - 20 * (inc + 1) ) {
 								return value - 20 * (inc + 1);
 							}
 							return value;
@@ -90,15 +91,15 @@ const getRandomColor3 = (colorToBeConverted, inc) => {
 					})
 				}
 			} else {
-				console.log('ffff00')
 				newColor = color.map(value => {
-					if (lowerValues[0] <= value) {
-						if (value !== lowerValues[0]) {
+					if (value !== lowerValues[0])
+					{
+						if (lowerValues[0] <= value - 20 * (inc + 1)) {
 							return value - 20 * (inc + 1);
 						}
 						return value;
 					} else {
-						if (value === lowerValues[0]) {
+						if (value > highestValue - 20 * (inc + 1) ) {
 							return value - 20 * (inc + 1);
 						}
 						return value;
@@ -108,27 +109,25 @@ const getRandomColor3 = (colorToBeConverted, inc) => {
 			break;
 		}
 		case 2: {
-			newColor = color.map((value, index) => {
-				if (index === 0) {
-					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
-						return value - 25 * (inc + 1);
-						// } else if (lowerValues[0] === highestValue || lowerValues[1] === highestValue && index === 1) {
-						// 	return value + 25 * (inc + 2);
-						// } else if (lowerValues[0] >= 170 && lowerValues[1] >= 180 && index === 1 || index === 2) {
-						// 	return value - 20 * (inc + 1);
+			newColor = color.map((value) => {
+				console.log(value , ' ' , value + 20 * (inc + 1) , ' ' , value - 20 * (inc + 1));
+				if (value === highestValue) {
+					if (value + 20 * (inc + 1) < 255) {
+						return value + 20 * (inc + 1);
 					}
-				}
-				if (index === 1) {
-					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
-						return value - 25 * (inc + 1);
+					return value;
+				} else {
+					if(highestValue + 20 * (inc + 1) < 255) {
+						return value;
 					}
-				}
-				if (index === 2) {
-					if (lowerValues[0] === lowerValues[1] && value !== lowerValues[0] && value !== lowerValues[1]) {
-						return value - 25 * (inc + 1);
+					if(highestValue > lowerValues[0] + 20 * (inc + 1) && highestValue > lowerValues[1] + 20 * (inc + 1)) {
+						return value + 20 * (inc + 1);
 					}
+					if(value - 20 * (inc + 1) > 0) {
+						return value - 20 * (inc + 1);
+					}
+					return 0;
 				}
-				return value;
 			});
 			break;
 		}
