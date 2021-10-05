@@ -14,6 +14,13 @@ import videos from './videos.js';
 
 import css from './App.module.less';
 
+const forceFocusElement = () => {
+	if (!Spotlight.getCurrent()) {
+		Spotlight.focus();
+		Spotlight.initialize();
+	}
+};
+
 const getVideo = (index) => videos[index];
 
 class App extends Component {
@@ -77,6 +84,9 @@ class App extends Component {
 	};
 
 	render () {
+		// In order not to lose focus on the sample when navigating to the sample through all-samples, for now we manually focus the element
+		setTimeout(forceFocusElement, 100);
+
 		const {className, ...rest} = this.props;
 		const {source, desc, ...restVideo} = getVideo(this.state.videoIndex);
 		delete rest.panelIndex;
