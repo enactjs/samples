@@ -24,12 +24,12 @@ import css from './MainPanel.module.less';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#FFFFFF');
+	const [BGColor, setBGColor] = useState('#6a11cb');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
 	const [FTCBlue, setFTCBlue] = useState('255');
 	const [FTCGreen, setFTCGreen] = useState('255');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#FFFFFF');
+	const [NTColor, setNTColor] = useState('#2575fc');
 	const [OPBCBlue, setOPBCBlue] = useState('255');
 	const [OPBCGreen, setOPBCGreen] = useState('255');
 	const [OPBCRed, setOPBCRed] = useState('255');
@@ -285,8 +285,8 @@ const MainPanel = () => {
 
 	return (
 		<Scroller>
+			<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 			<div className={css.mainPanel}>
-				<Heading size="large">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -321,15 +321,17 @@ const MainPanel = () => {
 								onChangeInput={onChangeInput}
 							/>
 						</Cell>
-						<Cell size="30%">
-							<Heading>Component Preview</Heading>
+						<Cell size="30%" className={css.previewSection}>
 							<Column className={css.previewComponents}>
-								<Button>Click</Button>
-								<Button disabled>Disabled</Button>
+								<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
+								<Row className={css.previewButtons}>
+									<Button>Click</Button>
+									<Button disabled>Disabled</Button>
+								</Row>
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
 								<Slider />
-								<RangePicker max={13} min={0} />
+								<RangePicker className={css.previewPicker} defaultValue={0} max={13} min={0} />
 								<Dropdown>
 									{["Item 1", "Item 2", "Item 3"]}
 								</Dropdown>
