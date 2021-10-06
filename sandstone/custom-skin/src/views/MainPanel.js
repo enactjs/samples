@@ -54,13 +54,6 @@ const MainPanel = () => {
 	const setColors = [setSCColor, setFTCRed, setFTCGreen, setFTCBlue, setFBColor, setSCRed, setSCGreen,
 		setSCBlue, setSBColor, setOPBCRed, setOPBCGreen, setOPBCBlue, setTOnBColor, setTOColor, setTOffBColor];
 
-	const getStyles = () => {
-		return {
-			backgroundColor: BGColor,
-
-		};
-	}
-
 	useEffect(() => {
 		if (hexColors(BGColor, NTColor)) {
 			setAutoColors(generateColors(NTColor, BGColor));
@@ -335,7 +328,7 @@ const MainPanel = () => {
 						<Cell size="30%">
 							<Heading>Component Preview</Heading>
 							<Column className={css.previewComponents}>
-								<Button styles={{backgroundColor:BGColor}}>Click</Button>
+								<Button id='firstButton'>Click</Button>
 								<Button disabled>Disabled</Button>
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
