@@ -24,21 +24,21 @@ const getRandomColor = (colorToBeConverted, inc) => {
 			if (highestValue < 85) {
 				newColor = color.map(value => {
 					return value + 20 * (inc + 1);
-				})
+				});
 			} else if (highestValue < 170) {
 				if (!inc % 2) {
 					newColor = color.map(value => {
 						return value - 20 * (inc + 1);
-					})
+					});
 				} else {
 					newColor = color.map(value => {
 						return value + 20 * inc;
-					})
+					});
 				}
 			} else {
 				newColor = color.map(value => {
 					return value - 20 * (inc + 1);
-				})
+				});
 			}
 			break;
 		}
@@ -49,44 +49,44 @@ const getRandomColor = (colorToBeConverted, inc) => {
 						return value + 20 * (inc + 1);
 					}
 					return value;
-				})
+				});
 			} else if (highestValue < 170) {
 				if (!inc % 2) {
 					newColor = color.map(value => {
 						if (value !== lowerValues[0]) {
-							if (lowerValues[0] <= value - 20 * (inc + 1)) {
+							if (lowerValues[0] < value - 20 * (inc + 1)) {
 								return value - 20 * (inc + 1);
 							}
 							return value;
 						} else {
-							if (value > highestValue - 20 * (inc + 1) ) {
+							if (value >= highestValue - 20 * (inc + 1) ) {
 								return value - 20 * (inc + 1);
 							}
 							return value;
 						}
-					})
+					});
 				} else {
 					newColor = color.map(value => {
 						if (value !== lowerValues[0]) {
 							return value + 20 * inc;
 						}
 						return value;
-					})
+					});
 				}
 			} else {
 				newColor = color.map(value => {
 					if (value !== lowerValues[0]) {
-						if (lowerValues[0] <= value - 20 * (inc + 1)) {
+						if (lowerValues[0] < value - 20 * (inc + 1)) {
 							return value - 20 * (inc + 1);
 						}
 						return value;
 					} else {
-						if (value > highestValue - 20 * (inc + 1)) {
+						if (value >= highestValue - 20 * (inc + 1)) {
 							return value - 20 * (inc + 1);
 						}
 						return value;
 					}
-				})
+				});
 			}
 			break;
 		}
@@ -115,7 +115,7 @@ const getRandomColor = (colorToBeConverted, inc) => {
 	}
 
 	return convertRGBToHex(newColor);
-}
+};
 
 const generateBGColors = (background) => {
 	let color = background;
