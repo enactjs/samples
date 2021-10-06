@@ -16,7 +16,7 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-class App extends Component {
+class AppBase extends Component {
 	static propTypes = {
 		/**
 		 * Assign an alternate panel index to start on.
@@ -118,4 +118,7 @@ class App extends Component {
 	}
 }
 
-export default ThemeDecorator(App);
+const App = ThemeDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

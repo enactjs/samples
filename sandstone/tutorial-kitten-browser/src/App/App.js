@@ -16,7 +16,7 @@ const kittens = [
 	'Kitty'
 ];
 
-const AppBase = kind({
+const _AppBase = kind({
 	name: 'App',
 
 	propTypes: {
@@ -58,11 +58,13 @@ const AppBase = kind({
 	)
 });
 
-const App = Changeable({prop: 'index', change: 'onNavigate'},
+const AppBase = Changeable({prop: 'index', change: 'onNavigate'},
 	Changeable({prop: 'kitten', change: 'onSelectKitten'},
-		ThemeDecorator(AppBase)
+		_AppBase
 	)
 );
+
+const App = ThemeDecorator(AppBase);
 
 export default App;
 export {

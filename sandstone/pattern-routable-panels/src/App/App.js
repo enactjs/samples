@@ -11,7 +11,7 @@ import AppStateDecorator from './AppStateDecorator';
 
 const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
 
-const App = kind({
+const _AppBase = kind({
 	name: 'App',
 
 	propTypes: {
@@ -40,8 +40,8 @@ const App = kind({
 	}
 });
 
-export default ThemeDecorator(
-	AppStateDecorator(
-		App
-	)
-);
+const AppBase = AppStateDecorator(_AppBase);
+const App = ThemeDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

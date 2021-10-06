@@ -7,7 +7,7 @@ import MainPanel from '../views/MainPanel';
 
 import css from './App.module.less';
 
-const App = kind({
+const _AppBase = kind({
 	name: 'App',
 
 	styles: {
@@ -28,4 +28,8 @@ const App = kind({
 
 const mapStateToProps = ({locale}) => ({locale});
 
-export default connect(mapStateToProps, {})(ThemeDecorator(App));
+const AppBase = connect(mapStateToProps, {})(_AppBase);
+const App = connect(mapStateToProps, {})(ThemeDecorator(_AppBase));
+
+export default App;
+export {App, AppBase};

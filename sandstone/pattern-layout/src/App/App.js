@@ -32,7 +32,7 @@ itemPusher('Details View', 'Show off details about an item', Details, thumbs['de
 
 const Placeholder = kind({name: 'Placeholder'});
 
-const App = kind({
+const _AppBase = kind({
 	name: 'LayoutApp',
 
 	propTypes: {
@@ -138,7 +138,11 @@ const AppDecorator = hoc((config, Wrapped) => {
 	};
 });
 
-export default compose(
+const AppBase = AppDecorator(_AppBase);
+const App = compose(
 	ThemeDecorator,
 	AppDecorator
-)(App);
+)(_AppBase);
+
+export default App;
+export {App, AppBase};
