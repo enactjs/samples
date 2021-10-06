@@ -12,6 +12,22 @@ const convertRGBToHex = (RGBColor) => {
 	return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
+const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
+	return array.map(value => {
+		if (value !== lowerValues[0]) {
+			if (lowerValues[0] < value - 20 * (inc + 1)) {
+				return value - 20 * (inc + 1);
+			}
+			return value;
+		} else {
+			if (value >= highestValue - 20 * (inc + 1) ) {
+				return value - 20 * (inc + 1);
+			}
+			return value;
+		}
+	});
+};
+
 const getRandomColor = (colorToBeConverted, inc) => {
 	const color = convertHexToRGB(colorToBeConverted);
 
@@ -52,19 +68,7 @@ const getRandomColor = (colorToBeConverted, inc) => {
 				});
 			} else if (highestValue < 170) {
 				if (!inc % 2) {
-					newColor = color.map(value => {
-						if (value !== lowerValues[0]) {
-							if (lowerValues[0] < value - 20 * (inc + 1)) {
-								return value - 20 * (inc + 1);
-							}
-							return value;
-						} else {
-							if (value >= highestValue - 20 * (inc + 1) ) {
-								return value - 20 * (inc + 1);
-							}
-							return value;
-						}
-					});
+					newColor = colorAlgorithm(color, lowerValues, highestValue, inc);
 				} else {
 					newColor = color.map(value => {
 						if (value !== lowerValues[0]) {
@@ -74,19 +78,7 @@ const getRandomColor = (colorToBeConverted, inc) => {
 					});
 				}
 			} else {
-				newColor = color.map(value => {
-					if (value !== lowerValues[0]) {
-						if (lowerValues[0] < value - 20 * (inc + 1)) {
-							return value - 20 * (inc + 1);
-						}
-						return value;
-					} else {
-						if (value >= highestValue - 20 * (inc + 1)) {
-							return value - 20 * (inc + 1);
-						}
-						return value;
-					}
-				});
+				newColor = colorAlgorithm(color, lowerValues, highestValue, inc);
 			}
 			break;
 		}
