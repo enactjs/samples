@@ -24,12 +24,12 @@ import css from './MainPanel.module.less';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#6a11cb');
+	const [BGColor, setBGColor] = useState('#FB9039');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
 	const [FTCBlue, setFTCBlue] = useState('255');
 	const [FTCGreen, setFTCGreen] = useState('255');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#2575fc');
+	const [NTColor, setNTColor] = useState('#855D94');
 	const [OPBCBlue, setOPBCBlue] = useState('255');
 	const [OPBCGreen, setOPBCGreen] = useState('255');
 	const [OPBCRed, setOPBCRed] = useState('255');
@@ -285,8 +285,8 @@ const MainPanel = () => {
 
 	return (
 		<Scroller>
-			<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 			<div className={css.mainPanel}>
+				<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -321,7 +321,7 @@ const MainPanel = () => {
 								onChangeInput={onChangeInput}
 							/>
 						</Cell>
-						<Cell size="30%" className={css.previewSection}>
+						<Cell size="35%" className={css.previewSection}>
 							<Column className={css.previewComponents}>
 								<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
 								<Row className={css.previewButtons}>
@@ -332,13 +332,13 @@ const MainPanel = () => {
 								<SwitchItem>Toggle</SwitchItem>
 								<Slider />
 								<RangePicker className={css.previewPicker} defaultValue={0} max={13} min={0} />
-								<Dropdown>
+								<Dropdown className={css.previewDropdown}>
 									{["Item 1", "Item 2", "Item 3"]}
 								</Dropdown>
 								<Button onClick={() => setOpenPopup(!openPopup)}>
 									Popup
 								</Button>
-								<Popup open={openPopup} position="right">
+								<Popup className={css.previewPopup} open={openPopup} position="right">
 									<BodyText>Hello</BodyText>
 									<Button onClick={() => setOpenPopup(!openPopup)}>Bye</Button>
 								</Popup>
