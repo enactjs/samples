@@ -293,9 +293,8 @@ const MainPanel = () => {
 
 	return (
 		<Scroller>
-			<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
+			<Heading skin="neutral" className={css.appTitle} size="large">Custom skin generator_</Heading>
 			<div className={css.mainPanel}>
-				<Heading skin="neutral" size="large">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
