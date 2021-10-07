@@ -23,6 +23,11 @@ import {checkColors, generateColors, getColorsFromString, hexColors} from '../ut
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
+// eslint-disable-next-line
+import skin from '../../custom_skin.css';
+
+window.CUSTOM_SKIN = 'custom';
+
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
 	const [BGColor, setBGColor] = useState('#FB9039');
@@ -291,7 +296,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div className={css.mainPanel}>
-				<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
+				<Heading className={css.appTitle} size="large" skin="neutral">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -302,17 +307,17 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<Alert className={styles.customAlert} open={alert} type="overlay">
-								<BodyText centered size="small">Wrong type of file imported!</BodyText>
-								<Button onClick={turnAlertOff} size="small">Close</Button>
+							<Alert className={styles.customAlert} open={alert} skin="neutral" type="overlay">
+								<BodyText centered size="small" skin="neutral">Wrong type of file imported!</BodyText>
+								<Button onClick={turnAlertOff} size="small" skin="neutral">Close</Button>
 							</Alert>
 							<Row>
 								<Cell>
 									<ImportSkin setColors={setColorsFromImport} />
 								</Cell>
 								<Cell>
-									<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
-									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
+									<BodyText className={css.switchLabel} skin="neutral">Generate colors automatically</BodyText>
+									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} skin="neutral" />
 								</Cell>
 							</Row>
 							<ColorFields
@@ -338,7 +343,7 @@ const MainPanel = () => {
 								<Slider />
 								<RangePicker defaultValue={0} max={13} min={0} />
 								<Dropdown className={css.previewDropdown}>
-									{["Item 1", "Item 2", "Item 3"]}
+									{['Item 1', 'Item 2', 'Item 3']}
 								</Dropdown>
 								<Button className={css.previewPopup} onClick={handleOpenPopup}>
 									Popup

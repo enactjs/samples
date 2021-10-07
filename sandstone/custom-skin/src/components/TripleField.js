@@ -58,18 +58,18 @@ const TripleField = kind({
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText className={css.labelField} skin="neutral">{propName}</BodyText>
 				</Cell>
 				<Cell shrink>
 					<input {...rest} className={css.colorBlock} onChange={getColorFromPicker} style={{backgroundColor: getColorValue}} type="color" value={getColorValue} />
 				</Cell>
 				<Cell className={componentCss.tripleField}>
-					<span>R:</span>
-					<InputField {...rest} className={componentCss.tripleInput} value={red} onChange={onChangeInputR} />
-					<span>G:</span>
-					<InputField {...rest} className={componentCss.tripleInput} value={green} onChange={onChangeInputG} />
-					<span>B:</span>
-					<InputField {...rest} className={componentCss.tripleInput} value={blue} onChange={onChangeInputB} />
+					<span className={componentCss.tripleText}>R:</span>
+					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputR} skin="neutral" value={red} />
+					<span className={componentCss.tripleText}>G:</span>
+					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputG} skin="neutral" value={green} />
+					<span className={componentCss.tripleText}>B:</span>
+					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputB} skin="neutral" value={blue} />
 				</Cell>
 			</Layout>
 		);

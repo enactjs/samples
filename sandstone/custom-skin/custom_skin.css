@@ -1,0 +1,14 @@
+.sandstone-theme {
+	/* Skin Name:  */
+	background-color: #FB9039; /* Background Color */
+	--sand-text-color: #855D94; /* Normal Text Color */
+	--sand-text-sub-color: #855DA8; /* Subtitle Text Color */
+	--sand-focus-text-color-rgb: 133, 93, 188; /* Focused Text Color (Must be RGB comma separated format) */
+	--sand-focus-bg-color: #FBA44D; /* Focused Background Color */
+	--sand-selected-color-rgb: 133, 93, 208; /* Selected Color (Must be RGB comma separated format) */
+	--sand-selected-bg-color: #FBB861; /* Selected Background Color */
+	--sand-overlay-bg-color-rgb: 251, 204, 117; /* Overlay Panel Background Color (Must be RGB comma separated format) */
+	--sand-toggle-on-bg-color: #FBE089; /* Toggle On Background Color */
+	--sand-toggle-off-color: #855DE4; /* Toggle Off Color */
+	--sand-toggle-off-bg-color: #FBF49D; /* Toggle Off Background Color */
+}
