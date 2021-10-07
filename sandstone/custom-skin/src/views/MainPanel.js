@@ -294,7 +294,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div className={css.mainPanel}>
-				<Heading size="large">Custom skin generator_</Heading>
+				<Heading skin="neutral" size="large">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -305,17 +305,17 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<Alert className={css.importAlert} css={css} open={alert} type="overlay">
-								<BodyText>Wrong type of file imported!</BodyText>
-								<Button onClick={turnAlertOff}>Close</Button>
+							<Alert skin="neutral" className={css.importAlert} css={css} open={alert} type="overlay">
+								<BodyText skin="neutral">Wrong type of file imported!</BodyText>
+								<Button skin="neutral" onClick={turnAlertOff}>Close</Button>
 							</Alert>
 							<Row>
 								<Cell>
 									<ImportSkin setColors={setColorsFromImport} />
 								</Cell>
 								<Cell>
-									<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
-									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
+									<BodyText skin="neutral" className={css.switchLabel}>Generate colors automatically</BodyText>
+									<Switch skin="neutral" className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
 								</Cell>
 							</Row>
 							<ColorFields

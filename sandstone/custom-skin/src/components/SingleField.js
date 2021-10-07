@@ -38,11 +38,11 @@ const SingleField = kind({
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText skin="neutral" className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.singleField}>
 					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
-					<InputField {...rest} className={componentCss.singleInput} onChange={onChangeInputField} value={color} />
+					<InputField skin="neutral" {...rest} className={componentCss.singleInput} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
 		);

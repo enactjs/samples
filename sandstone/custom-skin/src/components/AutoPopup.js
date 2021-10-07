@@ -29,10 +29,10 @@ const AutoPopup = kind({
 
 	render:({onClickCancel, onClickOk, openWarning, ...rest}) => {
 		return (
-			<Popup {...rest} styles={{width:'500px', height:'300px'}} open={openWarning}>
-				<BodyText>Do you want to switch from manual to auto?</BodyText>
-				<Button onClick={onClickOk}>Yes</Button>
-				<Button onClick={onClickCancel}>No</Button>
+			<Popup skin="neutral" {...rest} styles={{width:'500px', height:'300px'}} open={openWarning}>
+				<BodyText skin="neutral" >Do you want to switch from manual to auto?</BodyText>
+				<Button skin="neutral" onClick={onClickOk}>Yes</Button>
+				<Button skin="neutral" onClick={onClickCancel}>No</Button>
 			</Popup>
 		);
 	}

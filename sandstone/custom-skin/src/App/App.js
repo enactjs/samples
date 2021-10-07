@@ -22,5 +22,5 @@ const App = kind({
 		</div>
 	)
 });
-
-export default ThemeDecorator(App);
+const config = {skin:'light'}
+export default ThemeDecorator(config, App);
