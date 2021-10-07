@@ -168,10 +168,13 @@ const MainPanel = () => {
 	}
 
 	function onChangeInput (props) {
+		const color = props?.color;
 		const event = props?.event;
 		const name = props?.name;
-		const color = props?.color;
-		const value = event?.value.toUpperCase();
+		let value = event?.value;
+		if(name !== 'Skin Name') {
+			value = value.toUpperCase();
+		}
 
 		switch (name) {
 			case 'Skin Name': {
