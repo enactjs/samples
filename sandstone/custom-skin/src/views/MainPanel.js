@@ -332,7 +332,7 @@ const MainPanel = () => {
 						<Cell size="30%">
 							<Heading>Component Preview</Heading>
 							<Column className={css.previewComponents}>
-								<Button id='firstButton'>Click</Button>
+								<Button>Click</Button>
 								<Button disabled>Disabled</Button>
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
