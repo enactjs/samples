@@ -30,12 +30,12 @@ window.CUSTOM_SKIN = 'custom';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#FB9039');
+	const [BGColor, setBGColor] = useState('#855D94');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
 	const [FTCBlue, setFTCBlue] = useState('255');
 	const [FTCGreen, setFTCGreen] = useState('255');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#855D94');
+	const [NTColor, setNTColor] = useState('#FB9039');
 	const [OPBCBlue, setOPBCBlue] = useState('255');
 	const [OPBCGreen, setOPBCGreen] = useState('255');
 	const [OPBCRed, setOPBCRed] = useState('255');
