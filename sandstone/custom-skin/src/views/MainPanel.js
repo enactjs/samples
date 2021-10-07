@@ -335,10 +335,10 @@ const MainPanel = () => {
 								<Dropdown className={css.previewDropdown}>
 									{["Item 1", "Item 2", "Item 3"]}
 								</Dropdown>
-								<Button onClick={() => setOpenPopup(!openPopup)}>
+								<Button className={css.previewPopup} onClick={() => setOpenPopup(!openPopup)}>
 									Popup
 								</Button>
-								<Popup className={css.previewPopup} open={openPopup} position="right">
+								<Popup open={openPopup} position="right">
 									<BodyText>Hello</BodyText>
 									<Button onClick={() => setOpenPopup(!openPopup)}>Bye</Button>
 								</Popup>
