@@ -47,7 +47,7 @@ const OutputField = kind({
 				<pre>
 					{text}
 				</pre>
-				<TooltipButton skin='neutral' className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
+				<TooltipButton skin="neutral" className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
 			</div>
 		);
 	}});
