@@ -1,11 +1,16 @@
 import Alert from '@enact/sandstone/Alert';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
+import CheckboxItem from '@enact/sandstone/CheckboxItem';
+import Dropdown from '@enact/sandstone/Dropdown';
 import Heading from '@enact/sandstone/Heading';
+import Popup from '@enact/sandstone/Popup';
+import RangePicker from '@enact/sandstone/RangePicker';
 import Scroller from '@enact/sandstone/Scroller';
+import Slider from '@enact/sandstone/Slider';
 import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {Cell, Layout, Row} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
 
 import AutoPopup from '../components/AutoPopup';
@@ -15,16 +20,17 @@ import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
 
+import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#FFFFFF');
+	const [BGColor, setBGColor] = useState('#FB9039');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
 	const [FTCBlue, setFTCBlue] = useState('255');
 	const [FTCGreen, setFTCGreen] = useState('255');
 	const [FTCRed, setFTCRed] = useState('255');
-	const [NTColor, setNTColor] = useState('#FFFFFF');
+	const [NTColor, setNTColor] = useState('#855D94');
 	const [OPBCBlue, setOPBCBlue] = useState('255');
 	const [OPBCGreen, setOPBCGreen] = useState('255');
 	const [OPBCRed, setOPBCRed] = useState('255');
@@ -39,6 +45,7 @@ const MainPanel = () => {
 
 	const [alert, setAlert] = useState(false);
 	const [auto, setAuto] = useState(true);
+	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
@@ -273,6 +280,10 @@ const MainPanel = () => {
 		}
 	}
 
+	function handleOpenPopup () {
+		setOpenPopup(!openPopup);
+	}
+
 	function turnAlertOff () {
 		setAlert(false);
 	}
@@ -280,7 +291,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div className={css.mainPanel}>
-				<Heading size="large">Custom skin generator_</Heading>
+				<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -291,9 +302,9 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<Alert className={css.importAlert} css={css} open={alert} type="overlay">
-								<BodyText>Wrong type of file imported!</BodyText>
-								<Button onClick={turnAlertOff}>Close</Button>
+							<Alert className={styles.customAlert} open={alert} type="overlay">
+								<BodyText centered size="small">Wrong type of file imported!</BodyText>
+								<Button onClick={turnAlertOff} size="small">Close</Button>
 							</Alert>
 							<Row>
 								<Cell>
@@ -315,10 +326,28 @@ const MainPanel = () => {
 								onChangeInput={onChangeInput}
 							/>
 						</Cell>
-						<Cell size="30%">
-							<Heading>Component Preview</Heading>
-							<Button>Click me</Button>
-							<SwitchItem>Toggle me</SwitchItem>
+						<Cell size="35%" className={css.previewSection}>
+							<Column className={css.previewComponents}>
+								<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
+								<Row className={css.previewButtons}>
+									<Button>Click</Button>
+									<Button disabled>Disabled</Button>
+								</Row>
+								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
+								<SwitchItem>Toggle</SwitchItem>
+								<Slider />
+								<RangePicker defaultValue={0} max={13} min={0} />
+								<Dropdown className={css.previewDropdown}>
+									{["Item 1", "Item 2", "Item 3"]}
+								</Dropdown>
+								<Button className={css.previewPopup} onClick={handleOpenPopup}>
+									Popup
+								</Button>
+								<Popup open={openPopup} position="right">
+									<BodyText centered>Hello</BodyText>
+									<Button onClick={handleOpenPopup}>Bye</Button>
+								</Popup>
+							</Column>
 						</Cell>
 					</Row>
 					<Row>

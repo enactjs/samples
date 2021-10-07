@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {convertHexToRGB, convertRGBToHex} from '../utils';
 
 import componentCss from './TripleField.module.less';
-import css from './styles.module.less';
+import css from '../common/styles.module.less';
 
 const TripleField = kind({
 	name: 'TripleField',
@@ -60,8 +60,10 @@ const TripleField = kind({
 				<Cell size="40%">
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
-				<Cell className={componentCss.tripleField}>
+				<Cell shrink>
 					<input {...rest} className={css.colorBlock} onChange={getColorFromPicker} style={{backgroundColor: getColorValue}} type="color" value={getColorValue} />
+				</Cell>
+				<Cell className={componentCss.tripleField}>
 					<span>R:</span>
 					<InputField {...rest} className={componentCss.tripleInput} value={red} onChange={onChangeInputR} />
 					<span>G:</span>
