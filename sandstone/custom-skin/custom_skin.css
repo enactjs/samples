@@ -1,0 +1,14 @@
+.sandstone-theme {
+	/* Skin Name: MY NEON SKIN */
+	background-color: #8A2EA3; /* Background Color */
+	--sand-text-color: #3EB19E; /* Normal Text Color */
+	--sand-text-sub-color: #1714AD; /* Subtitle Text Color */
+	--sand-focus-text-color-rgb: 102, 177, 158; /* Focused Text Color (Must be RGB comma separated format) */
+	--sand-focus-bg-color: #8A42A3; /* Focused Background Color */
+	--sand-selected-color-rgb: 122, 177, 158; /* Selected Color (Must be RGB comma separated format) */
+	--sand-selected-bg-color: #8A56A3; /* Selected Background Color */
+	--sand-overlay-bg-color-rgb: 138, 106, 163; /* Overlay Panel Background Color (Must be RGB comma separated format) */
+	--sand-toggle-on-bg-color: #8A7EA3; /* Toggle On Background Color */
+	--sand-toggle-off-color: #8EB19E; /* Toggle Off Color */
+	--sand-toggle-off-bg-color: #B0116E; /* Toggle Off Background Color */
+}

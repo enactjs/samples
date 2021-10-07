@@ -22,6 +22,10 @@ import {checkColors, generateColors, getColorsFromString, hexColors} from '../ut
 
 import css from './MainPanel.module.less';
 
+// eslint-disable-next-line
+import skin from '../../custom_skin.css';
+window.CUSTOM_SKIN = 'custom';
+
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
 	const [BGColor, setBGColor] = useState('#AA0000');
@@ -335,7 +339,7 @@ const MainPanel = () => {
 								<Slider />
 								<RangePicker max={13} min={0} />
 								<Dropdown>
-									{["Item 1", "Item 2", "Item 3"]}
+									{['Item 1', 'Item 2', 'Item 3']}
 								</Dropdown>
 								<Button onClick={handleOpenPopup}>
 									Popup
