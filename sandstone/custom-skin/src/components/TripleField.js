@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {convertHexToRGB, convertRGBToHex} from '../utils';
 
 import componentCss from './TripleField.module.less';
-import css from './styles.module.less';
+import css from '../common/styles.module.less';
 
 const TripleField = kind({
 	name: 'TripleField',

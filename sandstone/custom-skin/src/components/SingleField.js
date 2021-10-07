@@ -5,7 +5,7 @@ import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
 import componentCss from './SingleField.module.less';
-import css from './styles.module.less';
+import css from '../common/styles.module.less';
 
 const SingleField = kind({
 	name: 'SingleField',
@@ -42,7 +42,7 @@ const SingleField = kind({
 				</Cell>
 				<Cell className={componentCss.singleField}>
 					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
-					<InputField {...rest} className={componentCss.singleInput} onChange={onChangeInputField} value={color} />
+					<InputField {...rest} className={componentCss.singleInput} css={css} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
 		);

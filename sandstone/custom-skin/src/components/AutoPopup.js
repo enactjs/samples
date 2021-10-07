@@ -1,9 +1,10 @@
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
+import PropTypes from 'prop-types';
+
+import css from '../common/styles.module.less';
 
 const AutoPopup = kind({
 	name: 'AutoPopup',
@@ -19,8 +20,8 @@ const AutoPopup = kind({
 	handlers:{
 		onClickOk:(event, {auto, setAuto, setColorsToAuto, setOpenWarning}) => {
 			setAuto(!auto);
-			setOpenWarning(false);
 			setColorsToAuto();
+			setOpenWarning(false);
 		},
 		onClickCancel:(event, {setOpenWarning}) => {
 			setOpenWarning(false);
@@ -29,10 +30,10 @@ const AutoPopup = kind({
 
 	render:({onClickCancel, onClickOk, openWarning, ...rest}) => {
 		return (
-			<Popup {...rest} styles={{width:'500px', height:'300px'}} open={openWarning}>
-				<BodyText>Do you want to switch from manual to auto?</BodyText>
-				<Button onClick={onClickOk}>Yes</Button>
-				<Button onClick={onClickCancel}>No</Button>
+			<Popup {...rest} className={css.customAlert} open={openWarning}>
+				<BodyText centered size="small">Do you want to switch from manual to auto?</BodyText>
+				<Button onClick={onClickOk} size="small">Yes</Button>
+				<Button onClick={onClickCancel} size="small">No</Button>
 			</Popup>
 		);
 	}

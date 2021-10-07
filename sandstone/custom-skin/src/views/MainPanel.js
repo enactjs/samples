@@ -20,6 +20,7 @@ import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
 
+import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
 const MainPanel = () => {
@@ -279,6 +280,10 @@ const MainPanel = () => {
 		}
 	}
 
+	function handleOpenPopup () {
+		setOpenPopup(!openPopup);
+	}
+
 	function turnAlertOff () {
 		setAlert(false);
 	}
@@ -297,9 +302,9 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<Alert className={css.importAlert} css={css} open={alert} type="overlay">
-								<BodyText>Wrong type of file imported!</BodyText>
-								<Button onClick={turnAlertOff}>Close</Button>
+							<Alert className={styles.customAlert} open={alert} type="overlay">
+								<BodyText centered size="small">Wrong type of file imported!</BodyText>
+								<Button onClick={turnAlertOff} size="small">Close</Button>
 							</Alert>
 							<Row>
 								<Cell>
@@ -331,16 +336,16 @@ const MainPanel = () => {
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
 								<Slider />
-								<RangePicker className={css.previewPicker} defaultValue={0} max={13} min={0} />
+								<RangePicker defaultValue={0} max={13} min={0} />
 								<Dropdown className={css.previewDropdown}>
 									{["Item 1", "Item 2", "Item 3"]}
 								</Dropdown>
-								<Button className={css.previewPopup} onClick={() => setOpenPopup(!openPopup)}>
+								<Button className={css.previewPopup} onClick={handleOpenPopup}>
 									Popup
 								</Button>
 								<Popup open={openPopup} position="right">
-									<BodyText>Hello</BodyText>
-									<Button onClick={() => setOpenPopup(!openPopup)}>Bye</Button>
+									<BodyText centered>Hello</BodyText>
+									<Button onClick={handleOpenPopup}>Bye</Button>
 								</Popup>
 							</Column>
 						</Cell>
