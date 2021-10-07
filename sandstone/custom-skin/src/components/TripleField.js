@@ -60,8 +60,10 @@ const TripleField = kind({
 				<Cell size="40%">
 					<BodyText skin="neutral" className={css.labelField}>{propName}</BodyText>
 				</Cell>
-				<Cell className={componentCss.tripleField}>
+				<Cell shrink>
 					<input {...rest} className={css.colorBlock} onChange={getColorFromPicker} style={{backgroundColor: getColorValue}} type="color" value={getColorValue} />
+				</Cell>
+				<Cell className={componentCss.tripleField}>
 					<span className={componentCss.tripleText}>R:</span>
 					<InputField skin="neutral" {...rest} className={componentCss.tripleInput} value={red} onChange={onChangeInputR} />
 					<span className={componentCss.tripleText}>G:</span>
