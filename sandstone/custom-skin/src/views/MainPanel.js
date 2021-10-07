@@ -20,6 +20,7 @@ import OutputField from '../components/OutputField';
 
 import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
 
+import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
 // eslint-disable-next-line
@@ -294,7 +295,7 @@ const MainPanel = () => {
 	return (
 		<Scroller>
 			<div className={css.mainPanel}>
-				<Heading skin="neutral" className={css.appTitle} size="large">Custom skin generator_</Heading>
+				<Heading className={css.appTitle} size="large" skin="neutral">Custom skin generator_</Heading>
 				<Layout orientation="vertical">
 					<Row>
 						<Cell>
@@ -305,17 +306,17 @@ const MainPanel = () => {
 								setColorsToAuto={setColorsToAuto}
 								setOpenWarning={setOpenWarning}
 							/>
-							<Alert skin="neutral" className={css.importAlert} css={css} open={alert} type="overlay">
-								<BodyText skin="neutral">Wrong type of file imported!</BodyText>
-								<Button skin="neutral" onClick={turnAlertOff}>Close</Button>
+							<Alert className={styles.customAlert} open={alert} skin="neutral" type="overlay">
+								<BodyText centered size="small" skin="neutral">Wrong type of file imported!</BodyText>
+								<Button onClick={turnAlertOff} size="small" skin="neutral">Close</Button>
 							</Alert>
 							<Row>
 								<Cell>
 									<ImportSkin setColors={setColorsFromImport} />
 								</Cell>
 								<Cell>
-									<BodyText skin="neutral" className={css.switchLabel}>Generate colors automatically</BodyText>
-									<Switch skin="neutral" className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
+									<BodyText className={css.switchLabel} skin="neutral">Generate colors automatically</BodyText>
+									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} skin="neutral" />
 								</Cell>
 							</Row>
 							<ColorFields
@@ -339,7 +340,7 @@ const MainPanel = () => {
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
 								<Slider />
-								<RangePicker className={css.previewPicker} defaultValue={0} max={13} min={0} />
+								<RangePicker defaultValue={0} max={13} min={0} />
 								<Dropdown className={css.previewDropdown}>
 									{['Item 1', 'Item 2', 'Item 3']}
 								</Dropdown>
@@ -347,7 +348,7 @@ const MainPanel = () => {
 									Popup
 								</Button>
 								<Popup open={openPopup} position="right">
-									<BodyText>Hello</BodyText>
+									<BodyText centered>Hello</BodyText>
 									<Button onClick={handleOpenPopup}>Bye</Button>
 								</Popup>
 							</Column>

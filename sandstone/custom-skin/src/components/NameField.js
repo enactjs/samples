@@ -4,7 +4,7 @@ import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
-import css from './styles.module.less';
+import css from '../common/styles.module.less';
 import componentCss from './NameField.module.less';
 
 const NameField = kind({
