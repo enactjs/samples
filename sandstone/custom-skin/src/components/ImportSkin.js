@@ -17,7 +17,6 @@ const ImportSkin = kind({
 			reader.onload = async (event) => {
 				let text = (event.target.result).split('\n\t');
 				text.shift();
-				text.pop();
 				text = text.filter(string => {
 					if (string[0] !== '/' || string.includes('/* Skin Name')) {
 						return string;
