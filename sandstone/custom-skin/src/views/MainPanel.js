@@ -25,6 +25,7 @@ import css from './MainPanel.module.less';
 
 // eslint-disable-next-line
 import skin from '../../custom_skin.css';
+
 window.CUSTOM_SKIN = 'custom';
 
 const MainPanel = () => {
