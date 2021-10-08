@@ -1,6 +1,5 @@
 import kind from '@enact/core/kind';
 import Scroller from '@enact/sandstone/Scroller';
-
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
 import {HashRouter as Router, Route} from 'react-router-dom';
@@ -37,20 +36,22 @@ const NavigationMenu = kind({
 		delete props.staticContext;
 
 		return (
-			<div {...props}>
-				{
-					// eslint-disable-next-line no-use-before-define
-					routes.map(({path}, index) => {
-						if (path !== '/') {
-							return (
-								<SampleItem key={index} path={path} history={history}>
-									{path.substr(1)}
-								</SampleItem>
-							);
-						}
-						return null;
-					})
-				}
+			<div {...props} style={{height: '90%'}}>
+				<Scroller>
+					{
+						// eslint-disable-next-line no-use-before-define
+						routes.map(({path}, index) => {
+							if (path !== '/') {
+								return (
+									<SampleItem key={index} path={path} history={history}>
+										{path.substr(1)}
+									</SampleItem>
+								);
+							}
+							return null;
+						})
+					}
+				</Scroller>
 			</div>
 		);
 	}
@@ -81,16 +82,12 @@ const AppBase = kind({
 
 	render: (props) => {
 		return (
-			<div {...props}>
-				<Scroller>
-					<Router>
-						<div>
-							<ButtonToSamples />
-							{routes.map((route, index) => <Route key={index} {...route} />)}
-						</div>
-					</Router>
-				</Scroller>
-			</div>
+			<Router>
+				<div {...props}>
+					<ButtonToSamples />
+					{routes.map((route, index) => <Route key={index} {...route} />)}
+				</div>
+			</Router>
 		);
 	}
 });
