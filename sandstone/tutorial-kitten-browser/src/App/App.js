@@ -16,7 +16,7 @@ const kittens = [
 	'Kitty'
 ];
 
-const _AppBase = kind({
+const Sample = kind({
 	name: 'App',
 
 	propTypes: {
@@ -60,7 +60,7 @@ const _AppBase = kind({
 
 const AppBase = Changeable({prop: 'index', change: 'onNavigate'},
 	Changeable({prop: 'kitten', change: 'onSelectKitten'},
-		_AppBase
+		Sample
 	)
 );
 

@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {decreaseIndex, increaseIndex} from '../actions';
 import MainPanel from '../views/MainPanel';
 
-const _AppBase = kind({
+const Sample = kind({
 	name: 'App',
 
 	propTypes: {
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-const AppBase = connect(mapStateToProps, mapDispatchToProps)(_AppBase);
+const AppBase = connect(mapStateToProps, mapDispatchToProps)(Sample);
 const App = ThemeDecorator(AppBase);
 
 export default App;

@@ -5,7 +5,6 @@ import Button from '@enact/sandstone/Button';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import compose from 'ramda/src/compose';
 import {Component} from 'react';
 
 import {importAll} from '../components/util';
@@ -32,7 +31,7 @@ itemPusher('Details View', 'Show off details about an item', Details, thumbs['de
 
 const Placeholder = kind({name: 'Placeholder'});
 
-const _AppBase = kind({
+const Sample = kind({
 	name: 'LayoutApp',
 
 	propTypes: {
@@ -138,11 +137,8 @@ const AppDecorator = hoc((config, Wrapped) => {
 	};
 });
 
-const AppBase = AppDecorator(_AppBase);
-const App = compose(
-	ThemeDecorator,
-	AppDecorator
-)(_AppBase);
+const AppBase = AppDecorator(Sample);
+const App = ThemeDecorator(AppBase);
 
 export default App;
 export {App, AppBase};
