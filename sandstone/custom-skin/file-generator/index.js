@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
 	});
 
 	res.setHeader('access-control-allow-origin', '*');
-	res.statusCode = 202;
+	res.statusCode = 200;
 	res.end();
 });
 
