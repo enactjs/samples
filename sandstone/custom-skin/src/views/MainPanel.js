@@ -68,10 +68,10 @@ const MainPanel = () => {
 	}, [BGColor, NTColor]);
 
 	useEffect(() => {
-		if(AutoColors.length !== 0){
+		if (AutoColors.length !== 0) {
 			sendData(auto ? AutoColors : Colors, skinName, NTColor, BGColor);
 		}
-	},[auto, AutoColors, BGColor, Colors, NTColor, skinName])
+	}, [auto, AutoColors, BGColor, Colors, NTColor, skinName]);
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
@@ -178,7 +178,7 @@ const MainPanel = () => {
 		const event = props?.event;
 		const name = props?.name;
 		let value = event?.value;
-		if(name !== 'Skin Name') {
+		if (name !== 'Skin Name') {
 			value = value.toUpperCase();
 		}
 

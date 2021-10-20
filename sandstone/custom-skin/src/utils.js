@@ -4,7 +4,7 @@ const sendData = async (data, name, NTColor, BGColor) => {
 
 	writeToCSS.open('POST', 'http://localhost:5000/write');
 	writeToCSS.send(JSON.stringify({colors: newData}));
-}
+};
 
 const convertHexToRGB = (hex) => {
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
