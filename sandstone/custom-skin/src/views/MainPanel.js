@@ -54,6 +54,7 @@ const MainPanel = () => {
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
+	// eslint-disable-next-line
 	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
 		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
 
@@ -70,7 +71,7 @@ const MainPanel = () => {
 		if(AutoColors.length !== 0){
 			sendData(auto ? AutoColors : Colors, skinName, NTColor, BGColor);
 		}
-	},[BGColor,AutoColors, Colors, NTColor, skinName])
+	},[auto, AutoColors, BGColor, Colors, NTColor, skinName])
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
