@@ -23,6 +23,7 @@ const server = http.createServer((req, res) => {
 		writeToFile(colors);
 	});
 
+	res.setHeader('access-control-allow-origin', '*');
 	res.statusCode = 202;
 	res.end();
 });
