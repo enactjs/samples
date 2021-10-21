@@ -18,13 +18,13 @@ import ColorFields from '../components/ColorFields';
 import ImportSkin from '../components/ImportSkin';
 import OutputField from '../components/OutputField';
 
-import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
+import {checkColors, generateColors, getColorsFromString, hexColors, sendData} from '../utils';
 
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
 // eslint-disable-next-line
-import skin from '../../custom_skin.css';
+import skin from '../../file-generator/custom_skin.css';
 
 window.CUSTOM_SKIN = 'custom';
 
@@ -54,6 +54,7 @@ const MainPanel = () => {
 	const [openWarning, setOpenWarning] = useState(false);
 	const [AutoColors, setAutoColors] = useState([]);
 
+	// eslint-disable-next-line
 	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
 		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
 
@@ -66,6 +67,12 @@ const MainPanel = () => {
 		}
 	}, [BGColor, NTColor]);
 
+	useEffect(() => {
+		if (AutoColors.length !== 0) {
+			sendData(auto ? AutoColors : Colors, skinName, NTColor, BGColor);
+		}
+	}, [auto, AutoColors, BGColor, Colors, NTColor, skinName]);
+
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
 			setColors[i](AutoColors[i]);
@@ -76,7 +83,6 @@ const MainPanel = () => {
 		const colorSet = getColorsFromString(colors);
 		if (colorSet !== null) {
 			setSkinName(colorSet.shift()[1]);
-
 			setAuto(false);
 			colorSet.forEach(set => {
 				switch (set[0]) {
@@ -172,7 +178,7 @@ const MainPanel = () => {
 		const event = props?.event;
 		const name = props?.name;
 		let value = event?.value;
-		if(name !== 'Skin Name') {
+		if (name !== 'Skin Name') {
 			value = value.toUpperCase();
 		}
 
@@ -340,6 +346,10 @@ const MainPanel = () => {
 								<Row className={css.previewButtons}>
 									<Button>Click</Button>
 									<Button disabled>Disabled</Button>
+								</Row>
+								<Row className={css.previewButtons}>
+									<Button selected>Selected</Button>
+									<Button disabled selected>Disabled</Button>
 								</Row>
 								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
 								<SwitchItem>Toggle</SwitchItem>
