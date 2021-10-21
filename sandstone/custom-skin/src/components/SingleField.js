@@ -35,6 +35,8 @@ const SingleField = kind({
 	},
 
 	render: ({color, onChangeInput, onChangeInputField, propName, ...rest}) => {
+		delete rest.onChangeInput;
+
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">

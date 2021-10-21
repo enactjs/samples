@@ -13,7 +13,7 @@ const NameField = kind({
 	propTypes: {
 		name: PropTypes.string,
 		onChangeInput: PropTypes.func,
-		placeholder: PropTypes.func,
+		placeholder: PropTypes.string,
 		propName: PropTypes.string
 	},
 
@@ -34,6 +34,8 @@ const NameField = kind({
 	},
 
 	render: ({name, onChangeInputField, placeholder, propName, ...rest}) => {
+		delete rest.onChangeInput;
+
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">

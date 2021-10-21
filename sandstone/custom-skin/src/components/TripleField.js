@@ -55,6 +55,9 @@ const TripleField = kind({
 	},
 
 	render: ({blue, getColorFromPicker, getColorValue, green, onChangeInputB, onChangeInputG, onChangeInputR, propName, red, ...rest}) => {
+		delete rest.onChangeAllInput;
+		delete rest.onChangeInput;
+
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
