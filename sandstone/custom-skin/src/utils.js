@@ -6,6 +6,22 @@ const sendData = async (data, name, NTColor, BGColor) => {
 	writeToCSS.send(JSON.stringify({colors: newData}));
 };
 
+const generateCSS = async () => {
+	const writeToCSS = new window.XMLHttpRequest();
+
+	writeToCSS.onload = () => {
+		let link = document.createElement('a');
+		link.download = 'custom-skin.css';
+		let blob = new window.Blob([writeToCSS.response], {type: 'text/css'});
+		link.href = URL.createObjectURL(blob);
+		link.click();
+		URL.revokeObjectURL(link.href);
+	};
+	writeToCSS.open('GET', 'http://localhost:5000/cssfile');
+	writeToCSS.responseType = 'text';
+	writeToCSS.send();
+};
+
 const convertHexToRGB = (hex) => {
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 	return result ? [
@@ -194,6 +210,7 @@ export {
 	convertHexToRGB,
 	convertRGBToHex,
 	generateColors,
+	generateCSS,
 	getColorsFromString,
 	hexColors,
 	sendData

@@ -1,3 +1,4 @@
+const {generateCSS} = require('./generateCSS');
 const {writeToFile} = require('./writeToFile');
 const http = require('http');
 const port = 5000;
@@ -15,18 +16,26 @@ const server = http.createServer((req, res) => {
 			const finalBody = Buffer.concat(body).toString().split(':')[1].split('[')[1].split(']}')[0];
 			let colors = finalBody.split(',');
 			colors = colors.map(color => {
+				if (color.length > 5) {
 					return color.split('"')[1];
+				} else {
+					return color;
+				}
 			});
 			writeToFile(colors);
 		});
 
 		res.setHeader('access-control-allow-origin', '*');
 		res.statusCode = 200;
+		res.end();
+
+	} else if (req.method === 'GET' && req.url === '/cssfile') {
+		generateCSS(res);
 	} else {
 		res.setHeader('access-control-allow-origin', '*');
 		res.statusCode = 400;
+		res.end();
 	}
-	res.end();
 });
 
 server.listen(port);

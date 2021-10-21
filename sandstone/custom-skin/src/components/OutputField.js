@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import css from './OutputField.module.less';
 
+import {generateCSS} from '../utils';
+
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
 const OutputField = kind({
@@ -48,6 +50,7 @@ const OutputField = kind({
 					{text}
 				</pre>
 				<TooltipButton className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" skin="neutral" tooltipText="Copy to clipboard">Copy</TooltipButton>
+				<TooltipButton className={css.copyBtn} icon="files" onClick={generateCSS} size="small" skin="neutral" tooltipText="Get CSS file">Generate CSS</TooltipButton>
 			</div>
 		);
 	}});
