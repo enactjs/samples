@@ -5,6 +5,7 @@ const generateCSS = (res) => {
 	// eslint-disable-next-line
 	const filePath = path.join(__dirname, 'custom_skin.css');
 	const stat = fs.statSync(filePath);
+	const readStream = fs.createReadStream(filePath);
 
 	res.setHeader('access-control-allow-origin', '*');
 
@@ -13,7 +14,6 @@ const generateCSS = (res) => {
 		'Content-Length': stat.size
 	});
 
-	const readStream = fs.createReadStream(filePath);
 	readStream.on('data', (data) => {
 		res.write(data);
 	});
