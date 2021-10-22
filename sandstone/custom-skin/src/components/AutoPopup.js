@@ -29,6 +29,11 @@ const AutoPopup = kind({
 	},
 
 	render:({onClickCancel, onClickOk, openWarning, ...rest}) => {
+		delete rest.auto;
+		delete rest.setAuto;
+		delete rest.setColorsToAuto;
+		delete rest.setOpenWarning;
+
 		return (
 			<Popup {...rest} className={css.customAlert} open={openWarning} skin="neutral">
 				<BodyText centered size="small" skin="neutral">Do you want to switch from manual to auto?</BodyText>

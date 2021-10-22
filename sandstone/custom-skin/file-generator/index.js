@@ -1,3 +1,4 @@
+const {generateCSS} = require('./generateCSS');
 const {writeToFile} = require('./writeToFile');
 const http = require('http');
 const port = 5000;
@@ -26,11 +27,14 @@ const server = http.createServer((req, res) => {
 
 		res.setHeader('access-control-allow-origin', '*');
 		res.statusCode = 200;
+		res.end();
+	} else if (req.method === 'GET' && req.url === '/cssfile') {
+		generateCSS(res);
 	} else {
 		res.setHeader('access-control-allow-origin', '*');
 		res.statusCode = 400;
+		res.end();
 	}
-	res.end();
 });
 
 server.listen(port);

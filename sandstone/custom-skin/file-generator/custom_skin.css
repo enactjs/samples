@@ -1,14 +1,14 @@
 .sandstone-theme {
 	/* Skin Name: "" */
-	background-color: #C6B9CA; /* Background Color */
-	--sand-text-color: #E57615; /* Normal Text Color */
-	--sand-text-sub-color: #F97615; /* Subtitle Text Color */
-	--sand-focus-text-color-rgb: 229, 158, 61; /* Focused Text Color (Must be RGB comma separated format) */
-	--sand-focus-bg-color: #C6B9DE; /* Focused Background Color */
-	--sand-selected-color-rgb: 229, 178, 81; /* Selected Color (Must be RGB comma separated format) */
-	--sand-selected-bg-color: #C6B9F2; /* Selected Background Color */
-	--sand-overlay-bg-color-rgb: 138, 125, 202; /* Overlay Panel Background Color (Must be RGB comma separated format) */
-	--sand-toggle-on-bg-color: #7669CA; /* Toggle On Background Color */
-	--sand-toggle-off-color: #E5C665; /* Toggle Off Color */
-	--sand-toggle-off-bg-color: #6255CA; /* Toggle Off Background Color */
+	background-color: #855D94; /* Background Color */
+	--sand-text-color: #FB9039; /* Normal Text Color */
+	--sand-text-sub-color: #FBA44D; /* Subtitle Text Color */
+	--sand-focus-text-color-rgb: 251, 184, 97; /* Focused Text Color (Must be RGB comma separated format) */
+	--sand-focus-bg-color: #855DA8; /* Focused Background Color */
+	--sand-selected-color-rgb: 251, 204, 117; /* Selected Color (Must be RGB comma separated format) */
+	--sand-selected-bg-color: #855DBC; /* Selected Background Color */
+	--sand-overlay-bg-color-rgb: 133, 93, 208; /* Overlay Panel Background Color (Must be RGB comma separated format) */
+	--sand-toggle-on-bg-color: #855DE4; /* Toggle On Background Color */
+	--sand-toggle-off-color: #FBE089; /* Toggle Off Color */
+	--sand-toggle-off-bg-color: #855DF8; /* Toggle Off Background Color */
 }

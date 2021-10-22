@@ -44,10 +44,10 @@ const ColorFields = kind({
 					propName="Subtitle color"
 				/>
 				<TripleField
-					blue={!auto ? Colors[3] : AutoColors[3]}
+					blue={!auto ? Colors[3]?.toString() : AutoColors[3]?.toString()}
 					disabled={auto}
-					green={!auto ? Colors[2] : AutoColors[2]}
-					red={!auto ? Colors[1] : AutoColors[1]}
+					green={!auto ? Colors[2]?.toString() : AutoColors[2]?.toString()}
+					red={!auto ? Colors[1]?.toString() : AutoColors[1]?.toString()}
 					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Focused text color (RGB)"
@@ -59,10 +59,10 @@ const ColorFields = kind({
 					propName="Focused Background color"
 				/>
 				<TripleField
-					blue={!auto ? Colors[7] : AutoColors[7]}
+					blue={!auto ? Colors[7]?.toString() : AutoColors[7]?.toString()}
 					disabled={auto}
-					green={!auto ? Colors[6] : AutoColors[6]}
-					red={!auto ? Colors[5] : AutoColors[5]}
+					green={!auto ? Colors[6]?.toString() : AutoColors[6]?.toString()}
+					red={!auto ? Colors[5]?.toString() : AutoColors[5]?.toString()}
 					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Selected color (RGB)"
@@ -74,10 +74,10 @@ const ColorFields = kind({
 					propName="Selected Background Color"
 				/>
 				<TripleField
-					blue={!auto ? Colors[11] : AutoColors[11]}
+					blue={!auto ? Colors[11]?.toString() : AutoColors[11]?.toString()}
 					disabled={auto}
-					green={!auto ? Colors[10] : AutoColors[10]}
-					red={!auto ? Colors[9] : AutoColors[9]}
+					green={!auto ? Colors[10]?.toString() : AutoColors[10]?.toString()}
+					red={!auto ? Colors[9]?.toString() : AutoColors[9]?.toString()}
 					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Overlay Panel Background Color (RGB)"

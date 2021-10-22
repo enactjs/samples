@@ -17,7 +17,7 @@ const writeToFile = (colors) => {
 		`	--sand-toggle-on-bg-color: ${colors[15].toUpperCase()}; /* Toggle On Background Color */\n` +
 		`	--sand-toggle-off-color: ${colors[16].toUpperCase()}; /* Toggle Off Color */\n` +
 		`	--sand-toggle-off-bg-color: ${colors[17].toUpperCase()}; /* Toggle Off Background Color */\n` +
-		'}';
+		'}\n';
 	fs.writeFileSync('custom_skin.css', file);
 };
 
