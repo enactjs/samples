@@ -12,6 +12,7 @@ const generateCSS = (res) => {
 		'Content-Type': 'text/plain',
 		'Content-Length': stat.size
 	});
+
 	const readStream = fs.createReadStream(filePath);
 	readStream.on('data', (data) => {
 		res.write(data);

@@ -28,7 +28,6 @@ const server = http.createServer((req, res) => {
 		res.setHeader('access-control-allow-origin', '*');
 		res.statusCode = 200;
 		res.end();
-
 	} else if (req.method === 'GET' && req.url === '/cssfile') {
 		generateCSS(res);
 	} else {
