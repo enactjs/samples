@@ -1,4 +1,5 @@
 import kind from '@enact/core/kind';
+import I18nDecorator from '@enact/i18n/I18nDecorator';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {connect} from 'react-redux';
@@ -28,7 +29,7 @@ const Sample = kind({
 
 const mapStateToProps = ({locale}) => ({locale});
 
-const AppBase = connect(mapStateToProps, {})(Sample);
+const AppBase = connect(mapStateToProps, {})(I18nDecorator(Sample));
 const App = connect(mapStateToProps, {})(ThemeDecorator(Sample));
 
 export default App;

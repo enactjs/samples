@@ -1,6 +1,7 @@
 import {Panels} from '@enact/agate/Panels';
 import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import kind from '@enact/core/kind';
+import I18nDecorator from '@enact/i18n/I18nDecorator';
 import {connect} from 'react-redux';
 
 import MainPanel from '../views/MainPanel';
@@ -28,7 +29,7 @@ const Sample = kind({
 
 const mapStateToProps = ({locale}) => ({locale});
 
-const AppBase = connect(mapStateToProps, {})(Sample);
+const AppBase = connect(mapStateToProps, {})(I18nDecorator(Sample));
 const App = connect(mapStateToProps, {})(ThemeDecorator(Sample));
 
 export default App;
