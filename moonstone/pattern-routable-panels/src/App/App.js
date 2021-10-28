@@ -11,7 +11,7 @@ import AppStateDecorator from './AppStateDecorator';
 
 const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
 
-const App = kind({
+const Sample = kind({
 	name: 'App',
 
 	propTypes: {
@@ -40,8 +40,8 @@ const App = kind({
 	}
 });
 
-export default MoonstoneDecorator(
-	AppStateDecorator(
-		App
-	)
-);
+const AppBase = AppStateDecorator(Sample);
+const App = MoonstoneDecorator(AppBase);
+
+export default App;
+export {App, AppBase};
