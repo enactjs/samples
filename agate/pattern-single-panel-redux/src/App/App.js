@@ -6,7 +6,7 @@ import MainPanel from '../views/MainPanel';
 
 import css from './App.module.less';
 
-const App = kind({
+const AppBase = kind({
 	name: 'App',
 
 	styles: {
@@ -21,4 +21,7 @@ const App = kind({
 	)
 });
 
-export default ThemeDecorator(App);
+const App = ThemeDecorator(AppBase);
+
+export default App;
+export {App, AppBase};
