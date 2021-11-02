@@ -5,7 +5,6 @@ import Button from '@enact/moonstone/Button';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import compose from 'ramda/src/compose';
 import {Component} from 'react';
 
 import {importAll} from '../components/util';
@@ -32,7 +31,7 @@ itemPusher('Details View', 'Show off details about an item', Details, thumbs['de
 
 const Placeholder = kind({name: 'Placeholder'});
 
-const App = kind({
+const Sample = kind({
 	name: 'LayoutApp',
 
 	propTypes: {
@@ -138,7 +137,8 @@ const AppDecorator = hoc((config, Wrapped) => {
 	};
 });
 
-export default compose(
-	MoonstoneDecorator,
-	AppDecorator
-)(App);
+const AppBase = AppDecorator(Sample);
+const App = MoonstoneDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

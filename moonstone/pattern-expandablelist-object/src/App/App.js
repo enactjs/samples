@@ -4,7 +4,7 @@ import {Panels} from '@enact/moonstone/Panels';
 
 import MainPanel from '../views/MainPanel';
 
-const App = kind({
+const AppBase = kind({
 	name: 'App',
 
 	render: (props) => (
@@ -16,4 +16,7 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator(App);
+const App = MoonstoneDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

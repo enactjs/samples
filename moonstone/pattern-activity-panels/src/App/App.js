@@ -6,7 +6,7 @@ import ButtonPanel from '../views/ButtonPanel';
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-class App extends Component {
+class AppBase extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -30,4 +30,7 @@ class App extends Component {
 	}
 }
 
-export default MoonstoneDecorator(App);
+const App = MoonstoneDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

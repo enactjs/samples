@@ -5,7 +5,7 @@ import MainView from '../views/MainView';
 
 import css from './App.module.less';
 
-const App = kind({
+const AppBase = kind({
 	name: 'App',
 
 	styles: {
@@ -20,4 +20,7 @@ const App = kind({
 	)
 });
 
-export default MoonstoneDecorator({noAutoFocus: true}, App);
+const App = MoonstoneDecorator({noAutoFocus: true}, AppBase);
+
+export default App;
+export {App, AppBase};

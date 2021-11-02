@@ -21,7 +21,7 @@ import {AppBase as TutorialKittenBrowser} from '../../../tutorial-kitten-browser
 import css from './App.module.less';
 
 const NavigationMenu = kind({
-	name: 'App',
+	name: 'NavigationMenu',
 
 	propTypes: {
 		history: PropTypes.object,

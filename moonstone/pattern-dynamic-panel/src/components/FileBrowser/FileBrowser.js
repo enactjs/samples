@@ -15,6 +15,8 @@ import rainbow from '../../../assets/images/rainbow.jpg';
 
 import DynamicPanel from '../DynamicPanel';
 
+import css from './FileBrowser.module.less';
+
 const a = {
 	files: [
 		{name: 'b', directory: true},
@@ -98,11 +100,12 @@ const FileBrowserBase = kind({
 				<Image src={filePhotos[leaf.replace('.jpg', '')]} />;
 
 			return (
-				<DynamicPanel {...rest} path={path}>
-					{component}
-				</DynamicPanel>
+				<div className={css.fileBrowser}>
+					<DynamicPanel {...rest} path={path}>
+						{component}
+					</DynamicPanel>
+				</div>
 			);
-
 		}
 	},
 
