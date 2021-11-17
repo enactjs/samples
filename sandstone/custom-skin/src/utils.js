@@ -1,25 +1,30 @@
-const sendData = async (data, name, NTColor, BGColor) => {
-	const newData = [name, BGColor, NTColor, ...data];
-	const writeToCSS = new window.XMLHttpRequest();
-
-	writeToCSS.open('POST', 'http://localhost:5000/write');
-	writeToCSS.send(JSON.stringify({colors: newData}));
+const generateCSS = (colors) => {
+	return '.sandstone-theme {\n' +
+		`	/* Skin Name: ${colors[0]} */\n` +
+		`	background-color: ${colors[1].toUpperCase()}; /* Background Color */\n` +
+		`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
+		`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
+		`	--sand-focus-text-color-rgb: ${colors[4]}, ${colors[5]},` +
+		` ${colors[6]}; /* Focused Text Color (Must be RGB comma separated format) */\n` +
+		`	--sand-focus-bg-color: ${colors[7]?.toUpperCase()}; /* Focused Background Color */\n` +
+		`	--sand-selected-color-rgb: ${colors[8]}, ${colors[9]}, ` +
+		`${colors[10]}; /* Selected Color (Must be RGB comma separated format) */\n` +
+		`	--sand-selected-bg-color: ${colors[11]?.toUpperCase()}; /* Selected Background Color */\n` +
+		`	--sand-overlay-bg-color-rgb: ${colors[12]}, ${colors[13]}, ` +
+		`${colors[14]}; /* Overlay Panel Background Color (Must be RGB comma separated format) */\n` +
+		`	--sand-toggle-on-bg-color: ${colors[15]?.toUpperCase()}; /* Toggle On Background Color */\n` +
+		`	--sand-toggle-off-color: ${colors[16]?.toUpperCase()}; /* Toggle Off Color */\n` +
+		`	--sand-toggle-off-bg-color: ${colors[17]?.toUpperCase()}; /* Toggle Off Background Color */\n` +
+		'}';
 };
 
-const generateCSS = async () => {
-	const writeToCSS = new window.XMLHttpRequest();
-
-	writeToCSS.onload = () => {
-		let link = document.createElement('a');
-		link.download = 'custom-skin.css';
-		let blob = new window.Blob([writeToCSS.response], {type: 'text/css'});
-		link.href = URL.createObjectURL(blob);
-		link.click();
-		URL.revokeObjectURL(link.href);
-	};
-	writeToCSS.open('GET', 'http://localhost:5000/cssfile');
-	writeToCSS.responseType = 'text';
-	writeToCSS.send();
+const generateCSSFile = (colors) => {
+	let link = document.createElement('a');
+	link.download = 'custom_skin.css';
+	let blob = new window.Blob([colors], {type: 'text/css'});
+	link.href = URL.createObjectURL(blob);
+	link.click();
+	URL.revokeObjectURL(link.href);
 };
 
 const convertHexToRGB = (hex) => {
@@ -211,7 +216,7 @@ export {
 	convertRGBToHex,
 	generateColors,
 	generateCSS,
+	generateCSSFile,
 	getColorsFromString,
-	hexColors,
-	sendData
+	hexColors
 };
