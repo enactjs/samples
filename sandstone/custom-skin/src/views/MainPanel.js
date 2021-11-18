@@ -50,7 +50,7 @@ const MainPanel = () => {
 	// eslint-disable-next-line
 	const Colors = [SCColor, FTColor, FBColor, SColor, SBColor, TOnBColor, TOColor, TOffBColor];
 
-	const setColors = [setSCColor, setFTColor, setFBColor, setSColor, setSBColor, setOPBColor, setTOnBColor, setTOColor, setTOffBColor];
+	const setColors = [setSCColor, setFTColor, setFBColor, setSColor, setSBColor, setTOnBColor, setTOColor, setTOffBColor];
 
 	useEffect(() => {
 		if (hexColors(OPBColor, NTColor)) {
