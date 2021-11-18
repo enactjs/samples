@@ -18,13 +18,13 @@ import ColorFields from '../components/ColorFields';
 import ImportSkin from '../components/ImportSkin';
 import OutputField from '../components/OutputField';
 
-import {checkColors, generateColors, getColorsFromString, hexColors, sendData} from '../utils';
+import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
 
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
 
 // eslint-disable-next-line
-import skin from '../../file-generator/custom_skin.css';
+import skin from '../custom_skin.css';
 
 window.CUSTOM_SKIN = 'custom';
 
@@ -66,12 +66,6 @@ const MainPanel = () => {
 			setAutoColors(generateColors(NTColor, BGColor));
 		}
 	}, [BGColor, NTColor]);
-
-	useEffect(() => {
-		if (AutoColors.length !== 0) {
-			sendData(auto ? AutoColors : Colors, skinName, NTColor, BGColor);
-		}
-	}, [auto, AutoColors, BGColor, Colors, NTColor, skinName]);
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
