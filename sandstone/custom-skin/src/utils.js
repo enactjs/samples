@@ -1,30 +1,10 @@
-const generateCSS = (colors) => {
-	return '.sandstone-theme {\n' +
-		`	/* Skin Name: ${colors[0]} */\n` +
-		`	background-color: ${colors[1].toUpperCase()}; /* Background Color */\n` +
-		`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
-		`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
-		`	--sand-focus-text-color-rgb: ${colors[4]}, ${colors[5]},` +
-		` ${colors[6]}; /* Focused Text Color (Must be RGB comma separated format) */\n` +
-		`	--sand-focus-bg-color: ${colors[7]?.toUpperCase()}; /* Focused Background Color */\n` +
-		`	--sand-selected-color-rgb: ${colors[8]}, ${colors[9]}, ` +
-		`${colors[10]}; /* Selected Color (Must be RGB comma separated format) */\n` +
-		`	--sand-selected-bg-color: ${colors[11]?.toUpperCase()}; /* Selected Background Color */\n` +
-		`	--sand-overlay-bg-color-rgb: ${colors[12]}, ${colors[13]}, ` +
-		`${colors[14]}; /* Overlay Panel Background Color (Must be RGB comma separated format) */\n` +
-		`	--sand-toggle-on-bg-color: ${colors[15]?.toUpperCase()}; /* Toggle On Background Color */\n` +
-		`	--sand-toggle-off-color: ${colors[16]?.toUpperCase()}; /* Toggle Off Color */\n` +
-		`	--sand-toggle-off-bg-color: ${colors[17]?.toUpperCase()}; /* Toggle Off Background Color */\n` +
-		'}';
-};
-
-const generateCSSFile = (colors) => {
-	let link = document.createElement('a');
-	link.download = 'custom_skin.css';
-	let blob = new window.Blob([colors], {type: 'text/css'});
-	link.href = URL.createObjectURL(blob);
-	link.click();
-	URL.revokeObjectURL(link.href);
+const checkColors = (arr1, arr2) => {
+	for (let i = 0; i < arr1.length; ++i) {
+		if (arr1[i] !== arr2[i]) {
+			return false;
+		}
+	}
+	return true;
 };
 
 const convertHexToRGB = (hex) => {
@@ -55,6 +35,40 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 			return value;
 		}
 	});
+};
+
+const generateCSS = (colors) => {
+	if(colors.length > 3) {
+		const FocusedText = convertHexToRGB(colors[4]);
+		const Selected = convertHexToRGB(colors[6]);
+		const OverlayPanelBg = convertHexToRGB(colors[1]);
+
+		return '.sandstone-theme {\n' +
+			`	/* Skin Name: ${colors[0]} */\n` +
+			`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
+			`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
+			`	--sand-focus-text-color-rgb: ${FocusedText[0]}, ${FocusedText[1]}, ${FocusedText[2]};` +
+			` /* Focused Text Color (Must be RGB comma separated format) */\n` +
+			`	--sand-focus-bg-color: ${colors[5]?.toUpperCase()}; /* Focused Background Color */\n` +
+			`	--sand-selected-color-rgb: ${Selected[0]}, ${Selected[1]}, ${Selected[2]};` +
+			` /* Selected Color (Must be RGB comma separated format) */\n` +
+			`	--sand-selected-bg-color: ${colors[7]?.toUpperCase()}; /* Selected Background Color */\n` +
+			`	--sand-overlay-bg-color-rgb: ${OverlayPanelBg[0]}, ${OverlayPanelBg[1]}, ${OverlayPanelBg[2]};` +
+			` /* Overlay Panel Background Color (Must be RGB comma separated format) */\n` +
+			`	--sand-toggle-on-bg-color: ${colors[8]?.toUpperCase()}; /* Toggle On Background Color */\n` +
+			`	--sand-toggle-off-color: ${colors[9]?.toUpperCase()}; /* Toggle Off Color */\n` +
+			`	--sand-toggle-off-bg-color: ${colors[10]?.toUpperCase()}; /* Toggle Off Background Color */\n` +
+			'}';
+	}
+};
+
+const generateCSSFile = (colors) => {
+	let link = document.createElement('a');
+	link.download = 'custom_skin.css';
+	let blob = new window.Blob([colors], {type: 'text/css'});
+	link.href = URL.createObjectURL(blob);
+	link.click();
+	URL.revokeObjectURL(link.href);
 };
 
 const getRandomColor = (colorToBeConverted, inc) => {
@@ -142,14 +156,10 @@ const generateBGColors = (background) => {
 	let color = background;
 	let colorsArray = [];
 
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 4; i++) {
 		let rc = getRandomColor(color, i);
 		colorsArray.push(rc);
 	}
-
-	const rgbFocusedTextColor = convertHexToRGB(colorsArray[2]);
-
-	colorsArray.splice(2, 1, ...rgbFocusedTextColor);
 
 	return colorsArray;
 };
@@ -163,12 +173,6 @@ const generateTextColors = (text) => {
 		colorsArray.push(rc);
 	}
 
-	const rgbFocusedTextColor = convertHexToRGB(colorsArray[1]);
-	const rgbSelectedColor = convertHexToRGB(colorsArray[2]);
-
-	colorsArray.splice(1, 1, ...rgbFocusedTextColor);
-	colorsArray.splice(4, 1, ...rgbSelectedColor);
-
 	return colorsArray;
 };
 
@@ -176,23 +180,14 @@ const generateColors = (text, background) => {
 	const textColors = generateTextColors(text);
 	const bgColors = generateBGColors(background);
 
-	return [textColors[0].toUpperCase(), textColors[1], textColors[2], textColors[3], bgColors[0].toUpperCase(),
-		textColors[4], textColors[5], textColors[6], bgColors[1].toUpperCase(), bgColors[2], bgColors[3], bgColors[4],
-		bgColors[5].toUpperCase(), textColors[7].toUpperCase(), bgColors[6].toUpperCase()];
+	return [textColors[0].toUpperCase(), textColors[1].toUpperCase(), bgColors[0].toUpperCase(),
+		textColors[2].toUpperCase(), bgColors[1].toUpperCase(), bgColors[2].toUpperCase(), textColors[3].toUpperCase(),
+		bgColors[3].toUpperCase()];
 };
 
 const hexColors = (color1, color2) => {
 	return /^#[0-9A-F]{6}$/i.test(color1) && /^#[0-9A-F]{6}$/i.test(color2);
 	// /^#[0-9A-F]{6}$/i.test(test_string) tests if test_string represents a color in hex
-};
-
-const checkColors = (arr1, arr2) => {
-	for (let i = 0; i < arr1.length; ++i) {
-		if (arr1[i] !== arr2[i]) {
-			return false;
-		}
-	}
-	return true;
 };
 
 const getColorsFromString = (colors) => {

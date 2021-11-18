@@ -4,7 +4,7 @@ import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import PropTypes from 'prop-types';
 
-import css from '../common/styles.module.less';
+import css from '../../common/styles.module.less';
 
 const AutoPopup = kind({
 	name: 'AutoPopup',
