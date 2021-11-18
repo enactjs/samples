@@ -50,7 +50,7 @@ const MainPanel = () => {
 	// eslint-disable-next-line
 	const Colors = [SCColor, FTColor, FBColor, SColor, SBColor, TOnBColor, TOColor, TOffBColor];
 
-	const setColors = [setSCColor, setFTColor,setFBColor, setSColor, setSBColor, setOPBColor, setTOnBColor, setTOColor, setTOffBColor];
+	const setColors = [setSCColor, setFTColor, setFBColor, setSColor, setSBColor, setOPBColor, setTOnBColor, setTOColor, setTOffBColor];
 
 	useEffect(() => {
 		if (hexColors(OPBColor, NTColor)) {
@@ -81,7 +81,7 @@ const MainPanel = () => {
 					}
 					case '--sand-focus-text-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setFTColor(convertRGBToHex([parseInt(colorsRGB[0]),parseInt(colorsRGB[1]),parseInt(colorsRGB[2])]));
+						setFTColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-focus-bg-color': {
@@ -90,7 +90,7 @@ const MainPanel = () => {
 					}
 					case '--sand-selected-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setSColor(convertRGBToHex([parseInt(colorsRGB[0]),parseInt(colorsRGB[1]),parseInt(colorsRGB[2])]));
+						setSColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-selected-bg-color': {
@@ -99,7 +99,7 @@ const MainPanel = () => {
 					}
 					case '--sand-overlay-bg-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setOPBColor(convertRGBToHex([parseInt(colorsRGB[0]),parseInt(colorsRGB[1]),parseInt(colorsRGB[2])]));
+						setOPBColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-toggle-on-bg-color': {

@@ -33,7 +33,7 @@ const TripleField = kind({
 		},
 		onChangeInputB: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
-			onChangeInput({'event.value': convertRGBToHex([colors[0],colors[1],parseInt(event.value)]), name: propName});
+			onChangeInput({'event.value': convertRGBToHex([colors[0], colors[1], parseInt(event.value)]), name: propName});
 		},
 		onChangeInputG: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
@@ -41,7 +41,7 @@ const TripleField = kind({
 		},
 		onChangeInputR: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
-			onChangeInput({event: {value: convertRGBToHex([parseInt(event.value), colors[1],colors[2]])}, name: propName});
+			onChangeInput({event: {value: convertRGBToHex([parseInt(event.value), colors[1], colors[2]])}, name: propName});
 		}
 	},
 
@@ -60,13 +60,10 @@ const TripleField = kind({
 				</Cell>
 				<Cell className={componentCss.tripleField}>
 					<span className={componentCss.tripleText}>R:</span>
-					{/*<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputR} skin="neutral" value={255} />*/}
 					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputR} skin="neutral" value={colors[0]} />
 					<span className={componentCss.tripleText}>G:</span>
-					{/*<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputG} skin="neutral" value={255} />*/}
 					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputG} skin="neutral" value={colors[1]} />
 					<span className={componentCss.tripleText}>B:</span>
-					{/*<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputB} skin="neutral" value={255} />*/}
 					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputB} skin="neutral" value={colors[2]} />
 				</Cell>
 			</Layout>

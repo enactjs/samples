@@ -11,11 +11,11 @@ const ColorFields = kind({
 	propTypes:{
 		auto:PropTypes.bool,
 		AutoColors:PropTypes.array,
-		OPBColor:PropTypes.string,
 		Colors:PropTypes.array,
 		name: PropTypes.string,
 		NTColor:PropTypes.string,
-		onChangeInput:PropTypes.func
+		onChangeInput:PropTypes.func,
+		OPBColor:PropTypes.string
 	},
 
 	render:({auto, AutoColors, Colors, name, NTColor, onChangeInput, OPBColor, ...rest}) => {

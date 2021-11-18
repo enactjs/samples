@@ -38,7 +38,7 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 };
 
 const generateCSS = (colors) => {
-	if(colors.length > 3) {
+	if (colors.length > 3) {
 		const FocusedText = convertHexToRGB(colors[4]);
 		const Selected = convertHexToRGB(colors[6]);
 		const OverlayPanelBg = convertHexToRGB(colors[1]);
@@ -48,13 +48,13 @@ const generateCSS = (colors) => {
 			`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
 			`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
 			`	--sand-focus-text-color-rgb: ${FocusedText[0]}, ${FocusedText[1]}, ${FocusedText[2]};` +
-			` /* Focused Text Color (Must be RGB comma separated format) */\n` +
+			' /* Focused Text Color (Must be RGB comma separated format) */\n' +
 			`	--sand-focus-bg-color: ${colors[5]?.toUpperCase()}; /* Focused Background Color */\n` +
 			`	--sand-selected-color-rgb: ${Selected[0]}, ${Selected[1]}, ${Selected[2]};` +
-			` /* Selected Color (Must be RGB comma separated format) */\n` +
+			' /* Selected Color (Must be RGB comma separated format) */\n' +
 			`	--sand-selected-bg-color: ${colors[7]?.toUpperCase()}; /* Selected Background Color */\n` +
 			`	--sand-overlay-bg-color-rgb: ${OverlayPanelBg[0]}, ${OverlayPanelBg[1]}, ${OverlayPanelBg[2]};` +
-			` /* Overlay Panel Background Color (Must be RGB comma separated format) */\n` +
+			' /* Overlay Panel Background Color (Must be RGB comma separated format) */\n' +
 			`	--sand-toggle-on-bg-color: ${colors[8]?.toUpperCase()}; /* Toggle On Background Color */\n` +
 			`	--sand-toggle-off-color: ${colors[9]?.toUpperCase()}; /* Toggle Off Color */\n` +
 			`	--sand-toggle-off-bg-color: ${colors[10]?.toUpperCase()}; /* Toggle Off Background Color */\n` +
