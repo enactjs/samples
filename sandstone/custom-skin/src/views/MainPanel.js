@@ -206,7 +206,7 @@ const MainPanel = () => {
 
 	const sheet = document.createElement('style');
 	const rest = auto ? AutoColors : Colors;
-	sheet.innerHTML=generateCSS([skinName, OPBColor, NTColor, ...rest]);
+	sheet.innerHTML = generateCSS([skinName, OPBColor, NTColor, ...rest]);
 	document.body?.appendChild(sheet);
 
 	return (
