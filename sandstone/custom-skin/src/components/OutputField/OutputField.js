@@ -7,7 +7,6 @@ import css from './OutputField.module.less';
 
 import {generateCSS, generateCSSFile} from '../../utils';
 
-
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
 const OutputField = kind({
