@@ -1,9 +1,9 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
-import NameField from './NameField';
-import SingleField from './SingleField';
-import TripleField from './TripleField';
+import NameField from '../NameField/NameField';
+import SingleField from '../SingleField/SingleField';
+import TripleField from '../TripleField/TripleField';
 
 const ColorFields = kind({
 	name: 'ColorFields',
@@ -11,15 +11,14 @@ const ColorFields = kind({
 	propTypes:{
 		auto:PropTypes.bool,
 		AutoColors:PropTypes.array,
-		BGColor:PropTypes.string,
 		Colors:PropTypes.array,
 		name: PropTypes.string,
 		NTColor:PropTypes.string,
-		onChangeAllInput:PropTypes.func,
-		onChangeInput:PropTypes.func
+		onChangeInput:PropTypes.func,
+		OPBColor:PropTypes.string
 	},
 
-	render:({auto, AutoColors, BGColor, Colors, name, NTColor, onChangeAllInput, onChangeInput, ...rest}) => {
+	render:({auto, AutoColors, Colors, name, NTColor, onChangeInput, OPBColor, ...rest}) => {
 		return (
 			<div {...rest}>
 				<NameField
@@ -27,10 +26,10 @@ const ColorFields = kind({
 					onChangeInput={onChangeInput}
 					propName="Skin Name"
 				/>
-				<SingleField
-					color={BGColor}
+				<TripleField
+					color={OPBColor}
 					onChangeInput={onChangeInput}
-					propName="Background color"
+					propName="Overlay Panel Background Color (RGB)"
 				/>
 				<SingleField
 					color={NTColor}
@@ -44,58 +43,43 @@ const ColorFields = kind({
 					propName="Subtitle color"
 				/>
 				<TripleField
-					blue={!auto ? Colors[3]?.toString() : AutoColors[3]?.toString()}
+					color={!auto ? Colors[1] : AutoColors[1]}
 					disabled={auto}
-					green={!auto ? Colors[2]?.toString() : AutoColors[2]?.toString()}
-					red={!auto ? Colors[1]?.toString() : AutoColors[1]?.toString()}
-					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Focused text color (RGB)"
 				/>
 				<SingleField
-					color={!auto ? Colors[4] : AutoColors[4]}
+					color={!auto ? Colors[2] : AutoColors[2]}
 					disabled={auto}
 					onChangeInput={onChangeInput}
 					propName="Focused Background color"
 				/>
 				<TripleField
-					blue={!auto ? Colors[7]?.toString() : AutoColors[7]?.toString()}
+					color={!auto ? Colors[3] : AutoColors[3]}
 					disabled={auto}
-					green={!auto ? Colors[6]?.toString() : AutoColors[6]?.toString()}
-					red={!auto ? Colors[5]?.toString() : AutoColors[5]?.toString()}
-					onChangeAllInput={onChangeAllInput}
 					onChangeInput={onChangeInput}
 					propName="Selected color (RGB)"
 				/>
 				<SingleField
-					color={!auto ? Colors[8] : AutoColors[8]}
+					color={!auto ? Colors[4] : AutoColors[4]}
 					disabled={auto}
 					onChangeInput={onChangeInput}
 					propName="Selected Background Color"
 				/>
-				<TripleField
-					blue={!auto ? Colors[11]?.toString() : AutoColors[11]?.toString()}
-					disabled={auto}
-					green={!auto ? Colors[10]?.toString() : AutoColors[10]?.toString()}
-					red={!auto ? Colors[9]?.toString() : AutoColors[9]?.toString()}
-					onChangeAllInput={onChangeAllInput}
-					onChangeInput={onChangeInput}
-					propName="Overlay Panel Background Color (RGB)"
-				/>
 				<SingleField
-					color={!auto ? Colors[12] : AutoColors[12]}
+					color={!auto ? Colors[5] : AutoColors[5]}
 					disabled={auto}
 					onChangeInput={onChangeInput}
 					propName="Toggle On Background Color"
 				/>
 				<SingleField
-					color={!auto ? Colors[13] : AutoColors[13]}
+					color={!auto ? Colors[6] : AutoColors[6]}
 					disabled={auto}
 					onChangeInput={onChangeInput}
 					propName="Toggle Off Color"
 				/>
 				<SingleField
-					color={!auto ? Colors[14] : AutoColors[14]}
+					color={!auto ? Colors[7] : AutoColors[7]}
 					disabled={auto}
 					onChangeInput={onChangeInput}
 					propName="Toggle Off Background Color"
