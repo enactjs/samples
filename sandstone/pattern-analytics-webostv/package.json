@@ -21,7 +21,7 @@
   "enact": {
     "title": "Analytics webOSTV Pattern",
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {
