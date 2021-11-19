@@ -23,7 +23,7 @@
     "title": "Sandstone QA Samples",
     "isomorphic": true,
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {

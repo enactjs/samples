@@ -23,7 +23,7 @@
     "title": "Single Panel Pattern",
     "isomorphic": true,
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {

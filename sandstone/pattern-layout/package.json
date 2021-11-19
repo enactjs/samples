@@ -21,7 +21,7 @@
     "title": "Layout sample",
     "isomorphic": "src/iso.js",
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {

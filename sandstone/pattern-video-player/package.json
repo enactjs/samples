@@ -23,7 +23,7 @@
     "title": "Video Player Pattern",
     "isomorphic": true,
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {

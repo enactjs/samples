@@ -23,7 +23,7 @@
     "title": "VirtualList Preserving Focus Pattern",
     "isomorphic": true,
     "ri": {
-      "baseSize": 24
+      "baseSize": 48
     }
   },
   "eslintConfig": {
