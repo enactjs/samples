@@ -5,7 +5,7 @@ import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
 import componentCss from './SingleField.module.less';
-import css from '../common/styles.module.less';
+import css from '../../common/styles.module.less';
 
 const SingleField = kind({
 	name: 'SingleField',
