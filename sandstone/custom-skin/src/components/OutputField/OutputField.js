@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import css from './OutputField.module.less';
 
-import {generateCSS, generateCSSFile} from '../utils';
+import {generateCSS, generateCSSFile} from '../../utils';
 
 
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);

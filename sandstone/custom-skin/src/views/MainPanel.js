@@ -13,12 +13,12 @@ import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
 
-import AutoPopup from '../components/AutoPopup';
-import ColorFields from '../components/ColorFields';
-import ImportSkin from '../components/ImportSkin';
-import OutputField from '../components/OutputField';
+import AutoPopup from '../components/AutoPopup/AutoPopup';
+import ColorFields from '../components/ColorFields/ColorFields';
+import ImportSkin from '../components/ImportSkin/ImportSkin';
+import OutputField from '../components/OutputField/OutputField';
 
-import {checkColors, generateColors, getColorsFromString, hexColors} from '../utils';
+import {checkColors, convertRGBToHex, generateColors, getColorsFromString, hexColors} from '../utils';
 
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
@@ -30,20 +30,13 @@ window.CUSTOM_SKIN = 'custom';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [BGColor, setBGColor] = useState('#855D94');
 	const [FBColor, setFBColor] = useState('#FFFFFF');
-	const [FTCBlue, setFTCBlue] = useState('255');
-	const [FTCGreen, setFTCGreen] = useState('255');
-	const [FTCRed, setFTCRed] = useState('255');
+	const [FTColor, setFTColor] = useState('#FFFFFF');
 	const [NTColor, setNTColor] = useState('#FB9039');
-	const [OPBCBlue, setOPBCBlue] = useState('255');
-	const [OPBCGreen, setOPBCGreen] = useState('255');
-	const [OPBCRed, setOPBCRed] = useState('255');
+	const [OPBColor, setOPBColor] = useState('#855D94');
 	const [SBColor, setSBColor] = useState('#FFFFFF');
-	const [SCBlue, setSCBlue] = useState('255');
 	const [SCColor, setSCColor] = useState('#FFFFFF');
-	const [SCGreen, setSCGreen] = useState('255');
-	const [SCRed, setSCRed] = useState('255');
+	const [SColor, setSColor] = useState('#FFFFFF');
 	const [TOColor, setTOColor] = useState('#FFFFFF');
 	const [TOffBColor, setTOffBColor] = useState('#FFFFFF');
 	const [TOnBColor, setTOnBColor] = useState('#FFFFFF');
@@ -55,17 +48,15 @@ const MainPanel = () => {
 	const [AutoColors, setAutoColors] = useState([]);
 
 	// eslint-disable-next-line
-	const Colors = [SCColor, FTCRed, FTCGreen, FTCBlue, FBColor, SCRed, SCGreen,
-		SCBlue, SBColor, OPBCRed, OPBCGreen, OPBCBlue, TOnBColor, TOColor, TOffBColor];
+	const Colors = [SCColor, FTColor, FBColor, SColor, SBColor, TOnBColor, TOColor, TOffBColor];
 
-	const setColors = [setSCColor, setFTCRed, setFTCGreen, setFTCBlue, setFBColor, setSCRed, setSCGreen,
-		setSCBlue, setSBColor, setOPBCRed, setOPBCGreen, setOPBCBlue, setTOnBColor, setTOColor, setTOffBColor];
+	const setColors = [setSCColor, setFTColor, setFBColor, setSColor, setSBColor, setTOnBColor, setTOColor, setTOffBColor];
 
 	useEffect(() => {
-		if (hexColors(BGColor, NTColor)) {
-			setAutoColors(generateColors(NTColor, BGColor));
+		if (hexColors(OPBColor, NTColor)) {
+			setAutoColors(generateColors(NTColor, OPBColor));
 		}
-	}, [BGColor, NTColor]);
+	}, [OPBColor, NTColor]);
 
 	function setColorsToAuto () {
 		for (let i = 0; i < setColors.length; ++i) {
@@ -80,10 +71,6 @@ const MainPanel = () => {
 			setAuto(false);
 			colorSet.forEach(set => {
 				switch (set[0]) {
-					case 'background-color': {
-						setBGColor(set[1]);
-						break;
-					}
 					case '--sand-text-color': {
 						setNTColor(set[1]);
 						break;
@@ -94,9 +81,7 @@ const MainPanel = () => {
 					}
 					case '--sand-focus-text-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setFTCRed(colorsRGB[0]);
-						setFTCGreen(colorsRGB[1]);
-						setFTCBlue(colorsRGB[2]);
+						setFTColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-focus-bg-color': {
@@ -105,9 +90,7 @@ const MainPanel = () => {
 					}
 					case '--sand-selected-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setSCRed(colorsRGB[0]);
-						setSCGreen(colorsRGB[1]);
-						setSCBlue(colorsRGB[2]);
+						setSColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-selected-bg-color': {
@@ -116,9 +99,7 @@ const MainPanel = () => {
 					}
 					case '--sand-overlay-bg-color-rgb': {
 						const colorsRGB = set[1].split(',');
-						setOPBCRed(colorsRGB[0]);
-						setOPBCGreen(colorsRGB[1]);
-						setOPBCBlue(colorsRGB[2]);
+						setOPBColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
 						break;
 					}
 					case '--sand-toggle-on-bg-color': {
@@ -141,37 +122,11 @@ const MainPanel = () => {
 		}
 	}
 
-	function onChangeAllInput (props) {
-		const name = props?.name;
-		const colors = props?.colors;
-		switch (name) {
-			case 'Focused text color (RGB)': {
-				setFTCRed(colors[0]);
-				setFTCGreen(colors[1]);
-				setFTCBlue(colors[2]);
-				break;
-			}
-			case 'Selected color (RGB)': {
-				setSCRed(colors[0]);
-				setSCGreen(colors[1]);
-				setSCBlue(colors[2]);
-				break;
-			}
-			case 'Overlay Panel Background Color (RGB)': {
-				setOPBCRed(colors[0]);
-				setOPBCGreen(colors[1]);
-				setOPBCBlue(colors[2]);
-				break;
-			}
-			default: break;
-		}
-	}
-
 	function onChangeInput (props) {
-		const color = props?.color;
 		const event = props?.event;
 		const name = props?.name;
 		let value = event?.value;
+
 		if (name !== 'Skin Name') {
 			value = value.toUpperCase();
 		}
@@ -179,10 +134,6 @@ const MainPanel = () => {
 		switch (name) {
 			case 'Skin Name': {
 				setSkinName(value);
-				break;
-			}
-			case 'Background color': {
-				setBGColor(value);
 				break;
 			}
 			case 'Normal Text color': {
@@ -194,22 +145,7 @@ const MainPanel = () => {
 				break;
 			}
 			case 'Focused text color (RGB)': {
-				switch (color) {
-					case 'red' : {
-						setFTCRed(value);
-						break;
-					}
-					case 'green': {
-						setFTCGreen(value);
-						break;
-					}
-					case 'blue': {
-						setFTCBlue(value);
-						break;
-					}
-					default:
-						break;
-				}
+				setFTColor(value);
 				break;
 			}
 			case 'Focused Background color': {
@@ -217,22 +153,7 @@ const MainPanel = () => {
 				break;
 			}
 			case 'Selected color (RGB)': {
-				switch (color) {
-					case 'red' : {
-						setSCRed(value);
-						break;
-					}
-					case 'green': {
-						setSCGreen(value);
-						break;
-					}
-					case 'blue': {
-						setSCBlue(value);
-						break;
-					}
-					default:
-						break;
-				}
+				setSColor(value);
 				break;
 			}
 			case 'Selected Background Color': {
@@ -240,22 +161,7 @@ const MainPanel = () => {
 				break;
 			}
 			case 'Overlay Panel Background Color (RGB)': {
-				switch (color) {
-					case 'red' : {
-						setOPBCRed(value);
-						break;
-					}
-					case 'green': {
-						setOPBCGreen(value);
-						break;
-					}
-					case 'blue': {
-						setOPBCBlue(value);
-						break;
-					}
-					default:
-						break;
-				}
+				setOPBColor(value);
 				break;
 			}
 			case 'Toggle On Background Color': {
@@ -326,11 +232,10 @@ const MainPanel = () => {
 							<ColorFields
 								auto={auto}
 								AutoColors={AutoColors}
-								BGColor={BGColor}
+								OPBColor={OPBColor}
 								Colors={Colors}
 								name={skinName}
 								NTColor={NTColor}
-								onChangeAllInput={onChangeAllInput}
 								onChangeInput={onChangeInput}
 							/>
 						</Cell>
@@ -365,7 +270,7 @@ const MainPanel = () => {
 					<Row>
 						<OutputField
 							colors={
-								!auto ? [skinName, BGColor, NTColor, ...Colors] : [skinName, BGColor, NTColor, ...AutoColors]
+								!auto ? [skinName, OPBColor, NTColor, ...Colors] : [skinName, OPBColor, NTColor, ...AutoColors]
 							}
 						/>
 					</Row>
