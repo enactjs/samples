@@ -18,15 +18,17 @@ import ColorFields from '../components/ColorFields/ColorFields';
 import ImportSkin from '../components/ImportSkin/ImportSkin';
 import OutputField from '../components/OutputField/OutputField';
 
-import {checkColors, convertRGBToHex, generateColors, getColorsFromString, hexColors} from '../utils';
+import {
+	checkColors,
+	convertRGBToHex,
+	generateCSS,
+	generateColors,
+	getColorsFromString,
+	hexColors
+} from '../utils';
 
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
-
-// eslint-disable-next-line
-import skin from '../custom_skin.css';
-
-window.CUSTOM_SKIN = 'custom';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
@@ -201,6 +203,11 @@ const MainPanel = () => {
 	function turnAlertOff () {
 		setAlert(false);
 	}
+
+	const sheet = document.createElement('style');
+	const rest = auto ? AutoColors : Colors;
+	sheet.innerHTML=generateCSS([skinName, OPBColor, NTColor, ...rest]);
+	document.body?.appendChild(sheet);
 
 	return (
 		<Scroller>
