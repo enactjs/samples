@@ -39,8 +39,8 @@ const OutputField = kind({
 				<pre>
 					{text}
 				</pre>
-				<TooltipButton className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" skin="neutral" tooltipText="Copy to clipboard">Copy</TooltipButton>
-				<TooltipButton className={css.copyBtn} icon="files" onClick={generateFile} size="small" skin="neutral" tooltipText="Get CSS file">Generate CSS</TooltipButton>
+				<TooltipButton className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
+				<TooltipButton className={css.copyBtn} icon="files" onClick={generateFile} size="small" tooltipText="Get CSS file">Generate CSS</TooltipButton>
 			</div>
 		);
 	}});
