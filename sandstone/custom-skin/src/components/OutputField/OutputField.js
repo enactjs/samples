@@ -13,7 +13,8 @@ const OutputField = kind({
 	name: 'OutputField',
 
 	propTypes:{
-		colors: PropTypes.array
+		colors: PropTypes.array,
+		setDefaultState: PropTypes.func
 	},
 
 	handlers:{
@@ -28,7 +29,7 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({generateFile, text}) => {
+	render: ({generateFile, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -40,7 +41,8 @@ const OutputField = kind({
 					{text}
 				</pre>
 				<TooltipButton className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
-				<TooltipButton className={css.copyBtn} icon="files" onClick={generateFile} size="small" tooltipText="Get CSS file">Generate CSS</TooltipButton>
+				<TooltipButton className={css.copyBtn} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download Skin</TooltipButton>
+				<TooltipButton className={css.copyBtn} onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Back to Default</TooltipButton>
 			</div>
 		);
 	}});

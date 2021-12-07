@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@enact/core": "^4.0.0",
 		"@enact/i18n": "^4.0.0",
-		"@enact/sandstone": "https://github.com/enactjs/sandstone.git#feature/custom-skin",
+		"@enact/sandstone": "https://github.com/enactjs/sandstone.git#develop",
 		"@enact/spotlight": "^4.0.0",
 		"@enact/ui": "^4.0.0",
 		"ilib": "^14.6.0",
