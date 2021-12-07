@@ -204,6 +204,12 @@ const MainPanel = () => {
 		setAlert(false);
 	}
 
+	function setDefaultState () {
+		setAuto(true);
+		setNTColor('#FB9039');
+		setOPBColor('#855D94');
+	}
+
 	const sheet = document.createElement('style');
 	const rest = auto ? AutoColors : Colors;
 	sheet.innerHTML = generateCSS([skinName, OPBColor, NTColor, ...rest]);
@@ -279,6 +285,7 @@ const MainPanel = () => {
 							colors={
 								!auto ? [skinName, OPBColor, NTColor, ...Colors] : [skinName, OPBColor, NTColor, ...AutoColors]
 							}
+							setDefaultState={setDefaultState}
 						/>
 					</Row>
 				</Layout>
