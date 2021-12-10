@@ -1,38 +1,36 @@
+/* eslint-disable react/jsx-no-bind */
+
 import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
 import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-class ImageList extends Component {
-	static propTypes = {
-		dispatch: PropTypes.func,
-		imageitems: PropTypes.array
-	};
+const ImageList = (props) => {
+	const renderItem = ({...rest}) => (<ImageItem {...rest} />);
+	const
+		restCopy = Object.assign({}, props),
+		{imageitems} = props;
 
-	renderItem = ({...rest}) => (<ImageItem {...rest} />);
+	delete restCopy.dispatch;
+	delete restCopy.imageitems;
 
-	render = () => {
-		const
-			rest = Object.assign({}, this.props),
-			{imageitems} = this.props;
+	return (
+		<VirtualGridList
+			{...restCopy}
+			dataSize={imageitems.length}
+			itemRenderer={renderItem}
+			itemSize={{minHeight: ri.scale(540), minWidth: ri.scale(360)}}
+			spacing={ri.scale(42)}
+		/>
+	);
+};
 
-		delete rest.dispatch;
-		delete rest.imageitems;
-
-		return (
-			<VirtualGridList
-				{...rest}
-				dataSize={imageitems.length}
-				itemRenderer={this.renderItem}
-				itemSize={{minHeight: ri.scale(540), minWidth: ri.scale(360)}}
-				spacing={ri.scale(42)}
-			/>
-		);
-	};
-}
+ImageList.propTypes = {
+	dispatch: PropTypes.func,
+	imageitems: PropTypes.array
+};
 
 const mapStateToProps = ({data}) => ({
 	imageitems: data.dataOrder
