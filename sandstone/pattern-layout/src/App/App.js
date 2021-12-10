@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
@@ -5,7 +7,7 @@ import Button from '@enact/sandstone/Button';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useState} from 'react';
 
 import {importAll} from '../components/util';
 import Details from '../views/Details';
@@ -81,60 +83,52 @@ const Sample = kind({
 });
 
 const AppDecorator = hoc((config, Wrapped) => {
-	return class extends Component {
-		static displayName = 'AppDecorator';
+	const Component = (props) => {
+		const [debug, setDebug] = useState(props.defaultDebug);
+		const [index, setIndex] = useState(props.defaultIndex);
+		const [itemIndex, setItemIndex] = useState(props.defaultItemIndex);
 
-		static propTypes = {
-			defaultDebug: PropTypes.bool,
-			defaultIndex: PropTypes.number,
-			defaultItemIndex: PropTypes.number
+		const handleChangePanel = (ev) => {
+			forward('onChangePanel', ev, props);
+			setIndex(ev.index);
+			setItemIndex(ev.itemIndex);
 		};
 
-		static defaultProps = {
-			defaultDebug: false,
-			defaultIndex: 0,
-			defaultItemIndex: 0
-		};
-
-		constructor (props) {
-			super(props);
-
-			this.state = {
-				debug: this.props.defaultDebug,
-				index: this.props.defaultIndex,
-				itemIndex: this.props.defaultItemIndex
-			};
-		}
-
-		handleChangePanel = (ev) => {
-			forward('onChangePanel', ev, this.props);
-			this.setState({index: ev.index, itemIndex: ev.itemIndex});
-		};
-
-		handleToggleDebug = () => {
-			this.setState(state => {
-				const newState = {debug: !state.debug};
-				forward('onToggleDebug', newState, this.props);
-				return newState;
+		const handleToggleDebug = () => {
+			setDebug(prevDebug => {
+				const newState = {debug: !prevDebug};
+				forward('onToggleDebug', newState, props);
+				return !prevDebug;
 			});
 		};
+		const {...rest} = props;
+		delete rest.defaultDebug;
+		delete rest.defaultIndex;
+		delete rest.defaultItemIndex;
 
-		render () {
-			const {...rest} = this.props;
-			delete rest.defaultDebug;
-			delete rest.defaultIndex;
-			delete rest.defaultItemIndex;
-
-			return <Wrapped
+		return (
+			<Wrapped
 				{...rest}
-				debug={this.state.debug}
-				index={this.state.index}
-				itemIndex={this.state.itemIndex}
-				onChangePanel={this.handleChangePanel}
-				onToggleDebug={this.handleToggleDebug}
-			/>;
-		}
+				debug={debug}
+				index={index}
+				itemIndex={itemIndex}
+				onChangePanel={handleChangePanel}
+				onToggleDebug={handleToggleDebug}
+			/>
+		);
 	};
+	Component.displayName = 'AppDecorator';
+	Component.propTypes = {
+		defaultDebug: PropTypes.bool,
+		defaultIndex: PropTypes.number,
+		defaultItemIndex: PropTypes.number
+	};
+	Component.defaultProps = {
+		defaultDebug: false,
+		defaultIndex: 0,
+		defaultItemIndex: 0
+	};
+	return Component;
 });
 
 const AppBase = AppDecorator(Sample);
