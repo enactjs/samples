@@ -13,7 +13,7 @@ describe('Kitten Specs', () => {
 		const expected = content;
 		const actual = kitten.text();
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should callback with index when clicked', function () {
@@ -29,6 +29,6 @@ describe('Kitten Specs', () => {
 		const expected = index;
 		const actual = handleSelect.firstCall.args[0].index;
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 });

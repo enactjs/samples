@@ -52,7 +52,7 @@ describe('Redux reducer specs', () => {
 		const actual = reducer(undefined, {});
 		const expected = initialState;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).toStrictEqual(expected);
 	});
 
 	it('should handle CHANGE_COUNTRY', function () {
@@ -62,7 +62,7 @@ describe('Redux reducer specs', () => {
 		}).country;
 		const expected = 'korea';
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should handle CHANGE_CITY', function () {
@@ -72,7 +72,7 @@ describe('Redux reducer specs', () => {
 		}).city;
 		const expected = 'San Francisco';
 
-		expect(actual).equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should handle ZOOM', function () {
@@ -82,7 +82,7 @@ describe('Redux reducer specs', () => {
 		}).zoom;
 		const expected = true;
 
-		expect(actual).equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should return initial country given nonsense', function () {
@@ -94,6 +94,6 @@ describe('Redux reducer specs', () => {
 		}).country;
 		const expected = initialState.country;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).toStrictEqual(expected);
 	});
 });

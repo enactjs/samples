@@ -13,7 +13,7 @@ describe('reducer specs', () => {
 		const actual = reducer(undefined, {});
 		const expected = intialState;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).toStrictEqual(expected);
 	});
 
 	it('should handle SAVE_PROFILE_PHOTO', function () {
@@ -25,7 +25,7 @@ describe('reducer specs', () => {
 		}).saved;
 		const expected = savedState;
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should handle CHANGE_PHOTO_INDEX', function () {
@@ -37,7 +37,7 @@ describe('reducer specs', () => {
 		}).photoIndex;
 		const expected = newPhotoIndex;
 
-		expect(actual).equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should handle CHANGE_PHOTO_POSITION', function () {
@@ -49,7 +49,7 @@ describe('reducer specs', () => {
 		}).photoPosition;
 		const expected = photoPosition;
 
-		expect(actual).equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should return initial state given nonsense', function () {
@@ -62,6 +62,6 @@ describe('reducer specs', () => {
 		});
 		const expected = intialState;
 
-		expect(actual).to.deep.equal(expected);
+		expect(actual).toStrictEqual(expected);
 	});
 });
