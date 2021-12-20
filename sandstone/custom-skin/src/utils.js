@@ -44,7 +44,7 @@ const generateCSS = (colors) => {
 		const OverlayPanelBg = convertHexToRGB(colors[1]);
 
 		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${colors[0]} */\n` +
+			`	/* Skin Name: ${colors[0]}; The name of the skin */\n` +
 			`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
 			`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
 			`	--sand-focus-text-color-rgb: ${FocusedText[0]}, ${FocusedText[1]}, ${FocusedText[2]};` +
@@ -193,7 +193,7 @@ const hexColors = (color1, color2) => {
 const getColorsFromString = (colors) => {
 	try {
 		let colorSets = colors.map(color => color.split(':'));
-		colorSets = colorSets.map(colorSet => [colorSet[0], colorSet[1].split(';')[0].replace(/ /g, '')]);
+		colorSets = colorSets.map(colorSet => [colorSet[0], colorSet[1].split(';')[0].slice(1)]);
 		colorSets[0][1] = colorSets[0][1].split('*/')[0];
 
 		return colorSets;

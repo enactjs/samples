@@ -42,7 +42,7 @@ const OutputField = kind({
 				</pre>
 				<TooltipButton className={css.copyBtn} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
 				<TooltipButton className={css.copyBtn} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download Skin</TooltipButton>
-				<TooltipButton className={css.copyBtn} onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Back to Default</TooltipButton>
+				<TooltipButton className={css.copyBtn} icon="refresh" onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Back to Default</TooltipButton>
 			</div>
 		);
 	}});
