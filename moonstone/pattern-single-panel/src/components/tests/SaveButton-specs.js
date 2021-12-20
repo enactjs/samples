@@ -1,35 +1,28 @@
+import {FloatingLayerDecorator} from '@enact/ui/FloatingLayer';
 import {mount} from 'enzyme';
 
 import SaveButton from '../SaveButton.js';
 
+const FloatingLayerController = FloatingLayerDecorator('div');
+
 describe('SaveButton specs', () => {
 
-	// **NOTE: Needed if you want to test Popup or anything with a floatLayer
-	beforeEach(() => {
-		const div = document.createElement('div');
-		div.setAttribute('id', 'floatLayer');
-		document.body.appendChild(div);
-	});
+        it('should open Popup on Button click', function () {
 
-	afterEach(() => {
-		const div = document.getElementById('floatLayer');
-		document.body.removeChild(div);
-	});
-	// **End of hooks that are needed for to test with Popup or anything with a floatLayer
+                const subject = mount(
+                        <FloatingLayerController>
+                                <SaveButton />
+                        </FloatingLayerController>
+                );
 
-	it('should open Popup on Button click', function () {
+                const button = subject.find('Button');
 
-		const subject = mount(
-			<SaveButton />
-		);
+                button.simulate('click');
 
-		const button = subject.find('Button');
-		const popup = subject.find('Popup');
+                const popup = subject.find('Popup');
+                const actual = popup.prop('open');
 
-		button.simulate('click');
-		const actual = popup.prop('open');
-		const expected = true;
-
-		expect(actual).to.equal(expected);
-	});
+                expect(actual).toBeTruthy();
+        });
 });
+

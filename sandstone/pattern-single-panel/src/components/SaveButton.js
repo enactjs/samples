@@ -28,7 +28,7 @@ class SaveButton extends Component {
 			<Button onClick={this.handleOnSave}>
 				Save
 			</Button>
-			<Popup onClose={this.handleOnClose} open={this.state.saved} showCloseButton>
+			<Popup onClose={this.handleOnClose} open={this.state.saved}>
 				Saved!
 			</Popup>
 		</div>
