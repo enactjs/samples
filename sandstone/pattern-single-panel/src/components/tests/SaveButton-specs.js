@@ -7,21 +7,22 @@ const FloatingLayerController = FloatingLayerDecorator('div');
 
 describe('SaveButton specs', () => {
 
-        it('should open Popup on Button click', function () {
+	it('should open Popup on Button click', function () {
 
-                const subject = mount(
-                        <FloatingLayerController>
-                                <SaveButton />
-                        </FloatingLayerController>
-                );
+		const subject = mount(
+			<FloatingLayerController>
+				<SaveButton />
+			</FloatingLayerController>
+		);
 
-                const button = subject.find('Button');
+		const button = subject.find('Button');
 
-                button.simulate('click');
-                const popup = subject.find('Popup');
-                const actual = popup.prop('open');
+		button.simulate('click');
 
-                expect(actual).toBeTruthy();
-        });
+		const popup = subject.find('Popup');
+		const actual = popup.prop('open');
+
+		expect(actual).toBeTruthy();
+	});
 });
 

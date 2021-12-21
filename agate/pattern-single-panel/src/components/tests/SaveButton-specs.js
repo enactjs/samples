@@ -18,9 +18,8 @@ describe('SaveButton specs', () => {
 		const button = subject.find('Button');
 
 		button.simulate('click');
-		
-		const popup = subject.find('PopupBase');
 
+		const popup = subject.find('PopupBase');
 		const actual = popup.prop('open');
 		const expected = true;
 
