@@ -44,7 +44,7 @@ const generateCSS = (colors) => {
 		const OverlayPanelBg = convertHexToRGB(colors[1]);
 
 		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${colors[0]}; The name of the skin */\n` +
+			`	/* Skin Name: ${colors[0] ? colors[0] : 'Untitled'}; /* The name of the skin */\n` +
 			`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
 			`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
 			`	--sand-focus-text-color-rgb: ${FocusedText[0]}, ${FocusedText[1]}, ${FocusedText[2]};` +
