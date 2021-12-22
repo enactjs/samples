@@ -25,7 +25,7 @@ findApps()
 				shell.cd(file.fullParentDir);
 				const result = shell.exec('npm install', {silent: true});
 				if (result.code !== 0) {
-					console.log(`${file.parentDir} failed to build: ${result.stdout}`);
+					console.log(`${file.parentDir} failed to bootstrap: ${result.stdout}`);
 					error = true;
 				}
 			}
