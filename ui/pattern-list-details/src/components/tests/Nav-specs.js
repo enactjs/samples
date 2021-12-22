@@ -11,13 +11,14 @@ describe('MainView specs', () => {
 		);
 
 		const Nav = subject.find('Nav');
-		const button = Nav.find('Button').last();
+		const button = Nav.find('GroupItem').last();
 
 		button.simulate('click');
+
 		const actual = subject.state('country');
 		const expected = 'japan';
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 });
