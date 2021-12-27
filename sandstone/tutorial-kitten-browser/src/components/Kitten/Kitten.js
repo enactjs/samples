@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import css from './Kitten.module.less';
 
+const SpottableDiv = Spottable('div');
+
 const KittenBase = kind({
 	name: 'Kitten',
 
@@ -41,15 +43,15 @@ const KittenBase = kind({
 		delete rest.index;
 
 		return (
-			<div {...rest} onClick={onSelect}>
+			<SpottableDiv {...rest} onClick={onSelect}>
 				<img src={url} alt="Kitten" width={size} height={size} />
 				<div>{children}</div>
-			</div>
+			</SpottableDiv>
 		);
 	}
 });
 
-const Kitten = Spottable(KittenBase);
+const Kitten = KittenBase;
 
 export default Kitten;
 export {
