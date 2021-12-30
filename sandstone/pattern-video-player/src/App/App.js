@@ -38,7 +38,7 @@ const AppBase = ({className, ...rest}) => {
 		videoRef.current.hideControls();
 		setPanelsVisible(true);
 	};
-	const handelVideoIndexChange = (index) => setVideoIndex(index);
+	const handleVideoIndexChange = (index) => setVideoIndex(index);
 	const {source, desc, ...restVideo} = getVideo(videoIndex);
 	delete rest.panelIndex;
 	delete rest.videoIndex;
@@ -67,7 +67,7 @@ const AppBase = ({className, ...rest}) => {
 					<MainPanel
 						onHidePanels={handleHidePanelsClick}
 						onNextPanel={handleNextPanelClick}
-						onVideoIndexChange={handelVideoIndexChange}
+						onVideoIndexChange={handleVideoIndexChange}
 						spotlightId="main-panel"
 						title="Videos"
 						videoIndex={videoIndex}
