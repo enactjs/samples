@@ -17,6 +17,7 @@ const Body = ({cities, selectedCountry, ...rest}) => {
 		const nextCity = cities[selectedCountry][0];
 		setCity(nextCity);
 	}, [cities, selectedCountry]);
+
 	const handleCityChange = ({data: selectedCity}) => setCity(selectedCity);
 	const handleZoom = () => {
 		setZoom(!zoom);
