@@ -2,7 +2,6 @@
 
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
-import PropTypes from 'prop-types';
 import {useState} from 'react';
 
 const SaveButton = (props) => {
