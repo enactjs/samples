@@ -1,5 +1,4 @@
 import {mount} from 'enzyme';
-import sinon from 'sinon';
 import Kitten from '../Kitten';
 
 describe('Kitten Specs', () => {
@@ -13,12 +12,12 @@ describe('Kitten Specs', () => {
 		const expected = content;
 		const actual = kitten.text();
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should callback with index when clicked', function () {
 		let index = 0;
-		const handleSelect = sinon.spy();
+		const handleSelect = jest.fn();
 
 		const kitten = mount(
 			<Kitten index={0} onSelect={handleSelect} />
@@ -27,8 +26,8 @@ describe('Kitten Specs', () => {
 		kitten.simulate('click', {});
 
 		const expected = index;
-		const actual = handleSelect.firstCall.args[0].index;
+		const actual = handleSelect.mock.calls[0][0].index;
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 });

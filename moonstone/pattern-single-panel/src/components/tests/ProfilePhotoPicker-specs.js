@@ -10,13 +10,13 @@ describe('ProfilePhotoPicker specs', () => {
 			<ProfilePhotoPicker />
 		);
 
-		const profilePhoto = subject.find('Image');
-
 		subject.setState({photoIndex: 2});
-		const actual = profilePhoto.node.props.src;
+
+		const profilePhoto = subject.find('Image');
+		const actual = profilePhoto.getElements()[0].props.src;
 		const expected = imageURLs[2];
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 	it('should change ProfilePhoto background-position', function () {
@@ -25,12 +25,13 @@ describe('ProfilePhotoPicker specs', () => {
 			<ProfilePhotoPicker />
 		);
 
-		const profilePhoto = subject.find('Image');
-
 		subject.setState({photoPosition: -75});
-		const actual = profilePhoto.node.props.style.backgroundPosition;
+
+		const profilePhoto = subject.find('Image');
+		const actual = profilePhoto.getElements()[0].props.style.backgroundPosition;
 		const expected = '-75px';
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 });
+

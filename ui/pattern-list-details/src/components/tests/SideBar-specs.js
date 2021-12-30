@@ -16,13 +16,14 @@ describe('SideBar specs', () => {
 		);
 
 		const SideBar = subject.find('SideBar');
-		const Item = SideBar.find('SelectableItem').last();
+		const Item = SideBar.find('GroupItem').last();
 
 		Item.simulate('click');
+
 		const actual = subject.state('city');
 		const expected = 'Kyoto';
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBe(expected);
 	});
 
 });
