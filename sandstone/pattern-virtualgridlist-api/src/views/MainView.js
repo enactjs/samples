@@ -14,10 +14,12 @@ import css from './MainView.module.less';
 const albums = ['Family', 'Car', 'Travel'];
 
 const MainView = (props) => {
-	let scrollToRef = useRef(null);
+	const scrollToRef = useRef(null);
+
 	useEffect(() => {
 		scrollToRef.current({index: 0, animate: false, focus: true});
 	});
+
 	useEffect(() => {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
@@ -27,6 +29,7 @@ const MainView = (props) => {
 	const onChange = ({album}) => {
 		props.onChangeAlbum(album);
 	};
+
 	const getScrollTo = (scrollTo) => {
 		scrollToRef.current = scrollTo;
 	};

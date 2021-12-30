@@ -3,12 +3,11 @@
 import Item from '@enact/sandstone/Item';
 import PropTypes from 'prop-types';
 
-
-const SampleItem = (props) => {
+const SampleItem = ({children, history, path, ...rest}) => {
 	const itemSelect = () => {
-		props.history.push({pathname: props.path});
+		history.push({pathname: path});
 	};
-	const {children, ...rest} = props;
+
 	return (
 		<Item {...rest} onClick={itemSelect}>
 			{children}

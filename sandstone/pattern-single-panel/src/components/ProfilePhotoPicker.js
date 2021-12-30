@@ -31,10 +31,10 @@ const imageComponents = imageURLs.map(url => {
 });
 
 const ProfilePhotoPicker = (props) => {
-	const [photoIndex, setphotoIndex] = useState(0);
-	const [photoPosition, setphotoPosition] = useState(-100);
-	const handlePickerChange = (ev) => setphotoIndex(ev.value);
-	const handleSliderChange = (ev) => setphotoPosition(ev.value);
+	const [photoIndex, setPhotoIndex] = useState(0);
+	const [photoPosition, setPhotoPosition] = useState(-100);
+	const handlePickerChange = (ev) => setPhotoIndex(ev.value);
+	const handleSliderChange = (ev) => setPhotoPosition(ev.value);
 
 	return (
 		<Column
@@ -81,4 +81,4 @@ ProfilePhotoPicker.propTypes = {
 };
 
 export default ProfilePhotoPicker;
-export {imageURLs};
+export {ProfilePhotoPicker, imageURLs};

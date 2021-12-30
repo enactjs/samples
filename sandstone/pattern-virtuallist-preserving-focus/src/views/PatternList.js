@@ -9,15 +9,14 @@ import css from './PatternList.module.less';
 
 const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
 
-const PatternList = (props) => {
+const PatternList = ({id, onClick, ...rest}) => {
 	// eslint-disable-next-line
 	const renderItem = ({index, ...rest}) => (
-		<Item {...rest} onClick={props.onClick}>
+		<Item {...rest} onClick={onClick}>
 			{items[index]}
 		</Item>
 	);
-	const {id, ...rest} = props;
-	delete rest.onClick;
+
 	return (
 		<VirtualList
 			{...rest}

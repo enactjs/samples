@@ -7,21 +7,18 @@ import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-const ImageList = (props) => {
+const ImageList = ({imageitems, ...rest}) => {
+	// eslint-disable-next-line
 	const renderItem = ({...rest}) => (<ImageItem {...rest} />);
-	const
-		restCopy = Object.assign({}, props),
-		{imageitems} = props;
 
-	delete restCopy.dispatch;
-	delete restCopy.imageitems;
+	delete rest.dispatch;
 
 	return (
 		<VirtualGridList
-			{...restCopy}
+			{...rest}
 			dataSize={imageitems.length}
 			itemRenderer={renderItem}
-			itemSize={{minHeight: ri.scale(540), minWidth: ri.scale(360)}}
+			itemSize={{minHeight: ri.scale(570), minWidth: ri.scale(688)}}
 			spacing={ri.scale(42)}
 		/>
 	);

@@ -11,16 +11,16 @@ import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from 
 
 import css from './App.module.less';
 
-const App = (props) => {
+const App = ({brightness, eyeComfortMode, dispatch}) => {
 	useEffect(() => {
 		if (typeof window.PalmSystem !== 'undefined') {
-			props.dispatch(getSystemSettings({
+			dispatch(getSystemSettings({
 				category: 'picture',
 				key: 'brightness'
 			}));
 
 			// This LS2Request is WITH subscription
-			props.dispatch(getSystemSettings({
+			dispatch(getSystemSettings({
 				category: 'picture',
 				key: 'eyeComfortMode',
 				subscribe: true
@@ -28,9 +28,9 @@ const App = (props) => {
 		}
 	}, []);
 	const handleDecreaseBrightness = () => {
-		let brightnessDec = Number(props.brightness);
+		let brightnessDec = Number(brightness);
 		brightnessDec = brightnessDec !== 0 ? brightnessDec - 10 : brightnessDec;
-		return props.dispatch(setSystemSettings({
+		return dispatch(setSystemSettings({
 			category: 'picture',
 			settings: {
 				brightness: String(brightnessDec)
@@ -38,9 +38,9 @@ const App = (props) => {
 		}));
 	};
 	const handleIncreaseBrightness = () => {
-		let brightnessInc = Number(props.brightness);
+		let brightnessInc = Number(brightness);
 		brightnessInc = brightnessInc !== 100 ? brightnessInc + 10 : brightnessInc;
-		return props.dispatch(setSystemSettings({
+		return dispatch(setSystemSettings({
 			category: 'picture',
 			settings: {
 				brightness: String(brightnessInc)
@@ -51,7 +51,7 @@ const App = (props) => {
 	const onEyeComfortModeToggle = () => setSystemSettingsSubscribed({
 		category: 'picture',
 		settings: {
-			'eyeComfortMode': props.eyeComfortMode === 'on' ? 'off' : 'on'
+			'eyeComfortMode': eyeComfortMode === 'on' ? 'off' : 'on'
 		}
 	});
 	const checkSystem = () => {
@@ -59,7 +59,7 @@ const App = (props) => {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
 	};
-	const {brightness, eyeComfortMode} = props;
+
 	if (typeof window.PalmSystem === 'undefined') {
 		return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
 	}

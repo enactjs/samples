@@ -9,18 +9,19 @@ import SideBar from '../components/SideBar';
 
 import css from './Body.module.less';
 
-const Body = (props) => {
-	const [city, setCity] = useState(props.cities['usa'][0]);
+const Body = ({cities, selectedCountry, ...rest}) => {
+	const [city, setCity] = useState(cities['usa'][0]);
 	const [zoom, setZoom] = useState(false);
+
 	useEffect( () => {
-		const nextCity = props.cities[props.selectedCountry][0];
+		const nextCity = cities[selectedCountry][0];
 		setCity(nextCity);
-	}, [props.cities, props.selectedCountry]);
+	}, [cities, selectedCountry]);
 	const handleCityChange = ({data: selectedCity}) => setCity(selectedCity);
 	const handleZoom = () => {
 		setZoom(!zoom);
 	};
-	const {cities, selectedCountry, ...rest} = props;
+
 	return (
 		<Row {...rest} className={css.body}>
 			<Cell

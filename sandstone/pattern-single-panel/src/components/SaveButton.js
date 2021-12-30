@@ -23,8 +23,4 @@ const SaveButton = (props) => {
 	);
 };
 
-SaveButton.propTypes = {
-	className: PropTypes.string
-};
-
 export default SaveButton;
