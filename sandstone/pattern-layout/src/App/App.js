@@ -96,8 +96,8 @@ const AppDecorator = hoc((config, Wrapped) => {
 
 		const handleToggleDebug = () => {
 			setDebug((prevDebug) => {
-				const newDebug = {debug: !prevDebug};
-				forward('onToggleDebug', newDebug, rest);
+				const nextDebug = {debug: !prevDebug};
+				forward('onToggleDebug', nextDebug, rest);
 
 				return !prevDebug;
 			});
