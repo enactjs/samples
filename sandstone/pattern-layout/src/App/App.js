@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
@@ -7,7 +5,7 @@ import Button from '@enact/sandstone/Button';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import {importAll} from '../components/util';
 import Details from '../views/Details';
@@ -88,20 +86,20 @@ const AppDecorator = hoc((config, Wrapped) => {
 		const [index, setIndex] = useState(defaultIndex);
 		const [itemIndex, setItemIndex] = useState(defaultItemIndex);
 
-		const handleChangePanel = (ev) => {
+		const handleChangePanel = useCallback((ev) => {
 			forward('onChangePanel', ev, rest);
 			setIndex(ev.index);
 			setItemIndex(ev.itemIndex);
-		};
+		}, [rest]);
 
-		const handleToggleDebug = () => {
+		const handleToggleDebug = useCallback(() => {
 			setDebug((prevDebug) => {
 				const nextDebug = {debug: !prevDebug};
 				forward('onToggleDebug', nextDebug, rest);
 
 				return !prevDebug;
 			});
-		};
+		}, [rest]);
 
 		return (
 			<Wrapped

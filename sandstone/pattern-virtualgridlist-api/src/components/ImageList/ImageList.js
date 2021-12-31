@@ -1,15 +1,14 @@
-/* eslint-disable react/jsx-no-bind */
-
 import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
+import {useCallback} from 'react';
 import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
 const ImageList = ({imageitems, ...rest}) => {
 	// eslint-disable-next-line
-	const renderItem = ({...rest}) => (<ImageItem {...rest} />);
+	const renderItem = useCallback(({...rest}) => (<ImageItem {...rest} />), []);
 
 	delete rest.dispatch;
 

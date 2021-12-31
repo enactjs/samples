@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Heading from '@enact/ui/Heading';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import Nav from '../components/Nav';
 
@@ -20,10 +18,10 @@ const countryList = Object.keys(cities);
 
 const MainView = (props) => {
 	const [country, setCountry] = useState(countryList[0]);
-	const handleCountryChange = ({data: selectedCountry}) => {
+	const handleCountryChange = useCallback(({data: selectedCountry}) => {
 		selectedCountry = selectedCountry.toLowerCase();
 		setCountry(selectedCountry);
-	};
+	}, []);
 
 	return (
 		<div {...props} className={css.main}>

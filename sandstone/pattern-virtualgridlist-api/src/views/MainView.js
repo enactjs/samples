@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-no-bind */
-
 import PropTypes from 'prop-types';
-import {useEffect, useRef} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
@@ -13,7 +11,7 @@ import css from './MainView.module.less';
 
 const albums = ['Family', 'Car', 'Travel'];
 
-const MainView = (props) => {
+const MainView = ({onChangeAlbum}) => {
 	const scrollToRef = useRef(null);
 
 	useEffect(() => {
@@ -26,13 +24,13 @@ const MainView = (props) => {
 		scrollToRef.current({index: 60, animate: false, focus: true});
 	}, []);
 
-	const onChange = ({album}) => {
-		props.onChangeAlbum(album);
-	};
+	const onChange = useCallback(({album}) => {
+		onChangeAlbum(album);
+	}, [onChangeAlbum]);
 
-	const getScrollTo = (scrollTo) => {
+	const getScrollTo = useCallback((scrollTo) => {
 		scrollToRef.current = scrollTo;
-	};
+	}, []);
 
 	return (
 		<div className={css.mainView}>

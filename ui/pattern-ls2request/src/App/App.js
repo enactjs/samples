@@ -1,10 +1,7 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import Button from '@enact/ui/Button';
 import Item from '@enact/ui/Item';
 import PropTypes from 'prop-types';
-import {useEffect} from 'react';
+import {useCallback, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
@@ -26,8 +23,8 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 				subscribe: true
 			}));
 		}
-	}, []);
-	const handleDecreaseBrightness = () => {
+	}, [dispatch]);
+	const handleDecreaseBrightness = useCallback(() => {
 		let brightnessDec = Number(brightness);
 		brightnessDec = brightnessDec !== 0 ? brightnessDec - 10 : brightnessDec;
 		return dispatch(setSystemSettings({
@@ -36,8 +33,8 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 				brightness: String(brightnessDec)
 			}
 		}));
-	};
-	const handleIncreaseBrightness = () => {
+	}, [brightness, dispatch]);
+	const handleIncreaseBrightness = useCallback(() => {
 		let brightnessInc = Number(brightness);
 		brightnessInc = brightnessInc !== 100 ? brightnessInc + 10 : brightnessInc;
 		return dispatch(setSystemSettings({
@@ -46,14 +43,14 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 				brightness: String(brightnessInc)
 			}
 		}));
-	};
+	}, [brightness, dispatch]);
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
-	const onEyeComfortModeToggle = () => setSystemSettingsSubscribed({
+	const onEyeComfortModeToggle = useCallback(() => setSystemSettingsSubscribed({
 		category: 'picture',
 		settings: {
 			'eyeComfortMode': eyeComfortMode === 'on' ? 'off' : 'on'
 		}
-	});
+	}), [eyeComfortMode]);
 	const checkSystem = () => {
 		if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
 			return <div>This test will only function correctly on webOS systems!</div>;

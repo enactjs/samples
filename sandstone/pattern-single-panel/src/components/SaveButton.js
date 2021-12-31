@@ -1,14 +1,12 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 const SaveButton = (props) => {
 	const [saved, setSaved] = useState(false);
 
-	const handleOnSave = () => setSaved(true);
-	const handleOnClose = () => setSaved(false);
+	const handleOnSave = useCallback(() => setSaved(true), []);
+	const handleOnClose = useCallback(() => setSaved(false), []);
 
 	return (
 		<div {...props}>

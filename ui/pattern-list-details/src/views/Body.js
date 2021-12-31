@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-no-bind */
-
 import {Cell, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
@@ -18,10 +16,10 @@ const Body = ({cities, selectedCountry, ...rest}) => {
 		setCity(nextCity);
 	}, [cities, selectedCountry]);
 
-	const handleCityChange = ({data: selectedCity}) => setCity(selectedCity);
-	const handleZoom = () => {
+	const handleCityChange = useCallback(({data: selectedCity}) => setCity(selectedCity), []);
+	const handleZoom = useCallback(() => {
 		setZoom(!zoom);
-	};
+	}, [zoom]);
 
 	return (
 		<Row {...rest} className={css.body}>

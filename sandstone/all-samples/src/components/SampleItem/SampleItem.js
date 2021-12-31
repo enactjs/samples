@@ -1,12 +1,11 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Item from '@enact/sandstone/Item';
 import PropTypes from 'prop-types';
+import {useCallback} from 'react';
 
 const SampleItem = ({children, history, path, ...rest}) => {
-	const itemSelect = () => {
+	const itemSelect = useCallback(() => {
 		history.push({pathname: path});
-	};
+	}, [history, path]);
 
 	return (
 		<Item {...rest} onClick={itemSelect}>

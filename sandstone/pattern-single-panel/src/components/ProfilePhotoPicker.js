@@ -1,12 +1,10 @@
-/* eslint-disable react/jsx-no-bind */
-
 import BodyText from '@enact/sandstone/BodyText';
 import Image from '@enact/sandstone/Image';
 import Picker from '@enact/sandstone/Picker';
 import Slider from '@enact/sandstone/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
@@ -33,8 +31,8 @@ const imageComponents = imageURLs.map(url => {
 const ProfilePhotoPicker = (props) => {
 	const [photoIndex, setPhotoIndex] = useState(0);
 	const [photoPosition, setPhotoPosition] = useState(-100);
-	const handlePickerChange = (ev) => setPhotoIndex(ev.value);
-	const handleSliderChange = (ev) => setPhotoPosition(ev.value);
+	const handlePickerChange = useCallback((ev) => setPhotoIndex(ev.value), []);
+	const handleSliderChange = useCallback((ev) => setPhotoPosition(ev.value), []);
 
 	return (
 		<Column

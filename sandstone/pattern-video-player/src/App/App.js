@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Button from '@enact/sandstone/Button';
 import {MediaControls} from '@enact/sandstone/MediaPlayer';
 import {Panels} from '@enact/sandstone/Panels';
@@ -7,7 +5,7 @@ import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -31,14 +29,14 @@ const AppBase = ({className, ...rest}) => {
 		}
 	}, [panelsVisible]);
 
-	const handleNextPanelClick = () => setPanelIndex(prevPanelIndex => (prevPanelIndex + 1));
-	const handleBack = ({index}) => setPanelIndex(index);
-	const handleHidePanelsClick = () => setPanelsVisible(false);
-	const handleShowPanelsClick = () => {
+	const handleNextPanelClick = useCallback(() => setPanelIndex(prevPanelIndex => (prevPanelIndex + 1)), []);
+	const handleBack = useCallback(({index}) => setPanelIndex(index), []);
+	const handleHidePanelsClick = useCallback(() => setPanelsVisible(false), []);
+	const handleShowPanelsClick = useCallback(() => {
 		videoRef.current.hideControls();
 		setPanelsVisible(true);
-	};
-	const handleVideoIndexChange = (index) => setVideoIndex(index);
+	}, []);
+	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
 	const {source, desc, ...restVideo} = getVideo(videoIndex);
 	delete rest.panelIndex;
 	delete rest.videoIndex;

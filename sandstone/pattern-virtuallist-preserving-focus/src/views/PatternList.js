@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Item from '@enact/sandstone/Item';
 import VirtualList from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
+import {useCallback} from 'react';
 
 import css from './PatternList.module.less';
 
@@ -11,11 +10,11 @@ const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slic
 
 const PatternList = ({id, onClick, ...rest}) => {
 	// eslint-disable-next-line
-	const renderItem = ({index, ...rest}) => (
+	const renderItem = useCallback(({index, ...rest}) => (
 		<Item {...rest} onClick={onClick}>
 			{items[index]}
 		</Item>
-	);
+	), [onClick]);
 
 	return (
 		<VirtualList
