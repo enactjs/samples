@@ -9,7 +9,7 @@ const videos = [
 	{
 		title: 'Big Buck Bunny',
 		poster: 'http://media.w3.org/2010/05/bunny/poster.png',
-		source: 'http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov',
+		source: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
 		desc: '\'Big\' Buck wakes up in his rabbit hole, only to be pestered by three critters, Gimera, Frank and Rinky. When Gimera kills a butterfly, Buck decides on a payback Predator-style.'
 	},
 	{
