@@ -13,6 +13,7 @@ const LocaleSwitchBase = ({rtl, updateLocale, updateReduxLocale}) => {
 	const handleChange = useCallback((ev) => setValue(ev.value), []);
 	const updateContext = useCallback(() => updateLocale(value), [updateLocale, value]);
 	const updateRedux = useCallback(() => updateReduxLocale(value), [updateReduxLocale, value]);
+
 	return (
 		<div>
 			<p>This locale {rtl ? 'is' : 'isn\'t'} RTL</p>

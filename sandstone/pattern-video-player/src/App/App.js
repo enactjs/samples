@@ -16,10 +16,10 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-const AppBase = ({className, ...rest}) => {
-	const [panelIndex, setPanelIndex] = useState(rest.panelIndex);
+const AppBase = ({className, panelId, videoId, ...rest}) => {
+	const [panelIndex, setPanelIndex] = useState(panelId);
 	const [panelsVisible, setPanelsVisible] = useState(false);
-	const [videoIndex, setVideoIndex] = useState(rest.videoIndex);
+	const [videoIndex, setVideoIndex] = useState(videoId);
 	const videoRef = useRef(null);
 
 	useEffect(() => {
@@ -38,8 +38,6 @@ const AppBase = ({className, ...rest}) => {
 	}, []);
 	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
 	const {source, desc, ...restVideo} = getVideo(videoIndex);
-	delete rest.panelIndex;
-	delete rest.videoIndex;
 
 	return (
 		<div {...rest} className={className + ' ' + css.app}>
@@ -85,7 +83,7 @@ AppBase.propTypes = {
 	 * @default 0
 	 * @public
 	 */
-	panelIndex: PropTypes.number,
+	panelId: PropTypes.number,
 
 	/**
 	 * Assign an alternate initial video to load first.
@@ -94,12 +92,12 @@ AppBase.propTypes = {
 	 * @default 0
 	 * @public
 	 */
-	videoIndex: PropTypes.number
+	videoId: PropTypes.number
 };
 
 AppBase.defaultProps = {
-	panelIndex: 0,
-	videoIndex: 0
+	panelId: 0,
+	videoId: 0
 };
 
 const App = ThemeDecorator(AppBase);

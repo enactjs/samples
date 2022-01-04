@@ -9,9 +9,8 @@ import css from './PatternList.module.less';
 const items = Array.from(new Array(1000)).map((n, i) => `Item  ${('00' + i).slice(-3)}`);
 
 const PatternList = ({id, onClick, ...rest}) => {
-	// eslint-disable-next-line
-	const renderItem = useCallback(({index, ...rest}) => (
-		<Item {...rest} onClick={onClick}>
+	const renderItem = useCallback(({index, ...restProps}) => (
+		<Item {...restProps} onClick={onClick}>
 			{items[index]}
 		</Item>
 	), [onClick]);

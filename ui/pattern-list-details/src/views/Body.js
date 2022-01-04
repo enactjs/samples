@@ -11,7 +11,7 @@ const Body = ({cities, selectedCountry, ...rest}) => {
 	const [city, setCity] = useState(cities['usa'][0]);
 	const [zoom, setZoom] = useState(false);
 
-	useEffect( () => {
+	useEffect(() => {
 		const nextCity = cities[selectedCountry][0];
 		setCity(nextCity);
 	}, [cities, selectedCountry]);

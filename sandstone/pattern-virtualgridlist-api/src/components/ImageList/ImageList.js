@@ -7,8 +7,7 @@ import {connect} from 'react-redux';
 import ImageItem from '../ImageItem';
 
 const ImageList = ({imageitems, ...rest}) => {
-	// eslint-disable-next-line
-	const renderItem = useCallback(({...rest}) => (<ImageItem {...rest} />), []);
+	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
 	delete rest.dispatch;
 
@@ -18,7 +17,6 @@ const ImageList = ({imageitems, ...rest}) => {
 			dataSize={imageitems.length}
 			itemRenderer={renderItem}
 			itemSize={{minHeight: ri.scale(570), minWidth: ri.scale(688)}}
-			spacing={ri.scale(42)}
 		/>
 	);
 };

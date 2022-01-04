@@ -3,7 +3,6 @@ import Image from '@enact/sandstone/Image';
 import Picker from '@enact/sandstone/Picker';
 import Slider from '@enact/sandstone/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
-import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 
 import car from '../../assets/images/car.jpeg';
@@ -72,10 +71,6 @@ const ProfilePhotoPicker = (props) => {
 			</Cell>
 		</Column>
 	);
-};
-
-ProfilePhotoPicker.propTypes = {
-	className: PropTypes.string
 };
 
 export default ProfilePhotoPicker;
