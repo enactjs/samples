@@ -216,81 +216,83 @@ const MainPanel = () => {
 	document.body?.appendChild(sheet);
 
 	return (
-		<Scroller>
-			<div className={css.mainPanel}>
-				<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
-				<Layout orientation="vertical">
-					<Row>
-						<Cell>
-							<AutoPopup
-								auto={auto}
-								openWarning={openWarning}
-								setAuto={setAuto}
-								setColorsToAuto={setColorsToAuto}
-								setOpenWarning={setOpenWarning}
-							/>
-							<Alert className={styles.customAlert} open={alert} type="overlay">
-								<BodyText centered size="small">Wrong type of file imported!</BodyText>
-								<Button onClick={turnAlertOff} size="small">Close</Button>
-							</Alert>
-							<Row>
-								<Cell>
-									<ImportSkin setColors={setColorsFromImport} />
-								</Cell>
-								<Cell>
-									<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
-									<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
-								</Cell>
-							</Row>
-							<ColorFields
-								auto={auto}
-								AutoColors={AutoColors}
-								OPBColor={OPBColor}
-								Colors={Colors}
-								name={skinName}
-								NTColor={NTColor}
-								onChangeInput={onChangeInput}
-							/>
-						</Cell>
-						<Cell size="35%" className={css.previewSection}>
-							<Column className={css.previewComponents}>
-								<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
-								<Row className={css.previewButtons}>
-									<Button>Click</Button>
-									<Button disabled>Disabled</Button>
+		<Layout className={css.mainPanel}>
+			<Cell className={css.customizeSection}>
+				<Scroller>
+					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
+					<Layout orientation="vertical">
+						<Row>
+							<Cell>
+								<AutoPopup
+									auto={auto}
+									openWarning={openWarning}
+									setAuto={setAuto}
+									setColorsToAuto={setColorsToAuto}
+									setOpenWarning={setOpenWarning}
+								/>
+								<Alert className={styles.customAlert} open={alert} type="overlay">
+									<BodyText centered size="small">Wrong type of file imported!</BodyText>
+									<Button onClick={turnAlertOff} size="small">Close</Button>
+								</Alert>
+								<Row>
+									<Cell>
+										<ImportSkin setColors={setColorsFromImport} />
+									</Cell>
+									<Cell>
+										<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
+										<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
+									</Cell>
 								</Row>
-								<Row className={css.previewButtons}>
-									<Button selected>Selected</Button>
-									<Button disabled selected>Disabled</Button>
-								</Row>
-								<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
-								<SwitchItem>Toggle</SwitchItem>
-								<Slider />
-								<RangePicker defaultValue={0} max={13} min={0} />
-								<Dropdown className={css.previewDropdown}>
-									{['Item 1', 'Item 2', 'Item 3']}
-								</Dropdown>
-								<Button className={css.previewPopup} onClick={handleOpenPopup}>
-									Popup
-								</Button>
-								<Popup open={openPopup} position="right">
-									<BodyText centered>Hello</BodyText>
-									<Button onClick={handleOpenPopup}>Bye</Button>
-								</Popup>
-							</Column>
-						</Cell>
+								<ColorFields
+									auto={auto}
+									AutoColors={AutoColors}
+									OPBColor={OPBColor}
+									Colors={Colors}
+									name={skinName}
+									NTColor={NTColor}
+									onChangeInput={onChangeInput}
+								/>
+							</Cell>
+						</Row>
+						<Row>
+							<OutputField
+								colors={
+									!auto ? [skinName, OPBColor, NTColor, ...Colors] : [skinName, OPBColor, NTColor, ...AutoColors]
+								}
+								setDefaultState={setDefaultState}
+							/>
+						</Row>
+					</Layout>
+				</Scroller>
+			</Cell>
+			<Cell size="35%" className={css.previewSection}>
+				<Column className={css.previewComponents}>
+					<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
+					<Row className={css.previewButtons}>
+						<Button>Click</Button>
+						<Button disabled>Disabled</Button>
 					</Row>
-					<Row>
-						<OutputField
-							colors={
-								!auto ? [skinName, OPBColor, NTColor, ...Colors] : [skinName, OPBColor, NTColor, ...AutoColors]
-							}
-							setDefaultState={setDefaultState}
-						/>
+					<Row className={css.previewButtons}>
+						<Button selected>Selected</Button>
+						<Button disabled selected>Disabled</Button>
 					</Row>
-				</Layout>
-			</div>
-		</Scroller>
+					<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
+					<SwitchItem>Toggle</SwitchItem>
+					<Slider />
+					<RangePicker defaultValue={0} max={13} min={0} />
+					<Dropdown className={css.previewDropdown}>
+						{['Item 1', 'Item 2', 'Item 3']}
+					</Dropdown>
+					<Button className={css.previewPopup} onClick={handleOpenPopup}>
+						Popup
+					</Button>
+					<Popup open={openPopup} position="right">
+						<BodyText centered>Hello</BodyText>
+						<Button onClick={handleOpenPopup}>Bye</Button>
+					</Popup>
+				</Column>
+			</Cell>
+		</Layout>
 	);
 };
 
