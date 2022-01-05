@@ -13,7 +13,7 @@ const SaveButton = (props) => {
 			<Button onClick={handleOnSave}>
 				Save
 			</Button>
-			<Popup onClose={handleOnClose} open={saved} showCloseButton>
+			<Popup onClose={handleOnClose} open={saved}>
 				Saved!
 			</Popup>
 		</div>

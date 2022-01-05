@@ -23,8 +23,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 				subscribe: true
 			}));
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 	const handleDecreaseBrightness = useCallback(() => {
 		let brightnessDec = Number(brightness);
 		brightnessDec = brightnessDec !== 0 ? brightnessDec - 10 : brightnessDec;
