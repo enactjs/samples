@@ -1,38 +1,23 @@
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
-class SaveButton extends Component {
-	static propTypes = {
-		className: PropTypes.string
-	};
+const SaveButton = (props) => {
+	const [saved, setSaved] = useState(false);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			saved: false
-		};
-	}
+	const handleOnSave = useCallback(() => setSaved(true), []);
+	const handleOnClose = useCallback(() => setSaved(false), []);
 
-	handleOnSave = () => {
-		this.setState({saved: true});
-	};
-
-	handleOnClose = () => {
-		this.setState({saved: false});
-	};
-
-	render = () => (
-		<div {...this.props}>
-			<Button onClick={this.handleOnSave}>
+	return (
+		<div {...props}>
+			<Button onClick={handleOnSave}>
 				Save
 			</Button>
-			<Popup onClose={this.handleOnClose} open={this.state.saved}>
+			<Popup onClose={handleOnClose} open={saved}>
 				Saved!
 			</Popup>
 		</div>
 	);
-}
+};
 
 export default SaveButton;
