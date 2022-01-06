@@ -53,7 +53,7 @@ const ColorPicker = (props) => {
 				type="color"
 			/>
 			<Popup
-				className={componentCss.panel}
+				className={componentCss.colorPickerPanel}
 				disabled={disabled}
 				onClose={closePopup}
 				onKeyPress={keyPress}
@@ -83,7 +83,7 @@ const ColorPicker = (props) => {
 					<Cell component="label" size="5ex">{l + '%'}</Cell>
 				</Row>
 				<Button
-					className={componentCss.button}
+					className={componentCss.coloredButton}
 					style={{backgroundColor: color, '--sand-focus-bg-color': color}}
 				/>
 			</Popup>
