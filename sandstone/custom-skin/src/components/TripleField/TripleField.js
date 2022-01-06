@@ -4,6 +4,8 @@ import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
+import ColorPicker from '../ColorPicker/ColorPicker';
+
 import {convertHexToRGB, convertRGBToHex} from '../../utils';
 
 import componentCss from './TripleField.module.less';
@@ -33,15 +35,18 @@ const TripleField = kind({
 		},
 		onChangeInputB: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
-			onChangeInput({'event.value': convertRGBToHex([colors[0], colors[1], parseInt(event.value)]), name: propName});
+			const newColor = event.value ? parseInt(event.value) : 0;
+			onChangeInput({event: {value: convertRGBToHex([colors[0], colors[1], newColor])}, name: propName});
 		},
 		onChangeInputG: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
-			onChangeInput({'event.value': convertRGBToHex([colors[0], parseInt(event.value), colors[2]]), name: propName});
+			const newColor = event.value ? parseInt(event.value) : 0;
+			onChangeInput({event: {value: convertRGBToHex([colors[0], newColor, colors[2]])}, name: propName});
 		},
 		onChangeInputR: (event, {color, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
-			onChangeInput({event: {value: convertRGBToHex([parseInt(event.value), colors[1], colors[2]])}, name: propName});
+			const newColor = event.value ? parseInt(event.value) : 0;
+			onChangeInput({event: {value: convertRGBToHex([newColor, colors[1], colors[2]])}, name: propName});
 		}
 	},
 
@@ -56,7 +61,7 @@ const TripleField = kind({
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell shrink>
-					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
+					<ColorPicker onChange={onChangeInput} color={color} {...rest} />
 				</Cell>
 				<Cell className={componentCss.tripleField}>
 					<span className={componentCss.tripleText}>R:</span>
