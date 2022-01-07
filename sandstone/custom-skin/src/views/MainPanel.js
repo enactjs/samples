@@ -267,7 +267,7 @@ const MainPanel = () => {
 			</Cell>
 			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
-					<Heading className={css.previewTitle}>Live DEMO</Heading>
+					<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
 						<Button>Click</Button>
 						<Button disabled>Disabled</Button>
