@@ -44,7 +44,7 @@ const SingleField = kind({
 				</Cell>
 				<Cell className={componentCss.singleField}>
 					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
-					<InputField {...rest} className={componentCss.singleInput} css={css} onChange={onChangeInputField} value={color} />
+					<InputField {...rest} className={componentCss.singleInput} css={componentCss} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
 		);

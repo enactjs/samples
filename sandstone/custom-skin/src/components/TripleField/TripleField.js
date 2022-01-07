@@ -60,11 +60,11 @@ const TripleField = kind({
 				</Cell>
 				<Cell className={componentCss.tripleField}>
 					<span className={componentCss.tripleText}>R:</span>
-					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputR} value={colors[0]} />
+					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputR} value={colors[0]} />
 					<span className={componentCss.tripleText}>G:</span>
-					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputG} value={colors[1]} />
+					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputG} value={colors[1]} />
 					<span className={componentCss.tripleText}>B:</span>
-					<InputField {...rest} className={componentCss.tripleInput} onChange={onChangeInputB} value={colors[2]} />
+					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputB} value={colors[2]} />
 				</Cell>
 			</Layout>
 		);

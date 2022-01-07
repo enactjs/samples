@@ -1,6 +1,6 @@
 .outputField {
     pre {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: #e6e6e6;
     }
 
@@ -8,5 +8,22 @@
         --sand-focus-bg-color: #fff;
         color: #e6e6e6;
         text-transform: uppercase;
+    }
+}
+
+@media only screen and (max-width: 1670px) {
+    .outputField {
+        pre {
+            font-size: 0.55rem;
+        }
+        .copyBtn {
+            & > * {
+                font-size: 0.9rem;
+                min-width: 280px;
+            }
+            .icon {
+                font-size: 1.2rem;
+            }
+        }
     }
 }
