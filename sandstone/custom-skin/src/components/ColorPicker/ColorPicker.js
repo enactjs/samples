@@ -82,10 +82,9 @@ const ColorPicker = (props) => {
 					</Cell>
 					<Cell component="label" size="5ex">{blue}</Cell>
 				</Row>
-				<Button
-					className={componentCss.coloredButton}
-					style={{backgroundColor: color, '--sand-focus-bg-color': color}}
-				/>
+				<Row align="center">
+					<div className={componentCss.coloredButton} style={{backgroundColor: color}} />
+				</Row>
 			</Popup>
 		</div>
 	);
