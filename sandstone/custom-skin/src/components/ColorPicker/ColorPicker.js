@@ -1,33 +1,33 @@
-import {Row, Cell} from '@enact/ui/Layout';
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import Slider from '@enact/sandstone/Slider';
+import {Row, Cell} from '@enact/ui/Layout';
 import {useState} from 'react';
 
-import {convertHexToHSL, hexColors, convertHSLToHex} from '../../utils';
+import {convertHexToRGB, convertRGBToHex, hexColors} from '../../utils';
 
 import css from '../../common/styles.module.less';
 import componentCss from './ColorPicker.module.less';
 
 const ColorPicker = (props) => {
 	const {color, disabled, onChange} = props || null;
-	const {h, s, l} = hexColors(color, '#ffffff') ? convertHexToHSL(color) : convertHexToHSL('#ffffff');
+	const [red, green, blue] = hexColors(color, '#ffffff') ? convertHexToRGB(color) : convertHexToRGB('#ffffff');
 	const [open, setOpen] = useState(false);
 
 	function closePopup () {
 		setOpen(false);
 	}
 
-	function changeHue (ev) {
-		onChange({target: {value: convertHSLToHex(parseInt(ev.value), s, l)}});
+	function changeRed (ev) {
+		onChange({target: {value: convertRGBToHex([parseInt(ev.value), green, blue])}});
 	}
 
-	function changeLightness (ev) {
-		onChange({target: {value: convertHSLToHex(h, s, parseInt(ev.value))}});
+	function changeBlue (ev) {
+		onChange({target: {value: convertRGBToHex([red, green, parseInt(ev.value)])}});
 	}
 
-	function changeSaturation (ev) {
-		onChange({target: {value: convertHSLToHex(h, parseInt(ev.value), l)}});
+	function changeGreen (ev) {
+		onChange({target: {value: convertRGBToHex([red, parseInt(ev.value), blue])}});
 	}
 
 	function keyPress (ev) {
@@ -62,25 +62,25 @@ const ColorPicker = (props) => {
 				scrimType="transparent"
 			>
 				<Row align="center">
-					<Cell aria-label="Hue" role="region">
-						<label>Hue</label>
-						<Slider aria-label="Degree" value={h} min={0} max={360} onChange={changeHue} />
+					<Cell aria-label="Red" role="region">
+						<label>Red</label>
+						<Slider value={red} min={0} max={255} onChange={changeRed} />
 					</Cell>
-					<Cell component="label" size="5ex">{h + '˚'}</Cell>
+					<Cell component="label" size="5ex">{red}</Cell>
 				</Row>
 				<Row align="center">
-					<Cell aria-label="Saturation" role="region">
-						<label>Saturation</label>
-						<Slider aria-label="Percent" value={s} min={0} max={100} onChange={changeSaturation} />
+					<Cell aria-label="Green" role="region">
+						<label>Green</label>
+						<Slider value={green} min={0} max={255} onChange={changeGreen} />
 					</Cell>
-					<Cell component="label" size="5ex">{s + '%'}</Cell>
+					<Cell component="label" size="5ex">{green}</Cell>
 				</Row>
 				<Row align="center">
 					<Cell aria-label="Lightness" role="region">
-						<label>Lightness</label>
-						<Slider aria-label="Percent" value={l} min={0} max={100} onChange={changeLightness} />
+						<label>Blue</label>
+						<Slider value={blue} min={0} max={255} onChange={changeBlue} />
 					</Cell>
-					<Cell component="label" size="5ex">{l + '%'}</Cell>
+					<Cell component="label" size="5ex">{blue}</Cell>
 				</Row>
 				<Button
 					className={componentCss.coloredButton}
