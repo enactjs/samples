@@ -3,16 +3,17 @@ import Button from '@enact/sandstone/Button';
 import Input from '@enact/sandstone/Input';
 import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {updateLocale as updateLocaleActions} from '../../actions';
 
-const LocaleSwitchBase = ({rtl, updateLocale, updateReduxLocale}) => {
+const LocaleSwitchBase = ({rtl, updateLocale}) => {
+	const dispatch = useDispatch();
 	const [value, setValue] = useState('');
 
 	const handleChange = useCallback((ev) => setValue(ev.value), []);
 	const updateContext = useCallback(() => updateLocale(value), [updateLocale, value]);
-	const updateRedux = useCallback(() => updateReduxLocale(value), [updateReduxLocale, value]);
+	const updateRedux = useCallback(() => dispatch(updateLocaleActions(value)), [dispatch, value]);
 
 	return (
 		<div>
@@ -26,8 +27,7 @@ const LocaleSwitchBase = ({rtl, updateLocale, updateReduxLocale}) => {
 
 LocaleSwitchBase.propTypes = {
 	rtl: PropTypes.bool,
-	updateLocale: PropTypes.func,
-	updateReduxLocale: PropTypes.func
+	updateLocale: PropTypes.func
 };
 
 const LocaleSwitch = I18nContextDecorator(
@@ -35,4 +35,5 @@ const LocaleSwitch = I18nContextDecorator(
 	LocaleSwitchBase
 );
 
-export default connect(null, {updateReduxLocale: updateLocaleActions}, null, {pure: false})(LocaleSwitch);
+export default LocaleSwitch;
+
