@@ -4,6 +4,8 @@ import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
+import ColorPicker from '../ColorPicker/ColorPicker';
+
 import componentCss from './SingleField.module.less';
 import css from '../../common/styles.module.less';
 
@@ -17,7 +19,7 @@ const SingleField = kind({
 	},
 
 	defaultProps: {
-		color : 'red'
+		color : '#FB9039'
 	},
 
 	styles:{
@@ -43,7 +45,7 @@ const SingleField = kind({
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.singleField}>
-					<input {...rest} className={css.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
+					<ColorPicker {...rest} color={color} onChange={onChangeInput} />
 					<InputField {...rest} className={componentCss.singleInput} css={componentCss} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
