@@ -64,12 +64,18 @@ const TripleField = kind({
 					<ColorPicker onChange={onChangeInput} color={color} {...rest} />
 				</Cell>
 				<Cell className={componentCss.tripleField}>
-					<span className={componentCss.tripleText}>R:</span>
-					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputR} value={colors[0]} />
-					<span className={componentCss.tripleText}>G:</span>
-					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputG} value={colors[1]} />
-					<span className={componentCss.tripleText}>B:</span>
-					<InputField {...rest} className={componentCss.tripleInput} css={componentCss} onChange={onChangeInputB} value={colors[2]} />
+					<Cell>
+						<span className={componentCss.tripleText}>R:</span>
+						<InputField {...rest} className={componentCss.redInput} css={componentCss} onChange={onChangeInputR} value={colors[0]} />
+					</Cell>
+					<Cell>
+						<span className={componentCss.tripleText}>G:</span>
+						<InputField {...rest} className={componentCss.greenInput} css={componentCss} onChange={onChangeInputG} value={colors[1]} />
+					</Cell>
+					<Cell>
+						<span className={componentCss.tripleText}>B:</span>
+						<InputField {...rest} className={componentCss.blueInput} css={componentCss} onChange={onChangeInputB} value={colors[2]} />
+					</Cell>
 				</Cell>
 			</Layout>
 		);

@@ -33,7 +33,18 @@
         }
     }
 
-    @media only screen and (max-width: 1670px) {
+    @media screen and (min-width: 720px) and (max-width: 870px) {
+        font-size: 0.7rem;
+        input[type=file] {
+            color: transparent;
+            &::before {
+                font-size: 0.6rem;
+                padding: 0 1rem;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 870px) and (max-width: 1670px) {
         font-size: 0.9rem;
         input[type=file] {
             &::before {

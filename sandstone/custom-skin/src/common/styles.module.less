@@ -33,7 +33,31 @@
     text-align-last: center;
 }
 
-@media only screen and (max-width: 1670px) {
+@media screen and (max-width: 720px) {
+    .colorBlock[type=color] {
+        height: 1.5rem;
+        width: 1.5rem;
+        min-width: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 830px) {
+    .inputField {
+        .labelField {
+            font-size: 0.6rem;
+        }
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1320px) {
+    .colorBlock[type=color] {
+        height: 1.7rem;
+        width: 1.7rem;
+        min-width: 1.7rem;
+    }
+}
+
+@media only screen and (min-width: 1320px) and (max-width: 1670px) {
     .colorBlock[type=color] {
         height: 2rem;
         width: 2rem;

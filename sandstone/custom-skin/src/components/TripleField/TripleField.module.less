@@ -7,7 +7,9 @@
         color: #e6e6e6;
     }
 
-    .tripleInput {
+    .redInput,
+    .greenInput,
+    .blueInput {
         --sand-focus-bg-color: #fff;
         color: #e6e6e6;
         max-width: 5rem;
@@ -15,12 +17,66 @@
     }
 }
 
-@media only screen and (max-width: 1670px) {
+@media only screen and (max-width: 830px) {
+    .tripleField {
+        flex-direction: column;
+        align-items: flex-start;
+        .tripleText {
+            font-size: 0.6rem;
+        }
+        .redInput,
+        .greenInput,
+        .blueInput {
+            height: 1.5rem;
+            max-width: 2.7rem;
+            margin: 0.1rem;
+            &.inputField {
+                .input {
+                    font-size: 0.6rem;
+                }
+            }
+        }
+        .redInput,
+        .blueInput {
+            margin-left: 0.15rem;
+        }
+    }
+}
+
+@media screen and (min-width: 830px) and (max-width: 1320px) {
+    .tripleField {
+        flex-direction: column;
+        align-items: flex-start;
+        .tripleText {
+            font-size: 0.9rem;
+        }
+        .redInput,
+        .greenInput,
+        .blueInput {
+            height: 2rem;
+            max-width: 3.7rem;
+            margin: 0.1rem;
+            &.inputField {
+                .input {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+        .redInput,
+        .blueInput {
+            margin-left: 0.22rem;
+        }
+    }
+}
+
+@media screen and (min-width: 1320px) and (max-width: 1670px) {
     .tripleField {
         .tripleText {
             font-size: 0.9rem;
         }
-        .tripleInput {
+        .redInput,
+        .greenInput,
+        .blueInput {
             height: 2rem;
             max-width: 3.7rem;
             &.inputField {

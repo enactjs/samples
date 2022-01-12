@@ -39,7 +39,7 @@ const NameField = kind({
 		return (
 			<Layout className={css.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText className={css.labelField} css={componentCss}>{propName}</BodyText>
 				</Cell>
 				<Cell>
 					<InputField
