@@ -8,8 +8,8 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 
 import {convertHexToRGB, convertRGBToHex} from '../../utils';
 
+import commonCss from '../../common/styles.module.less';
 import componentCss from './TripleField.module.less';
-import css from '../../common/styles.module.less';
 
 const TripleField = kind({
 	name: 'TripleField',
@@ -25,7 +25,7 @@ const TripleField = kind({
 	},
 
 	styles:{
-		css,
+		css: componentCss,
 		className:'tripleField'
 	},
 
@@ -50,31 +50,31 @@ const TripleField = kind({
 		}
 	},
 
-	render: ({color, onChangeInput, onChangeInputB, onChangeInputG, onChangeInputR, propName, ...rest}) => {
+	render: ({color, css, onChangeInput, onChangeInputB, onChangeInputG, onChangeInputR, propName, ...rest}) => {
 		const colors = convertHexToRGB(color);
 
 		delete rest.onChangeInput;
 
 		return (
-			<Layout className={css.inputField}>
+			<Layout className={commonCss.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText className={commonCss.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell shrink>
 					<ColorPicker onChange={onChangeInput} color={color} {...rest} />
 				</Cell>
-				<Cell className={componentCss.tripleField}>
+				<Cell className={css.tripleField}>
 					<Cell>
-						<span className={componentCss.tripleText}>R:</span>
-						<InputField {...rest} className={componentCss.redInput} css={componentCss} onChange={onChangeInputR} value={colors[0]} />
+						<span className={css.tripleText}>R:</span>
+						<InputField {...rest} className={css.redInput} css={css} onChange={onChangeInputR} value={colors[0]} />
 					</Cell>
 					<Cell>
-						<span className={componentCss.tripleText}>G:</span>
-						<InputField {...rest} className={componentCss.greenInput} css={componentCss} onChange={onChangeInputG} value={colors[1]} />
+						<span className={css.tripleText}>G:</span>
+						<InputField {...rest} className={css.greenInput} css={css} onChange={onChangeInputG} value={colors[1]} />
 					</Cell>
 					<Cell>
-						<span className={componentCss.tripleText}>B:</span>
-						<InputField {...rest} className={componentCss.blueInput} css={componentCss} onChange={onChangeInputB} value={colors[2]} />
+						<span className={css.tripleText}>B:</span>
+						<InputField {...rest} className={css.blueInput} css={css} onChange={onChangeInputB} value={colors[2]} />
 					</Cell>
 				</Cell>
 			</Layout>

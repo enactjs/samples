@@ -218,8 +218,10 @@ const MainPanel = () => {
 	let windowWidth = window.innerWidth;
 	let previewDropdownWidth = () => {
 		if (windowWidth < 1080) {
-			return 'tiny'
-		} else return 'medium'
+			return 'tiny';
+		} else {
+			return 'medium';
+		}
 	};
 
 
