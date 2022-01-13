@@ -16,6 +16,7 @@ const TripleField = kind({
 
 	propTypes: {
 		color: PropTypes.string,
+		index: PropTypes.number,
 		onChangeInput: PropTypes.func,
 		propName: PropTypes.string
 	},
@@ -30,30 +31,31 @@ const TripleField = kind({
 	},
 
 	handlers: {
-		onChangeInput: (event, {onChangeInput, propName}) => {
-			onChangeInput({event: event.target, name: propName});
+		onChangeInput: (event, {index, onChangeInput, propName}) => {
+			onChangeInput({event: event.target, name: propName, index: index});
 		},
-		onChangeInputB: (event, {color, onChangeInput, propName}) => {
+		onChangeInputB: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;
-			onChangeInput({event: {value: convertRGBToHex([colors[0], colors[1], newColor])}, name: propName});
+			onChangeInput({event: {value: convertRGBToHex([colors[0], colors[1], newColor])}, name: propName, index: index});
 		},
-		onChangeInputG: (event, {color, onChangeInput, propName}) => {
+		onChangeInputG: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;
-			onChangeInput({event: {value: convertRGBToHex([colors[0], newColor, colors[2]])}, name: propName});
+			onChangeInput({event: {value: convertRGBToHex([colors[0], newColor, colors[2]])}, name: propName, index: index});
 		},
-		onChangeInputR: (event, {color, onChangeInput, propName}) => {
+		onChangeInputR: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;
-			onChangeInput({event: {value: convertRGBToHex([newColor, colors[1], colors[2]])}, name: propName});
+			onChangeInput({event: {value: convertRGBToHex([newColor, colors[1], colors[2]])}, name: propName, index: index});
 		}
 	},
 
 	render: ({color, onChangeInput, onChangeInputB, onChangeInputG, onChangeInputR, propName, ...rest}) => {
-		const colors = convertHexToRGB(color);
-
 		delete rest.onChangeInput;
+		delete rest.index;
+
+		const colors = convertHexToRGB(color);
 
 		return (
 			<Layout className={css.inputField}>

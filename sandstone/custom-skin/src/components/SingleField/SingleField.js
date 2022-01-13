@@ -14,6 +14,7 @@ const SingleField = kind({
 
 	propTypes: {
 		color: PropTypes.string,
+		index: PropTypes.number,
 		onChangeInput: PropTypes.func,
 		propName: PropTypes.string
 	},
@@ -28,16 +29,17 @@ const SingleField = kind({
 	},
 
 	handlers: {
-		onChangeInputField: (event, {onChangeInput, propName}) => {
-			onChangeInput({event, name: propName});
+		onChangeInputField: (event, {index, onChangeInput, propName}) => {
+			onChangeInput({event, name: propName, index: index});
 		},
-		onChangeInput: (event, {onChangeInput, propName}) => {
-			onChangeInput({event: event.target, name: propName});
+		onChangeInput: (event, {index, onChangeInput, propName}) => {
+			onChangeInput({event: event.target, name: propName, index: index});
 		}
 	},
 
 	render: ({color, onChangeInput, onChangeInputField, propName, ...rest}) => {
 		delete rest.onChangeInput;
+		delete rest.index;
 
 		return (
 			<Layout className={css.inputField}>

@@ -19,10 +19,9 @@ import ImportSkin from '../components/ImportSkin/ImportSkin';
 import OutputField from '../components/OutputField/OutputField';
 
 import {
-	checkColors,
 	convertRGBToHex,
-	generateCSS,
 	generateColors,
+	generateCSS,
 	getColorsFromString,
 	hexColors
 } from '../utils';
@@ -32,93 +31,138 @@ import css from './MainPanel.module.less';
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
-	const [FBColor, setFBColor] = useState('#FFFFFF');
-	const [FTColor, setFTColor] = useState('#FFFFFF');
-	const [NTColor, setNTColor] = useState('#FB9039');
-	const [OPBColor, setOPBColor] = useState('#855D94');
-	const [SBColor, setSBColor] = useState('#FFFFFF');
-	const [SCColor, setSCColor] = useState('#FFFFFF');
-	const [SColor, setSColor] = useState('#FFFFFF');
-	const [TOColor, setTOColor] = useState('#FFFFFF');
-	const [TOffBColor, setTOffBColor] = useState('#FFFFFF');
-	const [TOnBColor, setTOnBColor] = useState('#FFFFFF');
+
+	const [BGColor, setBGColor] = useState('#000000');
+	const [TextColor, setTextColor] = useState('#E6E6E6');
+	const [TextSubColor, setTextSubColor] = useState('#ABAEB3');
+	const [ShadowColorRGB, setShadowColorRGB] = useState('#000000');
+	const [ComponentTextColor, setComponentTextColor] = useState('#E6E6E6');
+	const [ComponentBGColor, setComponentBGColor] = useState('#7D848C');
+	const [FocusTextColor, setFocusTextColor] = useState('#FFFFFF');
+	const [FocusBGColor, setFocusBGColor] = useState('#E6E6E6');
+	const [ComponentFocusTextColorRGB, setComponentFocusTextColorRGB] = useState('#4C5059');
+	const [SelectedColorRGB, setSelectedColorRGB] = useState('#E6E6E6');
+	const [SelectedTextColor, setSelectedTextColor] = useState('#E6E6E6');
+	const [SelectedBGColor, setSelectedBGColor] = useState('#3E454D');
+	const [DisabledFocusBGColor, setDisabledFocusBGColor] = useState('#ABAEB3');
+	const [DisabledSelectedColor, setDisabledSelectedColor] = useState('#4C5059');
+	const [DisabledSelectedBGColor, setDisabledSelectedBgColor] = useState('#E6E6E6');
+	const [DisabledSelectedFocusColor, setDisabledSelectedFocusColor] = useState('#E6E6E6');
+	const [DisabledSelectedFocusBGColor, setDisabledSelectedFocusBGColor] = useState('#4C5059');
+	const [FullscreenBGColor, setFullscreenBGColor] = useState('#000000');
+	const [OverlayBGColorRGB, setOverlayBGColorRGB] = useState('#575E66');
+	const [SelectionColor, setSelectionColor] = useState('#4C5059');
+	const [SelectionBGColor, setSelectionBGColor] = useState('#3399FF');
+	const [ToggleOffColor, setToggleOffColor] = useState('#AEAEAE');
+	const [ToggleOffBGColor, setToggleOffBGColor] = useState('#777777');
+	const [ToggleOnColor, setToggleOnColor] = useState('#E6E6E6');
+	const [ToggleOnBGColor, setToggleOnBGColor] = useState('#30AD6B');
+	const [ProgressColorRGB, setProgressColorRGB] = useState('#E6E6E6');
+	const [ProgressBufferColor, setProgressBufferColor] = useState('#6B6D73');
+	const [ProgressBGColor, setProgressBGColor] = useState('#373A41');
+	const [ProgressSliderColor, setProgressSliderColor] = useState('#8D9298');
+	const [CheckboxColor, setCheckboxColor] = useState('#E6E6E6');
+	const [ItemDisabledFocusBGColor ,setItemDisabledFocusBGColor] = useState('#E6E6E6');
+	const [KeyguideBGColorRGB, setKeyguideBGColorRGB] = useState('#6B6D73');
+	const [AlertOverlayBGColorRGB, setAlertOverlayBGColorRGB] = useState('#CACBCC');
+	const [AlertOverlayTextColor, setAlertOverlayTextColor] = useState('#2E3239');
+	const [AlertOverlayTextSubColor, setAlertOverlayTextSubColor] = useState('#2E3239');
+	const [AlertOverlayFocusTextColor, setAlertOverlayFocusTextColor] = useState('#575E66');
+	const [AlertOverlayDisabledSelectedColor, setAlertOverlayDisabledSelectedColor] = useState('#FFFFFF');
+	const [AlertOverlayDisabledSelectedBGColor, setAlertOverlayDisabledSelectedBGColor] = useState('#788688');
+	const [AlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusColor] = useState('#E6E6E6');
+	const [AlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayDisabledSelectedFocusBGColor] = useState('#4C5059');
+	const [AlertOverlayProgressColorRGB, setAlertOverlayProgressColorRGB] = useState('#6B6D73');
+	const [AlertOverlayProgressBGColor, setAlertOverlayProgressBGColor] = useState('#A1A1A1');
+	const [AlertOverlayCheckboxColor, setAlertOverlayCheckboxColor] = useState('#858B92');
+	const [AlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayCheckboxDisabledSelectedColor] = useState('#FFFFFF');
+	const [AlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayFormcheckboxitemFocusTextColor] = useState('#575E66');
+	const [AlertOverlayItemDisabledFocusBGColor, setAlertOverlayItemDisabledFocusBGColor] = useState('#989CA2');
+
+	const colors = [BGColor, TextColor, TextSubColor, ShadowColorRGB, ComponentTextColor, ComponentBGColor, FocusTextColor, FocusBGColor, ComponentFocusTextColorRGB,
+		SelectedColorRGB, SelectedTextColor, SelectedBGColor, DisabledFocusBGColor, DisabledSelectedColor, DisabledSelectedBGColor, DisabledSelectedFocusColor,
+		DisabledSelectedFocusBGColor, FullscreenBGColor, OverlayBGColorRGB, SelectionColor, SelectionBGColor, ToggleOffColor, ToggleOffBGColor, ToggleOnColor, ToggleOnBGColor,
+		ProgressColorRGB, ProgressBufferColor, ProgressBGColor, ProgressSliderColor, CheckboxColor, ItemDisabledFocusBGColor, KeyguideBGColorRGB, AlertOverlayBGColorRGB,
+		AlertOverlayTextColor, AlertOverlayTextSubColor, AlertOverlayFocusTextColor, AlertOverlayDisabledSelectedColor, AlertOverlayDisabledSelectedBGColor,
+		AlertOverlayDisabledSelectedFocusColor, AlertOverlayDisabledSelectedFocusBGColor, AlertOverlayProgressColorRGB, AlertOverlayProgressBGColor, AlertOverlayCheckboxColor,
+		AlertOverlayCheckboxDisabledSelectedColor, AlertOverlayFormcheckboxitemFocusTextColor, AlertOverlayItemDisabledFocusBGColor
+	];
+
+	const setColors = [setBGColor, setTextColor, setTextSubColor, setShadowColorRGB, setComponentTextColor, setComponentBGColor, setFocusTextColor, setFocusBGColor,
+		setComponentFocusTextColorRGB, setSelectedColorRGB, setSelectedTextColor, setSelectedBGColor, setDisabledFocusBGColor, setDisabledSelectedColor,
+		setDisabledSelectedBgColor, setDisabledSelectedFocusColor, setDisabledSelectedFocusBGColor, setFullscreenBGColor, setOverlayBGColorRGB,
+		setSelectionColor, setSelectionBGColor, setToggleOffColor, setToggleOffBGColor, setToggleOnColor, setToggleOnBGColor, setProgressColorRGB, setProgressBufferColor,
+		setProgressBGColor, setProgressSliderColor, setCheckboxColor, setItemDisabledFocusBGColor, setKeyguideBGColorRGB, setAlertOverlayBGColorRGB,
+		setAlertOverlayTextColor, setAlertOverlayTextSubColor, setAlertOverlayFocusTextColor, setAlertOverlayDisabledSelectedColor, setAlertOverlayDisabledSelectedBGColor,
+		setAlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayProgressColorRGB, setAlertOverlayProgressBGColor,
+		setAlertOverlayCheckboxColor, setAlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayItemDisabledFocusBGColor
+	];
+
+	const propNames = ['Bg Color', 'Text Color', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Bg Color', 'Focus Text Color', 'Focus Bg Color',
+		'Component Focus Text Color RGB', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
+		'Disabled Selected Bg Color', 'Disabled Selected Focus Color', 'Disabled Selected Focus Bg Color', 'Fullscreen Bg Color', 'Overlay Bg Color RGB',
+		'Selection Color', 'Selection Bg Color', 'Toggle Off Color', 'Toggle Off Bg Color', 'Toggle On Color', 'Toggle On Bg Color', 'Progress Color RGB',
+		'Progress Buffer Color', 'Progress Bg Color', 'Progress Slider Color', 'Checkbox Color', 'Item Disabled Focus Bg Color', 'Keyguide Bg Color RGB',
+		'Alert Overlay Bg Color RGB', 'Alert Overlay Text Color', 'Alert Overlay Text Sub Color', 'Alert Overlay Focus Text Color', 'Alert Overlay Disabled Selected Color',
+		'Alert Overlay Disabled Selected Bg Color', 'Alert Overlay Disabled Selected Focus Color', 'Alert Overlay Disabled Selected Focus Bg Color',
+		'Alert Overlay Progress Color RGB', 'Alert Overlay Progress Bg Color', 'Alert Overlay Checkbox Color', 'Alert Overlay Checkbox Disabled Selected Color',
+		'Alert Overlay Formcheckboxitem Focus Text Color', 'Alert Overlay Item Disabled Focus Bg Color'
+	];
+
+	const varNames = ['--sand-bg-color', '--sand-text-color', '--sand-text-sub-color', '--sand-shadow-color-rgb', '--sand-component-text-color', '--sand-component-bg-color',
+		'--sand-focus-text-color', '--sand-focus-bg-color', '--sand-component-focus-text-color-rgb', '--sand-selected-color-rgb', '--sand-selected-text-color',
+		'--sand-selected-bg-color', '--sand-disabled-focus-bg-color', '--sand-disabled-selected-color', '--sand-disabled-selected-bg-color', '--sand-disabled-selected-focus-color',
+		'--sand-disabled-selected-focus-bg-color', '--sand-fullscreen-bg-color', '--sand-overlay-bg-color-rgb', '--sand-selection-color', '--sand-selection-bg-color',
+		'--sand-toggle-off-color', '--sand-toggle-off-bg-color', '--sand-toggle-on-color', '--sand-toggle-on-bg-color', '--sand-progress-color-rgb', '--sand-progress-buffer-color',
+		'--sand-progress-bg-color', '--sand-progress-slider-color', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb',
+		'--sand-alert-overlay-bg-color-rgb', '--sand-alert-overlay-text-color', '--sand-alert-overlay-text-sub-color', '--sand-alert-overlay-focus-text-color',
+		'--sand-alert-overlay-disabled-selected-color', '--sand-alert-overlay-disabled-selected-bg-color', '--sand-alert-overlay-disabled-selected-focus-color',
+		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color',
+		'--sand-alert-overlay-checkbox-color', '--sand-alert-overlay-checkbox-disabled-selected-color', '--sand-alert-overlay-formcheckboxitem-focus-text-color',
+		'--sand-alert-overlay-item-disabled-focus-bg-color'
+	];
 
 	const [alert, setAlert] = useState(false);
-	const [auto, setAuto] = useState(true);
+	const [auto, setAuto] = useState(false);
+	const [changes, setChanges] = useState(0);
 	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
-	const [AutoColors, setAutoColors] = useState([]);
 
-	// eslint-disable-next-line
-	const Colors = [SCColor, FTColor, FBColor, SColor, SBColor, TOnBColor, TOColor, TOffBColor];
-
-	const setColors = [setSCColor, setFTColor, setFBColor, setSColor, setSBColor, setTOnBColor, setTOColor, setTOffBColor];
-
-	useEffect(() => {
-		if (hexColors(OPBColor, NTColor)) {
-			setAutoColors(generateColors(NTColor, OPBColor));
-		}
-	}, [OPBColor, NTColor]);
-
-	function setColorsToAuto () {
-		for (let i = 0; i < setColors.length; ++i) {
-			setColors[i](AutoColors[i]);
+	const setColorsToAuto = (autoColors) => {
+		for(let i = 0; i < autoColors.length; i++){
+			console.log(i+':' + autoColors[i] + ' = ' + propNames[i + 2]);
+			setColors[i+2](autoColors[i]);
 		}
 	}
 
-	function setColorsFromImport (colors) {
-		const colorSet = getColorsFromString(colors);
+	useEffect(() => {
+		if (auto && hexColors(BGColor, TextColor)) {
+			setColorsToAuto(generateColors(BGColor, TextColor));
+		}
+		// eslint-disable-next-line
+	}, [auto, BGColor, TextColor]);
+
+	function setColorsFromImport (newColors) {
+		const colorSet = getColorsFromString(newColors);
+
 		if (colorSet !== null) {
-			setSkinName(colorSet.shift()[1]);
 			setAuto(false);
-			colorSet.forEach(set => {
-				switch (set[0]) {
-					case '--sand-text-color': {
-						setNTColor(set[1]);
-						break;
+			if(colorSet[0][0].includes('Skin Name')){
+				setSkinName(colorSet[0][1]);
+				colorSet.shift();
+			}
+			colorSet.map((item) => {
+				const index = varNames.indexOf(item[0]);
+				if(index !== -1) {
+					if(item[0].includes('rgb')) {
+						const [r, g, b] = item[1].split(', ');
+						console.log(r, g, b);
+						setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
+					} else {
+						setColors[index](item[1]);
 					}
-					case '--sand-text-sub-color': {
-						setSCColor(set[1]);
-						break;
-					}
-					case '--sand-focus-text-color-rgb': {
-						const colorsRGB = set[1].split(',');
-						setFTColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
-						break;
-					}
-					case '--sand-focus-bg-color': {
-						setFBColor(set[1]);
-						break;
-					}
-					case '--sand-selected-color-rgb': {
-						const colorsRGB = set[1].split(',');
-						setSColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
-						break;
-					}
-					case '--sand-selected-bg-color': {
-						setSBColor(set[1]);
-						break;
-					}
-					case '--sand-overlay-bg-color-rgb': {
-						const colorsRGB = set[1].split(',');
-						setOPBColor(convertRGBToHex([parseInt(colorsRGB[0]), parseInt(colorsRGB[1]), parseInt(colorsRGB[2])]));
-						break;
-					}
-					case '--sand-toggle-on-bg-color': {
-						setTOnBColor(set[1]);
-						break;
-					}
-					case '--sand-toggle-off-color': {
-						setTOColor(set[1]);
-						break;
-					}
-					case '--sand-toggle-off-bg-color': {
-						setTOffBColor(set[1]);
-						break;
-					}
-					default: break;
 				}
-			});
+			})
 		} else {
 			setAlert(true);
 		}
@@ -126,69 +170,27 @@ const MainPanel = () => {
 
 	function onChangeInput (props) {
 		const event = props?.event;
+		const index = props?.index;
 		const name = props?.name;
 		let value = event?.value;
 
-		if (name !== 'Skin Name') {
-			value = value.toUpperCase();
+		if (name === 'Skin Name') {
+			setSkinName(value);
 		}
-
-		switch (name) {
-			case 'Skin Name': {
-				setSkinName(value);
-				break;
+		else {
+			setColors[index](value.toUpperCase());
+			if(!auto) {
+				setChanges(1);
 			}
-			case 'Normal Text color': {
-				setNTColor(value);
-				break;
-			}
-			case 'Subtitle color': {
-				setSCColor(value);
-				break;
-			}
-			case 'Focused text color (RGB)': {
-				setFTColor(value);
-				break;
-			}
-			case 'Focused Background color': {
-				setFBColor(value);
-				break;
-			}
-			case 'Selected color (RGB)': {
-				setSColor(value);
-				break;
-			}
-			case 'Selected Background Color': {
-				setSBColor(value);
-				break;
-			}
-			case 'Overlay Panel Background Color (RGB)': {
-				setOPBColor(value);
-				break;
-			}
-			case 'Toggle On Background Color': {
-				setTOnBColor(value);
-				break;
-			}
-			case 'Toggle Off Color': {
-				setTOColor(value);
-				break;
-			}
-			case 'Toggle Off Background Color': {
-				setTOffBColor(value);
-				break;
-			}
-			default: break;
 		}
 	}
 
 	function onChangeSwitch () {
 		if (auto) {
 			setAuto(!auto);
-			setColorsToAuto();
 		} else {
 			// eslint-disable-next-line
-			if (!checkColors(Colors, AutoColors)) {
+			if (changes !== 0) {
 				setOpenWarning(true);
 			} else {
 				setAuto(!auto);
@@ -205,14 +207,57 @@ const MainPanel = () => {
 	}
 
 	function setDefaultState () {
-		setAuto(true);
-		setNTColor('#FB9039');
-		setOPBColor('#855D94');
+		setAuto(false);
+		setBGColor('#000000');
+		setTextColor('#E6E6E6');
+		setTextSubColor('#ABAEB3');
+		setShadowColorRGB('#000000');
+		setComponentTextColor('#E6E6E6');
+		setComponentBGColor('#7D848C');
+		setFocusTextColor('#FFFFFF');
+		setFocusBGColor('#E6E6E6');
+		setComponentFocusTextColorRGB('#4C5059');
+		setSelectedColorRGB('#E6E6E6');
+		setSelectedTextColor('#E6E6E6');
+		setSelectedBGColor('#3E454D');
+		setDisabledFocusBGColor('#ABAEB3');
+		setDisabledSelectedColor('#4C5059');
+		setDisabledSelectedBgColor('#E6E6E6');
+		setDisabledSelectedFocusColor('#E6E6E6');
+		setDisabledSelectedFocusBGColor('#4C5059');
+		setFullscreenBGColor('#000000');
+		setOverlayBGColorRGB('#575E66');
+		setSelectionColor('#4C5059');
+		setSelectionBGColor('#3399FF');
+		setToggleOffColor('#AEAEAE');
+		setToggleOffBGColor('#777777');
+		setToggleOnColor('#E6E6E6');
+		setToggleOnBGColor('#30AD6B');
+		setProgressColorRGB('#E6E6E6');
+		setProgressBufferColor('#6B6D73');
+		setProgressBGColor('#373A41');
+		setProgressSliderColor('#8D9298');
+		setCheckboxColor('#E6E6E6');
+		setItemDisabledFocusBGColor('#E6E6E6');
+		setKeyguideBGColorRGB('#6B6D73');
+		setAlertOverlayBGColorRGB('#CACBCC');
+		setAlertOverlayTextColor('#2E3239');
+		setAlertOverlayTextSubColor('#2E3239');
+		setAlertOverlayFocusTextColor('#575E66');
+		setAlertOverlayDisabledSelectedColor('#FFFFFF');
+		setAlertOverlayDisabledSelectedBGColor('#788688');
+		setAlertOverlayDisabledSelectedFocusColor('#E6E6E6');
+		setAlertOverlayDisabledSelectedFocusBGColor('#4C5059');
+		setAlertOverlayProgressColorRGB('#6B6D73');
+		setAlertOverlayProgressBGColor('#A1A1A1');
+		setAlertOverlayCheckboxColor('#858B92');
+		setAlertOverlayCheckboxDisabledSelectedColor('#FFFFFF');
+		setAlertOverlayFormcheckboxitemFocusTextColor('#575E66');
+		setAlertOverlayItemDisabledFocusBGColor('#989CA2');
 	}
 
 	const sheet = document.createElement('style');
-	const rest = auto ? AutoColors : Colors;
-	sheet.innerHTML = generateCSS([skinName, OPBColor, NTColor, ...rest]);
+	sheet.innerHTML = generateCSS(colors, skinName, varNames);
 	document.body?.appendChild(sheet);
 
 	return (
@@ -227,7 +272,7 @@ const MainPanel = () => {
 									auto={auto}
 									openWarning={openWarning}
 									setAuto={setAuto}
-									setColorsToAuto={setColorsToAuto}
+									setChanges={setChanges}
 									setOpenWarning={setOpenWarning}
 								/>
 								<Alert className={styles.customAlert} open={alert} type="overlay">
@@ -245,21 +290,19 @@ const MainPanel = () => {
 								</Row>
 								<ColorFields
 									auto={auto}
-									AutoColors={AutoColors}
-									OPBColor={OPBColor}
-									Colors={Colors}
+									colors={colors}
 									name={skinName}
-									NTColor={NTColor}
 									onChangeInput={onChangeInput}
+									propNames={propNames}
 								/>
 							</Cell>
 						</Row>
 						<Row>
 							<OutputField
-								colors={
-									!auto ? [skinName, OPBColor, NTColor, ...Colors] : [skinName, OPBColor, NTColor, ...AutoColors]
-								}
+								colors={colors}
 								setDefaultState={setDefaultState}
+								skinName={skinName}
+								varNames={varNames}
 							/>
 						</Row>
 					</Layout>
