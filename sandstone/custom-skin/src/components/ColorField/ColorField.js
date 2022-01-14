@@ -18,8 +18,8 @@ const ColorField = kind({
 		const tripleField = propName.includes('RGB');
 		return (
 			tripleField ?
-				<TripleField color={color} disabled={disabled} index={index} onChangeInput={onChangeInput} propName={propName} {...rest}/> :
-				<SingleField color={color} disabled={disabled} index={index} onChangeInput={onChangeInput} propName={propName} {...rest}/>
+				<TripleField color={color} disabled={disabled} index={index} onChangeInput={onChangeInput} propName={propName} {...rest} /> :
+				<SingleField color={color} disabled={disabled} index={index} onChangeInput={onChangeInput} propName={propName} {...rest} />
 		);
 	}
 });
