@@ -1,39 +1,6 @@
-const checkColors = (arr1, arr2) => {
-	for (let i = 0; i < arr1.length; ++i) {
-		if (arr1[i] !== arr2[i]) {
-			return false;
-		}
-	}
-	return true;
-};
-
-const convertHexToHSL = (hex) => {
-	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-
-	let r = parseInt(result[1], 16);
-	let g = parseInt(result[2], 16);
-	let b = parseInt(result[3], 16);
-
-	r /= 255; g /= 255; b /= 255;
-
-	let max = Math.max(r, g, b), min = Math.min(r, g, b);
-	let h, s, l = (max + min) / 2;
-
-	if (max === min) {
-		h = 0;
-		s = 0; // achromatic
-	} else {
-		let d = max - min;
-		s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-		switch (max) {
-			case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-			case g: h = (b - r) / d + 2; break;
-			case b: h = (r - g) / d + 4; break;
-		}
-		h /= 6;
-	}
-
-	return {h: Math.round(360 * h), s: Math.round(s * 100), l: Math.round(l * 100)};
+const hexColors = (color1, color2) => {
+	return /^#[0-9A-F]{6}$/i.test(color1) && /^#[0-9A-F]{6}$/i.test(color2);
+	// /^#[0-9A-F]{6}$/i.test(test_string) tests if test_string represents a color in hex
 };
 
 const convertHexToRGB = (hex) => {
@@ -43,17 +10,6 @@ const convertHexToRGB = (hex) => {
 		parseInt(result[2], 16),
 		parseInt(result[3], 16)
 	] : null;
-};
-
-const convertHSLToHex = (h, s, l) => {
-	l /= 100;
-	const a = s * Math.min(l, 1 - l) / 100;
-	const f = n => {
-		const k = (n + h / 30) % 12;
-		const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-		return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
-	};
-	return `#${f(0)}${f(8)}${f(4)}`;
 };
 
 const convertRGBToHex = (RGBColor) => {
@@ -77,28 +33,14 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 	});
 };
 
-const generateCSS = (colors) => {
-	if (colors.length > 3) {
-		const FocusedText = convertHexToRGB(colors[4]);
-		const Selected = convertHexToRGB(colors[6]);
-		const OverlayPanelBg = convertHexToRGB(colors[1]);
-
+const generateCSS = (colors, skinName, varNames) => {
+	if(colors.length > 3) {
 		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${colors[0] ? colors[0] : 'Untitled'}; /* The name of the skin */\n` +
-			`	--sand-text-color: ${colors[2].toUpperCase()}; /* Normal Text Color */\n` +
-			`	--sand-text-sub-color: ${colors[3]?.toUpperCase()}; /* Subtitle Text Color */\n` +
-			`	--sand-focus-text-color-rgb: ${FocusedText[0]}, ${FocusedText[1]}, ${FocusedText[2]};` +
-			' /* Focused Text Color (Must be RGB comma separated format) */\n' +
-			`	--sand-focus-bg-color: ${colors[5]?.toUpperCase()}; /* Focused Background Color */\n` +
-			`	--sand-selected-color-rgb: ${Selected[0]}, ${Selected[1]}, ${Selected[2]};` +
-			' /* Selected Color (Must be RGB comma separated format) */\n' +
-			`	--sand-selected-bg-color: ${colors[7]?.toUpperCase()}; /* Selected Background Color */\n` +
-			`	--sand-overlay-bg-color-rgb: ${OverlayPanelBg[0]}, ${OverlayPanelBg[1]}, ${OverlayPanelBg[2]};` +
-			' /* Overlay Panel Background Color (Must be RGB comma separated format) */\n' +
-			`	--sand-toggle-on-bg-color: ${colors[8]?.toUpperCase()}; /* Toggle On Background Color */\n` +
-			`	--sand-toggle-off-color: ${colors[9]?.toUpperCase()}; /* Toggle Off Color */\n` +
-			`	--sand-toggle-off-bg-color: ${colors[10]?.toUpperCase()}; /* Toggle Off Background Color */\n` +
-			'}';
+			`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
+			colors?.map((color, index) => {
+				const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
+				return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
+			}).join('') + `}\n`
 	}
 };
 
@@ -192,11 +134,11 @@ const getRandomColor = (colorToBeConverted, inc) => {
 	return convertRGBToHex(newColor);
 };
 
-const generateBGColors = (background) => {
+const generateBGColors = (background, limit) => {
 	let color = background;
 	let colorsArray = [];
 
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i <= limit; i++) {
 		let rc = getRandomColor(color, i);
 		colorsArray.push(rc);
 	}
@@ -204,11 +146,11 @@ const generateBGColors = (background) => {
 	return colorsArray;
 };
 
-const generateTextColors = (text) => {
+const generateTextColors = (text, limit) => {
 	let color = text;
 	let colorsArray = [];
 
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i <= limit; i++) {
 		let rc = getRandomColor(color, i);
 		colorsArray.push(rc);
 	}
@@ -216,18 +158,20 @@ const generateTextColors = (text) => {
 	return colorsArray;
 };
 
-const generateColors = (text, background) => {
-	const textColors = generateTextColors(text);
-	const bgColors = generateBGColors(background);
+const generateColors = (background, text) => {
+	const bgColors = generateBGColors(background, 9);
+	const textColors = generateTextColors(text, 8);
 
-	return [textColors[0].toUpperCase(), textColors[1].toUpperCase(), bgColors[0].toUpperCase(),
-		textColors[2].toUpperCase(), bgColors[1].toUpperCase(), bgColors[2].toUpperCase(), textColors[3].toUpperCase(),
-		bgColors[3].toUpperCase()];
-};
-
-const hexColors = (color1, color2) => {
-	return /^#[0-9A-F]{6}$/i.test(color1) && /^#[0-9A-F]{6}$/i.test(color2);
-	// /^#[0-9A-F]{6}$/i.test(test_string) tests if test_string represents a color in hex
+	return [textColors[0].toUpperCase(), background, text, bgColors[0].toUpperCase(), textColors[1].toUpperCase(), text,
+		textColors[2].toUpperCase(), text, text, bgColors[1].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
+		text, text, textColors[2].toUpperCase(), background, bgColors[2].toUpperCase(), textColors[2].toUpperCase(),
+		bgColors[3].toUpperCase(), textColors[3].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[5].toUpperCase(),
+		text, textColors[4].toUpperCase(), bgColors[6].toUpperCase(), textColors[5].toUpperCase(), text, text,
+		textColors[4].toUpperCase(), textColors[6].toUpperCase(), textColors[7].toUpperCase(), textColors[7].toUpperCase(),
+		background, textColors[1].toUpperCase(), bgColors[7].toUpperCase(), text, textColors[2].toUpperCase(),
+		textColors[4].toUpperCase(), bgColors[8].toUpperCase(), textColors[8].toUpperCase(), textColors[1].toUpperCase(),
+		bgColors[2].toUpperCase(), bgColors[9].toUpperCase()
+	];
 };
 
 const getColorsFromString = (colors) => {
@@ -246,10 +190,7 @@ const getColorsFromString = (colors) => {
 };
 
 export {
-	checkColors,
-	convertHexToHSL,
 	convertHexToRGB,
-	convertHSLToHex,
 	convertRGBToHex,
 	generateColors,
 	generateCSS,

@@ -14,18 +14,20 @@ const OutputField = kind({
 
 	propTypes:{
 		colors: PropTypes.array,
-		setDefaultState: PropTypes.func
+		setDefaultState: PropTypes.func,
+		skinName: PropTypes.string,
+		varNames: PropTypes.array
 	},
 
 	handlers:{
-		generateFile: (event, {colors}) => {
-			return generateCSSFile(generateCSS(colors));
+		generateFile: (event, {colors, skinName, varNames}) => {
+			return generateCSSFile(generateCSS(colors, skinName, varNames));
 		}
 	},
 
 	computed: {
-		text: ({colors}) => {
-			return generateCSS(colors);
+		text: ({colors, skinName, varNames}) => {
+			return generateCSS(colors, skinName, varNames);
 		}
 	},
 

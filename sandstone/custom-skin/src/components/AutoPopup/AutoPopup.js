@@ -10,17 +10,17 @@ const AutoPopup = kind({
 	name: 'AutoPopup',
 
 	propTypes:{
-		auto:PropTypes.bool,
-		openWarning:PropTypes.bool,
-		setAuto:PropTypes.func,
-		setColorsToAuto:PropTypes.func,
-		setOpenWarning:PropTypes.func
+		auto: PropTypes.bool,
+		openWarning: PropTypes.bool,
+		setAuto: PropTypes.func,
+		setChanges: PropTypes.func,
+		setOpenWarning: PropTypes.func
 	},
 
 	handlers:{
-		onClickOk:(event, {auto, setAuto, setColorsToAuto, setOpenWarning}) => {
+		onClickOk:(event, {auto, setAuto, setChanges, setOpenWarning}) => {
 			setAuto(!auto);
-			setColorsToAuto();
+			setChanges(0);
 			setOpenWarning(false);
 		},
 		onClickCancel:(event, {setOpenWarning}) => {
@@ -31,7 +31,7 @@ const AutoPopup = kind({
 	render:({onClickCancel, onClickOk, openWarning, ...rest}) => {
 		delete rest.auto;
 		delete rest.setAuto;
-		delete rest.setColorsToAuto;
+		delete rest.setChanges;
 		delete rest.setOpenWarning;
 
 		return (

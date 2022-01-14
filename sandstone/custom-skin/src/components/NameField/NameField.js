@@ -11,6 +11,7 @@ const NameField = kind({
 	name: 'NameField',
 
 	propTypes: {
+		css: PropTypes.object,
 		name: PropTypes.string,
 		onChangeInput: PropTypes.func,
 		placeholder: PropTypes.string,
