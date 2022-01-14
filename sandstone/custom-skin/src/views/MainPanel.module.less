@@ -40,6 +40,7 @@
 			--sand-text-color: #e6e6e6;
 			display: flex;
 			justify-content: center;
+			min-height: auto;
 			padding: 24px 0;
 			margin: 0 24px;
 			font-weight: 200;
@@ -49,6 +50,16 @@
 			justify-content: space-around;
 
 			.previewButtons {
+				flex-wrap: wrap;
+				justify-content: center;
+				margin: 0 30px;
+
+				.button {
+					flex: 1 1 0;
+					min-width: 380px;
+					margin: 6px 9px;
+				}
+
 				& > * {
 					margin: 15px;
 				}
@@ -200,16 +211,19 @@
 
 	.previewSection {
 		.previewComponents {
-			* {
+			.previewButtons,
+			.previewCheckboxItem,
+			.previewSwitchItem,
+			.previewSlider,
+			.previewRangePicker,
+			.previewDropdown,
+			.previewPopup {
 				font-size: 42px;
 			}
 
 			.previewButtons {
-				display: flex;
-				justify-content: center;
-
-				& > * {
-					min-width: 380px;
+				.button {
+					font-size: 42px;
 				}
 			}
 
@@ -217,6 +231,14 @@
 			.previewSwitchItem,
 			.previewDropdown {
 				margin: 0 96px;
+			}
+
+			.previewSwitchItem {
+				.switch {
+					.icon {
+						font-size: 84px;
+					}
+				}
 			}
 
 			.previewSlider {

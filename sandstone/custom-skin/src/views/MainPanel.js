@@ -279,15 +279,13 @@ const MainPanel = () => {
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle}>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
-						<Button className={css.clickBtn}>Click</Button>
-						<Button disabled>Disabled</Button>
-					</Row>
-					<Row className={css.previewButtons}>
-						<Button selected>Selected</Button>
-						<Button disabled selected>Disabled</Button>
+						<Button css={css}>Click</Button>
+						<Button css={css} disabled>Disabled</Button>
+						<Button css={css} selected>Selected</Button>
+						<Button css={css} disabled selected>Disabled</Button>
 					</Row>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
-					<SwitchItem className={css.previewSwitchItem}>Toggle</SwitchItem>
+					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
 					<Slider className={css.previewSlider} />
 					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
 					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
@@ -296,7 +294,7 @@ const MainPanel = () => {
 					<Button className={css.previewPopup} onClick={handleOpenPopup}>
 						Popup
 					</Button>
-					<Popup open={openPopup} position="right" css={css}>
+					<Popup css={css} open={openPopup} position="right">
 						<BodyText centered>Hello</BodyText>
 						<Button onClick={handleOpenPopup}>Bye</Button>
 					</Popup>
