@@ -164,7 +164,7 @@ const generateColors = (background, text) => {
 
 	return [textColors[0].toUpperCase(), background, text, bgColors[0].toUpperCase(), textColors[1].toUpperCase(), text,
 		textColors[2].toUpperCase(), text, text, bgColors[1].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
-		text, text,	textColors[2].toUpperCase(), background, bgColors[2].toUpperCase(), textColors[2].toUpperCase(),
+		text, text, textColors[2].toUpperCase(), background, bgColors[2].toUpperCase(), textColors[2].toUpperCase(),
 		bgColors[3].toUpperCase(), textColors[3].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[5].toUpperCase(),
 		text, textColors[4].toUpperCase(), bgColors[6].toUpperCase(), textColors[5].toUpperCase(), text, text,
 		textColors[4].toUpperCase(), textColors[6].toUpperCase(), textColors[7].toUpperCase(), textColors[7].toUpperCase(),

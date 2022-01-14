@@ -39,8 +39,8 @@ const SingleField = kind({
 	},
 
 	render: ({color, css, onChangeInput, onChangeInputField, propName, ...rest}) => {
-		delete rest.onChangeInput;
 		delete rest.index;
+		delete rest.onChangeInput;
 
 		return (
 			<Layout className={commonCss.inputField}>

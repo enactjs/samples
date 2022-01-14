@@ -53,8 +53,8 @@ const TripleField = kind({
 	},
 
 	render: ({color, css, onChangeInput, onChangeInputB, onChangeInputG, onChangeInputR, propName, ...rest}) => {
-		delete rest.onChangeInput;
 		delete rest.index;
+		delete rest.onChangeInput;
 
 		const colors = convertHexToRGB(color);
 
