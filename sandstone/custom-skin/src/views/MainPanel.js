@@ -215,6 +215,16 @@ const MainPanel = () => {
 	sheet.innerHTML = generateCSS([skinName, OPBColor, NTColor, ...rest]);
 	document.body?.appendChild(sheet);
 
+	let windowWidth = window.innerWidth;
+	let previewDropdownWidth = () => {
+		if (windowWidth < 1080) {
+			return 'tiny';
+		} else {
+			return 'medium';
+		}
+	};
+
+
 	return (
 		<Layout className={css.mainPanel}>
 			<Cell className={css.customizeSection}>
@@ -234,7 +244,7 @@ const MainPanel = () => {
 									<BodyText centered size="small">Wrong type of file imported!</BodyText>
 									<Button onClick={turnAlertOff} size="small">Close</Button>
 								</Alert>
-								<Row>
+								<Row className={css.generateStyleContainer}>
 									<Cell>
 										<ImportSkin setColors={setColorsFromImport} />
 									</Cell>
@@ -265,30 +275,28 @@ const MainPanel = () => {
 					</Layout>
 				</Scroller>
 			</Cell>
-			<Cell size="35%" className={css.previewSection}>
+			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
-					<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
+					<Heading className={css.previewTitle}>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
-						<Button>Click</Button>
-						<Button disabled>Disabled</Button>
+						<Button css={css} size="small">Click</Button>
+						<Button css={css} disabled size="small">Disabled</Button>
+						<Button css={css} selected size="small">Selected</Button>
+						<Button css={css} disabled selected size="small">Disabled</Button>
 					</Row>
-					<Row className={css.previewButtons}>
-						<Button selected>Selected</Button>
-						<Button disabled selected>Disabled</Button>
-					</Row>
-					<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
-					<SwitchItem>Toggle</SwitchItem>
-					<Slider />
-					<RangePicker defaultValue={0} max={13} min={0} />
-					<Dropdown className={css.previewDropdown}>
+					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
+					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
+					<Slider className={css.previewSlider} />
+					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
+					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
 						{['Item 1', 'Item 2', 'Item 3']}
 					</Dropdown>
-					<Button className={css.previewPopup} onClick={handleOpenPopup}>
+					<Button className={css.previewPopup} onClick={handleOpenPopup} size="small">
 						Popup
 					</Button>
 					<Popup open={openPopup} position="right">
 						<BodyText centered>Hello</BodyText>
-						<Button onClick={handleOpenPopup}>Bye</Button>
+						<Button onClick={handleOpenPopup} size="small">Bye</Button>
 					</Popup>
 				</Column>
 			</Cell>

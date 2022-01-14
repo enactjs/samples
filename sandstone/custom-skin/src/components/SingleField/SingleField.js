@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 import ColorPicker from '../ColorPicker/ColorPicker';
 
+import commonCss from '../../common/styles.module.less';
 import componentCss from './SingleField.module.less';
-import css from '../../common/styles.module.less';
 
 const SingleField = kind({
 	name: 'SingleField',
@@ -23,7 +23,7 @@ const SingleField = kind({
 	},
 
 	styles:{
-		css,
+		css: componentCss,
 		className:'singleField'
 	},
 
@@ -36,17 +36,17 @@ const SingleField = kind({
 		}
 	},
 
-	render: ({color, onChangeInput, onChangeInputField, propName, ...rest}) => {
+	render: ({color, css, onChangeInput, onChangeInputField, propName, ...rest}) => {
 		delete rest.onChangeInput;
 
 		return (
-			<Layout className={css.inputField}>
+			<Layout className={commonCss.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText className={commonCss.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.singleField}>
 					<ColorPicker {...rest} color={color} onChange={onChangeInput} />
-					<InputField {...rest} className={componentCss.singleInput} css={css} onChange={onChangeInputField} value={color} />
+					<InputField {...rest} className={css.singleInput} css={css} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
 		);

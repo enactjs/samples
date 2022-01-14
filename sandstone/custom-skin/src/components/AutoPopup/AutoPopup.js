@@ -4,7 +4,7 @@ import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import PropTypes from 'prop-types';
 
-import css from '../../common/styles.module.less';
+import commonCss from '../../common/styles.module.less';
 
 const AutoPopup = kind({
 	name: 'AutoPopup',
@@ -35,7 +35,7 @@ const AutoPopup = kind({
 		delete rest.setOpenWarning;
 
 		return (
-			<Popup {...rest} className={css.customAlert} open={openWarning}>
+			<Popup {...rest} className={commonCss.customAlert} open={openWarning}>
 				<BodyText centered size="small">Do you want to switch from manual to auto?</BodyText>
 				<Button onClick={onClickOk} size="small">Yes</Button>
 				<Button onClick={onClickCancel} size="small">No</Button>

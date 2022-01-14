@@ -1,3 +1,33 @@
 .nameField {
-    margin: 0;
+	margin: 0;
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+	.nameField {
+		&.inputField {
+			.input {
+				font-size: 39px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 870px) {
+	.nameField {
+		&.inputField {
+			.input {
+				font-size: 27px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 870px) and (max-width: 1670px) {
+	.nameField {
+		&.inputField {
+			.input {
+				font-size: 42px;
+			}
+		}
+	}
 }
