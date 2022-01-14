@@ -286,7 +286,7 @@ const MainPanel = () => {
 									setOpenWarning={setOpenWarning}
 								/>
 								<Alert className={styles.customAlert} open={alert} type="overlay">
-									<BodyText centered size="small">Wrong type of file imported!</BodyText>
+									<BodyText className={styles.customAlertMsg} centered size="small">Wrong type of file imported!</BodyText>
 									<Button onClick={turnAlertOff} size="small">Close</Button>
 								</Alert>
 								<Row className={css.test}>
