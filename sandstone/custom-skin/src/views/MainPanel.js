@@ -260,6 +260,16 @@ const MainPanel = () => {
 	sheet.innerHTML = generateCSS(colors, skinName, varNames);
 	document.body?.appendChild(sheet);
 
+	let windowWidth = window.innerWidth;
+	let previewDropdownWidth = () => {
+		if (windowWidth < 1080) {
+			return 'tiny';
+		} else {
+			return 'medium';
+		}
+	};
+
+
 	return (
 		<Layout className={css.mainPanel}>
 			<Cell className={css.customizeSection}>
@@ -279,7 +289,7 @@ const MainPanel = () => {
 									<BodyText centered size="small">Wrong type of file imported!</BodyText>
 									<Button onClick={turnAlertOff} size="small">Close</Button>
 								</Alert>
-								<Row>
+								<Row className={css.test}>
 									<Cell>
 										<ImportSkin setColors={setColorsFromImport} />
 									</Cell>
@@ -310,26 +320,24 @@ const MainPanel = () => {
 			</Cell>
 			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
-					<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
+					<Heading className={css.previewTitle}>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
-						<Button>Click</Button>
-						<Button disabled>Disabled</Button>
-					</Row>
-					<Row className={css.previewButtons}>
-						<Button selected>Selected</Button>
-						<Button disabled selected>Disabled</Button>
+						<Button css={css}>Click</Button>
+						<Button css={css} disabled>Disabled</Button>
+						<Button css={css} selected>Selected</Button>
+						<Button css={css} disabled selected>Disabled</Button>
 					</Row>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
-					<SwitchItem className={css.previewSwitchItem}>Toggle</SwitchItem>
+					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
 					<Slider className={css.previewSlider} />
 					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
-					<Dropdown className={css.previewDropdown}>
+					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
 						{['Item 1', 'Item 2', 'Item 3']}
 					</Dropdown>
 					<Button className={css.previewPopup} onClick={handleOpenPopup}>
 						Popup
 					</Button>
-					<Popup open={openPopup} position="right">
+					<Popup css={css} open={openPopup} position="right">
 						<BodyText centered>Hello</BodyText>
 						<Button onClick={handleOpenPopup}>Bye</Button>
 					</Popup>

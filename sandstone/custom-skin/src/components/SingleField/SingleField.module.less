@@ -1,23 +1,47 @@
 .singleField {
-    display: flex;
+	display: flex;
 
-    .singleInput {
-      --sand-focus-bg-color: #fff;
-      color: #e6e6e6;
-      width: 9rem;
-    }
+	.singleInput {
+		--sand-focus-bg-color: #fff;
+		color: #e6e6e6;
+		width: 432px;
+	}
 }
 
-@media only screen and (max-width: 1670px) {
-    .singleField {
-      .singleInput {
-        height: 2rem;
-        max-width: 6rem;
-        &.inputField {
-          .input {
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
+@media screen and (max-width: 830px) {
+	.singleField {
+		.singleInput {
+			height: 96px;
+			max-width: 240px;
+
+			.input {
+				font-size: 33px;
+			}
+
+			.input,
+			.inputHighlight {
+				height: 96px;
+				line-height: 96px;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 830px) and (max-width: 1670px) {
+	.singleField {
+		.singleInput {
+			height: 96px;
+			max-width: 288px;
+
+			.input {
+				font-size: 42px;
+			}
+
+			.input,
+			.inputHighlight {
+				height: 96px;
+				line-height: 96px;
+			}
+		}
+	}
 }

@@ -1,47 +1,72 @@
 // General styles
 
 .inputField {
-    align-items: center;
-    padding: 0.25rem 0;
+	align-items: center;
+	padding: 12px 0;
 
-    .labelField {
-        color: #e6e6e6;
-        margin: 0 0.75rem;
-    }
+	.labelField {
+		color: #e6e6e6;
+		margin: 0 36px;
+	}
 }
 
 .colorBlock[type=color] {
-    height: 2.75rem;
-    width: 2.75rem;
-    min-width: 2.75rem;
-    border-color: transparent;
-    border-radius: 0.25rem;
+	height: 132px;
+	width: 132px;
+	min-width: 132px;
+	border-color: transparent;
+	border-radius: 12px;
 
-    &::-webkit-color-swatch-wrapper {
-        padding: 0;
-    }
+	&::-webkit-color-swatch-wrapper {
+		padding: 0;
+	}
 
-    &::-webkit-color-swatch {
-        border-color: transparent;
-    }
+	&::-webkit-color-swatch {
+		border-color: transparent;
+	}
 }
 
 .customAlert {
-    --sand-focus-bg-color: #fff;
-    --sand-overlay-bg-color-rgb: 76, 89, 106;
-    --sand-text-color: #e6e6e6;
-    text-align-last: center;
+	--sand-focus-bg-color: #fff;
+	--sand-overlay-bg-color-rgb: 76, 89, 106;
+	--sand-text-color: #e6e6e6;
+	text-align-last: center;
 }
 
-@media only screen and (max-width: 1670px) {
-    .colorBlock[type=color] {
-        height: 2rem;
-        width: 2rem;
-        min-width: 2rem;
-    }
-    .inputField {
-        .labelField {
-            font-size: 0.9rem;
-        }
-    }
+@media screen and (max-width: 720px) {
+	.colorBlock[type=color] {
+		height: 72px;
+		width: 72px;
+		min-width: 72px;
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 830px) {
+	.inputField {
+		.labelField {
+			font-size: 30px;
+		}
+	}
+}
+
+@media screen and (min-width: 720px) and (max-width: 1320px) {
+	.colorBlock[type=color] {
+		height: 81px;
+		width: 81px;
+		min-width: 81px;
+	}
+}
+
+@media only screen and (min-width: 1320px) and (max-width: 1670px) {
+	.colorBlock[type=color] {
+		height: 96px;
+		width: 96px;
+		min-width: 96px;
+	}
+
+	.inputField {
+		.labelField {
+			font-size: 42px;
+		}
+	}
 }

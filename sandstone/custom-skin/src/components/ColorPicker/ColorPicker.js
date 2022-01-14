@@ -6,8 +6,8 @@ import {useState} from 'react';
 
 import {convertHexToRGB, convertRGBToHex, hexColors} from '../../utils';
 
-import css from '../../common/styles.module.less';
-import componentCss from './ColorPicker.module.less';
+import commonCss from '../../common/styles.module.less';
+import css from './ColorPicker.module.less';
 
 const ColorPicker = (props) => {
 	const {color, disabled, onChange} = props || null;
@@ -43,7 +43,7 @@ const ColorPicker = (props) => {
 	return (
 		<div>
 			<Button
-				className={css.colorBlock}
+				className={commonCss.colorBlock}
 				disabled={disabled}
 				onClick={openPopup}
 				style={{
@@ -53,7 +53,7 @@ const ColorPicker = (props) => {
 				type="color"
 			/>
 			<Popup
-				className={componentCss.colorPickerPanel}
+				className={css.colorPickerPanel}
 				disabled={disabled}
 				onClose={closePopup}
 				onKeyPress={keyPress}
@@ -83,7 +83,7 @@ const ColorPicker = (props) => {
 					<Cell component="label" size="5ex">{blue}</Cell>
 				</Row>
 				<Row align="center">
-					<div className={componentCss.coloredButton} style={{backgroundColor: color}} />
+					<div className={css.coloredButton} style={{backgroundColor: color}} />
 				</Row>
 			</Popup>
 		</div>

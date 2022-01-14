@@ -4,7 +4,7 @@ import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
-import css from '../../common/styles.module.less';
+import commonCss from '../../common/styles.module.less';
 import componentCss from './NameField.module.less';
 
 const NameField = kind({
@@ -33,19 +33,18 @@ const NameField = kind({
 		}
 	},
 
-	render: ({name, onChangeInputField, placeholder, propName, ...rest}) => {
+	render: ({css, name, onChangeInputField, placeholder, propName, ...rest}) => {
 		delete rest.onChangeInput;
 
 		return (
-			<Layout className={css.inputField}>
+			<Layout className={commonCss.inputField}>
 				<Cell size="40%">
-					<BodyText className={css.labelField}>{propName}</BodyText>
+					<BodyText className={commonCss.labelField} css={css}>{propName}</BodyText>
 				</Cell>
 				<Cell>
 					<InputField
 						{...rest}
-						css={componentCss}
-						className={componentCss.nameField}
+						css={css}
 						onChange={onChangeInputField}
 						placeholder={placeholder}
 						value={name}
