@@ -98,7 +98,7 @@ const MainPanel = () => {
 		setAlertOverlayCheckboxColor, setAlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayItemDisabledFocusBGColor
 	];
 
-	const propNames = ['Bg Color', 'Text Color', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Bg Color', 'Focus Text Color', 'Focus Bg Color',
+	const propNames = ['Background Color', 'Text Color', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Bg Color', 'Focus Text Color', 'Focus Bg Color',
 		'Component Focus Text Color RGB', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
 		'Disabled Selected Bg Color', 'Disabled Selected Focus Color', 'Disabled Selected Focus Bg Color', 'Fullscreen Bg Color', 'Overlay Bg Color RGB',
 		'Selection Color', 'Selection Bg Color', 'Toggle Off Color', 'Toggle Off Bg Color', 'Toggle On Color', 'Toggle On Bg Color', 'Progress Color RGB',
