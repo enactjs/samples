@@ -289,7 +289,7 @@ const MainPanel = () => {
 									<BodyText className={styles.customAlertMsg} centered size="small">Wrong type of file imported!</BodyText>
 									<Button onClick={turnAlertOff} size="small">Close</Button>
 								</Alert>
-								<Row className={css.test}>
+								<Row className={css.generateStyleContainer}>
 									<Cell>
 										<ImportSkin setColors={setColorsFromImport} />
 									</Cell>
@@ -322,10 +322,10 @@ const MainPanel = () => {
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle}>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
-						<Button css={css}>Click</Button>
-						<Button css={css} disabled>Disabled</Button>
-						<Button css={css} selected>Selected</Button>
-						<Button css={css} disabled selected>Disabled</Button>
+						<Button css={css} size="small">Click</Button>
+						<Button css={css} disabled size="small">Disabled</Button>
+						<Button css={css} selected size="small">Selected</Button>
+						<Button css={css} disabled selected size="small">Disabled</Button>
 					</Row>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
 					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
@@ -334,12 +334,12 @@ const MainPanel = () => {
 					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
 						{['Item 1', 'Item 2', 'Item 3']}
 					</Dropdown>
-					<Button className={css.previewPopup} onClick={handleOpenPopup}>
+					<Button className={css.previewPopup} onClick={handleOpenPopup} size="small">
 						Popup
 					</Button>
 					<Popup css={css} open={openPopup} position="right">
 						<BodyText centered>Hello</BodyText>
-						<Button onClick={handleOpenPopup}>Bye</Button>
+						<Button onClick={handleOpenPopup} size="small">Bye</Button>
 					</Popup>
 				</Column>
 			</Cell>
