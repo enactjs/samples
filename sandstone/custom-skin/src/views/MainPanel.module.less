@@ -57,7 +57,7 @@
 				.button {
 					flex: 1 1 0;
 					min-width: 380px;
-					margin: 6px 9px;
+					margin: 12px;
 				}
 
 				& > * {
@@ -173,7 +173,7 @@
 	}
 }
 
-@media screen and (min-width: 719px) and (max-width: 1290px) {
+@media screen and (min-width: 719px) and (max-width: 1420px) {
 	.previewSection {
 		.previewButtons {
 			flex-direction: column;
@@ -188,7 +188,7 @@
 
 @media screen and (max-width: 1370px) {
 	.customizeSection {
-		.test {
+		.generateStyleContainer {
 			flex-direction: column;
 
 			p {
@@ -243,6 +243,12 @@
 
 			.previewSlider {
 				margin: 6px 96px;
+			}
+
+			.previewDropdown {
+				& > * {
+					font-size: 30px;
+				}
 			}
 
 			.previewRangePicker {
