@@ -62,7 +62,7 @@ const MainPanel = () => {
 	const [ProgressBGColor, setProgressBGColor] = useState('#373A41');
 	const [ProgressSliderColor, setProgressSliderColor] = useState('#8D9298');
 	const [CheckboxColor, setCheckboxColor] = useState('#E6E6E6');
-	const [ItemDisabledFocusBGColor ,setItemDisabledFocusBGColor] = useState('#E6E6E6');
+	const [ItemDisabledFocusBGColor, setItemDisabledFocusBGColor] = useState('#E6E6E6');
 	const [KeyguideBGColorRGB, setKeyguideBGColorRGB] = useState('#6B6D73');
 	const [AlertOverlayBGColorRGB, setAlertOverlayBGColorRGB] = useState('#CACBCC');
 	const [AlertOverlayTextColor, setAlertOverlayTextColor] = useState('#2E3239');
@@ -129,11 +129,10 @@ const MainPanel = () => {
 	const [openWarning, setOpenWarning] = useState(false);
 
 	const setColorsToAuto = (autoColors) => {
-		for(let i = 0; i < autoColors.length; i++){
-			console.log(i+':' + autoColors[i] + ' = ' + propNames[i + 2]);
-			setColors[i+2](autoColors[i]);
+		for (let i = 0; i < autoColors.length; i++) {
+			setColors[i + 2](autoColors[i]);
 		}
-	}
+	};
 
 	useEffect(() => {
 		if (auto && hexColors(BGColor, TextColor)) {
@@ -147,22 +146,21 @@ const MainPanel = () => {
 
 		if (colorSet !== null) {
 			setAuto(false);
-			if(colorSet[0][0].includes('Skin Name')){
+			if (colorSet[0][0].includes('Skin Name')) {
 				setSkinName(colorSet[0][1]);
 				colorSet.shift();
 			}
 			colorSet.map((item) => {
 				const index = varNames.indexOf(item[0]);
-				if(index !== -1) {
-					if(item[0].includes('rgb')) {
+				if (index !== -1) {
+					if (item[0].includes('rgb')) {
 						const [r, g, b] = item[1].split(', ');
-						console.log(r, g, b);
 						setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
 					} else {
 						setColors[index](item[1]);
 					}
 				}
-			})
+			});
 		} else {
 			setAlert(true);
 		}
@@ -176,10 +174,9 @@ const MainPanel = () => {
 
 		if (name === 'Skin Name') {
 			setSkinName(value);
-		}
-		else {
+		} else {
 			setColors[index](value.toUpperCase());
-			if(!auto) {
+			if (!auto) {
 				setChanges(1);
 			}
 		}
