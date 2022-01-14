@@ -61,3 +61,48 @@
         }
     }
 }
+
+@media only screen and (max-width: 1670px) {
+    .customizeSection {
+        .appTitle {
+            font-size: 1.1rem;
+        }
+        .switchLabel {
+            font-size: 0.9rem;
+        }
+    }
+
+   .previewSection {
+        .previewComponents {
+            * {
+                font-size: 0.9rem;
+            }
+            .previewButtons {
+                display: flex;
+                justify-content: center;
+                margin: 0.3rem 0;
+                & > * {
+                    min-width: 380px;
+                }
+            }
+            .previewCheckboxItem {
+                margin: 0 2rem;
+            }
+            .previewSwitchItem {
+                margin: 0 2rem;
+            }
+            .previewSlider {
+                margin: 0.1rem 2rem;
+            }
+            .previewRangePicker {
+                margin: 0.2rem 2rem;
+            }
+            .previewDropdown {
+                margin: 0 2rem;
+            }
+            .previewPopup {
+                margin: 0.7rem 2rem;
+            }
+        }
+   }
+}

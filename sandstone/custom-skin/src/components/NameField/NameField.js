@@ -23,7 +23,7 @@ const NameField = kind({
 	},
 
 	styles:{
-		css,
+		css: componentCss,
 		className:'nameField'
 	},
 
@@ -44,6 +44,7 @@ const NameField = kind({
 				<Cell>
 					<InputField
 						{...rest}
+						css={componentCss}
 						className={componentCss.nameField}
 						onChange={onChangeInputField}
 						placeholder={placeholder}

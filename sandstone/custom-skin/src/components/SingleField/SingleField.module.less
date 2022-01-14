@@ -1,9 +1,23 @@
 .singleField {
-  display: flex;
+    display: flex;
 
-  .singleInput {
-    --sand-focus-bg-color: #fff;
-    color: #e6e6e6;
-    width: 9rem;
+    .singleInput {
+      --sand-focus-bg-color: #fff;
+      color: #e6e6e6;
+      width: 9rem;
+    }
+}
+
+@media only screen and (max-width: 1670px) {
+    .singleField {
+      .singleInput {
+        height: 2rem;
+        max-width: 6rem;
+        &.inputField {
+          .input {
+          font-size: 0.9rem;
+        }
+      }
+    }
   }
 }

@@ -308,7 +308,7 @@ const MainPanel = () => {
 					</Layout>
 				</Scroller>
 			</Cell>
-			<Cell size="35%" className={css.previewSection}>
+			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle} showLine>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
@@ -319,10 +319,10 @@ const MainPanel = () => {
 						<Button selected>Selected</Button>
 						<Button disabled selected>Disabled</Button>
 					</Row>
-					<CheckboxItem label="Here be label!">Checkbox</CheckboxItem>
-					<SwitchItem>Toggle</SwitchItem>
-					<Slider />
-					<RangePicker defaultValue={0} max={13} min={0} />
+					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
+					<SwitchItem className={css.previewSwitchItem}>Toggle</SwitchItem>
+					<Slider className={css.previewSlider} />
+					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
 					<Dropdown className={css.previewDropdown}>
 						{['Item 1', 'Item 2', 'Item 3']}
 					</Dropdown>

@@ -47,8 +47,8 @@ const SingleField = kind({
 					<BodyText className={css.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell className={componentCss.singleField}>
-					<ColorPicker {...rest} color={color} onChange={onChangeInput} />
-					<InputField {...rest} className={componentCss.singleInput} css={css} onChange={onChangeInputField} value={color} />
+					<ColorPicker {...rest} className={css.colorBlock} color={color} onChange={onChangeInput} />
+					<InputField {...rest} className={componentCss.singleInput} css={componentCss} onChange={onChangeInputField} value={color} />
 				</Cell>
 			</Layout>
 		);
