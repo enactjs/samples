@@ -253,6 +253,14 @@ const MainPanel = () => {
 		setAlertOverlayItemDisabledFocusBGColor('#989CA2');
 	}
 
+	function scrollTo (ref) {
+		scrollTo = ref; //eslint-disable-line
+	}
+
+	function handleScrollTop () {
+		return scrollTo({position: {x: 0, y: 0}});
+	}
+
 	const sheet = document.createElement('style');
 	sheet.innerHTML = generateCSS(colors, skinName, varNames);
 	document.body?.appendChild(sheet);
@@ -266,11 +274,12 @@ const MainPanel = () => {
 		}
 	};
 
-
 	return (
 		<Layout className={css.mainPanel}>
 			<Cell className={css.customizeSection}>
-				<Scroller>
+				<Scroller
+					cbScrollTo={(fn) => {scrollTo = fn}} //eslint-disable-line
+				>
 					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 					<Layout orientation="vertical">
 						<Row>
@@ -310,6 +319,7 @@ const MainPanel = () => {
 								setDefaultState={setDefaultState}
 								skinName={skinName}
 								varNames={varNames}
+								handleScrollTop={handleScrollTop}
 							/>
 						</Row>
 					</Layout>

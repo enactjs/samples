@@ -14,6 +14,7 @@ const OutputField = kind({
 
 	propTypes:{
 		colors: PropTypes.array,
+		handleScrollTop: PropTypes.func,
 		setDefaultState: PropTypes.func,
 		skinName: PropTypes.string,
 		varNames: PropTypes.array
@@ -31,7 +32,7 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({generateFile, setDefaultState, text}) => {
+	render: ({generateFile, handleScrollTop, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -43,8 +44,9 @@ const OutputField = kind({
 					{text}
 				</pre>
 				<TooltipButton className={css.copyBtn} css={css} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
-				<TooltipButton className={css.copyBtn} css={css} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download</TooltipButton>
-				<TooltipButton className={css.copyBtn} css={css} icon="refresh" onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
+				<TooltipButton className={css.downloadBtn} css={css} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download</TooltipButton>
+				<TooltipButton className={css.resetBtn} css={css} icon="refresh" onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {/* eslint-disable-line */}
+				<TooltipButton className={css.scrollBtn} css={css} icon="arrowlargeup" onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page">Back to top</TooltipButton>
 			</div>
 		);
 	}});
