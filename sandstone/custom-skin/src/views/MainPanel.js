@@ -315,7 +315,7 @@ const MainPanel = () => {
 					</Layout>
 				</Scroller>
 			</Cell>
-			<Cell size="30%" className={css.previewSection} style={{backgroundColor: BGColor}}>
+			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle}>Live DEMO</Heading>
 					<Row className={css.previewButtons}>
