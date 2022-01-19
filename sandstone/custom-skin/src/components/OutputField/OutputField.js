@@ -22,7 +22,7 @@ const OutputField = kind({
 
 	handlers:{
 		generateFile: (event, {colors, skinName, varNames}) => {
-			return generateCSSFile(generateCSS(colors, skinName, varNames));
+			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
 		}
 	},
 

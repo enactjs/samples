@@ -44,9 +44,9 @@ const generateCSS = (colors, skinName, varNames) => {
 	}
 };
 
-const generateCSSFile = (colors) => {
+const generateCSSFile = (fileName, colors) => {
 	let link = document.createElement('a');
-	link.download = 'custom_skin.css';
+	link.download = fileName?.length ? `${fileName}.css` : `custom_skin.css`;
 	let blob = new window.Blob([colors], {type: 'text/css'});
 	link.href = URL.createObjectURL(blob);
 	link.click();
@@ -162,7 +162,7 @@ const generateColors = (background, text) => {
 	const bgColors = generateBGColors(background, 9);
 	const textColors = generateTextColors(text, 8);
 
-	return [textColors[0].toUpperCase(), background, text, bgColors[0].toUpperCase(), textColors[1].toUpperCase(), text,
+	return [textColors[0].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[0].toUpperCase(), textColors[1].toUpperCase(), text,
 		textColors[2].toUpperCase(), text, text, bgColors[1].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
 		text, text, textColors[2].toUpperCase(), background, bgColors[2].toUpperCase(), textColors[2].toUpperCase(),
 		bgColors[3].toUpperCase(), textColors[3].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[5].toUpperCase(),
