@@ -74,7 +74,7 @@ const ColorPicker = (props) => {
 				<Row align="center">
 					<Cell aria-label="Red" role="region">
 						<label>Red</label>
-						<Slider defaultValue={red} min={0} max={255} onChange={changeRed}/>
+						<Slider defaultValue={red} min={0} max={255} onChange={changeRed} />
 					</Cell>
 					<Cell component="label" size="5ex">{red}</Cell>
 				</Row>
@@ -92,14 +92,12 @@ const ColorPicker = (props) => {
 					</Cell>
 					<Cell component="label" size="5ex">{blue}</Cell>
 				</Row>
-				<Row align="center" style = {{display: 'flex', flexDirection: 'column' }}>
+				<Column align="center">
 					<div className={componentCss.coloredButton} style={{backgroundColor: `rgb(${red} ,${green}, ${blue})`}} />
-					<Row>
-						<Button className={componentCss.applyButton} size='small' onClick={applyChanges}>
-							Apply
-						</Button>
-					</Row>
-				</Row>
+					<Button className={componentCss.applyButton} size="small" onClick={applyChanges}>
+						Apply
+					</Button>
+				</Column>
 			</Popup>
 		</div>
 	);
