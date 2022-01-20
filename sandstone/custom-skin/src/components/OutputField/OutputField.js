@@ -43,10 +43,10 @@ const OutputField = kind({
 				<pre>
 					{text}
 				</pre>
-				<TooltipButton className={css.copyBtn} css={css} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
-				<TooltipButton className={css.downloadBtn} css={css} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download</TooltipButton>
-				<TooltipButton className={css.resetBtn} css={css} icon="refresh" onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {/* eslint-disable-line */}
-				<TooltipButton className={css.scrollBtn} css={css} icon="arrowlargeup" onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page">Back to top</TooltipButton>
+				<TooltipButton className={css.outputBtn} css={css} icon="files" onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
+				<TooltipButton className={css.outputBtn} css={css} icon="download" onClick={generateFile} size="small" tooltipText="Get CSS file">Download</TooltipButton>
+				<TooltipButton className={css.outputBtn} css={css} icon="refresh" onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {/* eslint-disable-line */}
+				<TooltipButton className={css.outputBtn} css={css} icon="arrowlargeup" onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page">Back to top</TooltipButton>
 			</div>
 		);
 	}});

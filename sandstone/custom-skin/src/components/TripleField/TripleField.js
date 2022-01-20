@@ -1,4 +1,5 @@
 import kind from '@enact/core/kind';
+import platform from '@enact/core/platform';
 import BodyText from '@enact/sandstone/BodyText';
 import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
@@ -64,7 +65,11 @@ const TripleField = kind({
 					<BodyText className={commonCss.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell shrink>
-					<ColorPicker onChange={onChangeInput} color={color} {...rest} />
+					{platform.webos ?
+						<ColorPicker {...rest} color={color} onChange={onChangeInput} />
+						:
+						<input {...rest} className={commonCss.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
+					}
 				</Cell>
 				<Cell className={css.tripleField}>
 					<Cell>
