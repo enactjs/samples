@@ -66,8 +66,7 @@ const TripleField = kind({
 				</Cell>
 				<Cell shrink>
 					{platform.webos ?
-						<ColorPicker {...rest} color={color} onChange={onChangeInput} />
-						:
+						<ColorPicker {...rest} color={color} onChange={onChangeInput} /> :
 						<input {...rest} className={commonCss.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
 					}
 				</Cell>

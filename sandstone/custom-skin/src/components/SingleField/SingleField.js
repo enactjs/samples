@@ -50,9 +50,8 @@ const SingleField = kind({
 				</Cell>
 				<Cell className={componentCss.singleField}>
 					{platform.webos ?
-							<ColorPicker {...rest} color={color} onChange={onChangeInput} />
-						:
-							<input {...rest} className={commonCss.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
+						<ColorPicker {...rest} color={color} onChange={onChangeInput} /> :
+						<input {...rest} className={commonCss.colorBlock} onChange={onChangeInput} style={{backgroundColor: color}} type="color" value={color} />
 					}
 					<InputField {...rest} className={css.singleInput} css={css} onChange={onChangeInputField} value={color} />
 				</Cell>
