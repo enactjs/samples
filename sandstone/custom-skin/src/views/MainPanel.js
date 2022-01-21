@@ -316,10 +316,10 @@ const MainPanel = () => {
 						<Row>
 							<OutputField
 								colors={colors}
+								handleScrollTop={handleScrollTop}
 								setDefaultState={setDefaultState}
 								skinName={skinName}
 								varNames={varNames}
-								handleScrollTop={handleScrollTop}
 							/>
 						</Row>
 					</Layout>
