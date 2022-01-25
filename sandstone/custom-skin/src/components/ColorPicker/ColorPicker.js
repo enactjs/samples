@@ -73,24 +73,30 @@ const ColorPicker = (props) => {
 				</Column>
 				<Row align="center">
 					<Cell aria-label="Red" role="region">
-						<label>Red</label>
+						<div className={componentCss.sliderRegion}>
+							<label>Red</label>
+							<label>{red}</label>
+						</div>
 						<Slider defaultValue={red} min={0} max={255} onChange={changeRed} />
 					</Cell>
-					<Cell component="label" size="5ex">{red}</Cell>
 				</Row>
 				<Row align="center">
 					<Cell aria-label="Green" role="region">
-						<label>Green</label>
-						<Slider value={green} min={0} max={255} onChange={changeGreen} />
+						<div className={componentCss.sliderRegion}>
+							<label>Green</label>
+							<label>{green}</label>
+						</div>
+						<Slider defaultValue={red} min={0} max={255} onChange={changeGreen} />
 					</Cell>
-					<Cell component="label" size="5ex">{green}</Cell>
 				</Row>
 				<Row align="center">
-					<Cell aria-label="Lightness" role="region">
-						<label>Blue</label>
-						<Slider value={blue} min={0} max={255} onChange={changeBlue} />
+					<Cell aria-label="Blue" role="region">
+						<div className={componentCss.sliderRegion}>
+							<label>Blue</label>
+							<label>{blue}</label>
+						</div>
+						<Slider defaultValue={red} min={0} max={255} onChange={changeBlue} />
 					</Cell>
-					<Cell component="label" size="5ex">{blue}</Cell>
 				</Row>
 				<Column align="center">
 					<div className={componentCss.coloredButton} style={{backgroundColor: `rgb(${red} ,${green}, ${blue})`}} />
