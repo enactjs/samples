@@ -1,11 +1,18 @@
-import {createStore} from 'redux';
+import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-import rootReducer from '../reducers';
+const localeSlice = createSlice( {
+	name: 'localeReducer',
+	initialState: {locale : 'en-US'},
+	reducers: {
+		updateLocale: (state, action) => {
+			state.locale = action.payload;
+		}
+	}
+});
 
-export default function configureStore (initialState) {
-	const store = createStore(
-		rootReducer,
-		initialState
-	);
-	return store;
-}
+const store = configureStore({
+	reducer: localeSlice.reducer
+});
+
+export const {updateLocale} = localeSlice.actions;
+export default store;

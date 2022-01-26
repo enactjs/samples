@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {updateLocale as updateLocaleActions} from '../../actions';
+import {updateLocale as updateLocaleActions} from '../../store';
 
 const LocaleSwitchBase = ({rtl, updateLocale}) => {
 	const dispatch = useDispatch();
@@ -36,4 +36,3 @@ const LocaleSwitch = I18nContextDecorator(
 );
 
 export default LocaleSwitch;
-
