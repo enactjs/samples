@@ -13,6 +13,7 @@ import SwitchItem from '@enact/sandstone/SwitchItem';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
 
 import AutoPopup from '../components/AutoPopup/AutoPopup';
 import ColorFields from '../components/ColorFields/ColorFields';
@@ -152,21 +153,25 @@ const MainPanel = () => {
 		const colorSet = getColorsFromString(newColors);
 
 		if (colorSet !== null) {
-			setAuto(false);
-			if (colorSet[0][0].includes('Skin Name')) {
-				setSkinName(colorSet[0][1]);
-				colorSet.shift();
-			}
-			colorSet.map((item) => {
-				const index = varNames.indexOf(item[0]);
-				if (index !== -1) {
-					if (item[0].includes('rgb')) {
-						const [r, g, b] = item[1].split(', ');
-						setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
-					} else {
-						setColors[index](item[1]);
+			Promise.resolve().then(() => {
+				ReactDOM.unstable_batchedUpdates(() => {
+					setAuto(false);
+					if (colorSet[0][0].includes('Skin Name')) {
+						setSkinName(colorSet[0][1]);
+						colorSet.shift();
 					}
-				}
+					colorSet.map((item) => {
+						const index = varNames.indexOf(item[0]);
+						if (index !== -1) {
+							if (item[0].includes('rgb')) {
+								const [r, g, b] = item[1].split(', ');
+								setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
+							} else {
+								setColors[index](item[1]);
+							}
+						}
+					});
+				});
 			});
 		} else {
 			setAlert(true);
