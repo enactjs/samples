@@ -4,7 +4,7 @@
 	height: 100%;
 
 	.customizeSection {
-		padding: 72px 48px 48px;
+		padding: 72px 0 48px 48px;
 
 		.appTitle {
 			color: #FB9039;
@@ -30,14 +30,19 @@
 		}
 	}
 
-	.topButton {
-		--sand-component-bg-color: #7D848C;
-		--sand-focus-bg-color: #FFF;
-		--sand-component-focus-text-color-rgb: 76, 80, 89;
-		--sand-component-text-color: #E6E6E6;
-		--sand-shadow-color-rgb: none;
-		color: #e6e6e6;
-		text-transform: uppercase;
+	.topButtonContainer {
+		align-self: flex-end;
+		text-align: right;
+
+		.topButton {
+			--sand-component-bg-color: #7D848C;
+			--sand-focus-bg-color: #FFF;
+			--sand-component-focus-text-color-rgb: 76, 80, 89;
+			--sand-component-text-color: #E6E6E6;
+			--sand-shadow-color-rgb: none;
+			color: #e6e6e6;
+			text-transform: uppercase;
+		}
 	}
 
 	.previewSection {
@@ -223,6 +228,16 @@
 
 		.switchLabel {
 			font-size: 42px;
+		}
+
+		.topButton {
+			& > * {
+				font-size: 42px;
+			}
+
+			.icon {
+				font-size: 57px;
+			}
 		}
 	}
 

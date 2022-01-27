@@ -329,9 +329,9 @@ const MainPanel = () => {
 								skinName={skinName}
 								varNames={varNames}
 							/>
-						</Row>
-						<Row>
-							<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page">Back to top</TooltipButton>
+							<Cell className={css.topButtonContainer}>
+								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page" />
+							</Cell>
 						</Row>
 					</Layout>
 				</Scroller>
