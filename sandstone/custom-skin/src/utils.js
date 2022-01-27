@@ -159,18 +159,18 @@ const generateTextColors = (text, limit) => {
 };
 
 const generateColors = (background, text) => {
-	const bgColors = generateBGColors(background, 9);
+	const bgColors = generateBGColors(background, 11);
 	const textColors = generateTextColors(text, 8);
 
-	return [textColors[0].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[0].toUpperCase(), textColors[1].toUpperCase(), text,
-		textColors[2].toUpperCase(), text, text, bgColors[1].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
-		text, text, textColors[2].toUpperCase(), background, bgColors[2].toUpperCase(), textColors[2].toUpperCase(),
-		bgColors[3].toUpperCase(), textColors[3].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[5].toUpperCase(),
-		text, textColors[4].toUpperCase(), bgColors[6].toUpperCase(), textColors[5].toUpperCase(), text, text,
+	return [textColors[0].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[2].toUpperCase(), textColors[1].toUpperCase(), text,
+		textColors[2].toUpperCase(), text, text, bgColors[3].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
+		text, text, textColors[2].toUpperCase(), background, bgColors[4].toUpperCase(), textColors[2].toUpperCase(),
+		bgColors[5].toUpperCase(), textColors[3].toUpperCase(), bgColors[6].toUpperCase(), text, bgColors[7].toUpperCase(),
+		text, textColors[4].toUpperCase(), bgColors[8].toUpperCase(), textColors[5].toUpperCase(), text, text,
 		textColors[4].toUpperCase(), textColors[6].toUpperCase(), textColors[7].toUpperCase(), textColors[7].toUpperCase(),
-		background, textColors[1].toUpperCase(), bgColors[7].toUpperCase(), text, textColors[2].toUpperCase(),
-		textColors[4].toUpperCase(), bgColors[8].toUpperCase(), textColors[8].toUpperCase(), textColors[1].toUpperCase(),
-		bgColors[2].toUpperCase(), bgColors[9].toUpperCase()
+		background, textColors[1].toUpperCase(), bgColors[9].toUpperCase(), text, textColors[2].toUpperCase(),
+		textColors[4].toUpperCase(), bgColors[10].toUpperCase(), textColors[8].toUpperCase(), textColors[1].toUpperCase(),
+		bgColors[4].toUpperCase(), bgColors[11].toUpperCase()
 	];
 };
 

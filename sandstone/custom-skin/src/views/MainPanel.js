@@ -10,8 +10,10 @@ import Scroller from '@enact/sandstone/Scroller';
 import Slider from '@enact/sandstone/Slider';
 import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
+import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
+import ReactDOM from 'react-dom';
 
 import AutoPopup from '../components/AutoPopup/AutoPopup';
 import ColorFields from '../components/ColorFields/ColorFields';
@@ -28,6 +30,12 @@ import {
 
 import styles from '../common/styles.module.less';
 import css from './MainPanel.module.less';
+
+const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
+
+function scrollTo (ref) {
+	scrollTo = ref; //eslint-disable-line
+}
 
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
@@ -145,21 +153,25 @@ const MainPanel = () => {
 		const colorSet = getColorsFromString(newColors);
 
 		if (colorSet !== null) {
-			setAuto(false);
-			if (colorSet[0][0].includes('Skin Name')) {
-				setSkinName(colorSet[0][1]);
-				colorSet.shift();
-			}
-			colorSet.map((item) => {
-				const index = varNames.indexOf(item[0]);
-				if (index !== -1) {
-					if (item[0].includes('rgb')) {
-						const [r, g, b] = item[1].split(', ');
-						setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
-					} else {
-						setColors[index](item[1]);
+			Promise.resolve().then(() => {
+				ReactDOM.unstable_batchedUpdates(() => {
+					setAuto(false);
+					if (colorSet[0][0].includes('Skin Name')) {
+						setSkinName(colorSet[0][1]);
+						colorSet.shift();
 					}
-				}
+					colorSet.map((item) => {
+						const index = varNames.indexOf(item[0]);
+						if (index !== -1) {
+							if (item[0].includes('rgb')) {
+								const [r, g, b] = item[1].split(', ');
+								setColors[index](convertRGBToHex([parseInt(r), parseInt(g), parseInt(b)]));
+							} else {
+								setColors[index](item[1]);
+							}
+						}
+					});
+				});
 			});
 		} else {
 			setAlert(true);
@@ -253,10 +265,6 @@ const MainPanel = () => {
 		setAlertOverlayItemDisabledFocusBGColor('#989CA2');
 	}
 
-	function scrollTo (ref) {
-		scrollTo = ref; //eslint-disable-line
-	}
-
 	function handleScrollTop () {
 		return scrollTo({position: {x: 0, y: 0}});
 	}
@@ -321,6 +329,9 @@ const MainPanel = () => {
 								skinName={skinName}
 								varNames={varNames}
 							/>
+							<Cell className={css.topButtonContainer}>
+								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page" />
+							</Cell>
 						</Row>
 					</Layout>
 				</Scroller>
