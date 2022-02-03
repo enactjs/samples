@@ -119,7 +119,7 @@ const ImportSkin = kind({
 		}
 	},
 
-	render:({size, handleClose, handleOpen}) => {
+	render:({handleClose, handleOpen, size}) => {
 		return (
 			<div className={componentCss.inputFile}>
 				<Dropdown

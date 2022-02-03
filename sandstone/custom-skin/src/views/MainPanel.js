@@ -186,8 +186,9 @@ const MainPanel = () => {
 		const colorSet = presets[`${presetColors}`];
 		setActivePreset(presetColors);
 
-		for (let i = 0; i < colorSet.length; i++) {
-			setColors[i](colorSet[i]);
+		for(let color in colorSet){
+			const index = varNames.indexOf(color);
+			setColors[index](colorSet[color]);
 		}
 	}
 
