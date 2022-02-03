@@ -20,6 +20,8 @@ import ColorFields from '../components/ColorFields/ColorFields';
 import ImportSkin from '../components/ImportSkin/ImportSkin';
 import OutputField from '../components/OutputField/OutputField';
 
+import {presets} from '../constants';
+
 import {
 	convertRGBToHex,
 	generateColors,
@@ -135,6 +137,7 @@ const MainPanel = () => {
 	const [changes, setChanges] = useState(0);
 	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
+	const [presetActive, setActivePreset] = useState('defaultTheme');
 
 	const setColorsToAuto = (autoColors) => {
 		for (let i = 0; i < autoColors.length; i++) {
@@ -151,6 +154,7 @@ const MainPanel = () => {
 
 	function setColorsFromImport (newColors) {
 		const colorSet = getColorsFromString(newColors);
+		setActivePreset('defaultTheme');
 
 		if (colorSet !== null) {
 			Promise.resolve().then(() => {
@@ -175,6 +179,16 @@ const MainPanel = () => {
 			});
 		} else {
 			setAlert(true);
+		}
+	}
+
+	function setColorsFromPreset (presetColors) {
+		const colorSet = presets[`${presetColors}`];
+		setActivePreset(presetColors);
+
+		for(let color in colorSet){
+			const index = varNames.indexOf(color);
+			setColors[index](colorSet[color]);
 		}
 	}
 
@@ -217,52 +231,7 @@ const MainPanel = () => {
 
 	function setDefaultState () {
 		setAuto(false);
-		setBGColor('#000000');
-		setTextColor('#E6E6E6');
-		setTextSubColor('#ABAEB3');
-		setShadowColorRGB('#000000');
-		setComponentTextColor('#E6E6E6');
-		setComponentBGColor('#7D848C');
-		setFocusTextColor('#FFFFFF');
-		setFocusBGColor('#E6E6E6');
-		setComponentFocusTextColorRGB('#4C5059');
-		setSelectedColorRGB('#E6E6E6');
-		setSelectedTextColor('#E6E6E6');
-		setSelectedBGColor('#3E454D');
-		setDisabledFocusBGColor('#ABAEB3');
-		setDisabledSelectedColor('#4C5059');
-		setDisabledSelectedBgColor('#E6E6E6');
-		setDisabledSelectedFocusColor('#E6E6E6');
-		setDisabledSelectedFocusBGColor('#4C5059');
-		setFullscreenBGColor('#000000');
-		setOverlayBGColorRGB('#575E66');
-		setSelectionColor('#4C5059');
-		setSelectionBGColor('#3399FF');
-		setToggleOffColor('#AEAEAE');
-		setToggleOffBGColor('#777777');
-		setToggleOnColor('#E6E6E6');
-		setToggleOnBGColor('#30AD6B');
-		setProgressColorRGB('#E6E6E6');
-		setProgressBufferColor('#6B6D73');
-		setProgressBGColor('#373A41');
-		setProgressSliderColor('#8D9298');
-		setCheckboxColor('#E6E6E6');
-		setItemDisabledFocusBGColor('#E6E6E6');
-		setKeyguideBGColorRGB('#6B6D73');
-		setAlertOverlayBGColorRGB('#CACBCC');
-		setAlertOverlayTextColor('#2E3239');
-		setAlertOverlayTextSubColor('#2E3239');
-		setAlertOverlayFocusTextColor('#575E66');
-		setAlertOverlayDisabledSelectedColor('#FFFFFF');
-		setAlertOverlayDisabledSelectedBGColor('#788688');
-		setAlertOverlayDisabledSelectedFocusColor('#E6E6E6');
-		setAlertOverlayDisabledSelectedFocusBGColor('#4C5059');
-		setAlertOverlayProgressColorRGB('#6B6D73');
-		setAlertOverlayProgressBGColor('#A1A1A1');
-		setAlertOverlayCheckboxColor('#858B92');
-		setAlertOverlayCheckboxDisabledSelectedColor('#FFFFFF');
-		setAlertOverlayFormcheckboxitemFocusTextColor('#575E66');
-		setAlertOverlayItemDisabledFocusBGColor('#989CA2');
+		setColorsFromPreset(presetActive);
 	}
 
 	function handleScrollTop () {
@@ -270,7 +239,9 @@ const MainPanel = () => {
 	}
 
 	const sheet = document.createElement('style');
+	sheet.id = 'custom-skin';
 	sheet.innerHTML = generateCSS(colors, skinName, varNames);
+	document.getElementById('custom-skin')?.remove();
 	document.body?.appendChild(sheet);
 
 	let windowWidth = window.innerWidth;
@@ -305,7 +276,7 @@ const MainPanel = () => {
 								</Alert>
 								<Row className={css.generateStyleContainer}>
 									<Cell>
-										<ImportSkin setColors={setColorsFromImport} />
+										<ImportSkin setColorsImport={setColorsFromImport} setColorsPreset={setColorsFromPreset} />
 									</Cell>
 									<Cell>
 										<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
