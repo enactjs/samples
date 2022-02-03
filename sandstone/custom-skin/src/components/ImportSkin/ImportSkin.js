@@ -122,7 +122,13 @@ const ImportSkin = kind({
 	render:({size, handleClose, handleOpen}) => {
 		return (
 			<div className={componentCss.inputFile}>
-				<Dropdown className={componentCss.presetDropdown} onOpen={handleOpen} onClose={handleClose} width={size}>
+				<Dropdown
+					className={componentCss.presetDropdown}
+					defaultSelected={0}
+					onClose={handleClose}
+					onOpen={handleOpen}
+					width={size}
+				>
 					{[
 						'Default Sandstone Theme',
 						'Default Blue Theme',
