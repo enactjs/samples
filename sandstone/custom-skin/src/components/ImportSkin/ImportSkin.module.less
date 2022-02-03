@@ -1,58 +1,19 @@
 .inputFile {
-	margin: 0 36px 60px 36px;
-	color: white;
-
-	input[type=file]::-webkit-file-upload-button {
-		visibility: hidden;
-	}
-
-	input[type=file] {
-		color: transparent;
-
-		&::before {
-			content: 'Choose file';
-			-webkit-appearance: button;
-			-moz-appearance: button;
-			appearance: button;
-			font-family: "Sandstone";
-			font-size: 60px;
-			font-weight: 600;
-			height: 108px;
-			line-height: 108px;
-			padding: 0 48px;
-			margin-left: 36px;
-			border-radius: 12px;
-			color: #e6e6e6;
-			background-color: #7d848c;
-		}
-
-		&:hover::before {
-			opacity: 1;
-			box-shadow: 0 36px 36px rgb(0 0 0 / 30%);
-			background-color: #e6e6e6;
-			color: #4c5059;
-			cursor: pointer;
-		}
+	.presetDropdown {
+		--sand-component-text-color: #E6E6E6;
+		--sand-component-bg-color: #7D848C;
+		--sand-focus-bg-color: #E6E6E6;
+		--sand-component-focus-text-color-rgb: 76, 80, 89;
+		--sand-shadow-color-rgb: none;
+		--sand-selected-bg-color: #3E454D;
+		--sand-text-color: #E6E6E6;
 	}
 
 	@media screen and (min-width: 720px) and (max-width: 870px) {
 		font-size: 33px;
-
-		input[type=file] {
-			&::before {
-				font-size: 27px;
-				padding: 0 48px;
-			}
-		}
 	}
 
 	@media only screen and (min-width: 870px) and (max-width: 1670px) {
 		font-size: 42px;
-
-		input[type=file] {
-			&::before {
-				font-size: 42px;
-			}
-		}
 	}
 }
