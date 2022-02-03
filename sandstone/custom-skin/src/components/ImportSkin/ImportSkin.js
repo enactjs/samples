@@ -15,7 +15,7 @@ const ImportSkin = kind({
 	handlers:{
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
 			document.querySelector('#temporaryStylesheet')?.remove();
-			switch (ev.data){
+			switch (ev.data) {
 				case 'Default Sandstone Theme': {
 					setColorsPreset('defaultTheme');
 					break;
@@ -53,7 +53,7 @@ const ImportSkin = kind({
 					break;
 				}
 				case 'Import your own': {
-					function inputHandler(inputEvent) {
+					function inputHandler (inputEvent) {
 						inputEvent.preventDefault();
 						const reader = new window.FileReader();
 						reader.onload = async (event) => {
@@ -99,7 +99,6 @@ const ImportSkin = kind({
 			setTimeout(() => {
 				let dropdown = document.querySelector('[role="list"]');
 				dropdown.style.color = '#E6E6E6';
-				console.log(dropdown);
 			});
 		}
 	},
@@ -123,7 +122,7 @@ const ImportSkin = kind({
 	render:({size, handleClose, handleOpen}) => {
 		return (
 			<div className={componentCss.inputFile}>
-				<Dropdown className={componentCss.presetDropdown} onOpen={handleOpen} onClose={handleClose} width={size} skin='neutral'>
+				<Dropdown className={componentCss.presetDropdown} onOpen={handleOpen} onClose={handleClose} width={size}>
 					{[
 						'Default Sandstone Theme',
 						'Default Blue Theme',
