@@ -238,7 +238,9 @@ const MainPanel = () => {
 	}
 
 	const sheet = document.createElement('style');
+	sheet.id = 'custom-skin';
 	sheet.innerHTML = generateCSS(colors, skinName, varNames);
+	document.getElementById('custom-skin')?.remove();
 	document.body?.appendChild(sheet);
 
 	let windowWidth = window.innerWidth;

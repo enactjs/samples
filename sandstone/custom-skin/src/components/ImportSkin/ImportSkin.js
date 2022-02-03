@@ -88,7 +88,6 @@ const ImportSkin = kind({
 			const sheet = document.createElement('style');
 			sheet.id = 'temporaryStylesheet';
 			sheet.innerHTML = `.sandstone-theme {
-				--sand-text-color: #E6E6E6;
 				--sand-selected-text-color: #E6E6E6;
 				--sand-overlay-bg-color-rgb: 87, 94, 102;
 				--sand-focus-bg-color: #E6E6E6;
@@ -96,6 +95,12 @@ const ImportSkin = kind({
 				--sand-shadow-color-rgb: none;
 			}`;
 			document.body?.appendChild(sheet);
+
+			setTimeout(() => {
+				let dropdown = document.querySelector('[role="list"]');
+				dropdown.style.color = '#E6E6E6';
+				console.log(dropdown);
+			})
 		}
 	},
 
