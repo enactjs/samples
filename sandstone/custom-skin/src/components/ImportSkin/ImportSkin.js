@@ -100,7 +100,7 @@ const ImportSkin = kind({
 				let dropdown = document.querySelector('[role="list"]');
 				dropdown.style.color = '#E6E6E6';
 				console.log(dropdown);
-			})
+			});
 		}
 	},
 
