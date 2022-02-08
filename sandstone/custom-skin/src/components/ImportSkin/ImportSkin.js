@@ -107,14 +107,22 @@ const ImportSkin = kind({
 		size: () => {
 			const width = window.innerWidth;
 
-			if (width < 1800) {
+			if (window.screen.width <= 1920) {
 				if (width < 1080) {
 					return 'medium';
-				} else {
+				} else if (width > 1080 && width < 1800) {
 					return 'large';
+				} else {
+					return 'x-large';
 				}
-			} else {
-				return 'x-large';
+			} else if (window.screen.width > 1920) {
+				if (width < 2160) {
+					return 'medium';
+				} else if ( width > 2160 && width < 3600) {
+					return 'large';
+				} else {
+					return 'x-large';
+				}
 			}
 		}
 	},

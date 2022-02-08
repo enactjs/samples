@@ -244,12 +244,21 @@ const MainPanel = () => {
 	document.getElementById('custom-skin')?.remove();
 	document.body?.appendChild(sheet);
 
+	let screenWidth = window.screen.width;
 	let windowWidth = window.innerWidth;
 	let previewDropdownWidth = () => {
-		if (windowWidth < 1080) {
-			return 'tiny';
-		} else {
-			return 'medium';
+		if( screenWidth <= 1920) {
+			if (windowWidth < 1080) {
+				return 'tiny';
+			} else {
+				return 'medium';
+			}
+		} else if ( screenWidth > 1920) {
+			if (windowWidth < 2160) {
+				return 'tiny';
+			} else {
+				return 'medium';
+			}
 		}
 	};
 
@@ -258,30 +267,30 @@ const MainPanel = () => {
 			<Cell className={css.customizeSection}>
 				<Scroller
 					cbScrollTo={(fn) => {scrollTo = fn}} //eslint-disable-line
+					focusableScrollbar
+					horizontalScrollbar="hidden"
 				>
 					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
-					<Layout orientation="vertical">
+					<AutoPopup
+						auto={auto}
+						openWarning={openWarning}
+						setAuto={setAuto}
+						setChanges={setChanges}
+						setOpenWarning={setOpenWarning}
+					/>
+					<Alert className={styles.customAlert} open={alert} type="overlay">
+						<BodyText className={styles.customAlertMsg} centered size="small">Wrong type of file imported!</BodyText>
+						<Button onClick={turnAlertOff} size="small">Close</Button>
+					</Alert>
+					<Column>
 						<Row>
 							<Cell>
-								<AutoPopup
-									auto={auto}
-									openWarning={openWarning}
-									setAuto={setAuto}
-									setChanges={setChanges}
-									setOpenWarning={setOpenWarning}
-								/>
-								<Alert className={styles.customAlert} open={alert} type="overlay">
-									<BodyText className={styles.customAlertMsg} centered size="small">Wrong type of file imported!</BodyText>
-									<Button onClick={turnAlertOff} size="small">Close</Button>
-								</Alert>
 								<Row className={css.generateStyleContainer}>
-									<Cell>
-										<ImportSkin setColorsImport={setColorsFromImport} setColorsPreset={setColorsFromPreset} />
-									</Cell>
-									<Cell>
+									<ImportSkin setColorsImport={setColorsFromImport} setColorsPreset={setColorsFromPreset} />
+									<span>
 										<BodyText className={css.switchLabel}>Generate colors automatically</BodyText>
 										<Switch className={css.switchControl} onClick={onChangeSwitch} selected={auto} />
-									</Cell>
+									</span>
 								</Row>
 								<ColorFields
 									auto={auto}
@@ -301,21 +310,25 @@ const MainPanel = () => {
 								varNames={varNames}
 							/>
 							<Cell className={css.topButtonContainer}>
-								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page" />
+								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly minWidth={false} onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page" />
 							</Cell>
 						</Row>
-					</Layout>
+					</Column>
 				</Scroller>
 			</Cell>
 			<Cell size="30%" className={css.previewSection}>
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle}>Live DEMO</Heading>
-					<Row className={css.previewButtons}>
-						<Button css={css} size="small">Click</Button>
-						<Button css={css} disabled size="small">Disabled</Button>
-						<Button css={css} selected size="small">Selected</Button>
-						<Button css={css} disabled selected size="small">Disabled</Button>
-					</Row>
+					<div>
+						<Row className={css.previewButtons}>
+							<Button css={css} size="small">Click</Button>
+							<Button css={css} disabled size="small">Disabled</Button>
+						</Row>
+						<Row className={css.previewButtons}>
+							<Button css={css} selected size="small">Selected</Button>
+							<Button css={css} disabled selected size="small">Disabled</Button>
+						</Row>
+					</div>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
 					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
 					<Slider className={css.previewSlider} />

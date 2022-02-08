@@ -3,6 +3,7 @@ import Panels from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
+import screenTypes from '../../screenTypes.json';
 
 import css from './App.module.less';
 
@@ -23,4 +24,4 @@ const App = kind({
 	)
 });
 
-export default ThemeDecorator(App);
+export default ThemeDecorator({ri: {screenTypes}}, App);
