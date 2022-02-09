@@ -28,6 +28,18 @@ const OutputField = kind({
 	handlers:{
 		generateFile: (event, {colors, skinName, varNames}) => {
 			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
+		},
+		handleClose: () => {
+			document.querySelector('#temporaryStylesheet')?.remove();
+		},
+		handleOpen: (ev, {onToggleOpen}) => {
+			const sheet = document.createElement('style');
+			sheet.id = 'temporaryStylesheet';
+			sheet.innerHTML = `.sandstone-theme {
+				--sand-overlay-bg-color-rgb: 87, 94, 102;
+			}`;
+			document.body?.appendChild(sheet);
+			onToggleOpen();
 		}
 	},
 
@@ -37,7 +49,7 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({generateFile, popupOpen, onToggleOpen, setDefaultState, text}) => {
+	render: ({generateFile, handleClose, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -45,15 +57,15 @@ const OutputField = kind({
 
 		return (
 			<Cell size="90%" className={css.outputField}>
-				<Popup open={popupOpen} onClose={onToggleOpen} spotlightRestrict="self-only">
-					<Scroller>
+				<Popup onClose={onToggleOpen} onHide={handleClose} open={popupOpen} spotlightRestrict="self-only">
+					<Scroller focusableScrollbar>
 						<pre className={css.outputData}>
 							{text}
 						</pre>
 					</Scroller>
 				</Popup>
 				<div className={css.outputBtnContainer}>
-					<TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onClick={onToggleOpen} size="small" tooltipText="Show output data">Show output</TooltipButton>
+					<TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onClick={handleOpen} size="small" tooltipText="Show output data">Show output</TooltipButton>
 					<TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onClick={copyToClipboard} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton>
 					<TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onClick={generateFile} size="small" tooltipText="Get CSS file">Download</TooltipButton>
 					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onClick={setDefaultState} size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {/* eslint-disable-line */}
