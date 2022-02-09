@@ -4,7 +4,7 @@
 	height: 100%;
 
 	.customizeSection {
-		padding: 72px 0 48px 48px;
+		padding: 24px;
 
 		.appTitle {
 			color: #FB9039;
@@ -28,11 +28,15 @@
 			--sand-toggle-off-bg-color: #abaeb3; /* Toggle Off Background Color */
 			margin: 18px;
 		}
+
+		.generateStyleContainer {
+			flex-wrap: wrap;
+		}
 	}
 
 	.topButtonContainer {
 		align-self: flex-end;
-		text-align: right;
+		text-align: center;
 
 		.topButton {
 			--sand-component-bg-color: #7D848C;
@@ -41,6 +45,8 @@
 			--sand-component-text-color: #E6E6E6;
 			--sand-shadow-color-rgb: none;
 			color: #e6e6e6;
+			margin-left: 18px;
+			margin-right: 18px;
 			text-transform: uppercase;
 		}
 	}
@@ -48,7 +54,7 @@
 	.previewSection {
 		background-color: var(--sand-bg-color, #4c596a);
 		border-radius: 12px;
-		margin: 72px;
+		margin: 24px;
 		padding: 0 24px;
 		display: flex;
 		justify-content: center;
@@ -65,15 +71,14 @@
 
 		.previewComponents {
 			justify-content: space-around;
+			width: 100%;
 
 			.previewButtons {
 				flex-wrap: wrap;
 				justify-content: center;
-				margin: 0 30px;
 
 				.button {
-					flex: 1 1 0;
-					min-width: 380px;
+					min-width: 339px;
 					margin: 12px;
 				}
 
@@ -85,204 +90,6 @@
 			.previewDropdown,
 			.previewPopup {
 				align-self: center;
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 100px) and (max-width: 500px) {
-	.previewSection {
-		.previewComponents {
-			.previewButtons {
-				flex-direction: column;
-				align-items: center;
-
-				& > * {
-					min-width: 288px;
-					font-size: 42px;
-				}
-			}
-
-			.previewCheckboxItem,
-			.previewSwitchItem {
-				margin: 0 111px;
-			}
-
-			.previewSlider {
-				margin: 0 129px;
-			}
-
-			.previewRangePicker {
-				margin: 0 48px;
-			}
-
-			.previewPopup {
-				min-width: 240px;
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 500px) and (max-width: 719px) {
-	.previewSection {
-		.previewComponents {
-			justify-content: space-evenly;
-
-			.previewButtons {
-				flex-direction: column;
-				align-items: center;
-
-				& > * {
-					min-width: 480px;
-				}
-			}
-
-			.previewSlider {
-				margin: 0 129px;
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 720px) and (max-width: 870px) {
-	.customizeSection {
-		.appTitle {
-			font-size: 48px;
-		}
-
-		.switchLabel {
-			font-size: 27px;
-		}
-	}
-
-	.previewSection {
-		.previewComponents {
-			.previewCheckboxItem,
-			.previewSwitchItem,
-			.previewSlider {
-				margin: 0 216px;
-			}
-
-			.previewPopup {
-				min-width: 384px;
-			}
-		}
-	}
-}
-
-@media screen and (min-width: 720px) and (max-width: 1170px) {
-	.previewSection {
-		* {
-			font-size: 33px;
-		}
-
-		.previewCheckboxItem,
-		.previewSwitchItem {
-			margin: 0 192px;
-		}
-
-		.previewSlider {
-			margin: 9px 192px;
-		}
-
-		.previewRangePicker {
-			margin: 15px 192px;
-		}
-	}
-}
-
-@media screen and (min-width: 719px) and (max-width: 1420px) {
-	.previewSection {
-		.previewButtons {
-			flex-direction: column;
-			align-items: center;
-
-			& > * {
-				min-width: 380px;
-			}
-		}
-	}
-}
-
-@media screen and (max-width: 1370px) {
-	.customizeSection {
-		.generateStyleContainer {
-			flex-direction: column;
-
-			p {
-				white-space: nowrap;
-			}
-		}
-
-		.topButton {
-			font-size: 42px;
-		}
-	}
-}
-
-@media screen and (min-width: 1170px) and (max-width: 1670px) {
-	.customizeSection {
-		.appTitle {
-			font-size: 51px;
-		}
-
-		.switchLabel {
-			font-size: 42px;
-		}
-
-		.topButton {
-			& > * {
-				font-size: 42px;
-			}
-
-			.icon {
-				font-size: 57px;
-			}
-		}
-	}
-
-	.previewSection {
-		.previewComponents {
-			.previewButtons,
-			.previewCheckboxItem,
-			.previewSwitchItem,
-			.previewSlider,
-			.previewRangePicker,
-			.previewDropdown,
-			.previewPopup {
-				font-size: 42px;
-			}
-
-			.previewButtons {
-				.button {
-					font-size: 42px;
-				}
-			}
-
-			.previewCheckboxItem,
-			.previewSwitchItem,
-			.previewDropdown {
-				margin: 0 96px;
-			}
-
-			.previewSwitchItem {
-				.switch {
-					.icon {
-						font-size: 84px;
-					}
-				}
-			}
-
-			.previewSlider {
-				margin: 6px 96px;
-			}
-
-			.previewRangePicker {
-				margin: 9px 96px;
-			}
-
-			.previewPopup {
-				margin: 33px 96px;
 			}
 		}
 	}

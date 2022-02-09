@@ -2,6 +2,7 @@ import kind from '@enact/core/kind';
 import BodyText from '@enact/sandstone/BodyText';
 import {InputField} from '@enact/sandstone/Input';
 import {Cell, Layout} from '@enact/ui/Layout';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 import commonCss from '../../common/styles.module.less';
@@ -38,19 +39,18 @@ const NameField = kind({
 		delete rest.onChangeInput;
 
 		return (
-			<Layout className={commonCss.inputField}>
-				<Cell size="40%">
+			<Layout className={classnames(commonCss.inputField, css.nameField)}>
+				<Cell size="35%">
 					<BodyText className={commonCss.labelField} css={css}>{propName}</BodyText>
 				</Cell>
-				<Cell>
-					<InputField
-						{...rest}
-						css={css}
-						onChange={onChangeInputField}
-						placeholder={placeholder}
-						value={name}
-					/>
-				</Cell>
+				<InputField
+					{...rest}
+					className={css.inputField}
+					css={css}
+					onChange={onChangeInputField}
+					placeholder={placeholder}
+					value={name}
+				/>
 			</Layout>
 		);
 	}

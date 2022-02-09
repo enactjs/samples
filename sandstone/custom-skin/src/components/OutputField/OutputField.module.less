@@ -5,33 +5,22 @@
 	--sand-focus-bg-color: #E6E6E6;
 	--sand-shadow-color-rgb: none;
 
-	pre {
-		font-size: 33px;
-		color: #e6e6e6;
-	}
+	.outputBtnContainer {
+		display: flex;
+		flex-wrap: wrap;
 
-	.outputBtn {
-		--sand-focus-bg-color: #fff;
-		color: #e6e6e6;
-		text-transform: uppercase;
+		.outputBtn {
+			--sand-focus-bg-color: #fff;
+			color: #e6e6e6;
+			margin-left: 18px;
+			margin-right: 18px;
+			text-transform: uppercase;
+		}
 	}
 }
 
-@media only screen and (max-width: 1670px) {
-	.outputField {
-		pre {
-			font-size: 27px;
-		}
-
-		.outputBtn {
-			& > * {
-				font-size: 42px;
-				min-width: 279px;
-			}
-
-			.icon {
-				font-size: 57px;
-			}
-		}
-	}
+.outputData {
+	font-size: 33px;
+	color: #e6e6e6;
+	max-height: 1200px;
 }

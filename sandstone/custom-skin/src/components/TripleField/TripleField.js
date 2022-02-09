@@ -61,7 +61,7 @@ const TripleField = kind({
 
 		return (
 			<Layout className={commonCss.inputField}>
-				<Cell size="40%">
+				<Cell size="35%">
 					<BodyText className={commonCss.labelField}>{propName}</BodyText>
 				</Cell>
 				<Cell shrink>
@@ -71,18 +71,18 @@ const TripleField = kind({
 					}
 				</Cell>
 				<Cell className={css.tripleField}>
-					<Cell>
+					<span>
 						<span className={css.tripleText}>R:</span>
 						<InputField {...rest} className={css.redInput} css={css} onChange={onChangeInputR} value={colors[0]} />
-					</Cell>
-					<Cell>
+					</span>
+					<span>
 						<span className={css.tripleText}>G:</span>
 						<InputField {...rest} className={css.greenInput} css={css} onChange={onChangeInputG} value={colors[1]} />
-					</Cell>
-					<Cell>
+					</span>
+					<span>
 						<span className={css.tripleText}>B:</span>
 						<InputField {...rest} className={css.blueInput} css={css} onChange={onChangeInputB} value={colors[2]} />
-					</Cell>
+					</span>
 				</Cell>
 			</Layout>
 		);
