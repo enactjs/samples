@@ -1,11 +1,14 @@
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import {Panels} from '@enact/sandstone/Panels';
 
-const App = () => {
+import MainPanel from '../views/MainPanel';
+
+const App = (props) => {
 	return (
-		<div>
-		</div>
+		<Panels {...props}>
+			<MainPanel />
+		</Panels>
 	);
-
 };
 
 export default ThemeDecorator(App);
