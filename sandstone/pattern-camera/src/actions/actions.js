@@ -83,8 +83,8 @@ export const getCameraIds = () => dispatch => {
 		parameters: {},
 		onSuccess: (res) => {
 			dispatch(getCameraList(res));
-		},
-		onFailure: (res) => console.error(res)
+		}
+		// onFailure: (res) => console.error(res)
 	});
 };
 
@@ -98,7 +98,7 @@ export const startCamera = (id) => dispatch => {
 				return startPreview(handle);
 			})
 			.then((res) => {
-				console.log('Camera Started', res);
+				// console.log('Camera Started', res);
 				dispatch(updateCameraStatus({
 					id: id,
 					width: 1280,
@@ -143,8 +143,8 @@ export const closeCamera = (handle) => dispatch => {
 						parameters: {
 							handle
 						},
-						onSuccess: (res) => {
-							console.log('Camera Closed', res);
+						onSuccess: () => {
+							// console.log('Camera Closed', res);
 							dispatch(updateCameraStatus({}));
 						}
 					}
