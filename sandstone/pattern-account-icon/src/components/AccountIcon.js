@@ -1,24 +1,21 @@
 import Icon from '@enact/sandstone/Icon';
 import PropTypes from 'prop-types';
 
-const AccountIcon = ({bgColor, text}) => {
+import css from './AccountIcon.module.less';
+
+const AccountIcon = ({bgColor, initialName}) => {
 	const accountStyle = {
-		backgroundColor: bgColor,
-		borderRadius: '50%',
-		margin:0,
-		fontSize:'1rem',
-		overflow:'visible',
-		color:'#e6e6e6'
+		backgroundColor: bgColor
 	};
 
 	return (
-		<Icon style={accountStyle} size="small">{text}</Icon>
+		<Icon css={css} style={accountStyle} size="small">{initialName}</Icon>
 	);
 };
 
 AccountIcon.propTypes = {
 	bgColor: PropTypes.string,
-	text: PropTypes.string
+	initialName: PropTypes.string
 };
 
 export default AccountIcon;

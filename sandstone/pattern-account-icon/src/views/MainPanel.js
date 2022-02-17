@@ -6,25 +6,27 @@ import PropTypes from 'prop-types';
 
 import AccountIcon from '../components/AccountIcon';
 
+import css from './MainPanel.module.less';
+
 const MainPanel = kind({
 	name: 'MainPanel',
 
 	propTypes: {
 		bgColor: PropTypes.string,
-		text: PropTypes.string
+		initialName: PropTypes.string
 	},
 
 	defaultProps: {
 		bgColor: 'red'
 	},
 
-	render: ({bgColor, text, ...rest}) => {
+	render: ({bgColor, initialName, ...rest}) => {
 		return (
 			<Panel {...rest}>
 				<Header title="Account Icon" />
 				<Row>
 					<Cell shrink>
-						<Button size="small" icon="true" iconComponent={<AccountIcon size="small" bgColor={bgColor} text={text} />} />
+						<Button css={css} size="small" icon iconComponent={<AccountIcon bgColor={bgColor} initialName={initialName} />} />
 					</Cell>
 					<Cell shrink>
 						<Button size="small" icon="profile" />
