@@ -16,7 +16,7 @@ const AppBase = kind({
 	render: function (props) {
 		return (
 			<div className={props.className}>
-				<MainPanel bgColor="#D84C75" text="K" />
+				<MainPanel bgColor="#D84C75" initialName="K" />
 			</div>
 		);
 	}
