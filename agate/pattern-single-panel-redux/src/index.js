@@ -1,0 +1,16 @@
+import {render} from 'react-dom';
+import 'web-animations-js';
+
+import App from './main';
+
+let appElement = <App />;
+
+// In a browser environment, render instead of exporting
+if (typeof window !== 'undefined') {
+	render(
+		appElement,
+		document.getElementById('root')
+	);
+}
+
+export default appElement;

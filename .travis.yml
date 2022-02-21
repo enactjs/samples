@@ -3,14 +3,39 @@ node_js:
     - "node"
 sudo: false
 install:
-    - npm install -g enyojs/enact-cli#develop
+    - npm install -g enactjs/cli#develop
     - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Starting eslint...\x1b\x5b0m"
     - npm run lint
     - echo -e "\x1b\x5b35;1m*** eslint complete\x1b\x5b0m"
-    - echo -e "\x1b\x5b35;1m*** Starting all-sample build...\x1b\x5b0m"
-    - cd enact-all-samples
+    - echo -e "\x1b\x5b35;1m*** Starting agate/all-samples build...\x1b\x5b0m"
+    - cd agate/all-samples
     - npm install
     - npm run pack
-    - echo -e "\x1b\x5b35;1m*** sampler build complete\x1b\x5b0m"
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** agate/all-samples build complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting moonstone/all-samples build...\x1b\x5b0m"
+    - cd moonstone/all-samples
+    - npm install
+    - npm run pack
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** moonstone/all-samples build complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting sandstone/all-samples build...\x1b\x5b0m"
+    - cd sandstone/all-samples
+    - npm install
+    - npm run pack
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** sandstone/all-samples build complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting ui/all-samples build...\x1b\x5b0m"
+    - cd ui/all-samples
+    - npm install
+    - npm run pack
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** ui/all-samples build complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting my-theme-app build...\x1b\x5b0m"
+    - cd my-theme-app
+    - npm install
+    - npm run pack
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** my-theme-app build complete\x1b\x5b0m"

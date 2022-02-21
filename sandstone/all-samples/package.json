@@ -1,0 +1,49 @@
+{
+  "name": "all-samples",
+  "version": "1.0.0",
+  "description": "A collection of sample applications for sandstone.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test",
+    "test-watch": "enact test --watch"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "Sandstone QA Samples",
+    "isomorphic": true,
+    "ri": {
+      "baseSize": 48
+    }
+  },
+  "eslintConfig": {
+    "extends": "enact/strict"
+  },
+  "dependencies": {
+    "@enact/core": "^4.0.4",
+    "@enact/i18n": "^4.0.4",
+    "@enact/sandstone": "^2.0.0-rc.4",
+    "@enact/spotlight": "^4.0.4",
+    "@enact/ui": "^4.0.4",
+    "@enact/webos": "^4.0.4",
+    "ilib": "^14.9.1",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.14.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "web-animations-js": "^2.3.2"
+  }
+}
