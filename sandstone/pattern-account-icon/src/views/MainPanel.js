@@ -26,7 +26,7 @@ const MainPanel = kind({
 				<Header title="Account Icon" />
 				<Row>
 					<Cell shrink>
-						<Button css={css} size="small" icon iconComponent={<AccountIcon bgColor={bgColor} initialName={initialName} />} />
+						<Button css={css} size="small" icon iconComponent={<AccountIcon bgColor={bgColor}>{initialName}</AccountIcon>} />
 					</Cell>
 					<Cell shrink>
 						<Button size="small" icon="profile" />

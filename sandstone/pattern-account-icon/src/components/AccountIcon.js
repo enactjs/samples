@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 
 import css from './AccountIcon.module.less';
 
-const AccountIcon = ({bgColor, initialName}) => {
+const AccountIcon = ({bgColor, children}) => {
 	const accountStyle = {
 		backgroundColor: bgColor
 	};
 
 	return (
-		<Icon css={css} style={accountStyle} size="small">{initialName}</Icon>
+		<Icon css={css} style={accountStyle} size="small">{children}</Icon>
 	);
 };
 
 AccountIcon.propTypes = {
-	bgColor: PropTypes.string,
-	initialName: PropTypes.string
+	bgColor: PropTypes.string
 };
 
 export default AccountIcon;
