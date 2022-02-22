@@ -19,7 +19,7 @@ export default function configureAppStore (initialState) {
 
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers
-		module.hot.accept('../reducers', () => {
+		module.hot.accept('./index.js', () => {
 			store.replaceReducer(naviSlice.reducer);
 		});
 	}
