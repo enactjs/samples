@@ -10,16 +10,22 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `sandstone/Panels/Panel`
 - `webos/LS2Request`
 
-Most webOS apps require interaction with LS2Request. In this sample, we show how to
-use LS2Request with Redux.
+Most webOS apps require interaction with LS2Request. In this sample, we show how to use LS2Request with Redux.
 
-#### Running Tests
+To use camera API in your web app, you need to set permissions for methods.
+First, you need to identify the ACG information for the camera methods.
+Then specify the method's ACG information in the `appinfo.json` file.
 
-The sample includes examples on how to use unit tests with Enact. To execute the tests, issue the following command:
-
-```bash
-npm run test
+appinfo.json
+```json
+{
+    ...
+    "requiredPermissions": ["camera.query", "camera.operation"]
+    ...
+}
 ```
+
+https://www.webosose.org/docs/guides/development/web-apps/using-ls2-api-in-web-apps/#identify-the-acg-group-of-the-methods
 
 ---
 

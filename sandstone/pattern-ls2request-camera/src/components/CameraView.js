@@ -39,7 +39,7 @@ const CameraView = () => {
 		return <div>This test will only function correctly on webOS systems!</div>;
 	}
 
-	cameraOption = escape(JSON.stringify({
+	cameraOption = encodeURIComponent(JSON.stringify({
 		mediaTransportType: 'CAMERA',
 		option: cameraStatus
 	}));
