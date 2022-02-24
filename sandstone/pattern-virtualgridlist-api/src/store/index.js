@@ -95,13 +95,13 @@ const recordSlice = createSlice( {
 		},
 		selectItem: (state, action) => {
 			const
-			selectedItems = state.selectedItems,
-			isSelected = selectedItems.includes(action.payload);
+				selectedItems = state.selectedItems,
+				isSelected = selectedItems.includes(action.payload);
 
 			if (state.showOverlay) {
 				if (isSelected) {
 					let id = selectedItems.indexOf(action.payload);
-					if(id>=0) {
+					if (id >= 0) {
 						selectedItems.splice(id, 1);
 					}
 				} else {
