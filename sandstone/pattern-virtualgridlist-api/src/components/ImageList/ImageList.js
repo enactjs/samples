@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 import ImageItem from '../ImageItem';
 
 const ImageList = ({imageitems, ...rest}) => {
-
 	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
 	delete rest.dispatch;
