@@ -1,6 +1,12 @@
+import { createAction, createReducer } from "@reduxjs/toolkit";
 import {combineReducers} from 'redux';
 
-import {ADD_ITEM, DELETE_ITEM, SELECTION_ENABLE, SELECT_ALL, SELECT_ITEM, CHANGE_ALBUM} from '../actions';
+export const addItem = createAction("ADD_ITEM");
+export const changeAlbum = createAction("CHANGE_ALBUM");
+export const deleteItem = createAction("DELETE_ITEM");
+export const selectAll = createAction("SELECT_ALL");
+export const selectionEnable = createAction("SELECTION_ENABLE");
+export const selectItem = createAction("SELECT_ITEM");
 
 const createRecords = (album) => {
 	let
@@ -8,7 +14,7 @@ const createRecords = (album) => {
 			album: album,
 			dataOrder: [],
 			data: {},
-			selectedItems: new Set(),
+			selectedItems: [],
 			showOverlay: false
 		},
 		caption, subCaption, color;
@@ -33,84 +39,88 @@ const createRecords = (album) => {
 
 const initialState = createRecords('Family');
 
-const data = (state = initialState, action) => {
-	switch (action.type) {
-		case ADD_ITEM: {
-			const addedKey = Object.keys(state.data).length;
-			let
-				newData = Object.assign({}, state.data),
-				newDataOrder = state.dataOrder;
+const data = createReducer(initialState, {
+	[addItem]: (state, action) => {
+		const addedKey = Object.keys(state.data).length;
+		let
+			newData = Object.assign({}, state.data),
+			newDataOrder = state.dataOrder;
 
-			newData[addedKey] = action.item;
-			newDataOrder = state.dataOrder.concat(addedKey);
+		newData[addedKey] = action.payload;
+		newDataOrder = state.dataOrder.concat(addedKey);
 
-			return Object.assign({}, state, {data: newData, dataOrder: newDataOrder, selectedItems: new Set()});
+		state.data = newData;
+		state.dataOrder = newDataOrder;
+		state.selectedItems = [];
+	},
+	[changeAlbum]: (state, action) => {
+		if (state.album !== action.payload) {
+			return Object.assign({}, state, createRecords(action.payload));
 		}
-		case CHANGE_ALBUM: {
-			if (state.album !== action.album) {
-				return Object.assign({}, state, createRecords(action.album));
-			} else {
-				return state;
+	},
+	[deleteItem]: (state) => {
+		const
+				selectedItems	= state.selectedItems,
+				filteredDataOrder = state.dataOrder.filter((item) => !selectedItems.includes(item));
+
+		let
+			newData = {},
+			newDataOrder = [];
+
+		for (let i = 0; i < filteredDataOrder.length; i++) {
+			const newId = filteredDataOrder[i];
+			newData[i] = state.data[newId];
+			newDataOrder.push(i);
+		}
+
+		state.data = newData;
+		state.dataOrder = newDataOrder;
+		state.selectedItems = [];
+	},
+	[selectionEnable]: (state) => {
+		let newdata = {};
+
+		Object.keys(state.data).forEach((id) => {
+			newdata[id] = Object.assign({}, state.data[id], {selectionOverlayShowing: !state.data[id].selectionOverlayShowing});
+		});
+
+		state.data = newdata;
+		state.showOverlay = !state.showOverlay;
+	},
+	[selectAll]: (state) => {
+		const selectedItems = state.selectedItems;
+
+		if (selectedItems.length === state.dataOrder.length) {
+			selectedItems.length = 0;
+		} else {
+			for (let i = 0; i < state.dataOrder.length; i++) {
+				selectedItems.push(i);
 			}
 		}
-		case DELETE_ITEM: {
-			const
-				selectedItems	= new Set(state.selectedItems),
-				filteredDataOrder = state.dataOrder.filter((item) => !selectedItems.has(item));
 
-			let
-				newData = {},
-				newDataOrder = [];
+		state.selectedItems = selectedItems;
 
-			for (let i = 0; i < filteredDataOrder.length; i++) {
-				const newId = filteredDataOrder[i];
-				newData[i] = state.data[newId];
-				newDataOrder.push(i);
-			}
+	},
+	[selectItem]: (state, action) => {
+		const
+			selectedItems = state.selectedItems,
+			isSelected = selectedItems.includes(action.payload);
 
-			return Object.assign({}, state, {data: newData, dataOrder: newDataOrder, selectedItems: new Set()});
-		}
-		case SELECTION_ENABLE: {
-			let newdata = {};
-
-			Object.keys(state.data).forEach((id) => {
-				newdata[id] = Object.assign({}, state.data[id], {selectionOverlayShowing: !state.data[id].selectionOverlayShowing});
-			});
-
-			return Object.assign({}, state, {data: newdata, showOverlay: !state.showOverlay});
-		}
-		case SELECT_ALL: {
-			const selectedItems = new Set(state.selectedItems);
-
-			if (selectedItems.size === state.dataOrder.length) {
-				selectedItems.clear();
-			} else {
-				for (let i = 0; i < state.dataOrder.length; i++) {
-					selectedItems.add(i);
+		if (state.showOverlay) {
+			if (isSelected) {
+				let id = selectedItems.indexOf(action.payload);
+				if(id>=0) {
+					selectedItems.splice(id, 1);
 				}
+			} else {
+				selectedItems.push(action.payload);
 			}
-
-			return Object.assign({}, state, {selectedItems});
 		}
-		case SELECT_ITEM: {
-			const
-				selectedItems = new Set(state.selectedItems),
-				isSelected = selectedItems.has(action.index);
 
-			if (state.showOverlay) {
-				if (isSelected) {
-					selectedItems.delete(action.index);
-				} else {
-					selectedItems.add(action.index);
-				}
-			}
+		state.selectedItems = selectedItems;
 
-			return Object.assign({}, state, {selectedItems});
-		}
-		default:
-			return state;
 	}
-};
+});
 
 const rootReducer = combineReducers({
 	data

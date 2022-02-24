@@ -2,12 +2,12 @@ import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {useCallback} from 'react';
-import {useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-const ImageList = ({...rest}) => {
-	const imageitems = useSelector(({data}) => data.dataOrder);
+const ImageList = ({imageitems, ...rest}) => {
+
 	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
 	delete rest.dispatch;
@@ -23,7 +23,12 @@ const ImageList = ({...rest}) => {
 };
 
 ImageList.propTypes = {
-	dispatch: PropTypes.func
+	dispatch: PropTypes.func,
+	imageitems: PropTypes.array
 };
 
-export default ImageList;
+const mapStateToProps = ({data}) => ({
+	imageitems: data.dataOrder
+});
+
+export default connect(mapStateToProps)(ImageList);
