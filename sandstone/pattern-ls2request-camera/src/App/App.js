@@ -1,5 +1,5 @@
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {Panels} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
 

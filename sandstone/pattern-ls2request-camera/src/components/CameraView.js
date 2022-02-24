@@ -1,11 +1,11 @@
+import Button from '@enact/sandstone/Button';
+import Heading from '@enact/sandstone/Heading';
 import Item from '@enact/sandstone/Item';
+import VirtualList from '@enact/sandstone/VirtualList';
+import {Column} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
 import {useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import VirtualList from '@enact/sandstone/VirtualList';
-import ri from '@enact/ui/resolution';
-import Button from '@enact/sandstone/Button';
-import {Column} from '@enact/ui/Layout';
-import Heading from '@enact/sandstone/Heading';
 
 import {closeCamera, getCameraIds, startCamera} from '../actions';
 
@@ -24,7 +24,9 @@ const CameraView = () => {
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
-		videoRef.current.load();
+		if (videoRef.current) {
+			videoRef.current.load();
+		}
 	}, [cameraStatus]);
 
 	const checkSystem = () => {

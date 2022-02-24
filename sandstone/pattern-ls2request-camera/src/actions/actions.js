@@ -1,5 +1,16 @@
 import LS2Request from '@enact/webos/LS2Request';
 
+// To use camera API in your web app, you need to set permissions for methods.
+// First, you need to identify the ACG information for the camera methods.
+// Then specify the method's ACG information in the appinfo.json file.
+//
+// appinfo.json
+// {
+//	 ...
+//    "requiredPermissions": ["camera.query", "camera.operation"]
+// }
+// https://www.webosose.org/docs/guides/development/web-apps/using-ls2-api-in-web-apps/#identify-the-acg-group-of-the-methods
+
 function getCameraList ({deviceList}) {
 	return {
 		type: 'GET_CAMERA_ID',

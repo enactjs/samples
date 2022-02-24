@@ -1,7 +1,7 @@
 {
-  "name": "pattern-camera",
+  "name": "pattern-ls2request-camera",
   "version": "1.0.0",
-  "description": "An Enact application demonstrating camera API.",
+  "description": "An Enact application demonstrating camera API using ls2request.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "LS2Request Pattern",
+    "title": "LS2Request Camera Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 24
