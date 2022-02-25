@@ -1,3 +1,5 @@
+/* eslint-disable jsx-no-bind */
+
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import Slider from '@enact/sandstone/Slider';

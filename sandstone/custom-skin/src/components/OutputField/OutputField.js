@@ -1,3 +1,4 @@
+/* eslint-disable jsx-no-bind */
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
 import Button from '@enact/sandstone/Button';
