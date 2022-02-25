@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+
 import Alert from '@enact/sandstone/Alert';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
@@ -186,7 +188,7 @@ const MainPanel = () => {
 		const colorSet = presets[`${presetColors}`];
 		setActivePreset(presetColors);
 
-		for(let color in colorSet){
+		for (let color in colorSet) {
 			const index = varNames.indexOf(color);
 			setColors[index](colorSet[color]);
 		}
@@ -247,7 +249,7 @@ const MainPanel = () => {
 	let screenWidth = window.screen.width;
 	let windowWidth = window.innerWidth;
 	let previewDropdownWidth = () => {
-		if( screenWidth <= 1920) {
+		if (screenWidth <= 1920) {
 			if (windowWidth < 1080) {
 				return 'tiny';
 			} else {

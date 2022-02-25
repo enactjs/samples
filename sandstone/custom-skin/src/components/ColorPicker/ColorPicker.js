@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import Slider from '@enact/sandstone/Slider';
@@ -86,7 +88,7 @@ const ColorPicker = (props) => {
 							<label>Green</label>
 							<label>{green}</label>
 						</div>
-						<Slider defaultValue={red} min={0} max={255} onChange={changeGreen} />
+						<Slider defaultValue={green} min={0} max={255} onChange={changeGreen} />
 					</Cell>
 				</Row>
 				<Row align="center">
@@ -95,7 +97,7 @@ const ColorPicker = (props) => {
 							<label>Blue</label>
 							<label>{blue}</label>
 						</div>
-						<Slider defaultValue={red} min={0} max={255} onChange={changeBlue} />
+						<Slider defaultValue={blue} min={0} max={255} onChange={changeBlue} />
 					</Cell>
 				</Row>
 				<Column align="center">

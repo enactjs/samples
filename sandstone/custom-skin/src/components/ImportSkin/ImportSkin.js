@@ -1,4 +1,5 @@
 import kind from '@enact/core/kind';
+import platform from '@enact/core/platform';
 import Dropdown from '@enact/sandstone/Dropdown';
 import PropTypes from 'prop-types';
 
@@ -8,8 +9,23 @@ const ImportSkin = kind({
 	name: 'ImportSkin',
 
 	propTypes: {
+		colorPresets: PropTypes.array,
 		setColorsImport: PropTypes.func,
 		setColorsPreset: PropTypes.func
+	},
+
+	defaultProps: {
+		colorPresets: [
+			'Default Sandstone Theme',
+			'Blue Theme 1',
+			'Blue Theme 2',
+			'Green Theme 1',
+			'Green Theme 2',
+			'Purple Theme 1',
+			'Purple Theme 2',
+			'Red Theme 1',
+			'Red Theme 2'
+		]
 	},
 
 	handlers:{
@@ -20,35 +36,35 @@ const ImportSkin = kind({
 					setColorsPreset('defaultTheme');
 					break;
 				}
-				case 'Default Blue Theme': {
+				case 'Blue Theme 1': {
 					setColorsPreset('defaultBlueTheme');
 					break;
 				}
-				case 'Default Green Theme': {
+				case 'Green Theme 1': {
 					setColorsPreset('defaultGreenTheme');
 					break;
 				}
-				case 'Default Purple Theme': {
+				case 'Purple Theme 1': {
 					setColorsPreset('defaultPurpleTheme');
 					break;
 				}
-				case 'Default Red Theme': {
+				case 'Red Theme 1': {
 					setColorsPreset('defaultRedTheme');
 					break;
 				}
-				case 'Blue Theme': {
+				case 'Blue Theme 2': {
 					setColorsPreset('blueTheme');
 					break;
 				}
-				case 'Green Theme': {
+				case 'Green Theme 2': {
 					setColorsPreset('greenTheme');
 					break;
 				}
-				case 'Purple Theme': {
+				case 'Purple Theme 2': {
 					setColorsPreset('purpleTheme');
 					break;
 				}
-				case 'Red Theme': {
+				case 'Red Theme 2': {
 					setColorsPreset('redTheme');
 					break;
 				}
@@ -127,7 +143,7 @@ const ImportSkin = kind({
 		}
 	},
 
-	render:({handleClose, handleOpen, size}) => {
+	render:({colorPresets, handleClose, handleOpen, size}) => {
 		return (
 			<div className={componentCss.inputFile}>
 				<Dropdown
@@ -137,18 +153,7 @@ const ImportSkin = kind({
 					onOpen={handleOpen}
 					width={size}
 				>
-					{[
-						'Default Sandstone Theme',
-						'Default Blue Theme',
-						'Default Green Theme',
-						'Default Purple Theme',
-						'Default Red Theme',
-						'Blue Theme',
-						'Green Theme',
-						'Purple Theme',
-						'Red Theme',
-						'Import your own'
-					]}
+					{platform.webos ? colorPresets : [...colorPresets, 'Import your own']}
 				</Dropdown>
 			</div>
 		);
