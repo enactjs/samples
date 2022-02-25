@@ -1,4 +1,4 @@
-/* eslint-disable jsx-no-bind */
+/* eslint-disable react/jsx-no-bind */
 
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
