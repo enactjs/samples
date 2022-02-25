@@ -1,26 +1,22 @@
 import Item from '@enact/sandstone/Item';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback} from 'react';
 
-class SampleItem extends Component {
-	static propTypes = {
-		history: PropTypes.object,
-		path: PropTypes.any
-	};
+const SampleItem = ({children, history, path, ...rest}) => {
+	const itemSelect = useCallback(() => {
+		history.push({pathname: path});
+	}, [history, path]);
 
-	itemSelect = () => {
-		this.props.history.push({pathname: this.props.path});
-	};
+	return (
+		<Item {...rest} onClick={itemSelect}>
+			{children}
+		</Item>
+	);
+};
 
-	render () {
-		const {children, ...rest} = this.props;
-
-		return (
-			<Item {...rest} onClick={this.itemSelect}>
-				{children}
-			</Item>
-		);
-	}
-}
+SampleItem.propTypes = {
+	history: PropTypes.object,
+	path: PropTypes.any
+};
 
 export default SampleItem;

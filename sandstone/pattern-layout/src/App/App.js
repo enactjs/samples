@@ -5,8 +5,7 @@ import Button from '@enact/sandstone/Button';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import compose from 'ramda/src/compose';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
 import {importAll} from '../components/util';
 import Details from '../views/Details';
@@ -32,7 +31,7 @@ itemPusher('Details View', 'Show off details about an item', Details, thumbs['de
 
 const Placeholder = kind({name: 'Placeholder'});
 
-const App = kind({
+const Sample = kind({
 	name: 'LayoutApp',
 
 	propTypes: {
@@ -82,63 +81,57 @@ const App = kind({
 });
 
 const AppDecorator = hoc((config, Wrapped) => {
-	return class extends Component {
-		static displayName = 'AppDecorator';
+	const Component = ({defaultDebug, defaultIndex, defaultItemIndex, ...rest}) => {
+		const [debug, setDebug] = useState(defaultDebug);
+		const [index, setIndex] = useState(defaultIndex);
+		const [itemIndex, setItemIndex] = useState(defaultItemIndex);
 
-		static propTypes = {
-			defaultDebug: PropTypes.bool,
-			defaultIndex: PropTypes.number,
-			defaultItemIndex: PropTypes.number
-		};
+		const handleChangePanel = useCallback((ev) => {
+			forward('onChangePanel', ev, rest);
+			setIndex(ev.index);
+			setItemIndex(ev.itemIndex);
+		}, [rest]);
 
-		static defaultProps = {
-			defaultDebug: false,
-			defaultIndex: 0,
-			defaultItemIndex: 0
-		};
+		const handleToggleDebug = useCallback(() => {
+			setDebug((prevDebug) => {
+				const nextDebug = {debug: !prevDebug};
+				forward('onToggleDebug', nextDebug, rest);
 
-		constructor (props) {
-			super(props);
-
-			this.state = {
-				debug: this.props.defaultDebug,
-				index: this.props.defaultIndex,
-				itemIndex: this.props.defaultItemIndex
-			};
-		}
-
-		handleChangePanel = (ev) => {
-			forward('onChangePanel', ev, this.props);
-			this.setState({index: ev.index, itemIndex: ev.itemIndex});
-		};
-
-		handleToggleDebug = () => {
-			this.setState(state => {
-				const newState = {debug: !state.debug};
-				forward('onToggleDebug', newState, this.props);
-				return newState;
+				return !prevDebug;
 			});
-		};
+		}, [rest]);
 
-		render () {
-			const {...rest} = this.props;
-			delete rest.defaultDebug;
-			delete rest.defaultIndex;
-			delete rest.defaultItemIndex;
-
-			return <Wrapped
+		return (
+			<Wrapped
 				{...rest}
-				debug={this.state.debug}
-				index={this.state.index}
-				itemIndex={this.state.itemIndex}
-				onChangePanel={this.handleChangePanel}
-				onToggleDebug={this.handleToggleDebug}
-			/>;
-		}
+				debug={debug}
+				index={index}
+				itemIndex={itemIndex}
+				onChangePanel={handleChangePanel}
+				onToggleDebug={handleToggleDebug}
+			/>
+		);
 	};
+
+	Component.displayName = 'AppDecorator';
+
+	Component.propTypes = {
+		defaultDebug: PropTypes.bool,
+		defaultIndex: PropTypes.number,
+		defaultItemIndex: PropTypes.number
+	};
+
+	Component.defaultProps = {
+		defaultDebug: false,
+		defaultIndex: 0,
+		defaultItemIndex: 0
+	};
+
+	return Component;
 });
 
-export default compose(
-	ThemeDecorator,
-	AppDecorator
-)(App);
+const AppBase = AppDecorator(Sample);
+const App = ThemeDecorator(AppBase);
+
+export default App;
+export {App, AppBase};

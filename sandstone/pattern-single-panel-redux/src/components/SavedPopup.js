@@ -24,7 +24,7 @@ const SavedPopup = kind({
 		delete rest.saveToState;
 
 		return (
-			<Popup onClose={onChange} open={saved} showCloseButton>
+			<Popup onClose={onChange} open={saved}>
 				Saved!
 			</Popup>
 		);

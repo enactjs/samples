@@ -5,7 +5,7 @@ import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
@@ -16,106 +16,91 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-class App extends Component {
-	static propTypes = {
-		/**
-		 * Assign an alternate panel index to start on.
-		 *
-		 * @type {Number}
-		 * @default 0
-		 * @public
-		 */
-		panelIndex: PropTypes.number,
+const AppBase = ({className, panelId, videoId, ...rest}) => {
+	const [panelIndex, setPanelIndex] = useState(panelId);
+	const [panelsVisible, setPanelsVisible] = useState(false);
+	const [videoIndex, setVideoIndex] = useState(videoId);
+	const videoRef = useRef(null);
 
-		/**
-		 * Assign an alternate initial video to load first.
-		 *
-		 * @type {Number}
-		 * @default 0
-		 * @public
-		 */
-		videoIndex: PropTypes.number
-	};
-
-	static defaultProps = {
-		panelIndex: 0,
-		videoIndex: 0
-	};
-
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			panelIndex: this.props.panelIndex,
-			panelsVisible: false,
-			videoIndex: this.props.videoIndex
-		};
-	}
-
-	componentDidUpdate (prevProps, prevState) {
+	useEffect(() => {
 		// After displaying the panels, move the focus to the main panel
-		if (!prevState.panelsVisible && this.state.panelsVisible) {
+		if (panelsVisible) {
 			Spotlight.focus('main-panel');
 		}
-	}
+	}, [panelsVisible]);
 
-	handleNextPanelClick = () => this.setState(prevState => ({panelIndex: prevState.panelIndex + 1}));
+	const handleNextPanelClick = useCallback(() => setPanelIndex(prevPanelIndex => (prevPanelIndex + 1)), []);
+	const handleBack = useCallback(({index}) => setPanelIndex(index), []);
+	const handleHidePanelsClick = useCallback(() => setPanelsVisible(false), []);
+	const handleShowPanelsClick = useCallback(() => {
+		videoRef.current.hideControls();
+		setPanelsVisible(true);
+	}, []);
+	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
+	const {source, desc, ...restVideo} = getVideo(videoIndex);
 
-	handleSelectBreadcrumb = ({index}) => this.setState({panelIndex: index});
+	return (
+		<div {...rest} className={className + ' ' + css.app}>
+			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={panelsVisible}>
+				<source src={source} type="video/mp4" />
+				<infoComponents>
+					{desc}
+				</infoComponents>
+				<MediaControls actionGuideLabel="Press Down Button">
+					<Button
+						icon="list"
+						backgroundOpacity="transparent"
+						onClick={handleShowPanelsClick}
+						spotlightDisabled={panelsVisible}
+					/>
+				</MediaControls>
+			</VideoPlayer>
+			{panelsVisible ?
+				<Panels
+					index={panelIndex}
+					onBack={handleBack}
+				>
+					<MainPanel
+						onHidePanels={handleHidePanelsClick}
+						onNextPanel={handleNextPanelClick}
+						onVideoIndexChange={handleVideoIndexChange}
+						spotlightId="main-panel"
+						title="Videos"
+						videoIndex={videoIndex}
+					/>
+					<ItemPanel title="Second" />
+				</Panels> :
+				null}
+		</div>
+	);
+};
 
-	handleHidePanelsClick = () => this.setState({panelsVisible: false});
+AppBase.propTypes = {
+	/**
+	 * Assign an alternate panel index to start on.
+	 *
+	 * @type {Number}
+	 * @default 0
+	 * @public
+	 */
+	panelId: PropTypes.number,
 
-	handleShowPanelsClick = () => {
-		this.videoRef.hideControls();
-		this.setState({panelsVisible: true});
-	};
+	/**
+	 * Assign an alternate initial video to load first.
+	 *
+	 * @type {Number}
+	 * @default 0
+	 * @public
+	 */
+	videoId: PropTypes.number
+};
 
-	setVideoIndex = (videoIndex) => this.setState({videoIndex});
+AppBase.defaultProps = {
+	panelId: 0,
+	videoId: 0
+};
 
-	setVideoRef = (ref) => {
-		this.videoRef = ref;
-	};
+const App = ThemeDecorator(AppBase);
 
-	render () {
-		const {className, ...rest} = this.props;
-		const {source, desc, ...restVideo} = getVideo(this.state.videoIndex);
-		delete rest.panelIndex;
-		delete rest.videoIndex;
-		return (
-			<div {...rest} className={className + ' ' + css.app}>
-				<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={this.setVideoRef} spotlightDisabled={this.state.panelsVisible}>
-					<source src={source} type="video/mp4" />
-					<infoComponents>
-						{desc}
-					</infoComponents>
-					<MediaControls actionGuideLabel="Press Down Button">
-						<Button
-							icon="list"
-							backgroundOpacity="transparent"
-							onClick={this.handleShowPanelsClick}
-							spotlightDisabled={this.state.panelsVisible}
-						/>
-					</MediaControls>
-				</VideoPlayer>
-				{this.state.panelsVisible ?
-					<Panels
-						index={this.state.panelIndex}
-						onBack={this.handleSelectBreadcrumb}
-					>
-						<MainPanel
-							onHidePanels={this.handleHidePanelsClick}
-							onNextPanel={this.handleNextPanelClick}
-							onVideoIndexChange={this.setVideoIndex}
-							spotlightId="main-panel"
-							title="Videos"
-							videoIndex={this.state.videoIndex}
-						/>
-						<ItemPanel title="Second" />
-					</Panels> :
-					null}
-			</div>
-		);
-	}
-}
-
-export default ThemeDecorator(App);
+export default App;
+export {App, AppBase};

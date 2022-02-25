@@ -1,10 +1,16 @@
 import {Provider} from 'react-redux';
 
-import App from './App';
+import App, {AppBase} from './App';
 import configureStore from './store';
 
 // set default launch path
 const store = configureStore();
+
+const appElementBase = () => (
+	<Provider store={store}>
+		<AppBase />
+	</Provider>
+);
 
 let appElement = () => (
 	<Provider store={store}>
@@ -13,3 +19,4 @@ let appElement = () => (
 );
 
 export default appElement;
+export {appElement, appElementBase};

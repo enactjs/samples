@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 
 import GalleryPanelHeader from '../components/GalleryPanelHeader';
 import ImageList from '../components/ImageList';
@@ -11,49 +11,50 @@ import css from './MainView.module.less';
 
 const albums = ['Family', 'Car', 'Travel'];
 
-class MainView extends Component {
-	static propTypes = {
-		album: PropTypes.string,
-		onChangeAlbum: PropTypes.func
-	};
+const MainView = ({onChangeAlbum}) => {
+	const scrollToRef = useRef(null);
 
-	componentDidMount () {
+	useEffect(() => {
+		scrollToRef.current({index: 0, animate: false, focus: true});
+	});
+
+	useEffect(() => {
 		// Below is an example of using scrollTo method for setting an "initial" position of VirtualList.
 		// It is a substitute for focusOnIndex, setInitialFocusIndex, and scrollToItem of enyo.
-		this.scrollTo({index: 60, animate: false, focus: true});
-	}
+		scrollToRef.current({index: 60, animate: false, focus: true});
+	}, []);
 
-	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, focus: true});
-	}
+	const onChange = useCallback(({album}) => {
+		onChangeAlbum(album);
+	}, [onChangeAlbum]);
 
-	onChange = ({album}) => {
-		this.props.onChangeAlbum(album);
-	};
+	const getScrollTo = useCallback((scrollTo) => {
+		scrollToRef.current = scrollTo;
+	}, []);
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
-
-	render = () => {
-		return (
-			<div className={css.mainView}>
-				<GalleryPanelHeader title="My Gallery" />
-				<div className={css.content}>
-					<SideBar
-						albums={albums}
-						className={css.sideBar}
-						defaultSelected={0}
-						onAlbumChange={this.onChange}
-					/>
-					<ImageList
-						cbScrollTo={this.getScrollTo}
-						className={css.list}
-					/>
-				</div>
+	return (
+		<div className={css.mainView}>
+			<GalleryPanelHeader title="My Gallery" />
+			<div className={css.content}>
+				<SideBar
+					albums={albums}
+					className={css.sideBar}
+					defaultSelected={0}
+					onAlbumChange={onChange}
+				/>
+				<ImageList
+					cbScrollTo={getScrollTo}
+					className={css.list}
+				/>
 			</div>
-		);
-	};
-}
+		</div>
+	);
+
+};
+
+MainView.propTypes = {
+	album: PropTypes.string,
+	onChangeAlbum: PropTypes.func
+};
 
 export default AppStateDecorator(MainView);

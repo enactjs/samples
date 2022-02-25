@@ -16,14 +16,15 @@ describe('Content specs', () => {
 		);
 
 		const SideBar = subject.find('SideBar');
-		const Image = subject.find('Image');
-		const Item = SideBar.find('SelectableItem').last();
+		const Item = SideBar.find('GroupItem').last();
 
 		Item.simulate('click');
-		const actual = Image.prop('src').split('/').pop();
-		const expected = 'daegu.jpeg';
 
-		expect(actual).to.equal(expected);
+		const Content = subject.find('Content');
+		const actual = Content.prop('selectedCity');
+		const expected = 'Daegu';
+
+		expect(actual).toBe(expected);
 	});
 
 });

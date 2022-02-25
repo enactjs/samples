@@ -1,62 +1,51 @@
 import {Cell, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
 
 import css from './Body.module.less';
 
-class Body extends Component {
-	static propTypes = {
-		selectedCountry: PropTypes.string.isRequired,
-		cities: PropTypes.object
-	};
+const Body = ({cities, selectedCountry, ...rest}) => {
+	const [city, setCity] = useState(cities['usa'][0]);
+	const [zoom, setZoom] = useState(false);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			city: this.props.cities['usa'][0],
-			zoom: false
-		};
-	}
+	useEffect(() => {
+		const nextCity = cities[selectedCountry][0];
+		setCity(nextCity);
+	}, [cities, selectedCountry]);
 
-	UNSAFE_componentWillReceiveProps (nextProps) {
-		const nextCity = this.props.cities[nextProps.selectedCountry][0];
-		this.setState({city: nextCity});
-	}
+	const handleCityChange = useCallback(({data: selectedCity}) => setCity(selectedCity), []);
+	const handleZoom = useCallback(() => {
+		setZoom(!zoom);
+	}, [zoom]);
 
-	handleCityChange = ({data: city}) => this.setState({city});
-
-	handleZoom = () => {
-		this.setState(({zoom}) => ({zoom: !zoom}));
-	};
-
-	render () {
-		const {cities, selectedCountry, ...rest} = this.props;
-		const selectedCity = this.state.city;
-
-		return (
-			<Row {...rest} className={css.body}>
-				<Cell
-					cities={cities}
-					className={css.sidebar}
-					component={SideBar}
-					defaultSelected={0}
-					onCityChange={this.handleCityChange}
-					selectedCountry={selectedCountry}
-					size="30%"
+	return (
+		<Row {...rest} className={css.body}>
+			<Cell
+				cities={cities}
+				className={css.sidebar}
+				component={SideBar}
+				defaultSelected={0}
+				onCityChange={handleCityChange}
+				selectedCountry={selectedCountry}
+				size="30%"
+			/>
+			<Cell className={css.content}>
+				<Content
+					onZoom={handleZoom}
+					selectedCity={city}
+					zoom={zoom}
 				/>
-				<Cell className={css.content}>
-					<Content
-						onZoom={this.handleZoom}
-						selectedCity={selectedCity}
-						zoom={this.state.zoom}
-					/>
-				</Cell>
-			</Row>
-		);
-	}
-}
+			</Cell>
+		</Row>
+	);
+};
+
+Body.propTypes = {
+	selectedCountry: PropTypes.string.isRequired,
+	cities: PropTypes.object
+};
 
 export default Body;
