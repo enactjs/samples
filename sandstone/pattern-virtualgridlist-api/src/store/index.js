@@ -42,13 +42,11 @@ const recordSlice = createSlice( {
 			newData[addedKey] = action.payload;
 			newDataOrder = state.dataOrder.concat(addedKey);
 
-			state.data = newData;
-			state.dataOrder = newDataOrder;
-			state.selectedItems = [];
+			Object.assign(state, {data: newData, dataOrder: newDataOrder, selectedItems: []});
 		},
 		changeAlbum: (state, action) => {
 			if (state.album !== action.payload) {
-				return Object.assign({}, state, createRecords(action.payload));
+				Object.assign(state, createRecords(action.payload));
 			}
 		},
 		deleteItem: (state) => {
@@ -66,9 +64,7 @@ const recordSlice = createSlice( {
 				newDataOrder.push(i);
 			}
 
-			state.data = newData;
-			state.dataOrder = newDataOrder;
-			state.selectedItems = [];
+			Object.assign(state, {data: newData, dataOrder: newDataOrder, selectedItems: []});
 		},
 		selectionEnable: (state) => {
 			let newdata = {};
@@ -77,8 +73,7 @@ const recordSlice = createSlice( {
 				newdata[id] = Object.assign({}, state.data[id], {selectionOverlayShowing: !state.data[id].selectionOverlayShowing});
 			});
 
-			state.data = newdata;
-			state.showOverlay = !state.showOverlay;
+			Object.assign(state, {data: newdata, showOverlay: !state.showOverlay});
 		},
 		selectAll: (state) => {
 			const selectedItems = state.selectedItems;
@@ -91,7 +86,7 @@ const recordSlice = createSlice( {
 				}
 			}
 
-			state.selectedItems = selectedItems;
+			Object.assign(state, {selectedItems});
 		},
 		selectItem: (state, action) => {
 			const
@@ -109,7 +104,7 @@ const recordSlice = createSlice( {
 				}
 			}
 
-			state.selectedItems = selectedItems;
+			Object.assign(state, {selectedItems});
 		}
 	}
 });
