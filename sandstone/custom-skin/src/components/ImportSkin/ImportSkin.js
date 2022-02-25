@@ -9,6 +9,7 @@ const ImportSkin = kind({
 	name: 'ImportSkin',
 
 	propTypes: {
+		colorPresets: PropTypes.array,
 		setColorsImport: PropTypes.func,
 		setColorsPreset: PropTypes.func
 	},
