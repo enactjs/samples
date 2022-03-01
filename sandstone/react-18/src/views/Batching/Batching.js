@@ -2,15 +2,15 @@ import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/sandstone/Panels';
 
-const Suspense = kind({
-	name: 'Suspense',
+const Batching = kind({
+	name: 'Batching',
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="Suspense" />
+			<Header title="Batching" type="mini" />
 			<Button>Click me</Button>
 		</Panel>
 	)
 });
 
-export default Suspense;
+export default Batching;

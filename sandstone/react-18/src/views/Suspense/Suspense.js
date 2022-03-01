@@ -2,15 +2,15 @@ import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
 import {Panel, Header} from '@enact/sandstone/Panels';
 
-const UseTransition = kind({
-	name: 'UseTransition',
+const Suspense = kind({
+	name: 'Suspense',
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="UseTransition" />
+			<Header title="Suspense" type="mini" />
 			<Button>Click me</Button>
 		</Panel>
 	)
 });
 
-export default UseTransition;
+export default Suspense;
