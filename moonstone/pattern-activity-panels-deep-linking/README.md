@@ -20,10 +20,10 @@ Here's what your panels' JSX will end up looking like:
 
 ```jsx
 <RoutablePanels {...rest} onSelectBreadcrumb={onNavigate} path={path}>
-	<Route component={Batching} onClick={onSecondPanel} path="first" title="First">
-		<Route component={Batching} onClick={onThirdPanel} path="second" title="Second">
-			<Route component={Batching} onClick={onFourthPanel} path="third" title="Third">
-				<Route component={Batching} path="fourth" title="Fourth"/>
+	<Route component={MainPanel} onClick={onSecondPanel} path="first" title="First">
+		<Route component={MainPanel} onClick={onThirdPanel} path="second" title="Second">
+			<Route component={MainPanel} onClick={onFourthPanel} path="third" title="Third">
+				<Route component={MainPanel} path="fourth" title="Fourth"/>
 			</Route>
 		</Route>
 	</Route>

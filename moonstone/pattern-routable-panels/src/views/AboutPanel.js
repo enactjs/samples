@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 const example =
 `<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 	<Route path="first" component={AboutPanel} title="First" onClick={onSecondPanel}>
-		<Route path="second" component={Batching} title="Second" onClick={onFourthPanel} />
-		<Route path="third" component={Batching} title="Third" onClick={onFirstPanel}>
-			<Route path="fourth" component={Batching} title="Fouth" onClick={onThirdPanel} />
+		<Route path="second" component={MainPanel} title="Second" onClick={onFourthPanel} />
+		<Route path="third" component={MainPanel} title="Third" onClick={onFirstPanel}>
+			<Route path="fourth" component={MainPanel} title="Fouth" onClick={onThirdPanel} />
 		</Route>
 	</Route>
 </RoutablePanels>`;
