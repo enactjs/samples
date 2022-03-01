@@ -1,7 +1,7 @@
-import {Header} from "@enact/sandstone/Panels";
+import {Header} from '@enact/sandstone/Panels';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import classnames from "classnames";
+import classnames from 'classnames';
 
 import Batching from '../views/Batching/Batching';
 import Suspense from '../views/Suspense/Suspense';
