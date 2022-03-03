@@ -1,5 +1,4 @@
 import {render} from 'react-dom';
-import 'web-animations-js';
 
 import App from './App';
 

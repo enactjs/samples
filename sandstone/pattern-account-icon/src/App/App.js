@@ -3,19 +3,12 @@ import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
 
-import css from './App.module.less';
-
 const AppBase = kind({
 	name: 'App',
 
-	styles: {
-		css,
-		className: 'app'
-	},
-
 	render: function (props) {
 		return (
-			<div className={props.className}>
+			<div {...props}>
 				<MainPanel bgColor="#D84C75" initialName="K" />
 			</div>
 		);
