@@ -15,20 +15,20 @@ const MainPanel = kind({
 
 	propTypes: {
 		bgColor: PropTypes.string,
-		initialName: PropTypes.string
+		initial: PropTypes.string
 	},
 
 	defaultProps: {
 		bgColor: 'red'
 	},
 
-	render: ({bgColor, initialName, ...rest}) => {
+	render: ({bgColor, initial, ...rest}) => {
 		return (
 			<Panel {...rest}>
 				<Header title="Account Icon" />
 				<Row>
 					<Cell shrink>
-						<Button css={css} size="small" icon iconComponent={<AccountIcon bgColor={bgColor}>{initialName}</AccountIcon>} />
+						<Button css={css} size="small" icon iconComponent={<AccountIcon bgColor={bgColor}>{initial}</AccountIcon>} />
 					</Cell>
 					<Cell shrink>
 						<Button size="small" icon="profile" />
