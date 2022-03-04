@@ -223,6 +223,20 @@ const MainPanel = () => {
 		}
 	}
 
+	function handleOnBlur () {
+		document.querySelector('#temporaryStylesheet')?.remove();
+	}
+
+	function handleOnFocus () {
+		// eslint-disable-next-line
+		const sheet = document.createElement('style');
+		sheet.id = 'temporaryStylesheet';
+		sheet.innerHTML = `.sandstone-theme {
+				--sand-shadow-color-rgb: none;
+			}`;
+		document.body?.appendChild(sheet);
+	}
+
 	function handleOpenPopup () {
 		setOpenPopup(!openPopup);
 	}
@@ -271,6 +285,8 @@ const MainPanel = () => {
 					cbScrollTo={(fn) => {scrollTo = fn}} //eslint-disable-line
 					focusableScrollbar
 					horizontalScrollbar="hidden"
+					onBlur={handleOnBlur}
+					onFocus={handleOnFocus}
 				>
 					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 					<AutoPopup

@@ -47,7 +47,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	defaultBlueTheme: {
+	blueColorSet1: {
 		'--sand-bg-color': '#272829',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#ACB0B5',
@@ -95,7 +95,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	defaultGreenTheme: {
+	greenColorSet1: {
 		'--sand-bg-color': '#272829',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#ACB0B5',
@@ -143,7 +143,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	defaultPurpleTheme: {
+	purpleColorSet1: {
 		'--sand-bg-color': '#272829',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color':'#ACB0B5',
@@ -191,7 +191,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	defaultRedTheme: {
+	redColorSet1: {
 		'--sand-bg-color': '#252424',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#ACB0B5',
@@ -239,7 +239,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	blueTheme: {
+	blueColorSet2: {
 		'--sand-bg-color': '#181E3D',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#ACB0B5',
@@ -287,7 +287,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	greenTheme: {
+	greenColorSet2: {
 		'--sand-bg-color': '#102933',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#ACB0B5',
@@ -335,7 +335,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	purpleTheme: {
+	purpleColorSet2: {
 		'--sand-bg-color': '#2B1941',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#858391',
@@ -383,7 +383,7 @@ export const presets = {
 		'--sand-alert-overlay-formcheckboxitem-focus-text-color': '#575E66',
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
-	redTheme: {
+	redColorSet2: {
 		'--sand-bg-color': '#3D1A1A',
 		'--sand-text-color': '#E7E7E7',
 		'--sand-text-sub-color': '#817578',

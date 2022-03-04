@@ -17,55 +17,55 @@ const ImportSkin = kind({
 	defaultProps: {
 		colorPresets: [
 			'Default Sandstone Theme',
-			'Blue Theme 1',
-			'Blue Theme 2',
-			'Green Theme 1',
-			'Green Theme 2',
-			'Purple Theme 1',
-			'Purple Theme 2',
-			'Red Theme 1',
-			'Red Theme 2'
+			'Blue Color Set 1',
+			'Blue Color Set 2',
+			'Green Color Set 1',
+			'Green Color Set 2',
+			'Purple Color Set 1',
+			'Purple Color Set 2',
+			'Red Color Set 1',
+			'Red Color Set 2'
 		]
 	},
 
 	handlers:{
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
-			document.querySelector('#temporaryStylesheet')?.remove();
+			document.querySelector('#temporaryStylesheetImport')?.remove();
 			switch (ev.data) {
 				case 'Default Sandstone Theme': {
 					setColorsPreset('defaultTheme');
 					break;
 				}
-				case 'Blue Theme 1': {
-					setColorsPreset('defaultBlueTheme');
+				case 'Blue Color Set 1': {
+					setColorsPreset('blueColorSet1');
 					break;
 				}
-				case 'Green Theme 1': {
-					setColorsPreset('defaultGreenTheme');
+				case 'Green Color Set 1': {
+					setColorsPreset('greenColorSet1');
 					break;
 				}
-				case 'Purple Theme 1': {
-					setColorsPreset('defaultPurpleTheme');
+				case 'Purple Color Set 1': {
+					setColorsPreset('purpleColorSet1');
 					break;
 				}
-				case 'Red Theme 1': {
-					setColorsPreset('defaultRedTheme');
+				case 'Red Color Set 1': {
+					setColorsPreset('redColorSet1');
 					break;
 				}
-				case 'Blue Theme 2': {
-					setColorsPreset('blueTheme');
+				case 'Blue Color Set 2': {
+					setColorsPreset('blueColorSet2');
 					break;
 				}
-				case 'Green Theme 2': {
-					setColorsPreset('greenTheme');
+				case 'Green Color Set 2': {
+					setColorsPreset('greenColorSet2');
 					break;
 				}
-				case 'Purple Theme 2': {
-					setColorsPreset('purpleTheme');
+				case 'Purple Color Set 2': {
+					setColorsPreset('purpleColorSet2');
 					break;
 				}
-				case 'Red Theme 2': {
-					setColorsPreset('redTheme');
+				case 'Red Color Set 2': {
+					setColorsPreset('redColorSet2');
 					break;
 				}
 				case 'Import your own': {
@@ -102,7 +102,7 @@ const ImportSkin = kind({
 		},
 		handleOpen: async () => {
 			const sheet = document.createElement('style');
-			sheet.id = 'temporaryStylesheet';
+			sheet.id = 'temporaryStylesheetImport';
 			sheet.innerHTML = `.sandstone-theme {
 				--sand-selected-text-color: #E6E6E6;
 				--sand-overlay-bg-color-rgb: 87, 94, 102;
