@@ -13,8 +13,8 @@ const NotBatchedAssign = kind({
 	functional: true,
 
 	render: () => {
-		const [value, setValue] = useState(0);
 		const [renders, setRenders] = useState(-1);
+		const [value, setValue] = useState(0);
 
 		useEffect(() => {
 			setRenders(r => r + 1);
