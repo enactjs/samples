@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 import {flushSync} from 'react-dom';
 
 const NotBatchedAssign = kind({
-	name: 'BatchedAssign',
+	name: 'NotBatchedAssign',
 
 	functional: true,
 
