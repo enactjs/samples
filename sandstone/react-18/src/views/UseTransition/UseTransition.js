@@ -57,7 +57,7 @@ const UseTransition = () => {
 					</div>
 				</div>
 				<BodyText className={css.guideText} size="small">
-					With React18's 'useTransition' hook, the previous state of the UI can be held until the data is ready. The fetching of the new data is wrapped inside startTransition while the isPending data tells if the content is currently being loaded or not. This allows the possibility to show a loading indicator. Its timeoutMs property specifies how long we’re willing to wait for the transition to finish.
+					With React18's 'useTransition' hook, the previous state of the UI can be held until the data is ready. The fetching of the new data is wrapped inside 'startTransition' while the 'isPending' data tells if the content is currently being loaded or not. This allows the possibility to show a loading indicator. Its 'timeoutMs' property specifies how long we’re willing to wait for the transition to finish.
 				</BodyText>
 				<div className={css.demoContainer}>
 					<Group
