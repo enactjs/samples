@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
-import {Cell, Row} from '@enact/ui/Layout';
 import BodyText from '@enact/sandstone/BodyText';
 import {Panel, Header} from '@enact/sandstone/Panels';
+import {Cell, Row} from '@enact/ui/Layout';
 
 import BatchedAssign from './BatchedAssign';
 import NotBatchedAssign from './NotBatchedAssign';

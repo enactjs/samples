@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks, react/jsx-no-bind */
 
 import kind from '@enact/core/kind';
-import {Column} from '@enact/ui/Layout';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
+import {Column} from '@enact/ui/Layout';
 import {useEffect, useState} from 'react';
 
 const BatchedAssign = kind({
