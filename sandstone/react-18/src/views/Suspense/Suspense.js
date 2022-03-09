@@ -28,7 +28,7 @@ const SuspensePage = () => {
 	return (
 		<Panels index={index} noCloseButton onBack={prevPanel}>
 			<Panel>
-				<Header subtitle="Suspense offers a fallback UI for better user experience." title="Using Suspense" type="mini">
+				<Header subtitle="Suspense offers a fallback UI for better user experience. Check out next panel." title="Using Suspense" type="mini">
 					<slotAfter>
 						<Button size="small" icon="arrowlargeright" onClick={nextPanel} />
 					</slotAfter>
@@ -38,7 +38,7 @@ const SuspensePage = () => {
 				</Suspense>
 			</Panel>
 			<Panel>
-				<Header subtitle="Page is empty until all the data is available." title="NOT Using Suspense" type="mini" />
+				<Header subtitle="Page is empty until all the data is available. Please wait 3s." title="NOT Using Suspense" type="mini" />
 				<WithoutSuspense />
 			</Panel>
 		</Panels>
