@@ -24,7 +24,7 @@ const createMockItem = (album, albumSize, showOverlay) => {
 		selectionOverlayShowing: showOverlay,
 		caption: album + ' ' + dataLength + caption,
 		subCaption: subCaption,
-		source: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + dataLength
+		source: 'http://via.placeholder.com/300x300/' + color + '/ffffff/png?text=Image ' + dataLength
 	};
 };
 
