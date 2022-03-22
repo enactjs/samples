@@ -18,7 +18,8 @@ const renderItem = () => {
 			</ImageItem>
 			<Spinner
 				style={{position: 'absolute', top: '50%', left: '50%', margin: '-63px 0 0 -39px'}}
-				transparent />
+				transparent
+			/>
 		</>
 	);
 };

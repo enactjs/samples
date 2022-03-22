@@ -13,7 +13,7 @@ const getSamplePage = () => {
 			}, 3000);
 		});
 	});
-}
+};
 
 let SamplePage = getSamplePage();
 
@@ -45,7 +45,7 @@ const SuspensePage = () => {
 				<SamplePage />
 			</Panel>
 		</Panels>
-	)
+	);
 };
 
 export default SuspensePage;
