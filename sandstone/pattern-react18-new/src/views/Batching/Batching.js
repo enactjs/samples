@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
 import BodyText from '@enact/sandstone/BodyText';
-import {Panel, Header} from '@enact/sandstone/Panels';
+import {Panel} from '@enact/sandstone/Panels';
 import {Cell, Row} from '@enact/ui/Layout';
 
 import BatchedAssign from './BatchedAssign';
@@ -11,7 +11,6 @@ const Batching = kind({
 
 	render: (props) => (
 		<Panel {...props}>
-			<Header title="Batching" type="mini" />
 			<Row>
 				<Cell>
 					<BodyText>

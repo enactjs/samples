@@ -14,7 +14,7 @@ const App = (props) => {
 		<div {...props} className={classnames(props.className, css.app)}>
 			<Header noCloseButton title="React 18 Features" type="mini" />
 			<TabLayout orientation="horizontal" className={css.tabLayout}>
-				<Tab className={css.tab} title="Batching">
+				<Tab className={css.tab} title="Automatic Batching">
 					<Batching />
 				</Tab>
 				<Tab className={css.tab} title="Suspense">
