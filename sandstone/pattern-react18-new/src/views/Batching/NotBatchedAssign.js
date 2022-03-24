@@ -20,20 +20,26 @@ const NotBatchedAssign = kind({
 			setRenders(r => r + 1);
 		}, [value]);
 
+		const fakeApiCall = async () => {
+			setTimeout(() => {}, 300);
+		};
+
 		const assignFunctionNotBatched = () => {
-			if (value === 0) {
-				for (let i = 0; i < 1000; ++i) {
-					flushSync(() => {
-						setValue(i + 1);
-					});
+			fakeApiCall().then(() => {
+				if (value === 0) {
+					for (let i = 0; i < 1000; ++i) {
+						flushSync(() => {
+							setValue(i + 1);
+						});
+					}
+				} else {
+					for (let i = 1000; i >= 0; --i) {
+						flushSync(() => {
+							setValue(i);
+						});
+					}
 				}
-			} else {
-				for (let i = 1000; i >= 0; --i) {
-					flushSync(() => {
-						setValue(i);
-					});
-				}
-			}
+			});
 		};
 
 		return (
