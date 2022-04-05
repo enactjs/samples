@@ -1,0 +1,32 @@
+// Button.module.less
+//
+
+.button {
+	width: 18rem;
+	height: 3rem;
+
+	.background {
+		background-color: var(--sand-component-bg-color, #7d848c);
+		border-width: 0.125rem;
+	    border-radius: 0.25rem;
+		border-color: transparent;
+		transition: transform 200ms ease-out;
+		will-change: box-shadow, transform, filter;
+	}
+
+	&:hover,
+	&:focus {
+		color: rgb(var(--sand-component-focus-text-color-rgb, 76, 80, 89));
+		z-index: 1;
+
+		.background {
+			background-color: var(--sand-focus-bg-color, #e6e6e6);
+			transform: scale(1.05);
+		}
+	}
+
+	&:global(.pressed) .background {
+		transition: transform 100ms ease-out;
+		transform: scale(0.95);
+	}
+}
