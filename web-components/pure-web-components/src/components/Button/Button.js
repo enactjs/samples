@@ -113,16 +113,13 @@ customElements.define('poc-button-with-icon',
 						vertical-align: middle;
 						z-index: 0;
 					}
+					:host .background {} /* not working */
 					.root {
 						height: 100%;
 						width: 100%;
 					}
-					.background::slotted(*:hover) {
-						opacity: 0.5;
-					}
-					.background::slotted(*:focus) {
-						opacity: 0.5;
-					}
+					.background::slotted(*:hover) {} /* not working */
+					.background::slotted(*:focus) {} /* not working */
 				</style>
 				<poc-button-simple class="root">
 					<slot name="background" slot="background" class="background"></slot>
@@ -134,20 +131,27 @@ customElements.define('poc-button-with-icon',
 	}
 );
 
-const SimpleButton = (props) => (
+const ButtonSimple = (props) => (
 	<poc-button-simple {...props} />
 );
 
 const ButtonWithIcon = ({children, className, icon, pressed, ...rest}) => (
 	<poc-button-with-icon class={classNames(css.button, className, pressed ? 'pressed' : '')} {...rest}>
 		<div id="target" slot="background" className={css.background} />
-		<span slot="icon">{icon}</span>
-		<span>{children}</span>
+		<span slot="icon" className={css.icon}>{icon}</span>
+		{children}
 	</poc-button-with-icon>
 );
 
-const SpottableButton = Touchable({activeProp: 'pressed'}, Spottable(ButtonWithIcon));
+const SpottableButtonSimple = Touchable({activeProp: 'pressed'}, Spottable(ButtonSimple));
+
+const SpottableButtonWithIcon = Touchable({activeProp: 'pressed'}, Spottable(ButtonWithIcon));
 
 
-export default SpottableButton;
-export {SimpleButton, SpottableButton};
+export default SpottableButtonWithIcon;
+export {
+	ButtonSimple,
+	ButtonWithIcon,
+	SpottableButtonSimple,
+	SpottableButtonWithIcon
+};
