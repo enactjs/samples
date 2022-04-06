@@ -1,0 +1,27 @@
+// MainPanel.module.less
+//
+
+.section {
+	border: solid 1px red;
+	margin: 1px;
+	padding: 1px;
+}
+
+.button {
+	width: 18rem;
+	height: 3rem;
+
+	.background {
+		background-color: darkgreen;
+	    border-radius: 2rem;
+		transition: transform 200ms ease-out;
+		will-change: box-shadow, transform, filter;
+	}
+
+	&:hover,
+	&:focus {
+		.background {
+			transform: scale(1.05);
+		}
+	}
+}
