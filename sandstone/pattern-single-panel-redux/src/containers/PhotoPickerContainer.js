@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changePhotoIndex} from '../actions';
+import {changePhotoIndex} from '../store';
 import PhotoPicker from '../components/PhotoPicker';
 
 const mapStateToProps = (state) => {
