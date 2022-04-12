@@ -1,15 +1,14 @@
 import {configureStore, combineReducers, createSlice} from '@reduxjs/toolkit';
 
 const createRecords = (album) => {
-	let
-		records = {
+	let records = {
 			album: album,
 			dataOrder: [],
 			data: {},
 			selectedItems: [],
 			showOverlay: false
-		},
-		caption, subCaption, color;
+		};
+	let caption, subCaption, color;
 
 	for (let idx = 0; idx < 500; ++idx) {
 		caption = (idx % 8 === 0) ? ' with long title' : '';
