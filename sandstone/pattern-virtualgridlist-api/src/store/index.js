@@ -2,12 +2,12 @@ import {configureStore, combineReducers, createSlice} from '@reduxjs/toolkit';
 
 const createRecords = (album) => {
 	let records = {
-			album: album,
-			dataOrder: [],
-			data: {},
-			selectedItems: [],
-			showOverlay: false
-		};
+		album: album,
+		dataOrder: [],
+		data: {},
+		selectedItems: [],
+		showOverlay: false
+	};
 	let caption, subCaption, color;
 
 	for (let idx = 0; idx < 500; ++idx) {
