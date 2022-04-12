@@ -29,15 +29,14 @@ const createRecords = (album) => {
 	return records;
 };
 
-const recordSlice = createSlice( {
+const recordSlice = createSlice({
 	name: 'recordReducer',
 	initialState: createRecords('Family'),
 	reducers: {
 		addItem: (state, action) => {
 			const addedKey = Object.keys(state.data).length;
-			let
-				newData = Object.assign({}, state.data),
-				newDataOrder = state.dataOrder;
+			let newData = Object.assign({}, state.data);
+			let newDataOrder = state.dataOrder;
 
 			newData[addedKey] = action.payload;
 			newDataOrder = state.dataOrder.concat(addedKey);
@@ -50,13 +49,11 @@ const recordSlice = createSlice( {
 			}
 		},
 		deleteItem: (state) => {
-			const
-				selectedItems	= state.selectedItems,
-				filteredDataOrder = state.dataOrder.filter((item) => !selectedItems.includes(item));
+			const selectedItems = state.selectedItems;
+			const filteredDataOrder = state.dataOrder.filter((item) => !selectedItems.includes(item));
 
-			let
-				newData = {},
-				newDataOrder = [];
+			let newData = {};
+			let newDataOrder = [];
 
 			for (let i = 0; i < filteredDataOrder.length; i++) {
 				const newId = filteredDataOrder[i];
@@ -89,9 +86,8 @@ const recordSlice = createSlice( {
 			Object.assign(state, {selectedItems});
 		},
 		selectItem: (state, action) => {
-			const
-				selectedItems = state.selectedItems,
-				isSelected = selectedItems.includes(action.payload);
+			const selectedItems = state.selectedItems;
+			const isSelected = selectedItems.includes(action.payload);
 
 			if (state.showOverlay) {
 				if (isSelected) {

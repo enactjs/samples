@@ -1,8 +1,10 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-const localeSlice = createSlice( {
+const localeSlice = createSlice({
 	name: 'localeReducer',
-	initialState: {locale : 'en-US'},
+	initialState: {
+		locale : 'en-US'
+	},
 	reducers: {
 		updateLocale: (state, action) => {
 			state.locale = action.payload;

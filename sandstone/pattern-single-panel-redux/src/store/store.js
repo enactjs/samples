@@ -1,6 +1,6 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-const photoSlice = createSlice( {
+const photoSlice = createSlice({
 	name: 'photoReducer',
 	initialState: {
 		photoIndex: 0,

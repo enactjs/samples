@@ -1,8 +1,10 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-const naviSlice = createSlice( {
+const naviSlice = createSlice({
 	name: 'naviReducer',
-	initialState: {path : '/first'},
+	initialState: {
+		path : '/first'
+	},
 	reducers: {
 		navigate: (state, action) => {
 			state.path = action.payload;
