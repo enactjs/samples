@@ -1,5 +1,7 @@
 import {FloatingLayerDecorator} from '@enact/ui/FloatingLayer';
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import SaveButton from '../SaveButton.js';
 
@@ -7,22 +9,24 @@ const FloatingLayerController = FloatingLayerDecorator('div');
 
 describe('SaveButton specs', () => {
 
-	it('should open Popup on Button click', function () {
-
-		const subject = mount(
+	test('should open Popup on Button click', function () {
+		const message = 'Saved!'
+		render(
 			<FloatingLayerController>
 				<SaveButton />
 			</FloatingLayerController>
 		);
 
-		const button = subject.find('Button');
+		const button = screen.getByRole('button');
 
-		button.simulate('click');
+		userEvent.click(button);
 
-		const popup = subject.find('Popup');
-		const actual = popup.prop('open');
+		const popup = screen.getByRole('alert');
 
-		expect(actual).toBeTruthy();
+		const expected = message;
+		const actual = popup.children.item(0);
+
+		expect(actual).toHaveTextContent(expected);
 	});
 });
 
