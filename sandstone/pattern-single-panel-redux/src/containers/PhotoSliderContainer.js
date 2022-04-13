@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changePhotoPosition} from '../actions';
+import {changePhotoPosition} from '../store';
 import PhotoSlider from '../components/PhotoSlider';
 
 const mapStateToProps = (state) => {
