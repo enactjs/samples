@@ -1,24 +1,25 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import MainView from '../../views/MainView.js';
 
 describe('MainView specs', () => {
 
 	it('should change country', function () {
+		render(<MainView />);
 
-		const subject = mount(
-			<MainView />
-		);
+		const Nav = screen.getAllByRole('group');
+		const button = Nav[0].children.item(3);
 
-		const Nav = subject.find('Nav');
-		const button = Nav.find('GroupItem').last();
+		userEvent.click(button);
 
-		button.simulate('click');
+		const cityPhoto = screen.getAllByRole('img');
+		const actual = cityPhoto[0].children.item(0);
 
-		const actual = subject.state('country');
-		const expected = 'japan';
+		const expected = 'tokyo.jpeg';
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveAttribute('src', expected);
 	});
 
 });

@@ -10,7 +10,8 @@ const FloatingLayerController = FloatingLayerDecorator('div');
 describe('SaveButton specs', () => {
 
 	test('should open Popup on Button click', function () {
-		const message = 'Saved!'
+		const message = 'Saved!';
+		
 		render(
 			<FloatingLayerController>
 				<SaveButton />
@@ -21,12 +22,9 @@ describe('SaveButton specs', () => {
 
 		userEvent.click(button);
 
-		const popup = screen.getByRole('alert');
+		const actual = screen.getByText(message);
 
-		const expected = message;
-		const actual = popup.children.item(0);
-
-		expect(actual).toHaveTextContent(expected);
+		expect(actual).toBeInTheDocument();
 	});
 });
 
