@@ -21,7 +21,7 @@ describe('Kitten Specs', () => {
 		render(<Kitten data-testid="kitten" index={0} onSelect={handleSelect} />);
 
 		const kitten = screen.getByTestId('kitten');
-		
+
 		userEvent.click(kitten);
 
 		const expected = index;

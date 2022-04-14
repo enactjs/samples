@@ -1,10 +1,14 @@
 import {configure} from '@enact/analytics/preset/webostv';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import analytics from '../analytics.cfg';
 
 import App from './App';
+
+const container = document.getElementById('root');
+
+const root = createRoot(container);
 
 // The webOS and webOS TV presets will log entries to PmLogLib.
 configure({
@@ -56,7 +60,7 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	root.render(appElement);
 }
 
 export default appElement;

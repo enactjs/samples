@@ -1,9 +1,13 @@
 import {configure} from '@enact/analytics';
 import {forKeyCode} from '@enact/core/handle';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import App from './App';
+
+const container = document.getElementById('root');
+
+const root = createRoot(container);
 
 // All configure properties are optional and can be used
 // to customize what is being detected, how the log entry
@@ -50,7 +54,7 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	root.render(appElement);
 }
 
 export default appElement;

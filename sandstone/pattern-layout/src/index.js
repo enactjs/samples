@@ -44,7 +44,7 @@ if (typeof window !== 'undefined') {
 		<App defaultDebug={debug} defaultIndex={index} defaultItemIndex={itemIndex} onChangePanel={handleChangePanel} onToggleDebug={handleChangeDebug} />
 	);
 
-	render(appElement, document.getElementById('root'));
+	root.render(appElement);
 }
 
 export default appElement;

@@ -1,5 +1,5 @@
 import 'web-animations-js';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 
 import App from './App';
 
@@ -13,11 +13,15 @@ console.error = (...args) => {
 };
 /* eslint-enable no-console */
 
+const container = document.getElementById('root');
+
+const root = createRoot(container);
+
 const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	root.render(appElement);
 }
 
 export default appElement;
