@@ -11,7 +11,7 @@ describe('SaveButton specs', () => {
 
 	test('should open Popup on Button click', function () {
 		const message = 'Saved!';
-		
+
 		render(
 			<FloatingLayerController>
 				<SaveButton />
