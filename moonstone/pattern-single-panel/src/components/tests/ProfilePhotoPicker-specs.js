@@ -1,37 +1,47 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {fireEvent, render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import ProfilePhotoPicker, {imageURLs} from '../ProfilePhotoPicker.js';
 
+const focus = (slider) => fireEvent.focus(slider);
+const keyDown = (keyCode) => (slider) => fireEvent.keyDown(slider, {keyCode});
+const keyUp = (keyCode) => (slider) => fireEvent.keyUp(slider, {keyCode});
+const rightKeyDown = keyDown(39);
+const enterKeyUp = keyUp(13);
+
 describe('ProfilePhotoPicker specs', () => {
 
-	it('should change ProfilePhoto image src', function () {
+	test('should change ProfilePhoto image src', function () {
+		render(<ProfilePhotoPicker />);
 
-		const subject = mount(
-			<ProfilePhotoPicker />
-		);
+		const button = screen.getByLabelText(/next/);
 
-		subject.setState({photoIndex: 2});
+		userEvent.click(button);
+		userEvent.click(button);
 
-		const profilePhoto = subject.find('Image');
-		const actual = profilePhoto.getElements()[0].props.src;
+		const profilePhoto = screen.getAllByRole('img');
+
+		const actual = profilePhoto[0].children.item(0);
 		const expected = imageURLs[2];
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveAttribute('src', expected);
 	});
 
-	it('should change ProfilePhoto background-position', function () {
+	test('should change ProfilePhoto background-position', function () {
+		render(<ProfilePhotoPicker />);
 
-		const subject = mount(
-			<ProfilePhotoPicker />
-		);
+		const slider = screen.getByRole('slider');
 
-		subject.setState({photoPosition: -75});
+		focus(slider);
+		enterKeyUp(slider);
+		rightKeyDown(slider);
 
-		const profilePhoto = subject.find('Image');
-		const actual = profilePhoto.getElements()[0].props.style.backgroundPosition;
-		const expected = '-75px';
+		const profilePhoto = screen.getAllByRole('img');
+		const actual = profilePhoto[0];
+		const expected = '-99px';
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveStyle(`background-position: ${expected}`);
 	});
 });
 
