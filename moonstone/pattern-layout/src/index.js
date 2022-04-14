@@ -6,10 +6,6 @@ import 'web-animations-js';
 import App from './App';
 import {saveObjToQueryString} from './components/util';
 
-const container = document.getElementById('root');
-
-const root = createRoot(container);
-
 let appElement = <App />;
 
 // In a browser environment, render instead of exporting
@@ -43,6 +39,9 @@ if (typeof window !== 'undefined') {
 	appElement = (
 		<App defaultDebug={debug} defaultIndex={index} defaultItemIndex={itemIndex} onChangePanel={handleChangePanel} onToggleDebug={handleChangeDebug} />
 	);
+
+	const container = document.getElementById('root');
+	const root = createRoot(container);
 
 	root.render(appElement);
 }

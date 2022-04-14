@@ -6,10 +6,6 @@ import analytics from '../analytics.cfg';
 
 import App from './App';
 
-const container = document.getElementById('root');
-
-const root = createRoot(container);
-
 // The webOS and webOS TV presets will log entries to PmLogLib.
 configure({
 	// Normally this defaults to `/mnt/lg/cmn_data/whitelist/dr/enact/${appId}.json`,
@@ -60,6 +56,9 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
 	root.render(appElement);
 }
 

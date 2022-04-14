@@ -5,10 +5,6 @@ import 'web-animations-js';
 
 import App from './App';
 
-const container = document.getElementById('root');
-
-const root = createRoot(container);
-
 // All configure properties are optional and can be used
 // to customize what is being detected, how the log entry
 // is being formatted, and where to log the entries.
@@ -54,6 +50,9 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
 	root.render(appElement);
 }
 

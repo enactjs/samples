@@ -3,10 +3,6 @@ import {createRoot} from 'react-dom';
 
 import App from './App';
 
-const container = document.getElementById('root');
-
-const root = createRoot(container);
-
 // Router causes an error with our samples, but we don't want our samples to know about router.
 // To avoid this for now we're just surpressing the error.
 /* eslint-disable no-console */
@@ -21,6 +17,9 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
 	root.render(appElement);
 }
 
