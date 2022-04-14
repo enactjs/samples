@@ -1,26 +1,25 @@
+/* eslint-disable react/jsx-no-bind */
+
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
 
-class SampleItem extends Component {
-	static propTypes = {
-		history: PropTypes.object,
-		path: PropTypes.any
+const SampleItem = (props) => {
+	const itemSelect = () => {
+		props.history.push({pathname: props.path});
 	};
 
-	itemSelect = () => {
-		this.props.history.push({pathname: this.props.path});
-	};
+	const {children, ...rest} = props;
 
-	render () {
-		const {children, ...rest} = this.props;
+	return (
+		<Item {...rest} onClick={itemSelect}>
+			{children}
+		</Item>
+	);
+};
 
-		return (
-			<Item {...rest} onClick={this.itemSelect}>
-				{children}
-			</Item>
-		);
-	}
-}
+SampleItem.propTypes = {
+	history: PropTypes.object,
+	path: PropTypes.any
+};
 
 export default SampleItem;

@@ -1,5 +1,5 @@
 import {configure} from '@enact/analytics/preset/webostv';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import 'web-animations-js';
 
 import analytics from '../analytics.cfg';
@@ -56,7 +56,10 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
+	root.render(appElement);
 }
 
 export default appElement;
