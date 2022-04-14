@@ -1,6 +1,6 @@
 import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
 import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';
@@ -15,6 +15,10 @@ export const routes = [
 	{path: '/PatternListDetailsRedux', component: PatternListDetailsRedux},
 	{path: '/PatternLs2request', component: PatternLs2request}
 ];
+
+const container = document.getElementById('root');
+
+const root = createRoot(container);
 
 // Router causes an error with our samples, but we don't want our samples to know about router.
 // To avoid this for now we're just surpressing the error.
@@ -37,7 +41,7 @@ const appElement = (
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	root.render(appElement);
 }
 
 export default appElement;

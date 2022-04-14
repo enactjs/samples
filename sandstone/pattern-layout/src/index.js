@@ -1,10 +1,14 @@
 /* eslint-disable react/jsx-no-bind */
 import qs from 'query-string';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import App from './App';
 import {saveObjToQueryString} from './components/util';
+
+const container = document.getElementById('root');
+
+const root = createRoot(container);
 
 let appElement = <App />;
 

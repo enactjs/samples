@@ -1,16 +1,17 @@
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import App from './main';
+
+const container = document.getElementById('root');
+
+const root = createRoot(container);
 
 let appElement = <App />;
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {
-	render(
-		appElement,
-		document.getElementById('root')
-	);
+	root.render(appElement);
 }
 
 export default appElement;
