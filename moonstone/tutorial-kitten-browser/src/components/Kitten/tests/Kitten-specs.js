@@ -1,34 +1,34 @@
-import {mount} from 'enzyme';
-import sinon from 'sinon';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import Kitten from '../Kitten';
 
 describe('Kitten Specs', () => {
-	it('should render a Kitten with content', function () {
+	test('should render a Kitten with content', function () {
 		const content = 'Hello Kitten!';
 
-		const kitten = mount(
-			<Kitten>{content}</Kitten>
-		);
+		render(<Kitten>{content}</Kitten>);
 
-		const expected = content;
-		const actual = kitten.text();
+		const actual = screen.getByText(content);
 
-		expect(actual).to.equal(expected);
+		expect(actual).toBeInTheDocument();
 	});
 
-	it('should callback with index when clicked', function () {
+	test('should callback with index when clicked', function () {
 		let index = 0;
-		const handleSelect = sinon.spy();
+		const handleSelect = jest.fn();
 
-		const kitten = mount(
-			<Kitten index={0} onSelect={handleSelect} />
-		);
+		render(<Kitten data-testid="kitten" index={0} onSelect={handleSelect} />);
 
-		kitten.simulate('click', {});
+		const kitten = screen.getByTestId('kitten');
+
+		userEvent.click(kitten);
 
 		const expected = index;
-		const actual = handleSelect.firstCall.args[0].index;
+		const actual = handleSelect.mock.calls[0][0].index;
 
-		expect(actual).to.equal(expected);
+		expect(actual).toEqual(expected);
+
 	});
 });

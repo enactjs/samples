@@ -1,29 +1,30 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import Body from '../../views/Body.js';
 
 describe('SideBar specs', () => {
 
-	it('should change city', function () {
-
+	test('should change city', function () {
 		const cities = {
 			usa: ['San Francisco'],
 			japan: ['Tokyo', 'Osaka', 'Kyoto']
 		};
 
-		const subject = mount(
-			<Body selectedCountry="japan" cities={cities} />
-		);
+		render(<Body selectedCountry="japan" cities={cities} />);
 
-		const SideBar = subject.find('SideBar');
-		const Item = SideBar.find('GroupItem').last();
+		const SideBar = screen.getByRole('group');
+		const Item = SideBar.children.item(2);
 
-		Item.simulate('click');
+		userEvent.click(Item);
 
-		const actual = subject.state('city');
-		const expected = 'Kyoto';
+		const cityPhoto = screen.getAllByRole('img');
+		const actual = cityPhoto[0].children.item(0);
 
-		expect(actual).toBe(expected);
+		const expected = 'kyoto.jpeg';
+
+		expect(actual).toHaveAttribute('src', expected);
 	});
 
 });
