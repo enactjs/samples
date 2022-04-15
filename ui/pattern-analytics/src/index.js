@@ -1,6 +1,6 @@
 import {configure} from '@enact/analytics';
 import {forKeyCode} from '@enact/core/handle';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import App from './App';
@@ -50,7 +50,10 @@ const appElement = (<App />);
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
+	root.render(appElement);
 }
 
 export default appElement;

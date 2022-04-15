@@ -1,6 +1,6 @@
 import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
 import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';
@@ -37,7 +37,10 @@ const appElement = (
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
+	root.render(appElement);
 }
 
 export default appElement;
