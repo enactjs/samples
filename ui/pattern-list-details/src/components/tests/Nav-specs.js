@@ -6,7 +6,7 @@ import MainView from '../../views/MainView.js';
 
 describe('MainView specs', () => {
 
-	it('should change country', function () {
+	test('should change country', function () {
 		render(<MainView />);
 
 		const Nav = screen.getAllByRole('group');

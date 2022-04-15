@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import qs from 'query-string';
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom';
 import 'web-animations-js';
 
 import App from './App';
@@ -40,7 +40,10 @@ if (typeof window !== 'undefined') {
 		<App defaultDebug={debug} defaultIndex={index} defaultItemIndex={itemIndex} onChangePanel={handleChangePanel} onToggleDebug={handleChangeDebug} />
 	);
 
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+	const root = createRoot(container);
+
+	root.render(appElement);
 }
 
 export default appElement;

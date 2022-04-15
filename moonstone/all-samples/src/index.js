@@ -1,5 +1,5 @@
-import {createRoot} from 'react-dom/client';
 import 'web-animations-js';
+import {createRoot} from 'react-dom';
 
 import App from './App';
 
