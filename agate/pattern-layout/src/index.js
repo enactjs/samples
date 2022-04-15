@@ -6,7 +6,6 @@ import 'web-animations-js';
 import App from './App';
 import {saveObjToQueryString} from './components/util';
 
-
 let appElement = <App />;
 
 // In a browser environment, render instead of exporting
