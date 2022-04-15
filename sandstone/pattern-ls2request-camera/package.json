@@ -29,12 +29,12 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^4.0.0",
-    "@enact/i18n": "^4.0.0",
-    "@enact/sandstone": "^2.0.0-beta.1",
-    "@enact/spotlight": "^4.0.0",
-    "@enact/ui": "^4.0.0",
-    "@enact/webos": "^4.0.0",
+    "@enact/core": "^4.5.0-alpha.1",
+    "@enact/i18n": "^4.5.0-alpha.1",
+    "@enact/sandstone": "^2.5.0-alpha.1",
+    "@enact/spotlight": "^4.5.0-alpha.1",
+    "@enact/ui": "^4.5.0-alpha.1",
+    "@enact/webos": "^4.5.0-alpha.1",
     "ilib": "^14.14.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
