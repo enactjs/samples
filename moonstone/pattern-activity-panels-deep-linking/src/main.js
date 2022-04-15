@@ -1,13 +1,10 @@
 import {Provider} from 'react-redux';
 
 import App, {AppBase} from './App';
-import configureStore from './store';
+import configureAppStore from './store';
 
 // set default launch path
-const launchParam = '/first/second';
-const store = configureStore({
-	path: launchParam
-});
+const store = configureAppStore();
 
 let appElementBase = () => (
 	<Provider store={store}>

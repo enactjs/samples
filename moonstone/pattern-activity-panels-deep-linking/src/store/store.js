@@ -1,19 +1,30 @@
-import {createStore} from 'redux';
+import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-import rootReducer from '../reducers';
+const pathSlice = createSlice({
+	name: 'pathReducer',
+	initialState: {
+		path: '/first/second'
+	},
 
-export default function configureStore (initialState) {
-	const store = createStore(
-		rootReducer,
+	reducers: {
+		navigate: (state, action) => {
+			state.path = action.payload;
+		}
+	}
+});
+
+export const {navigate} = pathSlice.actions;
+
+export default function configureAppStore (initialState) {
+	const store = configureStore({
+		reducer: pathSlice.reducer,
 		initialState
-	);
+	});
 
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers
-		module.hot.accept('../reducers', () => {
-			const nextRootReducer = require('../reducers').default;
-
-			store.replaceReducer(nextRootReducer);
+		module.hot.accept('./store.js', () => {
+			store.replaceReducer(pathSlice.reducer);
 		});
 	}
 
