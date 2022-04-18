@@ -1,17 +1,19 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import kind from '@enact/core/kind';
 import Image from '@enact/moonstone/Image';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import css from './containerStyles.module.less';
 
-const PhotoPreview = kind({
+const PhotoPreviewContainer = kind({
 	name: 'PhotoPreview',
+
+	functional: true,
 
 	propTypes: {
 		imageURLs: PropTypes.array.isRequired,
-		photoIndex: PropTypes.number.isRequired,
-		photoPosition: PropTypes.number.isRequired,
 		dispatch: PropTypes.func
 	},
 
@@ -20,7 +22,10 @@ const PhotoPreview = kind({
 		className: 'profilePhoto'
 	},
 
-	render: ({imageURLs, photoIndex, photoPosition, ...rest}) => {
+	render: ({imageURLs,  ...rest}) => {
+		const photoIndex = useSelector(state => state.photoIndex);
+		const photoPosition = useSelector(state => state.photoPosition);
+
 		delete rest.dispatch;
 
 		return (
@@ -28,16 +33,5 @@ const PhotoPreview = kind({
 		);
 	}
 });
-
-const mapStateToProps = (state) => {
-	return ({
-		photoIndex: state.photoIndex,
-		photoPosition: state.photoPosition
-	});
-};
-
-const PhotoPreviewContainer = connect(
-	mapStateToProps
-)(PhotoPreview);
 
 export default PhotoPreviewContainer;
