@@ -1,28 +1,20 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-let initialState = 'en-US';
-
-const localeSwitchSlice = createSlice({
-	name: 'localeSwitchReducer',
-	initialState: {localeSwitch: initialState},
+const localeSlice = createSlice({
+	name: 'localeReducer',
+	initialState: {
+		locale : 'en-US'
+	},
 	reducers: {
-		updateLocale: {
-			reducer: (state, action) => {
-				return action.payload;
-			},
-			prepare: (locale) => {
-				return {payload: {locale}};
-			}
+		updateLocale: (state, action) => {
+			state.locale = action.payload;
 		}
 	}
 });
 
-export const {updateLocale} = localeSwitchSlice.actions;
+const store = configureStore({
+	reducer: localeSlice.reducer
+});
 
-export default function configureAppStore () {
-	const store = configureStore({
-		reducer: localeSwitchSlice.reducer,
-		initialState
-	});
-	return store;
-}
+export const {updateLocale} = localeSlice.actions;
+export default store;
