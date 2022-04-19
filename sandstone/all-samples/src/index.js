@@ -4,7 +4,7 @@ import {createRoot} from 'react-dom';
 import App from './App';
 
 // Router causes an error with our samples, but we don't want our samples to know about router.
-// To avoid this for now we're just surpressing the error.
+// To avoid this for now we're just suppressing the error.
 /* eslint-disable no-console */
 const originalConsoleError = console.error;
 

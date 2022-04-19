@@ -9,7 +9,7 @@ import {
 	deleteItem as deleteAction,
 	selectAll as selectAllAction,
 	selectionEnable as selectionEnableAction
-} from '../../actions';
+} from '../../store';
 
 const createMockItem = (album, albumSize, showOverlay) => {
 	const
@@ -21,7 +21,7 @@ const createMockItem = (album, albumSize, showOverlay) => {
 		selected: false,
 		selectionOverlayShowing: showOverlay,
 		caption: album + ' ' + dataLength + caption,
-		source: 'http://via.placeholder.com/300x300/' + color + '/ffffff/png?text=Image ' + dataLength
+		source: 'http://placehold.it/300x300/' + color + '/ffffff/png?text=Image ' + dataLength
 	};
 };
 

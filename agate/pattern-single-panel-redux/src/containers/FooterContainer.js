@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {save} from '../actions';
+import {save} from '../store';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	saveToState: (saved) => {
-		// Dipatch the change to state.saved
+		// Dispatch the change to state.saved
 		dispatch(save(saved));
 
 		// Add other things you want to do when the state.saved is changed

@@ -4,8 +4,7 @@ import Picker from '@enact/agate/Picker';
 import Slider from '@enact/agate/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
 import car from '../../assets/images/car.jpeg';
 import city from '../../assets/images/city.jpeg';
@@ -29,51 +28,32 @@ const imageComponents = imageURLs.map(url => {
 	return (<Image src={url} key={url} />);
 });
 
-class ProfilePhotoPicker extends Component {
-	static propTypes = {
-		className: PropTypes.string
-	};
+const ProfilePhotoPicker = (props) => {
+	const [photoIndex, setPhotoIndex] = useState(0);
+	const [photoPosition, setPhotoPosition] = useState(-100);
+	const handlePickerChange = useCallback((ev) => setPhotoIndex(ev.value), []);
+	const handleSliderChange = useCallback((ev) => setPhotoPosition(ev.value), []);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			photoPosition: -100,
-			photoIndex: 0
-		};
-	}
-
-	handlePickerChange = (ev) => {
-		this.setState({
-			photoIndex: ev.value
-		});
-	};
-
-	handleSliderChange = (ev) => {
-		if (ev.value) {
-			this.setState({photoPosition: ev.value});
-		}
-	};
-
-	render = () => (
+	return (
 		<Column
-			{...this.props}
+			{...props}
 			align="center center"
 		>
 			<Cell
 				className={css.profilePhoto}
 				component={Image}
 				shrink
-				src={imageURLs[this.state.photoIndex]}
-				style={{backgroundPosition: this.state.photoPosition + 'px'}}
+				src={imageURLs[photoIndex]}
+				style={{backgroundPosition: photoPosition + 'px'}}
 			/>
 			<Cell
 				component={Slider}
 				max={0}
 				min={-100}
-				onChange={this.handleSliderChange}
+				onChange={handleSliderChange}
 				shrink
 				style={{minWidth: ri.scale(360)}}
-				value={this.state.photoPosition}
+				value={photoPosition}
 			/>
 			<Cell
 				centered
@@ -81,11 +61,11 @@ class ProfilePhotoPicker extends Component {
 				shrink
 				style={{margin: 0}}
 			>
-				{imageNames[this.state.photoIndex]} :: {this.state.photoIndex + 1} of {imageURLs.length} photos
+				{imageNames[photoIndex]} :: {photoIndex + 1} of {imageURLs.length} photos
 			</Cell>
 			<Cell
 				component={Picker}
-				onChange={this.handlePickerChange}
+				onChange={handlePickerChange}
 				shrink
 				width="large"
 			>
@@ -96,4 +76,4 @@ class ProfilePhotoPicker extends Component {
 }
 
 export default ProfilePhotoPicker;
-export {imageURLs};
+export {ProfilePhotoPicker, imageURLs};

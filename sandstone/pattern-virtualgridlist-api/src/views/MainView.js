@@ -49,7 +49,6 @@ const MainView = ({onChangeAlbum}) => {
 			</div>
 		</div>
 	);
-
 };
 
 MainView.propTypes = {
