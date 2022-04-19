@@ -18,6 +18,6 @@ const SaveButton = (props) => {
 			</Popup>
 		</div>
 	);
-}
+};
 
 export default SaveButton;

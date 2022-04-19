@@ -73,7 +73,7 @@ const ProfilePhotoPicker = (props) => {
 			</Cell>
 		</Column>
 	);
-}
+};
 
 export default ProfilePhotoPicker;
 export {ProfilePhotoPicker, imageURLs};
