@@ -11,11 +11,11 @@ const localeSwitchSlice = createSlice({
 				return action.payload;
 			},
 			prepare: (locale) => {
-				return {payload: {locale}}
+				return {payload: {locale}};
 			}
 		}
 	}
-})
+});
 
 export const {updateLocale} = localeSwitchSlice.actions;
 

@@ -75,7 +75,7 @@ const AppBase = ({className, panelId, videoId, ...rest}) => {
 				null}
 		</div>
 	);
-}
+};
 
 AppBase.propTypes = {
 	/**

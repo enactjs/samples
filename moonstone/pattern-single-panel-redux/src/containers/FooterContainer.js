@@ -1,24 +1,20 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import kind from '@enact/core/kind';
-import {useCallback} from "react";
-import {useSelector, useDispatch} from 'react-redux';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import {save} from '../store';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 
-const FooterCotainer = kind({
+const Footer = kind({
 	name: 'Footer',
 
-	functional: true,
+	propTypes: {
+		saved: PropTypes.bool,
+		saveToState: PropTypes.func
+	},
 
-	render: ({...rest}) => {
-		const dispatch = useDispatch();
-		const saved = useSelector(state => state.saved);
-
-		const saveToState = useCallback((saved) => dispatch(save(saved)), [dispatch, save]); // eslint-disable-line
-
+	render: ({saved, saveToState, ...rest}) => {
 		return (
 			<div {...rest}>
 				<SaveButton saved={saved} saveToState={saveToState} />
@@ -28,4 +24,24 @@ const FooterCotainer = kind({
 	}
 });
 
-export default FooterCotainer;
+const mapStateToProps = (state) => {
+	return ({
+		saved: state.saved
+	});
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	saveToState: (saved) => {
+		// Dipatch the change to state.saved
+		dispatch(save(saved));
+
+		// Add other things you want to do when the state.saved is changed
+	}
+});
+
+const FooterContainer = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Footer);
+
+export default FooterContainer;

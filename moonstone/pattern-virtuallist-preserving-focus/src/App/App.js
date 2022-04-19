@@ -1,19 +1,14 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
-import {useCallback} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 
 import {decreaseIndex, increaseIndex} from '../store';
 import MainPanel from '../views/MainPanel';
 
-const AppBase = kind({
+const Sample = kind({
 	name: 'App',
-
-	functional: true,
 
 	propTypes: {
 		index: PropTypes.number,
@@ -25,13 +20,7 @@ const AppBase = kind({
 		index: 0
 	},
 
-	render: ({...rest}) => {
-		const dispatch = useDispatch();
-		const index = useSelector(state => state.index);
-
-		const pushPanel = useCallback(() => dispatch(increaseIndex()), [dispatch]);
-		const popPanel = useCallback(() => dispatch(decreaseIndex()), [dispatch]);
-
+	render: ({index, pushPanel, popPanel, ...rest}) => {
 		return (
 			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={popPanel}>
 				<MainPanel onClick={pushPanel} title="First" />
@@ -43,6 +32,18 @@ const AppBase = kind({
 	}
 });
 
+const mapStateToProps = ({index}) => ({
+	index
+});
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		pushPanel: () => dispatch(increaseIndex()),
+		popPanel: () => dispatch(decreaseIndex())
+	};
+};
+
+const AppBase = connect(mapStateToProps, mapDispatchToProps)(Sample);
 const App = MoonstoneDecorator(AppBase);
 
 export default App;

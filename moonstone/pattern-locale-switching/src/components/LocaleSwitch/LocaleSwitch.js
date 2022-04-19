@@ -14,7 +14,7 @@ const LocaleSwitchBase = (props) => {
 	const [value, setValue] = useState('');
 
 	const handleChange = useCallback((ev) => {
-		setValue(ev.value)
+		setValue(ev.value);
 	}, []);
 
 	const updateContextLocale = () => {
@@ -39,7 +39,7 @@ LocaleSwitchBase.propTypes = {
 	rtl: PropTypes.bool,
 	updateLocale: PropTypes.func,
 	updateReduxLocale: PropTypes.func
-}
+};
 
 const LocaleSwitch = I18nContextDecorator(
 	{updateLocaleProp: 'updateLocale', 'rtlProp': 'rtl'},

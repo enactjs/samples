@@ -28,4 +28,4 @@ export default function configureAppStore (initialState) {
 	}
 
 	return store;
-};
+}
