@@ -5,7 +5,6 @@ const indexSlice = createSlice({
 	initialState: {
 		index: 0
 	},
-
 	reducers: {
 		decreaseIndex: (state) => {
 			state.index = state.index > 0 ? state.index - 1 : 0;

@@ -5,7 +5,6 @@ const pathSlice = createSlice({
 	initialState: {
 		path: '/first/second'
 	},
-
 	reducers: {
 		navigate: (state, action) => {
 			state.path = action.payload;
