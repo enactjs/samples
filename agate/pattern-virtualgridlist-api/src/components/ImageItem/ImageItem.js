@@ -3,7 +3,7 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {selectItem} from '../../actions';
+import {selectItem} from '../../store';
 
 const GalleryItem = kind({
 	name: 'ImageItem',
