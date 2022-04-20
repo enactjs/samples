@@ -1,6 +1,6 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-const naviSlice = createSlice({
+const navSlice = createSlice({
 	name: 'naviReducer',
 	initialState: {
 		path: '/first'
@@ -12,18 +12,18 @@ const naviSlice = createSlice({
 	}
 });
 
-export const {navigate} = naviSlice.actions;
+export const {navigate} = navSlice.actions;
 
 export default function configureAppStore (initialState) {
 	const store = configureStore({
-		reducer: naviSlice.reducer,
+		reducer: navSlice.reducer,
 		initialState
 	});
 
 	if (module.hot) {
 		// Enable Webpack hot module replacement for reducers
 		module.hot.accept('./index.js', () => {
-			store.replaceReducer(naviSlice.reducer);
+			store.replaceReducer(navSlice.reducer);
 		});
 	}
 

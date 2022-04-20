@@ -31,9 +31,11 @@ const imageComponents = imageURLs.map(url => {
 const ProfilePhotoPicker = (props) => {
 	const [photoPosition, setPhotoPosition] = useState(-100);
 	const [photoIndex, setPhotoIndex] = useState(0);
+
 	const handlePickerChange = useCallback((ev) => {
 		setPhotoIndex(ev.value);
 	}, []);
+
 	const handleSliderChange = useCallback((ev) => {
 		if (ev.value) {
 			setPhotoPosition(ev.value);

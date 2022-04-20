@@ -17,6 +17,7 @@ const ImageList = ({imageitems, ...rest}) => {
 			dataSize={imageitems.length}
 			itemRenderer={renderItem}
 			itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
+			spacing={ri.scale(21)}
 		/>
 	);
 };
