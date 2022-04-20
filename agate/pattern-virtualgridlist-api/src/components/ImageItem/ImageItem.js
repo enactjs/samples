@@ -36,7 +36,7 @@ const GalleryItem = kind({
 
 const mapStateToProps = ({data}, {['data-index']: dataIndex}) => ({
 	caption: data.data[dataIndex].caption,
-	selected: data.selectedItems.has(dataIndex),
+	selected: data.selectedItems.includes(dataIndex),
 	selectionOverlayShowing: data.data[dataIndex].selectionOverlayShowing,
 	source: data.data[dataIndex].source
 });

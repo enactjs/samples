@@ -10,7 +10,7 @@ const createRecords = (album) => {
 	};
 	let caption, color;
 
-	for (let idx = 0; idx < 10; ++idx) {
+	for (let idx = 0; idx < 500; ++idx) {
 		caption = (idx % 8 === 0) ? ' with long title' : '';
 		color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16);
 

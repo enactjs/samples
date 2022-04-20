@@ -1,30 +1,41 @@
 import {VirtualGridList} from '@enact/agate/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {useCallback} from 'react';
-import {useSelector} from 'react-redux';
+import {Component} from 'react';
+import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-const ImageList = ({...rest}) => {
-	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
-	const imageitems = useSelector(({data}) => data.dataOrder);
+class ImageList extends Component {
+	static propTypes = {
+		dispatch: PropTypes.func,
+		imageitems: PropTypes.array
+	};
 
-	delete rest.dispatch;
+	renderItem = ({...rest}) => (<ImageItem {...rest} />);
 
-	return (
-		<VirtualGridList
-			{...rest}
-			dataSize={imageitems.length}
-			itemRenderer={renderItem}
-			itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
-			spacing={ri.scale(21)}
-		/>
-	);
-};
+	render = () => {
+		const
+			rest = Object.assign({}, this.props),
+			{imageitems} = this.props;
 
-ImageList.propTypes = {
-	dispatch: PropTypes.func
-};
+		delete rest.dispatch;
+		delete rest.imageitems;
 
-export default ImageList;
+		return (
+			<VirtualGridList
+				{...rest}
+				dataSize={imageitems.length}
+				itemRenderer={this.renderItem}
+				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
+				spacing={ri.scale(21)}
+			/>
+		);
+	};
+}
+
+const mapStateToProps = ({data}) => ({
+	imageitems: data.dataOrder
+});
+
+export default connect(mapStateToProps)(ImageList);

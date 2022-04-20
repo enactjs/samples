@@ -14,7 +14,6 @@ import {appElementBase as PatternSinglePanelRedux} from '../../../pattern-single
 import {appElementBase as PatternVirtualgridlistApi} from '../../../pattern-virtualgridlist-api/src/main';
 import {appElementBase as PatternVirtuallistPreservingFocus} from '../../../pattern-virtuallist-preserving-focus/src/main';
 
-
 import css from './App.module.less';
 
 const NavigationMenu = kind({
