@@ -26,7 +26,6 @@ const PatternList = ({id, onClick, ...rest}) => {
 			spotlightId={id}
 		/>
 	);
-
 };
 
 PatternList.propTypes = {

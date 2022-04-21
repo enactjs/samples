@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changeAlbum} from '../actions';
+import {changeAlbum} from '../store';
 
 const mapStateToProps = ({data}) => ({
 	album: data.album

@@ -22,7 +22,7 @@ const GridItem = kind({
 				<ImageItem
 					{...rest}
 					onClick={onSelect}
-					src={items[index].image.default}
+					src={items[index].image}
 				>
 					{items[index].title}
 				</ImageItem>
