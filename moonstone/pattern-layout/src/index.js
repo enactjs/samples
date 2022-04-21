@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import qs from 'query-string';
-import {createRoot} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import 'web-animations-js';
 
 import App from './App';
