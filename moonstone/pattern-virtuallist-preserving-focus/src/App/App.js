@@ -4,7 +4,7 @@ import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {decreaseIndex, increaseIndex} from '../actions';
+import {decreaseIndex, increaseIndex} from '../store';
 import MainPanel from '../views/MainPanel';
 
 const Sample = kind({
