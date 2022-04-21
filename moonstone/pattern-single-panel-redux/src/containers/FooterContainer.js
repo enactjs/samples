@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {save} from '../actions';
+import {save} from '../store';
 import SaveButton from '../components/SaveButton';
 import SavedPopup from '../components/SavedPopup';
 

@@ -3,7 +3,7 @@ import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {selectItem} from '../../actions';
+import {selectItem} from '../../store';
 
 const ImageItem = kind({
 	name: 'ImageItem',
@@ -37,7 +37,7 @@ const ImageItem = kind({
 
 const mapStateToProps = ({data}, {['data-index']: dataIndex}) => ({
 	caption: data.data[dataIndex].caption,
-	selected: data.selectedItems.has(dataIndex),
+	selected: data.selectedItems.includes(dataIndex),
 	selectionOverlayShowing: data.data[dataIndex].selectionOverlayShowing,
 	source: data.data[dataIndex].source,
 	subCaption: data.data[dataIndex].subCaption
