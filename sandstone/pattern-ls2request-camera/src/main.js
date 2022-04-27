@@ -13,3 +13,4 @@ let appElement = () => (
 );
 
 export default appElement;
+export {appElement};
