@@ -35,13 +35,13 @@
     "@enact/spotlight": "^4.5.0-alpha.1",
     "@enact/ui": "^4.5.0-alpha.1",
     "@enact/webos": "^4.5.0-alpha.1",
-    "@reduxjs/toolkit": "^1.7.1",
+    "@reduxjs/toolkit": "^1.8.1",
     "ilib": "^14.14.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
+    "react-redux": "^8.0.1",
+    "redux": "^4.2.0",
     "web-animations-js": "^2.3.2"
   }
 }

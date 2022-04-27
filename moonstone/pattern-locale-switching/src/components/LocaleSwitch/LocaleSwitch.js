@@ -5,12 +5,12 @@ import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
 import PropTypes from 'prop-types';
 import {useState, useCallback} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {updateLocale} from '../../store';
 
 const LocaleSwitchBase = (props) => {
-
+	const dispatch = useDispatch();
 	const [value, setValue] = useState('');
 
 	const handleChange = useCallback((ev) => {
@@ -21,9 +21,7 @@ const LocaleSwitchBase = (props) => {
 		props.updateLocale(value);
 	};
 
-	const updateReduxLocale = () => {
-		props.updateReduxLocale(value);
-	};
+	const updateReduxLocale = useCallback(() => dispatch(updateLocale(value)), [dispatch, value]);
 
 	return (
 		<div>
@@ -46,4 +44,4 @@ const LocaleSwitch = I18nContextDecorator(
 	LocaleSwitchBase
 );
 
-export default connect(null, {updateReduxLocale: updateLocale}, null, {pure: false})(LocaleSwitch);
+export default LocaleSwitch;
