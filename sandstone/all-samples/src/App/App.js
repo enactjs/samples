@@ -7,8 +7,12 @@ import {HashRouter as Router, Route} from 'react-router-dom';
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
 import {AppBase as PatternDynamicPanel} from '../../../pattern-dynamic-panel/src/App/App';
+import {AppBase as PatternAccountIcon} from '../../../pattern-account-icon/src/App/App';
+import {App as PatternAnalyticsWebostv} from '../../../pattern-analytics-webostv/src/App/App';
 import {AppBase as PatternLayout} from '../../../pattern-layout/src/App/App';
 import {appElementBase as PatternLocaleSwitching} from '../../../pattern-locale-switching/src/main';
+import {appElement as PatternLs2requestCamera} from '../../../pattern-ls2request-camera/src/main';
+import {App as PatternReact18New} from '../../../pattern-react18-new/src/App';
 import {appElementBase as PatternRoutablePanels} from '../../../pattern-routable-panels/src/main';
 import {AppBase as PatternSinglePanel} from '../../../pattern-single-panel/src/App/App';
 import {appElementBase as PatternSinglePanelRedux} from '../../../pattern-single-panel-redux/src/main';
@@ -59,9 +63,13 @@ const NavigationMenu = kind({
 
 const routes = [
 	{path: '/', exact: true, component: NavigationMenu},
+	{path: '/PatternAccountIcon', component: PatternAccountIcon},
+	{path: '/PatternAnalyticsWebostv', component: PatternAnalyticsWebostv},
 	{path: '/PatternDynamicPanel', component: PatternDynamicPanel},
 	{path: '/PatternLayout', component: PatternLayout},
 	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},
+	{path: '/PatternLs2requestCamera', component: PatternLs2requestCamera},
+	{path: '/PatternReact18New', component: PatternReact18New},
 	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
