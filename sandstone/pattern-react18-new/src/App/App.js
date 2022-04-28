@@ -29,3 +29,4 @@ const App = (props) => {
 };
 
 export default ThemeDecorator(App);
+export {App};
