@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changeCity} from '../actions';
+import {changeCity} from '../store';
 import SideBar from '../components/SideBar';
 
 const mapStateToProps = (state) => {
