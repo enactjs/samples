@@ -64,7 +64,7 @@ const listSlice = createSlice({
 			newData[prevCountry][prevCity].selected = false;
 
 			state.country = action.payload;
-			state.city = sampleData[action.payload].cityList[0]
+			state.city = sampleData[action.payload].cityList[0];
 
 			state.data  = newData;
 		},
@@ -86,7 +86,7 @@ const listSlice = createSlice({
 		},
 		changeZoom: (state, action) => {
 			state.zoom = action.payload;
-		},
+		}
 	}
 });
 
