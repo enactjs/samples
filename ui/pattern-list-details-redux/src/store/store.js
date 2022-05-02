@@ -47,6 +47,22 @@ const listSlice = createSlice({
 		zoom: false
 	},
 	reducers: {
+		changeCity: (state, action) => {
+			const currentCountry = state.country;
+			const prevCity = state.city
+				.replace(/ /g, '')
+				.toLowerCase();
+			const nextCity = action.payload
+				.replace(/ /g, '')
+				.toLowerCase();
+			let newData = JSON.parse(JSON.stringify(sampleData));
+
+			newData[currentCountry][nextCity].selected = true;
+			newData[currentCountry][prevCity].selected = false;
+
+			state.city = action.payload;
+			state.data  = newData;
+		},
 		changeCountry: (state, action) => {
 			const nextCountry = action.payload;
 			const prevCountry = state.country;
@@ -65,23 +81,6 @@ const listSlice = createSlice({
 
 			state.country = action.payload;
 			state.city = sampleData[action.payload].cityList[0];
-
-			state.data  = newData;
-		},
-		changeCity: (state, action) => {
-			const currentCountry = state.country;
-			const prevCity = state.city
-				.replace(/ /g, '')
-				.toLowerCase();
-			const nextCity = action.payload
-				.replace(/ /g, '')
-				.toLowerCase();
-			let newData = JSON.parse(JSON.stringify(sampleData));
-
-			newData[currentCountry][nextCity].selected = true;
-			newData[currentCountry][prevCity].selected = false;
-
-			state.city = action.payload;
 			state.data  = newData;
 		},
 		changeZoom: (state, action) => {
@@ -90,7 +89,7 @@ const listSlice = createSlice({
 	}
 });
 
-export const {changeCountry, changeCity, changeZoom, changeData} = listSlice.actions;
+export const {changeCity, changeCountry, changeZoom} = listSlice.actions;
 
 export default function configureAppStore (initialState) {
 	const store = configureStore({
