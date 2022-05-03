@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changeCountry} from '../actions';
+import {changeCountry} from '../store';
 import Nav from '../components/Nav';
 
 const mapStateToProps = (state) => {

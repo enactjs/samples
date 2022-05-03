@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {changeZoom} from '../actions';
+import {changeZoom} from '../store';
 import Content from '../components/Content';
 
 const mapStateToProps = (state) => {
