@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-shadow */
 const process = require('process'),
 	readdirp = require('readdirp'),
 	shell = require('shelljs');
