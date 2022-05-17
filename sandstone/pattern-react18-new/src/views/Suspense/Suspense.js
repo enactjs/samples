@@ -4,7 +4,6 @@ import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
 
 import SkeletonPage from './SkeletonPage';
 import NoSuspense from './NoSuspense';
-import css from "../../App/App.module.less";
 
 // Load the "SamplePage" component after 3s
 const getSamplePage = () => {
