@@ -1,9 +1,9 @@
-import React, {Suspense, useState} from 'react';
 import Heading from '@enact/sandstone/Heading';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
+import React, {Suspense, useState} from 'react';
 
-import SkeletonPage from './SkeletonPage';
 import NoSuspense from './NoSuspense';
+import SkeletonPage from './SkeletonPage';
 
 // Load the "SamplePage" component after 3s
 const getSamplePage = () => {
