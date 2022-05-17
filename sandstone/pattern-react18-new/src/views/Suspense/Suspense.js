@@ -24,7 +24,7 @@ const SuspensePage = () => {
 	const lazyReload = useCallback(({index}) => {
 		SamplePage = getSamplePage();
 		setTabIndex(index);
-	});
+	}, []);
 
 	return (
 		<TabLayout index={tabIndex} onSelect={lazyReload} orientation="horizontal">
