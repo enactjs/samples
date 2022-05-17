@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import SamplePage from './SamplePage';
 
@@ -13,12 +13,12 @@ const NoSuspense = () => {
 		<div>
 			{
 				loading ? null :
-					<div>
-						<SamplePage/>
-					</div>
+				<div>
+					<SamplePage/>
+				</div>
 			}
 		</div>
-	)
-}
+	);
+};
 
 export default NoSuspense;

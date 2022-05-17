@@ -1,13 +1,13 @@
 import Heading from '@enact/sandstone/Heading';
 import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
-import React, {Suspense, useState} from 'react';
+import {lazy, Suspense, useCallback, useState} from 'react';
 
 import NoSuspense from './NoSuspense';
 import SkeletonPage from './SkeletonPage';
 
 // Load the "SamplePage" component after 3s
 const getSamplePage = () => {
-	return React.lazy(() => {
+	return lazy(() => {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(import('./SamplePage'));
@@ -19,15 +19,15 @@ const getSamplePage = () => {
 let SamplePage = getSamplePage();
 
 const SuspensePage = () => {
-	const [index, setIndex] = useState(0);
+	const [tabIndex, setTabIndex] = useState(0);
 
-	const lazyReload = ({index}) => {
+	const lazyReload = useCallback(({index}) => {
 		SamplePage = getSamplePage();
-		setIndex(index);
-	};
+		setTabIndex(index);
+	});
 
 	return (
-		<TabLayout index={index} onSelect={lazyReload} orientation="horizontal">
+		<TabLayout index={tabIndex} onSelect={lazyReload} orientation="horizontal">
 			<Tab title="Using Suspense">
 				<Heading>
 					Suspense offers a fallback UI for better user experience.
