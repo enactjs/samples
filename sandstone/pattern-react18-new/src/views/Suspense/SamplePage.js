@@ -18,7 +18,7 @@ const renderItem = ({index, ...rest}) => {
 	);
 };
 
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 6; i++) {
 	const
 		count = ('0' + i).slice(-2),
 		caption = `Item ${count} caption`,
