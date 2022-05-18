@@ -12,10 +12,10 @@ const NoSuspense = () => {
 	return (
 		<div>
 			{
-				loading ? null :
-				<div>
-					<SamplePage/>
-				</div>
+				!loading &&
+					<div>
+						<SamplePage />
+					</div>
 			}
 		</div>
 	);
