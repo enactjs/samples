@@ -1,12 +1,13 @@
-import React, {Suspense, useEffect, useState} from 'react';
-import Button from '@enact/sandstone/Button';
-import {Header, Panel, Panels} from '@enact/sandstone/Panels';
+import Heading from '@enact/sandstone/Heading';
+import TabLayout, {Tab} from '@enact/sandstone/TabLayout';
+import {lazy, Suspense, useCallback, useState} from 'react';
 
+import NoSuspense from './NoSuspense';
 import SkeletonPage from './SkeletonPage';
 
 // Load the "SamplePage" component after 3s
 const getSamplePage = () => {
-	return React.lazy(() => {
+	return lazy(() => {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(import('./SamplePage'));
@@ -18,33 +19,30 @@ const getSamplePage = () => {
 let SamplePage = getSamplePage();
 
 const SuspensePage = () => {
-	const [index, setIndex] = useState(0);
+	const [tabIndex, setTabIndex] = useState(0);
 
-	useEffect( () => {
-		// Lazy reload the "SamplePage" component when index changes
+	const lazyReload = useCallback(({index}) => {
 		SamplePage = getSamplePage();
-	}, [index]);
-
-	const nextPanel = () => setIndex(index + 1); /* eslint-disable react/jsx-no-bind */
-	const prevPanel = () => setIndex(index - 1); /* eslint-disable react/jsx-no-bind */
+		setTabIndex(index);
+	}, []);
 
 	return (
-		<Panels index={index} noCloseButton onBack={prevPanel}>
-			<Panel>
-				<Header subtitle="Suspense offers a fallback UI for better user experience. Check out next panel." type="mini">
-					<slotAfter>
-						<Button size="small" icon="arrowlargeright" onClick={nextPanel} />
-					</slotAfter>
-				</Header>
+		<TabLayout index={tabIndex} onSelect={lazyReload} orientation="horizontal">
+			<Tab title="Using Suspense">
+				<Heading>
+					Suspense offers a fallback UI for better user experience.
+				</Heading>
 				<Suspense fallback={<SkeletonPage />}>
 					<SamplePage />
 				</Suspense>
-			</Panel>
-			<Panel>
-				<Header subtitle="Page is empty until all the data is available. Please wait 3s." type="mini" />
-				<SamplePage />
-			</Panel>
-		</Panels>
+			</Tab>
+			<Tab title="NOT Using Suspense">
+				<Heading>
+					Page is empty until all the data is available. Please wait 3s.
+				</Heading>
+				<NoSuspense />
+			</Tab>
+		</TabLayout>
 	);
 };
 
