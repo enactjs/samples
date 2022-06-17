@@ -1,71 +1,92 @@
-import kind from '@enact/core/kind';
 import Heading from '@enact/sandstone/Heading';
-import {Panel, Header} from '@enact/sandstone/Panels';
+import {Scroller} from '@enact/sandstone/Scroller';
+import {useRef} from 'react';
 
 import {ButtonSimple, ButtonWithIcon, SpottableButtonSimple, SpottableButtonWithIcon} from '../components/Button';
 import css from './MainPanel.module.less';
 
-const rest = {};
+const showEffect = (ref) => () => {
+	const style = ref?.current?.style;
+	if (style) {
+		style.backgroundColor = 'green'
+		setTimeout(() => {
+			style.backgroundColor = null;
+		}, 200);
+	}
+}
 
-const MainPanel = kind({
-	name: 'MainPanel',
+const Section = (props) => {
+	return (
+		<div {...props} className={css.section} />
+	)
+};
 
-	render: (props) => (
-		<Panel {...props}>
-			<Header title="Hello world!" />
-			<>
-				<Heading>Using poc-button-simple</Heading>
-				<div className={css.section}>
-					<poc-button-simple><button>With the standard button</button></poc-button-simple>
-					<poc-button-simple>With a text</poc-button-simple>
-					<poc-button-simple class={css.button}>With a text and size</poc-button-simple>
-					<poc-button-simple class={css.button} {...rest}>
+const MainPanel = (props) => {
+	const ref = useRef({});
+	const handleClick = ref.current ? showEffect(ref) : null;
+
+	return (
+		<>
+			<div className={css.clickIndicator} ref={ref}>
+				Clicked
+			</div>
+			<Scroller {...props}>
+				<Section>
+					<Heading>Using poc-button-simple</Heading>
+					<poc-button-simple onClick={handleClick}><button>Using a standard button</button></poc-button-simple>
+					<poc-button-simple onClick={handleClick}>Just text</poc-button-simple>
+					<poc-button-simple onClick={handleClick} class={css.button}>Text with Size</poc-button-simple>
+					<poc-button-simple onClick={handleClick} class={css.button}>
 						<div slot="background" className={css.background} />
 						<span slot="icon">🍭</span>
 						<span>Click Me</span>
 					</poc-button-simple>
-				</div>
+				</Section>
 
-				<Heading>Using poc-button-with-icon</Heading>
 				<div className={css.section}>
-					<poc-button-with-icon><button>With the standard button</button></poc-button-with-icon>
-					<poc-button-with-icon>With a text</poc-button-with-icon>
-					<poc-button-with-icon class={css.button}>With a text and size</poc-button-with-icon>
-					<poc-button-with-icon class={css.button} {...rest}>
+					<Heading>Using poc-button-with-icon</Heading>
+					<poc-button-with-icon onClick={handleClick}><button>Using a standard button</button></poc-button-with-icon>
+					<poc-button-with-icon onClick={handleClick}>Just text</poc-button-with-icon>
+					<poc-button-with-icon onClick={handleClick} class={css.button}>Text with Size</poc-button-with-icon>
+					<poc-button-with-icon onClick={handleClick} class={css.button}>
 						<div id="target" slot="background" className={css.background} />
 						<span slot="icon">🍭</span>
 						<span>Click Me</span>
 					</poc-button-with-icon>
 				</div>
 
-				<Heading>Using ButtonSimple</Heading>
 				<div className={css.section}>
-					<ButtonSimple><button>With the standard button</button></ButtonSimple>
-					<ButtonSimple>With a text</ButtonSimple>
+					<Heading>Using ButtonSimple</Heading>
+					<ButtonSimple onClick={handleClick}><button>Using a standard button</button></ButtonSimple>
+					<ButtonSimple onClick={handleClick}>Just text</ButtonSimple>
 				</div>
 
-				<Heading>Using ButtonWithIcon</Heading>
 				<div className={css.section}>
-					<ButtonWithIcon>With a text</ButtonWithIcon>
-					<ButtonWithIcon icon={'🍭'} />
-					<ButtonWithIcon icon={'🍭'}>With a text</ButtonWithIcon>
+					<Heading>Using ButtonWithIcon</Heading>
+					<ButtonWithIcon onClick={handleClick}>Just text</ButtonWithIcon>
+					<ButtonWithIcon onClick={handleClick} icon={'🍭'} />
+					<ButtonWithIcon onClick={handleClick} icon={'🍭'}>Click Me</ButtonWithIcon>
 				</div>
 
-				<Heading>Using SpottableButtonSimple</Heading>
 				<div className={css.section}>
-					<SpottableButtonSimple><button>With the standard button</button></SpottableButtonSimple>
-					<SpottableButtonSimple>With a text</SpottableButtonSimple>
+					<Heading>Using SpottableButtonSimple</Heading>
+					<SpottableButtonSimple onClick={handleClick}><button>Using a standard button</button></SpottableButtonSimple>
+					<SpottableButtonSimple onClick={handleClick}>Just text</SpottableButtonSimple>
 				</div>
 
-				<Heading>Using SpottableButtonWithIcon</Heading>
 				<div className={css.section}>
-					<SpottableButtonWithIcon>With a text</SpottableButtonWithIcon>
-					<SpottableButtonWithIcon icon={'🍭'} />
-					<SpottableButtonWithIcon icon={'🍭'}>With a text</SpottableButtonWithIcon>
+					<Heading>Using SpottableButtonWithIcon</Heading>
+					<SpottableButtonWithIcon onClick={handleClick}>Just text</SpottableButtonWithIcon>
+					<SpottableButtonWithIcon onClick={handleClick} icon={'🍭'} />
+					<SpottableButtonWithIcon onClick={handleClick} icon={'🍭'}>Click Me</SpottableButtonWithIcon>
 				</div>
-			</>
-		</Panel>
-	)
-});
+
+				<div className={css.section}>
+					End Line
+				</div>
+			</Scroller>
+		</>
+	);
+};
 
 export default MainPanel;

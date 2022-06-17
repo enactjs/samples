@@ -2,9 +2,22 @@
 //
 
 .section {
-	border: solid 1px red;
-	margin: 1px;
-	padding: 1px;
+	border: solid 1px blue;
+
+	& > *:not(:nth-child(1)) {
+		margin: 18px;
+		border: solid 1px red;
+	}
+}
+
+.clickIndicator {
+	display: flex;
+	width: 288px;
+	height: 96px;
+	align-items: center;
+	justify-content: center;
+	color: black;
+	background-color: black;
 }
 
 .button {
@@ -12,7 +25,7 @@
 	height: 3rem;
 
 	.background {
-		background-color: darkgreen;
+		background-color: gray;
 	    border-radius: 2rem;
 		transition: transform 200ms ease-out;
 		will-change: box-shadow, transform, filter;

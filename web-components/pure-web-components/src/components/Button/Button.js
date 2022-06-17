@@ -4,11 +4,13 @@ import Spottable from '@enact/spotlight/Spottable';
 import Touchable from '@enact/ui/Touchable';
 import classNames from 'classnames';
 import {LitElement, html, css} from 'lit';
+import {customElement} from 'lit/decorators.js';
+import PropTypes from 'prop-types';
 
 import componentCss from './Button.module.less';
 
-
-class PocButtonSimple extends LitElement {
+@customElement('poc-button-simple')
+class PocButtonSimple extends LitElement { // eslint-disable-line no-unused-vars
 	static styles = [css`
 		:host {
 			position: relative;
@@ -45,7 +47,6 @@ class PocButtonSimple extends LitElement {
 		`;
 	}
 }
-customElements.define('poc-button-simple', PocButtonSimple);
 
 class PocButtonWithIcon extends LitElement {
 	static styles = [css`
@@ -55,13 +56,10 @@ class PocButtonWithIcon extends LitElement {
 			vertical-align: middle;
 			z-index: 0;
 		}
-		:host .background {} /* not working */
 		.root {
 			height: 100%;
 			width: 100%;
 		}
-		.background::slotted(*:hover) {} /* not working */
-		.background::slotted(*:focus) {} /* not working */
 	`];
 	render () {
 		return html`
@@ -72,7 +70,7 @@ class PocButtonWithIcon extends LitElement {
 			</poc-button-simple>
 		`;
 	}
-};
+}
 customElements.define('poc-button-with-icon', PocButtonWithIcon);
 
 const ButtonSimple = (props) => (
@@ -86,6 +84,10 @@ const ButtonWithIcon = ({children, className, icon, pressed, ...rest}) => (
 		{children}
 	</poc-button-with-icon>
 );
+ButtonWithIcon.propTypes = {
+	icon: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
+	pressed: PropTypes.bool
+};
 
 const SpottableButtonSimple = Touchable({activeProp: 'pressed'}, Spottable(ButtonSimple));
 
