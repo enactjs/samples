@@ -1,6 +1,6 @@
 import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import {createRoot} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
 import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';

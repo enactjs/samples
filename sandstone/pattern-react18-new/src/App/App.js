@@ -14,13 +14,13 @@ const App = (props) => {
 		<div {...props} className={classnames(props.className, css.app)}>
 			<Header noCloseButton title="React 18 Features" type="mini" />
 			<TabLayout orientation="horizontal" className={css.tabLayout}>
-				<Tab className={css.tab} title="Automatic Batching">
+				<Tab title="Automatic Batching">
 					<Batching />
 				</Tab>
-				<Tab className={css.tab} title="Suspense">
+				<Tab title="Suspense">
 					<Suspense />
 				</Tab>
-				<Tab className={css.tab} title="useTransition">
+				<Tab title="useTransition">
 					<UseTransition />
 				</Tab>
 			</TabLayout>
@@ -29,3 +29,4 @@ const App = (props) => {
 };
 
 export default ThemeDecorator(App);
+export {App};

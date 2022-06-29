@@ -1,8 +1,7 @@
-import Changeable from '@enact/ui/Changeable';
-import Button from '@enact/moonstone/Button';
-import {handle, forward, adaptEvent} from '@enact/core/handle';
+import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import React from 'react';
+import Button from '@enact/sandstone/Button';
+import Changeable from '@enact/ui/Changeable';
 
 interface Props {
 	count? : number,

@@ -1,6 +1,8 @@
+dist: focal
 language: node_js
 node_js:
-    - "14"
+    - lts/*
+    - node
 sudo: false
 install:
     - npm install -g enactjs/cli#develop

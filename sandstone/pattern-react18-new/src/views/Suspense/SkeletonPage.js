@@ -16,7 +16,7 @@ const renderItem = () => {
 				Loading...
 			</ImageItem>
 			<Spinner
-				style={{position: 'absolute', top: '50%', left: '50%', margin: '-63px 0 0 -39px'}}
+				style={{position: 'absolute', top: '50%', left: '50%', margin: '-20% 0 0 -12%'}}
 				transparent
 			/>
 		</>
@@ -28,7 +28,7 @@ const SkeletonPage = kind({
 
 	render: () => (
 		<VirtualGridList
-			dataSize={12}
+			dataSize={6}
 			itemRenderer={renderItem}
 			itemSize={{
 				minWidth: ri.scale(540),

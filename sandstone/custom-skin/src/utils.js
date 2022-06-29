@@ -34,13 +34,13 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 };
 
 const generateCSS = (colors, skinName, varNames) => {
-	if(colors.length > 3) {
+	if (colors.length > 3) {
 		return '.sandstone-theme {\n' +
 			`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
 			colors?.map((color, index) => {
 				const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
 				return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
-			}).join('') + `}\n`
+			}).join('') + `}\n`;
 	}
 };
 
