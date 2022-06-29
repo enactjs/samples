@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-
 import BodyText from '@enact/my-theme/BodyText';
 import Icon from '@enact/my-theme/Icon';
 import SlotItem from '@enact/my-theme/SlotItem';
 import {Panel} from '@enact/my-theme/Panels';
+import PropTypes from 'prop-types';
 
 import PanelHeader from '../components/PanelHeader';
 

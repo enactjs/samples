@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-
 import Button from '@enact/my-theme/Button';
 import Checkbox from '@enact/my-theme/Checkbox';
 import Heading from '@enact/my-theme/Heading';
 import Icon from '@enact/my-theme/Icon';
 import {Panel} from '@enact/my-theme/Panels';
+import PropTypes from 'prop-types';
 
 import PanelHeader from '../components/PanelHeader';
 
