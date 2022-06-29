@@ -1,7 +1,6 @@
 /* global ENACT_PACK_ISOMORPHIC */
 
 import {createRoot, hydrateRoot} from 'react-dom/client';
-import 'web-animations-js';
 
 import App from './App';
 
