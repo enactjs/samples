@@ -10,7 +10,7 @@ interface Props {
 
 type HandlerFunctionType = (count: number) => number;
 
-function createHandler(fn: HandlerFunctionType) {
+const  createHandler = (fn: HandlerFunctionType) => {
 	return handle(
 		adaptEvent(
 			(ev, {count}) => ({
