@@ -13,13 +13,10 @@ type HandlerFunctionType = (count: number) => number;
 
 const createHandler = (fn: HandlerFunctionType) => {
 	return handle(
-		adaptEvent(
-			(ev, {count}) => ({
-				type: 'onCounterChange',
-				count: fn(count)
-			}),
-			forward('onCounterChange')
-		)
+		adaptEvent((ev, {count}) => ({
+			type: 'onCounterChange',
+			count: fn(count)
+		}), forward('onCounterChange'))
 	);
 };
 
@@ -41,7 +38,7 @@ const CounterBase = kind<Props>({
 	},
 
 	render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => {
-		delete rest.onCounterChange; 
+		delete rest.onCounterChange;
 		return (
 			<div {...rest}>
 				<h1>{count}</h1>
