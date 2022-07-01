@@ -40,14 +40,17 @@ const CounterBase = kind<Props>({
 		onResetClick: createHandler(() => 0)
 	},
 
-	render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => (
-		<div>
-			<h1>{count}</h1>
-			<Button onClick={onDecrementClick}>Decrement --</Button>
-			<Button onClick={onResetClick}>Reset</Button>
-			<Button onClick={onIncrementClick}>Increment ++</Button>
-		</div>
-	)
+	render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => {
+		delete rest.onCounterChange; 
+		return (
+			<div {...rest}>
+				<h1>{count}</h1>
+				<Button onClick={onDecrementClick}>Decrement --</Button>
+				<Button onClick={onResetClick}>Reset</Button>
+				<Button onClick={onIncrementClick}>Increment ++</Button>
+			</div>
+		)
+	}
 });
 
 const Counter = Changeable({prop: 'count', change: 'onCounterChange'}, CounterBase);
