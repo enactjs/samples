@@ -5,7 +5,9 @@ import Touchable from '@enact/ui/Touchable';
 import classNames from 'classnames';
 import {LitElement, html, css} from 'lit';
 import {customElement} from 'lit/decorators.js';
+import {createComponent} from '@lit-labs/react';
 import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import componentCss from './Button.module.less';
 
@@ -48,6 +50,7 @@ class PocButtonSimple extends LitElement { // eslint-disable-line no-unused-vars
 	}
 }
 
+// @customElement('poc-button-with-icon')
 class PocButtonWithIcon extends LitElement {
 	static styles = [css`
 		:host {
@@ -73,9 +76,19 @@ class PocButtonWithIcon extends LitElement {
 }
 customElements.define('poc-button-with-icon', PocButtonWithIcon);
 
+const ButtonSimple = createComponent(
+	React,
+	'poc-button-simple',
+	PocButtonSimple,
+	{
+		onLog: 'focus'
+	}
+);
+/*
 const ButtonSimple = (props) => (
 	<poc-button-simple {...props} />
 );
+*/
 
 const ButtonWithIcon = ({children, className, icon, pressed, ...rest}) => (
 	<poc-button-with-icon class={classNames(componentCss.button, className, pressed ? 'pressed' : '')} {...rest}>
