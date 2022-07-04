@@ -29,7 +29,7 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/agate": "^2.0.0-beta.2",
+    "@enact/agate": "^2.0.0",
     "@enact/core": "^4.5.0-rc.1",
     "@enact/i18n": "^4.5.0-rc.1",
     "@enact/spotlight": "^4.5.0-rc.1",

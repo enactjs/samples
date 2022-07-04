@@ -30,7 +30,7 @@
   "dependencies": {
     "@enact/core": "^4.5.0-rc.1",
     "@enact/i18n": "^4.5.0-rc.1",
-    "@enact/moonstone": "^4.0.4",
+    "@enact/moonstone": "^4.5.0",
     "@enact/spotlight": "^4.5.0-rc.1",
     "@enact/ui": "^4.5.0-rc.1",
     "@enact/webos": "^4.5.0-rc.1",
