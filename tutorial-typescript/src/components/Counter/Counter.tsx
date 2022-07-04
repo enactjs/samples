@@ -46,7 +46,7 @@ const CounterBase = kind<Props>({
 				<Button onClick={onResetClick}>Reset</Button>
 				<Button onClick={onIncrementClick}>Increment ++</Button>
 			</div>
-		)
+		);
 	}
 });
 
@@ -57,3 +57,4 @@ export {
 	CounterBase,
 	Counter
 };
+
