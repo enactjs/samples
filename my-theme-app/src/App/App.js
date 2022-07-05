@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {handle, adaptEvent, forward} from '@enact/core/handle';
-import Changeable from '@enact/ui/Changeable';
 import Panels from '@enact/my-theme/Panels';
 import ThemeDecorator from '@enact/my-theme/ThemeDecorator';
+import Changeable from '@enact/ui/Changeable';
+import PropTypes from 'prop-types';
 
-import MainPanel from '../views/MainPanel';
-import Items from '../views/Items';
 import ButtonsIcons from '../views/ButtonsIcons';
+import Items from '../views/Items';
+import MainPanel from '../views/MainPanel';
 
 import css from './App.module.less';
 

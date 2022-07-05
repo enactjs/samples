@@ -1,5 +1,4 @@
 /* global ENACT_PACK_ISOMORPHIC */
-import 'web-animations-js';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 

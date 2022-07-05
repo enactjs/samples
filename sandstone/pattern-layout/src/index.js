@@ -2,7 +2,6 @@
 /* global ENACT_PACK_ISOMORPHIC */
 import qs from 'query-string';
 import {createRoot, hydrateRoot} from 'react-dom/client';
-import 'web-animations-js';
 
 import App from './App';
 import {saveObjToQueryString} from './components/util';

@@ -2,7 +2,6 @@
 import {configure} from '@enact/analytics';
 import {forKeyCode} from '@enact/core/handle';
 import {createRoot, hydrateRoot} from 'react-dom/client';
-import 'web-animations-js';
 
 import App from './App';
 
