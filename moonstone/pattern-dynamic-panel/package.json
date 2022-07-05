@@ -29,16 +29,15 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "@enact/core": "^4.5.0-alpha.1",
-    "@enact/i18n": "^4.5.0-alpha.1",
-    "@enact/moonstone": "^4.0.4",
-    "@enact/spotlight": "^4.5.0-alpha.1",
-    "@enact/ui": "^4.5.0-alpha.1",
-    "@enact/webos": "^4.5.0-alpha.1",
+    "@enact/core": "^4.5.0-rc.1",
+    "@enact/i18n": "^4.5.0-rc.1",
+    "@enact/moonstone": "^4.5.0",
+    "@enact/spotlight": "^4.5.0-rc.1",
+    "@enact/ui": "^4.5.0-rc.1",
+    "@enact/webos": "^4.5.0-rc.1",
     "ilib": "^14.14.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "web-animations-js": "^2.3.2"
+    "react-dom": "^18.0.0"
   }
 }
