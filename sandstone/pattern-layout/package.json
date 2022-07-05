@@ -19,7 +19,6 @@
   "repository": "https://github.com/enyojs/enact-samples",
   "enact": {
     "title": "Layout sample",
-    "isomorphic": "src/iso.js",
     "ri": {
       "baseSize": 48
     }

@@ -33,25 +33,31 @@ const OutputField = kind({
 			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
 		},
 		handleClose: () => {
-			document.querySelector('#temporaryStylesheet')?.remove();
+			if (typeof document !== 'undefined') {
+				document.querySelector('#temporaryStylesheet')?.remove();
+			}
 		},
 		handleFocus: () => {
-			const sheet = document.createElement('style');
-			sheet.id = 'temporaryStylesheet';
-			sheet.innerHTML = `.sandstone-theme {
+			if (typeof document !== 'undefined') {
+				const sheet = document.createElement('style');
+				sheet.id = 'temporaryStylesheet';
+				sheet.innerHTML = `.sandstone-theme {
 				--sand-shadow-color-rgb: none;
 			}`;
-			document.body?.appendChild(sheet);
+				document.body?.appendChild(sheet);
+			}
 		},
 		handleOpen: (ev, {onToggleOpen}) => {
-			const sheet = document.createElement('style');
-			sheet.id = 'temporaryStylesheet';
-			sheet.innerHTML = `.sandstone-theme {
+			if (typeof document !== 'undefined') {
+				const sheet = document.createElement('style');
+				sheet.id = 'temporaryStylesheet';
+				sheet.innerHTML = `.sandstone-theme {
 				--sand-overlay-bg-color-rgb: 87, 94, 102;
 				--sand-shadow-color-rgb: none;
 			}`;
-			document.body?.appendChild(sheet);
-			onToggleOpen();
+				document.body?.appendChild(sheet);
+				onToggleOpen();
+			}
 		}
 	},
 

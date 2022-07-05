@@ -30,7 +30,9 @@ const ImportSkin = kind({
 
 	handlers:{
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
-			document.querySelector('#temporaryStylesheetImport')?.remove();
+			if (typeof document !== 'undefined') {
+				document.querySelector('#temporaryStylesheetImport')?.remove();
+			}
 			switch (ev.data) {
 				case 'Default Sandstone Theme': {
 					setColorsPreset('defaultTheme');
@@ -71,73 +73,81 @@ const ImportSkin = kind({
 				case 'Import your own': {
 					function inputHandler (inputEvent) {
 						inputEvent.preventDefault();
-						const reader = new window.FileReader();
-						reader.onload = async (event) => {
-							let text = (event.target.result).split('\n\t');
-							text.shift();
-							text = text.filter(string => {
-								if (string[0] !== '/' || string.includes('/* Skin Name')) {
-									return string;
-								}
-							});
-							setColorsImport(text);
-						};
-						try {
-							reader.readAsText(inputEvent.target.files[0]);
-						} catch (err) {
-							// eslint-disable-next-line
-							console.log(err);
+						if (typeof window !== 'undefined') {
+							const reader = new window.FileReader();
+							reader.onload = async (event) => {
+								let text = (event.target.result).split('\n\t');
+								text.shift();
+								text = text.filter(string => {
+									if (string[0] !== '/' || string.includes('/* Skin Name')) {
+										return string;
+									}
+								});
+								setColorsImport(text);
+							};
+							try {
+								reader.readAsText(inputEvent.target.files[0]);
+							} catch (err) {
+								// eslint-disable-next-line
+								console.log(err);
+							}
 						}
 					}
 
-					const input = document.createElement('input');
-					input.type = 'file';
-					input.onchange = inputHandler;
-					input.id = 'temporaryInput';
-					input.click();
+					if (typeof document !== 'undefined') {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.onchange = inputHandler;
+						input.id = 'temporaryInput';
+						input.click();
+					}
 					break;
 				}
 				default: break;
 			}
 		},
 		handleOpen: async () => {
-			const sheet = document.createElement('style');
-			sheet.id = 'temporaryStylesheetImport';
-			sheet.innerHTML = `.sandstone-theme {
+			if (typeof document !== 'undefined') {
+				const sheet = document.createElement('style');
+				sheet.id = 'temporaryStylesheetImport';
+				sheet.innerHTML = `.sandstone-theme {
 				--sand-selected-text-color: #E6E6E6;
 				--sand-overlay-bg-color-rgb: 87, 94, 102;
 				--sand-focus-bg-color: #E6E6E6;
 				--sand-component-focus-text-color-rgb: 76, 80, 89;
 				--sand-shadow-color-rgb: none;
 			}`;
-			document.body?.appendChild(sheet);
+				document.body?.appendChild(sheet);
 
-			setTimeout(() => {
-				let dropdown = document.querySelector('[role="list"]');
-				dropdown.style.color = '#E6E6E6';
-			});
+				setTimeout(() => {
+					let dropdown = document.querySelector('[role="list"]');
+					dropdown.style.color = '#E6E6E6';
+				});
+			}
 		}
 	},
 
 	computed: {
 		size: () => {
-			const width = window.innerWidth;
+			if (typeof window !== 'undefined') {
+				const width = window.innerWidth;
 
-			if (window.screen.width <= 1920) {
-				if (width < 1080) {
-					return 'medium';
-				} else if (width > 1080 && width < 1800) {
-					return 'large';
-				} else {
-					return 'x-large';
-				}
-			} else if (window.screen.width > 1920) {
-				if (width < 2160) {
-					return 'medium';
-				} else if ( width > 2160 && width < 3600) {
-					return 'large';
-				} else {
-					return 'x-large';
+				if (window.screen.width <= 1920) {
+					if (width < 1080) {
+						return 'medium';
+					} else if (width > 1080 && width < 1800) {
+						return 'large';
+					} else {
+						return 'x-large';
+					}
+				} else if (window.screen.width > 1920) {
+					if (width < 2160) {
+						return 'medium';
+					} else if ( width > 2160 && width < 3600) {
+						return 'large';
+					} else {
+						return 'x-large';
+					}
 				}
 			}
 		}
