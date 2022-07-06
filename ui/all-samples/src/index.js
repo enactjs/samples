@@ -1,5 +1,5 @@
 /* global ENACT_PACK_ISOMORPHIC */
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter, Route, StaticRouter} from 'react-router-dom';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
@@ -25,6 +25,8 @@ console.error = (...args) => {
 	return args[0].includes('React does not recognize the `staticContext` prop on a DOM element.') || args[0].includes('Unknown props `match`, `location`, `history`, `staticContext`') || args[0].includes('Warning: Hash history cannot PUSH the same path') ? null : originalConsoleError(args.join(' '));
 };
 /* eslint-enable no-console */
+
+const Router = typeof window !== 'undefined' ? HashRouter : StaticRouter;
 
 const appElement = (
 	<Router>

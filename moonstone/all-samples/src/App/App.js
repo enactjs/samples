@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter, Route, StaticRouter} from 'react-router-dom';
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
@@ -47,7 +47,7 @@ const NavigationMenu = kind({
 							if (path !== '/') {
 								return (
 									<SampleItem key={index} path={path} history={history}>
-										{path.substr(1)}
+										{path.substring(1)}
 									</SampleItem>
 								);
 							}
@@ -85,14 +85,17 @@ const App = kind({
 		className: 'app'
 	},
 
-	render: (props) => (
-		<Router>
-			<div {...props}>
-				<ButtonToSamples />
-				{routes.map((route, index) => <Route key={index} {...route} />)}
-			</div>
-		</Router>
-	)
+	render: (props) => {
+		const Router = typeof window !== 'undefined' ? HashRouter : StaticRouter;
+		return (
+			<Router>
+				<div {...props}>
+					<ButtonToSamples />
+					{routes.map((route, index) => <Route key={index} {...route} />)}
+				</div>
+			</Router>
+		);
+	}
 });
 
 export default MoonstoneDecorator(App);
