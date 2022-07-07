@@ -28,7 +28,7 @@ const ImportSkin = kind({
 		]
 	},
 
-	handlers:{
+	handlers: {
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
 			if (typeof document !== 'undefined') {
 				document.querySelector('#temporaryStylesheetImport')?.remove();
@@ -71,7 +71,7 @@ const ImportSkin = kind({
 					break;
 				}
 				case 'Import your own': {
-					function inputHandler (inputEvent) {
+					function inputHandler(inputEvent) {
 						inputEvent.preventDefault();
 						if (typeof window !== 'undefined') {
 							const reader = new window.FileReader();
@@ -103,7 +103,8 @@ const ImportSkin = kind({
 					}
 					break;
 				}
-				default: break;
+				default:
+					break;
 			}
 		},
 		handleOpen: async () => {
@@ -111,12 +112,12 @@ const ImportSkin = kind({
 				const sheet = document.createElement('style');
 				sheet.id = 'temporaryStylesheetImport';
 				sheet.innerHTML = `.sandstone-theme {
-				--sand-selected-text-color: #E6E6E6;
-				--sand-overlay-bg-color-rgb: 87, 94, 102;
-				--sand-focus-bg-color: #E6E6E6;
-				--sand-component-focus-text-color-rgb: 76, 80, 89;
-				--sand-shadow-color-rgb: none;
-			}`;
+					--sand-selected-text-color: #E6E6E6;
+					--sand-overlay-bg-color-rgb: 87, 94, 102;
+					--sand-focus-bg-color: #E6E6E6;
+					--sand-component-focus-text-color-rgb: 76, 80, 89;
+					--sand-shadow-color-rgb: none;
+				}`;
 				document.body?.appendChild(sheet);
 
 				setTimeout(() => {
@@ -143,7 +144,7 @@ const ImportSkin = kind({
 				} else if (window.screen.width > 1920) {
 					if (width < 2160) {
 						return 'medium';
-					} else if ( width > 2160 && width < 3600) {
+					} else if (width > 2160 && width < 3600) {
 						return 'large';
 					} else {
 						return 'x-large';
@@ -153,7 +154,7 @@ const ImportSkin = kind({
 		}
 	},
 
-	render:({colorPresets, handleClose, handleOpen, size}) => {
+	render: ({colorPresets, handleClose, handleOpen, size}) => {
 		return (
 			<div className={componentCss.inputFile}>
 				<Dropdown
