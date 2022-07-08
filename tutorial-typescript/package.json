@@ -19,7 +19,7 @@
 	"private": true,
 	"repository": "",
 	"enact": {
-		"theme": "moonstone"
+		"theme": "sandstone"
 	},
 	"eslintConfig": {
 		"extends": "enact"
@@ -30,20 +30,18 @@
 		"dist/*"
 	],
 	"dependencies": {
-		"@enact/core": "^3.0.0",
-		"@enact/i18n": "^3.0.0",
-		"@enact/moonstone": "^3.0.0",
-		"@enact/spotlight": "^3.0.0",
-		"@enact/ui": "^3.0.0",
+		"@enact/core": "^4.5.0-rc.1",
+		"@enact/i18n": "^4.5.0-rc.1",
+		"@enact/sandstone": "^2.5.0-rc.1",
+		"@enact/spotlight": "^4.5.0-rc.1",
+		"@enact/ui": "^4.5.0-rc.1",
 		"@types/node": "^12.0.0",
-		"@types/react": "^16.8.0",
-		"@types/react-dom": "^16.0.11",
-		"ilib": "^14.2.0",
-		"prop-types": "^15.6.2",
-		"react": "^16.7.0",
-		"react-dom": "^16.7.0",
-		"tslint": "^5.12.1",
-		"tslint-react": "^4.0.0",
-		"typescript": "^3.1.6"
+		"@types/react": "^18.0.0",
+		"@types/react-dom": "^18.0.0",
+		"ilib": "^14.14.0",
+		"prop-types": "^15.8.1",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"typescript": "^4.6.4"
 	}
 }

@@ -1,38 +1,31 @@
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback} from 'react';
 import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-class ImageList extends Component {
-	static propTypes = {
-		dispatch: PropTypes.func,
-		imageitems: PropTypes.array
-	};
+const ImageList = ({imageitems, ...rest}) => {
+	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
-	renderItem = ({...rest}) => (<ImageItem {...rest} />);
+	delete rest.dispatch;
 
-	render = () => {
-		const
-			rest = Object.assign({}, this.props),
-			{imageitems} = this.props;
+	return (
+		<VirtualGridList
+			{...rest}
+			dataSize={imageitems.length}
+			itemRenderer={renderItem}
+			itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
+			spacing={ri.scale(21)}
+		/>
+	);
+};
 
-		delete rest.dispatch;
-		delete rest.imageitems;
-
-		return (
-			<VirtualGridList
-				{...rest}
-				dataSize={imageitems.length}
-				itemRenderer={this.renderItem}
-				itemSize={{minHeight: ri.scale(270), minWidth: ri.scale(180)}}
-				spacing={ri.scale(21)}
-			/>
-		);
-	};
-}
+ImageList.propTypes = {
+	dispatch: PropTypes.func,
+	imageitems: PropTypes.array
+};
 
 const mapStateToProps = ({data}) => ({
 	imageitems: data.dataOrder

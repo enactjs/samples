@@ -1,8 +1,4 @@
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import Group from '@enact/ui/Group';
-import {Row, Cell} from '@enact/ui/Layout';
-
 import Checkbox from '@enact/my-theme/Checkbox';
 import CheckboxItem from '@enact/my-theme/CheckboxItem';
 import Heading from '@enact/my-theme/Heading';
@@ -12,6 +8,9 @@ import RadioItem from '@enact/my-theme/RadioItem';
 import SlotItem from '@enact/my-theme/SlotItem';
 import ToggleItem from '@enact/my-theme/ToggleItem';
 import {Panel} from '@enact/my-theme/Panels';
+import Group from '@enact/ui/Group';
+import {Row, Cell} from '@enact/ui/Layout';
+import PropTypes from 'prop-types';
 
 import PanelHeader from '../components/PanelHeader';
 

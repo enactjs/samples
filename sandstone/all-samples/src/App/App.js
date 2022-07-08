@@ -2,13 +2,15 @@ import kind from '@enact/core/kind';
 import Scroller from '@enact/sandstone/Scroller';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter, Route, StaticRouter} from 'react-router-dom';
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
 import {AppBase as PatternDynamicPanel} from '../../../pattern-dynamic-panel/src/App/App';
+import {AppBase as PatternAccountIcon} from '../../../pattern-account-icon/src/App/App';
 import {AppBase as PatternLayout} from '../../../pattern-layout/src/App/App';
 import {appElementBase as PatternLocaleSwitching} from '../../../pattern-locale-switching/src/main';
+import {App as PatternReact18New} from '../../../pattern-react18-new/src/App';
 import {appElementBase as PatternRoutablePanels} from '../../../pattern-routable-panels/src/main';
 import {AppBase as PatternSinglePanel} from '../../../pattern-single-panel/src/App/App';
 import {appElementBase as PatternSinglePanelRedux} from '../../../pattern-single-panel-redux/src/main';
@@ -44,7 +46,7 @@ const NavigationMenu = kind({
 							if (path !== '/') {
 								return (
 									<SampleItem key={index} path={path} history={history}>
-										{path.substr(1)}
+										{path.substring(1)}
 									</SampleItem>
 								);
 							}
@@ -59,9 +61,11 @@ const NavigationMenu = kind({
 
 const routes = [
 	{path: '/', exact: true, component: NavigationMenu},
+	{path: '/PatternAccountIcon', component: PatternAccountIcon},
 	{path: '/PatternDynamicPanel', component: PatternDynamicPanel},
 	{path: '/PatternLayout', component: PatternLayout},
 	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},
+	{path: '/PatternReact18New', component: PatternReact18New},
 	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
 	{path: '/PatternSinglePanel', component: PatternSinglePanel},
 	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
@@ -81,6 +85,7 @@ const AppBase = kind({
 	},
 
 	render: (props) => {
+		const Router = typeof window !== 'undefined' ? HashRouter : StaticRouter;
 		return (
 			<Router>
 				<div {...props}>

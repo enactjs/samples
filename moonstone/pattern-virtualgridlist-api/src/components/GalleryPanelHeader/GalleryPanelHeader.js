@@ -10,7 +10,7 @@ import {
 	deleteItem as deleteAction,
 	selectAll as selectAllAction,
 	selectionEnable as selectionEnableAction
-} from '../../actions';
+} from '../../store';
 
 const createMockItem = (album, albumSize, showOverlay) => {
 	const

@@ -2,6 +2,10 @@
 
 The following is a curated list of changes in the Enact samples module, newest changes on the top.
 
+## [2.5.0] - 2022-07-08
+
+- Up to this version works with React 18.0.0
+
 ## [2.0.0] - 2022-04-14
 
 - Up to this version works with React 17.0.1  

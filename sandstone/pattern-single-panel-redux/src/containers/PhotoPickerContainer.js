@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	// Dipatch the change to state.photo
+	// Dispatch the change to state.photo
 	changePhotoIndex: (newIndex) => {
 		dispatch(changePhotoIndex(newIndex));
 

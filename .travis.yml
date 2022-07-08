@@ -1,9 +1,11 @@
+dist: focal
 language: node_js
 node_js:
-    - "node"
+    - lts/*
+    - node
 sudo: false
 install:
-    - npm install -g @enact/cli@4.1.7
+    - npm install -g enactjs/cli#develop
     - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Starting eslint...\x1b\x5b0m"

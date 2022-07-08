@@ -22,7 +22,7 @@ const GridItem = kind({
 					{...rest}
 					caption={items[index].title}
 					onClick={onSelect}
-					source={items[index].image.default}
+					source={items[index].image}
 					subCaption={items[index].subTitle}
 				/>
 			);

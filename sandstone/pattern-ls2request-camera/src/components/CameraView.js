@@ -18,7 +18,7 @@ const CameraView = () => {
 	let cameraOption;
 
 	useEffect(() => {
-		if (typeof window.PalmSystem !== 'undefined') {
+		if (typeof window !== 'undefined' && typeof window.PalmSystem !== 'undefined') {
 			dispatch(getCameraIds({}));
 		}
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -35,7 +35,7 @@ const CameraView = () => {
 		}
 	};
 
-	if (typeof window.PalmSystem === 'undefined') {
+	if (typeof window !== 'undefined' && typeof window.PalmSystem === 'undefined') {
 		return <div>This test will only function correctly on webOS systems!</div>;
 	}
 

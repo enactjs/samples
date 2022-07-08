@@ -1,6 +1,6 @@
-import 'web-animations-js';
-import {HashRouter as Router, Route} from 'react-router-dom';
-import {render} from 'react-dom';
+/* global ENACT_PACK_ISOMORPHIC */
+import {HashRouter, Route, StaticRouter} from 'react-router-dom';
+import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
 import PatternListDetailsRedux from '../../pattern-list-details-redux/src/main';
@@ -26,6 +26,8 @@ console.error = (...args) => {
 };
 /* eslint-enable no-console */
 
+const Router = typeof window !== 'undefined' ? HashRouter : StaticRouter;
+
 const appElement = (
 	<Router>
 		<div>
@@ -37,7 +39,13 @@ const appElement = (
 
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+
+	if (ENACT_PACK_ISOMORPHIC) {
+		hydrateRoot(container, appElement);
+	} else {
+		createRoot(container).render(appElement);
+	}
 }
 
 export default appElement;

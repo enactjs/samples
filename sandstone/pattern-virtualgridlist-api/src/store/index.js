@@ -21,7 +21,7 @@ const createRecords = (album) => {
 			selectionOverlayShowing: false,
 			caption: album + ' ' + idx + caption,
 			subCaption: subCaption,
-			source: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + idx
+			source: 'http://via.placeholder.com/300x300/' + color + '/ffffff&text=Image ' + idx
 		};
 	}
 

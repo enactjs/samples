@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
+/* global ENACT_PACK_ISOMORPHIC */
 import qs from 'query-string';
-import {render} from 'react-dom';
-import 'web-animations-js';
+import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import App from './App';
 import {saveObjToQueryString} from './components/util';
@@ -40,7 +40,13 @@ if (typeof window !== 'undefined') {
 		<App defaultDebug={debug} defaultIndex={index} defaultItemIndex={itemIndex} onChangePanel={handleChangePanel} onToggleDebug={handleChangeDebug} />
 	);
 
-	render(appElement, document.getElementById('root'));
+	const container = document.getElementById('root');
+
+	if (ENACT_PACK_ISOMORPHIC) {
+		hydrateRoot(container, appElement);
+	} else {
+		createRoot(container).render(appElement);
+	}
 }
 
 export default appElement;

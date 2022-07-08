@@ -1,34 +1,31 @@
+/* eslint-disable react/jsx-no-bind */
+
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ActivityPanels} from '@enact/moonstone/Panels';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
 import ButtonPanel from '../views/ButtonPanel';
 import ItemPanel from '../views/ItemPanel';
 import MainPanel from '../views/MainPanel';
 
-class AppBase extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			index: 0
-		};
-	}
+const AppBase = (props) => {
+	const [currentIndex, setCurrentIndex] = useState(0);
 
-	handleSelectBreadcrumb = ({index}) => this.setState({index});
+	const handleSelectBreadcrumb = useCallback(({index}) => {
+		setCurrentIndex(index);
+	}, []);
 
-	handleClick = () => this.setState(prevState => ({index: prevState.index + 1}));
+	const handleClick = () => setCurrentIndex(currentIndex + 1);
 
-	render () {
-		return (
-			<ActivityPanels {...this.props} index={this.state.index} onSelectBreadcrumb={this.handleSelectBreadcrumb}>
-				<MainPanel onClick={this.handleClick} title="First" />
-				<ItemPanel onClick={this.handleClick} title="Second" />
-				<ButtonPanel onClick={this.handleClick} title="Third" />
-				<MainPanel title="Fourth" />
-			</ActivityPanels>
-		);
-	}
-}
+	return (
+		<ActivityPanels {...props} index={currentIndex} onSelectBreadcrumb={handleSelectBreadcrumb}>
+			<MainPanel onClick={handleClick} title="First" />
+			<ItemPanel onClick={handleClick} title="Second" />
+			<ButtonPanel onClick={handleClick} title="Third" />
+			<MainPanel title="Fourth" />
+		</ActivityPanels>
+	);
+};
 
 const App = MoonstoneDecorator(AppBase);
 

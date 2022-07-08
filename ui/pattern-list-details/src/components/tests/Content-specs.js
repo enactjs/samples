@@ -6,7 +6,7 @@ import Body from '../../views/Body.js';
 
 describe('Content specs', () => {
 
-	it('should change city photo', function () {
+	test('should change city photo', function () {
 		const cities = {
 			usa: ['San Francisco'],
 			korea: ['Seoul', 'Busan', 'Daegu']

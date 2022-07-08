@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Row, Cell} from '@enact/ui/Layout';
-
-import Heading from '@enact/my-theme/Heading';
 import Button from '@enact/my-theme/Button';
+import Heading from '@enact/my-theme/Heading';
+import {Row, Cell} from '@enact/ui/Layout';
+import PropTypes from 'prop-types';
 
 import css from './PanelHeader.module.less';
 

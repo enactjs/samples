@@ -1,38 +1,33 @@
 import Button from '@enact/moonstone/Button';
 import Popup from '@enact/moonstone/Popup';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useState, useCallback} from 'react';
 
-class SaveButton extends Component {
-	static propTypes = {
-		className: PropTypes.string
-	};
+const SaveButton = (props) => {
+	const [saved, setSaved] = useState(false);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			saved: false
-		};
-	}
+	const handleOnSave = useCallback(() => {
+		setSaved(true);
+	}, []);
 
-	handleOnSave = () => {
-		this.setState({saved: true});
-	};
+	const handleOnClose = useCallback(() => {
+		setSaved(false);
+	}, []);
 
-	handleOnClose = () => {
-		this.setState({saved: false});
-	};
-
-	render = () => (
-		<div {...this.props}>
-			<Button onClick={this.handleOnSave}>
+	return (
+		<div {...props}>
+			<Button onClick={handleOnSave}>
 				Save
 			</Button>
-			<Popup onClose={this.handleOnClose} open={this.state.saved} showCloseButton>
+			<Popup onClose={handleOnClose} open={saved} showCloseButton>
 				Saved!
 			</Popup>
 		</div>
 	);
-}
+};
+
+SaveButton.propTypes = {
+	className: PropTypes.string
+};
 
 export default SaveButton;
