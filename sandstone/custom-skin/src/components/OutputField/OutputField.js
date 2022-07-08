@@ -42,8 +42,8 @@ const OutputField = kind({
 				const sheet = document.createElement('style');
 				sheet.id = 'temporaryStylesheet';
 				sheet.innerHTML = `.sandstone-theme {
-				--sand-shadow-color-rgb: none;
-			}`;
+					--sand-shadow-color-rgb: none;
+				}`;
 				document.body?.appendChild(sheet);
 			}
 		},
@@ -52,9 +52,9 @@ const OutputField = kind({
 				const sheet = document.createElement('style');
 				sheet.id = 'temporaryStylesheet';
 				sheet.innerHTML = `.sandstone-theme {
-				--sand-overlay-bg-color-rgb: 87, 94, 102;
-				--sand-shadow-color-rgb: none;
-			}`;
+					--sand-overlay-bg-color-rgb: 87, 94, 102;
+					--sand-shadow-color-rgb: none;
+				}`;
 				document.body?.appendChild(sheet);
 				onToggleOpen();
 			}
