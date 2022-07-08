@@ -71,7 +71,7 @@ const ImportSkin = kind({
 					break;
 				}
 				case 'Import your own': {
-					function inputHandler(inputEvent) {
+					function inputHandler (inputEvent) {
 						inputEvent.preventDefault();
 						if (typeof window !== 'undefined') {
 							const reader = new window.FileReader();
