@@ -10,7 +10,7 @@ import css from './App.module.less';
 
 const App = ({brightness, eyeComfortMode, dispatch}) => {
 	useEffect(() => {
-		if (typeof window.PalmSystem !== 'undefined') {
+		if (typeof window !== 'undefined' && typeof window.PalmSystem !== 'undefined') {
 			dispatch(getSystemSettings({
 				category: 'picture',
 				key: 'brightness'
@@ -57,7 +57,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 		}
 	};
 
-	if (typeof window.PalmSystem === 'undefined') {
+	if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
 		return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
 	}
 

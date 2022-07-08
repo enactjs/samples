@@ -33,7 +33,7 @@ const App = kind({
 						if (path !== '/') {
 							return (
 								<SampleItem key={index} path={path} history={history}>
-									{path.substr(1)}
+									{path.substring(1)}
 								</SampleItem>
 							);
 						}

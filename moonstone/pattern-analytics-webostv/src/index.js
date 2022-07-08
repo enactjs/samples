@@ -1,5 +1,6 @@
+/* global ENACT_PACK_ISOMORPHIC */
 import {configure} from '@enact/analytics/preset/webostv';
-import {createRoot} from 'react-dom/client';
+import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import analytics from '../analytics.cfg';
 
@@ -56,9 +57,12 @@ const appElement = (<App />);
 // In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
 	const container = document.getElementById('root');
-	const root = createRoot(container);
 
-	root.render(appElement);
+	if (ENACT_PACK_ISOMORPHIC) {
+		hydrateRoot(container, appElement);
+	} else {
+		createRoot(container).render(appElement);
+	}
 }
 
 export default appElement;

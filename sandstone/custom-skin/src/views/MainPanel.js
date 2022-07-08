@@ -224,17 +224,21 @@ const MainPanel = () => {
 	}
 
 	function handleOnBlur () {
-		document.querySelector('#temporaryStylesheet')?.remove();
+		if (typeof document !== 'undefined') {
+			document.querySelector('#temporaryStylesheet')?.remove();
+		}
 	}
 
 	function handleOnFocus () {
-		// eslint-disable-next-line
-		const sheet = document.createElement('style');
-		sheet.id = 'temporaryStylesheet';
-		sheet.innerHTML = `.sandstone-theme {
+		if (typeof document !== 'undefined') {
+			// eslint-disable-next-line
+			const sheet = document.createElement('style');
+			sheet.id = 'temporaryStylesheet';
+			sheet.innerHTML = `.sandstone-theme {
 				--sand-shadow-color-rgb: none;
 			}`;
-		document.body?.appendChild(sheet);
+			document.body?.appendChild(sheet);
+		}
 	}
 
 	function handleOpenPopup () {
@@ -254,14 +258,16 @@ const MainPanel = () => {
 		return scrollTo({position: {x: 0, y: 0}});
 	}
 
-	const sheet = document.createElement('style');
-	sheet.id = 'custom-skin';
-	sheet.innerHTML = generateCSS(colors, skinName, varNames);
-	document.getElementById('custom-skin')?.remove();
-	document.body?.appendChild(sheet);
+	if (typeof document !== 'undefined') {
+		const sheet = document.createElement('style');
+		sheet.id = 'custom-skin';
+		sheet.innerHTML = generateCSS(colors, skinName, varNames);
+		document.getElementById('custom-skin')?.remove();
+		document.body?.appendChild(sheet);
+	}
 
-	let screenWidth = window.screen.width;
-	let windowWidth = window.innerWidth;
+	let screenWidth = typeof window !== 'undefined' ? window.screen.width : 0;
+	let windowWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
 	let previewDropdownWidth = () => {
 		if (screenWidth <= 1920) {
 			if (windowWidth < 1080) {
