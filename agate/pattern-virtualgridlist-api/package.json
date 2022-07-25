@@ -36,7 +36,6 @@
     "@enact/ui": "^4.5.0",
     "@reduxjs/toolkit": "^1.8.1",
     "ilib": "^14.14.0",
-    "immer": "^9.0.12",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
