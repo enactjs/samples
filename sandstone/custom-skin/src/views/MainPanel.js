@@ -140,7 +140,7 @@ const MainPanel = () => {
 		'--sand-progress-bg-color-rgb', '--sand-progress-highlighted-color', '--sand-progress-slider-color', '--sand-spinner-color', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb', '--sand-slider-disabled-knob-bg-color',
 		'--sand-alert-overlay-bg-color-rgb', '--sand-alert-overlay-text-color-rgb', '--sand-alert-overlay-text-sub-color', '--sand-alert-overlay-focus-text-color',
 		'--sand-alert-overlay-disabled-selected-color', '--sand-alert-overlay-disabled-selected-bg-color', '--sand-alert-overlay-disabled-selected-focus-color',
-		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color-rgb',
+		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color-rgb',
 		'--sand-alert-overlay-checkbox-color', '--sand-alert-overlay-checkbox-disabled-selected-color', '--sand-alert-overlay-formcheckboxitem-focus-text-color',
 		'--sand-alert-overlay-item-disabled-focus-bg-color'
 	];
@@ -153,8 +153,6 @@ const MainPanel = () => {
 	const [presetActive, setActivePreset] = useState('defaultTheme');
 
 	const setColorsToAuto = (autoColors) => {
-		console.log(autoColors.length);
-		console.log(setColors.length); // > 2 decat autocolors
 		for (let i = 0; i < autoColors.length; i++) {
 			setColors[i + 2](autoColors[i]);
 		}
@@ -199,7 +197,6 @@ const MainPanel = () => {
 
 	function setColorsFromPreset (presetColors) {
 		const colorSet = presets[`${presetColors}`];
-		console.log(colorSet)
 		setActivePreset(presetColors);
 
 		for (let color in colorSet) {
