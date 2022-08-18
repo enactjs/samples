@@ -45,14 +45,19 @@ const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
 
 	const [BGColor, setBGColor] = useState('#000000');
-	const [TextColor, setTextColor] = useState('#E6E6E6');
+	const [TextColorRGB, setTextColorRGB] = useState('#E6E6E6');
 	const [TextSubColor, setTextSubColor] = useState('#ABAEB3');
 	const [ShadowColorRGB, setShadowColorRGB] = useState('#000000');
-	const [ComponentTextColor, setComponentTextColor] = useState('#E6E6E6');
+	const [ComponentTextColorRGB, setComponentTextColorRGB] = useState('#E6E6E6');
+	const [ComponentTextSubColorRGB, setComponentTextSubColorRGB] = useState('#ABAEB3');
 	const [ComponentBGColor, setComponentBGColor] = useState('#7D848C');
+	const [ComponentActiveIndicatorBgColor, setComponentActiveIndicatorBgColor] = useState('#E6E6E6');
+	const [ComponentInactiveIndicatorBgColor, setComponentInactiveIndicatorBgColor] = useState('#9DA2A7');
 	const [FocusTextColor, setFocusTextColor] = useState('#FFFFFF');
-	const [FocusBGColor, setFocusBGColor] = useState('#E6E6E6');
+	const [FocusBGColorRGB, setFocusBGColorRGB] = useState('#E6E6E6');
 	const [ComponentFocusTextColorRGB, setComponentFocusTextColorRGB] = useState('#4C5059');
+	const [ComponentFocusActiveIndicatorBgColor, setComponentFocusActiveIndicatorBgColor] = useState('#4C5059');
+	const [ComponentFocusInactiveIndicatorBgColor, setComponentFocusInactiveIndicatorBgColor] = useState('#B8B9BB');
 	const [SelectedColorRGB, setSelectedColorRGB] = useState('#E6E6E6');
 	const [SelectedTextColor, setSelectedTextColor] = useState('#E6E6E6');
 	const [SelectedBGColor, setSelectedBGColor] = useState('#3E454D');
@@ -71,65 +76,71 @@ const MainPanel = () => {
 	const [ToggleOnBGColor, setToggleOnBGColor] = useState('#30AD6B');
 	const [ProgressColorRGB, setProgressColorRGB] = useState('#E6E6E6');
 	const [ProgressBufferColor, setProgressBufferColor] = useState('#6B6D73');
-	const [ProgressBGColor, setProgressBGColor] = useState('#373A41');
+	const [ProgressBGColorRGB, setProgressBGColorRGB] = useState('#373A41');
+	const [ProgressHighlightedColor, setProgressHighlightedColor] = useState('#FFFFFF');
 	const [ProgressSliderColor, setProgressSliderColor] = useState('#8D9298');
+	const [SpinnerColorRGB, setSpinnerColorRGB] = useState('#FFFFFF');
 	const [CheckboxColor, setCheckboxColor] = useState('#E6E6E6');
 	const [ItemDisabledFocusBGColor, setItemDisabledFocusBGColor] = useState('#E6E6E6');
-	const [KeyguideBGColorRGB, setKeyguideBGColorRGB] = useState('#6B6D73');
+	const [KeyguideBGColorRGB, setKeyguideBGColorRGB] = useState('#373A41');
+	const [SliderDisabledKnobBgColor, setSliderDisabledKnobBgColor] = useState('#666666');
 	const [AlertOverlayBGColorRGB, setAlertOverlayBGColorRGB] = useState('#CACBCC');
-	const [AlertOverlayTextColor, setAlertOverlayTextColor] = useState('#2E3239');
+	const [AlertOverlayTextColorRGB, setAlertOverlayTextColorRGB] = useState('#2E3239');
 	const [AlertOverlayTextSubColor, setAlertOverlayTextSubColor] = useState('#2E3239');
 	const [AlertOverlayFocusTextColor, setAlertOverlayFocusTextColor] = useState('#575E66');
 	const [AlertOverlayDisabledSelectedColor, setAlertOverlayDisabledSelectedColor] = useState('#FFFFFF');
 	const [AlertOverlayDisabledSelectedBGColor, setAlertOverlayDisabledSelectedBGColor] = useState('#788688');
 	const [AlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusColor] = useState('#E6E6E6');
 	const [AlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayDisabledSelectedFocusBGColor] = useState('#4C5059');
-	const [AlertOverlayProgressColorRGB, setAlertOverlayProgressColorRGB] = useState('#6B6D73');
-	const [AlertOverlayProgressBGColor, setAlertOverlayProgressBGColor] = useState('#A1A1A1');
+	const [AlertOverlayProgressColorRGB, setAlertOverlayProgressColorRGB] = useState('#373a41');
+	const [AlertOverlayProgressBGColorRGB, setAlertOverlayProgressBGColorRGB] = useState('#A1A1A1');
 	const [AlertOverlayCheckboxColor, setAlertOverlayCheckboxColor] = useState('#858B92');
 	const [AlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayCheckboxDisabledSelectedColor] = useState('#FFFFFF');
 	const [AlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayFormcheckboxitemFocusTextColor] = useState('#575E66');
 	const [AlertOverlayItemDisabledFocusBGColor, setAlertOverlayItemDisabledFocusBGColor] = useState('#989CA2');
 
-	const colors = [BGColor, TextColor, TextSubColor, ShadowColorRGB, ComponentTextColor, ComponentBGColor, FocusTextColor, FocusBGColor, ComponentFocusTextColorRGB,
+	const colors = [BGColor, TextColorRGB, TextSubColor, ShadowColorRGB, ComponentTextColorRGB, ComponentTextSubColorRGB, ComponentBGColor, ComponentActiveIndicatorBgColor,
+		ComponentInactiveIndicatorBgColor, FocusTextColor, FocusBGColorRGB, ComponentFocusTextColorRGB, ComponentFocusActiveIndicatorBgColor, ComponentFocusInactiveIndicatorBgColor,
 		SelectedColorRGB, SelectedTextColor, SelectedBGColor, DisabledFocusBGColor, DisabledSelectedColor, DisabledSelectedBGColor, DisabledSelectedFocusColor,
 		DisabledSelectedFocusBGColor, FullscreenBGColor, OverlayBGColorRGB, SelectionColor, SelectionBGColor, ToggleOffColor, ToggleOffBGColor, ToggleOnColor, ToggleOnBGColor,
-		ProgressColorRGB, ProgressBufferColor, ProgressBGColor, ProgressSliderColor, CheckboxColor, ItemDisabledFocusBGColor, KeyguideBGColorRGB, AlertOverlayBGColorRGB,
-		AlertOverlayTextColor, AlertOverlayTextSubColor, AlertOverlayFocusTextColor, AlertOverlayDisabledSelectedColor, AlertOverlayDisabledSelectedBGColor,
-		AlertOverlayDisabledSelectedFocusColor, AlertOverlayDisabledSelectedFocusBGColor, AlertOverlayProgressColorRGB, AlertOverlayProgressBGColor, AlertOverlayCheckboxColor,
+		ProgressColorRGB, ProgressBufferColor, ProgressBGColorRGB, ProgressHighlightedColor, ProgressSliderColor, SpinnerColorRGB, CheckboxColor, ItemDisabledFocusBGColor, KeyguideBGColorRGB, SliderDisabledKnobBgColor, AlertOverlayBGColorRGB,
+		AlertOverlayTextColorRGB, AlertOverlayTextSubColor, AlertOverlayFocusTextColor, AlertOverlayDisabledSelectedColor, AlertOverlayDisabledSelectedBGColor,
+		AlertOverlayDisabledSelectedFocusColor, AlertOverlayDisabledSelectedFocusBGColor, AlertOverlayProgressColorRGB, AlertOverlayProgressBGColorRGB, AlertOverlayCheckboxColor,
 		AlertOverlayCheckboxDisabledSelectedColor, AlertOverlayFormcheckboxitemFocusTextColor, AlertOverlayItemDisabledFocusBGColor
 	];
 
-	const setColors = [setBGColor, setTextColor, setTextSubColor, setShadowColorRGB, setComponentTextColor, setComponentBGColor, setFocusTextColor, setFocusBGColor,
-		setComponentFocusTextColorRGB, setSelectedColorRGB, setSelectedTextColor, setSelectedBGColor, setDisabledFocusBGColor, setDisabledSelectedColor,
+	const setColors = [setBGColor, setTextColorRGB, setTextSubColor, setShadowColorRGB, setComponentTextColorRGB, setComponentTextSubColorRGB, setComponentBGColor, setComponentActiveIndicatorBgColor,
+		setComponentInactiveIndicatorBgColor, setFocusTextColor, setFocusBGColorRGB,
+		setComponentFocusTextColorRGB, setComponentFocusActiveIndicatorBgColor, setComponentFocusInactiveIndicatorBgColor, setSelectedColorRGB, setSelectedTextColor, setSelectedBGColor, setDisabledFocusBGColor, setDisabledSelectedColor,
 		setDisabledSelectedBgColor, setDisabledSelectedFocusColor, setDisabledSelectedFocusBGColor, setFullscreenBGColor, setOverlayBGColorRGB,
 		setSelectionColor, setSelectionBGColor, setToggleOffColor, setToggleOffBGColor, setToggleOnColor, setToggleOnBGColor, setProgressColorRGB, setProgressBufferColor,
-		setProgressBGColor, setProgressSliderColor, setCheckboxColor, setItemDisabledFocusBGColor, setKeyguideBGColorRGB, setAlertOverlayBGColorRGB,
-		setAlertOverlayTextColor, setAlertOverlayTextSubColor, setAlertOverlayFocusTextColor, setAlertOverlayDisabledSelectedColor, setAlertOverlayDisabledSelectedBGColor,
-		setAlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayProgressColorRGB, setAlertOverlayProgressBGColor,
+		setProgressBGColorRGB, setProgressHighlightedColor, setProgressSliderColor, setSpinnerColorRGB, setCheckboxColor, setItemDisabledFocusBGColor, setKeyguideBGColorRGB, setSliderDisabledKnobBgColor, setAlertOverlayBGColorRGB,
+		setAlertOverlayTextColorRGB, setAlertOverlayTextSubColor, setAlertOverlayFocusTextColor, setAlertOverlayDisabledSelectedColor, setAlertOverlayDisabledSelectedBGColor,
+		setAlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayProgressColorRGB, setAlertOverlayProgressBGColorRGB,
 		setAlertOverlayCheckboxColor, setAlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayItemDisabledFocusBGColor
 	];
 
-	const propNames = ['Background Color', 'Text Color', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Bg Color', 'Focus Text Color', 'Focus Bg Color',
-		'Component Focus Text Color RGB', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
+	const propNames = ['Background Color', 'Text Color RGB', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Text Sub Color', 'Component Bg Color', 'Component Active Indicator Bg Color', 'Component Inactive Indicator Bg Color', 'Focus Text Color', 'Focus Bg Color RGB',
+		'Component Focus Text Color RGB', 'Component Focus Active Indicator Bg Color', 'Component Focus Inactive Indicator Bg Color', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
 		'Disabled Selected Bg Color', 'Disabled Selected Focus Color', 'Disabled Selected Focus Bg Color', 'Fullscreen Bg Color', 'Overlay Bg Color RGB',
 		'Selection Color', 'Selection Bg Color', 'Toggle Off Color', 'Toggle Off Bg Color', 'Toggle On Color', 'Toggle On Bg Color', 'Progress Color RGB',
-		'Progress Buffer Color', 'Progress Bg Color', 'Progress Slider Color', 'Checkbox Color', 'Item Disabled Focus Bg Color', 'Keyguide Bg Color RGB',
-		'Alert Overlay Bg Color RGB', 'Alert Overlay Text Color', 'Alert Overlay Text Sub Color', 'Alert Overlay Focus Text Color', 'Alert Overlay Disabled Selected Color',
+		'Progress Buffer Color', 'Progress Bg Color', 'Progress Highlighted Color', 'Progress Slider Color', 'Spinner Color RGB', 'Checkbox Color', 'Item Disabled Focus Bg Color', 'Keyguide Bg Color RGB', 'Slider Disabled Knob Bg Color',
+		'Alert Overlay Bg Color RGB', 'Alert Overlay Text Color RGB', 'Alert Overlay Text Sub Color', 'Alert Overlay Focus Text Color', 'Alert Overlay Disabled Selected Color',
 		'Alert Overlay Disabled Selected Bg Color', 'Alert Overlay Disabled Selected Focus Color', 'Alert Overlay Disabled Selected Focus Bg Color',
 		'Alert Overlay Progress Color RGB', 'Alert Overlay Progress Bg Color', 'Alert Overlay Checkbox Color', 'Alert Overlay Checkbox Disabled Selected Color',
 		'Alert Overlay Formcheckboxitem Focus Text Color', 'Alert Overlay Item Disabled Focus Bg Color'
 	];
 
-	const varNames = ['--sand-bg-color', '--sand-text-color', '--sand-text-sub-color', '--sand-shadow-color-rgb', '--sand-component-text-color', '--sand-component-bg-color',
-		'--sand-focus-text-color', '--sand-focus-bg-color', '--sand-component-focus-text-color-rgb', '--sand-selected-color-rgb', '--sand-selected-text-color',
+	const varNames = ['--sand-bg-color', '--sand-text-color-rgb', '--sand-text-sub-color', '--sand-shadow-color-rgb', '--sand-component-text-color-rgb', '--sand-component-text-sub-color-rgb', '--sand-component-bg-color',
+		'--sand-component-active-indicator-bg-color', '--sand-component-inactive-indicator-bg-color', '--sand-focus-text-color', '--sand-focus-bg-color-rgb', '--sand-component-focus-text-color-rgb', '--sand-component-focus-active-indicator-bg-color',
+		'--sand-component-focus-inactive-indicator-bg-color', '--sand-selected-color-rgb', '--sand-selected-text-color',
 		'--sand-selected-bg-color', '--sand-disabled-focus-bg-color', '--sand-disabled-selected-color', '--sand-disabled-selected-bg-color', '--sand-disabled-selected-focus-color',
 		'--sand-disabled-selected-focus-bg-color', '--sand-fullscreen-bg-color', '--sand-overlay-bg-color-rgb', '--sand-selection-color', '--sand-selection-bg-color',
 		'--sand-toggle-off-color', '--sand-toggle-off-bg-color', '--sand-toggle-on-color', '--sand-toggle-on-bg-color', '--sand-progress-color-rgb', '--sand-progress-buffer-color',
-		'--sand-progress-bg-color', '--sand-progress-slider-color', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb',
-		'--sand-alert-overlay-bg-color-rgb', '--sand-alert-overlay-text-color', '--sand-alert-overlay-text-sub-color', '--sand-alert-overlay-focus-text-color',
+		'--sand-progress-bg-color-rgb', '--sand-progress-highlighted-color', '--sand-progress-slider-color', '--sand-spinner-color-rgb', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb', '--sand-slider-disabled-knob-bg-color',
+		'--sand-alert-overlay-bg-color-rgb', '--sand-alert-overlay-text-color-rgb', '--sand-alert-overlay-text-sub-color', '--sand-alert-overlay-focus-text-color',
 		'--sand-alert-overlay-disabled-selected-color', '--sand-alert-overlay-disabled-selected-bg-color', '--sand-alert-overlay-disabled-selected-focus-color',
-		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color',
+		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color-rgb',
 		'--sand-alert-overlay-checkbox-color', '--sand-alert-overlay-checkbox-disabled-selected-color', '--sand-alert-overlay-formcheckboxitem-focus-text-color',
 		'--sand-alert-overlay-item-disabled-focus-bg-color'
 	];
@@ -148,11 +159,11 @@ const MainPanel = () => {
 	};
 
 	useEffect(() => {
-		if (auto && hexColors(BGColor, TextColor)) {
-			setColorsToAuto(generateColors(BGColor, TextColor));
+		if (auto && hexColors(BGColor, TextColorRGB)) {
+			setColorsToAuto(generateColors(BGColor, TextColorRGB));
 		}
 		// eslint-disable-next-line
-	}, [auto, BGColor, TextColor]);
+	}, [auto, BGColor, TextColorRGB]);
 
 	function setColorsFromImport (newColors) {
 		const colorSet = getColorsFromString(newColors);
