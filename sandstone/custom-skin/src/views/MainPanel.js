@@ -137,7 +137,7 @@ const MainPanel = () => {
 		'--sand-selected-bg-color', '--sand-disabled-focus-bg-color', '--sand-disabled-selected-color', '--sand-disabled-selected-bg-color', '--sand-disabled-selected-focus-color',
 		'--sand-disabled-selected-focus-bg-color', '--sand-fullscreen-bg-color', '--sand-overlay-bg-color-rgb', '--sand-selection-color', '--sand-selection-bg-color',
 		'--sand-toggle-off-color', '--sand-toggle-off-bg-color', '--sand-toggle-on-color', '--sand-toggle-on-bg-color', '--sand-progress-color-rgb', '--sand-progress-buffer-color',
-		'--sand-progress-bg-color-rgb', '--sand-progress-highlighted-color', '--sand-progress-slider-color', '--sand-spinner-color', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb', '--sand-slider-disabled-knob-bg-color',
+		'--sand-progress-bg-color-rgb', '--sand-progress-highlighted-color', '--sand-progress-slider-color', '--sand-spinner-color-rgb', '--sand-checkbox-color', '--sand-item-disabled-focus-bg-color', '--sand-keyguide-bg-color-rgb', '--sand-slider-disabled-knob-bg-color',
 		'--sand-alert-overlay-bg-color-rgb', '--sand-alert-overlay-text-color-rgb', '--sand-alert-overlay-text-sub-color', '--sand-alert-overlay-focus-text-color',
 		'--sand-alert-overlay-disabled-selected-color', '--sand-alert-overlay-disabled-selected-bg-color', '--sand-alert-overlay-disabled-selected-focus-color',
 		'--sand-alert-overlay-disabled-selected-focus-bg-color', '--sand-alert-overlay-progress-color-rgb', '--sand-alert-overlay-progress-bg-color-rgb',
