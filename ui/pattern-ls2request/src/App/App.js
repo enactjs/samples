@@ -1,14 +1,20 @@
 import Button from '@enact/ui/Button';
 import Item from '@enact/ui/Item';
-import PropTypes from 'prop-types';
 import {useCallback, useEffect} from 'react';
-import {connect} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+// import {connect} from 'react-redux';
 
 import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
 
 import css from './App.module.less';
 
-const App = ({brightness, eyeComfortMode, dispatch}) => {
+const App = () => {
+
+	// const {brightness, eyeComfortMode} = useSelector(state => {
+	// 	console.log(state)
+	// });
+	const brightness = '100', eyeComfortMode = '0';
+	const dispatch = useDispatch();
 	useEffect(() => {
 		if (typeof window !== 'undefined' && typeof window.PalmSystem !== 'undefined') {
 			dispatch(getSystemSettings({
@@ -57,13 +63,13 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 		}
 	};
 
-	if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
-		return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
-	}
+	// if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
+	// 	return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
+	// }
 
 	return (
 		<div className={css.main}>
-			{checkSystem()}
+			{/* {checkSystem()} */}
 			<Item>
 				Brightness : {brightness}
 			</Item>
@@ -78,18 +84,18 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 
 };
 
-App.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	brightness: PropTypes.string,
-	eyeComfortMode: PropTypes.string
-};
+// App.propTypes = {
+// 	dispatch: PropTypes.func.isRequired,
+// 	brightness: PropTypes.string,
+// 	eyeComfortMode: PropTypes.string
+// };
 
-const mapStateToProps = ({systemSettings}) => {
-	const {brightness, eyeComfortMode} = systemSettings;
-	return {
-		brightness,
-		eyeComfortMode
-	};
-};
+// const mapStateToProps = ({systemSettings}) => {
+// 	const {brightness, eyeComfortMode} = systemSettings;
+// 	return {
+// 		brightness,
+// 		eyeComfortMode
+// 	};
+// };
 
-export default connect(mapStateToProps)(App);
+export default (App);

@@ -1,21 +1,21 @@
 import LS2Request from '@enact/webos/LS2Request';
+import {receiveSystemSettings, updateSystemSettings} from '../reducers/reducers';
+// function receiveSystemSettings (res) {
+// 	return {
+// 		type: 'RECEIVE_SYSTEM_SETTINGS',
+// 		payload: res
+// 	};
+// }
 
-function receiveSystemSettings (res) {
-	return {
-		type: 'RECEIVE_SYSTEM_SETTINGS',
-		payload: res
-	};
-}
-
-// sets value upon success callback
-function updateSystemSettings ({settings}) {
-	return {
-		type: 'UPDATE_SYSTEM_SETTINGS',
-		payload: {
-			settings
-		}
-	};
-}
+// // sets value upon success callback
+// function updateSystemSettings ({settings}) {
+// 	return {
+// 		type: 'UPDATE_SYSTEM_SETTINGS',
+// 		payload: {
+// 			settings
+// 		}
+// 	};
+// }
 
 export const getSystemSettings = params => dispatch => {
 	// possible to dispatch an action at the start of fetching
@@ -26,7 +26,8 @@ export const getSystemSettings = params => dispatch => {
 		parameters: params,
 		onSuccess: (res) => {
 			// dispatches action on success callback with payload
-			dispatch(receiveSystemSettings(res));
+			// dispatch(receiveSystemSettings(res));
+			dispatch(receiveSystemSettings(res))
 		},
 		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
