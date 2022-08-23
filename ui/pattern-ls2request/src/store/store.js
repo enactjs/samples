@@ -1,6 +1,5 @@
 import LS2Request from '@enact/webos/LS2Request';
 import {configureStore, createSlice} from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
 
 const rootSlice = createSlice({
 	name: 'systemReducer',
@@ -54,11 +53,10 @@ export const setSystemSettingsSubscribed = params => {
 		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
 };
+const initialState = {};
+const store = configureStore({
+	reducer: rootSlice.reducer,
+	initialState
+});
 
-export default function configureAppStore (initialState) {
-	return configureStore({
-		reducer: rootSlice.reducer,
-		initialState,
-		middleware: [thunkMiddleware]
-	});
-}
+export default store;
