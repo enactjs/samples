@@ -246,6 +246,8 @@ const MainPanel = () => {
 			const sheet = document.createElement('style');
 			sheet.id = 'temporaryStylesheet';
 			sheet.innerHTML = `.sandstone-theme {
+				--sand-component-focus-text-color-rgb: 76, 80, 89;
+				--sand-focus-bg-color-rgb: 230, 230, 230;
 				--sand-shadow-color-rgb: none;
 			}`;
 			document.body?.appendChild(sheet);
@@ -299,11 +301,10 @@ const MainPanel = () => {
 		<Layout className={css.mainPanel}>
 			<Cell className={css.customizeSection}>
 				<Scroller
+					className={styles.scrollerColors}
 					cbScrollTo={(fn) => {scrollTo = fn}} //eslint-disable-line
 					focusableScrollbar
 					horizontalScrollbar="hidden"
-					onBlur={handleOnBlur}
-					onFocus={handleOnFocus}
 				>
 					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
 					<AutoPopup
@@ -345,7 +346,7 @@ const MainPanel = () => {
 								varNames={varNames}
 							/>
 							<Cell className={css.topButtonContainer}>
-								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly minWidth={false} onClick={handleScrollTop} size="small" tooltipText="Scroll back to top of page" />
+								<TooltipButton className={css.topButton} css={css} icon="arrowlargeup" iconOnly minWidth={false} onBlur={handleOnBlur} onClick={handleScrollTop} onFocus={handleOnFocus} size="small" tooltipText="Scroll back to top of page" />
 							</Cell>
 						</Row>
 					</Column>
