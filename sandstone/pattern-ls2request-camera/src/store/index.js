@@ -1,18 +1,23 @@
 import LS2Request from '@enact/webos/LS2Request';
+import {configureStore, createSlice} from '@reduxjs/toolkit';
 
-function getCameraList ({deviceList}) {
-	return {
-		type: 'GET_CAMERA_ID',
-		payload: deviceList
-	};
-}
+const rootSlice = createSlice({
+	name: 'systemReducer',
+	initialState: {
+		deviceList: [],
+		status: {}
+	},
+	reducers: {
+		getCameraList: (state, action) =>  {
+			return Object.assign({}, state, {deviceList: action.payload.deviceList});
+		},
+		updateCameraStatus: (state, action) => {
+			return Object.assign({}, state, {status: action.payload.status});
+		}
+	}
+});
 
-function updateCameraStatus (status) {
-	return {
-		type: 'UPDATE_CAMERA_STATUS',
-		payload: status
-	};
-}
+export const {getCameraList, updateCameraStatus} = rootSlice.actions;
 
 const open = (id) => {
 	return new Promise((resolve) => {
@@ -114,7 +119,6 @@ export const startCamera = (id) => dispatch => {
 	});
 };
 
-
 const stopPreview = (handle) => {
 	return new Promise((resolve) => {
 		new LS2Request().send(
@@ -152,3 +156,9 @@ export const closeCamera = (handle) => dispatch => {
 			});
 	});
 };
+
+const index = configureStore({
+	reducer: rootSlice.reducer
+});
+
+export default index;

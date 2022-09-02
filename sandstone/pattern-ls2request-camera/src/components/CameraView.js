@@ -5,15 +5,15 @@ import VirtualList from '@enact/sandstone/VirtualList';
 import {Column} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import {useEffect, useRef} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {closeCamera, getCameraIds, startCamera} from '../actions';
+import {closeCamera, getCameraIds, startCamera} from '../store';
 
 const CameraView = () => {
 	const videoRef = useRef(null);
 	const dispatch = useDispatch();
-	const cameraIds = useSelector((store) => store.cameraIds);
-	const cameraStatus = useSelector((store) => store.cameraStatus);
+	const cameraIds = useSelector((store) => store.deviceList);
+	const cameraStatus = useSelector((store) => store.status);
 
 	let cameraOption;
 
