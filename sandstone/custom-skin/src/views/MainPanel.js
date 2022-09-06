@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-// fix Travis
+
 import Alert from '@enact/sandstone/Alert';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
