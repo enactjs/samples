@@ -25,6 +25,7 @@ import OutputField from '../components/OutputField/OutputField';
 import {presets} from '../constants';
 
 import {
+	convertHexToRGB,
 	convertRGBToHex,
 	generateColors,
 	generateCSS,
@@ -120,14 +121,14 @@ const MainPanel = () => {
 		setAlertOverlayCheckboxColor, setAlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayItemDisabledFocusBGColor
 	];
 
-	const propNames = ['Background Color', 'Text Color RGB', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color', 'Component Text Sub Color', 'Component Bg Color', 'Component Active Indicator Bg Color', 'Component Inactive Indicator Bg Color', 'Focus Text Color', 'Focus Bg Color RGB',
+	const propNames = ['Background Color', 'Text Color RGB', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color RGB', 'Component Text Sub Color RGB', 'Component Bg Color', 'Component Active Indicator Bg Color', 'Component Inactive Indicator Bg Color', 'Focus Text Color', 'Focus Bg Color RGB',
 		'Component Focus Text Color RGB', 'Component Focus Active Indicator Bg Color', 'Component Focus Inactive Indicator Bg Color', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
 		'Disabled Selected Bg Color', 'Disabled Selected Focus Color', 'Disabled Selected Focus Bg Color', 'Fullscreen Bg Color', 'Overlay Bg Color RGB',
 		'Selection Color', 'Selection Bg Color', 'Toggle Off Color', 'Toggle Off Bg Color', 'Toggle On Color', 'Toggle On Bg Color', 'Progress Color RGB',
-		'Progress Buffer Color', 'Progress Bg Color', 'Progress Highlighted Color', 'Progress Slider Color', 'Spinner Color RGB', 'Checkbox Color', 'Item Disabled Focus Bg Color', 'Keyguide Bg Color RGB', 'Slider Disabled Knob Bg Color',
+		'Progress Buffer Color', 'Progress Bg Color RGB', 'Progress Highlighted Color', 'Progress Slider Color', 'Spinner Color RGB', 'Checkbox Color', 'Item Disabled Focus Bg Color', 'Keyguide Bg Color RGB', 'Slider Disabled Knob Bg Color',
 		'Alert Overlay Bg Color RGB', 'Alert Overlay Text Color RGB', 'Alert Overlay Text Sub Color', 'Alert Overlay Focus Text Color', 'Alert Overlay Disabled Selected Color',
 		'Alert Overlay Disabled Selected Bg Color', 'Alert Overlay Disabled Selected Focus Color', 'Alert Overlay Disabled Selected Focus Bg Color',
-		'Alert Overlay Progress Color RGB', 'Alert Overlay Progress Bg Color', 'Alert Overlay Checkbox Color', 'Alert Overlay Checkbox Disabled Selected Color',
+		'Alert Overlay Progress Color RGB', 'Alert Overlay Progress Bg Color RGB', 'Alert Overlay Checkbox Color', 'Alert Overlay Checkbox Disabled Selected Color',
 		'Alert Overlay Formcheckboxitem Focus Text Color', 'Alert Overlay Item Disabled Focus Bg Color'
 	];
 
@@ -367,7 +368,7 @@ const MainPanel = () => {
 					</div>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
 					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
-					<Slider className={css.previewSlider} />
+					<Slider className={css.previewSlider} style={{'--sand-progress-bg-color-rgb': convertHexToRGB(ProgressBGColorRGB)}}/>
 					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
 					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
 						{['Item 1', 'Item 2', 'Item 3']}
