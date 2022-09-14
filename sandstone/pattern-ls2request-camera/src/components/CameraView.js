@@ -12,8 +12,8 @@ import {closeCamera, getCameraIds, startCamera} from '../store';
 const CameraView = () => {
 	const videoRef = useRef(null);
 	const dispatch = useDispatch();
-	const cameraIds = useSelector((store) => store.deviceList);
-	const cameraStatus = useSelector((store) => store.status);
+	const cameraIds = useSelector((store) => store.cameraIds);
+	const cameraStatus = useSelector((store) => store.cameraStatus);
 
 	let cameraOption;
 

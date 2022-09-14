@@ -4,15 +4,15 @@ import {configureStore, createSlice} from '@reduxjs/toolkit';
 const rootSlice = createSlice({
 	name: 'systemReducer',
 	initialState: {
-		deviceList: [],
-		status: {}
+		cameraIds: [],
+		cameraStatus: {}
 	},
 	reducers: {
 		getCameraList: (state, action) =>  {
-			return Object.assign({}, state, {deviceList: action.payload.deviceList});
+			return Object.assign({}, state, {cameraIds: action.payload.deviceList});
 		},
 		updateCameraStatus: (state, action) => {
-			return Object.assign({}, state, {status: action.payload.status});
+			return Object.assign({}, state, {cameraStatus: action.payload.status});
 		}
 	}
 });
@@ -157,8 +157,8 @@ export const closeCamera = (handle) => dispatch => {
 	});
 };
 
-const index = configureStore({
+const store = configureStore({
 	reducer: rootSlice.reducer
 });
 
-export default index;
+export default store;
