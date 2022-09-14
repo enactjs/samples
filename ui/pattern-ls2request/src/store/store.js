@@ -53,6 +53,7 @@ export const setSystemSettingsSubscribed = params => {
 		onFailure: (res) => console.error(res)	// eslint-disable-line no-console
 	});
 };
+
 const initialState = {};
 const store = configureStore({
 	reducer: rootSlice.reducer,
