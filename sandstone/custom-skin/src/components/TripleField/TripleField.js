@@ -12,14 +12,48 @@ import {convertHexToRGB, convertRGBToHex} from '../../utils';
 import commonCss from '../../common/styles.module.less';
 import componentCss from './TripleField.module.less';
 
+/**
+ * A component that contains a label and three input fields, used to change the value of a css attribute.
+ */
 const TripleField = kind({
 	name: 'TripleField',
 
 	propTypes: {
+		/**
+		 * Variable that indicates the color displayed in the input fields (converted from hex to RGB)
+		 *
+		 * @type {String}
+		 * @default #FFFFFF
+		 * @public
+		 */
 		color: PropTypes.string,
+
 		css: PropTypes.object,
+
+		/**
+		 * Variable that indicates this ColorFields's position inside a larger list of components
+		 * @type {Number}
+		 * @required
+		 * @public
+		 */
 		index: PropTypes.number,
+
+		/**
+		 * Setter function that interacts with prop `color`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		onChangeInput: PropTypes.func,
+
+		/**
+		 * Variable that holds the name displayed next to the input
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
 		propName: PropTypes.string
 	},
 
@@ -33,19 +67,27 @@ const TripleField = kind({
 	},
 
 	handlers: {
+		// Handler that sends back to Main Panel the event captured by the color picker and the name of the field
+		// it comes from via the onChangeInput function and the index.
 		onChangeInput: (event, {index, onChangeInput, propName}) => {
 			onChangeInput({event: event.target, name: propName, index: index});
 		},
+		// Handler that sends back to Main Panel the new color value and the name of the field
+		// it comes from via the onChangeInput function and the index.
 		onChangeInputB: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;
 			onChangeInput({event: {value: convertRGBToHex([colors[0], colors[1], newColor])}, name: propName, index: index});
 		},
+		// Handler that sends back to Main Panel the new color value and the name of the field
+		// it comes from via the onChangeInput function and the index.
 		onChangeInputG: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;
 			onChangeInput({event: {value: convertRGBToHex([colors[0], newColor, colors[2]])}, name: propName, index: index});
 		},
+		// Handler that sends back to Main Panel the new color value and the name of the field
+		// it comes from via the onChangeInput function and the index.
 		onChangeInputR: (event, {color, index, onChangeInput, propName}) => {
 			const colors = convertHexToRGB(color);
 			const newColor = event.value ? parseInt(event.value) : 0;

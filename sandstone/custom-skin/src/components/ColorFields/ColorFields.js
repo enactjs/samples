@@ -4,14 +4,57 @@ import PropTypes from 'prop-types';
 import ColorField from '../ColorField/ColorField';
 import NameField from '../NameField/NameField';
 
+/**
+ * A component that contains all the input fields of the custom-skin application.
+ * It contains a NameField for the skin and one ColorField for each color that can be customized
+ */
 const ColorFields = kind({
 	name: 'ColorFields',
 
 	propTypes:{
+		/**
+		 * Variable that indicates the auto mode
+		 *
+		 * @type {Boolean}
+		 * @required
+		 * @public
+		 */
 		auto:PropTypes.bool,
+
+		/**
+		 * An array containing all of the colors for the variables we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
 		colors:PropTypes.array,
+
+		/**
+		 * Variable that holds the name of the Skin
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
 		name: PropTypes.string,
+
+		/**
+		 * Setter function that interacts with props `colors` and `name`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		onChangeInput:PropTypes.func,
+
+		/**
+		 * An array containing all of the names for the variables we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
 		propNames:PropTypes.array
 	},
 

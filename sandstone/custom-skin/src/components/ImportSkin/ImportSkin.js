@@ -5,12 +5,49 @@ import PropTypes from 'prop-types';
 
 import componentCss from './ImportSkin.module.less';
 
+/**
+ * A component that contains the dropdown used for preset selection
+ */
 const ImportSkin = kind({
 	name: 'ImportSkin',
 
 	propTypes: {
+		/**
+		 * An array containing all of the names for the dropdown except the last one
+		 *
+		 * @type {Array}
+		 * @default [
+			'Default Sandstone Theme',
+			'Blue Color Set 1',
+			'Blue Color Set 2',
+			'Green Color Set 1',
+			'Green Color Set 2',
+			'Purple Color Set 1',
+			'Purple Color Set 2',
+			'Red Color Set 1',
+			'Red Color Set 2'
+		]
+		 * @public
+		 */
 		colorPresets: PropTypes.array,
+
+		/**
+		 * Setter function that interacts with the last option of the dropdown
+		 * and sets the custom-skin from an external css file.
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		setColorsImport: PropTypes.func,
+
+		/**
+		 * Setter function that changes the current preset for the skin.
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		setColorsPreset: PropTypes.func
 	},
 
@@ -29,6 +66,9 @@ const ImportSkin = kind({
 	},
 
 	handlers: {
+		// Function that handles what happens when the dropdown closes
+		// If we chose all but the last option it will change the preset to the selected one
+		// It also removes some css styles included by the handleOpen handler.
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
 			if (typeof document !== 'undefined') {
 				document.querySelector('#temporaryStylesheetImport')?.remove();
@@ -70,6 +110,8 @@ const ImportSkin = kind({
 					setColorsPreset('redColorSet2');
 					break;
 				}
+				// If we chose the last option it will ask for a css file that it will scan and extract the skin
+				// preset from (the file must have the same structure as the ones this app generates).
 				case 'Import your own': {
 					function inputHandler (inputEvent) {
 						inputEvent.preventDefault();
@@ -107,6 +149,9 @@ const ImportSkin = kind({
 					break;
 			}
 		},
+
+		// Opens the popup and appends some styles via javascript. The styles must be appended for the
+		// non live demo components to have the basic sandstone appearance.
 		handleOpen: async () => {
 			if (typeof document !== 'undefined') {
 				const sheet = document.createElement('style');

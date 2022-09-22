@@ -8,14 +8,49 @@ import PropTypes from 'prop-types';
 import commonCss from '../../common/styles.module.less';
 import componentCss from './NameField.module.less';
 
+/**
+ * A component that contains a label and an input field, used to denote the name of the skin.
+ */
 const NameField = kind({
 	name: 'NameField',
 
 	propTypes: {
 		css: PropTypes.object,
+
+		/**
+		 * The value attributed to input
+		 *
+		 * @type {String}
+		 * @default ''
+		 * @public
+		 */
 		name: PropTypes.string,
+
+		/**
+		 * Setter function that interacts with prop `name`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		onChangeInput: PropTypes.func,
+
+		/**
+		 * The value attributed to input as a placeholder
+		 *
+		 * @type {String}
+		 * @default 'Custom Skin'
+		 * @public
+		 */
 		placeholder: PropTypes.string,
+
+		/**
+		 * The name displayed next to the input field.
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
 		propName: PropTypes.string
 	},
 
@@ -30,6 +65,8 @@ const NameField = kind({
 	},
 
 	handlers: {
+		// Handler that sends back to Main Panel the event captured and the name of the field it comes from via the
+		// onChangeInput function.
 		onChangeInputField: (event, {onChangeInput, propName}) => {
 			onChangeInput({event, name: propName});
 		}

@@ -16,27 +16,81 @@ import {generateCSS, generateCSSFile} from '../../utils';
 
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
+/**
+ * A component that contains the footer of the application
+ */
 const OutputField = kind({
 	name: 'OutputField',
 
 	propTypes:{
+		/**
+		 * An array containing all of the colors for the variables we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
 		colors: PropTypes.array,
+
+		/**
+		 * Setter function that interacts with prop `popupOpen`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		onToggleOpen: PropTypes.func,
+
+		/**
+		 * Variable that opens the popup if certain conditions are met
+		 *
+		 * @type {Boolean}
+		 * @required
+		 * @public
+		 */
 		popupOpen: PropTypes.bool,
+
+		/**
+		 * Function that resets all the values of the current skin to the selected preset
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
 		setDefaultState: PropTypes.func,
+
+		/**
+		 * The current value from the NameField
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
 		skinName: PropTypes.string,
+
+		/**
+		 * An array containing all of the css properties we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
 		varNames: PropTypes.array
 	},
 
 	handlers:{
+		// Handler function that generates a css file that hold our current customization
 		generateFile: (event, {colors, skinName, varNames}) => {
 			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
 		},
+		// Removes some css styles included by the handleOpen and handleFocus handlers.
 		handleClose: () => {
 			if (typeof document !== 'undefined') {
 				document.querySelector('#temporaryStylesheet')?.remove();
 			}
 		},
+		// Appends some styles via javascript. The styles must be appended for the
+		// non live demo components to have the basic sandstone appearance.
 		handleFocus: () => {
 			if (typeof document !== 'undefined') {
 				const sheet = document.createElement('style');
@@ -49,6 +103,8 @@ const OutputField = kind({
 				document.body?.appendChild(sheet);
 			}
 		},
+		// Opens the popup that contains the css and appends some styles via javascript. The styles must be appended
+		// for the non live demo components to have the basic sandstone appearance.
 		handleOpen: (ev, {onToggleOpen}) => {
 			if (typeof document !== 'undefined') {
 				const sheet = document.createElement('style');
@@ -73,6 +129,7 @@ const OutputField = kind({
 	},
 
 	render: ({generateFile, handleClose, handleFocus, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
+		// Function that copies the content of the custom-skin css file into clipboard
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
