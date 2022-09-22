@@ -30,5 +30,5 @@ background colors or both are text colors). If this is the first time this hex v
 to the limit of `generateBGColors` (or `generateTextColors` for text colors) and use the new color generated.
 
 
-After you change or edit the variables please check the app to see if there are any unintended changes applied 
+After you add/remove or edit the variables please check the app to see if there are any unintended changes applied 
 to the non live preview components.
