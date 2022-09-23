@@ -6,7 +6,6 @@ import ri from '@enact/ui/resolution';
 
 import photo from './placeholder.jpg';
 
-// eslint-disable-next-line enact/prop-types
 const renderItem = () => {
 	return (
 		<>

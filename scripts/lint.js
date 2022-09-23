@@ -23,7 +23,7 @@ findApps()
 			if (file.parentDir) { // Ignore our own package.json
 				console.log(`Linting ${file.parentDir}`);
 				shell.cd(file.fullParentDir);
-				const result = shell.exec('npm run lint -- -- --max-warnings 0', {silent: true});
+				const result = shell.exec('npm run lint -- -- --report-unused-disable-directives --max-warnings 0', {silent: true});
 				if (result.code !== 0) {
 					console.log(`${file.parentDir} failed lint check: ${result.stdout}`);
 					error = true;

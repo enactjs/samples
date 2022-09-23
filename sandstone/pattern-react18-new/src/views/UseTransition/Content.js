@@ -10,7 +10,6 @@ const CONTENT = {
 	Three: 'This is the content of the third page'
 };
 
-// eslint-disable-next-line enact/display-name, enact/prop-types
 function Content ({page}) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [time, setTime] = useState();
