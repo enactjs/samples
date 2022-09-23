@@ -1,6 +1,6 @@
 How to add/remove/change colors for the custom skin application: 
 
-In order to change add a color to the app what you need are 3 different things: 
+In order to change or add a color to the app what you need are 3 different things: 
 1) The name you wish to display inside the app
 2) Its value in hex
 3) The name of the css property
