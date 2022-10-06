@@ -4,7 +4,6 @@ import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 
 const items = [];
-// eslint-disable-next-line enact/prop-types
 const renderItem = ({index, ...rest}) => {
 	const {caption, src} = items[index];
 

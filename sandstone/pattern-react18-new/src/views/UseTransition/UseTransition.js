@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks, react/jsx-no-bind,  react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-bind,  react/no-unescaped-entities */
 
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';

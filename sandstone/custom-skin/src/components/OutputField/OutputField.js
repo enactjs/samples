@@ -91,7 +91,7 @@ const OutputField = kind({
 					{!platform.webos ? <TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
 					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
 					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
-					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {/* eslint-disable-line */}
+					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {}
 				</div>
 			</Cell>
 		);

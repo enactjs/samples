@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import {useCallback, useEffect, useRef} from 'react';
 import {useDispatch} from 'react-redux';
 
