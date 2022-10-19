@@ -2,7 +2,8 @@ import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
-import {HashRouter, Route, StaticRouter} from 'react-router-dom';
+import {HashRouter, Route, Routes, useNavigate} from 'react-router-dom';
+import {StaticRouter} from "react-router-dom/server";
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
@@ -25,18 +26,20 @@ import css from './App.module.less';
 
 const NavigationMenu = kind({
 	name: 'NavigationMenu',
+	functional: true,
 
 	propTypes: {
-		history: PropTypes.object,
 		location: PropTypes.any,
 		match: PropTypes.any,
 		staticContext: PropTypes.any
 	},
 
-	render: ({history, ...props}) => {
+	render: ({...props}) => {
 		delete props.match;
 		delete props.location;
 		delete props.staticContext;
+
+		const navigate = useNavigate(); //eslint-disable-line
 
 		return (
 			<div {...props} style={{height: '90%'}}>
@@ -46,7 +49,7 @@ const NavigationMenu = kind({
 						routes.map(({path}, index) => {
 							if (path !== '/') {
 								return (
-									<SampleItem key={index} path={path} history={history}>
+									<SampleItem key={index} path={path} navigate={navigate}>
 										{path.substring(1)}
 									</SampleItem>
 								);
@@ -61,20 +64,20 @@ const NavigationMenu = kind({
 });
 
 const routes = [
-	{path: '/', exact: true, component: NavigationMenu},
-	{path: '/PatternActivityPanels', component: PatternActivityPanels},
-	{path: '/PatternActivityPanelsDeepLinking', component: PatternActivityPanelsDeepLinking},
-	{path: '/PatternActivityPanelsRedux', component: PatternActivityPanelsRedux},
-	{path: '/PatternDynamicPanel', component: PatternDynamicPanel},
-	{path: '/PatternExpandableList', component: PatternExpandableList},
-	{path: '/PatternLayout', component: PatternLayout},
-	{path: '/PatternLocaleSwitching', component: PatternLocaleSwitching},
-	{path: '/PatternRoutablePanels', component: PatternRoutablePanels},
-	{path: '/PatternSinglePanel', component: PatternSinglePanel},
-	{path: '/PatternSinglePanelRedux', component: PatternSinglePanelRedux},
-	{path: '/PatternVideoPlayer', component: PatternVideoPlayer},
-	{path: '/PatternVirtualgridlistApi', component: PatternVirtualgridlistApi},
-	{path: '/PatternVirtuallistPreservingFocus', component: PatternVirtuallistPreservingFocus}
+	{path: '/', exact: true, element: <NavigationMenu />},
+	{path: '/PatternActivityPanels', element: <PatternActivityPanels />},
+	{path: '/PatternActivityPanelsDeepLinking', element: <PatternActivityPanelsDeepLinking />},
+	{path: '/PatternActivityPanelsRedux', element: <PatternActivityPanelsRedux />},
+	{path: '/PatternDynamicPanel', element: <PatternDynamicPanel />},
+	{path: '/PatternExpandableList', element: <PatternExpandableList />},
+	{path: '/PatternLayout', element: <PatternLayout />},
+	{path: '/PatternLocaleSwitching', element: <PatternLocaleSwitching />},
+	{path: '/PatternRoutablePanels', element: <PatternRoutablePanels />},
+	{path: '/PatternSinglePanel', element: <PatternSinglePanel />},
+	{path: '/PatternSinglePanelRedux', element: <PatternSinglePanelRedux />},
+	{path: '/PatternVideoPlayer', element: <PatternVideoPlayer />},
+	{path: '/PatternVirtualgridlistApi', element: <PatternVirtualgridlistApi />},
+	{path: '/PatternVirtuallistPreservingFocus', element: <PatternVirtuallistPreservingFocus />}
 ];
 
 const App = kind({
@@ -91,7 +94,9 @@ const App = kind({
 			<Router>
 				<div {...props}>
 					<ButtonToSamples />
-					{routes.map((route, index) => <Route key={index} {...route} />)}
+					<Routes>
+						{routes.map((route, index) => <Route key={index} {...route} />)}
+					</Routes>
 				</div>
 			</Router>
 		);

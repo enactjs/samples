@@ -2,13 +2,12 @@
 
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
+import {useCallback} from "react";
 
-const SampleItem = (props) => {
-	const itemSelect = () => {
-		props.history.push({pathname: props.path});
-	};
-
-	const {children, ...rest} = props;
+const SampleItem = ({children, navigate, path, ...rest}) => {
+	const itemSelect = useCallback( () => {
+		navigate({pathname: path});
+	}, [navigate, path]);
 
 	return (
 		<Item {...rest} onClick={itemSelect}>
@@ -18,7 +17,7 @@ const SampleItem = (props) => {
 };
 
 SampleItem.propTypes = {
-	history: PropTypes.object,
+	navigate: PropTypes.func,
 	path: PropTypes.any
 };
 
