@@ -175,7 +175,7 @@ const ImageItem3D = kind({
 					<group position={[-2.5, -3.45, -0.15]}>
 						<Text
 							anchorX="left"
-							color={hovered || selected === index ? '#6f7074' : disabled ? '#404040' : '#e6e6e6'} // eslint-disable-line no-nested-ternary
+							color={hovered || selected === index ? '#6f7074' : disabled ? '#404040' : '#e6e6e6'}
 							fontSize={0.3}
 							maxWidth={15}
 							textAlign="left"
