@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
 import {useCallback} from "react";
