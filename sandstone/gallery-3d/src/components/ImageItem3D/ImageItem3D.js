@@ -8,6 +8,7 @@ import {useCallback, useImperativeHandle, useRef, useState} from 'react';
 import * as THREE from 'three';
 
 import {get3DShape} from '../utils';
+import fallback from '../../../resources/fallback.jpg';
 
 const ImageItem3D = kind({
 	name: 'ImageItem3D',
@@ -49,9 +50,16 @@ const ImageItem3D = kind({
 		let radius = 0.6;
 		let sizeX = 6;
 		let sizeY = 7;
+		let texture;
 
 		const imageItemShape = get3DShape(radius, sizeX, sizeY);
-		const texture = useLoader(THREE.TextureLoader, src); // eslint-disable-line react-hooks/rules-of-hooks
+
+		try {
+			texture = useLoader(THREE.TextureLoader, src); // eslint-disable-line react-hooks/rules-of-hooks
+		} catch (err) {
+			texture = useLoader(THREE.TextureLoader, fallback); // eslint-disable-line react-hooks/rules-of-hooks
+		}
+
 		const image = <mesh>
 			<planeBufferGeometry attach="geometry" args={[5, 5]} />
 			<meshBasicMaterial attach="material" map={texture} toneMapped={false} />
