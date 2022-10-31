@@ -3,7 +3,7 @@ import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
 import {HashRouter, Route, Routes, useNavigate} from 'react-router-dom';
-import {StaticRouter} from "react-router-dom/server";
+import {StaticRouter} from 'react-router-dom/server';
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
