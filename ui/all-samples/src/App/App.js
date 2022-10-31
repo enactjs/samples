@@ -1,9 +1,9 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import {routes} from  '../index';
-import {useNavigate} from 'react-router-dom';
 import SampleItem from '../components/SampleItem';
 import Scroller from '@enact/ui/Scroller';
+import {useNavigate} from 'react-router-dom';
 
 import css from './App.module.less';
 
