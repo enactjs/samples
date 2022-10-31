@@ -9,6 +9,7 @@ import css from './App.module.less';
 
 const App = kind({
 	name: 'App',
+
 	functional: true,
 
 	propTypes: {

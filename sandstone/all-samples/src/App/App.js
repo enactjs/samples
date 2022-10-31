@@ -25,6 +25,7 @@ import css from './App.module.less';
 
 const NavigationMenu = kind({
 	name: 'NavigationMenu',
+
 	functional: true,
 
 	propTypes: {
