@@ -1,6 +1,6 @@
 import Item from '@enact/moonstone/Item';
 import PropTypes from 'prop-types';
-import {useCallback} from "react";
+import {useCallback} from 'react';
 
 const SampleItem = ({children, navigate, path, ...rest}) => {
 	const itemSelect = useCallback( () => {
