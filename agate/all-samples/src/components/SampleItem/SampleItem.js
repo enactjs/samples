@@ -2,10 +2,10 @@ import Item from '@enact/agate/Item';
 import PropTypes from 'prop-types';
 import {useCallback} from 'react';
 
-const SampleItem = ({children, history, path, ...rest}) => {
+const SampleItem = ({children, navigate, path, ...rest}) => {
 	const itemSelect = useCallback(() => {
-		history.push({pathname: path});
-	}, [history, path]);
+		navigate({pathname: path});
+	}, [navigate, path]);
 
 	return (
 		<Item {...rest} onClick={itemSelect}>
@@ -15,7 +15,7 @@ const SampleItem = ({children, history, path, ...rest}) => {
 };
 
 SampleItem.propTypes = {
-	history: PropTypes.object,
+	navigate: PropTypes.func,
 	path: PropTypes.any
 };
 
