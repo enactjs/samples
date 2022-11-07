@@ -3,6 +3,7 @@
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
 import Button from '@enact/sandstone/Button';
+import CheckboxItem from '@enact/sandstone/CheckboxItem';
 import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
 import Toggleable from '@enact/ui/Toggleable';
@@ -12,7 +13,7 @@ import PropTypes from 'prop-types';
 
 import css from './OutputField.module.less';
 
-import {generateCSS, generateCSSFile} from '../../utils';
+import {generateCSS, generateCSSFile, getPresetDifferences} from '../../utils';
 
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
@@ -21,8 +22,11 @@ const OutputField = kind({
 
 	propTypes:{
 		colors: PropTypes.array,
+		handleMinCSS: PropTypes.func,
+		minimalCSS: PropTypes.bool,
 		onToggleOpen: PropTypes.func,
 		popupOpen: PropTypes.bool,
+		presetColors: PropTypes.object,
 		setDefaultState: PropTypes.func,
 		skinName: PropTypes.string,
 		varNames: PropTypes.array
@@ -67,12 +71,16 @@ const OutputField = kind({
 	},
 
 	computed: {
-		text: ({colors, skinName, varNames}) => {
-			return generateCSS(colors, skinName, varNames);
+		text: ({colors, presetColors, minimalCSS, skinName, varNames}) => {
+			if (!minimalCSS) {
+				return generateCSS(colors, skinName, varNames);
+			} else {
+				return generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames);
+			}
 		}
 	},
 
-	render: ({generateFile, handleClose, handleFocus, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
+	render: ({generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, minimalCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -91,7 +99,8 @@ const OutputField = kind({
 					{!platform.webos ? <TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
 					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
 					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
-					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {}
+					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
+					<CheckboxItem inline onClick={handleMinCSS} selected={minimalCSS}>Here be text</CheckboxItem>
 				</div>
 			</Cell>
 		);

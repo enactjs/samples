@@ -34,14 +34,15 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 };
 
 const generateCSS = (colors, skinName, varNames) => {
-	if (colors.length > 3) {
-		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
-			colors?.map((color, index) => {
-				const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
-				return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
-			}).join('') + `}\n`;
-	}
+	if (!varNames) return;
+	return '.sandstone-theme {\n' +
+		`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
+		colors?.map((color, index) => {
+			if (!color) return '';
+
+			const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
+			return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
+		}).join('') + `}\n`;
 };
 
 const generateCSSFile = (fileName, colors) => {
@@ -161,7 +162,7 @@ const generateTextColors = (text, limit) => {
 };
 
 const generateColors = (background, text) => {
-	const bgColors = generateBGColors(background, 20); //+2
+	const bgColors = generateBGColors(background, 20); // +2
 	const textColors = generateTextColors(text, 10);
 
 	return [
@@ -187,10 +188,15 @@ const getColorsFromString = (colors) => {
 
 		return colorSets;
 	} catch (err) {
-		console.log(err);
+		console.log(err); // eslint-disable-line no-console
 
 		return null;
 	}
+};
+
+const getPresetDifferences = (actualColors, preset) => {
+	const values = Object.values(preset);
+	return actualColors.map((color, index) => color !== values[index] && color);
 };
 
 export {
@@ -200,5 +206,6 @@ export {
 	generateCSS,
 	generateCSSFile,
 	getColorsFromString,
-	hexColors
+	hexColors,
+	getPresetDifferences
 };
