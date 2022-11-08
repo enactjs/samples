@@ -3,7 +3,6 @@
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
 import Button from '@enact/sandstone/Button';
-import CheckboxItem from '@enact/sandstone/CheckboxItem';
 import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
 import Toggleable from '@enact/ui/Toggleable';
@@ -96,11 +95,15 @@ const OutputField = kind({
 					</Scroller>
 				</Popup>
 				<div className={css.outputBtnContainer}>
-					{!platform.webos ? <TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
-					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
-					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
-					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
-					<CheckboxItem inline onClick={handleMinCSS} selected={minimalCSS}>Here be text</CheckboxItem>
+					<div>
+						<Button className={css.outputBtn} css={css} icon={minimalCSS ? 'lockcircle' : 'unlockcircle'} onClick={handleMinCSS} size="small">Save changes only</Button>
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
+					</div>
+					<div>
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
+						<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
+					</div>
 				</div>
 			</Cell>
 		);
