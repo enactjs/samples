@@ -206,6 +206,6 @@ export {
 	generateCSS,
 	generateCSSFile,
 	getColorsFromString,
-	hexColors,
-	getPresetDifferences
+	getPresetDifferences,
+	hexColors
 };

@@ -32,8 +32,12 @@ const OutputField = kind({
 	},
 
 	handlers:{
-		generateFile: (event, {colors, skinName, varNames}) => {
-			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
+		generateFile: (event, {colors, minimalCSS, presetColors, skinName, varNames}) => {
+			if (!minimalCSS) {
+				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
+			} else {
+				return generateCSSFile(skinName, generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames));
+			}
 		},
 		handleClose: () => {
 			if (typeof document !== 'undefined') {
@@ -70,7 +74,7 @@ const OutputField = kind({
 	},
 
 	computed: {
-		text: ({colors, presetColors, minimalCSS, skinName, varNames}) => {
+		text: ({colors, minimalCSS, presetColors, skinName, varNames}) => {
 			if (!minimalCSS) {
 				return generateCSS(colors, skinName, varNames);
 			} else {
