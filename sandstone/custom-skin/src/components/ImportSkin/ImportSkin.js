@@ -130,7 +130,6 @@ const ImportSkin = kind({
 							try {
 								reader.readAsText(inputEvent.target.files[0]);
 							} catch (err) {
-								// eslint-disable-next-line
 								console.log(err);
 							}
 						}

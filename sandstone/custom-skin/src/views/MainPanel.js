@@ -236,7 +236,6 @@ const MainPanel = () => {
 		if (auto) {
 			setAuto(!auto);
 		} else {
-			// eslint-disable-next-line
 			if (changes !== 0) {
 				setOpenWarning(true);
 			} else {
@@ -256,7 +255,6 @@ const MainPanel = () => {
 	// non live demo components to have the basic sandstone appearance.
 	function handleOnFocus () {
 		if (typeof document !== 'undefined') {
-			// eslint-disable-next-line
 			const sheet = document.createElement('style');
 			sheet.id = 'temporaryStylesheet';
 			sheet.innerHTML = `.sandstone-theme {

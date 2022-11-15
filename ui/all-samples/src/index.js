@@ -1,5 +1,6 @@
 /* global ENACT_PACK_ISOMORPHIC */
-import {HashRouter, Route, StaticRouter} from 'react-router-dom';
+import {HashRouter, Route, Routes} from 'react-router-dom';
+import {StaticRouter} from 'react-router-dom/server';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import PatternListDetails from '../../pattern-list-details/src/App';
@@ -10,10 +11,10 @@ import App from './App';
 import ButtonToSamples from './components/ButtonToSamples';
 
 export const routes = [
-	{path: '/', exact: true, component: App},
-	{path: '/PatternListDetails', component: PatternListDetails},
-	{path: '/PatternListDetailsRedux', component: PatternListDetailsRedux},
-	{path: '/PatternLs2request', component: PatternLs2request}
+	{path: '/', exact: true, element: <App />},
+	{path: '/PatternListDetails', element: <PatternListDetails />},
+	{path: '/PatternListDetailsRedux', element: <PatternListDetailsRedux />},
+	{path: '/PatternLs2request', element: <PatternLs2request />}
 ];
 
 // Router causes an error with our samples, but we don't want our samples to know about router.
@@ -32,7 +33,9 @@ const appElement = (
 	<Router>
 		<div>
 			<ButtonToSamples />
-			{routes.map((route, index) => <Route key={index} {...route} />)}
+			<Routes>
+				{routes.map((route, index) => <Route key={index} {...route} />)}
+			</Routes>
 		</div>
 	</Router>
 );

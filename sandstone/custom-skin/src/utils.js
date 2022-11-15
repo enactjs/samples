@@ -198,7 +198,6 @@ const getColorsFromString = (colors) => {
 
 		return colorSets;
 	} catch (err) {
-		// eslint-disable-next-line
 		console.log(err);
 
 		return null;
