@@ -15,6 +15,24 @@ const NameField = kind({
 	name: 'NameField',
 
 	propTypes: {
+		/**
+		 * Setter function that interacts with prop `name`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		onChangeInput: PropTypes.func.isRequired,
+
+		/**
+		 * The name displayed next to the input field.
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
+		propName: PropTypes.string.isRequired,
+
 		css: PropTypes.object,
 
 		/**
@@ -27,31 +45,13 @@ const NameField = kind({
 		name: PropTypes.string,
 
 		/**
-		 * Setter function that interacts with prop `name`
-		 *
-		 * @type {Function}
-		 * @required
-		 * @public
-		 */
-		onChangeInput: PropTypes.func,
-
-		/**
 		 * The value attributed to input as a placeholder
 		 *
 		 * @type {String}
 		 * @default 'Custom Skin'
 		 * @public
 		 */
-		placeholder: PropTypes.string,
-
-		/**
-		 * The name displayed next to the input field.
-		 *
-		 * @type {String}
-		 * @required
-		 * @public
-		 */
-		propName: PropTypes.string
+		placeholder: PropTypes.string
 	},
 
 	defaultProps: {

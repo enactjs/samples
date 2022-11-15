@@ -19,7 +19,7 @@ const ColorField = kind({
 		 * @required
 		 * @public
 		 */
-		color: PropTypes.string,
+		color: PropTypes.string.isRequired,
 
 		/**
 		 * Variable that indicates if the ColorField component is disabled
@@ -28,7 +28,7 @@ const ColorField = kind({
 		 * @required
 		 * @public
 		 */
-		disabled: PropTypes.bool,
+		disabled: PropTypes.bool.isRequired,
 
 		/**
 		 * Variable that indicates this ColorFields's position inside a larger list of components
@@ -36,7 +36,7 @@ const ColorField = kind({
 		 * @required
 		 * @public
 		 */
-		index: PropTypes.number,
+		index: PropTypes.number.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `color`
@@ -45,7 +45,7 @@ const ColorField = kind({
 		 * @required
 		 * @public
 		 */
-		onChangeInput: PropTypes.func,
+		onChangeInput: PropTypes.func.isRequired,
 
 		/**
 		 * Variable that holds the name of the ColorFields
@@ -54,7 +54,7 @@ const ColorField = kind({
 		 * @required
 		 * @public
 		 */
-		propName: PropTypes.string
+		propName: PropTypes.string.isRequired
 	},
 
 	render: ({color, disabled, index, onChangeInput, propName, ...rest}) => {

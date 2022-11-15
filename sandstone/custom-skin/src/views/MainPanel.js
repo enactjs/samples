@@ -384,7 +384,7 @@ const MainPanel = () => {
 					</div>
 					<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
 					<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
-					<Slider className={css.previewSlider} style={{'--sand-progress-bg-color-rgb': convertHexToRGB(ProgressBGColorRGB)}}/>
+					<Slider className={css.previewSlider} style={{'--sand-progress-bg-color-rgb': convertHexToRGB(ProgressBGColorRGB)}} />
 					<RangePicker className={css.previewRangePicker} defaultValue={0} max={13} min={0} />
 					<Dropdown className={css.previewDropdown} width={previewDropdownWidth()}>
 						{['Item 1', 'Item 2', 'Item 3']}

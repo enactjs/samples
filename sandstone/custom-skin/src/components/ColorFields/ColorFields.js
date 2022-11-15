@@ -19,7 +19,7 @@ const ColorFields = kind({
 		 * @required
 		 * @public
 		 */
-		auto:PropTypes.bool,
+		auto:PropTypes.bool.isRequired,
 
 		/**
 		 * An array containing all of the colors for the variables we support customization for
@@ -28,7 +28,7 @@ const ColorFields = kind({
 		 * @required
 		 * @public
 		 */
-		colors:PropTypes.array,
+		colors:PropTypes.array.isRequired,
 
 		/**
 		 * Variable that holds the name of the Skin
@@ -37,7 +37,7 @@ const ColorFields = kind({
 		 * @required
 		 * @public
 		 */
-		name: PropTypes.string,
+		name: PropTypes.string.isRequired,
 
 		/**
 		 * Setter function that interacts with props `colors` and `name`
@@ -46,7 +46,7 @@ const ColorFields = kind({
 		 * @required
 		 * @public
 		 */
-		onChangeInput:PropTypes.func,
+		onChangeInput:PropTypes.func.isRequired,
 
 		/**
 		 * An array containing all of the names for the variables we support customization for
@@ -55,7 +55,7 @@ const ColorFields = kind({
 		 * @required
 		 * @public
 		 */
-		propNames:PropTypes.array
+		propNames:PropTypes.array.isRequired
 	},
 
 	render:({auto, colors, name, onChangeInput, propNames, ...rest}) => {

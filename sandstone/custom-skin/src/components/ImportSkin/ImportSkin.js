@@ -13,6 +13,25 @@ const ImportSkin = kind({
 
 	propTypes: {
 		/**
+		 * Setter function that interacts with the last option of the dropdown
+		 * and sets the custom-skin from an external css file.
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		setColorsImport: PropTypes.func.isRequired,
+
+		/**
+		 * Setter function that changes the current preset for the skin.
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		setColorsPreset: PropTypes.func.isRequired,
+
+		/**
 		 * An array containing all of the names for the dropdown except the last one
 		 *
 		 * @type {Array}
@@ -29,26 +48,7 @@ const ImportSkin = kind({
 		]
 		 * @public
 		 */
-		colorPresets: PropTypes.array,
-
-		/**
-		 * Setter function that interacts with the last option of the dropdown
-		 * and sets the custom-skin from an external css file.
-		 *
-		 * @type {Function}
-		 * @required
-		 * @public
-		 */
-		setColorsImport: PropTypes.func,
-
-		/**
-		 * Setter function that changes the current preset for the skin.
-		 *
-		 * @type {Function}
-		 * @required
-		 * @public
-		 */
-		setColorsPreset: PropTypes.func
+		colorPresets: PropTypes.array
 	},
 
 	defaultProps: {

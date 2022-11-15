@@ -20,23 +20,12 @@ const TripleField = kind({
 
 	propTypes: {
 		/**
-		 * Variable that indicates the color displayed in the input fields (converted from hex to RGB)
-		 *
-		 * @type {String}
-		 * @default #FFFFFF
-		 * @public
-		 */
-		color: PropTypes.string,
-
-		css: PropTypes.object,
-
-		/**
 		 * Variable that indicates this ColorFields's position inside a larger list of components
 		 * @type {Number}
 		 * @required
 		 * @public
 		 */
-		index: PropTypes.number,
+		index: PropTypes.number.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `color`
@@ -45,7 +34,7 @@ const TripleField = kind({
 		 * @required
 		 * @public
 		 */
-		onChangeInput: PropTypes.func,
+		onChangeInput: PropTypes.func.isRequired,
 
 		/**
 		 * Variable that holds the name displayed next to the input
@@ -54,7 +43,18 @@ const TripleField = kind({
 		 * @required
 		 * @public
 		 */
-		propName: PropTypes.string
+		propName: PropTypes.string.isRequired,
+
+		/**
+		 * Variable that indicates the color displayed in the input fields (converted from hex to RGB)
+		 *
+		 * @type {String}
+		 * @default #FFFFFF
+		 * @public
+		 */
+		color: PropTypes.string,
+
+		css: PropTypes.object
 	},
 
 	defaultProps: {

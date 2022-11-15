@@ -30,7 +30,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		colors: PropTypes.array,
+		colors: PropTypes.array.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `popupOpen`
@@ -39,7 +39,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		onToggleOpen: PropTypes.func,
+		onToggleOpen: PropTypes.func.isRequired,
 
 		/**
 		 * Variable that opens the popup if certain conditions are met
@@ -48,7 +48,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		popupOpen: PropTypes.bool,
+		popupOpen: PropTypes.bool.isRequired,
 
 		/**
 		 * Function that resets all the values of the current skin to the selected preset
@@ -57,7 +57,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		setDefaultState: PropTypes.func,
+		setDefaultState: PropTypes.func.isRequired,
 
 		/**
 		 * The current value from the NameField
@@ -66,7 +66,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		skinName: PropTypes.string,
+		skinName: PropTypes.string.isRequired,
 
 		/**
 		 * An array containing all of the css properties we support customization for
@@ -75,7 +75,7 @@ const OutputField = kind({
 		 * @required
 		 * @public
 		 */
-		varNames: PropTypes.array
+		varNames: PropTypes.array.isRequired
 	},
 
 	handlers:{

@@ -20,7 +20,7 @@ const AutoPopup = kind({
 		 * @required
 		 * @public
 		 */
-		auto: PropTypes.bool,
+		auto: PropTypes.bool.isRequired,
 
 		/**
 		 * Variable that opens the popup if certain conditions are met
@@ -29,7 +29,7 @@ const AutoPopup = kind({
 		 * @required
 		 * @public
 		 */
-		openWarning: PropTypes.bool,
+		openWarning: PropTypes.bool.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `auto`
@@ -38,7 +38,7 @@ const AutoPopup = kind({
 		 * @required
 		 * @public
 		 */
-		setAuto: PropTypes.func,
+		setAuto: PropTypes.func.isRequired,
 
 		/**
 		 * Setter function that resets the number of changes since auto was turned off
@@ -47,7 +47,7 @@ const AutoPopup = kind({
 		 * @required
 		 * @public
 		 */
-		setChanges: PropTypes.func,
+		setChanges: PropTypes.func.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `openWarning`
@@ -56,7 +56,7 @@ const AutoPopup = kind({
 		 * @required
 		 * @public
 		 */
-		setOpenWarning: PropTypes.func
+		setOpenWarning: PropTypes.func.isRequired
 	},
 
 	handlers:{
