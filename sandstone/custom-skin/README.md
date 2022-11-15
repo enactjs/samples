@@ -28,6 +28,5 @@ the new one (ex: `Text Sub Color` has the same default value as `Component Text 
 both return `textColors[0].toUpperCase()`). This is the case if they are both in the same category (both are
 background colors or both are text colors). If this is the first time this hex value appears, just add one
 to the limit of `generateBGColors` (or `generateTextColors` for text colors) and use the new color generated.
-
 After you add, remove, or edit a variable, please check the app to see if any unintended changes are applied
 to the non-live preview components.
