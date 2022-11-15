@@ -17,11 +17,12 @@ added it to `propNames`. The CSS property we added to `varNames` is `--sand-text
 Please add RGB at the end display name if the color must be represented as a comma-separated RGB value (ex: `Component Text Color RGB`).
 
 When we add all those variables to their arrays please add them at the same index as this is the method
-by which we do most of the operations.
+by which we do most of the operations (ex: if `TextSubColor` has index 2 in `colors` array `setTextSubColor` should have the same index in 
+the `setColors` array and so on).
 
 Next, please go to the util.js for generating colors including a new color. Here, generateColors function returns an array
 of colors that contains all the colors we use for auto mode. Please insert a new value in that array at 
-the index you inserted the color in all those arrays back in the MainPanel.js. The value is chosen thus:
+the index you inserted the color in all those arrays back in the MainPanel.js. The value is determined as described below:
 
 If the default hex value for our property is equal to another's, we copy that property's return element for 
 the new one (ex: `Text Sub Color` has the same default value as `Component Text Sub Color RGB` so they
