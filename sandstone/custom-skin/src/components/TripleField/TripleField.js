@@ -54,6 +54,13 @@ const TripleField = kind({
 		 */
 		color: PropTypes.string,
 
+		/**
+		 * Customizes the component by mapping the supplied collection of CSS class names to the
+		 * corresponding internal elements and states of this component.
+		 *
+		 * @type {Object}
+		 * @public
+		 */
 		css: PropTypes.object
 	},
 

@@ -33,6 +33,13 @@ const NameField = kind({
 		 */
 		propName: PropTypes.string.isRequired,
 
+		/**
+		 * Customizes the component by mapping the supplied collection of CSS class names to the
+		 * corresponding internal elements and states of this component.
+		 *
+		 * @type {Object}
+		 * @public
+		 */
 		css: PropTypes.object,
 
 		/**

@@ -235,12 +235,10 @@ const MainPanel = () => {
 	function onChangeSwitch () {
 		if (auto) {
 			setAuto(!auto);
+		} else if (changes !== 0) {
+			setOpenWarning(true);
 		} else {
-			if (changes !== 0) {
-				setOpenWarning(true);
-			} else {
-				setAuto(!auto);
-			}
+			setAuto(!auto);
 		}
 	}
 
