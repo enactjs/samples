@@ -6,11 +6,16 @@ import {Cell, Column} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import {useCallback, useState} from 'react';
 
-import car from '../../assets/images/car.jpeg';
-import city from '../../assets/images/city.jpeg';
-import mural from '../../assets/images/mural.jpeg';
-import spaceShuttle from '../../assets/images/space-shuttle.jpg';
-import violin from '../../assets/images/violin.jpeg';
+import car from '/assets/images/car.jpeg';
+// import car from '../../assets/images/car.jpeg';
+import city from 'assets/images/city.jpeg';
+// import city from '../../assets/images/city.jpeg';
+import mural from 'assets/images/mural.jpeg';
+// import mural from '../../assets/images/mural.jpeg';
+import spaceShuttle from '/assets/images/space-shuttle.jpg';
+// import spaceShuttle from '../../assets/images/space-shuttle.jpg';
+import violin from '/assets/images/violin.jpeg';
+// import violin from '../../assets/images/violin.jpeg';
 
 import css from './ProfilePhotoPicker.module.less';
 
@@ -29,6 +34,8 @@ const imageComponents = imageURLs.map(url => {
 });
 
 const ProfilePhotoPicker = (props) => {
+	console.log(imageURLs);
+
 	const [photoIndex, setPhotoIndex] = useState(0);
 	const [photoPosition, setPhotoPosition] = useState(-100);
 	const handlePickerChange = useCallback((ev) => setPhotoIndex(ev.value), []);
