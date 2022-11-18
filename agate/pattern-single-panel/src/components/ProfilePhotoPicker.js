@@ -8,9 +8,9 @@ import {useCallback, useState} from 'react';
 
 import car from '/assets/images/car.jpeg';
 // import car from '../../assets/images/car.jpeg';
-import city from 'assets/images/city.jpeg';
+import city from '/assets/images/city.jpeg';
 // import city from '../../assets/images/city.jpeg';
-import mural from 'assets/images/mural.jpeg';
+import mural from '/assets/images/mural.jpeg';
 // import mural from '../../assets/images/mural.jpeg';
 import spaceShuttle from '/assets/images/space-shuttle.jpg';
 // import spaceShuttle from '../../assets/images/space-shuttle.jpg';
