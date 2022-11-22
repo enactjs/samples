@@ -345,7 +345,7 @@ const MainPanel = () => {
 								handleMinCSS={handleMinCSS}
 								handleScrollTop={handleScrollTop}
 								minimalCSS={minimalCSS}
-								presetColors={presets[`${presetActive}`]}
+								presetColors={presets.defaultTheme}
 								setDefaultState={setDefaultState}
 								skinName={skinName}
 								varNames={varNames}

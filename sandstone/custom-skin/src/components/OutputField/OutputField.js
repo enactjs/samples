@@ -2,12 +2,14 @@
 
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
+import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
+import Switch from '@enact/sandstone/Switch';
 import Toggleable from '@enact/ui/Toggleable';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
-import {Cell} from '@enact/ui/Layout';
+import {Cell, Column, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
 import css from './OutputField.module.less';
@@ -33,7 +35,7 @@ const OutputField = kind({
 
 	handlers:{
 		generateFile: (event, {colors, minimalCSS, presetColors, skinName, varNames}) => {
-			if (!minimalCSS) {
+			if (minimalCSS) {
 				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
 			} else {
 				return generateCSSFile(skinName, generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames));
@@ -75,7 +77,7 @@ const OutputField = kind({
 
 	computed: {
 		text: ({colors, minimalCSS, presetColors, skinName, varNames}) => {
-			if (!minimalCSS) {
+			if (minimalCSS) {
 				return generateCSS(colors, skinName, varNames);
 			} else {
 				return generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames);
@@ -98,17 +100,20 @@ const OutputField = kind({
 						</pre>
 					</Scroller>
 				</Popup>
-				<div className={css.outputBtnContainer}>
+				<Column className={css.outputBtnContainer}>
 					<div>
-						<Button className={css.outputBtn} css={css} icon={minimalCSS ? 'lockcircle' : 'unlockcircle'} onClick={handleMinCSS} size="small">Save changes only</Button>
-						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
+						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
+						<Switch className={css.switchControl} onClick={handleMinCSS} selected={minimalCSS} />
 					</div>
-					<div>
+					<Row>
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
 						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
 						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
+					</Row>
+					<Row>
 						<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
-					</div>
-				</div>
+					</Row>
+				</Column>
 			</Cell>
 		);
 	}});
