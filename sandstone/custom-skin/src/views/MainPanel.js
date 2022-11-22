@@ -342,9 +342,9 @@ const MainPanel = () => {
 						<Row>
 							<OutputField
 								colors={colors}
+								fullCSS={fullCSS}
 								handleMinCSS={handleMinCSS}
 								handleScrollTop={handleScrollTop}
-								fullCSS={fullCSS}
 								presetColors={presets.defaultTheme}
 								setDefaultState={setDefaultState}
 								skinName={skinName}
