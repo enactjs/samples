@@ -23,8 +23,8 @@ const OutputField = kind({
 
 	propTypes:{
 		colors: PropTypes.array,
+		fullCSS: PropTypes.bool,
 		handleMinCSS: PropTypes.func,
-		minimalCSS: PropTypes.bool,
 		onToggleOpen: PropTypes.func,
 		popupOpen: PropTypes.bool,
 		presetColors: PropTypes.object,
@@ -34,8 +34,8 @@ const OutputField = kind({
 	},
 
 	handlers:{
-		generateFile: (event, {colors, minimalCSS, presetColors, skinName, varNames}) => {
-			if (minimalCSS) {
+		generateFile: (event, {colors, fullCSS, presetColors, skinName, varNames}) => {
+			if (fullCSS) {
 				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
 			} else {
 				return generateCSSFile(skinName, generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames));
@@ -76,8 +76,8 @@ const OutputField = kind({
 	},
 
 	computed: {
-		text: ({colors, minimalCSS, presetColors, skinName, varNames}) => {
-			if (minimalCSS) {
+		text: ({colors, fullCSS, presetColors, skinName, varNames}) => {
+			if (fullCSS) {
 				return generateCSS(colors, skinName, varNames);
 			} else {
 				return generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames);
@@ -85,7 +85,7 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, minimalCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
+	render: ({fullCSS, generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -103,7 +103,7 @@ const OutputField = kind({
 				<Column className={css.outputBtnContainer}>
 					<div>
 						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
-						<Switch className={css.switchControl} onClick={handleMinCSS} selected={minimalCSS} />
+						<Switch className={css.switchControl} onClick={handleMinCSS} selected={fullCSS} />
 					</div>
 					<Row>
 						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}

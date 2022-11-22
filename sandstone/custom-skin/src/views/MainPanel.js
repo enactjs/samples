@@ -149,7 +149,7 @@ const MainPanel = () => {
 	const [alert, setAlert] = useState(false);
 	const [auto, setAuto] = useState(false);
 	const [changes, setChanges] = useState(0);
-	const [minimalCSS, setMinimalCSS] = useState(false);
+	const [fullCSS, setFullCSS] = useState(false);
 	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [presetActive, setActivePreset] = useState('defaultTheme');
@@ -253,7 +253,7 @@ const MainPanel = () => {
 	}
 
 	const handleMinCSS = useCallback(() => {
-		setMinimalCSS((val) => !val);
+		setFullCSS((val) => !val);
 	}, []);
 
 	function handleOpenPopup () {
@@ -344,7 +344,7 @@ const MainPanel = () => {
 								colors={colors}
 								handleMinCSS={handleMinCSS}
 								handleScrollTop={handleScrollTop}
-								minimalCSS={minimalCSS}
+								fullCSS={fullCSS}
 								presetColors={presets.defaultTheme}
 								setDefaultState={setDefaultState}
 								skinName={skinName}
