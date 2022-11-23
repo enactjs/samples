@@ -101,7 +101,8 @@ const OutputField = kind({
 					</Scroller>
 				</Popup>
 				<Column className={css.outputBtnContainer}>
-					<div>
+					<div className={css.switchContainer}>
+						<hr />
 						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
 						<Switch className={css.switchControl} onClick={handleMinCSS} selected={fullCSS} />
 					</div>
