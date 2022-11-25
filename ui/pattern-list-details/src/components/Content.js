@@ -4,18 +4,18 @@ import Image from '@enact/ui/Image';
 import Marquee from '@enact/ui/Marquee';
 import PropTypes from 'prop-types';
 
-import barcelona from '../../assets/images/barcelona.jpeg';
-import busan from '../../assets/images/busan.jpeg';
-import daegu from '../../assets/images/daegu.jpeg';
-import kyoto from '../../assets/images/kyoto.jpeg';
-import losangeles from '../../assets/images/losangeles.jpeg';
-import madrid from '../../assets/images/madrid.jpg';
-import newyorkcity from '../../assets/images/newyorkcity.jpg';
-import osaka from '../../assets/images/osaka.jpeg';
-import sanfrancisco from '../../assets/images/sanfrancisco.jpg';
-import seoul from '../../assets/images/seoul.jpeg';
-import tokyo from '../../assets/images/tokyo.jpeg';
-import valencia from '../../assets/images/valencia.jpg';
+import barcelona from '/assets/images/barcelona.jpeg';
+import busan from '/assets/images/busan.jpeg';
+import daegu from '/assets/images/daegu.jpeg';
+import kyoto from '/assets/images/kyoto.jpeg';
+import losangeles from '/assets/images/losangeles.jpeg';
+import madrid from '/assets/images/madrid.jpg';
+import newyorkcity from '/assets/images/newyorkcity.jpg';
+import osaka from '/assets/images/osaka.jpeg';
+import sanfrancisco from '/assets/images/sanfrancisco.jpg';
+import seoul from '/assets/images/seoul.jpeg';
+import tokyo from '/assets/images/tokyo.jpeg';
+import valencia from '/assets/images/valencia.jpg';
 
 import css from './Content.module.less';
 
