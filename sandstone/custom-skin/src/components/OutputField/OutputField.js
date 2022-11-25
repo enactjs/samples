@@ -2,17 +2,19 @@
 
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
+import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import Popup from '@enact/sandstone/Popup';
 import Scroller from '@enact/sandstone/Scroller';
+import Switch from '@enact/sandstone/Switch';
 import Toggleable from '@enact/ui/Toggleable';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
-import {Cell} from '@enact/ui/Layout';
+import {Cell, Column, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 
 import css from './OutputField.module.less';
 
-import {generateCSS, generateCSSFile} from '../../utils';
+import {generateCSS, generateCSSFile, getPresetDifferences} from '../../utils';
 
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
@@ -21,16 +23,23 @@ const OutputField = kind({
 
 	propTypes:{
 		colors: PropTypes.array,
+		fullCSS: PropTypes.bool,
+		handleMinCSS: PropTypes.func,
 		onToggleOpen: PropTypes.func,
 		popupOpen: PropTypes.bool,
+		presetColors: PropTypes.object,
 		setDefaultState: PropTypes.func,
 		skinName: PropTypes.string,
 		varNames: PropTypes.array
 	},
 
 	handlers:{
-		generateFile: (event, {colors, skinName, varNames}) => {
-			return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
+		generateFile: (event, {colors, fullCSS, presetColors, skinName, varNames}) => {
+			if (fullCSS) {
+				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
+			} else {
+				return generateCSSFile(skinName, generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames));
+			}
 		},
 		handleClose: () => {
 			if (typeof document !== 'undefined') {
@@ -67,12 +76,16 @@ const OutputField = kind({
 	},
 
 	computed: {
-		text: ({colors, skinName, varNames}) => {
-			return generateCSS(colors, skinName, varNames);
+		text: ({colors, fullCSS, presetColors, skinName, varNames}) => {
+			if (fullCSS) {
+				return generateCSS(colors, skinName, varNames);
+			} else {
+				return generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames);
+			}
 		}
 	},
 
-	render: ({generateFile, handleClose, handleFocus, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
+	render: ({fullCSS, generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -87,12 +100,21 @@ const OutputField = kind({
 						</pre>
 					</Scroller>
 				</Popup>
-				<div className={css.outputBtnContainer}>
-					{!platform.webos ? <TooltipButton className={css.outputBtn} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
-					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
-					{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
-					<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton> {}
-				</div>
+				<Column className={css.outputBtnContainer}>
+					<div className={css.switchContainer}>
+						<hr />
+						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
+						<Switch className={css.switchControl} onClick={handleMinCSS} selected={fullCSS} />
+					</div>
+					<Row>
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="files" minWidth={false} onBlur={handleClose} onClick={copyToClipboard} onFocus={handleFocus} size="small" tooltipText="Copy to clipboard">Copy</TooltipButton> : ''}
+						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="download" minWidth={false} onBlur={handleClose} onClick={generateFile} onFocus={handleFocus} size="small" tooltipText="Get CSS file">Download</TooltipButton> : ''}
+					</Row>
+					<Row>
+						<TooltipButton className={css.outputBtn} css={css} icon="refresh" minWidth={false} onBlur={handleClose} onClick={setDefaultState} onFocus={handleFocus} open size="small" tooltipText="Restore skin to default colors">Reset</TooltipButton>
+					</Row>
+				</Column>
 			</Cell>
 		);
 	}});
