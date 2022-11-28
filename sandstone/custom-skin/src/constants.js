@@ -112,7 +112,7 @@ export const presets = {
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
 	greenColorSet1: {
-		'--sand-bg-color': '#272829',
+		'--sand-bg-color': '#272928',
 		'--sand-text-color-rgb': '#E6E6E6',
 		'--sand-text-sub-color': '#ABAEB3',
 		'--sand-shadow-color-rgb': '#000000',
@@ -168,7 +168,7 @@ export const presets = {
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
 	purpleColorSet1: {
-		'--sand-bg-color': '#272829',
+		'--sand-bg-color': '#292829',
 		'--sand-text-color-rgb': '#E6E6E6',
 		'--sand-text-sub-color': '#ABAEB3',
 		'--sand-shadow-color-rgb': '#000000',
@@ -336,7 +336,7 @@ export const presets = {
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
 	greenColorSet2: {
-		'--sand-bg-color': '#102933',
+		'--sand-bg-color': '#103130',
 		'--sand-text-color-rgb': '#E6E6E6',
 		'--sand-text-sub-color': '#ABAEB3',
 		'--sand-shadow-color-rgb': '#000000',
@@ -392,7 +392,7 @@ export const presets = {
 		'--sand-alert-overlay-item-disabled-focus-bg-color': '#989CA2'
 	},
 	purpleColorSet2: {
-		'--sand-bg-color': '#2B1941',
+		'--sand-bg-color': '#411941',
 		'--sand-text-color-rgb': '#E6E6E6',
 		'--sand-text-sub-color': '#848290',
 		'--sand-shadow-color-rgb': '#000000',
