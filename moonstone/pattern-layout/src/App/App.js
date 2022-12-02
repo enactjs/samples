@@ -15,7 +15,7 @@ import FavoritesList from '../views/FavoritesList';
 import MainPanel from '../views/MainPanel';
 
 const items = [];
-const thumbs = {"details.jpg": detail, "favorites-list.jpg": favoritesList};
+const thumbs = {'details.jpg': detail, 'favorites-list.jpg': favoritesList};
 
 const itemPusher = (title, subTitle, component, image) => {
 	items.push({
