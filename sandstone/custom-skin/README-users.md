@@ -4,12 +4,12 @@ A sample Enact application that uses custom-skin feature to style the components
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
-This app will let you generate a stylesheet that customizes a sandstone application. On the right are all the interactive components, while on the left 
+This app will let you generate a stylesheet that customizes a Sandstone application. On the left you can see all the interactive components, while on the right 
 is the `Live Preview` area. Any change you make inside the app should be reflected inside `Live Preview`.
 
-The dropdown on the top of the page allows you to choose between sandstone default skin and a few presets. There is also an option to import your own.
+The dropdown on the top of the page allows you to choose between Sandstone default skin and a few presets. There is also an option to import your own.
 
-The switch near it turns on the auto generation of colors. This feature will generate a skin based on the first two colors listed(the background and text color).
+The switch near it turns on the auto generation of colors. This feature will generate a skin configuration based on the first two colors listed(the background and text color).
 Activating this feature will replace any other non generated color.
 
 Below them are the color fields. You can interact with them by changing their value inside the input field, or by clicking the colored square beside the field (this will open the basic color picker).
