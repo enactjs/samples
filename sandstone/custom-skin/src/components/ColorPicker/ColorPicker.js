@@ -13,7 +13,7 @@ import componentCss from './ColorPicker.module.less';
 
 /**
  * A component that replaces the html color picker.
- * This component was created so that we could use the color picker for webos applications.
+ * This component was created so that we could use the color picker for webOS applications.
  */
 const ColorPicker = (props) => {
 	const {color, disabled, onChange} = props || null;
