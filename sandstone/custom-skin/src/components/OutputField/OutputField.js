@@ -34,8 +34,23 @@ const OutputField = kind({
 		 */
 		colors: PropTypes.array.isRequired,
 
-		fullCSS: PropTypes.bool,
-		handleMinCSS: PropTypes.func,
+		/**
+		 * Variable that opens the popup if certain conditions are met
+		 *
+		 * @type {Boolean}
+		 * @required
+		 * @public
+		 */
+		fullCSS: PropTypes.bool.isRequired,
+
+		/**
+		 * Setter function that interacts with prop `fullCSS`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		handleFullCSS: PropTypes.func.isRequired,
 
 		/**
 		 * Setter function that interacts with prop `popupOpen`
@@ -55,7 +70,14 @@ const OutputField = kind({
 		 */
 		popupOpen: PropTypes.bool.isRequired,
 
-		presetColors: PropTypes.object,
+		/**
+		 * Object that contains a preset
+		 *
+		 * @type {Object}
+		 * @required
+		 * @public
+		 */
+		presetColors: PropTypes.object.isRequired,
 
 		/**
 		 * Function that resets all the values of the current skin to the selected preset
@@ -143,7 +165,7 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({fullCSS, generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
+	render: ({fullCSS, generateFile, handleClose, handleFocus, handleFullCSS, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
 		// Function that copies the content of the custom-skin css file into clipboard
 		function copyToClipboard () {
 			/* global navigator */
@@ -163,7 +185,7 @@ const OutputField = kind({
 					<div className={css.switchContainer}>
 						<hr />
 						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
-						<Switch className={css.switchControl} onClick={handleMinCSS} selected={fullCSS} />
+						<Switch className={css.switchControl} onClick={handleFullCSS} selected={fullCSS} />
 					</div>
 					<Row>
 						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}

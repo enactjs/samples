@@ -265,7 +265,7 @@ const MainPanel = () => {
 		}
 	}
 
-	const handleMinCSS = useCallback(() => {
+	const handleFullCSS = useCallback(() => {
 		setFullCSS((val) => !val);
 	}, []);
 
@@ -359,7 +359,7 @@ const MainPanel = () => {
 							<OutputField
 								colors={colors}
 								fullCSS={fullCSS}
-								handleMinCSS={handleMinCSS}
+								handleFullCSS={handleFullCSS}
 								handleScrollTop={handleScrollTop}
 								presetColors={presets.defaultTheme}
 								setDefaultState={setDefaultState}
