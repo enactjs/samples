@@ -39,14 +39,15 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 
 // Function that generates the content that will populate the css file that gets exported
 const generateCSS = (colors, skinName, varNames) => {
-	if (colors.length > 3) {
-		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
-			colors?.map((color, index) => {
-				const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
-				return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
-			}).join('') + `}\n`;
-	}
+	if (!varNames) return;
+	return '.sandstone-theme {\n' +
+		`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
+		colors?.map((color, index) => {
+			if (!color) return '';
+
+			const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
+			return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
+		}).join('') + `}\n`;
 };
 
 // Function that generates the css file that gets exported
@@ -171,8 +172,8 @@ const generateTextColors = (text, limit) => {
 
 // Function that generates an array of colors to be used in Main Panel from 2 colors
 const generateColors = (background, text) => {
-	const bgColors = generateBGColors(background, 20); // Number of distinct background colors + 2
-	const textColors = generateTextColors(text, 10); // Number of distinct text colors
+	const bgColors = generateBGColors(background, 20); // +2
+	const textColors = generateTextColors(text, 10);
 
 	return [
 		textColors[0].toUpperCase(), textColors[1].toUpperCase(), text, textColors[0].toUpperCase(), bgColors[2].toUpperCase(),
@@ -204,6 +205,12 @@ const getColorsFromString = (colors) => {
 	}
 };
 
+// Function that returns an array of colors different from a given preset
+const getPresetDifferences = (actualColors, preset) => {
+	const values = Object.values(preset);
+	return actualColors.map((color, index) => color !== values[index] && color);
+};
+
 export {
 	convertHexToRGB,
 	convertRGBToHex,
@@ -211,5 +218,6 @@ export {
 	generateCSS,
 	generateCSSFile,
 	getColorsFromString,
+	getPresetDifferences,
 	hexColors
 };

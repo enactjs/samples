@@ -14,7 +14,7 @@ import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 
 import AutoPopup from '../components/AutoPopup/AutoPopup';
@@ -94,7 +94,7 @@ const MainPanel = () => {
 	const [AlertOverlayDisabledSelectedBGColor, setAlertOverlayDisabledSelectedBGColor] = useState('#788688');
 	const [AlertOverlayDisabledSelectedFocusColor, setAlertOverlayDisabledSelectedFocusColor] = useState('#E6E6E6');
 	const [AlertOverlayDisabledSelectedFocusBGColor, setAlertOverlayDisabledSelectedFocusBGColor] = useState('#4C5059');
-	const [AlertOverlayProgressColorRGB, setAlertOverlayProgressColorRGB] = useState('#373a41');
+	const [AlertOverlayProgressColorRGB, setAlertOverlayProgressColorRGB] = useState('#373A41');
 	const [AlertOverlayProgressBGColorRGB, setAlertOverlayProgressBGColorRGB] = useState('#A1A1A1');
 	const [AlertOverlayCheckboxColor, setAlertOverlayCheckboxColor] = useState('#858B92');
 	const [AlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayCheckboxDisabledSelectedColor] = useState('#FFFFFF');
@@ -154,6 +154,7 @@ const MainPanel = () => {
 	const [alert, setAlert] = useState(false);
 	const [auto, setAuto] = useState(false);
 	const [changes, setChanges] = useState(0);
+	const [fullCSS, setFullCSS] = useState(false);
 	const [openPopup, setOpenPopup] = useState(false);
 	const [openWarning, setOpenWarning] = useState(false);
 	const [presetActive, setActivePreset] = useState('defaultTheme');
@@ -264,6 +265,10 @@ const MainPanel = () => {
 		}
 	}
 
+	const handleMinCSS = useCallback(() => {
+		setFullCSS((val) => !val);
+	}, []);
+
 	function handleOpenPopup () {
 		setOpenPopup(!openPopup);
 	}
@@ -353,7 +358,10 @@ const MainPanel = () => {
 						<Row>
 							<OutputField
 								colors={colors}
+								fullCSS={fullCSS}
+								handleMinCSS={handleMinCSS}
 								handleScrollTop={handleScrollTop}
+								presetColors={presets.defaultTheme}
 								setDefaultState={setDefaultState}
 								skinName={skinName}
 								varNames={varNames}
