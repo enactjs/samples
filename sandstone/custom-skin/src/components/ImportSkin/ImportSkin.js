@@ -88,7 +88,6 @@ const ImportSkin = kind({
 							try {
 								reader.readAsText(inputEvent.target.files[0]);
 							} catch (err) {
-								// eslint-disable-next-line
 								console.log(err);
 							}
 						}
@@ -112,10 +111,12 @@ const ImportSkin = kind({
 				const sheet = document.createElement('style');
 				sheet.id = 'temporaryStylesheetImport';
 				sheet.innerHTML = `.sandstone-theme {
-					--sand-selected-text-color: #E6E6E6;
-					--sand-overlay-bg-color-rgb: 87, 94, 102;
-					--sand-focus-bg-color: #E6E6E6;
 					--sand-component-focus-text-color-rgb: 76, 80, 89;
+					--sand-focus-bg-color-rgb: 230, 230, 230;
+					--sand-overlay-bg-color-rgb: 87, 94, 102;
+					--sand-progress-bg-color-rgb: 55, 58, 65;
+					--sand-progress-color-rgb: 230, 230, 230;
+					--sand-selected-text-color: #E6E6E6;
 					--sand-shadow-color-rgb: none;
 				}`;
 				document.body?.appendChild(sheet);

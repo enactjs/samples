@@ -19,7 +19,6 @@ const ColorFields = kind({
 		return (
 			<div {...rest}>
 				<NameField
-					style={{'--sand-focus-bg-color': '#7d848c', color: '#e6e6e6'}}
 					name={name}
 					onChangeInput={onChangeInput}
 					propName="Skin Name"

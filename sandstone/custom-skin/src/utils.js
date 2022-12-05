@@ -34,14 +34,15 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 };
 
 const generateCSS = (colors, skinName, varNames) => {
-	if (colors.length > 3) {
-		return '.sandstone-theme {\n' +
-			`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
-			colors?.map((color, index) => {
-				const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
-				return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
-			}).join('') + `}\n`;
-	}
+	if (!varNames) return;
+	return '.sandstone-theme {\n' +
+		`	/* Skin Name: ${skinName ? skinName : 'Untitled'}; */\n` +
+		colors?.map((color, index) => {
+			if (!color) return '';
+
+			const [r, g, b] = hexColors(color, '#000000') ? convertHexToRGB(color) : convertHexToRGB('#000000');
+			return `	${varNames[index]}: ${varNames[index].includes('rgb') ? `${r}, ${g}, ${b}` : `${color}`};\n`;
+		}).join('') + `}\n`;
 };
 
 const generateCSSFile = (fileName, colors) => {
@@ -161,18 +162,21 @@ const generateTextColors = (text, limit) => {
 };
 
 const generateColors = (background, text) => {
-	const bgColors = generateBGColors(background, 11);
-	const textColors = generateTextColors(text, 8);
+	const bgColors = generateBGColors(background, 20); // +2
+	const textColors = generateTextColors(text, 10);
 
-	return [textColors[0].toUpperCase(), bgColors[4].toUpperCase(), text, bgColors[2].toUpperCase(), textColors[1].toUpperCase(), text,
-		textColors[2].toUpperCase(), text, text, bgColors[3].toUpperCase(), textColors[0].toUpperCase(), textColors[2].toUpperCase(),
-		text, text, textColors[2].toUpperCase(), background, bgColors[4].toUpperCase(), textColors[2].toUpperCase(),
-		bgColors[5].toUpperCase(), textColors[3].toUpperCase(), bgColors[6].toUpperCase(), text, bgColors[7].toUpperCase(),
-		text, textColors[4].toUpperCase(), bgColors[8].toUpperCase(), textColors[5].toUpperCase(), text, text,
-		textColors[4].toUpperCase(), textColors[6].toUpperCase(), textColors[7].toUpperCase(), textColors[7].toUpperCase(),
-		background, textColors[1].toUpperCase(), bgColors[9].toUpperCase(), text, textColors[2].toUpperCase(),
-		textColors[4].toUpperCase(), bgColors[10].toUpperCase(), textColors[8].toUpperCase(), textColors[1].toUpperCase(),
-		bgColors[4].toUpperCase(), bgColors[11].toUpperCase()
+	return [
+		textColors[0].toUpperCase(), textColors[1].toUpperCase(), text, textColors[0].toUpperCase(), bgColors[2].toUpperCase(),
+		bgColors[3].toUpperCase(), bgColors[4].toUpperCase(), textColors[2].toUpperCase(), bgColors[3].toUpperCase(),
+		textColors[3].toUpperCase(), bgColors[5].toUpperCase(), bgColors[6].toUpperCase(), text, text, bgColors[7].toUpperCase(),
+		bgColors[8].toUpperCase(), textColors[3].toUpperCase(), bgColors[3].toUpperCase(), text, bgColors[3].toUpperCase(), background,
+		bgColors[9].toUpperCase(), textColors[3].toUpperCase(), bgColors[10].toUpperCase(), textColors[4].toUpperCase(),
+		bgColors[11].toUpperCase(), text, bgColors[12].toUpperCase(), text, textColors[5].toUpperCase(), bgColors[13].toUpperCase(),
+		textColors[2].toUpperCase(), textColors[6].toUpperCase(), textColors[2].toUpperCase(), text, bgColors[3].toUpperCase(),
+		bgColors[13].toUpperCase(), bgColors[10].toUpperCase(), bgColors[11].toUpperCase(), textColors[7].toUpperCase(), textColors[7].toUpperCase(),
+		textColors[8].toUpperCase(), textColors[2].toUpperCase(), bgColors[16].toUpperCase(), text, bgColors[5].toUpperCase(),
+		textColors[9].toUpperCase(), bgColors[19].toUpperCase(), textColors[10].toUpperCase(), textColors[2].toUpperCase(), textColors[8].toUpperCase(),
+		bgColors[18].toUpperCase()
 	];
 };
 
@@ -184,11 +188,15 @@ const getColorsFromString = (colors) => {
 
 		return colorSets;
 	} catch (err) {
-		// eslint-disable-next-line
 		console.log(err);
 
 		return null;
 	}
+};
+
+const getPresetDifferences = (actualColors, preset) => {
+	const values = Object.values(preset);
+	return actualColors.map((color, index) => color !== values[index] && color);
 };
 
 export {
@@ -198,5 +206,6 @@ export {
 	generateCSS,
 	generateCSSFile,
 	getColorsFromString,
+	getPresetDifferences,
 	hexColors
 };

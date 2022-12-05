@@ -1,14 +1,16 @@
 import Button from '@enact/ui/Button';
 import Item from '@enact/ui/Item';
-import PropTypes from 'prop-types';
 import {useCallback, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
-import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../actions';
+import {getSystemSettings, setSystemSettings, setSystemSettingsSubscribed} from '../store';
 
 import css from './App.module.less';
 
-const App = ({brightness, eyeComfortMode, dispatch}) => {
+const App = () => {
+	const {brightness, eyeComfortMode} = useSelector(state => state);
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		if (typeof window !== 'undefined' && typeof window.PalmSystem !== 'undefined') {
 			dispatch(getSystemSettings({
@@ -24,6 +26,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 			}));
 		}
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
 	const handleDecreaseBrightness = useCallback(() => {
 		let brightnessDec = Number(brightness);
 		brightnessDec = brightnessDec !== 0 ? brightnessDec - 10 : brightnessDec;
@@ -34,6 +37,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 			}
 		}));
 	}, [brightness, dispatch]);
+
 	const handleIncreaseBrightness = useCallback(() => {
 		let brightnessInc = Number(brightness);
 		brightnessInc = brightnessInc !== 100 ? brightnessInc + 10 : brightnessInc;
@@ -44,6 +48,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 			}
 		}));
 	}, [brightness, dispatch]);
+
 	// if subscribed, we don't need to invoke redux chain as subscribed instance will invoke the data flow
 	const onEyeComfortModeToggle = useCallback(() => setSystemSettingsSubscribed({
 		category: 'picture',
@@ -51,6 +56,7 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 			'eyeComfortMode': eyeComfortMode === 'on' ? 'off' : 'on'
 		}
 	}), [eyeComfortMode]);
+
 	const checkSystem = () => {
 		if (typeof window === 'undefined' || typeof window.PalmSystem === 'undefined') {
 			return <div>This test will only function correctly on webOS systems!</div>;
@@ -78,18 +84,4 @@ const App = ({brightness, eyeComfortMode, dispatch}) => {
 
 };
 
-App.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	brightness: PropTypes.string,
-	eyeComfortMode: PropTypes.string
-};
-
-const mapStateToProps = ({systemSettings}) => {
-	const {brightness, eyeComfortMode} = systemSettings;
-	return {
-		brightness,
-		eyeComfortMode
-	};
-};
-
-export default connect(mapStateToProps)(App);
+export default (App);
