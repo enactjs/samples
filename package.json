@@ -16,7 +16,7 @@
     "extends": "enact/strict"
   },
   "dependencies": {
-    "readdirp": "^3.6.0",
+    "readdirp": "^2.1.0",
     "shelljs": "^0.8.5"
   }
 }
