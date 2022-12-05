@@ -2,7 +2,7 @@
 
 The following is a curated list of changes in the Enact samples module, newest changes on the top.
 
-## [2.6.0] - 2022-07-08
+## [2.6.0] - 2022-12-05
 
 - Up to this version works with React 18.2.0, Enact 4.5, Sandstone 2.5, Moonstone 4.5
 
