@@ -7,14 +7,15 @@ import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 
-import {importAll} from '../components/util';
+import detail from '/assets/images/details.jpg';
+import favoritesList from '/assets/images/favorites-list.jpg';
+
 import Details from '../views/Details';
 import FavoritesList from '../views/FavoritesList';
 import MainPanel from '../views/MainPanel';
 
-const thumbs = importAll(require.context('../views/thumbs', false, /\.(png|jpe?g|svg)$/));
-
 const items = [];
+const thumbs = {'details.jpg': detail, 'favorites-list.jpg': favoritesList};
 
 const itemPusher = (title, subTitle, component, image) => {
 	items.push({

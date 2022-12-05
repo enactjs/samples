@@ -4,7 +4,6 @@
 
 import qs from 'query-string';
 
-
 /*
  * Take an object, prune out the null/undefined values, and save that to the QUERY_STRING in the URL
  */
@@ -19,21 +18,6 @@ const saveObjToQueryString = (obj) => {
 	window.history.pushState(obj, '', (stringified ? `?${stringified}` : ''));
 };
 
-/*
- * Import a directory of images
- *
- * Originally from StackOverflow by klinore on Feb 8 '17 at 16:17
- * https://stackoverflow.com/questions/42118296/dynamically-import-images-from-a-directory-using-webpack
- */
-function importAll (r) {
-	let images = {};
-	r.keys().forEach((item) => {
-		images[item.replace('./', '')] = r(item);
-	});
-	return images;
-}
-
 export {
-	importAll,
 	saveObjToQueryString
 };
