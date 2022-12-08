@@ -6,12 +6,12 @@ import Cancelable from '@enact/ui/Cancelable';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 
-import butterfly from '../../../assets/images/butterfly.jpg';
-import frozenwaterfall from '../../../assets/images/frozenwaterfall.jpg';
-import jellyfish from '../../../assets/images/jellyfish.jpg';
-import macaw from '../../../assets/images/macaw.jpg';
-import ornaments from '../../../assets/images/ornaments.jpg';
-import rainbow from '../../../assets/images/rainbow.jpg';
+import butterfly from '/assets/images/butterfly.jpg';
+import frozenwaterfall from '/assets/images/frozenwaterfall.jpg';
+import jellyfish from '/assets/images/jellyfish.jpg';
+import macaw from '/assets/images/macaw.jpg';
+import ornaments from '/assets/images/ornaments.jpg';
+import rainbow from '/assets/images/rainbow.jpg';
 
 import DynamicPanel from '../DynamicPanel';
 
