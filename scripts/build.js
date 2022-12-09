@@ -17,10 +17,10 @@ readdirp
 			const directory = path.dirname(file.fullPath);
 			console.log(`Building ${directory}`);
 			shell.cd(directory);
-			const result = shell.exec('npm install', {silent: true});
+			const result = shell.exec('npm install && npm run pack', {silent: true});
 
 			if (result.code !== 0) {
-				console.log(`${file.fullPath} failed to bootstrap: ${result.stdout}`);
+				console.log(`${file.fullPath} failed to build: ${result.stdout}`);
 				error = true;
 			}
 		});
