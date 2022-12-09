@@ -15,7 +15,7 @@ readdirp
 			}
 
 			const directory = path.dirname(file.fullPath);
-			console.log(`Building ${directory}`);
+			console.log(`Testing ${directory}`);
 			shell.cd(directory);
 			const result = shell.exec('npm run test -- --passWithNoTests', {silent: true});
 

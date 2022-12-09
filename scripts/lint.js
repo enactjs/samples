@@ -15,7 +15,7 @@ readdirp
 			}
 
 			const directory = path.dirname(file.fullPath);
-			console.log(`Building ${directory}`);
+			console.log(`Linting ${directory}`);
 			shell.cd(directory);
 			const result = shell.exec('npm run lint -- -- --report-unused-disable-directives --max-warnings 0', {silent: true});
 

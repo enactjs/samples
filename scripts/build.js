@@ -15,7 +15,7 @@ readdirp
 			}
 
 			const directory = path.dirname(file.fullPath);
-			console.log(`Building ${directory}`);
+			console.log(`Bootstrapping ${directory}`);
 			shell.cd(directory);
 			const result = shell.exec('npm install && npm run pack', {silent: true});
 
