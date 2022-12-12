@@ -324,7 +324,7 @@ const MainPanel = () => {
 					focusableScrollbar
 					horizontalScrollbar="hidden"
 				>
-					<Heading className={css.appTitle} size="large">Custom skin generator_</Heading>
+					<Heading className={css.appTitle} size="large">Custom skin generator</Heading>
 					<AutoPopup
 						auto={auto}
 						openWarning={openWarning}

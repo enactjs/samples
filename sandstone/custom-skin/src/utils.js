@@ -54,7 +54,7 @@ const generateCSS = (colors, skinName, varNames) => {
 const generateCSSFile = (fileName, colors) => {
 	if (typeof window !== 'undefined') {
 		let link = document.createElement('a');
-		link.download = fileName?.length ? `${fileName}.css` : `custom_skin.css`;
+		link.download = 'custom_skin.css';
 		let blob = new window.Blob([colors], {type: 'text/css'});
 		link.href = URL.createObjectURL(blob);
 		link.click();
