@@ -10,7 +10,7 @@ const CONTENT = {
 	Three: 'This is the content of the third page'
 };
 
-function Content ({page}) {
+function Content ({page}) {		//eslint-disable-line
 	const [isLoading, setIsLoading] = useState(true);
 	const [time, setTime] = useState();
 

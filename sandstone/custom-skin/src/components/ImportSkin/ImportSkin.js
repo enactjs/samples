@@ -88,7 +88,7 @@ const ImportSkin = kind({
 							try {
 								reader.readAsText(inputEvent.target.files[0]);
 							} catch (err) {
-								console.log(err);
+								console.log(err);	//eslint-disable-line
 							}
 						}
 					}
