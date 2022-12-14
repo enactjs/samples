@@ -2,9 +2,10 @@ import kind from '@enact/core/kind';
 import {ImageItem} from '@enact/sandstone/ImageItem';
 import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 
 const items = [];
-const renderItem = ({index, ...rest}) => {	//eslint-disable-line
+const renderItem = ({index, ...rest}) => {
 	const {caption, src} = items[index];
 
 	return (
@@ -15,6 +16,10 @@ const renderItem = ({index, ...rest}) => {	//eslint-disable-line
 			{caption}
 		</ImageItem>
 	);
+};
+
+renderItem.propTypes = {
+	index: PropTypes.number
 };
 
 for (let i = 0; i < 6; i++) {
