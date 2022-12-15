@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import SingleField from '../SingleField/SingleField';
 import TripleField from '../TripleField/TripleField';
 
-
 /**
  * A component that contains either SingleField or TripleField component
- * based of the 'propName' prop.
+ * based of the `propName` prop.
  */
 const ColorField = kind({
 	name: 'ColorField',
 
 	propTypes: {
 		/**
-		 * Variable that indicates the color displayed in the ColorField component
+		 * Indicates the color displayed in this component
 		 *
 		 * @type {String}
 		 * @required

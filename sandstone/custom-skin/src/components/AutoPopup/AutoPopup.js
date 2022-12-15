@@ -14,7 +14,7 @@ const AutoPopup = kind({
 
 	propTypes:{
 		/**
-		 * Variable that indicates the auto mode
+		 * Indicates the auto mode
 		 *
 		 * @type {Boolean}
 		 * @required
@@ -41,7 +41,7 @@ const AutoPopup = kind({
 		setAuto: PropTypes.func.isRequired,
 
 		/**
-		 * Setter function that resets the number of changes since auto was turned off
+		 * Setter function that resets the number of changes since `auto` was turned off
 		 *
 		 * @type {Function}
 		 * @required
@@ -60,15 +60,15 @@ const AutoPopup = kind({
 	},
 
 	handlers:{
-		// Handler for the 'Yes' button of popup
-		// It sets the auto to it's opposite value, changes to 0 and openWarning to false
+		// Handler for the 'Yes' button of popup.
+		// It sets the auto to it's opposite value, changes to 0 and openWarning to false.
 		onClickOk:(event, {auto, setAuto, setChanges, setOpenWarning}) => {
 			setAuto(!auto);
 			setChanges(0);
 			setOpenWarning(false);
 		},
-		// Handler for the 'No' button of popup
-		// It openWarning to false but it does not affect the other variables
+		// Handler for the 'No' button of popup.
+		// It openWarning to false but it does not affect the other variables.
 		onClickCancel:(event, {setOpenWarning}) => {
 			setOpenWarning(false);
 		}

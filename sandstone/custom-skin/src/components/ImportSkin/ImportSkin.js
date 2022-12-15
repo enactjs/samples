@@ -32,20 +32,20 @@ const ImportSkin = kind({
 		setColorsPreset: PropTypes.func.isRequired,
 
 		/**
-		 * An array containing all of the names for the dropdown except the last one
+		 * An array containing all the names for the dropdown except the last one
 		 *
 		 * @type {Array}
 		 * @default [
-			'Default Sandstone Theme',
-			'Blue Color Set 1',
-			'Blue Color Set 2',
-			'Green Color Set 1',
-			'Green Color Set 2',
-			'Purple Color Set 1',
-			'Purple Color Set 2',
-			'Red Color Set 1',
-			'Red Color Set 2'
-		]
+		 *	'Default Sandstone Theme',
+		 *	'Blue Color Set 1',
+		 *	'Blue Color Set 2',
+		 *	'Green Color Set 1',
+		 *	'Green Color Set 2',
+		 *	'Purple Color Set 1',
+		 *	'Purple Color Set 2',
+		 *	'Red Color Set 1',
+		 *	'Red Color Set 2'
+		 *	]
 		 * @public
 		 */
 		colorPresets: PropTypes.array
