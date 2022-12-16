@@ -23,7 +23,7 @@ const AutoPopup = kind({
 		auto: PropTypes.bool.isRequired,
 
 		/**
-		 * Variable that opens the popup if certain conditions are met
+		 * Opens the popup if certain conditions are met
 		 *
 		 * @type {Boolean}
 		 * @required

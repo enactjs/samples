@@ -18,7 +18,7 @@ const SingleField = kind({
 
 	propTypes: {
 		/**
-		 * Variable that indicates this ColorFields's position inside a larger list of components
+		 * Indicates this component's position inside a larger list of components
 		 * @type {Number}
 		 * @required
 		 * @public
@@ -35,7 +35,7 @@ const SingleField = kind({
 		onChangeInput: PropTypes.func.isRequired,
 
 		/**
-		 * Variable that holds the name displayed next to the input
+		 * Holds the name displayed next to the input
 		 *
 		 * @type {String}
 		 * @required
@@ -44,7 +44,7 @@ const SingleField = kind({
 		propName: PropTypes.string.isRequired,
 
 		/**
-		 * Variable that indicates the color displayed in the input field
+		 * Indicates the color displayed in the input field
 		 *
 		 * @type {String}
 		 * @default #FB9039

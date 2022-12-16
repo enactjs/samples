@@ -66,8 +66,8 @@ const ImportSkin = kind({
 	},
 
 	handlers: {
-		// Function that handles what happens when the dropdown closes
-		// If we chose all but the last option it will change the preset to the selected one
+		// Function that handles what happens when the dropdown closes.
+		// If we chose all but the last option it will change the preset to the selected one.
 		// It also removes some css styles included by the handleOpen handler.
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {
 			if (typeof document !== 'undefined') {

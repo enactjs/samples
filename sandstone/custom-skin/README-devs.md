@@ -1,4 +1,4 @@
-# How to add/remove/change colors for a custom skin application: 
+## How to add/remove/change colors for a custom skin application: 
 
 In order to change or add color to the app, you need 3 different things: 
 1) The name you wish to display inside the app

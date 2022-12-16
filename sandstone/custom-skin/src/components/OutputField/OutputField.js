@@ -35,7 +35,7 @@ const OutputField = kind({
 		colors: PropTypes.array.isRequired,
 
 		/**
-		 * Variable that opens the popup if certain conditions are met
+		 * Opens the popup if certain conditions are met
 		 *
 		 * @type {Boolean}
 		 * @required
@@ -62,7 +62,7 @@ const OutputField = kind({
 		onToggleOpen: PropTypes.func.isRequired,
 
 		/**
-		 * Variable that opens the popup if certain conditions are met
+		 * Opens the popup if certain conditions are met
 		 *
 		 * @type {Boolean}
 		 * @required
@@ -108,7 +108,7 @@ const OutputField = kind({
 	},
 
 	handlers:{
-		// Handler function that generates a css file that hold our current customization
+		// Handler function that generates a css file that hold our current customization.
 		generateFile: (event, {colors, fullCSS, presetColors, skinName, varNames}) => {
 			if (fullCSS) {
 				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
@@ -166,7 +166,7 @@ const OutputField = kind({
 	},
 
 	render: ({fullCSS, generateFile, handleClose, handleFocus, handleFullCSS, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
-		// Function that copies the content of the custom-skin css file into clipboard
+		// Function that copies the content of the custom-skin css file into clipboard.
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);

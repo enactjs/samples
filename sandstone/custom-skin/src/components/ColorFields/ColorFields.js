@@ -13,7 +13,7 @@ const ColorFields = kind({
 
 	propTypes:{
 		/**
-		 * Variable that indicates the auto mode
+		 * Indicates the auto mode
 		 *
 		 * @type {Boolean}
 		 * @required
@@ -22,7 +22,7 @@ const ColorFields = kind({
 		auto: PropTypes.bool.isRequired,
 
 		/**
-		 * An array containing all of the colors for the variables we support customization for
+		 * An array containing all the colors for the variables we support customization for
 		 *
 		 * @type {Array}
 		 * @required
@@ -31,7 +31,7 @@ const ColorFields = kind({
 		colors: PropTypes.array.isRequired,
 
 		/**
-		 * Variable that holds the name of the Skin
+		 * Indicates the name of the Skin
 		 *
 		 * @type {String}
 		 * @required
