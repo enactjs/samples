@@ -11,7 +11,7 @@ import commonCss from '../../common/styles.module.less';
 import componentCss from './SingleField.module.less';
 
 /**
- * A component that contains a label and an input field, used to change the value of a css attribute.
+ * A component that contains a label and an input field, used to change the value of a css attribute
  */
 const SingleField = kind({
 	name: 'SingleField',
@@ -73,13 +73,13 @@ const SingleField = kind({
 
 	handlers: {
 		// Handler that sends back to Main Panel the event captured by the input field and the name of the field
-		// it comes from via the onChangeInput function and the index.
+		// it comes from via the onChangeInput function and the index
 		onChangeInputField: (event, {index, onChangeInput, propName}) => {
 			onChangeInput({event, name: propName, index: index});
 		},
 
 		// Handler that sends back to Main Panel the event captured by the color picker and the name of the field
-		// it comes from via the onChangeInput function and the index.
+		// it comes from via the onChangeInput function and the index
 		onChangeInput: (event, {index, onChangeInput, propName}) => {
 			onChangeInput({event: event.target, name: propName, index: index});
 		}

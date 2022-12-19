@@ -45,7 +45,7 @@ function scrollTo (ref) {
 const MainPanel = () => {
 	const [skinName, setSkinName] = useState('');
 
-	// All the colors to be used by the app.
+	// All the colors to be used by the app
 	const [BGColor, setBGColor] = useState('#000000');
 	const [TextColorRGB, setTextColorRGB] = useState('#E6E6E6');
 	const [TextSubColor, setTextSubColor] = useState('#ABAEB3');
@@ -101,7 +101,7 @@ const MainPanel = () => {
 	const [AlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayFormcheckboxitemFocusTextColor] = useState('#575E66');
 	const [AlertOverlayItemDisabledFocusBGColor, setAlertOverlayItemDisabledFocusBGColor] = useState('#989CA2');
 
-	// Array containing all the values for our colors.
+	// Array containing all the values for our colors
 	const colors = [BGColor, TextColorRGB, TextSubColor, ShadowColorRGB, ComponentTextColorRGB, ComponentTextSubColorRGB, ComponentBGColor, ComponentActiveIndicatorBgColor,
 		ComponentInactiveIndicatorBgColor, FocusTextColor, FocusBGColorRGB, ComponentFocusTextColorRGB, ComponentFocusActiveIndicatorBgColor, ComponentFocusInactiveIndicatorBgColor,
 		SelectedColorRGB, SelectedTextColor, SelectedBGColor, DisabledFocusBGColor, DisabledSelectedColor, DisabledSelectedBGColor, DisabledSelectedFocusColor,
@@ -112,7 +112,7 @@ const MainPanel = () => {
 		AlertOverlayCheckboxDisabledSelectedColor, AlertOverlayFormcheckboxitemFocusTextColor, AlertOverlayItemDisabledFocusBGColor
 	];
 
-	// Array containing all the setter functions for our colors.
+	// Array containing all the setter functions for our colors
 	const setColors = [setBGColor, setTextColorRGB, setTextSubColor, setShadowColorRGB, setComponentTextColorRGB, setComponentTextSubColorRGB, setComponentBGColor, setComponentActiveIndicatorBgColor,
 		setComponentInactiveIndicatorBgColor, setFocusTextColor, setFocusBGColorRGB,
 		setComponentFocusTextColorRGB, setComponentFocusActiveIndicatorBgColor, setComponentFocusInactiveIndicatorBgColor, setSelectedColorRGB, setSelectedTextColor, setSelectedBGColor, setDisabledFocusBGColor, setDisabledSelectedColor,
@@ -124,7 +124,7 @@ const MainPanel = () => {
 		setAlertOverlayCheckboxColor, setAlertOverlayCheckboxDisabledSelectedColor, setAlertOverlayFormcheckboxitemFocusTextColor, setAlertOverlayItemDisabledFocusBGColor
 	];
 
-	// Array containing all the names for our colors.
+	// Array containing all the names for our colors
 	const propNames = ['Background Color', 'Text Color RGB', 'Text Sub Color', 'Shadow Color RGB', 'Component Text Color RGB', 'Component Text Sub Color RGB', 'Component Bg Color', 'Component Active Indicator Bg Color', 'Component Inactive Indicator Bg Color', 'Focus Text Color', 'Focus Bg Color RGB',
 		'Component Focus Text Color RGB', 'Component Focus Active Indicator Bg Color', 'Component Focus Inactive Indicator Bg Color', 'Selected Color RGB', 'Selected Text Color', 'Selected Bg Color', 'Disabled Focus Bg Color', 'Disabled Selected Color',
 		'Disabled Selected Bg Color', 'Disabled Selected Focus Color', 'Disabled Selected Focus Bg Color', 'Fullscreen Bg Color', 'Overlay Bg Color RGB',
@@ -136,7 +136,7 @@ const MainPanel = () => {
 		'Alert Overlay Formcheckboxitem Focus Text Color', 'Alert Overlay Item Disabled Focus Bg Color'
 	];
 
-	// Array containing all the css names for our colors.
+	// Array containing all the css names for our colors
 	const varNames = ['--sand-bg-color', '--sand-text-color-rgb', '--sand-text-sub-color', '--sand-shadow-color-rgb', '--sand-component-text-color-rgb', '--sand-component-text-sub-color-rgb', '--sand-component-bg-color',
 		'--sand-component-active-indicator-bg-color', '--sand-component-inactive-indicator-bg-color', '--sand-focus-text-color', '--sand-focus-bg-color-rgb', '--sand-component-focus-text-color-rgb', '--sand-component-focus-active-indicator-bg-color',
 		'--sand-component-focus-inactive-indicator-bg-color', '--sand-selected-color-rgb', '--sand-selected-text-color',
@@ -159,7 +159,7 @@ const MainPanel = () => {
 	const [openWarning, setOpenWarning] = useState(false);
 	const [presetActive, setActivePreset] = useState('defaultTheme');
 
-	// Function that sets all the colors to auto.
+	// Function that sets all the colors to auto
 	const setColorsToAuto = (autoColors) => {
 		for (let i = 0; i < autoColors.length; i++) {
 			setColors[i + 2](autoColors[i]);
@@ -173,7 +173,7 @@ const MainPanel = () => {
 		// eslint-disable-next-line
 	}, [auto, BGColor, TextColorRGB]);
 
-	// Function that sets the colors to those imported from a css file.
+	// Function that sets the colors to those imported from a css file
 	function setColorsFromImport (newColors) {
 		const colorSet = getColorsFromString(newColors);
 		setActivePreset('defaultTheme');
@@ -204,7 +204,7 @@ const MainPanel = () => {
 		}
 	}
 
-	// Function that sets the colors to those of a preset.
+	// Function that sets the colors to those of a preset
 	function setColorsFromPreset (presetColors) {
 		const colorSet = presets[`${presetColors}`];
 		setActivePreset(presetColors);
@@ -215,7 +215,7 @@ const MainPanel = () => {
 		}
 	}
 
-	// Function that sets a color to that received from an input.
+	// Function that sets a color to that received from an input
 	function onChangeInput (props) {
 		const event = props?.event;
 		const index = props?.index;
@@ -232,7 +232,7 @@ const MainPanel = () => {
 		}
 	}
 
-	// Function that handles the switch to auto behavior.
+	// Function that handles the switch to auto behavior
 	function onChangeSwitch () {
 		if (auto) {
 			setAuto(!auto);
@@ -277,7 +277,7 @@ const MainPanel = () => {
 		setAlert(false);
 	}
 
-	// Function that sets the colors to those default to the selected preset.
+	// Function that sets the colors to those default to the selected preset
 	function setDefaultState () {
 		setAuto(false);
 		setColorsFromPreset(presetActive);

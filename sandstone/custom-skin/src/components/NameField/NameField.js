@@ -9,7 +9,7 @@ import commonCss from '../../common/styles.module.less';
 import componentCss from './NameField.module.less';
 
 /**
- * A component that contains a label and an input field, used to denote the name of the skin.
+ * A component that contains a label and an input field, used to denote the name of the skin
  */
 const NameField = kind({
 	name: 'NameField',
@@ -25,7 +25,7 @@ const NameField = kind({
 		onChangeInput: PropTypes.func.isRequired,
 
 		/**
-		 * The name displayed next to the input field.
+		 * The name displayed next to the input field
 		 *
 		 * @type {String}
 		 * @required
@@ -73,7 +73,7 @@ const NameField = kind({
 
 	handlers: {
 		// Handler that sends back to Main Panel the event captured and the name of the field it comes from via the
-		// onChangeInput function.
+		// onChangeInput function
 		onChangeInputField: (event, {onChangeInput, propName}) => {
 			onChangeInput({event, name: propName});
 		}

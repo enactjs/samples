@@ -60,15 +60,15 @@ const AutoPopup = kind({
 	},
 
 	handlers:{
-		// Handler for the 'Yes' button of popup.
-		// It sets the auto to it's opposite value, changes to 0 and openWarning to false.
+		// Handler for the 'Yes' button of popup
+		// It sets the `auto` to it's opposite value, changes to 0 and `openWarning` to false.
 		onClickOk:(event, {auto, setAuto, setChanges, setOpenWarning}) => {
 			setAuto(!auto);
 			setChanges(0);
 			setOpenWarning(false);
 		},
-		// Handler for the 'No' button of popup.
-		// It openWarning to false but it does not affect the other variables.
+		// Handler for the 'No' button of popup
+		// It sets `openWarning` to false but it does not affect the other variables.
 		onClickCancel:(event, {setOpenWarning}) => {
 			setOpenWarning(false);
 		}

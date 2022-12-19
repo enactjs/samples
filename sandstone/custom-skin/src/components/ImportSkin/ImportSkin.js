@@ -14,7 +14,7 @@ const ImportSkin = kind({
 	propTypes: {
 		/**
 		 * Setter function that interacts with the last option of the dropdown
-		 * and sets the custom-skin from an external css file.
+		 * and sets the custom-skin from an external css file
 		 *
 		 * @type {Function}
 		 * @required
@@ -23,7 +23,7 @@ const ImportSkin = kind({
 		setColorsImport: PropTypes.func.isRequired,
 
 		/**
-		 * Setter function that changes the current preset for the skin.
+		 * Setter function that changes the current preset for the skin
 		 *
 		 * @type {Function}
 		 * @required
@@ -66,7 +66,7 @@ const ImportSkin = kind({
 	},
 
 	handlers: {
-		// Function that handles what happens when the dropdown closes.
+		// Function that handles what happens when the dropdown closes
 		// If we chose all but the last option it will change the preset to the selected one.
 		// It also removes some css styles included by the handleOpen handler.
 		handleClose: async (ev, {setColorsImport, setColorsPreset}) => {

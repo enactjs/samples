@@ -5,7 +5,7 @@ import TripleField from '../TripleField/TripleField';
 
 /**
  * A component that contains either SingleField or TripleField component
- * based on the `propName` prop.
+ * based on the `propName` prop
  */
 const ColorField = kind({
 	name: 'ColorField',

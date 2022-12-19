@@ -5,8 +5,8 @@ import ColorField from '../ColorField/ColorField';
 import NameField from '../NameField/NameField';
 
 /**
- * A component that contains all the input fields of the custom-skin application.
- * It contains a NameField for the skin and one ColorField for each color that can be customized
+ * A component that contains all the input fields of the custom-skin application
+ * It contains a NameField for the skin and one ColorField for each color that can be customized.
  */
 const ColorFields = kind({
 	name: 'ColorFields',

@@ -1,10 +1,10 @@
-// Function that checks if two variables are both hex colors.
+// Function that checks if two variables are both hex colors
 const hexColors = (color1, color2) => {
 	return /^#[0-9A-F]{6}$/i.test(color1) && /^#[0-9A-F]{6}$/i.test(color2);
 	// /^#[0-9A-F]{6}$/i.test(test_string) tests if test_string represents a color in hex.
 };
 
-// Function that converts a hex color to an array representing a RGB color.
+// Function that converts a hex color to an array representing a RGB color
 const convertHexToRGB = (hex) => {
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 	return result ? [
@@ -14,13 +14,13 @@ const convertHexToRGB = (hex) => {
 	] : null;
 };
 
-// Function that converts an array representing a RGB color to a hex color.
+// Function that converts an array representing a RGB color to a hex color
 const convertRGBToHex = (RGBColor) => {
 	const [r, g, b] = RGBColor;
 	return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
-// Function that works as part of the getRandomColor method.
+// Function that works as part of the getRandomColor method
 const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 	return array.map(value => {
 		if (value !== lowerValues[0]) {
@@ -37,7 +37,7 @@ const colorAlgorithm = (array, lowerValues, highestValue, inc) => {
 	});
 };
 
-// Function that generates the content that will populate the css file that gets exported.
+// Function that generates the content that will populate the css file that gets exported
 const generateCSS = (colors, skinName, varNames) => {
 	if (!varNames) return;
 	return '.sandstone-theme {\n' +
@@ -50,7 +50,7 @@ const generateCSS = (colors, skinName, varNames) => {
 		}).join('') + `}\n`;
 };
 
-// Function that generates the css file that gets exported.
+// Function that generates the css file that gets exported
 const generateCSSFile = (fileName, colors) => {
 	if (typeof window !== 'undefined') {
 		let link = document.createElement('a');
@@ -62,7 +62,7 @@ const generateCSSFile = (fileName, colors) => {
 	}
 };
 
-// Function that generates a color related to a provided one based on an increment value.
+// Function that generates a color related to a provided one based on an increment value
 const getRandomColor = (colorToBeConverted, inc) => {
 	const color = convertHexToRGB(colorToBeConverted);
 
@@ -144,7 +144,7 @@ const getRandomColor = (colorToBeConverted, inc) => {
 	return convertRGBToHex(newColor);
 };
 
-// Function that generates an array of colors to be used as background colors.
+// Function that generates an array of colors to be used as background colors
 const generateBGColors = (background, limit) => {
 	let color = background;
 	let colorsArray = [];
@@ -157,7 +157,7 @@ const generateBGColors = (background, limit) => {
 	return colorsArray;
 };
 
-// Function that generates an array of colors to be used as text colors.
+// Function that generates an array of colors to be used as text colors
 const generateTextColors = (text, limit) => {
 	let color = text;
 	let colorsArray = [];
@@ -170,7 +170,7 @@ const generateTextColors = (text, limit) => {
 	return colorsArray;
 };
 
-// Function that generates an array of colors to be used in Main Panel from 2 colors.
+// Function that generates an array of colors to be used in Main Panel from 2 colors
 const generateColors = (background, text) => {
 	const bgColors = generateBGColors(background, 20); // +2
 	const textColors = generateTextColors(text, 10);
@@ -190,7 +190,7 @@ const generateColors = (background, text) => {
 	];
 };
 
-// Function that returns an array of colors from a string provided from a css file with the same format as the one we create.
+// Function that returns an array of colors from a string provided from a css file with the same format as the one we create
 const getColorsFromString = (colors) => {
 	try {
 		let colorSets = colors.map(color => color.split(':'));
@@ -205,7 +205,7 @@ const getColorsFromString = (colors) => {
 	}
 };
 
-// Function that returns an array of colors different from a given preset.
+// Function that returns an array of colors different from a given preset
 const getPresetDifferences = (actualColors, preset) => {
 	const values = Object.values(preset);
 	return actualColors.map((color, index) => color !== values[index] && color);

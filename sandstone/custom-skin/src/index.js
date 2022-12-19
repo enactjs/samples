@@ -5,7 +5,7 @@ import App from './App';
 
 const appElement = (<App />);
 
-// In a browser environment, render instead of exporting.
+// In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {
 	const container = document.getElementById('root');
 
