@@ -18,22 +18,97 @@ import {generateCSS, generateCSSFile, getPresetDifferences} from '../../utils';
 
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
+/**
+ * A component that contains the footer of the application
+ */
 const OutputField = kind({
 	name: 'OutputField',
 
 	propTypes:{
-		colors: PropTypes.array,
-		fullCSS: PropTypes.bool,
-		handleMinCSS: PropTypes.func,
-		onToggleOpen: PropTypes.func,
-		popupOpen: PropTypes.bool,
-		presetColors: PropTypes.object,
-		setDefaultState: PropTypes.func,
-		skinName: PropTypes.string,
-		varNames: PropTypes.array
+		/**
+		 * An array containing all of the colors for the variables we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
+		colors: PropTypes.array.isRequired,
+
+		/**
+		 * Opens the popup if certain conditions are met
+		 *
+		 * @type {Boolean}
+		 * @required
+		 * @public
+		 */
+		fullCSS: PropTypes.bool.isRequired,
+
+		/**
+		 * Setter function that interacts with prop `fullCSS`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		handleFullCSS: PropTypes.func.isRequired,
+
+		/**
+		 * Setter function that interacts with prop `popupOpen`
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		onToggleOpen: PropTypes.func.isRequired,
+
+		/**
+		 * Opens the popup if certain conditions are met
+		 *
+		 * @type {Boolean}
+		 * @required
+		 * @public
+		 */
+		popupOpen: PropTypes.bool.isRequired,
+
+		/**
+		 * Object that contains a preset
+		 *
+		 * @type {Object}
+		 * @required
+		 * @public
+		 */
+		presetColors: PropTypes.object.isRequired,
+
+		/**
+		 * Function that resets all the values of the current skin to the selected preset
+		 *
+		 * @type {Function}
+		 * @required
+		 * @public
+		 */
+		setDefaultState: PropTypes.func.isRequired,
+
+		/**
+		 * The current value from the NameField
+		 *
+		 * @type {String}
+		 * @required
+		 * @public
+		 */
+		skinName: PropTypes.string.isRequired,
+
+		/**
+		 * An array containing all of the css properties we support customization for
+		 *
+		 * @type {Array}
+		 * @required
+		 * @public
+		 */
+		varNames: PropTypes.array.isRequired
 	},
 
 	handlers:{
+		// Handler function that generates a css file that hold our current customization
 		generateFile: (event, {colors, fullCSS, presetColors, skinName, varNames}) => {
 			if (fullCSS) {
 				return generateCSSFile(skinName, generateCSS(colors, skinName, varNames));
@@ -41,11 +116,14 @@ const OutputField = kind({
 				return generateCSSFile(skinName, generateCSS(getPresetDifferences(colors, presetColors), skinName, varNames));
 			}
 		},
+		// Removes some css styles included by the handleOpen and handleFocus handlers.
 		handleClose: () => {
 			if (typeof document !== 'undefined') {
 				document.querySelector('#temporaryStylesheet')?.remove();
 			}
 		},
+		// Appends some styles via javascript. The styles must be appended for the
+		// non live demo components to have the basic sandstone appearance.
 		handleFocus: () => {
 			if (typeof document !== 'undefined') {
 				const sheet = document.createElement('style');
@@ -58,6 +136,8 @@ const OutputField = kind({
 				document.body?.appendChild(sheet);
 			}
 		},
+		// Opens the popup that contains the css and appends some styles via javascript. The styles must be appended
+		// for the non live demo components to have the basic sandstone appearance.
 		handleOpen: (ev, {onToggleOpen}) => {
 			if (typeof document !== 'undefined') {
 				const sheet = document.createElement('style');
@@ -85,7 +165,8 @@ const OutputField = kind({
 		}
 	},
 
-	render: ({fullCSS, generateFile, handleClose, handleFocus, handleOpen, handleMinCSS, onToggleOpen, popupOpen, setDefaultState, text}) => {
+	render: ({fullCSS, generateFile, handleClose, handleFocus, handleFullCSS, handleOpen, onToggleOpen, popupOpen, setDefaultState, text}) => {
+		// Function that copies the content of the custom-skin css file into clipboard
 		function copyToClipboard () {
 			/* global navigator */
 			return navigator.clipboard?.writeText(text);
@@ -104,7 +185,7 @@ const OutputField = kind({
 					<div className={css.switchContainer}>
 						<hr />
 						<BodyText className={css.switchLabel}>Save full set of variables</BodyText>
-						<Switch className={css.switchControl} onClick={handleMinCSS} selected={fullCSS} />
+						<Switch className={css.switchControl} onClick={handleFullCSS} selected={fullCSS} />
 					</div>
 					<Row>
 						{!platform.webos ? <TooltipButton className={css.outputBtn} css={css} icon="folder" minWidth={false} onBlur={handleClose} onClick={handleOpen} onFocus={handleFocus} size="small" tooltipText="Show output data">Show output</TooltipButton> : ''}
