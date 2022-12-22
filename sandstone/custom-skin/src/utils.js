@@ -199,9 +199,7 @@ const getColorsFromString = (colors) => {
 
 		return colorSets;
 	} catch (err) {
-		console.log(err);
-
-		return null;
+		throw new Error(err);
 	}
 };
 
