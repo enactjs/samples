@@ -1,5 +1,6 @@
 import BodyText from '@enact/sandstone/BodyText';
 import Spinner from '@enact/sandstone/Spinner';
+import PropTypes from 'prop-types';
 import {useEffect, useState} from 'react';
 
 import {fetchData} from './FakeApi';
@@ -32,6 +33,10 @@ function Content ({page}) {
 	);
 }
 
+Content.propTypes = {
+	page: PropTypes.string
+};
+
 function ContentUseTransition ({page, resource}) {
 	const time = resource.delay.read();
 	return (
@@ -44,7 +49,6 @@ function ContentUseTransition ({page, resource}) {
 				</div>
 			</div>
 		)
-
 	);
 }
 
