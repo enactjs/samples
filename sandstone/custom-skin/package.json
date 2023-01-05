@@ -10,7 +10,7 @@
 		"pack-p": "enact pack -p",
 		"watch": "enact pack --watch",
 		"clean": "enact clean",
-		"lint": "enact lint .",
+		"lint": "enact lint --strict .",
 		"license": "enact license",
 		"test": "enact test",
 		"test-watch": "enact test --watch"
@@ -22,7 +22,7 @@
 		"theme": "sandstone"
 	},
 	"eslintConfig": {
-		"extends": "enact"
+		"extends": "enact/strict"
 	},
 	"eslintIgnore": [
 		"node_modules/*",
