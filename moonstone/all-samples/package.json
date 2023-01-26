@@ -31,7 +31,7 @@
   "dependencies": {
     "@enact/core": "^4.6.0",
     "@enact/i18n": "^4.6.0",
-    "@enact/moonstone": "^4.5.1",
+    "@enact/moonstone": "^4.5.2",
     "@enact/spotlight": "^4.6.0",
     "@enact/ui": "^4.6.0",
     "@enact/webos": "^4.6.0",
@@ -42,7 +42,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.4",
+    "react-router-dom": "^6.6.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2"
   }
