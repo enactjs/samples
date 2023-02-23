@@ -26,7 +26,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact-proxy/strict"
   },
   "dependencies": {
     "@enact/agate": "^2.0.3",
@@ -45,5 +45,8 @@
     "react-router-dom": "^6.8.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2"
+  },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.5"
   }
 }

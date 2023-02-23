@@ -13,10 +13,13 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact-proxy/strict"
   },
   "dependencies": {
     "readdirp": "^3.6.0",
     "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.5"
   }
 }
