@@ -5,14 +5,14 @@ const appElement = (<App />);
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {
-    const container = document.getElementById('root')!;
+	const container = document.getElementById('root')!;
 
-    // @ts-ignore
-    if (ENACT_PACK_ISOMORPHIC) {
-        hydrateRoot(container, appElement);
-    } else {
-        createRoot(container).render(appElement);
-    }
+	// @ts-ignore
+	if (ENACT_PACK_ISOMORPHIC) {
+		hydrateRoot(container, appElement);
+	} else {
+		createRoot(container).render(appElement);
+	}
 }
 
 export default appElement;
