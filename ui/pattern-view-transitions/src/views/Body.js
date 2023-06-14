@@ -44,8 +44,9 @@ const Body = ({cities, selectedCountry, ...rest}) => {
 				selectedCountry={selectedCountry}
 				size="30%"
 			/>
-			<Cell className={css.content}>
+			<Cell>
 				<Content
+					className={css.content}
 					onZoom={handleZoom}
 					selectedCity={city}
 					zoom={zoom}
