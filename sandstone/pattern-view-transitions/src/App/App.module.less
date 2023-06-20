@@ -1,14 +1,27 @@
 .app {
 	height: 100vh;
+	background-color: black;
 
-	.player,
-	.image {
+	.appLayout {
+		padding: 15px;
+	}
+
+	.buttonCell {
+		padding-top: 15px;
+	}
+
+	.revealButton {
+		view-transition-name: reveal-button;
+		contain: paint;
+	}
+
+	.image,
+	.player {
 		display: flex;
+	}
 
-		//&:nth-child(2) {
-		//	page-transition-tag: title;
-		//	contain: paint;
-		//}
+	.videoCell {
+		view-transition-name: video-cell;
 	}
 
 	.player-0,
@@ -75,24 +88,15 @@
 	}
 }
 
-//::page-transition-container(title) {
-//
-//}
-::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-new(reveal-button) {
+	animation: wobble 1s ease 0s 1 normal forwards;
+}
+
+::view-transition-old(video-cell),
+::view-transition-new(video-cell) {
 	animation-duration: 1s;
 }
 
-//::view-transition-image-pair(root) {
-//	::view-transition-old(root),
-//	::view-transition-new(root) {
-//		animation-duration: 1s;
-//	}
-//	::view-transition-old(player-1),
-//	::view-transition-new(player-1) {
-		//animation: 1s ease-in slide-from-right;
-//	}
-//}
 @keyframes slide-from-bottom {
 	from { transform: translateY(100%); }
 	to { transform: translateY(0%); }
@@ -146,54 +150,49 @@
 }
 
 ::view-transition-new(player-0) {
-	animation: 1s ease-in slide-from-left;
+	animation: 500ms ease-in slide-from-left;
 }
 
 ::view-transition-new(image-0) {
-	animation: 1s ease-in slide-from-left;
+	animation: 500ms ease-in slide-from-left;
 }
 
 ::view-transition-new(player-1) {
-	animation: 2s ease-in slide-from-top;
+	animation: 500ms ease-in slide-from-top;
 }
 
 ::view-transition-new(image-1) {
-	animation: 2s ease-in slide-from-right;
+	animation: 500ms ease-in slide-from-right;
 }
 
 ::view-transition-new(player-2) {
-	animation: 3s ease-in slide-from-right;
+	animation: 500ms ease-in slide-from-right;
 }
 
 ::view-transition-new(image-2) {
-	animation: 3s ease-in slide-from-left;
+	animation: 500ms ease-in slide-from-left;
 }
 
 ::view-transition-new(player-3) {
-	//animation: wobble 2s ease 0s 1 normal forwards;
-	animation: 3s ease-in slide-from-left;
+	animation: 500ms ease-in slide-from-left;
 }
 
 ::view-transition-new(image-3) {
-	animation: 3s ease-in slide-from-right;
+	animation: 500ms ease-in slide-from-right;
 }
 
 ::view-transition-new(player-4) {
-	//animation: wobble 2s ease 0s 1 normal forwards;
-	animation: 3s ease-in slide-from-bottom;
+	animation: 500ms ease-in slide-from-bottom;
 }
 
 ::view-transition-new(image-4) {
-	//animation: wobble 2s ease 0s 1 normal forwards;
-	animation: 3s ease-in slide-from-left;
+	animation: 500ms ease-in slide-from-left;
 }
 
 ::view-transition-new(player-5) {
-	//animation: wobble 2s ease 0s 1 normal forwards;
-	animation: 3s ease-in slide-from-right;
+	animation: 500ms ease-in slide-from-right;
 }
 
 ::view-transition-new(image-5) {
-	//animation: wobble 2s ease 0s 1 normal forwards;
-	animation: 3s ease-in slide-from-right;
+	animation: 500ms ease-in slide-from-right;
 }

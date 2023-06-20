@@ -1,12 +1,13 @@
 import {flushSync} from 'react-dom';
 
+import Button from '@enact/sandstone/Button';
 import ImageItem from '@enact/sandstone/ImageItem';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-// import VideoPlayer from '@enact/sandstone/VideoPlayer';
+import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import {VirtualGridList} from '@enact/sandstone/VirtualList';
-// import {Cell, Layout} from '@enact/ui/Layout';
+import {Cell, Layout} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 import videos from './videos.js';
 
@@ -14,6 +15,7 @@ import css from './App.module.less';
 
 const AppBase = (props) => {
 	const [orientation, setOrientation] = useState(window.screen.orientation.type);
+	const [video, setVideo] = useState(false);
 
 	useEffect(() => {
 		if (orientation === ('portrait-primary' || 'portrait-secondary')) {
@@ -29,61 +31,66 @@ const AppBase = (props) => {
 				});
 			});
 		}
-	}, [window.screen.orientation.type]);
+	}, [window.screen.orientation.type]); // eslint-disable-line react-hooks/exhaustive-deps
 
-	const scrollToRef = useRef(null);
+	const handleClick = useCallback(() => {
+		document.startViewTransition(() => {
+			flushSync(() => {
+				setVideo(!video);
+			});
+		});
+	}, [video]);
 
-	useEffect(() => {
-		scrollToRef.current({animate: false, focus: true, index: 2});
-	}, []);
-
-	const getScrollTo = useCallback((scrollTo) => {
-		scrollToRef.current = scrollTo;
-	}, []);
-
-	const renderItem = useCallback(({index}) => {
+	const renderImage = useCallback(({index}) => {
 		const getOrientation = window.screen.orientation.type;
 		return (
 			getOrientation === ('landscape-primary' || 'landscape-secondary') ?
 				<ImageItem className={css.player + `-${index}`} src={videos[index].poster}>
 					{videos[index].title}
 				</ImageItem>
-				: getOrientation === ('portrait-primary' || 'portrait-secondary') ?
+			: getOrientation === ('portrait-primary' || 'portrait-secondary') ?
 				<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
 					{videos[index].title}
 				</ImageItem>
-				: null
+			: null
+		);
+	}, []);
+
+	const renderVideo = useCallback(({index}) => {
+		return (
+			<VideoPlayer
+				className={css.video + `-${index}`}
+				feedbackHideDelay={0}
+				muted
+				noAutoPlay poster={videos[index].poster}
+				noAutoShowMediaControls
+				style={{height: '100%'}}>
+				<source src={videos[index].source} type="video/mp4" />
+			</VideoPlayer>
 		);
 	}, []);
 
 	return (
 		<div className={css.app}>
-			<VirtualGridList
-				{...props}
-				cbScrollTo={getScrollTo}
-				dataSize={videos.length}
-				itemRenderer={renderItem}
-				itemSize={{minWidth: ri.scale(702), minHeight: ri.scale(450)}} // FHD: 312 x 300, UHD: 624 x 600
-				scrollMode="translate"
-				spacing={30}
-			/>
+			<Layout align="center" className={css.appLayout} orientation="vertical">
+				<Cell className={video ? css.videoCell : ''}>
+					<VirtualGridList
+						{...props}
+						dataSize={videos.length}
+						itemRenderer={!video ? renderImage : renderVideo}
+						itemSize={{minWidth: ri.scale(600), minHeight: ri.scale(360)}} // FHD: 312 x 300, UHD: 624 x 600
+						scrollMode="translate"
+						spacing={15}
+					/>
+				</Cell>
+				<Cell className={css.buttonCell} shrink>
+					<Button className={css.revealButton} onClick={handleClick} size="small">
+						{!video ? 'Reveal videos' : 'Hide videos'}
+					</Button>
+				</Cell>
+			</Layout>
 		</div>
 	);
-
-	// return (
-	// 	<Layout {...rest} className={className + ' ' + css.app}>
-	// 		{videos.map((video) =>
-	// 			<Cell key={video.id} size="30%">
-	// 				<VideoPlayer className={css.player + ' enact-fit'} noAutoPlay>
-	// 					<source src={video.source} type="video/mp4" />
-	// 					<infoComponents>
-	// 						{video.desc}
-	// 					</infoComponents>
-	// 				</VideoPlayer>
-	// 			</Cell>
-	// 		)}
-	// 	</Layout>
-	// );
 };
 
 const App = ThemeDecorator(AppBase);
