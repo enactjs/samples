@@ -1,69 +1,85 @@
-import {handle} from '@enact/core/handle';
-import kind from '@enact/core/kind';
+import {flushSync} from 'react-dom';
+
 import Button from '@enact/sandstone/Button';
-import {Header, Panel} from '@enact/sandstone/Panels';
-import RadioItem from '@enact/sandstone/RadioItem';
-import Scroller from '@enact/sandstone/Scroller';
-import Group from '@enact/ui/Group';
-import PropTypes from 'prop-types';
+import ImageItem from '@enact/sandstone/ImageItem';
+import {MediaControls} from '@enact/sandstone/MediaPlayer';
+import {Panel} from '@enact/sandstone/Panels';
+import VideoPlayer from '@enact/sandstone/VideoPlayer';
+import {VirtualGridList} from '@enact/sandstone/VirtualList';
+import {Cell, Layout} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
+import {useCallback, useState} from 'react';
 
-import videos from '../App/videos.js';
+import videos from '../App/videos';
 
-// Remap our titles from `videos` to strings in a new array
-// videos[{title: 'value'}] -> videosList['value']
-const videosList = videos.map((video) => video.title);
+import css from './MainPanel.module.less';
 
-const MainPanel = kind({
-	name: 'MainPanel',
+const MainPanel = (props) => {
+	const [video, setVideo] = useState(false);
 
-	propTypes: {
-		/**
-		 * A function that receives the selected video's index.
-		 * @type {Function}
-		 */
-		onVideoIndexChange: PropTypes.func,
+	const handleClick = useCallback(() => {
+		document.startViewTransition(() => {
+			flushSync(() => {
+				setVideo(!video);
+			});
+		});
+	}, [video]);
 
-		/**
-		 * A title string appear on header
-		 * @type {String}
-		 */
-		title: PropTypes.string,
-
-		/**
-		 * The index number of the selected video.
-		 *
-		 * @type {Number}
-		 */
-		videoIndex: PropTypes.number
-	},
-
-	handlers: {
-		onVideoIndexChange: handle(
-			(ev, {onVideoIndexChange}) => onVideoIndexChange(ev.selected)
-		)
-	},
-
-	render: ({title, onNextPanel, onHidePanels, onVideoIndexChange, videoIndex, ...rest}) => {
+	const renderImage = useCallback(({index}) => {
+		const orientation = window.screen.orientation.type;
 		return (
-			<Panel {...rest}>
-				<Header subtitle={videos[videoIndex].title} title={title}>
-					<Button onClick={onNextPanel} size="small">Next Panel</Button>
-					<Button onClick={onHidePanels} size="small">Hide Panels</Button>
-				</Header>
-				<Scroller>
-					<Group
-						childComponent={RadioItem}
-						defaultSelected={videoIndex}
-						onSelect={onVideoIndexChange}
-						select="radio"
-						selectedProp="selected"
-					>
-						{videosList}
-					</Group>
-				</Scroller>
-			</Panel>
+			orientation === ('landscape-primary' || 'landscape-secondary') ?
+				<ImageItem className={css.player + `-${index}`} src={videos[index].poster}>
+					{videos[index].title}
+				</ImageItem>
+				: orientation === ('portrait-primary' || 'portrait-secondary') ?
+					<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
+						{videos[index].title}
+					</ImageItem>
+					: null
 		);
-	}
-});
+	}, []);
+
+	const renderVideo = useCallback(({index}) => {
+		return (
+			<VideoPlayer
+				className={css.video + `-${index}`}
+				feedbackHideDelay={0}
+				muted
+				noAutoPlay poster={videos[index].poster}
+				noAutoShowMediaControls
+				noSlider
+				pauseAtEnd
+				style={{transform: 'scale(0.75)'}}
+			>
+				<source src={videos[index].source} type="video/mp4"/>
+				<MediaControls id={videos[index].id} noJumpButtons/>
+			</VideoPlayer>
+		);
+	}, []);
+
+	return (
+		<Panel {...props} className={css.main}>
+			<Layout align="center" className={css.appLayout} orientation="vertical">
+				<Cell className={css.videoCell}>
+					<VirtualGridList
+						{...props}
+						dataSize={videos.length}
+						itemRenderer={!video ? renderImage : renderVideo}
+						itemSize={{minWidth: ri.scale(600), minHeight: ri.scale(360)}} // FHD: 312 x 300, UHD: 624 x 600
+						scrollMode="translate"
+						spacing={15}
+						verticalScrollbar="hidden"
+					/>
+				</Cell>
+				<Cell className={css.buttonCell} shrink>
+					<Button className={css.revealButton} onClick={handleClick} size="small">
+						{!video ? 'Reveal videos' : 'Hide videos'}
+					</Button>
+				</Cell>
+			</Layout>
+		</Panel>
+	)
+};
 
 export default MainPanel;
