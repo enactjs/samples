@@ -27,17 +27,19 @@ const MainPanel = (props) => {
 
 	const renderImage = useCallback(({index}) => {
 		const orientation = window.screen.orientation.type;
-		return (
-			orientation === ('landscape-primary' || 'landscape-secondary') ?
+
+		if (orientation === ('landscape-primary' || 'landscape-secondary')) {
+			return (
 				<ImageItem className={css.player + `-${index}`} src={videos[index].poster}>
 					{videos[index].title}
 				</ImageItem>
-				: orientation === ('portrait-primary' || 'portrait-secondary') ?
-					<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
-						{videos[index].title}
-					</ImageItem>
-					: null
-		);
+			)}
+		else if (orientation === ('portrait-primary' || 'portrait-secondary')) {
+			return (
+				<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
+					{videos[index].title}
+				</ImageItem>
+			)}
 	}, []);
 
 	const renderVideo = useCallback(({index}) => {
@@ -52,8 +54,8 @@ const MainPanel = (props) => {
 				pauseAtEnd
 				style={{transform: 'scale(0.75)'}}
 			>
-				<source src={videos[index].source} type="video/mp4"/>
-				<MediaControls id={videos[index].id} noJumpButtons/>
+				<source src={videos[index].source} type="video/mp4" />
+				<MediaControls id={videos[index].id} noJumpButtons />
 			</VideoPlayer>
 		);
 	}, []);
@@ -79,7 +81,7 @@ const MainPanel = (props) => {
 				</Cell>
 			</Layout>
 		</Panel>
-	)
+	);
 };
 
 export default MainPanel;
