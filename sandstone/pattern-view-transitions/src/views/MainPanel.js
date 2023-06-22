@@ -33,13 +33,14 @@ const MainPanel = (props) => {
 				<ImageItem className={css.player + `-${index}`} src={videos[index].poster}>
 					{videos[index].title}
 				</ImageItem>
-			)}
-		else if (orientation === ('portrait-primary' || 'portrait-secondary')) {
+			);
+		} else if (orientation === ('portrait-primary' || 'portrait-secondary')) {
 			return (
 				<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
 					{videos[index].title}
 				</ImageItem>
-			)}
+			);
+		}
 	}, []);
 
 	const renderVideo = useCallback(({index}) => {
