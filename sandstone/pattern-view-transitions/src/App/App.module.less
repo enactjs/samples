@@ -1,100 +1,24 @@
 .app {
 	height: 100vh;
 	background-color: black;
+}
 
-	.appLayout {
-		padding: 15px;
+@keyframes fade-in {
+	from {
+		opacity: 0;
 	}
-
-	.buttonCell {
-		padding-top: 15px;
-	}
-
-	.revealButton {
-		view-transition-name: reveal-button;
-		contain: paint;
-	}
-
-	.image,
-	.player {
-		display: flex;
-	}
-
-	.videoCell {
-		view-transition-name: video-cell;
-	}
-
-	.player-0,
-	.player-1,
-	.player-2,
-	.player-3,
-	.player-4,
-	.player-5,
-	.image-0,
-	.image-1,
-	.image-2,
-	.image-3,
-	.image-4,
-	.image-5 {
-		text-align-last: center;
-	}
-
-	.player-0 {
-		view-transition-name: player-0;
-	}
-
-	.player-1 {
-		view-transition-name: player-1;
-	}
-
-	.player-2 {
-		view-transition-name: player-2;
-	}
-
-	.player-3 {
-		view-transition-name: player-3;
-	}
-
-	.player-4 {
-		view-transition-name: player-4;
-	}
-
-	.player-5 {
-		view-transition-name: player-5;
-	}
-
-	.image-0 {
-		view-transition-name: image-0;
-	}
-
-	.image-1 {
-		view-transition-name: image-1;
-	}
-
-	.image-2 {
-		view-transition-name: image-2;
-	}
-
-	.image-3 {
-		view-transition-name: image-3;
-	}
-
-	.image-4 {
-		view-transition-name: image-4;
-	}
-
-	.image-5 {
-		view-transition-name: image-5;
+	to {
+		opacity: 1;
 	}
 }
 
-::view-transition-new(reveal-button) {
-	animation: wobble 1s ease 0s 1 normal forwards;
-}
-
-::view-transition-old(video-cell),
-::view-transition-new(video-cell) {
-	animation-duration: 1s;
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 @keyframes slide-from-bottom {
@@ -147,6 +71,20 @@
 	75% {
 		transform: translateX(-6px) rotate(1.2deg);
 	}
+}
+
+::view-transition-new(reveal-button) {
+	animation: wobble 1s ease 0s 1 normal forwards;
+}
+
+::view-transition-old(video-cell),
+::view-transition-new(video-cell) {
+	animation-duration: 1s;
+}
+
+::view-transition-old(video-cell) {
+	animation: fade-out 1s;
+	animation-fill-mode: forwards;
 }
 
 ::view-transition-new(player-0) {
