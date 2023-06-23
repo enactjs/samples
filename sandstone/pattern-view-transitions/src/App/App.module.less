@@ -3,6 +3,8 @@
 	background-color: black;
 }
 
+// @keyframes rules for animations
+
 @keyframes fade-in {
 	from {
 		opacity: 0;
@@ -73,6 +75,8 @@
 	}
 }
 
+// view-transitions
+
 ::view-transition-new(reveal-button) {
 	animation: wobble 1s ease 0s 1 normal forwards;
 }
@@ -82,55 +86,54 @@
 	animation-duration: 1s;
 }
 
-::view-transition-old(video-cell) {
-	animation: fade-out 1s;
-	animation-fill-mode: forwards;
+::view-transition-new(video-cell) {
+	animation: fade-in 2.5s ease-in forwards;
 }
 
-::view-transition-new(player-0) {
+::view-transition-new(toCenter-0) {
 	animation: 500ms ease-in slide-from-left;
 }
 
-::view-transition-new(image-0) {
+::view-transition-new(leftRight-0) {
 	animation: 500ms ease-in slide-from-left;
 }
 
-::view-transition-new(player-1) {
+::view-transition-new(toCenter-1) {
 	animation: 500ms ease-in slide-from-top;
 }
 
-::view-transition-new(image-1) {
+::view-transition-new(leftRight-1) {
 	animation: 500ms ease-in slide-from-right;
 }
 
-::view-transition-new(player-2) {
+::view-transition-new(toCenter-2) {
 	animation: 500ms ease-in slide-from-right;
 }
 
-::view-transition-new(image-2) {
+::view-transition-new(leftRight-2) {
 	animation: 500ms ease-in slide-from-left;
 }
 
-::view-transition-new(player-3) {
+::view-transition-new(toCenter-3) {
 	animation: 500ms ease-in slide-from-left;
 }
 
-::view-transition-new(image-3) {
+::view-transition-new(leftRight-3) {
 	animation: 500ms ease-in slide-from-right;
 }
 
-::view-transition-new(player-4) {
+::view-transition-new(toCenter-4) {
 	animation: 500ms ease-in slide-from-bottom;
 }
 
-::view-transition-new(image-4) {
+::view-transition-new(leftRight-4) {
 	animation: 500ms ease-in slide-from-left;
 }
 
-::view-transition-new(player-5) {
+::view-transition-new(toCenter-5) {
 	animation: 500ms ease-in slide-from-right;
 }
 
-::view-transition-new(image-5) {
+::view-transition-new(leftRight-5) {
 	animation: 500ms ease-in slide-from-right;
 }

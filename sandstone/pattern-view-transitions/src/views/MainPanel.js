@@ -17,6 +17,7 @@ import css from './MainPanel.module.less';
 const MainPanel = (props) => {
 	const [video, setVideo] = useState(false);
 
+	// Apply basic transition when switching from ImageItems to VideoPlayers
 	const handleClick = useCallback(() => {
 		document.startViewTransition(() => {
 			flushSync(() => {
@@ -26,21 +27,20 @@ const MainPanel = (props) => {
 	}, [video]);
 
 	const renderImage = useCallback(({index}) => {
+		// Check screen orientation
 		const orientation = window.screen.orientation.type;
+		// Depending on orientation, apply different animation styles
+		const animationStyle = orientation === ('landscape-primary' || 'landscape-secondary') ? 'toCenter' : 'leftRight';
 
-		if (orientation === ('landscape-primary' || 'landscape-secondary')) {
-			return (
-				<ImageItem className={css.player + `-${index}`} src={videos[index].poster}>
-					{videos[index].title}
-				</ImageItem>
-			);
-		} else if (orientation === ('portrait-primary' || 'portrait-secondary')) {
-			return (
-				<ImageItem className={css.image + `-${index}`} src={videos[index].poster}>
-					{videos[index].title}
-				</ImageItem>
-			);
-		}
+		return (
+			<ImageItem
+				className={`css.${animationStyle}` + `-${index}`}
+				src={videos[index].poster}
+				style={{viewTransitionName: `${animationStyle}-${index}`, textAlignLast: 'center'}}
+			>
+				{videos[index].title}
+			</ImageItem>
+		);
 	}, []);
 
 	const renderVideo = useCallback(({index}) => {
@@ -49,11 +49,12 @@ const MainPanel = (props) => {
 				className={css.video + `-${index}`}
 				feedbackHideDelay={0}
 				muted
-				noAutoPlay poster={videos[index].poster}
+				noAutoPlay
 				noAutoShowMediaControls
 				noSlider
 				pauseAtEnd
-				style={{transform: 'scale(0.75)'}}
+				poster={videos[index].poster}
+				style={{transform: 'scale(0.7)'}}
 			>
 				<source src={videos[index].source} type="video/mp4" />
 				<MediaControls id={videos[index].id} noJumpButtons />
@@ -69,7 +70,7 @@ const MainPanel = (props) => {
 						{...props}
 						dataSize={videos.length}
 						itemRenderer={!video ? renderImage : renderVideo}
-						itemSize={{minWidth: ri.scale(600), minHeight: ri.scale(360)}} // FHD: 312 x 300, UHD: 624 x 600
+						itemSize={{minWidth: ri.scale(600), minHeight: ri.scale(360)}}
 						scrollMode="translate"
 						spacing={15}
 						verticalScrollbar="hidden"
