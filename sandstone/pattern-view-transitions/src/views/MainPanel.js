@@ -25,16 +25,20 @@ const MainPanel = (props) => {
 			return setVideo(!video);
 		}
 
-		document.startViewTransition(() => {
-			flushSync(() => {
-				setVideo(!video);
+		if (platform.touchscreen) {
+			document.startViewTransition(() => {
+				flushSync(() => {
+					setVideo(!video);
+				});
 			});
-		});
+		} else {
+			return setVideo(!video);
+		}
 	}, [video]);
 
 	const renderImage = useCallback(({index}) => {
 		// Check screen orientation (`window.screen.orientation.type` is not supported by Safari)
-		const orientation = platform.chrome >= 111 ? window.screen.orientation.type : window.orientation;
+		const orientation = platform.platformName === 'safari' ? window.orientation : window.screen.orientation.type;
 		// Depending on orientation, apply different animation styles
 		const animationStyle = orientation === ('landscape-primary' || 'landscape-secondary') ? 'toCenter' : 'leftRight';
 

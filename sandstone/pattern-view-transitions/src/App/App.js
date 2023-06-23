@@ -1,3 +1,4 @@
+import platform from '@enact/core/platform';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
@@ -12,7 +13,9 @@ const AppBase = () => {
 			return;
 		}
 
-		document.startViewTransition();
+		if (platform.touchscreen) {
+			document.startViewTransition();
+		}
 	};
 
 	// Apply view transitions when changing resolution (also valid for switching between portrait and landscape)
@@ -22,7 +25,9 @@ const AppBase = () => {
 			return;
 		}
 
-		document.startViewTransition();
+		if (platform.touchscreen) {
+			document.startViewTransition();
+		}
 	};
 
 	return (
