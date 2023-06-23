@@ -25,15 +25,11 @@ const MainPanel = (props) => {
 			return setVideo(!video);
 		}
 
-		if (platform.touchscreen) {
-			document.startViewTransition(() => {
-				flushSync(() => {
-					setVideo(!video);
-				});
+		document.startViewTransition(() => {
+			flushSync(() => {
+				setVideo(!video);
 			});
-		} else {
-			return setVideo(!video);
-		}
+		});
 	}, [video]);
 
 	const renderImage = useCallback(({index}) => {
