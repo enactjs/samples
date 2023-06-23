@@ -1,5 +1,6 @@
 import {flushSync} from 'react-dom';
 
+import platform from '@enact/core/platform';
 import Button from '@enact/sandstone/Button';
 import ImageItem from '@enact/sandstone/ImageItem';
 import {MediaControls} from '@enact/sandstone/MediaPlayer';
@@ -19,6 +20,11 @@ const MainPanel = (props) => {
 
 	// Apply basic transition when switching from ImageItems to VideoPlayers
 	const handleClick = useCallback(() => {
+		if (!document.startViewTransition) {
+			// handle unsupported browsers
+			return setVideo(!video);
+		}
+
 		document.startViewTransition(() => {
 			flushSync(() => {
 				setVideo(!video);
@@ -27,8 +33,8 @@ const MainPanel = (props) => {
 	}, [video]);
 
 	const renderImage = useCallback(({index}) => {
-		// Check screen orientation
-		const orientation = window.screen.orientation.type;
+		// Check screen orientation (`window.screen.orientation.type` is not supported by Safari)
+		const orientation = platform.chrome >= 111 ? window.screen.orientation.type : window.orientation;
 		// Depending on orientation, apply different animation styles
 		const animationStyle = orientation === ('landscape-primary' || 'landscape-secondary') ? 'toCenter' : 'leftRight';
 
