@@ -26,7 +26,7 @@ const MainPanel = (props) => {
 		}
 
 		document.startViewTransition(() => {
-			flushSync(() => {
+			flushSync(() => { // ensures that the DOM is completely updated
 				setVideo(!video);
 			});
 		});

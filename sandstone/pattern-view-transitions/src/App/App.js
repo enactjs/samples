@@ -5,15 +5,13 @@ import MainPanel from '../views/MainPanel';
 import css from './App.module.less';
 
 const AppBase = () => {
-	// Apply view transitions on page load
-	window.onload = function () {
-		if (!document.startViewTransition) {
-			// handle unsupported browsers
-			return;
-		}
-
+	// Apply view transitions at every render
+	if (!document.startViewTransition) {
+		// handle unsupported browsers
+		return;
+	} else {
 		document.startViewTransition();
-	};
+	}
 
 	// Apply view transitions when changing resolution (also valid for switching between portrait and landscape)
 	window.onresize = function () {
