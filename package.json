@@ -20,6 +20,6 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.5"
+    "eslint-config-enact-proxy": "github:enactjs/eslint-config-enact-proxy#feature/WRP-17866"
   }
 }
