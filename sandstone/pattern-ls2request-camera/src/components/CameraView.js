@@ -18,7 +18,7 @@ const CameraView = () => {
 	let cameraOption;
 
 	useEffect(() => {
-		if (typeof window !== 'undefined' && typeof (window.webOSSystem ?? window.PalmSystem) !== 'undefined') {
+		if (typeof window === 'object' && typeof (window.webOSSystem ?? window.PalmSystem) === 'object') {
 			dispatch(getCameraIds({}));
 		}
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -30,12 +30,12 @@ const CameraView = () => {
 	}, [cameraStatus]);
 
 	const checkSystem = () => {
-		if (typeof window === 'undefined' || typeof (window.webOSSystem ?? window.PalmSystem) === 'undefined') {
+		if (typeof window !== 'object' || typeof (window.webOSSystem ?? window.PalmSystem) !== 'object') {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
 	};
 
-	if (typeof window !== 'undefined' && typeof (window.webOSSystem ?? window.PalmSystem) === 'undefined') {
+	if (typeof window !== 'object' || typeof (window.webOSSystem ?? window.PalmSystem) !== 'object') {
 		return <div>This test will only function correctly on webOS systems!</div>;
 	}
 

@@ -12,7 +12,7 @@ const App = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		if (typeof window !== 'undefined' && typeof (window.webOSSystem ?? window.PalmSystem) !== 'undefined') {
+		if (typeof window === 'object' && typeof (window.webOSSystem ?? window.PalmSystem) === 'object') {
 			dispatch(getSystemSettings({
 				category: 'picture',
 				key: 'brightness'
@@ -58,12 +58,12 @@ const App = () => {
 	}), [eyeComfortMode]);
 
 	const checkSystem = () => {
-		if (typeof window === 'undefined' || typeof (window.webOSSystem ?? window.PalmSystem) === 'undefined') {
+		if (typeof window !== 'object' || typeof (window.webOSSystem ?? window.PalmSystem) !== 'object') {
 			return <div>This test will only function correctly on webOS systems!</div>;
 		}
 	};
 
-	if (typeof window === 'undefined' || typeof (window.webOSSystem ?? window.PalmSystem) === 'undefined') {
+	if (typeof window !== 'object' || typeof (window.webOSSystem ?? window.PalmSystem) !== 'object') {
 		return <div className={css.main}>This test will only function correctly on webOS systems!</div>;
 	}
 
