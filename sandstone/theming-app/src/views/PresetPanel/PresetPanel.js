@@ -1,4 +1,5 @@
 import RadioItem from '@enact/sandstone/RadioItem';
+import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout} from '@enact/ui/Layout';
 
 import PreviewSection from '../../components/PreviewSection';
@@ -15,6 +16,8 @@ const PresetPanel = () => {
 					{Object.keys(presets).map((key) =>
 						<RadioItem key={key}>{key}</RadioItem>
 					)}
+					<SwitchItem>Activate dynamic color mode</SwitchItem>
+					<SwitchItem>Adjust skin automatically</SwitchItem>
 				</Column>
 			</Cell>
 			<PreviewSection />

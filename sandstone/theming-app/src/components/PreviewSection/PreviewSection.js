@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
-
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import CheckboxItem from '@enact/sandstone/CheckboxItem';
@@ -10,16 +8,16 @@ import RangePicker from '@enact/sandstone/RangePicker';
 import Slider from '@enact/sandstone/Slider';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column} from '@enact/ui/Layout';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import css from './PreviewSection.module.less';
 
 const PreviewSection = () => {
 	const [openPopup, setOpenPopup] = useState(false);
 
-	const handleOpenPopup = () => {
+	const handleOpenPopup = useCallback(() => {
 		setOpenPopup(!openPopup);
-	}
+	}, [openPopup]);
 
 	let screenWidth = typeof window !== 'undefined' ? window.screen.width : 0;
 	let windowWidth = typeof window !== 'undefined' ? window.innerWidth : 0;

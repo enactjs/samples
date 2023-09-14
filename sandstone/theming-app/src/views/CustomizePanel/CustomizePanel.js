@@ -15,7 +15,7 @@ const CustomizePanel = () => {
 
 	const handleClick = useCallback(() => {
 
-	}, [])
+	}, []);
 
 	return (
 		<Layout className={css.customizePanel}>

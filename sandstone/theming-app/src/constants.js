@@ -2,9 +2,14 @@ import {createContext} from "react";
 
 export const presets = {
 	"Default Theme": {},
-	"Red Theme": {},
-	"Yellow Theme": {},
-	"Blue Theme": {}
+	"Light blue Theme": {},
+	"Blue Theme": {},
+	"Light Green Theme": {},
+	"Green Theme": {},
+	"Light Purple Theme": {},
+	"Purple Theme": {},
+	"Light Red Theme": {},
+	"Red Theme": {}
 };
 
 export const dynamicColorsContext = {
