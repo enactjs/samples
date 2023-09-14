@@ -7,7 +7,11 @@ import CustomizePanel from '../views/CustomizePanel';
 import PresetPanel from '../views/PresetPanel';
 import screenTypes from '../../screenTypes.json';
 
+import useLinearSkinColor from '../hooks';
+
 const App = (props) => {
+	useLinearSkinColor();
+
 	const [panelIndex, setState] = useState(0);
 
 	const forward = useCallback(() => {
