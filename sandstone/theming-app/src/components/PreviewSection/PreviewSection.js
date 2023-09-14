@@ -7,7 +7,7 @@ import Popup from '@enact/sandstone/Popup';
 import RangePicker from '@enact/sandstone/RangePicker';
 import Slider from '@enact/sandstone/Slider';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {Cell, Column} from '@enact/ui/Layout';
+import {Cell, Column, Layout} from '@enact/ui/Layout';
 import {useCallback, useState} from 'react';
 
 import css from './PreviewSection.module.less';
@@ -28,7 +28,7 @@ const PreviewSection = () => {
 			} else {
 				return 'medium';
 			}
-		} else if ( screenWidth > 1920) {
+		} else if (screenWidth > 1920) {
 			if (windowWidth < 2160) {
 				return 'tiny';
 			} else {
@@ -41,12 +41,12 @@ const PreviewSection = () => {
 		<Cell className={css.previewSection}>
 			<Column className={css.previewComponents}>
 				<Heading className={css.previewTitle}>Theme Preview</Heading>
-				<div>
+				<Layout align="center space-between">
 					<Button css={css} size="small">Click</Button>
 					<Button css={css} disabled size="small">Disabled</Button>
 					<Button css={css} selected size="small">Selected</Button>
 					<Button css={css} disabled selected size="small">Disabled</Button>
-				</div>
+				</Layout>
 				<CheckboxItem className={css.previewCheckboxItem} label="Here be label!">Checkbox</CheckboxItem>
 				<SwitchItem className={css.previewSwitchItem} css={css}>Toggle</SwitchItem>
 				<Slider className={css.previewSlider} />
