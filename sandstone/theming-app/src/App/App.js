@@ -23,25 +23,25 @@ const App = (props) => {
 	}, [panelIndex]);
 
 	return (
-		<Panels
+			<Panels
 			{...props}
 			index={panelIndex}
 			noCloseButton
 			onBack={backward}
-		>
-			<Panel>
-				<Header subtitle="Choose preset theme" title="Theming App">
-					<slotAfter>
-						<IconItem icon="arrowsmallright" label="Customize" onClick={forward} />
-					</slotAfter>
-				</Header>
-				<PresetPanel />
-			</Panel>
-			<Panel>
-				<Header subtitle="Customize theme" title="Theming App" />
-				<CustomizePanel />
-			</Panel>
-		</Panels>
+			>
+				<Panel>
+					<Header subtitle="Choose preset theme" title="Theming App">
+						<slotAfter>
+							<IconItem icon="arrowsmallright" label="Customize" onClick={forward} />
+						</slotAfter>
+					</Header>
+					<PresetPanel />
+				</Panel>
+				<Panel>
+					<Header subtitle="Customize theme" title="Theming App" />
+					<CustomizePanel />
+				</Panel>
+			</Panels>
 	)
 };
 

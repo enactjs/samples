@@ -2,8 +2,13 @@
 import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import App from './App';
+import {AppContext, dynamicColorsContext} from './constants';
 
-const appElement = (<App />);
+const appElement = (
+	<AppContext.Provider value={dynamicColorsContext}>
+		<App />
+	</AppContext.Provider>
+);
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {

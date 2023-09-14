@@ -1,17 +1,17 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {useLinearColor} from './useLinearColor';
 import {generateTimestamps, getIndex} from './utils';
 import {generateStylesheet} from './generateStylesheet';
 
-const defaultValue = `{"version":"0.1","activeTheme":"defaultTheme","dynamicColor":"on","handleSkin":"off","backgroundColor":"#000000","componentBackgroundColor":"#7D848C","focusBackgroundColor":"#E6E6E6","popupBackgroundColor":"#575E66","subtitleTextColor":"#ABAEB3","textColor":"#E6E6E6"}`;
+import {AppContext} from '../constants';
 
 let fakeIndex = 0;
 let timestamps = generateTimestamps(5);
+
 const useLinearSkinColor = () => {
 	const fakeTimeEnabled = true;
-
 	const [linearSkinVariants, setLinearSkinVariants] = useState('neutral');
-	const {dynamicColor: enableLinearSkin, handleSkin: skinVariants, activeTheme: preset, backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = JSON.parse(defaultValue);
+	const {dynamicColor: enableLinearSkin, handleSkin: skinVariants, activeTheme: preset, backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = useContext(AppContext);
 	const [linearBackgroundColor, setLinearBackgroundColor] = useLinearColor(backgroundColor);
 	const [linearComponentBackgroundColor, setLinearComponentBackgroundColor] = useLinearColor(componentBackgroundColor);
 	const [linearFocusBackgroundColor, setLinearFocusBackgroundColor] = useLinearColor(focusBackgroundColor);
