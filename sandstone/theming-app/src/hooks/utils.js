@@ -210,3 +210,85 @@ export const hexToRGB = (hex) => {
 		parseInt(result[3], 16)
 	] : null;
 };
+
+export const setPreset = ({preset, context}) => {
+	const newContext = Object.assign({}, context);
+	newContext.activeTheme = preset;
+
+	switch (preset) {
+		case 'blueTheme2':
+			newContext.backgroundColor = '#181E3D';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#1E233F';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'blueTheme1':
+			newContext.backgroundColor = '#272829';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#292929';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'greenTheme2':
+			newContext.backgroundColor = '#102933';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#172D36';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'greenTheme1':
+			newContext.backgroundColor = '#272829';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#292929';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'purpleTheme2':
+			newContext.backgroundColor = '#2B1941';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#2F1F43';
+			newContext.subtitleTextColor = '#848290';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'purpleTheme1':
+			newContext.backgroundColor = '#272829';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#292929';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'redTheme2':
+			newContext.backgroundColor = '#3D1A1A';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#3F2020';
+			newContext.subtitleTextColor = '#807477';
+			newContext.textColor = '#E6E6E6';
+			break;
+		case 'redTheme1':
+			newContext.backgroundColor = '#252424';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#292929';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+		default:
+			newContext.backgroundColor = '#000000';
+			newContext.componentBackgroundColor = '#7D848C';
+			newContext.focusBackgroundColor = '#E6E6E6';
+			newContext.popupBackgroundColor = '#575E66';
+			newContext.subtitleTextColor = '#ABAEB3';
+			newContext.textColor = '#E6E6E6';
+			break;
+	}
+
+	return newContext;
+};

@@ -529,4 +529,4 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
 	}
-}
+};

@@ -1,35 +1,67 @@
+import {useCallback, useContext} from 'react';
 import Button from '@enact/sandstone/Button';
 import ColorPicker from '@enact/sandstone/ColorPicker';
 import Scroller from '@enact/sandstone/Scroller';
 import {Cell, Layout} from '@enact/ui/Layout';
 
+import {setPreset} from '../../hooks/utils';
 import PreviewSection from '../../components/PreviewSection';
+import {AppContext} from '../../constants';
 
 import css from './CustomizePanel.module.less';
 
-import {useCallback, useContext} from 'react';
-import {AppContext} from "../../constants";
-
 const CustomizePanel = () => {
-	const {backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = useContext(AppContext);
+	const {context, setContext} = useContext(AppContext);
+	const {backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = context;
 
-	const handleClick = useCallback(() => {
+	const onChangeColor = useCallback((color, newColor) => {
+		const newContext = Object.assign({}, context);
+		newContext[color] = newColor;
+		setContext(newContext);
+	}, [context, setContext]);
 
-	}, []);
+	const handleBackgroundColor = useCallback((ev) => {
+		onChangeColor('backgroundColor', ev);
+	}, [onChangeColor]);
+
+	const handleComponentBackgroundColor = useCallback((ev) => {
+		onChangeColor('componentBackgroundColor', ev);
+	}, [onChangeColor]);
+
+	const handleFocusBackgroundColor = useCallback((ev) => {
+		onChangeColor('focusBackgroundColor', ev);
+	}, [onChangeColor]);
+
+	const handlePopupBackgroundColor = useCallback((ev) => {
+		onChangeColor('popupBackgroundColor', ev);
+	}, [onChangeColor]);
+
+	const handleSubtitleTextColor = useCallback((ev) => {
+		onChangeColor('subtitleTextColor', ev);
+	}, [onChangeColor]);
+
+	const handleTextColor = useCallback((ev) => {
+		onChangeColor('textColor', ev);
+	}, [onChangeColor]);
+
+	const handleResetButton = useCallback(() => {
+		const newContext = setPreset({preset: context.activeTheme, context});
+		setContext(newContext);
+	}, [context, setContext]);
 
 	return (
 		<Layout className={css.customizePanel}>
 			<Cell className={css.customizeSection} size="40%">
 				<Layout align="stretch space-between" orientation="vertical">
 					<Scroller>
-						<ColorPicker color={backgroundColor} colorHandler={handleClick} text='Background Color'/>
-						<ColorPicker color={componentBackgroundColor} colorHandler={handleClick} text='Component Background Color'/>
-						<ColorPicker color={focusBackgroundColor} colorHandler={handleClick} text='Focus Background-Color'/>
-						<ColorPicker color={popupBackgroundColor} colorHandler={handleClick} text='Pupup Background-Color'/>
-						<ColorPicker color={subtitleTextColor} colorHandler={handleClick} text='Text Color'/>
-						<ColorPicker color={textColor} colorHandler={handleClick} text='Subtitle Text Color'/>
+						<ColorPicker color={backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
+						<ColorPicker color={componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
+						<ColorPicker color={focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background-Color" />
+						<ColorPicker color={popupBackgroundColor} colorHandler={handlePopupBackgroundColor} text="Pupup Background-Color" />
+						<ColorPicker color={subtitleTextColor} colorHandler={handleSubtitleTextColor} text="Subtitle Text Color" />
+						<ColorPicker color={textColor} colorHandler={handleTextColor} text="Text Color" />
 					</Scroller>
-					<Button className={css.resetBtn} icon="trash" size="small" tooltipText="Undo changes">Reset</Button>
+					<Button className={css.resetBtn} icon="trash" onClick={handleResetButton} size="small" tooltipText="Undo changes">Reset</Button>
 				</Layout>
 			</Cell>
 			<PreviewSection />

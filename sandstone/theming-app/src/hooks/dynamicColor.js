@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from 'react';
+import {generateStylesheet} from './generateStylesheet';
 import {useLinearColor} from './useLinearColor';
 import {generateTimestamps, getIndex} from './utils';
-import {generateStylesheet} from './generateStylesheet';
 
 import {AppContext} from '../constants';
 
@@ -11,7 +11,7 @@ let timestamps = generateTimestamps(5);
 const useLinearSkinColor = () => {
 	const fakeTimeEnabled = true;
 	const [linearSkinVariants, setLinearSkinVariants] = useState('neutral');
-	const {dynamicColor: enableLinearSkin, handleSkin: skinVariants, activeTheme: preset, backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = useContext(AppContext);
+	const {dynamicColor: enableLinearSkin, handleSkin: skinVariants, activeTheme: preset, backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = useContext(AppContext).context;
 	const [linearBackgroundColor, setLinearBackgroundColor] = useLinearColor(backgroundColor);
 	const [linearComponentBackgroundColor, setLinearComponentBackgroundColor] = useLinearColor(componentBackgroundColor);
 	const [linearFocusBackgroundColor, setLinearFocusBackgroundColor] = useLinearColor(focusBackgroundColor);
