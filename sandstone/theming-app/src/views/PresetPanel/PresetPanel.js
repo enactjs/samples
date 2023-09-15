@@ -1,5 +1,6 @@
 import {useCallback, useContext} from 'react';
 import RadioItem from '@enact/sandstone/RadioItem';
+import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout} from '@enact/ui/Layout';
 
@@ -34,11 +35,13 @@ const PresetPanel = () => {
 		<Layout className={css.presetPanel}>
 			<Cell className={css.customizeSection} size="40%">
 				<Column>
-					{Object.entries(presets).map(([key, value]) =>
-						<RadioItem onClick={onClickHandlePreset} id={key} key={key} selected={key === activeTheme}>{value}</RadioItem>
-					)}
-					<SwitchItem onClick={onClickDynamicColor} selected={dynamicColor === 'on'}>Activate dynamic color mode</SwitchItem>
-					<SwitchItem onClick={onClickHandleSkin} selected={handleSkin === 'on'}>Adjust skin automatically</SwitchItem>
+					<Scroller className={css.scroller}>
+						{Object.entries(presets).map(([key, value]) =>
+							<RadioItem className={css.radioItem} onClick={onClickHandlePreset} id={key} key={key} selected={key === activeTheme}>{value}</RadioItem>
+						)}
+					</Scroller>
+					<SwitchItem className={css.switchItem} onClick={onClickDynamicColor} selected={dynamicColor === 'on'}>Activate dynamic color mode</SwitchItem>
+					<SwitchItem className={css.switchItem} onClick={onClickHandleSkin} selected={handleSkin === 'on'}>Adjust skin automatically</SwitchItem>
 				</Column>
 			</Cell>
 			<PreviewSection />

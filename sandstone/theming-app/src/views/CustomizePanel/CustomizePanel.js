@@ -53,15 +53,15 @@ const CustomizePanel = () => {
 		<Layout className={css.customizePanel}>
 			<Cell className={css.customizeSection} size="40%">
 				<Layout align="stretch space-between" orientation="vertical">
-					<Scroller>
-						<ColorPicker color={backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
-						<ColorPicker color={componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
-						<ColorPicker color={focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background-Color" />
-						<ColorPicker color={popupBackgroundColor} colorHandler={handlePopupBackgroundColor} text="Pupup Background-Color" />
-						<ColorPicker color={subtitleTextColor} colorHandler={handleSubtitleTextColor} text="Subtitle Text Color" />
-						<ColorPicker color={textColor} colorHandler={handleTextColor} text="Text Color" />
+					<Scroller className={css.scroller}>
+						<ColorPicker className={css.colorPicker} color={backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
+						<ColorPicker className={css.colorPicker} color={componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
+						<ColorPicker className={css.colorPicker} color={focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background Color" />
+						<ColorPicker className={css.colorPicker} color={popupBackgroundColor} colorHandler={handlePopupBackgroundColor} text="Pupup Background Color" />
+						<ColorPicker className={css.colorPicker} color={subtitleTextColor} colorHandler={handleSubtitleTextColor} text="Subtitle Text Color" />
+						<ColorPicker className={css.colorPicker} color={textColor} colorHandler={handleTextColor} text="Text Color" />
 					</Scroller>
-					<Button className={css.resetBtn} icon="trash" onClick={handleResetButton} size="small" tooltipText="Undo changes">Reset</Button>
+					<Button className={css.resetBtn} icon="trash" onClick={handleResetButton} size="small">Reset</Button>
 				</Layout>
 			</Cell>
 			<PreviewSection />
