@@ -14,7 +14,7 @@ export const presets = {
 
 export const dynamicColorsContext = {
 	activeTheme: 'defaultTheme',
-	dynamicColor: 'on',
+	dynamicColor: 'off',
 	handleSkin: 'off',
 	backgroundColor: '#000000',
 	componentBackgroundColor: '#7D848C',
