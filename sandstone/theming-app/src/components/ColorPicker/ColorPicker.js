@@ -167,6 +167,7 @@ const ColorPickerBase = kind({
 					open={disabled ? false : popupOpen}
 					position="left"
 					scrimType="transparent"
+					skin="neutral"
 				>
 					<Row>
 						<Cell align="center">
