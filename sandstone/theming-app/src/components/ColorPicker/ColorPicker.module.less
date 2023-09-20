@@ -1,0 +1,99 @@
+// ColorPicker.module.less
+//
+@import '~@enact/sandstone/styles/colors.less';
+@import '~@enact/sandstone/styles/mixins.less';
+@import '~@enact/sandstone/styles/variables.less';
+
+.colorPicker {
+	align-items: center;
+	justify-content: space-between;
+
+	.colorsRow {
+		width: 522px;
+	}
+
+	.coloredButton {
+		border-radius: 72px;
+		border: 3px solid #ffffff;
+		height: 120px;
+		margin-left: 0;
+		min-width: 120px;
+		padding: 0;
+		transform: none;
+
+		.focus({
+			transform: scale(1.1);
+		});
+
+		.disabled({
+			opacity: @sand-disabled-opacity;
+		})
+	}
+
+	.coloredDiv,
+	.coloredInput {
+		border-radius: 24px;
+	}
+
+	.coloredDiv {
+		display: block;
+		height: 81px;
+		border: 3px solid #ffffff;
+
+		&.button, &.focusExpand {
+			margin: 24px;
+		}
+
+		.focus({
+			transform: scale(1.1);
+		});
+	}
+
+	.coloredInput {
+		opacity: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.colorPopup {
+	--sand-overlay-bg-color-rgb: 87, 94, 102;
+	height: max-content;
+
+	.colorPopupHeader {
+		--sand-text-color-rgb: 230, 230, 230;
+		font-size: 66px;
+		text-transform: capitalize;
+		margin: 0 0 0 15px;
+	}
+
+	.closeButton {
+		--sand-text-color-rgb: 230, 230, 230;
+		--sand-focus-bg-color-rgb: 230, 230, 230;
+
+		&.button, &.focusExpand {
+			margin: 0;
+		}
+
+		.icon {
+			font-size: 48px;
+		}
+	}
+
+	.colorPickerSliders {
+		padding: 45px 0;
+
+		.colorSlider {
+			--sand-focus-bg-color-rgb: 230, 230, 230;
+			margin: 0 27px;
+		}
+
+		.colorSliderText {
+			color: #E6E6E6;
+			font-size: 54px;
+			margin: 0 24px;
+		}
+	}
+}

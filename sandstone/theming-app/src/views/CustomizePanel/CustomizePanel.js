@@ -1,10 +1,10 @@
 import {useCallback, useContext} from 'react';
 import Button from '@enact/sandstone/Button';
-import ColorPicker from '@enact/sandstone/ColorPicker';
 import Scroller from '@enact/sandstone/Scroller';
 import {Cell, Layout} from '@enact/ui/Layout';
 
 import {setPreset} from '../../hooks/utils';
+import ColorPicker from '../../components/ColorPicker';
 import PreviewSection from '../../components/PreviewSection';
 import {AppContext} from '../../constants';
 

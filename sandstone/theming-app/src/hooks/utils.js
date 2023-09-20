@@ -1,4 +1,4 @@
-const hexToHSL = (hex) => {
+export const hexToHSL = (hex) => {
 	// Convert hex to RGB first
 	let r = 0, g = 0, b = 0;
 	if (hex.length === 4) {
@@ -35,10 +35,10 @@ const hexToHSL = (hex) => {
 	s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 	s = +(s * 100).toFixed(1);
 	l = +(l * 100).toFixed(1);
-	return {h, s, l};
+	return {h: Math.round(h), s: Math.round(s), l: Math.round(l)};
 };
 
-const HSLToHex = ({h, s, l}) => {
+export const HSLToHex = ({h, s, l}) => {
 	s /= 100;
 	l /= 100;
 	let c = (1 - Math.abs(2 * l - 1)) * s,
@@ -76,6 +76,7 @@ const HSLToHex = ({h, s, l}) => {
 	}
 	return "#" + r + g + b;
 };
+
 const generateColorsDayMode = (baseColor, numColors) => {
 	// Create an array to hold the colors
 	let colors = [baseColor];
@@ -112,6 +113,7 @@ const generateColorsDayMode = (baseColor, numColors) => {
 	}
 	return colors;
 };
+
 const generateColorsNightMode = (baseColor, numColors) => {
 	// Create an array to hold the colors
 	let colors = [baseColor];
@@ -148,6 +150,7 @@ const generateColorsNightMode = (baseColor, numColors) => {
 	}
 	return colors;
 };
+
 export const generateTimestamps = (step) => {
 	const timestamps = [];
 	for (let hours = 0; hours < 24; hours++) {
@@ -160,6 +163,7 @@ export const generateTimestamps = (step) => {
 	}
 	return timestamps;
 };
+
 export const generateColors = (color) => {
 	const dayColorsArray = generateColorsDayMode(color, 72);
 	const nightColorsArray = generateColorsNightMode(color, 72);
@@ -167,6 +171,7 @@ export const generateColors = (color) => {
 	const offset = array.splice(0, 12);
 	return [...array, ...offset];
 };
+
 export const generateColorObject = (colorArray) => {
 	const timestamps = generateTimestamps(5);
 	return timestamps.map((element, index) => {
