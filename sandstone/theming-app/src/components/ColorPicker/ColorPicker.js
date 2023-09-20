@@ -91,11 +91,8 @@ const PopupContent = ({color, colorHandler, css}) => {
 
 PopupContent.propTypes = {
 	color: PropTypes.string,
-
 	colorHandler: PropTypes.func,
-
 	css: PropTypes.object,
-
 	presetColors: PropTypes.array
 };
 
@@ -106,17 +103,11 @@ const ColorPickerBase = kind({
 
 	propTypes: {
 		color: PropTypes.string,
-
 		colorHandler: PropTypes.func,
-
 		css: PropTypes.object,
-
 		disabled: PropTypes.bool,
-
 		onTogglePopup: PropTypes.func,
-
 		popupOpen: PropTypes.bool,
-
 		text: PropTypes.string
 	},
 
