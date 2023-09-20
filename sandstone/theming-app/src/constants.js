@@ -2,7 +2,7 @@ import {createContext} from "react";
 
 export const presets = {
 	defaultTheme: "Default Theme",
-	blueTheme1: "Light blue Theme",
+	blueTheme1: "Light Blue Theme",
 	blueTheme2: "Blue Theme",
 	greenTheme1: "Light Green Theme",
 	greenTheme2: "Green Theme",

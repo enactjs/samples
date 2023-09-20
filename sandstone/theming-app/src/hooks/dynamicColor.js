@@ -18,6 +18,7 @@ const useLinearSkinColor = () => {
 	const [linearPopupBackgroundColor, setLinearPopupBackgroundColor] = useLinearColor(popupBackgroundColor);
 	const [linearSubTextColor, setLinearSubTextColor] = useLinearColor(subtitleTextColor);
 	const [linearTextColor, setLinearTextColor] = useLinearColor(textColor);
+
 	useEffect(() => {
 		let changeColor = setInterval(() => {
 			const index = getIndex();
@@ -60,6 +61,7 @@ const useLinearSkinColor = () => {
 			clearInterval(changeColor);
 		};
 	}, [fakeTimeEnabled, setLinearBackgroundColor, setLinearComponentBackgroundColor, setLinearFocusBackgroundColor, setLinearPopupBackgroundColor, setLinearSubTextColor, setLinearTextColor, skinVariants]);
+
 	if (typeof document !== 'undefined') {
 		document.getElementById('custom-skin')?.remove();
 		const root = document.getElementById('root');
@@ -72,6 +74,7 @@ const useLinearSkinColor = () => {
 		}
 		root.appendChild(sheet);
 	}
+
 	return [skinVariants === 'on', linearSkinVariants];
 };
 

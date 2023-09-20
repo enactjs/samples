@@ -1,4 +1,5 @@
 import {hexToRGB} from './utils';
+
 export const generateStylesheet = (backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subTextColor, textColor, preset) => {
 	const fbgRGB = hexToRGB(focusBackgroundColor).join(', ');
 	const pbgRGB = hexToRGB(popupBackgroundColor).join(', ');
