@@ -8,7 +8,7 @@ This app will help you choose a preset or customize the Sandstone UI components 
 
 #### Customize Themes
 
-The radio buttons on the first Panel allow you to choose a presets including Sandstone default skin.
+The radio buttons on the first Panel allow you to choose a preset including Sandstone default skin.
 
 On the second Panel you can interact with color fields by changing their value inside the input field, or by clicking the colored square which will open the basic color picker.
 
