@@ -26,7 +26,7 @@ const KittenBase = kind({
 	},
 
 	handlers: {
-		onSelect: (ev, {index, onSelect}) => {
+		handleClick: (ev, {index, onSelect}) => {
 			if (onSelect) {
 				onSelect({index});
 			}
@@ -39,11 +39,12 @@ const KittenBase = kind({
 		}
 	},
 
-	render: ({children, onSelect, size, url, ...rest}) => {
+	render: ({children, handleClick, size, url, ...rest}) => {
 		delete rest.index;
+		delete rest.onSelect;
 
 		return (
-			<SpottableDiv {...rest} onClick={onSelect}>
+			<SpottableDiv {...rest} onClick={handleClick}>
 				<img src={url} alt="Kitten" width={size} height={size} />
 				<div>{children}</div>
 			</SpottableDiv>
