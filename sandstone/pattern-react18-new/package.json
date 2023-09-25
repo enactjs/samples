@@ -30,11 +30,11 @@
     "dist/*"
   ],
   "dependencies": {
-    "@enact/core": "^4.7.2",
-    "@enact/i18n": "^4.7.2",
-    "@enact/sandstone": "^2.7.4",
-    "@enact/spotlight": "^4.7.2",
-    "@enact/ui": "^4.7.2",
+    "@enact/core": "^4.7.6",
+    "@enact/i18n": "^4.7.6",
+    "@enact/sandstone": "^2.7.10",
+    "@enact/spotlight": "^4.7.6",
+    "@enact/ui": "^4.7.6",
     "classnames": "^2.3.2",
     "ilib": "^14.18.0",
     "prop-types": "^15.8.1",
