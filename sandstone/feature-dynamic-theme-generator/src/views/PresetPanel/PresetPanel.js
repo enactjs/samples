@@ -1,8 +1,8 @@
-import {useCallback, useContext} from 'react';
 import RadioItem from '@enact/sandstone/RadioItem';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout} from '@enact/ui/Layout';
+import {useCallback, useContext} from 'react';
 
 import {setPreset} from '../../hooks/utils';
 import PreviewSection from '../../components/PreviewSection';
@@ -14,18 +14,21 @@ const PresetPanel = () => {
 	const {context, setContext} = useContext(AppContext);
 	const {activeTheme, dynamicColor, handleSkin} = context;
 
+	// Toggle using dynamic color mode which will modify the luminosity and saturation of your theme colors depending on the current time
 	const onClickDynamicColor = useCallback(() => {
 		const newContext = Object.assign({}, context);
 		newContext.dynamicColor = context.dynamicColor === 'on' ? 'off' : 'on';
 		setContext(newContext);
 	}, [context, setContext]);
 
+	// Toggle adjusting skin automatically, which means that the system will choose between Sandstone neutral and light modes according to the colors you have set
 	const onClickHandleSkin = useCallback(() => {
 		const newContext = Object.assign({}, context);
 		newContext.handleSkin = context.handleSkin === 'on' ? 'off' : 'on';
 		setContext(newContext);
 	}, [context, setContext]);
 
+	// Choose from an existing preset theme
 	const onClickHandlePreset = useCallback((ev) => {
 		const newContext = setPreset({preset: ev.currentTarget.id, context: context});
 		setContext(newContext);
