@@ -6,7 +6,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 
 This app will help you choose a preset theme and/or customize the Sandstone UI components for your application. 
 On the left side of the app, you can see all the presets and/or customizable color fields, while on the right side is the `Theme Preview` area. 
-Any value changes you make inside the color fields will be reflected in `Theme Preview`.
+Any value changes you make to the color pickers will be reflected in `Theme Preview`.
 
 #### Customize Themes
 
