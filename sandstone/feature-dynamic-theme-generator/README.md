@@ -1,4 +1,4 @@
-## Dynamic Theme Generator
+## Custom Colors Generator
 
 A sample Enact application that uses dynamic color change feature to style components and create a personalized theme.
 
