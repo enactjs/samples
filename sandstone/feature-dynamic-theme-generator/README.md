@@ -13,7 +13,7 @@ Any value changes you make to the color pickers will be reflected in `Theme Prev
 The radio buttons on the first Panel allow you to choose a preset, including Sandstone default theme. 
 You can also choose to activate dynamic color mode which will modify the luminosity and saturation of your theme colors depending on the current time. 
 In addition to this, you can opt to adjust skin automatically, which means that the system will choose between Sandstone neutral and light modes according to the colors you have set.
-On the second Panel you can interact with color fields by clicking the colored circle which will open the basic color picker.
+On the second Panel you can interact with colors by clicking the colored circle which will open the basic color picker.
 
 #### Reset Theme
 
