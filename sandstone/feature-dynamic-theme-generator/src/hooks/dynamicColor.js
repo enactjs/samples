@@ -20,16 +20,22 @@ const useLinearSkinColor = () => {
 	const [linearTextColor, setLinearTextColor] = useLinearColor(textColor);
 
 	useEffect(() => {
+		// Change color luminosity and saturation at a given interval (0.5s if fakeTime is enabled, 30s if it is disabled)
 		let changeColor = setInterval(() => {
+			// Get index depending on timestamp
 			const index = getIndex();
+
 			if (!fakeTimeEnabled) {
 				if (skinVariants === 'on') {
+					// Set skin variant based on timestamp
 					if (index >= '06:00' && index < '18:00') {
 						setLinearSkinVariants('neutral');
 					} else {
 						setLinearSkinVariants('light');
 					}
 				}
+
+				// Set colors from the generated colors array at a specific index depending on timestamp
 				setLinearBackgroundColor(index);
 				setLinearComponentBackgroundColor(index);
 				setLinearFocusBackgroundColor(index);
@@ -38,12 +44,15 @@ const useLinearSkinColor = () => {
 				setLinearTextColor(index);
 			} else {
 				if (skinVariants === 'on') {
+					// Set skin variant based on timestamp
 					if (72 <= fakeIndex && fakeIndex <= 215) {
 						setLinearSkinVariants('neutral');
 					} else {
 						setLinearSkinVariants('light');
 					}
 				}
+
+				// Set colors from the generated colors array at a specific index depending on timestamp
 				setLinearBackgroundColor(timestamps[fakeIndex]);
 				setLinearComponentBackgroundColor(timestamps[fakeIndex]);
 				setLinearFocusBackgroundColor(timestamps[fakeIndex]);
@@ -62,6 +71,7 @@ const useLinearSkinColor = () => {
 		};
 	}, [fakeTimeEnabled, setLinearBackgroundColor, setLinearComponentBackgroundColor, setLinearFocusBackgroundColor, setLinearPopupBackgroundColor, setLinearSubTextColor, setLinearTextColor, skinVariants]);
 
+	// Appends a stylesheet containing the generated colors
 	if (typeof document !== 'undefined') {
 		document.getElementById('custom-skin')?.remove();
 		const root = document.getElementById('root');

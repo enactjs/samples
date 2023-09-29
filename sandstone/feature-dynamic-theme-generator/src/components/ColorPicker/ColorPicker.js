@@ -1,3 +1,20 @@
+/**
+ * A Sandstone component that allows the user to choose a color.
+ *
+ * @example
+ * <ColorPicker
+ *	 color={'#FF00FF'}
+ *	 colorHandler={setColor}
+ *	 text={'Color Picker'}
+ * />
+ *
+ * @module sandstone/ColorPicker
+ * @exports ColorPicker
+ * @exports ColorPickerBase
+ * @exports ColorPickerDecorator
+ * @private
+ */
+
 import kind from '@enact/core/kind';
 import BodyText from '@enact/sandstone/BodyText';
 import Button, {ButtonBase} from '@enact/sandstone/Button';
@@ -19,6 +36,14 @@ import componentCss from './ColorPicker.module.less';
 
 const SpottableButton = Spottable(ButtonBase);
 
+/**
+ * A component that contains the content for the {@link sandstone/ColorPicker|ColorPicker} popup.
+ *
+ * @class PopupContent
+ * @memberof sandstone/ColorPicker
+ * @ui
+ * @private
+ */
 const PopupContent = ({color, colorHandler, css}) => {
 	const [hue, setHue] = useState(0);
 	const [saturation, setSaturation] = useState(0);
@@ -58,8 +83,8 @@ const PopupContent = ({color, colorHandler, css}) => {
 						max={356}
 						min={0}
 						onBlur={onSliderValueChange}
-						onClick={onSliderValueChange}
 						onChange={changeHue}
+						onClick={onSliderValueChange}
 						value={hue}
 					/>
 					<BodyText className={css.colorSliderText} css={css}>Saturation {saturation}%</BodyText>
@@ -68,8 +93,8 @@ const PopupContent = ({color, colorHandler, css}) => {
 						max={100}
 						min={0}
 						onBlur={onSliderValueChange}
-						onClick={onSliderValueChange}
 						onChange={changeSaturation}
+						onClick={onSliderValueChange}
 						value={saturation}
 					/>
 					<BodyText className={css.colorSliderText} css={css}>Lightness {lightness}%</BodyText>
@@ -78,8 +103,8 @@ const PopupContent = ({color, colorHandler, css}) => {
 						max={100}
 						min={0}
 						onBlur={onSliderValueChange}
-						onClick={onSliderValueChange}
 						onChange={changeLightness}
+						onClick={onSliderValueChange}
 						value={lightness}
 					/>
 				</Column>
@@ -90,24 +115,128 @@ const PopupContent = ({color, colorHandler, css}) => {
 };
 
 PopupContent.propTypes = {
+	/**
+	 * Indicates the color.
+	 *
+	 * @type {String}
+	 * @private
+	 */
 	color: PropTypes.string,
+
+	/**
+	 * Called when color is modified.
+	 *
+	 * @type {Function}
+	 * @private
+	 */
 	colorHandler: PropTypes.func,
+
+	/**
+	 * Customizes the component by mapping the supplied collection of CSS class names to the
+	 * corresponding internal elements and states of this component.
+	 *
+	 * The following classes are supported:
+	 *
+	 * `colorPicker` - The root class name
+	 * `coloredDiv`  - A class name used for a single div
+	 *
+	 * @type {Object}
+	 * @private
+	 */
 	css: PropTypes.object,
+
+	/**
+	 * Contains an array with a couple of possible preset colors.
+	 *
+	 * @type {Array}
+	 * @private
+	 */
 	presetColors: PropTypes.array
 };
 
+/**
+ * The color picker base component which sets-up the component's structure.
+ *
+ * This component is most often not used directly but may be composed within another component as it
+ * is within {@link sandstone/ColorPicker|ColorPicker}.
+ *
+ * @class ColorPickerBase
+ * @memberof sandstone/ColorPicker
+ * @ui
+ * @private
+ */
 const ColorPickerBase = kind({
 	name: 'ColorPicker',
 
 	functional: true,
 
 	propTypes: {
+		/**
+		 * Indicates the color.
+		 *
+		 * @type {String}
+		 * @private
+		 */
 		color: PropTypes.string,
+
+		/**
+		 * Called when color is modified.
+		 *
+		 * @type {Function}
+		 * @private
+		 */
 		colorHandler: PropTypes.func,
+
+		/**
+		 * Customizes the component by mapping the supplied collection of CSS class names to the
+		 * corresponding internal elements and states of this component.
+		 *
+		 * The following classes are supported:
+		 *
+		 * `colorPicker` - The root class name
+		 * `colorPopup`  - A class name used for the popup
+		 *
+		 * @type {Object}
+		 * @private
+		 */
 		css: PropTypes.object,
+
+		/**
+		 * Applies the `disabled` class.
+		 *
+		 * When `true`, the color picker is shown as disabled.
+		 *
+		 * @type {Boolean}
+		 * @default false
+		 * @public
+		 */
 		disabled: PropTypes.bool,
+
+		/**
+		 * Called to open or close the color picker.
+		 *
+		 * @type {Function}
+		 * @public
+		 */
 		onTogglePopup: PropTypes.func,
+
+		/**
+		 * Indicates if the color picker is open.
+		 *
+		 * When `true`, contextual popup opens.
+		 *
+		 * @type {Boolean}
+		 * @default false
+		 * @private
+		 */
 		popupOpen: PropTypes.bool,
+
+		/**
+		 * Contains the text that shows next to the color picker.
+		 *
+		 * @type {String}
+		 * @public
+		 */
 		text: PropTypes.string
 	},
 
@@ -175,11 +304,30 @@ const ColorPickerBase = kind({
 	}
 });
 
+/**
+ * Applies Sandstone specific behaviors to {@link sandstone/ColorPicker.ColorPickerBase|ColorPicker} components.
+ *
+ * @hoc
+ * @memberof sandstone/ColorPicker
+ * @mixes sandstone/Skinnable.Skinnable
+ * @mixes ui/Toggleable.Toggleable
+ * @private
+ */
 const ColorPickerDecorator = compose(
 	Skinnable,
 	Toggleable({prop: 'popupOpen', toggle: 'onTogglePopup'})
 );
 
+/**
+ * A color picker component, ready to use in Sandstone applications.
+ *
+ * @class ColorPicker
+ * @memberof sandstone/ColorPicker
+ * @extends sandstone/ColorPicker.ColorPickerBase
+ * @mixes sandstone/ColorPicker.ColorPickerDecorator
+ * @ui
+ * @private
+ */
 const ColorPicker = ColorPickerDecorator(ColorPickerBase);
 
 export default ColorPicker;

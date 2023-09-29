@@ -11,15 +11,14 @@ import css from './MainView.module.less';
 
 const MainView = (props) => {
 	const [applySkin, skin] = useLinearSkinColor();
-
-	const [panelIndex, setState] = useState(0);
+	const [panelIndex, setPanelIndex] = useState(0);
 
 	const forward = useCallback(() => {
-		setState(panelIndex + 1);
+		setPanelIndex(panelIndex + 1);
 	}, [panelIndex]);
 
 	const backward = useCallback(() => {
-		setState(panelIndex - 1);
+		setPanelIndex(panelIndex - 1);
 	}, [panelIndex]);
 
 	return (

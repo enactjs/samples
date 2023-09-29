@@ -1,11 +1,13 @@
 import {hexToRGB} from './utils';
 
+// Function that returns a Sandstone stylesheet based on 6 colors and a preset
 export const generateStylesheet = (backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subTextColor, textColor, preset) => {
 	const fbgRGB = hexToRGB(focusBackgroundColor).join(', ');
 	const pbgRGB = hexToRGB(popupBackgroundColor).join(', ');
 	const stRGB = hexToRGB(subTextColor).join(', ');
 	const tRGB = hexToRGB(textColor).join(', ');
-	// colors
+
+	// This switch will return a different color combination based on preset
 	switch (preset) {
 		case 'blueTheme1':
 			return `.sandstone-theme {

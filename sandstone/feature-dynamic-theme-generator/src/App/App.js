@@ -1,5 +1,5 @@
-import {useState} from 'react';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import {useState} from 'react';
 
 import MainView from '../views/MainView';
 import screenTypes from '../../screenTypes.json';

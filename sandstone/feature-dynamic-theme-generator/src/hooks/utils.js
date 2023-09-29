@@ -152,6 +152,8 @@ const generateColorsNightMode = (baseColor, numColors) => {
 };
 
 export const generateTimestamps = (step) => {
+	// Generates an array of timestamps based on a specific step
+	// e.g. for (step = 5) => ['00:00', '00:05', '00:10', ..., '23:55']
 	const timestamps = [];
 	for (let hours = 0; hours < 24; hours++) {
 		for (let minutes = 0; minutes < 60; minutes += step) {
@@ -165,6 +167,7 @@ export const generateTimestamps = (step) => {
 };
 
 export const generateColors = (color) => {
+	// Returns an array of colors, containing 144 colors for day mode and 144 for night mode
 	const dayColorsArray = generateColorsDayMode(color, 72);
 	const nightColorsArray = generateColorsNightMode(color, 72);
 	const array = [...nightColorsArray.reverse(), ...dayColorsArray, ...dayColorsArray.reverse(), ...nightColorsArray.reverse()];
@@ -173,6 +176,8 @@ export const generateColors = (color) => {
 };
 
 export const generateColorObject = (colorArray) => {
+	// Returns an object with timestamps for keys and colors for values
+	// (e.g. "03:05": "#e6e6e6")
 	const timestamps = generateTimestamps(5);
 	return timestamps.map((element, index) => {
 		return {key: element, value: colorArray[index]};
@@ -183,6 +188,7 @@ export const generateColorObject = (colorArray) => {
 };
 
 export const getIndex = () => {
+	// Creates an index from a timestamp
 	let minute = parseInt(new Date().toTimeString().substring(0, 5).slice(3));
 	let hour = parseInt(new Date().toTimeString().substring(0, 8));
 	let index;
@@ -208,6 +214,7 @@ export const getIndex = () => {
 };
 
 export const hexToRGB = (hex) => {
+	// Converts a HEX color into an RGB one
 	let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 	return result ? [
 		parseInt(result[1], 16),
@@ -217,6 +224,7 @@ export const hexToRGB = (hex) => {
 };
 
 export const setPreset = ({preset, context}) => {
+	// Changes the preset and default colors from context
 	const newContext = Object.assign({}, context);
 	newContext.activeTheme = preset;
 
