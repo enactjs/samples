@@ -1,3 +1,19 @@
+import LS2Request from '@enact/webos/LS2Request';
+export const changeSettings = (params) => {
+	return new Promise((resolve) => {
+		new LS2Request().send({
+			service: 'luna://com.webos.service.settings/',
+			method: 'setSystemSettings',
+			parameters: params,
+			onSuccess: (res) => {
+				// eslint-disable-next-line no-console
+				console.log('setSystemSettings onComplete', params);
+				resolve(res);
+			}
+		});
+	});
+};
+
 export const hexToHSL = (hex) => {
 	// Convert hex to RGB first
 	let r = 0, g = 0, b = 0;

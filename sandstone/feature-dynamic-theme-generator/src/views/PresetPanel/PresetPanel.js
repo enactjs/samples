@@ -4,7 +4,7 @@ import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout} from '@enact/ui/Layout';
 import {useCallback, useContext} from 'react';
 
-import {setPreset} from '../../hooks/utils';
+import {changeSettings, setPreset} from '../../hooks/utils';
 import PreviewSection from '../../components/PreviewSection';
 import {AppContext, presets} from '../../constants';
 
@@ -19,6 +19,16 @@ const PresetPanel = () => {
 		const newContext = Object.assign({}, context);
 		newContext.dynamicColor = context.dynamicColor === 'on' ? 'off' : 'on';
 		setContext(newContext);
+
+		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+			changeSettings({
+				category: 'customUi',
+				settings: {
+					theme: JSON.stringify(newContext)
+				}
+			});
+		}
+
 	}, [context, setContext]);
 
 	// Toggle adjusting skin automatically, which means that the system will choose between Sandstone neutral and light modes according to the colors you have set
@@ -26,12 +36,30 @@ const PresetPanel = () => {
 		const newContext = Object.assign({}, context);
 		newContext.handleSkin = context.handleSkin === 'on' ? 'off' : 'on';
 		setContext(newContext);
+
+		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+			changeSettings({
+				category: 'customUi',
+				settings: {
+					theme: JSON.stringify(newContext)
+				}
+			});
+		}
 	}, [context, setContext]);
 
 	// Choose from an existing preset theme
 	const onClickHandlePreset = useCallback((ev) => {
 		const newContext = setPreset({preset: ev.currentTarget.id, context: context});
 		setContext(newContext);
+
+		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+			changeSettings({
+				category: 'customUi',
+				settings: {
+					theme: JSON.stringify(newContext)
+				}
+			});
+		}
 	}, [context, setContext]);
 
 	return (
