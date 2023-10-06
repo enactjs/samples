@@ -1,0 +1,71 @@
+.smoothAnimation {
+  min-width: 30%;
+  position: relative;
+  transition: min-width 2s;
+
+  @starting-style {
+    .smoothAnimation {
+      min-width: 80%;
+    }
+  }
+
+  .closeButton {
+    transition: top 2s;
+    position: absolute;
+    right: 0;
+    top: 12px;
+
+    @starting-style {
+      .closeButton {
+        top: 100px;
+      }
+    }
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+    //background-color: blue;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    //opacity: 0;
+    display: none;
+    content-visibility: hidden;
+  }
+
+  100% {
+    //opacity: 1;
+    display: block;
+    content-visibility: visible;
+  }
+}
+
+//:has(.smoothAnimation) {
+//  &.shown {
+//  transition-behavior: allow-discrete;
+//
+//  @starting-style {
+//    transform: translateY(20px);
+//    opacity: 0;
+//  }
+//
+//  /*   1. OPEN STATE   */
+//  /*  state when popover is open, BOTH:
+//      what we're transitioning *in* to
+//      and transitioning *out* from */
+//  transform: translateY(0);
+//  opacity: 1;
+//}
+//
+///*   2. AFTER-OPEN-IS-CLOSED STATE   */
+///*  initial state for what we're animating *out* to ,
+//    in this case: goes from center to (y - 50px) higher */
+//  transform: translateY(-50px);
+//  opacity: 0;
+//
+///*  enumerate transitioning properties, including display */
+//  transition: transform 0.5s, opacity 0.5s, display 0.5s allow-discrete;
+//}

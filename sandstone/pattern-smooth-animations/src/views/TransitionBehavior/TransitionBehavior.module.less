@@ -1,0 +1,32 @@
+.discrete,
+.nonDiscrete {
+  font-size: 64px;
+  transition: all 3s ease;
+  color: blue;
+  width: 100%;
+  text-align: left;
+  display: block;
+  //animation: disappear 4s forwards;
+
+  &:hover {
+    display: none;
+  }
+
+  @starting-style {
+    .discrete,
+    .nonDiscrete {
+      text-align: right;
+      color: deeppink;
+    }
+  }
+}
+
+.discrete {
+  transition-behavior: allow-discrete;
+}
+
+@keyframes disappear {
+  100% {
+    display: none;
+  }
+}
