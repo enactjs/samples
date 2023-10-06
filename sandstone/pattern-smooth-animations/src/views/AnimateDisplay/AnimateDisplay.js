@@ -9,7 +9,7 @@ import PopupSmoothAnimation from '../../components/PopupSmoothAnimation';
 import appCss from '../../App/App.module.less';
 // import componentCss from './AnimateDisplay.module.less';
 
-const AnimateDisplay = ({css, ...rest}) => {
+const AnimateDisplay = ({...rest}) => {
 	const [openNoAnimation, setOpenNoAnimation] = useState(false);
 	const [openSmoothAnimation, setOpenSmoothAnimation] = useState(false);
 
@@ -24,7 +24,7 @@ const AnimateDisplay = ({css, ...rest}) => {
 	return (
 		<Layout {...rest} orientation="vertical">
 			<BodyText className={appCss.title}>
-				Starting from Chrome 116, we have the ability to animate 'display' and 'content-visibility' properties on a keyframe timeline.
+				Starting from Chrome 116, we have the ability to animate &apos;display&apos; and &apos;content-visibility&apos; properties on a keyframe timeline.
 			</BodyText>
 			<Row>
 				<Cell>

@@ -8,7 +8,7 @@ const TransitionBehavior = ({css, ...rest}) => {
 	return (
 		<Layout {...rest} orientation="vertical">
 			<BodyText className={appCss.title}>
-				Starting from Chrome 117, we can enable transitions of discrete properties by using 'transition-behavior' property with the 'allow-discrete' keyword.
+				Starting from Chrome 117, we can enable transitions of discrete properties by using &apos;transition-behavior&apos; property with the &apos;allow-discrete&apos; keyword.
 			</BodyText>
 			<Row>
 				<BodyText className={componentCss.discrete} css={css}>This text changes color at render in 3s and disappears after 4s</BodyText>
