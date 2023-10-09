@@ -18,6 +18,6 @@ const StartingStyleRule = ({...rest}) => {
 			</Row>
 		</Layout>
 	);
-}
+};
 
 export default StartingStyleRule;

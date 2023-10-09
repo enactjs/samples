@@ -4,7 +4,7 @@ import {Cell, Layout, Row} from '@enact/ui/Layout';
 import appCss from '../../App/App.module.less';
 import componentCss from './TransitionBehavior.module.less';
 
-const TransitionBehavior = ({css, ...rest}) => {
+const TransitionBehavior = ({...rest}) => {
 	return (
 		<Layout {...rest} orientation="vertical">
 			<BodyText className={appCss.title}>
@@ -15,7 +15,7 @@ const TransitionBehavior = ({css, ...rest}) => {
 					<BodyText>&apos;transition-behavior: allow-discrete;&apos;</BodyText>
 				</Cell>
 				<Cell>
-					<BodyText className={componentCss.discrete} css={css}>This text changes background-color and position at render in 3s</BodyText>
+					<BodyText className={componentCss.discrete}>This text changes background-color and position at render in 3s</BodyText>
 				</Cell>
 			</Row>
 			<Row>
@@ -23,11 +23,11 @@ const TransitionBehavior = ({css, ...rest}) => {
 					<BodyText>&apos;transition-behavior: normal;&apos;</BodyText>
 				</Cell>
 				<Cell>
-					<BodyText className={componentCss.nonDiscrete} css={css}>This text changes background-color at render in 3s</BodyText>
+					<BodyText className={componentCss.nonDiscrete}>This text changes background-color at render in 3s</BodyText>
 				</Cell>
 			</Row>
 		</Layout>
 	);
-}
+};
 
 export default TransitionBehavior;

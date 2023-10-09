@@ -29,6 +29,6 @@ const AnimateDisplay = ({...rest}) => {
 			</Row>
 		</Layout>
 	);
-}
+};
 
 export default AnimateDisplay;

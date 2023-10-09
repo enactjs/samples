@@ -33,6 +33,6 @@ const OverlayProperty = ({...rest}) => {
 			</Row>
 		</Layout>
 	);
-}
+};
 
 export default OverlayProperty;
