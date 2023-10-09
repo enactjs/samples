@@ -1,3 +1,13 @@
-.startingStyleRule {
-  // styles go here
+.coloredDiv {
+    height: 300px;
+    width: 100%;
+    transition: margin-left 0.6s ease, background-color 3s ease;
+    background-color: transparent;
+
+    @starting-style {
+        .coloredDiv {
+            background-color: deeppink;
+            margin-left: -100%;
+        }
+    }
 }

@@ -1,3 +1,41 @@
-.overlayProperty {
-  // styles go here
+/*   IS-OPEN STATE   */
+::backdrop{
+    opacity: 0;
+    transition: opacity 1.5s, display 1.5s allow-discrete;
+}
+
+.dialog[open] {
+    translate: 0 0;
+}
+
+[open]::backdrop {
+    opacity: 1;
+}
+
+/*   EXIT STATE   */
+.dialog {
+    text-align: center;
+    border-radius: 6px;
+    transition: translate 1.5s ease-out, overlay 1.5s ease-out, display 1.5s ease-out allow-discrete;
+
+    translate: 0 100vh;
+
+    /*   0. BEFORE-OPEN STATE   */
+    @starting-style {
+        .dialog[open] {
+            translate: 0 100vh;
+        }
+
+        [open]::backdrop {
+            opacity: 0;
+        }
+    }
+}
+
+.overlay, .overlay::backdrop {
+    transition: opacity 1.5s, display 1.5s allow-discrete, overlay 1.5s allow-discrete;
+}
+
+::backdrop {
+    background-color: rgba(0,0,0,.6);
 }

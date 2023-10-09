@@ -1,32 +1,25 @@
 .discrete,
 .nonDiscrete {
-  font-size: 64px;
-  transition: all 3s ease;
-  color: blue;
-  width: 100%;
-  text-align: left;
-  display: block;
-  //animation: disappear 4s forwards;
+    font-size: 64px;
+    transition: all 3s ease;
+    background-color: blue;
+    width: 100%;
+    text-align: left;
+    display: block;
 
-  &:hover {
-    display: none;
-  }
-
-  @starting-style {
-    .discrete,
-    .nonDiscrete {
-      text-align: right;
-      color: deeppink;
+    @starting-style {
+        .discrete,
+        .nonDiscrete {
+            text-align: right;
+            background-color: red;
+        }
     }
-  }
 }
 
 .discrete {
-  transition-behavior: allow-discrete;
+    transition-behavior: allow-discrete;
 }
 
-@keyframes disappear {
-  100% {
-    display: none;
-  }
+.nonDiscrete {
+    transition-behavior: normal;
 }
