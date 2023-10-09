@@ -3,7 +3,7 @@ import Popup from '@enact/sandstone/Popup';
 
 import componentCss from './PopupSmoothAnimation.module.less';
 
-const PopupSmoothAnimation = ({css, openSmoothAnimation, toggleSmoothAnimation, ...rest}) => {
+const PopupSmoothAnimation = (css, openSmoothAnimation, toggleSmoothAnimation, {...rest}) => {
 	return (
 		<Popup
 			{...rest}
@@ -14,7 +14,7 @@ const PopupSmoothAnimation = ({css, openSmoothAnimation, toggleSmoothAnimation, 
 			position="right"
 		>
 			I have smooth animation
-			<Button className={componentCss.closeButton} icon="closex" onClick={toggleSmoothAnimation} size="small"/>
+			<Button className={componentCss.closeButton} icon="closex" onClick={toggleSmoothAnimation} size="small" />
 		</Popup>
 	);
 };
