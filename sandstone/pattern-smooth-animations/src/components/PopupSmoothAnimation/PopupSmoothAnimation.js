@@ -1,9 +1,10 @@
-import {useCallback, useState} from 'react';
 import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import Checkbox from '@enact/sandstone/Checkbox';
 import Popup from '@enact/sandstone/Popup';
 import {Cell, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from 'prop-types';
+import {useCallback, useState} from 'react';
 
 import componentCss from './PopupSmoothAnimation.module.less';
 
@@ -46,6 +47,12 @@ const PopupSmoothAnimation = ({css, openSmoothAnimation, toggleSmoothAnimation, 
 			</Layout>
 		</Popup>
 	);
+};
+
+PopupSmoothAnimation.propTypes = {
+	css: PropTypes.object,
+	openSmoothAnimation: PropTypes.bool,
+	toggleSmoothAnimation: PropTypes.func
 };
 
 export default PopupSmoothAnimation;
