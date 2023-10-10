@@ -5,6 +5,7 @@ import {useCallback, useState} from 'react';
 
 import AnimateDisplay from '../views/AnimateDisplay';
 import OverlayProperty from '../views/OverlayProperty';
+import SandstonePopup from '../views/SandstonePopup';
 import StartingStyleRule from '../views/StartingStyleRule';
 import TransitionBehavior from '../views/TransitionBehavior';
 
@@ -51,8 +52,16 @@ const App = (props) => {
 				<StartingStyleRule />
 			</Panel>
 			<Panel>
-				<Header subtitle="Overlay property" title="Smooth extry/exit Animations" />
+				<Header subtitle="Overlay property" title="Smooth extry/exit Animations">
+					<slotAfter>
+						<IconItem icon="arrowsmallright" label="Next" onClick={forward} />
+					</slotAfter>
+				</Header>
 				<OverlayProperty />
+			</Panel>
+			<Panel>
+				<Header subtitle="New CSS features on Sandstone Popup" title="Smooth extry/exit Animations" />
+				<SandstonePopup />
 			</Panel>
 		</Panels>
 	);
