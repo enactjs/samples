@@ -1,7 +1,7 @@
 /*   IS-OPEN STATE   */
 ::backdrop{
     opacity: 0;
-    transition: opacity 1.5s, display 1.5s allow-discrete;
+    transition: opacity 1s, display 1s allow-discrete;
 }
 
 .dialog[open] {
@@ -16,7 +16,8 @@
 .dialog {
     text-align: center;
     border-radius: 6px;
-    transition: translate 1.5s ease-out, overlay 1.5s ease-out, display 1.5s ease-out allow-discrete;
+    transition: translate 1s ease-out, overlay 1s ease-out, display 1s ease-out;
+    transition-behavior: allow-discrete;
 
     translate: 0 100vh;
 
@@ -33,7 +34,8 @@
 }
 
 .overlay, .overlay::backdrop {
-    transition: opacity 1.5s, display 1.5s allow-discrete, overlay 1.5s allow-discrete;
+    transition: opacity 1s, display 1s, overlay 1s;
+    transition-behavior: allow-discrete;
 }
 
 ::backdrop {
