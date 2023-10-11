@@ -7,6 +7,8 @@ export const changeSettings = (params) => {
 			method: 'setSystemSettings',
 			parameters: params,
 			onSuccess: (res) => {
+				// eslint-disable-next-line no-console
+				console.log('setSystemSettings onSuccess', params);
 				resolve(res);
 			}
 		});
@@ -20,8 +22,6 @@ export const getSettings = (params) => {
 			method: 'getSystemSettings',
 			parameters: params,
 			onSuccess: (res) => {
-				// eslint-disable-next-line no-console
-				console.log('getSystemSettings onSuccess', res);
 				resolve(res);
 			}
 		});
