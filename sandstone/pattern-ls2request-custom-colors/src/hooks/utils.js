@@ -1,4 +1,5 @@
 import LS2Request from '@enact/webos/LS2Request';
+
 export const changeSettings = (params) => {
 	return new Promise((resolve) => {
 		new LS2Request().send({
@@ -6,13 +7,26 @@ export const changeSettings = (params) => {
 			method: 'setSystemSettings',
 			parameters: params,
 			onSuccess: (res) => {
-				// eslint-disable-next-line no-console
-				console.log('setSystemSettings onComplete', params);
 				resolve(res);
 			}
 		});
 	});
 };
+
+export const getSettings = (params) => {
+	return new Promise((resolve) => {
+		new LS2Request().send({
+			service: 'luna://com.webos.service.settings/',
+			method: 'getSystemSettings',
+			parameters: params,
+			onSuccess: (res) => {
+				// eslint-disable-next-line no-console
+				console.log('getSystemSettings onSuccess', res);
+				resolve(res);
+			}
+		});
+	});
+}
 
 export const hexToHSL = (hex) => {
 	// Convert hex to RGB first
