@@ -1,5 +1,6 @@
 import LS2Request from '@enact/webos/LS2Request';
 
+// set `theme` key when presets or colors are changed
 export const changeSettings = (params) => {
 	return new Promise((resolve) => {
 		new LS2Request().send({
@@ -15,6 +16,7 @@ export const changeSettings = (params) => {
 	});
 };
 
+// get `theme` key value
 export const getSettings = (params) => {
 	return new Promise((resolve) => {
 		new LS2Request().send({

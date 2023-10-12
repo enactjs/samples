@@ -35,7 +35,9 @@ const App = (props) => {
 	const [context, setContext] = useState(dynamicColorsContext);
 
 	useEffect(() => {
+		// check if app is running on webOS system
 		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+			// make a GET call to service settings to check the value of `theme` key
 			request.send({
 				service: 'luna://com.webos.service.settings/',
 				method: 'getSystemSettings',
@@ -44,9 +46,12 @@ const App = (props) => {
 					keys: ['theme']
 				},
 				onSuccess: (res) => {
+					// if `theme` key is populated, update the context with key value
 					if (res.settings.theme !== '' && res) {
 						const parsedKeyData = JSON.parse(res.settings.theme);
 						setContext({...parsedKeyData});
+					// if `theme` key is an empty string, update the context with a default value, then make a SET call to service settings and set
+					// `theme` key  with a default value
 					} else if (res.settings.theme === '') {
 						setContext(JSON.parse(defaultKeyThemeValue));
 						request.send({
