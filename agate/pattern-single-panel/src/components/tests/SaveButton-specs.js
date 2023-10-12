@@ -9,8 +9,9 @@ const FloatingLayerController = FloatingLayerDecorator('div');
 
 describe('SaveButton specs', () => {
 
-	test('should open Popup on Button click', function () {
+	test('should open Popup on Button click', async function () {
 		const message = 'Saved!';
+		const user = userEvent.setup();
 
 		render(
 			<FloatingLayerController>
@@ -20,7 +21,7 @@ describe('SaveButton specs', () => {
 
 		const button = screen.getByRole('button');
 
-		userEvent.click(button);
+		await user.click(button);
 
 		const actual = screen.getByText(message);
 

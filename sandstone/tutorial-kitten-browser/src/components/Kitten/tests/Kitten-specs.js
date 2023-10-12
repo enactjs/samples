@@ -15,15 +15,16 @@ describe('Kitten Specs', () => {
 		expect(actual).toBeInTheDocument();
 	});
 
-	test('should callback with index when clicked', function () {
+	test('should callback with index when clicked', async function () {
 		let index = 0;
 		const handleSelect = jest.fn();
+		const user = userEvent.setup();
 
 		render(<Kitten data-testid="kitten" index={0} onSelect={handleSelect} />);
 
 		const kitten = screen.getByTestId('kitten');
 
-		userEvent.click(kitten);
+		await user.click(kitten);
 
 		const expected = index;
 		const actual = handleSelect.mock.calls[0][0].index;
