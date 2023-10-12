@@ -3,7 +3,7 @@ import Button from '@enact/sandstone/Button';
 import Scroller from '@enact/sandstone/Scroller';
 import {Cell, Layout} from '@enact/ui/Layout';
 
-import {setPreset} from '../../hooks/utils';
+import {setPreset, changeSettings} from '../../hooks/utils';
 import ColorPicker from '../../components/ColorPicker';
 import PreviewSection from '../../components/PreviewSection';
 import {AppContext} from '../../constants';
@@ -18,6 +18,15 @@ const CustomizePanel = () => {
 		const newContext = Object.assign({}, context);
 		newContext[color] = newColor;
 		setContext(newContext);
+
+		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+			changeSettings({
+				category: 'customUi',
+				settings: {
+					theme: JSON.stringify(newContext)
+				}
+			});
+		}
 	}, [context, setContext]);
 
 	const handleBackgroundColor = useCallback((ev) => {

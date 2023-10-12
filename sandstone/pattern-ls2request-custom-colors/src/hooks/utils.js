@@ -1,3 +1,35 @@
+import LS2Request from '@enact/webos/LS2Request';
+
+// set `theme` key when presets or colors are changed
+export const changeSettings = (params) => {
+	return new Promise((resolve) => {
+		new LS2Request().send({
+			service: 'luna://com.webos.service.settings/',
+			method: 'setSystemSettings',
+			parameters: params,
+			onSuccess: (res) => {
+				// eslint-disable-next-line no-console
+				console.log('setSystemSettings onSuccess', params);
+				resolve(res);
+			}
+		});
+	});
+};
+
+// get `theme` key value
+export const getSettings = (params) => {
+	return new Promise((resolve) => {
+		new LS2Request().send({
+			service: 'luna://com.webos.service.settings/',
+			method: 'getSystemSettings',
+			parameters: params,
+			onSuccess: (res) => {
+				resolve(res);
+			}
+		});
+	});
+};
+
 export const hexToHSL = (hex) => {
 	// Convert hex to RGB first
 	let r = 0, g = 0, b = 0;
