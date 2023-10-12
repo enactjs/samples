@@ -28,7 +28,7 @@ export const getSettings = (params) => {
 			}
 		});
 	});
-}
+};
 
 export const hexToHSL = (hex) => {
 	// Convert hex to RGB first

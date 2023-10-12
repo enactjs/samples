@@ -29,7 +29,7 @@ const MainView = (props) => {
 				if (res.returnValue) setLoading(false);
 			});
 		}
-	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const forward = useCallback(() => {
 		setPanelIndex(panelIndex + 1);
@@ -40,7 +40,7 @@ const MainView = (props) => {
 	}, [panelIndex]);
 
 	if (loading) {
-		return <Spinner centered>Loading...</Spinner>
+		return (<Spinner centered>Loading...</Spinner>);
 	} else {
 		return (
 			<Panels
