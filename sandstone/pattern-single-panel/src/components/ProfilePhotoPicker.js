@@ -5,11 +5,11 @@ import Slider from '@enact/sandstone/Slider';
 import {Cell, Column} from '@enact/ui/Layout';
 import {useCallback, useState} from 'react';
 
-import car from '/assets/images/car.jpeg';
-import city from '/assets/images/city.jpeg';
-import mural from '/assets/images/mural.jpeg';
-import spaceShuttle from '/assets/images/space-shuttle.jpg';
-import violin from '/assets/images/violin.jpeg';
+import car from '../../assets/images/car.jpeg';
+import city from '../../assets/images/city.jpeg';
+import mural from '../../assets/images/mural.jpeg';
+import spaceShuttle from '../../assets/images/space-shuttle.jpg';
+import violin from '../../assets/images/violin.jpeg';
 
 import css from './ProfilePhotoPicker.module.less';
 
@@ -23,8 +23,12 @@ const imageURLs = [
 
 const imageNames = ['Vintage Car', 'City', 'Mural', 'Space Shuttle', 'Violin'];
 
+const convertedImageUrl = (url) => {
+	return url.split(/(?=assets)/g).at(-1);
+}
+
 const imageComponents = imageURLs.map(url => {
-	return (<Image src={url} key={url} />);
+	return (<Image src={convertedImageUrl(url)} key={convertedImageUrl(url)} />);
 });
 
 const ProfilePhotoPicker = (props) => {
@@ -42,7 +46,7 @@ const ProfilePhotoPicker = (props) => {
 				className={css.profilePhoto}
 				component={Image}
 				shrink
-				src={imageURLs[photoIndex]}
+				src={convertedImageUrl(imageURLs[photoIndex])}
 				style={{backgroundPosition: photoPosition + 'px'}}
 			/>
 			<Cell
