@@ -25,7 +25,7 @@ const imageNames = ['Vintage Car', 'City', 'Mural', 'Space Shuttle', 'Violin'];
 
 const convertedImageUrl = (url) => {
 	return url.split(/(?=assets)/g).at(-1);
-}
+};
 
 const imageComponents = imageURLs.map(url => {
 	return (<Image src={convertedImageUrl(url)} key={convertedImageUrl(url)} />);
