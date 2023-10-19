@@ -1,5 +1,5 @@
 import LS2Request from '@enact/webos/LS2Request';
-import {generateStylesheet} from "./generateStylesheet";
+import {generateStylesheet} from './generateStylesheet';
 
 // set `theme` key when presets or colors are changed
 export const changeSettings = (params) => {

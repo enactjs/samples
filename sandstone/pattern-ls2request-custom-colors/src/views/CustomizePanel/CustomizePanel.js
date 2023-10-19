@@ -4,12 +4,12 @@ import Scroller from '@enact/sandstone/Scroller';
 import {Cell, Layout} from '@enact/ui/Layout';
 
 import {setPreset, changeSettings} from '../../hooks/utils';
+import {generateStylesheet} from '../../hooks/generateStylesheet';
 import ColorPicker from '../../components/ColorPicker';
 import PreviewSection from '../../components/PreviewSection';
 import {AppContext} from '../../constants';
 
 import css from './CustomizePanel.module.less';
-import {generateStylesheet} from "../../hooks/generateStylesheet";
 
 const CustomizePanel = () => {
 	const {context, setContext} = useContext(AppContext);
