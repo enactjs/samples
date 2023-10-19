@@ -1,19 +1,19 @@
 import {createContext} from "react";
 
 export const presets = {
-	defaultTheme: "Default Theme",
-	blueTheme1: "Light Blue Theme",
-	blueTheme2: "Blue Theme",
-	greenTheme1: "Light Green Theme",
-	greenTheme2: "Green Theme",
-	purpleTheme1: "Light Purple Theme",
-	purpleTheme2: "Purple Theme",
-	redTheme1: "Light Red Theme",
-	redTheme2: "Red Theme"
+	defaultColorSet: "Default Color Set",
+	blueColorSet1: "Light Blue Color Set",
+	blueColorSet2: "Blue Color Set",
+	greenColorSet1: "Light Green Color Set",
+	greenColorSet2: "Green Color Set",
+	purpleColorSet1: "Light Purple Color Set",
+	purpleColorSet2: "Purple Color Set",
+	redColorSet1: "Light Red Color Set",
+	redColorSet2: "Red Color Set"
 };
 
-export const dynamicColorsContext = {
-	activeTheme: 'defaultTheme',
+export const customColorsContext = {
+	activeTheme: 'defaultColorSet',
 	dynamicColor: 'off',
 	handleSkin: 'off',
 	backgroundColor: '#000000',

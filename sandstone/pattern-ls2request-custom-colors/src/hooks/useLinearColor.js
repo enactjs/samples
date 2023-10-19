@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 
 import {generateColorObject, generateColors} from './utils';
 
@@ -11,9 +11,9 @@ export const useLinearColor = (color) => {
 	}, [color]);
 
 	// Change color with a different one from the generated array
-	const setNewColor = (index) => {
+	const setNewColor = useCallback((index) => {
 		setLinearColor(colors[index]);
-	};
+	}, [colors]);
 
 	// Return the current color and the setter function
 	return [linearColor, setNewColor];

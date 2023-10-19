@@ -9,6 +9,7 @@ import PreviewSection from '../../components/PreviewSection';
 import {AppContext} from '../../constants';
 
 import css from './CustomizePanel.module.less';
+import {generateStylesheet} from "../../hooks/generateStylesheet";
 
 const CustomizePanel = () => {
 	const {context, setContext} = useContext(AppContext);
@@ -17,6 +18,15 @@ const CustomizePanel = () => {
 	const onChangeColor = useCallback((color, newColor) => {
 		const newContext = Object.assign({}, context);
 		newContext[color] = newColor;
+		newContext.colors = generateStylesheet(
+			newContext.backgroundColor,
+			newContext.componentBackgroundColor,
+			newContext.focusBackgroundColor,
+			newContext.popupBackgroundColor,
+			newContext.subtitleTextColor,
+			newContext.textColor,
+			newContext.preset
+		);
 		setContext(newContext);
 
 		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {

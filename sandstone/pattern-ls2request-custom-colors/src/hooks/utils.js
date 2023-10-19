@@ -1,4 +1,5 @@
 import LS2Request from '@enact/webos/LS2Request';
+import {generateStylesheet} from "./generateStylesheet";
 
 // set `theme` key when presets or colors are changed
 export const changeSettings = (params) => {
@@ -261,7 +262,7 @@ export const setPreset = ({preset, context}) => {
 	newContext.activeTheme = preset;
 
 	switch (preset) {
-		case 'blueTheme2':
+		case 'blueColorSet2':
 			newContext.backgroundColor = '#181E3D';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -269,7 +270,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#ABAEB3';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'blueTheme1':
+		case 'blueColorSet1':
 			newContext.backgroundColor = '#272829';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -277,7 +278,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#ABAEB3';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'greenTheme2':
+		case 'greenColorSet2':
 			newContext.backgroundColor = '#102933';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -285,7 +286,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#ABAEB3';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'greenTheme1':
+		case 'greenColorSet1':
 			newContext.backgroundColor = '#272829';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -293,7 +294,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#ABAEB3';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'purpleTheme2':
+		case 'purpleColorSet2':
 			newContext.backgroundColor = '#2B1941';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -301,7 +302,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#848290';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'purpleTheme1':
+		case 'purpleColorSet1':
 			newContext.backgroundColor = '#272829';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -309,7 +310,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#ABAEB3';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'redTheme2':
+		case 'redColorSet2':
 			newContext.backgroundColor = '#3D1A1A';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -317,7 +318,7 @@ export const setPreset = ({preset, context}) => {
 			newContext.subtitleTextColor = '#807477';
 			newContext.textColor = '#E6E6E6';
 			break;
-		case 'redTheme1':
+		case 'redColorSet1':
 			newContext.backgroundColor = '#252424';
 			newContext.componentBackgroundColor = '#7D848C';
 			newContext.focusBackgroundColor = '#E6E6E6';
@@ -335,5 +336,14 @@ export const setPreset = ({preset, context}) => {
 			break;
 	}
 
+	newContext.colors = generateStylesheet(
+		newContext.backgroundColor,
+		newContext.componentBackgroundColor,
+		newContext.focusBackgroundColor,
+		newContext.popupBackgroundColor,
+		newContext.subtitleTextColor,
+		newContext.textColor,
+		preset
+	);
 	return newContext;
 };

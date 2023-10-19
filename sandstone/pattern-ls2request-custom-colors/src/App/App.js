@@ -6,13 +6,13 @@ import {generateStylesheet} from '../hooks/generateStylesheet';
 import MainView from '../views/MainView';
 import screenTypes from '../../screenTypes.json';
 
-import {AppContext, dynamicColorsContext} from '../constants';
+import {AppContext, customColorsContext} from '../constants';
 
 const request = new LS2Request();
 
 const defaultKeyThemeValue = JSON.stringify({
 	"version":"0.1",
-	"activeTheme":"defaultTheme",
+	"activeTheme":"defaultColorSet",
 	"dynamicColor":"off",
 	"handleSkin":"off",
 	"backgroundColor":"#000000",
@@ -32,7 +32,7 @@ const defaultKeyThemeValue = JSON.stringify({
 });
 
 const App = (props) => {
-	const [context, setContext] = useState(dynamicColorsContext);
+	const [context, setContext] = useState(customColorsContext);
 
 	useEffect(() => {
 		// check if app is running on webOS system

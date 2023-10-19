@@ -9,7 +9,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 
 	// This switch will return a different color combination based on preset
 	switch (preset) {
-		case 'blueTheme1':
+		case 'blueColorSet1':
 			return `.sandstone-theme {
 			 	/* Skin Name: Blue 1; */
 				--sand-bg-color: ${backgroundColor};
@@ -67,7 +67,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'blueTheme2':
+		case 'blueColorSet2':
 			return `.sandstone-theme {
 				/* Skin Name: Blue 2; */
 				--sand-bg-color: ${backgroundColor};
@@ -125,7 +125,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'greenTheme1':
+		case 'greenColorSet1':
 			return `.sandstone-theme {
 				/* Skin Name: Green 1; */
 				--sand-bg-color: ${backgroundColor};
@@ -183,7 +183,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'greenTheme2':
+		case 'greenColorSet2':
 			return `.sandstone-theme {
 				/* Skin Name: Green 2; */
 				--sand-bg-color: ${backgroundColor};
@@ -241,7 +241,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'purpleTheme1':
+		case 'purpleColorSet1':
 			return `.sandstone-theme {
 				/* Skin Name: Purple 1; */
 				--sand-bg-color: ${backgroundColor};
@@ -299,7 +299,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'purpleTheme2':
+		case 'purpleColorSet2':
 			return `.sandstone-theme {
 				/* Skin Name: Purple 2; */
 				--sand-bg-color: ${backgroundColor};
@@ -357,7 +357,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'redTheme1':
+		case 'redColorSet1':
 			return `.sandstone-theme {
 				/* Skin Name: Red 1; */
 				--sand-bg-color: ${backgroundColor};
@@ -415,7 +415,7 @@ export const generateStylesheet = (backgroundColor, componentBackgroundColor, fo
 				--sand-alert-overlay-formcheckboxitem-focus-text-color: #575E66;
 				--sand-alert-overlay-item-disabled-focus-bg-color: #989CA2;
 			}`;
-		case 'redTheme2':
+		case 'redColorSet2':
 			return `.sandstone-theme {
 				/* Skin Name: Red 2; */
 				--sand-bg-color: ${backgroundColor};

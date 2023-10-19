@@ -7,7 +7,7 @@ import {useCallback, useEffect, useState} from 'react';
 import CustomizePanel from '../CustomizePanel';
 import PresetPanel from '../PresetPanel';
 
-import useLinearSkinColor from '../../hooks';
+import useLinearSkinColor from '../../hooks/useDynamicColor';
 import {getSettings} from '../../hooks/utils';
 
 import css from './MainView.module.less';
