@@ -14,19 +14,23 @@ const PresetPanel = () => {
 	const {context, setContext} = useContext(AppContext);
 	const {activeTheme, dynamicColor, handleSkin} = context;
 
+	const updateThemeKey = (newContext) => {
+		return changeSettings({
+			category: 'customUi',
+			settings: {
+				theme: JSON.stringify(newContext)
+			}
+		});
+	}
+
 	// Toggle using dynamic color mode which will modify the luminosity and saturation of your theme colors depending on the current time
 	const onClickDynamicColor = useCallback(() => {
 		const newContext = Object.assign({}, context);
 		newContext.dynamicColor = context.dynamicColor === 'on' ? 'off' : 'on';
 		setContext(newContext);
 
-		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
-			changeSettings({
-				category: 'customUi',
-				settings: {
-					theme: JSON.stringify(newContext)
-				}
-			});
+		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
+			updateThemeKey(newContext);
 		}
 
 	}, [context, setContext]);
@@ -37,13 +41,8 @@ const PresetPanel = () => {
 		newContext.handleSkin = context.handleSkin === 'on' ? 'off' : 'on';
 		setContext(newContext);
 
-		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
-			changeSettings({
-				category: 'customUi',
-				settings: {
-					theme: JSON.stringify(newContext)
-				}
-			});
+		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
+			updateThemeKey(newContext);
 		}
 	}, [context, setContext]);
 
@@ -52,13 +51,8 @@ const PresetPanel = () => {
 		const newContext = setPreset({preset: ev.currentTarget.id, context: context});
 		setContext(newContext);
 
-		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
-			changeSettings({
-				category: 'customUi',
-				settings: {
-					theme: JSON.stringify(newContext)
-				}
-			});
+		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
+			updateThemeKey(newContext);
 		}
 	}, [context, setContext]);
 

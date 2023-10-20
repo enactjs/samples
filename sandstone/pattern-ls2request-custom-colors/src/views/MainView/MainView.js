@@ -1,35 +1,18 @@
 import IconItem from '@enact/sandstone/IconItem';
 import {Header, Panel, Panels} from '@enact/sandstone/Panels';
 import Spinner from '@enact/sandstone/Spinner';
-import {platform} from '@enact/webos/platform';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import CustomizePanel from '../CustomizePanel';
 import PresetPanel from '../PresetPanel';
 
 import useLinearSkinColor from '../../hooks/useDynamicColor';
-import {getSettings} from '../../hooks/utils';
 
 import css from './MainView.module.less';
 
-const MainView = (props) => {
+const MainView = ({responseStatus, ...rest}) => {
 	const [applySkin, skin] = useLinearSkinColor();
 	const [panelIndex, setPanelIndex] = useState(0);
-
-	// when running on webOS system, wait for `theme` key data to be available, then render the view
-	const isWebOSPlatform = platform.tv;
-	const [loading, setLoading] = useState(!!isWebOSPlatform);
-
-	useEffect(() => {
-		if (isWebOSPlatform) {
-			getSettings({
-				category: 'customUi',
-				keys: ['theme']
-			}).then(res => {
-				if (res.returnValue) setLoading(false);
-			});
-		}
-	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const forward = useCallback(() => {
 		setPanelIndex(panelIndex + 1);
@@ -39,12 +22,12 @@ const MainView = (props) => {
 		setPanelIndex(panelIndex - 1);
 	}, [panelIndex]);
 
-	if (loading) {
+	if (!responseStatus && typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
 		return (<Spinner centered>Loading...</Spinner>);
 	} else {
 		return (
 			<Panels
-				{...props}
+				{...rest}
 				className={css.mainView}
 				index={panelIndex}
 				noCloseButton

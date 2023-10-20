@@ -17,20 +17,6 @@ export const changeSettings = (params) => {
 	});
 };
 
-// get `theme` key value
-export const getSettings = (params) => {
-	return new Promise((resolve) => {
-		new LS2Request().send({
-			service: 'luna://com.webos.service.settings/',
-			method: 'getSystemSettings',
-			parameters: params,
-			onSuccess: (res) => {
-				resolve(res);
-			}
-		});
-	});
-};
-
 export const hexToHSL = (hex) => {
 	// Convert hex to RGB first
 	let r = 0, g = 0, b = 0;

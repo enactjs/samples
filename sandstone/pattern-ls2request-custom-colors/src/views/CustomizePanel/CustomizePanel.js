@@ -16,8 +16,11 @@ const CustomizePanel = () => {
 	const {backgroundColor, componentBackgroundColor, focusBackgroundColor, popupBackgroundColor, subtitleTextColor, textColor} = context;
 
 	const onChangeColor = useCallback((color, newColor) => {
+		// a copy of the context object is created
 		const newContext = Object.assign({}, context);
+		// update the color value on the newly created object with what gets received from `event` (handleBackgroundColor)
 		newContext[color] = newColor;
+		// generate the new stylesheet based on the updated color
 		newContext.colors = generateStylesheet(
 			newContext.backgroundColor,
 			newContext.componentBackgroundColor,
@@ -27,9 +30,11 @@ const CustomizePanel = () => {
 			newContext.textColor,
 			newContext.preset
 		);
+		// update the app context with the new context
 		setContext(newContext);
 
-		if (typeof window === 'object' && window.PalmSystem && window.PalmSystem.launchParams) {
+		// check if app is running on webOS environment and update the `theme`
+		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
 			changeSettings({
 				category: 'customUi',
 				settings: {
@@ -66,6 +71,15 @@ const CustomizePanel = () => {
 	const handleResetButton = useCallback(() => {
 		const newContext = setPreset({preset: context.activeTheme, context});
 		setContext(newContext);
+
+		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
+			changeSettings({
+				category: 'customUi',
+				settings: {
+					theme: JSON.stringify(newContext)
+				}
+			});
+		}
 	}, [context, setContext]);
 
 	return (
