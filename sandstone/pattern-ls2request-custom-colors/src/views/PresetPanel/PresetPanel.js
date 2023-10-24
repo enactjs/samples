@@ -14,6 +14,7 @@ const PresetPanel = () => {
 	const {context, setContext} = useContext(AppContext);
 	const {activeTheme, dynamicColor, handleSkin} = context;
 
+	// update `theme` key with the stringified version of the context object
 	const updateThemeKey = (newContext) => {
 		return changeSettings({
 			category: 'customUi',
@@ -25,10 +26,14 @@ const PresetPanel = () => {
 
 	// Toggle using dynamic color mode which will modify the luminosity and saturation of your theme colors depending on the current time
 	const onClickDynamicColor = useCallback(() => {
+		// create a copy of the context object
 		const newContext = Object.assign({}, context);
+		// update the `dynamicColor` property on the new context object
 		newContext.dynamicColor = context.dynamicColor === 'on' ? 'off' : 'on';
+		// update app context with the new context object
 		setContext(newContext);
 
+		// check if app is running in webOS environment and update `theme` key
 		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
 			updateThemeKey(newContext);
 		}
@@ -37,10 +42,14 @@ const PresetPanel = () => {
 
 	// Toggle adjusting skin automatically, which means that the system will choose between Sandstone neutral and light modes according to the colors you have set
 	const onClickHandleSkin = useCallback(() => {
+		// create a copy of the context object
 		const newContext = Object.assign({}, context);
+		// update the `handleSkin` property on the new context object
 		newContext.handleSkin = context.handleSkin === 'on' ? 'off' : 'on';
+		// update app context with the new context object
 		setContext(newContext);
 
+		// check if app is running in webOS environment and update `theme` key
 		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
 			updateThemeKey(newContext);
 		}
@@ -48,9 +57,12 @@ const PresetPanel = () => {
 
 	// Choose from an existing preset theme
 	const onClickHandlePreset = useCallback((ev) => {
+		// create a copy of the app context and set the colors for the selected preset
 		const newContext = setPreset({preset: ev.currentTarget.id, context: context});
+		// update app context with the new context object
 		setContext(newContext);
 
+		// check if app is running in webOS environment and update `theme` key
 		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
 			updateThemeKey(newContext);
 		}
