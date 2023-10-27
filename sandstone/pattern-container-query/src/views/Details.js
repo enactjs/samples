@@ -55,13 +55,12 @@ const Details = kind({
 				</slotAfter>
 			</Header>
 			<Row className={classNames(css.layoutWapper)} style={{height: `calc(100% - ${ri.scale(48)}px)`}}>
-				<Layout orientation={orientation ? 'horizontal' : 'vertical'} style={{height: '100%'}}>
+				<Layout orientation='none' style={{height: '100%'}}>
 					<Cell component={Image} style={{height: '100%', width: '100%', minWidth: '60%', margin: 0}} src="http://picsum.photos/480/320/" />
 					<Cell shrink style={{padding: '0 1em', width: (orientation ? '80%' : null)}}>
 						<Column className={classNames(css.layoutNormalWapper)}>
 							<Cell shrink>
 								<BodyText>By Grabthar&apos;s hammer, by the sons of Warvan, you shall be avenged.</BodyText>
-								<BodyText>Director : Dean Parisot</BodyText>
 							</Cell>
 							<FieldRow component={Item} label="Director:" size="80%">Dean Parisot</FieldRow>
 							<FieldRow component={Item} label="Writers:" size="80%">David Howard (story), David Howard (screenplay)</FieldRow>
