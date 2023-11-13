@@ -29,16 +29,16 @@
   },
   "dependencies": {
     "@enact/analytics": "^1.0.1",
-    "@enact/core": "^4.7.2",
-    "@enact/i18n": "^4.7.2",
-    "@enact/spotlight": "^4.7.2",
-    "@enact/ui": "^4.7.2",
+    "@enact/core": "^4.7.7",
+    "@enact/i18n": "^4.7.7",
+    "@enact/spotlight": "^4.7.7",
+    "@enact/ui": "^4.7.7",
     "ilib": "^14.18.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.6"
+    "eslint-config-enact-proxy": "^1.0.7"
   }
 }
