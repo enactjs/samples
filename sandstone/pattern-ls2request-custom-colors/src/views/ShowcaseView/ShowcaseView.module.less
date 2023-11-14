@@ -1,0 +1,44 @@
+// PreviewSection.module.less
+//
+@import '~@enact/sandstone/styles/colors.less';
+
+.previewSection {
+	border-radius: 12px;
+	margin: 24px;
+	padding: 0 24px;
+	display: flex;
+	justify-content: center;
+
+	.previewTitle {
+		display: flex;
+		justify-content: center;
+		min-height: auto;
+		padding: 24px 0;
+		margin: 0 24px;
+		font-weight: 200;
+	}
+
+	.previewComponents {
+		justify-content: space-around;
+		width: 100%;
+
+		.previewButtons {
+			flex-wrap: wrap;
+			justify-content: center;
+
+			.button {
+				min-width: 339px;
+				margin: 12px;
+			}
+
+			& > * {
+				margin: 15px;
+			}
+		}
+
+		.previewDropdown,
+		.previewPopup {
+			align-self: center;
+		}
+	}
+}
