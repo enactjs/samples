@@ -1,7 +1,7 @@
 import Button from '@enact/sandstone/Button';
 import ColorPicker from '@enact/sandstone/ColorPicker';
 import Scroller from '@enact/sandstone/Scroller';
-import {Cell, Column, Layout} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
 import {useCallback, useContext} from 'react';
 
 import {AppContext} from '../../constants';
@@ -12,8 +12,9 @@ import {setVariablesWebOS} from '../../lunaCalls/setVariables';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './ColorCustomizationView.module.less';
+import IconItem from "@enact/sandstone/IconItem";
 
-const ColorCustomizationView = () => {
+const ColorCustomizationView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
 	const {context, setContext} = useContext(AppContext);
 	// Function that handles the change of colors for the application
@@ -90,6 +91,11 @@ const ColorCustomizationView = () => {
 						<ColorPicker color={context.textColor} colorHandler={handleTextColor} text="Text Color" />
 					</Scroller>
 					<Button className={css.resetBtn} icon="trash" onClick={handleResetButton} size="small">Reset</Button>
+					<Row className={css.footer}>
+						<IconItem icon="picture" label="Presets" onClick={useCallback(() => navigate(0), [navigate])} />
+						<IconItem disabled icon="gear" label="Customization" />
+						<IconItem icon="picturemode" label="Showcase" onClick={useCallback(() => navigate(2), [navigate])} />
+					</Row>
 				</Column>
 			</Cell>
 		</Layout>
