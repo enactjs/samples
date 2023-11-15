@@ -6,7 +6,7 @@ import {useCallback, useContext} from 'react';
 
 import {AppContext, presets} from '../../constants';
 // This is a function that will send the updated variables inside WebOS
-import {setVariablesWebOS} from '../../lunaCalls/setVariables';
+import {setSystemVariables} from '../../lunaCalls/setSystemVariables';
 // This is an object that contains the css files for all the presets
 // It will be used when we swap presets
 import presetColors from '../../presets';
@@ -15,6 +15,7 @@ import presetColors from '../../presets';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './PresetChoiceView.module.less';
+import {isSystemWebOS} from "../../utils";
 
 const PresetChoiceView = () => {
 	// Here we get the context of the app and the setter function for it
@@ -41,7 +42,9 @@ const PresetChoiceView = () => {
 			);
 
 			// Here we update the variables inside WebOS using luna calls
-			setVariablesWebOS(newContext);
+			// First we check if the system the app is running on is WebOS
+			// If it is not we exit skip this step
+			if (isSystemWebOS) setSystemVariables(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;
@@ -61,7 +64,9 @@ const PresetChoiceView = () => {
 			);
 
 			// Here we update the variables inside WebOS using luna calls
-			setVariablesWebOS(newContext);
+			// First we check if the system the app is running on is WebOS
+			// If it is not we exit skip this step
+			setSystemVariables(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;

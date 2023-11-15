@@ -9,6 +9,7 @@ import ShowcaseView from '../ShowcaseView';
 
 import {AppContext, customColorsContext} from '../../constants';
 import {getSystemSettings} from '../../lunaCalls/getSystemSettings';
+import {isSystemWebOS} from '../../utils';
 
 const MainView = (rest) => {
 	// Here we get the context of the app
@@ -28,34 +29,38 @@ const MainView = (rest) => {
 
 	// NOTE: this useEffect might be removed in the future, when we'll have a default value for `theme` key
 	useEffect(() => {
+		// First we check if the system the app is running on is WebOS
+		// If it is not we exit from this useEffect
+		if (!isSystemWebOS) return;
 		// On app initialization in webOS environment, call ServiceSettings and check the value for `theme` key
-		if (typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams) {
-			new LS2Request().send({
-				service: 'luna://com.webos.service.settings/',
-				method: 'getSystemSettings',
-				parameters: {
-					category: 'customUi',
-					keys: ['theme']
-				},
-				onSuccess: (res) => {
-					// if `theme` key is empty, populate with a default value
-					if (res.settings.theme === '') {
-						new LS2Request().send({
-							service: 'luna://com.webos.service.settings/',
-							method: 'setSystemSettings',
-							parameters: {
-								category: 'customUi',
-								keys: JSON.stringify(customColorsContext)
-							}
-						})
-					}
+		new LS2Request().send({
+			service: 'luna://com.webos.service.settings/',
+			method: 'getSystemSettings',
+			parameters: {
+				category: 'customUi',
+				keys: ['theme']
+			},
+			onSuccess: (res) => {
+				// if `theme` key is empty, populate with a default value
+				if (res.settings.theme === '') {
+					new LS2Request().send({
+						service: 'luna://com.webos.service.settings/',
+						method: 'setSystemSettings',
+						parameters: {
+							category: 'customUi',
+							keys: JSON.stringify(customColorsContext)
+						}
+					});
 				}
-			})
-		}
+			}
+		});
 	}, []);
 
 	// update app context with fetched data from SettingsService
 	useEffect(() => {
+		// First we check if the system the app is running on is WebOS
+		// If it is not we exit from this useEffect
+		if (!isSystemWebOS) return;
 		getSystemSettings(setContext);
 	}, [setContext]);
 
