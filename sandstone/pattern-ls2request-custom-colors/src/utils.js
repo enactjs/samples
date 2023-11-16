@@ -1,4 +1,5 @@
 // This functions checks if the OS this app is running on is WebOS
+// If we try to use WebOS specific functionalities in other operating systems we will get a console error
 export const isSystemWebOS = () => {
 	return !!(typeof window === 'object' && window.webOSSystem && window.webOSSystem.launchParams);
 };
