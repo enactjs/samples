@@ -1,6 +1,5 @@
-import IconItem from '@enact/sandstone/IconItem';
 import {Header, Panel, Panels} from '@enact/sandstone/Panels';
-import {useCallback, useContext, useRef, useState} from 'react';
+import {useCallback, useContext, useState} from 'react';
 
 import ColorCustomizationView from '../ColorCustomizationView';
 import PresetChoiceView from '../PresetChoiceView';
@@ -12,20 +11,13 @@ const MainView = (rest) => {
 	// Here we get the context of the app
 	const {context} = useContext(AppContext);
 	const [panelIndex, setPanelIndex] = useState(0);
-	const lastPanelIndex = useRef(0);
 
 	// Based on the lightMode variable from our context we determine the appropriate skin for our app
 	const skin = context.lightMode ? 'light' : 'neutral';
 
 	const navigate = useCallback((index) => {
-		lastPanelIndex.current = panelIndex;
 		setPanelIndex(index);
-	}, [panelIndex]);
-
-	const backward = useCallback(() => {
-		console.log(lastPanelIndex)
-		setPanelIndex(lastPanelIndex.current)
-	}, [])
+	}, []);
 
 	return (
 		<Panels
@@ -44,12 +36,8 @@ const MainView = (rest) => {
 				<ColorCustomizationView navigate={navigate} />
 			</Panel>
 			<Panel>
-				<Header subtitle="Showcase Panel" title="Color Customization App" >
-					<slotBefore>
-						<IconItem icon="arrowhookleft" onClick={backward} />
-					</slotBefore>
-				</Header>
-				<ShowcaseView />
+				<Header subtitle="Showcase Panel" title="Color Customization App" />
+				<ShowcaseView navigate={navigate} />
 			</Panel>
 		</Panels>
 	);

@@ -80,9 +80,9 @@ const PresetChoiceView = ({navigate}) => {
 					</Scroller>
 					<SwitchItem className={css.switchItem} onClick={handleModeChange} selected={context.lightMode}>Light Mode</SwitchItem>
 					<Row className={css.footer}>
-						<IconItem disabled icon='picture' label='Presets' />
-						<IconItem icon='gear' label='Customization' onClick={useCallback(() => navigate(1), [navigate])} />
-						<IconItem icon='picturemode' label='Showcase' onClick={useCallback(() => navigate(2), [navigate])} />
+						<IconItem disabled icon="picture" label="Presets" />
+						<IconItem icon="gear" label="Customization" onClick={useCallback(() => navigate(1), [navigate])} />
+						<IconItem icon="picturemode" label="Showcase" onClick={useCallback(() => navigate(2), [navigate])} />
 					</Row>
 				</Column>
 			</Cell>

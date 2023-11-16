@@ -82,7 +82,7 @@ const ColorCustomizationView = ({navigate}) => {
 		<Layout className={css.customizePanel}>
 			<Cell className={css.customizeSection}>
 				<Column>
-					<Scroller>
+					<Scroller className={css.scroller}>
 						<ColorPicker color={context.backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
 						<ColorPicker color={context.componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
 						<ColorPicker color={context.focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background Color" />
