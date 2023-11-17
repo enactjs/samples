@@ -1,6 +1,6 @@
 import LS2Request from '@enact/webos/LS2Request';
 
-export const setSystemVariables = (context) => {
+export const setSystemSettings = (context) => {
 	return new Promise((resolve) => {
 		new LS2Request().send({
 			service: 'luna://com.webos.service.settings/',

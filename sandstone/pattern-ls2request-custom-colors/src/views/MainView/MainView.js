@@ -26,37 +26,37 @@ const MainView = (rest) => {
 	useEffect(() => {
 		// First we check if the system the app is running on is WebOS
 		// If it is not we exit from this useEffect
-		if (!isSystemWebOS) return;
-		// On app initialization in webOS environment, call ServiceSettings and check the value for `theme` key
-		new LS2Request().send({
-			service: 'luna://com.webos.service.settings/',
-			method: 'getSystemSettings',
-			parameters: {
-				category: 'customUi',
-				keys: ['theme']
-			},
-			onSuccess: (res) => {
-				// if `theme` key is empty, populate with a default value
-				if (res.settings.theme === '') {
-					new LS2Request().send({
-						service: 'luna://com.webos.service.settings/',
-						method: 'setSystemSettings',
-						parameters: {
-							category: 'customUi',
-							keys: JSON.stringify(customColorsContext)
-						}
-					});
+		if (isSystemWebOS) {
+			// On app initialization in webOS environment, call ServiceSettings and check the value for `theme` key
+			new LS2Request().send({
+				service: 'luna://com.webos.service.settings/',
+				method: 'getSystemSettings',
+				parameters: {
+					category: 'customUi',
+					keys: ['theme']
+				},
+				onSuccess: (res) => {
+					// if `theme` key is empty, populate with a default value
+					if (res.settings.theme === '') {
+						new LS2Request().send({
+							service: 'luna://com.webos.service.settings/',
+							method: 'setSystemSettings',
+							parameters: {
+								category: 'customUi',
+								keys: JSON.stringify(customColorsContext)
+							}
+						});
+					}
 				}
-			}
-		});
+			});
+		}
 	}, []);
 
 	// update app context with fetched data from SettingsService
 	useEffect(() => {
 		// First we check if the system the app is running on is WebOS
 		// If it is not we exit from this useEffect
-		if (!isSystemWebOS) return;
-		getSystemSettings(setContext);
+		if (isSystemWebOS) getSystemSettings(setContext);
 	}, [setContext]);
 
 	return (

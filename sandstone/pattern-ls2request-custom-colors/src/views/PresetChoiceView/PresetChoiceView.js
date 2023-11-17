@@ -3,12 +3,12 @@ import RadioItem from '@enact/sandstone/RadioItem';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import {useCallback, useContext} from 'react';
 
 import {AppContext, presets} from '../../constants';
 // This is a function that will send the updated variables inside WebOS
-import {setSystemVariables} from '../../lunaCalls/setSystemVariables';
+import {setSystemSettings} from '../../lunaCalls/setSystemSettings';
 // This is an object that contains the css files for all the presets
 // It will be used when we swap presets
 import presetColors from '../../presets';
@@ -46,7 +46,7 @@ const PresetChoiceView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			if (isSystemWebOS) setSystemVariables(newContext);
+			if (isSystemWebOS) setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;
@@ -68,7 +68,7 @@ const PresetChoiceView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			setSystemVariables(newContext);
+			setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;
