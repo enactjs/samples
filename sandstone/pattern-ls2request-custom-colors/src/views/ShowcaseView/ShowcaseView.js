@@ -77,7 +77,7 @@ const ShowcaseView = ({navigate}) => {
 			const sheet = document.createElement('style');
 			// Then you give it an id in order to make it easier to create cleanup functions for it
 			sheet.id = 'customize-colors';
-			// Then as it's content you need to create the following string
+			// Then as its content you need to create the following string
 			// The string is set here based on our customization variables from WebOS system,
 			// but you can add your own colors if you wish
 			// You need to pay attention to the name of the CSS property
