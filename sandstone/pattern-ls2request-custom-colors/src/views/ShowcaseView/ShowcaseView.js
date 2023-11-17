@@ -9,6 +9,7 @@ import RangePicker from '@enact/sandstone/RangePicker';
 import Slider from '@enact/sandstone/Slider';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext, useEffect, useState} from 'react';
 
 import {AppContext} from '../../constants';
@@ -135,6 +136,10 @@ const ShowcaseView = ({navigate}) => {
 			</Cell>
 		</Layout>
 	);
+};
+
+ShowcaseView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default ShowcaseView;

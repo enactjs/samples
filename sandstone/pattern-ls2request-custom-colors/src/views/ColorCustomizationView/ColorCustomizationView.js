@@ -1,7 +1,9 @@
 import Button from '@enact/sandstone/Button';
 import ColorPicker from '@enact/sandstone/ColorPicker';
+import IconItem from "@enact/sandstone/IconItem";
 import Scroller from '@enact/sandstone/Scroller';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext} from 'react';
 
 import {AppContext} from '../../constants';
@@ -12,7 +14,6 @@ import {setVariablesWebOS} from '../../lunaCalls/setVariables';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './ColorCustomizationView.module.less';
-import IconItem from "@enact/sandstone/IconItem";
 
 const ColorCustomizationView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
@@ -100,6 +101,10 @@ const ColorCustomizationView = ({navigate}) => {
 			</Cell>
 		</Layout>
 	);
+};
+
+ColorCustomizationView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default ColorCustomizationView;

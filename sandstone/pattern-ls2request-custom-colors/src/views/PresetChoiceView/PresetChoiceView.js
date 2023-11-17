@@ -1,7 +1,9 @@
+import IconItem from '@enact/sandstone/IconItem';
 import RadioItem from '@enact/sandstone/RadioItem';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext} from 'react';
 
 import {AppContext, presets} from '../../constants';
@@ -15,7 +17,6 @@ import presetColors from '../../presets';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './PresetChoiceView.module.less';
-import IconItem from '@enact/sandstone/IconItem';
 
 const PresetChoiceView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
@@ -88,6 +89,10 @@ const PresetChoiceView = ({navigate}) => {
 			</Cell>
 		</Layout>
 	);
+};
+
+PresetChoiceView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default PresetChoiceView;
