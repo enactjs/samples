@@ -1,6 +1,7 @@
 ## Color Customization App
 
-A sample Enact application that uses dynamic color change feature to style components and create a personalized theme.
+A sample Enact application that shows off how to customize a Sandstone app using the new `customUi` category from 
+SettingsService via LS2Request.
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
@@ -65,4 +66,82 @@ variable with your own CSS file. In order to do so easily you can create a sands
 feature-custom-skin-generator and save it as a string inside your application. You can check the presets.js file to see
 how such a string needs to look like.
 
-### Enhancing the app further using SystemSettings
+### Use LS2Request
+
+Active preset, default customization colors, colors(CSS stylesheet) and lightMode are saved in a key located in `com.webos.service.settings/` 
+with the following structure:
+```
+category: 'customUi',
+settings: {
+    key: 'theme'
+}
+```
+
+Using LS2Request, every time a preset, a color or lightMode is changed, we update `theme` key using `setSystemSettings` function located in 
+`./lunaCalls/setSystemSettings.js`. Note that the key data should be saved in String format using `JSON.stringify`.
+
+Example:
+```
+new LS2Request().send({
+	service: 'luna://com.webos.service.settings/',
+	method: 'setSystemSettings',
+	parameters: {
+		category: 'customUi',
+		settings: {
+			theme: JSON.stringify(updatedData)
+		}
+	}
+})
+```
+
+`theme` key does not have a default value defined, it comes as an empty string. Because of this, we need to check the value 
+of `theme` key when the sample first loads and set a value for the key. In this sample we used the app context as a default value.
+
+Example:
+```
+new LS2Request().send({
+    service: 'luna://com.webos.service.settings/',
+	method: 'getSystemSettings',
+	parameters: {
+		category: 'customUi',
+		keys: ['theme']
+	},
+	onSuccess: (res) => {
+		// if `theme` key is empty, populate with a default value
+		if (res.settings.theme === '') {
+			new LS2Request().send({
+				service: 'luna://com.webos.service.settings/',
+				method: 'setSystemSettings',
+				parameters: {
+					category: 'customUi',
+					keys: JSON.stringify(defaultValue)
+				}
+			});
+		}
+	}
+});
+```
+
+After the key data is set, we can fetch the data stored in `theme` and update app context. This is done with `getSystemSettings`
+function located inside `./lunaCalls/getSystemSettings.js`. In this sample it accepts `setContext` parameter to update the
+context when data is available, but it can be changed depending on your chosen data storage or even omitted.
+
+Example:
+```
+new LS2Request().send({
+	service: 'luna://com.webos.service.settings/',
+	method: 'getSystemSettings',
+	parameters: {
+		category: 'customUi',
+		keys: ['theme']
+	},
+	onSuccess: (res) => {
+		// if data is not initialized, don't update app context
+		if (res.settings.theme === '') return;
+		// update app context with values retrieved from SettingsService
+		setLocalData(JSON.parse(res.settings.theme)); // change this method that suits your data storage
+		// eslint-disable-next-line no-console
+		resolve(res);
+	}
+});
+```
