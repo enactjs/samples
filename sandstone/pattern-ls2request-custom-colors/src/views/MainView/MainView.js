@@ -1,4 +1,3 @@
-import IconItem from '@enact/sandstone/IconItem';
 import {Header, Panel, Panels} from '@enact/sandstone/Panels';
 import LS2Request from '@enact/webos/LS2Request';
 import {useCallback, useContext, useEffect, useState} from 'react';
@@ -19,13 +18,9 @@ const MainView = (rest) => {
 	// Based on the lightMode variable from our context we determine the appropriate skin for our app
 	const skin = context.lightMode ? 'light' : 'neutral';
 
-	const forward = useCallback(() => {
-		setPanelIndex(panelIndex + 1);
-	}, [panelIndex]);
-
-	const backward = useCallback(() => {
-		setPanelIndex(panelIndex - 1);
-	}, [panelIndex]);
+	const navigate = useCallback((index) => {
+		setPanelIndex(index);
+	}, []);
 
 	// NOTE: this useEffect might be removed in the future, when we'll have a default value for `theme` key
 	useEffect(() => {
@@ -69,28 +64,20 @@ const MainView = (rest) => {
 			{...rest}
 			index={panelIndex}
 			noCloseButton
-			onBack={backward}
+			noBackButton
 			skin={skin}
 		>
 			<Panel>
-				<Header subtitle="Choose preset colors" title="Color Customization App">
-					<slotAfter>
-						<IconItem icon="arrowsmallright" label="Customize Colors" onClick={forward} />
-					</slotAfter>
-				</Header>
-				<PresetChoiceView />
+				<Header subtitle="Choose preset colors" title="Color Customization App" />
+				<PresetChoiceView navigate={navigate} />
 			</Panel>
 			<Panel>
-				<Header subtitle="Customize App Colors" title="Color Customization App">
-					<slotAfter>
-						<IconItem icon="arrowsmallright" label="Showcase Panel" onClick={forward} />
-					</slotAfter>
-				</Header>
-				<ColorCustomizationView />
+				<Header subtitle="Customize App Colors" title="Color Customization App" />
+				<ColorCustomizationView navigate={navigate} />
 			</Panel>
 			<Panel>
 				<Header subtitle="Showcase Panel" title="Color Customization App" />
-				<ShowcaseView />
+				<ShowcaseView navigate={navigate} />
 			</Panel>
 		</Panels>
 	);

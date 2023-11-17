@@ -3,11 +3,13 @@ import Button from '@enact/sandstone/Button';
 import CheckboxItem from '@enact/sandstone/CheckboxItem';
 import Dropdown from '@enact/sandstone/Dropdown';
 import Heading from '@enact/sandstone/Heading';
+import IconItem from '@enact/sandstone/IconItem';
 import Popup from '@enact/sandstone/Popup';
 import RangePicker from '@enact/sandstone/RangePicker';
 import Slider from '@enact/sandstone/Slider';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {Cell, Column, Layout} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext, useEffect, useState} from 'react';
 
 import {AppContext} from '../../constants';
@@ -17,7 +19,7 @@ import {hexToRGB} from '../../utils';
 
 import css from './ShowcaseView.module.less';
 
-const ShowcaseView = () => {
+const ShowcaseView = ({navigate}) => {
 	// Here we get the context of the app
 	const {context} = useContext(AppContext);
 	const [openPopup, setOpenPopup] = useState(false);
@@ -100,7 +102,7 @@ const ShowcaseView = () => {
 	}, [context]);
 
 	return (
-		<Layout>
+		<Layout className={css.previewPanel}>
 			<Cell className={css.previewSection}>
 				<Column className={css.previewComponents}>
 					<Heading className={css.previewTitle}>Theme Preview</Heading>
@@ -124,10 +126,19 @@ const ShowcaseView = () => {
 						<BodyText centered>Hello</BodyText>
 						<Button onClick={handleOpenPopup} size="small">Bye</Button>
 					</Popup>
+					<Row className={css.footer}>
+						<IconItem icon="picture" label="Presets" onClick={useCallback(() => navigate(0), [navigate])} />
+						<IconItem icon="gear" label="Customization" onClick={useCallback(() => navigate(1), [navigate])} />
+						<IconItem disabled icon="picturemode" label="Showcase" />
+					</Row>
 				</Column>
 			</Cell>
 		</Layout>
 	);
+};
+
+ShowcaseView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default ShowcaseView;

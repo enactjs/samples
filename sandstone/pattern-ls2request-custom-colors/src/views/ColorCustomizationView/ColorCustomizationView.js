@@ -1,7 +1,9 @@
 import Button from '@enact/sandstone/Button';
 import ColorPicker from '@enact/sandstone/ColorPicker';
+import IconItem from "@enact/sandstone/IconItem";
 import Scroller from '@enact/sandstone/Scroller';
-import {Cell, Column, Layout} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext} from 'react';
 
 import {AppContext} from '../../constants';
@@ -14,7 +16,7 @@ import presetDefaultColors from '../../presetsDefaultColors';
 import css from './ColorCustomizationView.module.less';
 import {isSystemWebOS} from "../../utils";
 
-const ColorCustomizationView = () => {
+const ColorCustomizationView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
 	const {context, setContext} = useContext(AppContext);
 	// Function that handles the change of colors for the application
@@ -86,7 +88,7 @@ const ColorCustomizationView = () => {
 		<Layout className={css.customizePanel}>
 			<Cell className={css.customizeSection}>
 				<Column>
-					<Scroller>
+					<Scroller className={css.scroller}>
 						<ColorPicker color={context.backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
 						<ColorPicker color={context.componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
 						<ColorPicker color={context.focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background Color" />
@@ -95,10 +97,19 @@ const ColorCustomizationView = () => {
 						<ColorPicker color={context.textColor} colorHandler={handleTextColor} text="Text Color" />
 					</Scroller>
 					<Button className={css.resetBtn} icon="trash" onClick={handleResetButton} size="small">Reset</Button>
+					<Row className={css.footer}>
+						<IconItem icon="picture" label="Presets" onClick={useCallback(() => navigate(0), [navigate])} />
+						<IconItem disabled icon="gear" label="Customization" />
+						<IconItem icon="picturemode" label="Showcase" onClick={useCallback(() => navigate(2), [navigate])} />
+					</Row>
 				</Column>
 			</Cell>
 		</Layout>
 	);
+};
+
+ColorCustomizationView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default ColorCustomizationView;

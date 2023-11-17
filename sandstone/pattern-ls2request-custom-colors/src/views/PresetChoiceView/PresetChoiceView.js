@@ -1,7 +1,9 @@
+import IconItem from '@enact/sandstone/IconItem';
 import RadioItem from '@enact/sandstone/RadioItem';
 import Scroller from '@enact/sandstone/Scroller';
 import SwitchItem from '@enact/sandstone/SwitchItem';
-import {Cell, Column, Layout} from '@enact/ui/Layout';
+import {Cell, Column, Layout, Row} from '@enact/ui/Layout';
+import PropTypes from "prop-types";
 import {useCallback, useContext} from 'react';
 
 import {AppContext, presets} from '../../constants';
@@ -17,7 +19,7 @@ import presetDefaultColors from '../../presetsDefaultColors';
 import css from './PresetChoiceView.module.less';
 import {isSystemWebOS} from "../../utils";
 
-const PresetChoiceView = () => {
+const PresetChoiceView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
 	const {context, setContext} = useContext(AppContext);
 	// Function that handles the change of the active preset
@@ -77,16 +79,25 @@ const PresetChoiceView = () => {
 		<Layout className={css.presetPanel}>
 			<Cell className={css.customizeSection}>
 				<Column>
-					<Scroller>
+					<Scroller className={css.scroller}>
 						{Object.entries(presets).map(([key, value]) =>
 							<RadioItem onClick={handleChangePreset} id={key} key={key} selected={key === context.activeTheme}>{value}</RadioItem>
 						)}
 					</Scroller>
-					<SwitchItem onClick={handleModeChange} selected={context.lightMode}>Light Mode</SwitchItem>
+					<SwitchItem className={css.switchItem} onClick={handleModeChange} selected={context.lightMode}>Light Mode</SwitchItem>
+					<Row className={css.footer}>
+						<IconItem disabled icon="picture" label="Presets" />
+						<IconItem icon="gear" label="Customization" onClick={useCallback(() => navigate(1), [navigate])} />
+						<IconItem icon="picturemode" label="Showcase" onClick={useCallback(() => navigate(2), [navigate])} />
+					</Row>
 				</Column>
 			</Cell>
 		</Layout>
 	);
+};
+
+PresetChoiceView.propTypes = {
+	navigate: PropTypes.func
 };
 
 export default PresetChoiceView;
