@@ -48,8 +48,7 @@ const ShowcaseView = ({navigate}) => {
 
 	// Inside this useEffect we will apply the custom preset and customization colors for our app
 	useEffect(() => {
-		// Here we deconstruct the app's context in order to better show where each variable is used in the customization
-		// process
+		// Here we deconstruct the app's context in order to better show where each variable is used in the customization process
 		const {
 			colors,
 			backgroundColor,
