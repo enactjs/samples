@@ -26,7 +26,7 @@ const MainView = (rest) => {
 	useEffect(() => {
 		// First we check if the system the app is running on is WebOS
 		// If it is not we exit from this useEffect
-		if (isSystemWebOS) {
+		if (isSystemWebOS()) {
 			// On app initialization in webOS environment, call ServiceSettings and check the value for `theme` key
 			new LS2Request().send({
 				service: 'luna://com.webos.service.settings/',
@@ -56,7 +56,7 @@ const MainView = (rest) => {
 	useEffect(() => {
 		// First we check if the system the app is running on is WebOS
 		// If it is not we exit from this useEffect
-		if (isSystemWebOS) getSystemSettings(setContext);
+		if (isSystemWebOS()) getSystemSettings(setContext);
 	}, [setContext]);
 
 	return (
