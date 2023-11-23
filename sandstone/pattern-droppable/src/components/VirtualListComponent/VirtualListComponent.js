@@ -1,16 +1,21 @@
 import Item from '@enact/sandstone/Item';
 import {VirtualList} from '@enact/sandstone/VirtualList';
-import {useCallback} from "react";
+import PropTypes from 'prop-types';
+import {useCallback} from 'react';
 
-const VirtualListComponent = ({children, dataSize, ...rest}) => {
-	const generateItems = useCallback((data) => {
-		return <div className='draggable'>
-			<Item className='droppable-component'>Element{children} - {data.index}</Item>
-		</div>
-	}, [children]);
+import {Draggable} from '../Draggable/Draggable';
+
+const VirtualListComponent = ({children, items, ...rest}) => {
+	const dataSize = items.length;
+	const TransferItem = Draggable(Item);
+
+	const generateItems = useCallback(({index}) => {
+		return <TransferItem className="droppable-item">{items[index]}</TransferItem>;
+	}, [items]);
 
 	return (
 		<VirtualList
+			title={children}
 			itemSize={200}
 			dataSize={dataSize}
 			itemRenderer={generateItems}
@@ -18,6 +23,10 @@ const VirtualListComponent = ({children, dataSize, ...rest}) => {
 			{...rest}
 		/>
 	);
+};
+
+VirtualListComponent.propTypes = {
+	items: PropTypes.array
 };
 
 export default VirtualListComponent;

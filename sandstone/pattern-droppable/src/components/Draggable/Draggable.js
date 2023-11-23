@@ -1,8 +1,8 @@
 import hoc from '@enact/core/hoc';
-import ForwardRef from '@enact/ui/ForwardRef';
-
+import PropTypes from 'prop-types';
 import {useEffect, useRef} from 'react';
 
+import css from './Draggable.module.less';
 /**
  * TBD.
  *
@@ -18,27 +18,35 @@ export const Draggable = hoc({}, (config, Wrapped) => {
 		const ref = useRef(null);
 
 		useEffect(() => {
-			const element = ref.current;
-			const eventListenerFunc = () => {
-				console.log('start');
+			const element = ref.current.children[0];
+			const eventListenerFunc = (ev) => {
+				const id = 'drag-' + (new Date()).getTime();
+				element.setAttribute('id', id);
+
+				ev.dataTransfer.setData('source', id);
 			};
-			//
-			// element.addEventListener('dragstart', eventListenerFunc);
-			//
-			// return () => {
-			// 	element.removeEventListener('dragstart', eventListenerFunc);
-			// }
+
+			element.addEventListener('dragstart', eventListenerFunc);
+
+			return () => {
+				element.removeEventListener('dragstart', eventListenerFunc);
+			};
 		}, []);
 
 		return (
-			<Component
-				{...rest}
-				draggable={!disabled}
-				disabled={disabled}
-				ref={ref}
-			/>
+			<div ref={ref} className={css.draggable}>
+				<Component
+					{...rest}
+					draggable={!disabled}
+					disabled={disabled}
+				/>
+			</div>
 		);
-	}
+	};
 
-	return ForwardRef(DraggableHOC);
+	DraggableHOC.propTypes = {
+		disabled: PropTypes.bool
+	};
+
+	return DraggableHOC;
 });
