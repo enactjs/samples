@@ -61,9 +61,18 @@ const Droppable = hoc(defaultConfig, (config, Wrapped) => {
 
 			const source = event.dataTransfer.getData('source');
 			const transferElement = document.getElementById(source);
-
 			internalConfig.setterFunction(elements => {
-				if (elements.findIndex(element => element === transferElement.textContent) !== -1) return elements;
+				const transferIndex = elements.findIndex(element => element === transferElement.textContent);
+				if (transferIndex !== -1) {
+					const temporary = [...elements];
+
+					temporary.splice(transferIndex, 1);
+					temporary.splice(elements.findIndex(element => element === hoveredElement.current.textContent), 0, transferElement.textContent);
+
+					return temporary;
+				} if (hoveredElement.current === null) {
+					return [...elements, transferElement.textContent];
+				}
 				elements.splice(elements.findIndex(element => element === hoveredElement.current.textContent), 0, transferElement.textContent);
 				return elements;
 			});
