@@ -27,11 +27,11 @@
     "extends": "enact-proxy/strict"
   },
   "dependencies": {
-    "@enact/agate": "^2.0.7",
-    "@enact/core": "^4.7.7",
-    "@enact/i18n": "^4.7.7",
-    "@enact/spotlight": "^4.7.7",
-    "@enact/ui": "^4.7.7",
+    "@enact/agate": "^2.0.8",
+    "@enact/core": "^4.7.8",
+    "@enact/i18n": "^4.7.8",
+    "@enact/spotlight": "^4.7.8",
+    "@enact/ui": "^4.7.8",
     "@enact/webos": "^4.7.7",
     "ilib": "^14.18.0",
     "prop-types": "^15.8.1",
