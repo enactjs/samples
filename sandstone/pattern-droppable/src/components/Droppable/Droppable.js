@@ -70,7 +70,8 @@ const Droppable = hoc(defaultConfig, (config, Wrapped) => {
 					temporary.splice(elements.findIndex(element => element === hoveredElement.current.textContent), 0, transferElement.textContent);
 
 					return temporary;
-				} if (hoveredElement.current === null) {
+				}
+				if (hoveredElement.current === null) {
 					return [...elements, transferElement.textContent];
 				}
 				elements.splice(elements.findIndex(element => element === hoveredElement.current.textContent), 0, transferElement.textContent);
