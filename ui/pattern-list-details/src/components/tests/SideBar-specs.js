@@ -6,18 +6,19 @@ import Body from '../../views/Body.js';
 
 describe('SideBar specs', () => {
 
-	test('should change city', function () {
+	test('should change city', async function () {
 		const cities = {
 			usa: ['San Francisco'],
 			japan: ['Tokyo', 'Osaka', 'Kyoto']
 		};
+		const user = userEvent.setup();
 
 		render(<Body selectedCountry="japan" cities={cities} />);
 
 		const SideBar = screen.getByRole('group');
 		const Item = SideBar.children.item(2);
 
-		userEvent.click(Item);
+		await user.click(Item);
 
 		const cityPhoto = screen.getAllByRole('img');
 		const actual = cityPhoto[0].children.item(0);

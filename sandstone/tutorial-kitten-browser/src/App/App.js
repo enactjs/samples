@@ -16,55 +16,55 @@ const kittens = [
 	'Kitty'
 ];
 
-const Sample = kind({
+const AppBase = kind({
 	name: 'App',
 
 	propTypes: {
-		index: PropTypes.number,
-		kitten: PropTypes.number,
-		onNavigate: PropTypes.func,
-		onSelectKitten: PropTypes.func
+		kittenIndex: PropTypes.number,
+		onKittenIndexChange: PropTypes.func,
+		onPanelIndexChange: PropTypes.func,
+		panelIndex: PropTypes.number
 	},
 
 	defaultProps: {
-		index: 0,
-		kitten: 0
+		kittenIndex: 0,
+		panelIndex: 0
 	},
 
 	handlers: {
-		onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
-			if (onSelectKitten) {
-				onSelectKitten({
-					kitten: ev.index
+		onSelectKitten: (ev, {onKittenIndexChange, onPanelIndexChange}) => {
+			if (onKittenIndexChange) {
+				onKittenIndexChange({
+					kittenIndex: ev.index
 				});
 			}
 
 			// navigate to the detail panel on selection
-			if (onNavigate) {
-				onNavigate({
-					index: 1
+			if (onPanelIndexChange) {
+				onPanelIndexChange({
+					panelIndex: 1
 				});
 			}
 		}
 	},
 
-	render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
-		<div {...rest}>
-			<Panels index={index} onBack={onNavigate}>
+	render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => {
+		delete rest.onKittenIndexChange;
+
+		return (
+			<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
 				<List onSelectKitten={onSelectKitten}>{kittens}</List>
-				<Detail name={kittens[kitten]} />
+				<Detail name={kittens[kittenIndex]} />
 			</Panels>
-		</div>
-	)
+		);
+	}
 });
 
-const AppBase = Changeable({prop: 'index', change: 'onNavigate'},
-	Changeable({prop: 'kitten', change: 'onSelectKitten'},
-		Sample
+const App = Changeable({prop: 'panelIndex', change: 'onPanelIndexChange'},
+	Changeable({prop: 'kittenIndex', change: 'onKittenIndexChange'},
+		ThemeDecorator(AppBase)
 	)
 );
-
-const App = ThemeDecorator(AppBase);
 
 export default App;
 export {

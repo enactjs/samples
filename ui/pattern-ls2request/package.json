@@ -29,20 +29,20 @@
     "extends": "enact-proxy/strict"
   },
   "dependencies": {
-    "@enact/core": "^4.6.2",
-    "@enact/i18n": "^4.6.2",
-    "@enact/spotlight": "^4.6.2",
-    "@enact/ui": "^4.6.2",
-    "@enact/webos": "^4.6.2",
-    "@reduxjs/toolkit": "^1.9.3",
-    "ilib": "^14.17.0",
+    "@enact/core": "^4.7.9",
+    "@enact/i18n": "^4.7.9",
+    "@enact/spotlight": "^4.7.9",
+    "@enact/ui": "^4.7.9",
+    "@enact/webos": "^4.7.9",
+    "@reduxjs/toolkit": "^1.9.7",
+    "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
+    "react-redux": "^8.1.3",
     "redux": "^4.2.1"
   },
   "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.5"
+    "eslint-config-enact-proxy": "^1.0.7"
   }
 }
