@@ -9,6 +9,7 @@ import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
 import {AppBase as PatternDynamicPanel} from '../../../pattern-dynamic-panel/src/App/App';
 import {AppBase as PatternAccountIcon} from '../../../pattern-account-icon/src/App/App';
+import {AppBase as PatternVideoPlayerCustom} from '../../../pattern-video-player-custom/src/App/App';
 import {AppBase as PatternLayout} from '../../../pattern-layout/src/App/App';
 import {appElementBase as PatternLocaleSwitching} from '../../../pattern-locale-switching/src/main';
 import {App as PatternReact18New} from '../../../pattern-react18-new/src/App';
@@ -66,6 +67,7 @@ const NavigationMenu = kind({
 const routes = [
 	{path: '/', exact: true, element: <NavigationMenu />},
 	{path: '/PatternAccountIcon', element: <PatternAccountIcon />},
+	{path: '/PatternVideoPlayerCustom', element: <PatternVideoPlayerCustom />},
 	{path: '/PatternDynamicPanel', element: <PatternDynamicPanel />},
 	{path: '/PatternLayout', element: <PatternLayout />},
 	{path: '/PatternLocaleSwitching', element: <PatternLocaleSwitching />},
