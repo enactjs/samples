@@ -31,7 +31,7 @@
   "dependencies": {
     "@enact/core": "^4.7.9",
     "@enact/i18n": "^4.7.9",
-    "@enact/sandstone": "^2.7.12",
+    "@enact/sandstone": "^2.7.13",
     "@enact/spotlight": "^4.7.9",
     "@enact/ui": "^4.7.9",
     "ilib": "^14.19.0",
