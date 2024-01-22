@@ -1,6 +1,7 @@
 import Button from '@enact/sandstone/Button';
 import {MediaControls} from '@enact/sandstone/MediaPlayer';
 import {Panels} from '@enact/sandstone/Panels';
+import Popup from '@enact/sandstone/Popup';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import Hls from 'hls.js';
@@ -16,18 +17,12 @@ import css from './App.module.less';
 const getVideo = (index) => videos[index];
 
 const AppBase = ({className, videoId, ...rest}) => {
+	const [openResolutionPopup, setOpenResolutionPopup] = useState(false);
 	const [panelsVisible, setPanelsVisible] = useState(false);
+	const [resolutions, setResolutions] = useState([]);
 	const [videoIndex, setVideoIndex] = useState(videoId);
 	const hlsRef = useRef(null);
 	const videoRef = useRef(null);
-
-	const handleHidePanelsClick = useCallback(() => setPanelsVisible(false), []);
-	const handleShowPanelsClick = useCallback(() => {
-		videoRef.current.hideControls();
-		setPanelsVisible(true);
-	}, []);
-	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
-	const {source, type, desc, ...restVideo} = getVideo(videoIndex);
 
 	const getHls = () => {
 		if (hlsRef.current === null) {
@@ -35,6 +30,23 @@ const AppBase = ({className, videoId, ...rest}) => {
 		}
 		return hlsRef.current;
 	};
+	const handleButton = (level) => () => {
+		const hls = getHls();
+		hls.nextLevel = level;
+		setOpenResolutionPopup(false);
+	};
+	const handleHidePanelsClick = useCallback(() => setPanelsVisible(false), []);
+	const handleShowPanelsClick = useCallback(() => {
+		videoRef.current.hideControls();
+		setPanelsVisible(true);
+	}, []);
+
+	const handleSelectResolution = useCallback(() => {
+		setOpenResolutionPopup(true);
+	}, []);
+
+	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
+	const {source, type, desc, ...restVideo} = getVideo(videoIndex);
 
 	useEffect(() => {
 		const hls = getHls();
@@ -45,6 +57,19 @@ const AppBase = ({className, videoId, ...rest}) => {
 			hls.detachMedia();
 		}
 	}, [source, type]);
+
+	useEffect(() => {
+		const hls = getHls();
+
+		const onLevelLoaded = () => {
+			setResolutions(hls.levels);
+		};
+
+		hls.on(Hls.Events.LEVEL_LOADED, onLevelLoaded);
+		return () => {
+			hls.off(Hls.Events.LEVEL_LOADED, onLevelLoaded);
+		};
+	}, []);
 
 	return (
 		<div {...rest} className={className + ' ' + css.app}>
@@ -60,6 +85,25 @@ const AppBase = ({className, videoId, ...rest}) => {
 						onClick={handleShowPanelsClick}
 						spotlightDisabled={panelsVisible}
 					/>
+					{panelsVisible && type === 'application/x-mpegURL' &&
+						<Button
+							icon="channel"
+							// example icon
+							onClick={handleSelectResolution}
+						/>
+					}
+					<Popup
+						open={openResolutionPopup}
+						position="bottom"
+					>
+						<div> Select Resolution </div>
+						<br />
+						<div>
+							{resolutions.map((resolution, index) => {
+								return <Button onClick={handleButton(index)}>{resolution._attrs[0].RESOLUTION}</Button>;
+							})}
+						</div>
+					</Popup>
 				</MediaControls>
 			</VideoPlayer>
 			{panelsVisible ?
