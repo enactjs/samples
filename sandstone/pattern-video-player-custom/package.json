@@ -34,7 +34,6 @@
     "@enact/sandstone": "^2.7.13",
     "@enact/spotlight": "^4.7.9",
     "@enact/ui": "^4.7.9",
-    "hls.js": "^1.5.1",
     "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

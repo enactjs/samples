@@ -1,3 +1,6 @@
 {
-  "main": "App.js"
+  "main": "App.js",
+  "dependencies": {
+    "hls.js": "^1.5.1"
+  }
 }
