@@ -43,6 +43,8 @@ const AppBase = ({className, videoId, ...rest}) => {
 			hls.attachMedia(videoRef.current.getVideoNode().media);
 		} else {
 			hls.detachMedia();
+			const video = videoRef.current.getVideoNode().media;
+			video.src = source;
 		}
 	}, [source, type]);
 

@@ -1,45 +1,46 @@
 {
-	"name": "pattern-video-player-custom",
-	"version": "1.0.0",
-	"description": "An Enact application demonstrating how to add and play the custom videos in VideoPlayer.",
-	"author": "",
-	"main": "src/index.js",
-	"scripts": {
-		"serve": "enact serve",
-		"pack": "enact pack",
-		"pack-p": "enact pack -p",
-		"watch": "enact pack --watch",
-		"clean": "enact clean",
-		"lint": "enact lint --strict .",
-		"license": "enact license",
-		"test": "enact test",
-		"test-watch": "enact test --watch"
-	},
-	"license": "Apache-2.0",
-	"private": true,
-	"repository": "https://github.com/enactjs/samples",
-	"enact": {
-		"title": "Video Player Custom Pattern",
+  "name": "pattern-video-player-custom",
+  "version": "1.0.0",
+  "description": "An Enact application demonstrating how to add and play the custom videos in VideoPlayer.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test",
+    "test-watch": "enact test --watch"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "Video Player Custom Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 48
     }
-	},
-	"eslintConfig": {
-		"extends": "enact-proxy/strict"
-	},
+  },
+  "eslintConfig": {
+    "extends": "enact-proxy/strict"
+  },
   "dependencies": {
     "@enact/core": "^4.7.9",
     "@enact/i18n": "^4.7.9",
     "@enact/sandstone": "^2.7.13",
     "@enact/spotlight": "^4.7.9",
     "@enact/ui": "^4.7.9",
+    "hls.js": "^1.5.1",
     "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-	"devDependencies": {
-		"eslint-config-enact-proxy": "^1.0.7"
-	}
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.7"
+  }
 }
