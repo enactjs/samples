@@ -16,7 +16,6 @@
     "extends": "enact-proxy/strict"
   },
   "dependencies": {
-    "hls.js": "^1.5.1",
     "readdirp": "^3.6.0",
     "shelljs": "^0.8.5"
   },

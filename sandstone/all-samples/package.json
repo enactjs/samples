@@ -37,6 +37,7 @@
     "@enact/webos": "^4.7.9",
     "@reduxjs/toolkit": "^1.9.7",
     "classnames": "^2.3.2",
+    "hls.js": "^1.5.1",
     "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
     "query-string": "^8.1.0",
