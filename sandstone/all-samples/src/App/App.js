@@ -9,6 +9,7 @@ import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
 import {AppBase as PatternDynamicPanel} from '../../../pattern-dynamic-panel/src/App/App';
 import {AppBase as PatternAccountIcon} from '../../../pattern-account-icon/src/App/App';
+import {AppBase as PatternVideoPlayerCustom} from '../../../pattern-video-player-custom/src/App/App';
 import {AppBase as PatternLayout} from '../../../pattern-layout/src/App/App';
 import {appElementBase as PatternLocaleSwitching} from '../../../pattern-locale-switching/src/main';
 import {App as PatternReact18New} from '../../../pattern-react18-new/src/App';
@@ -74,6 +75,7 @@ const routes = [
 	{path: '/PatternSinglePanel', element: <PatternSinglePanel />},
 	{path: '/PatternSinglePanelRedux', element: <PatternSinglePanelRedux />},
 	{path: '/PatternVideoPlayer', element: <PatternVideoPlayer />},
+	{path: '/PatternVideoPlayerCustom', element: <PatternVideoPlayerCustom />},
 	{path: '/PatternVirtualgridlistApi', element: <PatternVirtualgridlistApi />},
 	{path: '/PatternVirtuallistPreservingFocus', element: <PatternVirtuallistPreservingFocus />},
 	{path: '/TutorialHelloEnact', element: <TutorialHelloEnact />},

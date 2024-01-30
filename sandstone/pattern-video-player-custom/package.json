@@ -1,7 +1,7 @@
 {
-  "name": "all-samples",
+  "name": "pattern-video-player-custom",
   "version": "1.0.0",
-  "description": "A collection of sample applications for sandstone.",
+  "description": "An Enact application demonstrating how to add and play the custom videos in VideoPlayer.",
   "author": "",
   "main": "src/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "enact": {
-    "title": "Sandstone QA Samples",
+    "title": "Video Player Custom Pattern",
     "isomorphic": true,
     "ri": {
       "baseSize": 48
@@ -34,19 +34,11 @@
     "@enact/sandstone": "^2.7.13",
     "@enact/spotlight": "^4.7.9",
     "@enact/ui": "^4.7.9",
-    "@enact/webos": "^4.7.9",
-    "@reduxjs/toolkit": "^1.9.7",
-    "classnames": "^2.5.1",
     "hls.js": "^1.5.1",
     "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
-    "query-string": "^8.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.1.3",
-    "react-router-dom": "^6.21.3",
-    "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "eslint-config-enact-proxy": "^1.0.7"
