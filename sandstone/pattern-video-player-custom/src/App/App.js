@@ -17,6 +17,7 @@ const getVideo = (index) => videos[index];
 
 const AppBase = ({className, videoId, ...rest}) => {
 	const [panelsVisible, setPanelsVisible] = useState(false);
+	const [subtitleVisible, setSubtitleVisible] = useState(false);
 	const [videoIndex, setVideoIndex] = useState(videoId);
 	const hlsRef = useRef(null);
 	const videoRef = useRef(null);
@@ -26,8 +27,9 @@ const AppBase = ({className, videoId, ...rest}) => {
 		videoRef.current.hideControls();
 		setPanelsVisible(true);
 	}, []);
+	const handleSubtitle = useCallback(() => setSubtitleVisible(!subtitleVisible), [subtitleVisible]);
 	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
-	const {source, type, desc, ...restVideo} = getVideo(videoIndex);
+	const {source, type, desc, subtitle, ...restVideo} = getVideo(videoIndex);
 
 	const getHls = () => {
 		if (hlsRef.current === null) {
@@ -48,6 +50,22 @@ const AppBase = ({className, videoId, ...rest}) => {
 		}
 	}, [source, type]);
 
+	useEffect(() => {
+		const video = videoRef.current.getVideoNode().media;
+		let track = document.getElementById("track");
+		if (track) {
+			video.removeChild(track);
+		}
+		if (subtitleVisible) {
+			track = document.createElement('track');
+			track.src = subtitle;
+			track.kind = "subtitles";
+			track.default = true;
+			track.id = "track";
+			video.appendChild(track);
+		}
+	}, [subtitle, subtitleVisible]);
+
 	return (
 		<div {...rest} className={className + ' ' + css.app}>
 			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={panelsVisible}>
@@ -61,6 +79,12 @@ const AppBase = ({className, videoId, ...rest}) => {
 						backgroundOpacity="transparent"
 						onClick={handleShowPanelsClick}
 						spotlightDisabled={panelsVisible}
+					/>
+					<Button
+						icon="subtitle"
+						backgroundOpacity="transparent"
+						selected={subtitleVisible}
+						onClick={handleSubtitle}
 					/>
 				</MediaControls>
 			</VideoPlayer>
