@@ -76,6 +76,7 @@ const routes = [
 	{path: '/PatternSinglePanel', element: <PatternSinglePanel />},
 	{path: '/PatternSinglePanelRedux', element: <PatternSinglePanelRedux />},
 	{path: '/PatternVideoPlayer', element: <PatternVideoPlayer />},
+	{path: '/PatternVideoPlayerCustom', element: <PatternVideoPlayerCustom />},
 	{path: '/PatternVirtualgridlistApi', element: <PatternVirtualgridlistApi />},
 	{path: '/PatternVirtuallistPreservingFocus', element: <PatternVirtuallistPreservingFocus />},
 	{path: '/TutorialHelloEnact', element: <TutorialHelloEnact />},

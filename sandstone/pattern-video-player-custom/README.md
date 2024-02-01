@@ -15,7 +15,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 
 Videos in [videos.js](src/App/videos.js) are added to VideoPlayer.
 
-If the video format is `m3u8`, you can play it by running `npm install hls.js` and importing [hls.js](https://github.com/video-dev/hls.js).
+If the video format is `m3u8`, you can play it by writing the mime type of the video as `application/x-mpegURL` in [videos.js](src/App/videos.js).
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 
