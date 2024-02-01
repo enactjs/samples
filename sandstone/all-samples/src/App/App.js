@@ -67,7 +67,6 @@ const NavigationMenu = kind({
 const routes = [
 	{path: '/', exact: true, element: <NavigationMenu />},
 	{path: '/PatternAccountIcon', element: <PatternAccountIcon />},
-	{path: '/PatternVideoPlayerCustom', element: <PatternVideoPlayerCustom />},
 	{path: '/PatternDynamicPanel', element: <PatternDynamicPanel />},
 	{path: '/PatternLayout', element: <PatternLayout />},
 	{path: '/PatternLocaleSwitching', element: <PatternLocaleSwitching />},
