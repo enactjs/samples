@@ -87,7 +87,7 @@ const AppBase = ({className, videoId, ...rest}) => {
 						onClick={handleShowPanelsClick}
 						spotlightDisabled={panelsVisible}
 					/>
-					{panelsVisible && type === 'application/x-mpegURL' &&
+					{type === 'application/x-mpegURL' &&
 						<Button
 							icon="channel"
 							// example icon
