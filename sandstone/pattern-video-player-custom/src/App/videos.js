@@ -1,4 +1,4 @@
-import subtitlefile from './subtitle.vtt';  // import subtitle file
+import subtitleFile from './subtitle.vtt';  // import subtitle file
 
 // Videos List
 const videos = [
@@ -6,7 +6,7 @@ const videos = [
 		title: 'mp4 Video Source',
 		poster: 'http://media.w3.org/2010/05/sintel/poster.png',
 		source: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-		subtitle: subtitlefile,
+		subtitle: subtitleFile,
 		type: 'video/mp4',
 		desc: 'Custom mp4 video source.'
 	},

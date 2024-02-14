@@ -27,9 +27,9 @@ const AppBase = ({className, videoId, ...rest}) => {
 		videoRef.current.hideControls();
 		setPanelsVisible(true);
 	}, []);
-	const handleSubtitle = useCallback(() => setSubtitleVisible(!subtitleVisible), [subtitleVisible]);
+	const handleSubtitle = useCallback(() => setSubtitleVisible(prevSubtitleVisible => !prevSubtitleVisible), []);
 	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
-	const {source, type, desc, subtitle, ...restVideo} = getVideo(videoIndex);
+	const {desc, source, subtitle, type, ...restVideo} = getVideo(videoIndex);
 
 	const getHls = () => {
 		if (hlsRef.current === null) {
@@ -45,19 +45,17 @@ const AppBase = ({className, videoId, ...rest}) => {
 			hls.attachMedia(videoRef.current.getVideoNode().media);
 		} else {
 			hls.detachMedia();
-			const video = videoRef.current.getVideoNode().media;
-			video.src = source;
+			videoRef.current.getVideoNode().media.src = source;
 		}
 	}, [source, type]);
 
 	useEffect(() => {
 		const video = videoRef.current.getVideoNode().media;
-		let track = document.getElementById("track");
-		if (track) {
-			video.removeChild(track);
+		if (video.textTracks[video.textTracks.length - 1]) {
+			video.textTracks[video.textTracks.length - 1].mode = "disabled";
 		}
 		if (subtitleVisible) {
-			track = document.createElement('track');
+			const track = document.createElement('track');
 			track.src = subtitle;
 			track.kind = "subtitles";
 			track.default = true;
