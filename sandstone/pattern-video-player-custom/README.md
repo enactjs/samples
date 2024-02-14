@@ -1,6 +1,6 @@
 ## VideoPlayerCustom pattern
 
-A sample Enact application that demonstrates how to add and play the custom videos in VideoPlayer.
+A sample Enact application that demonstrates how to play `m3u8` in VideoPlayer by importing [hls.js](https://github.com/video-dev/hls.js).
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
@@ -13,12 +13,12 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `sandstone/Scroller`
 - `sandstone/VideoPlayer`
 
-Videos in [videos.js](src/App/videos.js) are added to VideoPlayer.
-
-Subtitles are also added to videos by importing subtitle files in [videos.js](src/App/videos.js).
-WebVTT format (.vtt files) subtitles are supported only, and other formats should be converted into WebVTT format.
-
 If the video format is `m3u8`, you can play it by writing the mime type of the video as `application/x-mpegURL` in [videos.js](src/App/videos.js).
+The video data, including the URL and mime type, are stored in [videos.js](src/App/videos.js). For `m3u8` videos, the mime type should be `application/x-mpegURL`.
+To enable `m3u8` video playback, the application uses [hls.js](https://github.com/video-dev/hls.js), which is imported in [App.js](src/App/App.js).
+In [App.js](src/App/App.js), the application retrieves the video data from [videos.js](src/App/videos.js) and assigns the source and video element to the VideoPlayer based on the mime type.
+Subtitle can also be assigned to video element by importing subtitle files in [videos.js](src/App/videos.js).
+WebVTT format (.vtt files) subtitles are supported only, and other formats should be converted into WebVTT format.
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 

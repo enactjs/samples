@@ -12,7 +12,7 @@ const videos = [
 	},
 	{
 		title: 'm3u8 Video Source',
-		source: '',  // m3u8 video url
+		source: '',  // put m3u8 video url here
 		type: 'application/x-mpegURL',  // m3u8 mime type
 		desc: 'Custom m3u8 video source.'
 	}
