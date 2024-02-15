@@ -51,16 +51,19 @@ const AppBase = ({className, videoId, ...rest}) => {
 
 	useEffect(() => {
 		const video = videoRef.current.getVideoNode().media;
-		if (video.textTracks[video.textTracks.length - 1]) {
-			video.textTracks[video.textTracks.length - 1].mode = "disabled";
-		}
+		let track = document.getElementById('track');
 		if (subtitleVisible) {
-			const track = document.createElement('track');
+			if (!document.getElementById('track')) {
+				track = document.createElement('track');
+				track.id = "track";
+				video.appendChild(track);
+			}
+			video.textTracks[0].mode = "hidden";
 			track.src = subtitle;
 			track.kind = "subtitles";
-			track.default = true;
-			track.id = "track";
-			video.appendChild(track);
+			video.textTracks[0].mode = "showing";
+		} else if (video.textTracks[0]) {
+			video.textTracks[0].mode = "hidden";
 		}
 	}, [subtitle, subtitleVisible]);
 
