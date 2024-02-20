@@ -101,9 +101,14 @@ const AppBase = ({className, videoId, ...rest}) => {
 						<div> Select Resolution </div>
 						<br />
 						<div>
-							{resolutions.map((resolution, index) => {
-								return <Button onClick={handleButton(index)}>{resolution._attrs[0].RESOLUTION}</Button>;
-							})}
+							{resolutions.map((resolution, index) => (
+								<Button
+									key={resolution._attrs[0].RESOLUTION}
+									onClick={handleButton(index)}
+								>
+									{resolution._attrs[0].RESOLUTION}
+								</Button>
+							))}
 						</div>
 					</Popup>
 				</MediaControls>
