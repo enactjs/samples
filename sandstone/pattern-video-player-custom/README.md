@@ -1,6 +1,6 @@
 ## VideoPlayerCustom pattern
 
-A sample Enact application that demonstrates how to play `m3u8` in VideoPlayer by importing [hls.js](https://github.com/video-dev/hls.js).
+A sample Enact application that demonstrates how to add and play the custom videos in VideoPlayer.
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 
