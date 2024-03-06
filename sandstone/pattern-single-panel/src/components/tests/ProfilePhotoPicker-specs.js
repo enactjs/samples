@@ -10,13 +10,15 @@ const rightKeyDown = keyDown(39);
 
 describe('ProfilePhotoPicker specs', () => {
 
-	test('should change ProfilePhoto image src', function () {
+	test('should change ProfilePhoto image src', async function () {
+		const user = userEvent.setup();
+
 		render(<ProfilePhotoPicker />);
 
 		const button = screen.getByLabelText(/next/);
 
-		userEvent.click(button);
-		userEvent.click(button);
+		await user.click(button);
+		await user.click(button);
 
 		const profilePhoto = screen.getAllByRole('img');
 
