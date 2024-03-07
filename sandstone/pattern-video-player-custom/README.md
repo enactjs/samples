@@ -17,7 +17,6 @@ The video data, including the URL, mime type, and subtitle are stored in [videos
 To enable `m3u8` video playback, the application uses [hls.js](https://github.com/video-dev/hls.js), which is imported in [App.js](src/App/App.js).
 In [App.js](src/App/App.js), the application retrieves the video data from [videos.js](src/App/videos.js) and assigns the source and video element to the VideoPlayer based on the mime type.
 
-Functionally, you can change the resolution and subtitle of the `m3u8` video.
 Additionally, this application supports subtitles in the WebVTT format (.vtt files). These subtitles can be displayed in the VideoPlayer. Please note that only subtitles in the WebVTT format are supported.
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
