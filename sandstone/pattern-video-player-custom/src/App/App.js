@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import {useCallback, useEffect, useRef, useState} from 'react';
 
 import MainPanel from '../views/MainPanel';
+import SubtitlePanel from '../views/SubtitlePanel';
 
 import videos from './videos.js';
 
@@ -15,21 +16,34 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-const AppBase = ({className, videoId, ...rest}) => {
-	const [panelsVisible, setPanelsVisible] = useState(false);
-	const [subtitleVisible, setSubtitleVisible] = useState(false);
+const AppBase = ({className, subtitleId, videoId, ...rest}) => {
+	const [subtitleIndex, setSubtitleIndex] = useState(subtitleId);
+	const [subtitlePanelsVisible, setSubtitlePanelsVisible] = useState(false);
 	const [videoIndex, setVideoIndex] = useState(videoId);
+	const [videoPanelsVisible, setVideoPanelsVisible] = useState(false);
 	const hlsRef = useRef(null);
 	const videoRef = useRef(null);
 
-	const handleHidePanelsClick = useCallback(() => setPanelsVisible(false), []);
-	const handleShowPanelsClick = useCallback(() => {
+	const handleHideSubtitlePanelsClick = useCallback(() => setSubtitlePanelsVisible(false), []);
+	const handleHideVideoPanelsClick = useCallback(() => setVideoPanelsVisible(false), []);
+	const handleShowSubtitlePanelsClick = useCallback(() => {
 		videoRef.current.hideControls();
-		setPanelsVisible(true);
+		setSubtitlePanelsVisible(true);
 	}, []);
-	const handleSubtitle = useCallback(() => setSubtitleVisible(prevSubtitleVisible => !prevSubtitleVisible), []);
-	const handleVideoIndexChange = useCallback((index) => setVideoIndex(index), []);
-	const {desc, source, subtitle, type, ...restVideo} = getVideo(videoIndex);
+	const handleShowVideoPanelsClick = useCallback(() => {
+		videoRef.current.hideControls();
+		setVideoPanelsVisible(true);
+	}, []);
+	const handleSubtitleIndexChange = useCallback((index) => {
+		setSubtitleIndex(index);
+	}, []);
+	const handleVideoIndexChange = useCallback((index) => {
+		setVideoIndex(index);
+		setSubtitleIndex(0);
+	}, []);
+
+	const {desc, source, subtitles, type, ...restVideo} = getVideo(videoIndex);
+	const subtitle = subtitles[subtitleIndex - 1];
 
 	const getHls = () => {
 		if (hlsRef.current === null) {
@@ -52,24 +66,48 @@ const AppBase = ({className, videoId, ...rest}) => {
 	useEffect(() => {
 		const video = videoRef.current.getVideoNode().media;
 		let track = document.getElementById('track');
-		if (subtitleVisible) {
+		if (subtitle) {
 			if (!document.getElementById('track')) {
 				track = document.createElement('track');
 				track.id = "track";
 				video.appendChild(track);
 			}
 			video.textTracks[0].mode = "hidden";
-			track.src = subtitle;
+			track.src = subtitle.file;
 			track.kind = "subtitles";
+			track.srclang = subtitle.lang;
 			video.textTracks[0].mode = "showing";
 		} else if (video.textTracks[0]) {
 			video.textTracks[0].mode = "hidden";
 		}
-	}, [subtitle, subtitleVisible]);
+	}, [subtitle]);
+
+	let PanelContent = null;
+
+	if (subtitlePanelsVisible) {
+		PanelContent = <Panels>
+			<SubtitlePanel
+				onHidePanels={handleHideSubtitlePanelsClick}
+				onSubtitleIndexChange={handleSubtitleIndexChange}
+				title="Subtitles"
+				subtitleIndex={subtitleIndex}
+				videoIndex={videoIndex}
+			/>
+		</Panels>;
+	} else if (videoPanelsVisible) {
+		PanelContent = <Panels>
+			<MainPanel
+				onHidePanels={handleHideVideoPanelsClick}
+				onVideoIndexChange={handleVideoIndexChange}
+				title="Videos"
+				videoIndex={videoIndex}
+			/>
+		</Panels>;
+	}
 
 	return (
 		<div {...rest} className={className + ' ' + css.app}>
-			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={panelsVisible}>
+			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={videoPanelsVisible || subtitlePanelsVisible}>
 				<source src={source} type={type} />
 				<infoComponents>
 					{desc}
@@ -78,32 +116,32 @@ const AppBase = ({className, videoId, ...rest}) => {
 					<Button
 						icon="list"
 						backgroundOpacity="transparent"
-						onClick={handleShowPanelsClick}
-						spotlightDisabled={panelsVisible}
+						onClick={handleShowVideoPanelsClick}
+						spotlightDisabled={videoPanelsVisible}
 					/>
 					<Button
 						icon="subtitle"
 						backgroundOpacity="transparent"
-						selected={subtitleVisible}
-						onClick={handleSubtitle}
+						onClick={handleShowSubtitlePanelsClick}
+						spotlightDisabled={subtitlePanelsVisible}
 					/>
 				</MediaControls>
 			</VideoPlayer>
-			{panelsVisible ?
-				<Panels>
-					<MainPanel
-						onHidePanels={handleHidePanelsClick}
-						onVideoIndexChange={handleVideoIndexChange}
-						title="Videos"
-						videoIndex={videoIndex}
-					/>
-				</Panels> :
-				null}
+			{PanelContent}
 		</div>
 	);
 };
 
 AppBase.propTypes = {
+	/**
+	 * Assign an alternate initial subtitle to load first.
+	 *
+	 * @type {Number}
+	 * @default 0
+	 * @public
+	 */
+	subtitleId: PropTypes.number,
+
 	/**
 	 * Assign an alternate initial video to load first.
 	 *
@@ -115,6 +153,7 @@ AppBase.propTypes = {
 };
 
 AppBase.defaultProps = {
+	subtitleId: 0,
 	videoId: 0
 };
 
