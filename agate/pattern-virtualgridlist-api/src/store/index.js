@@ -19,7 +19,7 @@ const createRecords = (album) => {
 			selected: false,
 			selectionOverlayShowing: false,
 			caption: album + ' ' + idx + caption,
-			source: 'http://via.placeholder.com/300x300/' + color + '/ffffff&text=Image ' + idx
+			source: 'https://placehold.co/300x300/' + color + '/ffffff/png?text=Image+' + idx
 		};
 	}
 
