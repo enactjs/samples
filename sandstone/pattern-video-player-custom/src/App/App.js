@@ -7,8 +7,8 @@ import Hls from 'hls.js';
 import PropTypes from 'prop-types';
 import {useCallback, useEffect, useRef, useState} from 'react';
 
-import MainPanel from '../views/MainPanel';
-import SubtitlePanel from '../views/SubtitlePanel';
+import VideoSelectionPanel from '../views/VideoSelectionPanel';
+import SubtitleSelectionPanel from '../views/SubtitleSelectionPanel';
 
 import videos from './videos.js';
 
@@ -86,7 +86,7 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 
 	if (subtitlePanelsVisible) {
 		PanelContent = <Panels>
-			<SubtitlePanel
+			<SubtitleSelectionPanel
 				onHidePanels={handleHideSubtitlePanelsClick}
 				onSubtitleIndexChange={handleSubtitleIndexChange}
 				title="Subtitles"
@@ -96,7 +96,7 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		</Panels>;
 	} else if (videoPanelsVisible) {
 		PanelContent = <Panels>
-			<MainPanel
+			<VideoSelectionPanel
 				onHidePanels={handleHideVideoPanelsClick}
 				onVideoIndexChange={handleVideoIndexChange}
 				title="Videos"

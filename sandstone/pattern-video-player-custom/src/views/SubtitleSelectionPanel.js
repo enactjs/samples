@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 
 import videos from '../App/videos.js';
 
-const SubtitlePanel = kind({
-	name: 'SubtitlePanel',
+const SubtitleSelectionPanel = kind({
+	name: 'SubtitleSelectionPanel',
 
 	propTypes: {
 		/**
@@ -82,4 +82,4 @@ const SubtitlePanel = kind({
 	}
 });
 
-export default SubtitlePanel;
+export default SubtitleSelectionPanel;

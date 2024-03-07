@@ -1,5 +1,5 @@
-import subtitleFile1 from './subtitleEN.vtt';  // import subtitle file
-import subtitleFile2 from './subtitleKO.vtt';  // import subtitle file
+import subtitleFile1 from './subtitle-en.vtt';  // import subtitle file
+import subtitleFile2 from './subtitle-ko.vtt';  // import subtitle file
 
 // Videos List
 const videos = [
