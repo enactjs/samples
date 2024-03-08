@@ -13,7 +13,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `sandstone/Scroller`
 - `sandstone/VideoPlayer`
 
-The video data, including the URL and mime type, are stored in [videos.js](src/App/videos.js). For `m3u8` videos, the mime type should be `application/x-mpegURL`.
+The video data, including the URL, mime type, and subtitle are stored in [videos.js](src/App/videos.js). For `m3u8` videos, the mime type should be `application/x-mpegURL`.
 To enable `m3u8` video playback, the application uses [hls.js](https://github.com/video-dev/hls.js), which is imported in [App.js](src/App/App.js).
 In [App.js](src/App/App.js), the application retrieves the video data from [videos.js](src/App/videos.js) and assigns the source and video element to the VideoPlayer based on the mime type.
 
