@@ -61,6 +61,8 @@ const SubtitleSelectionPanel = kind({
 	},
 
 	render: ({title, onHidePanels, onSubtitleIndexChange, subtitleIndex, subtitlesList, ...rest}) => {
+		delete rest.videoIndex;
+
 		return (
 			<Panel {...rest}>
 				<Header title={title}>
