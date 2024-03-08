@@ -52,7 +52,6 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		return hlsRef.current;
 	};
 
-	// get video source depending on video type
 	useEffect(() => {
 		const hls = getHls();
 		if (type === 'application/x-mpegURL') {
@@ -64,7 +63,6 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		}
 	}, [source, type]);
 
-	// add or remove subtitle
 	useEffect(() => {
 		const video = videoRef.current.getVideoNode().media;
 		let track = document.getElementById('track');
