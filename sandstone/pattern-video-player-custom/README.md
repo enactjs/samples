@@ -16,10 +16,7 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 The video data, including the URL, mime type, and subtitle are stored in [videos.js](src/App/videos.js). For `m3u8` videos, the mime type should be `application/x-mpegURL`.
 To enable `m3u8` video playback, the application uses [hls.js](https://github.com/video-dev/hls.js), which is imported in [App.js](src/App/App.js).
 In [App.js](src/App/App.js), the application retrieves the video data from [videos.js](src/App/videos.js) and assigns the source and video element to the VideoPlayer based on the mime type.
-
-Functionally, you can change the resolution and subtitle of the `m3u8` video.
-In [App.js](src/App/App.js), the application handles WebVTT format(.vtt files) subtitles for display in VideoPlayer.
-This application supports only WebVTT format (.vtt files) subtitles, and other formats should be converted into WebVTT format.
+Additionally, this application supports subtitles in the WebVTT format (.vtt files). These subtitles can be displayed in the VideoPlayer. Please note that only subtitles in the WebVTT format are supported.
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 
