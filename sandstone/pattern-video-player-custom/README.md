@@ -13,9 +13,12 @@ Run `npm install` then `npm run serve` to have the app running on [http://localh
 - `sandstone/Scroller`
 - `sandstone/VideoPlayer`
 
-Videos in [videos.js](src/App/videos.js) are added to VideoPlayer.
+The video data, including the URL, mime type, and subtitle are stored in [videos.js](src/App/videos.js). For `m3u8` videos, the mime type should be `application/x-mpegURL`.
+To enable `m3u8` video playback, the application uses [hls.js](https://github.com/video-dev/hls.js), which is imported in [App.js](src/App/App.js).
 
-If the video format is `m3u8`, you can play it by writing the mime type of the video as `application/x-mpegURL` in [videos.js](src/App/videos.js).
+In [App.js](src/App/App.js), the application retrieves the video data from [videos.js](src/App/videos.js) and assigns the source and video element to the VideoPlayer based on the mime type.
+
+Additionally, this application supports subtitles in the WebVTT format (.vtt files). These subtitles can be displayed in the VideoPlayer. Please note that HTML video supports only subtitles in the WebVTT format.
 
 You can find a more detailed view inside of [App.js](src/App/App.js)
 

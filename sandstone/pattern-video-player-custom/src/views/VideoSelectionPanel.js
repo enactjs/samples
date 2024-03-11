@@ -13,8 +13,8 @@ import videos from '../App/videos.js';
 // videos[{title: 'value'}] -> videosList['value']
 const videosList = videos.map((video) => video.title);
 
-const MainPanel = kind({
-	name: 'MainPanel',
+const VideoSelectionPanel = kind({
+	name: 'VideoSelectionPanel',
 
 	propTypes: {
 		/**
@@ -71,4 +71,4 @@ const MainPanel = kind({
 	}
 });
 
-export default MainPanel;
+export default VideoSelectionPanel;
