@@ -93,35 +93,10 @@ new LS2Request().send({
 })
 ```
 
-`theme` key does not have a default value defined, it comes as an empty string. Because of this, we need to check the value 
-of `theme` key when the sample first loads and set a value for the key. In this sample we used the app context as a default value.
+`theme` key does not have a default value defined, it comes as an empty string. Because of this, we use the default values from context
+at app initialization.
 
-Example:
-```
-new LS2Request().send({
-    service: 'luna://com.webos.service.settings/',
-	method: 'getSystemSettings',
-	parameters: {
-		category: 'customUi',
-		keys: ['theme']
-	},
-	onSuccess: (res) => {
-		// if `theme` key is empty, populate with a default value
-		if (res.settings.theme === '') {
-			new LS2Request().send({
-				service: 'luna://com.webos.service.settings/',
-				method: 'setSystemSettings',
-				parameters: {
-					category: 'customUi',
-					keys: JSON.stringify(defaultValue)
-				}
-			});
-		}
-	}
-});
-```
-
-After the key data is set, we can fetch the data stored in `theme` and update app context. This is done with `getSystemSettings`
+After the first change the data is stored in `theme` and we can update the app context. This is done with `getSystemSettings`
 function located inside `./lunaCalls/getSystemSettings.js`. In this sample it accepts `setContext` parameter to update the
 context when data is available, but it can be changed depending on your chosen data storage or even omitted.
 

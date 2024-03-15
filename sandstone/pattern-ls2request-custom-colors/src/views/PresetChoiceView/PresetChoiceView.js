@@ -1,3 +1,4 @@
+import platform from '@enact/core/platform';
 import IconItem from '@enact/sandstone/IconItem';
 import RadioItem from '@enact/sandstone/RadioItem';
 import Scroller from '@enact/sandstone/Scroller';
@@ -17,7 +18,6 @@ import presetColors from '../../presets';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './PresetChoiceView.module.less';
-import {isSystemWebOS} from '../../utils';
 
 const PresetChoiceView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
@@ -46,7 +46,7 @@ const PresetChoiceView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			if (isSystemWebOS()) setSystemSettings(newContext);
+			if (platform.type === 'webos') setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;
@@ -68,7 +68,7 @@ const PresetChoiceView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			if (isSystemWebOS()) setSystemSettings(newContext);
+			if (platform.type === 'webos') setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;

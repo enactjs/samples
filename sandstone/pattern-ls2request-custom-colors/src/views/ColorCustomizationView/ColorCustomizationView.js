@@ -1,3 +1,4 @@
+import platform from '@enact/core/platform';
 import Button from '@enact/sandstone/Button';
 import ColorPicker from '@enact/sandstone/ColorPicker';
 import IconItem from "@enact/sandstone/IconItem";
@@ -14,7 +15,6 @@ import {setSystemSettings} from '../../lunaCalls/setSystemSettings';
 import presetDefaultColors from '../../presetsDefaultColors';
 
 import css from './ColorCustomizationView.module.less';
-import {isSystemWebOS} from "../../utils";
 
 const ColorCustomizationView = ({navigate}) => {
 	// Here we get the context of the app and the setter function for it
@@ -33,7 +33,7 @@ const ColorCustomizationView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			if (isSystemWebOS()) setSystemSettings(newContext);
+			if (platform.type === 'webos') setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;
@@ -53,7 +53,7 @@ const ColorCustomizationView = ({navigate}) => {
 			// Here we update the variables inside WebOS using luna calls
 			// First we check if the system the app is running on is WebOS
 			// If it is not we exit skip this step
-			if (isSystemWebOS()) setSystemSettings(newContext);
+			if (platform.type === 'webos') setSystemSettings(newContext);
 
 			// Here we return the updated context that contains our changes
 			return newContext;

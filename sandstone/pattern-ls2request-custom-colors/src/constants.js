@@ -25,4 +25,4 @@ export const customColorsContext = {
 	colors: defaultPresets.defaultColorSet
 };
 
-export const AppContext = createContext(null);
+export const AppContext = createContext(customColorsContext);
