@@ -1,7 +1,6 @@
-## Color Customization App
+## Custom Colors LS2Request pattern
 
-A sample Enact application that shows off how to customize a Sandstone app using the new `customUi` category from 
-SettingsService via LS2Request.
+A sample Enact application demonstrating how to customize a Sandstone app using a Setting Service with a `customUi` category via LS2Request.
 
 Run `npm install` then `npm run serve` to have the app running on [http://localhost:8080](http://localhost:8080), where you can view it in your browser.
 

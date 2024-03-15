@@ -92,7 +92,7 @@ const ColorCustomizationView = ({navigate}) => {
 						<ColorPicker color={context.backgroundColor} colorHandler={handleBackgroundColor} text="Background Color" />
 						<ColorPicker color={context.componentBackgroundColor} colorHandler={handleComponentBackgroundColor} text="Component Background Color" />
 						<ColorPicker color={context.focusBackgroundColor} colorHandler={handleFocusBackgroundColor} text="Focus Background Color" />
-						<ColorPicker color={context.popupBackgroundColor} colorHandler={handlePopupBackgroundColor} text="Pupup Background Color" />
+						<ColorPicker color={context.popupBackgroundColor} colorHandler={handlePopupBackgroundColor} text="Popup Background Color" />
 						<ColorPicker color={context.subtitleTextColor} colorHandler={handleSubtitleTextColor} text="Subtitle Text Color" />
 						<ColorPicker color={context.textColor} colorHandler={handleTextColor} text="Text Color" />
 					</Scroller>

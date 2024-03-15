@@ -20,7 +20,7 @@ import {hexToRGB} from '../../utils';
 import css from './ShowcaseView.module.less';
 
 const ShowcaseView = ({navigate}) => {
-	// Here we get the context of the app
+	// Here we get the context of the app which is set in the MainView
 	const {context} = useContext(AppContext);
 	const [openPopup, setOpenPopup] = useState(false);
 
