@@ -8,7 +8,6 @@ const defaultSize = 10;
 
 const MainView = (props) => {
 	const [items, setItems] = useState([]);
-	const [dataSize, setDataSize] = useState(0);
 	const [isFetching, setIsFetching] = useState(false);
 
 	const createInitialData = useCallback((itemSize) => {
@@ -23,7 +22,6 @@ const MainView = (props) => {
 				newItems.push({text, subText, source});
 		}
 		setItems(newItems);
-		setDataSize(newItems.length);
 	}, [items]);
 
 	const loadMoreData = useCallback(() => {
@@ -31,7 +29,9 @@ const MainView = (props) => {
 		// Here, assuming that the fetch is successful, we only proceed with attaching the data.
 
 		const newItems = Array.from(items);
-		for (let i = dataSize; i < dataSize + defaultSize; i++) {
+		const length = items.length;
+
+		for (let i = length; i < length + defaultSize; i++) {
 			const text = `Item ${i}`,
 				subText = `SubItem ${i}`,
 				color = Math.floor(Math.random() * (0x1000000 - 0x101010) + 0x101010).toString(16),
@@ -40,8 +40,7 @@ const MainView = (props) => {
 			newItems.push({text, subText, source});
 		}
 		setItems(newItems);
-		setDataSize(newItems.length);
-	}, [items, dataSize]);
+	}, [items]);
 
 	const renderItem = useCallback(({index, ...rest}) => {
 		const {text, subText, source} = items[index];
@@ -77,7 +76,7 @@ const MainView = (props) => {
 		<Panel {...props}>
 			<Header title="VirtualGridList With Infinite Scroll" />
 			<VirtualGridList
-			dataSize={dataSize}
+			dataSize={items.length}
 			itemRenderer={renderItem}
 			itemSize={{minHeight: ri.scale(570), minWidth: ri.scale(688)}}
 			onScrollStop={handleScrollStop}
