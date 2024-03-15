@@ -25,7 +25,7 @@ const MainView = (rest) => {
 	useEffect(() => {
 		// First we check if the system the app is running on is WebOS
 		// If it is not we exit from this useEffect
-		if (platform.type === 'webos') getSystemSettings(setContext);
+		if (platform.platformName === 'webos') getSystemSettings(setContext);
 	}, [setContext]);
 
 	return (
