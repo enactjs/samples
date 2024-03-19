@@ -38,10 +38,13 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		const hls = getHls();
 
 		// According to hls.js, automatic level selection should set -1.
-		if (data === 'auto') hls.nextLevel = -1;
-		else hls.nextLevel = selected;
-
-		setSelectedResolution(selected);
+		if (data === 'auto') {
+			hls.nextLevel = -1;
+			setSelectedResolution(-1);
+		} else {
+			hls.nextLevel = selected;
+			setSelectedResolution(selected);
+		}
 	}, []);
 	const handleHideResolution = useCallback(() => setResolutionDropdownVisible(false), []);
 	const handleHideSubtitlePanelsClick = useCallback(() => setSubtitlePanelsVisible(false), []);
@@ -145,7 +148,7 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 					<Header title="Select Video Resolution">
 						<Button onClick={handleHideResolution} size="small">Hide Panels</Button>
 					</Header>
-					<Dropdown selected={selectedResolution || resolutions.length - 1} onSelect={handleSelectResolution}>{resolutions}</Dropdown>
+					<Dropdown selected={selectedResolution > -1 ? selectedResolution : resolutions.length - 1} onSelect={handleSelectResolution}>{resolutions}</Dropdown>
 				</Panel>
 			</Panels>
 		);
