@@ -1,7 +1,7 @@
 import Button from '@enact/sandstone/Button';
+import Dropdown from '@enact/sandstone/Dropdown';
 import {MediaControls} from '@enact/sandstone/MediaPlayer';
-import {Panels} from '@enact/sandstone/Panels';
-import Popup from '@enact/sandstone/Popup';
+import {Header, Panels, Panel} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import Hls from 'hls.js';
@@ -18,8 +18,9 @@ import css from './App.module.less';
 const getVideo = (index) => videos[index];
 
 const AppBase = ({className, subtitleId, videoId, ...rest}) => {
-	const [openResolutionPopup, setOpenResolutionPopup] = useState(false);
+	const [resolutionDropdownVisible, setResolutionDropdownVisible] = useState(false);
 	const [resolutions, setResolutions] = useState([]);
+	const [selectedResolution, setSelectedResolution] = useState();
 	const [subtitleIndex, setSubtitleIndex] = useState(subtitleId);
 	const [subtitlePanelsVisible, setSubtitlePanelsVisible] = useState(false);
 	const [videoIndex, setVideoIndex] = useState(videoId);
@@ -33,15 +34,22 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		}
 		return hlsRef.current;
 	};
-	const handleButton = (level) => () => {
+	const handleSelectResolution = useCallback(({data, selected}) => {
 		const hls = getHls();
-		hls.nextLevel = level;
-		setOpenResolutionPopup(false);
-	};
+
+		// According to hls.js, automatic level selection should set -1.
+		if (data === 'auto') hls.nextLevel = -1;
+		else hls.nextLevel = selected;
+
+		setSelectedResolution(selected);
+	}, []);
+	const handleHideResolution = useCallback(() => setResolutionDropdownVisible(false), []);
 	const handleHideSubtitlePanelsClick = useCallback(() => setSubtitlePanelsVisible(false), []);
 	const handleHideVideoPanelsClick = useCallback(() => setVideoPanelsVisible(false), []);
-	const handleSelectResolution = useCallback(() => {
-		setOpenResolutionPopup(true);
+	const handleShowResolution = useCallback(() => {
+		videoRef.current.hideControls();
+		setVideoPanelsVisible(false);
+		setResolutionDropdownVisible(true);
 	}, []);
 	const handleShowSubtitlePanelsClick = useCallback(() => {
 		videoRef.current.hideControls();
@@ -77,13 +85,15 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 	useEffect(() => {
 		const hls = getHls();
 
-		const onLevelLoaded = () => {
-			setResolutions(hls.levels);
+		const onLevelSwitched = () => {
+			const list = hls.levels.map((level) => level._attrs[0].RESOLUTION);
+			list.push('auto');
+			setResolutions(list);
 		};
 
-		hls.on(Hls.Events.LEVEL_LOADED, onLevelLoaded);
+		hls.on(Hls.Events.LEVEL_SWITCHED, onLevelSwitched);
 		return () => {
-			hls.off(Hls.Events.LEVEL_LOADED, onLevelLoaded);
+			hls.off(Hls.Events.LEVEL_LOADED, onLevelSwitched);
 		};
 	}, []);
 
@@ -107,10 +117,10 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 		}
 	}, [subtitle]);
 
-	let PanelContent = null;
+	let content = null;
 
 	if (subtitlePanelsVisible) {
-		PanelContent = <Panels>
+		content = <Panels>
 			<SubtitleSelectionPanel
 				onHidePanels={handleHideSubtitlePanelsClick}
 				onSubtitleIndexChange={handleSubtitleIndexChange}
@@ -120,7 +130,7 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 			/>
 		</Panels>;
 	} else if (videoPanelsVisible) {
-		PanelContent = <Panels>
+		content = <Panels>
 			<VideoSelectionPanel
 				onHidePanels={handleHideVideoPanelsClick}
 				onVideoIndexChange={handleVideoIndexChange}
@@ -128,11 +138,22 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 				videoIndex={videoIndex}
 			/>
 		</Panels>;
+	} else if (resolutionDropdownVisible) {
+		content = (
+			<Panels>
+				<Panel>
+					<Header title="Select Video Resolution">
+						<Button onClick={handleHideResolution} size="small">Hide Panels</Button>
+					</Header>
+					<Dropdown selected={selectedResolution || resolutions.length - 1} onSelect={handleSelectResolution}>{resolutions}</Dropdown>
+				</Panel>
+			</Panels>
+		);
 	}
 
 	return (
 		<div {...rest} className={className + ' ' + css.app}>
-			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={videoPanelsVisible || subtitlePanelsVisible}>
+			<VideoPlayer {...restVideo} className={css.player + ' enact-fit'} ref={videoRef} spotlightDisabled={videoPanelsVisible || subtitlePanelsVisible || resolutionDropdownVisible}>
 				<source src={source} type={type} />
 				<infoComponents>
 					{desc}
@@ -154,29 +175,13 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 						<Button
 							icon="channel"
 							// example icon
-							onClick={handleSelectResolution}
+							backgroundOpacity="transparent"
+							onClick={handleShowResolution}
 						/>
 					}
-					<Popup
-						open={openResolutionPopup}
-						position="bottom"
-					>
-						<div> Select Resolution </div>
-						<br />
-						<div>
-							{resolutions.map((resolution, index) => (
-								<Button
-									key={resolution._attrs[0].RESOLUTION}
-									onClick={handleButton(index)}
-								>
-									{resolution._attrs[0].RESOLUTION}
-								</Button>
-							))}
-						</div>
-					</Popup>
 				</MediaControls>
 			</VideoPlayer>
-			{PanelContent}
+			{content}
 		</div>
 	);
 };
