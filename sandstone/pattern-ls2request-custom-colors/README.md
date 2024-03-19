@@ -96,7 +96,7 @@ new LS2Request().send({
 `theme` key does not have a default value defined, it comes as an empty string. Because of this, we use the default values from context
 at app initialization.
 
-After the first change the data is stored in `theme` key, and we can update the app context. Retrieving data from `theme` key is done with `getSystemSettings`
+Retrieving the `theme` data is done with `getSystemSettings`
 function located inside `./lunaCalls/getSystemSettings.js`. In this sample it accepts `setContext` parameter to update the
 context when data is available, but it can be changed depending on your chosen data storage or even omitted.
 
