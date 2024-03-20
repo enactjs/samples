@@ -96,7 +96,7 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 
 		hls.on(Hls.Events.LEVEL_SWITCHED, onLevelSwitched);
 		return () => {
-			hls.off(Hls.Events.LEVEL_LOADED, onLevelSwitched);
+			hls.off(Hls.Events.LEVEL_SWITCHED, onLevelSwitched);
 		};
 	}, []);
 
@@ -123,32 +123,46 @@ const AppBase = ({className, subtitleId, videoId, ...rest}) => {
 	let content = null;
 
 	if (subtitlePanelsVisible) {
-		content = <Panels>
-			<SubtitleSelectionPanel
-				onHidePanels={handleHideSubtitlePanelsClick}
-				onSubtitleIndexChange={handleSubtitleIndexChange}
-				title="Subtitles"
-				subtitleIndex={subtitleIndex}
-				videoIndex={videoIndex}
-			/>
-		</Panels>;
+		content = (
+			<Panels>
+				<SubtitleSelectionPanel
+					onHidePanels={handleHideSubtitlePanelsClick}
+					onSubtitleIndexChange={handleSubtitleIndexChange}
+					title="Subtitles"
+					subtitleIndex={subtitleIndex}
+					videoIndex={videoIndex}
+				/>
+			</Panels>
+		);
 	} else if (videoPanelsVisible) {
-		content = <Panels>
-			<VideoSelectionPanel
-				onHidePanels={handleHideVideoPanelsClick}
-				onVideoIndexChange={handleVideoIndexChange}
-				title="Videos"
-				videoIndex={videoIndex}
-			/>
-		</Panels>;
+		content = (
+			<Panels>
+				<VideoSelectionPanel
+					onHidePanels={handleHideVideoPanelsClick}
+					onVideoIndexChange={handleVideoIndexChange}
+					title="Videos"
+					videoIndex={videoIndex}
+				/>
+			</Panels>
+		);
 	} else if (resolutionDropdownVisible) {
 		content = (
 			<Panels>
 				<Panel>
 					<Header title="Select Video Resolution">
-						<Button onClick={handleHideResolution} size="small">Hide Panels</Button>
+						<Button
+							onClick={handleHideResolution}
+							size="small"
+						>
+							Hide Panels
+						</Button>
 					</Header>
-					<Dropdown selected={selectedResolution > -1 ? selectedResolution : resolutions.length - 1} onSelect={handleSelectResolution}>{resolutions}</Dropdown>
+					<Dropdown
+						selected={selectedResolution > -1 ? selectedResolution : resolutions.length - 1}
+						onSelect={handleSelectResolution}
+					>
+						{resolutions}
+					</Dropdown>
 				</Panel>
 			</Panels>
 		);
