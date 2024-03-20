@@ -67,12 +67,12 @@ how such a string needs to look like.
 
 ### Use LS2Request
 
-Active preset, default customization colors, colors(CSS stylesheet) and lightMode are saved in a key located in `com.webos.service.settings/` 
+Active preset, default customization colors, colors(CSS stylesheet) and lightMode are saved in settings service(`com.webos.service.settings`)
 with the following structure:
 ```
 category: 'customUi',
 settings: {
-    key: 'theme'
+    theme: {}
 }
 ```
 
