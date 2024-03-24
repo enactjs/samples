@@ -1,0 +1,117 @@
+// Applies another animation to the entire transition group
+//::view-transition-group(swipe-right) {
+//  animation: move 0.6s linear;
+//}
+//@keyframes move {
+//  50% {
+//    transform: translateX(50%);
+//  }
+//}
+
+// Applies another animation to the old and new state
+//::view-transition-image-pair(swipe-right) {
+//  animation: move 0.6s linear;
+//}
+//@keyframes move {
+//  50% {
+//    transform: translateX(50%);
+//  }
+//}
+
+// Dissolve transition
+::view-transition-new(dissolve) {
+  animation: dissolve-out 0.6s linear;
+}
+@keyframes dissolve-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+// Rotate transition animation
+::view-transition-new(rotate-left) {
+  animation: rotate-left 0.6s ease;
+}
+::view-transition-new(rotate-right) {
+  animation: rotate-right 0.6s ease;
+}
+@keyframes rotate-left {
+  50% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes rotate-right {
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+// Swipe transition animation
+::view-transition-new(swipe-left) {
+  animation: swipe-left 0.6s ease-in-out;
+}
+::view-transition-new(swipe-right) {
+  //animation: swipe-right 0.6s ease-in-out;
+}
+@keyframes swipe-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  75% {
+    transform: translateX(5%);
+  }
+}
+@keyframes swipe-right {
+  0% {
+    transform: translateX(100%);
+  }
+  75% {
+    transform: translateX(-5%);
+  }
+}
+
+// Zoom swipe transition animation
+::view-transition-new(zoom-swipe-left) {
+  animation: zoom-in-out-swipe-left 0.6s ease-in-out;
+}
+::view-transition-new(zoom-swipe-right) {
+  animation: zoom-in-out-swipe-right 0.6s ease-in-out;
+}
+@keyframes zoom-in-out-swipe-left {
+  0% {
+    transform: translateX(-70%);
+  }
+  25% {
+    transform: scale(0.95);
+  }
+  75% {
+    transform: scale(1.01);
+  }
+}
+@keyframes zoom-in-out-swipe-right {
+  0% {
+    transform: translateX(70%);
+  }
+  25% {
+    transform: scale(0.95);
+  }
+  75% {
+    transform: scale(1.01);
+  }
+}
+
+// Zoom in transition animation
+::view-transition-new(zoom-in) {
+  animation: zoom-in-out 0.6s ease-in-out;
+}
+@keyframes zoom-in-out {
+  25% {
+    transform: scale(1.05);
+  }
+  75% {
+    transform: scale(0.99);
+  }
+}

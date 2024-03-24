@@ -1,0 +1,36 @@
+// Dissolve transition animation
+::view-transition-group(dissolve-in) {
+  animation: move 1s linear;
+}
+@keyframes move {
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+::view-transition-new(dissolve-in) {
+  animation: dissolve-in 0.6s linear;
+}
+@keyframes dissolve-in {
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+::view-transition-new(dissolve-out) {
+  animation: dissolve-out 0.6s linear;
+}
+@keyframes dissolve-out {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
