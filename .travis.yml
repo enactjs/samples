@@ -21,12 +21,6 @@ script:
     - npm run pack
     - cd ../../
     - echo -e "\x1b\x5b35;1m*** agate/all-samples build complete\x1b\x5b0m"
-    - echo -e "\x1b\x5b35;1m*** Starting limestone/all-samples build...\x1b\x5b0m"
-    - cd limestone/all-samples
-    - npm install
-    - npm run pack
-    - cd ../../
-    - echo -e "\x1b\x5b35;1m*** limestone/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting moonstone/all-samples build...\x1b\x5b0m"
     - cd moonstone/all-samples
     - npm install
@@ -45,6 +39,12 @@ script:
     - npm run pack
     - cd ../../
     - echo -e "\x1b\x5b35;1m*** ui/all-samples build complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Starting limestone/all-samples build...\x1b\x5b0m"
+    - cd limestone/all-samples
+    - npm install
+    - npm run pack
+    - cd ../../
+    - echo -e "\x1b\x5b35;1m*** limestone/all-samples build complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Starting my-theme-app build...\x1b\x5b0m"
     - cd my-theme-app
     - npm install
