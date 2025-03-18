@@ -1,0 +1,49 @@
+{
+  "name": "pattern-ls2request-camera",
+  "version": "1.0.0",
+  "description": "An Enact application demonstrating camera API using ls2request.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test",
+    "test-watch": "enact test --watch"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "LS2Request Camera Pattern",
+    "isomorphic": true,
+    "ri": {
+      "baseSize": 24
+    }
+  },
+  "eslintConfig": {
+    "extends": "enact-proxy/strict"
+  },
+  "dependencies": {
+    "@enact/core": "^5.0.0-alpha.4",
+    "@enact/i18n": "^5.0.0-alpha.4",
+    "@enact/limestone": "enactjs/limestone",
+    "@enact/spotlight": "^5.0.0-alpha.4",
+    "@enact/ui": "^5.0.0-alpha.4",
+    "@enact/webos": "^5.0.0-alpha.4",
+    "@reduxjs/toolkit": "^2.3.0",
+    "ilib": "^14.21.0",
+    "prop-types": "^15.8.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.9"
+  }
+}

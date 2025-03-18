@@ -1,0 +1,54 @@
+import kind from '@enact/core/kind';
+import {ImageItem} from '@enact/limestone/ImageItem';
+import {VirtualGridList} from '@enact/limestone/VirtualList';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
+
+const items = [];
+const renderItem = ({index, ...rest}) => {
+	const {caption, src} = items[index];
+
+	return (
+		<ImageItem
+			{...rest}
+			src={src}
+		>
+			{caption}
+		</ImageItem>
+	);
+};
+
+renderItem.propTypes = {
+	index: PropTypes.number
+};
+
+for (let i = 0; i < 6; i++) {
+	const
+		count = ('0' + i).slice(-2),
+		caption = `Item ${count} caption`,
+		color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16),
+		src = {
+			'hd': `https://placehold.co/200x200/${color}/ffffff/png?text=Image+${i}`,
+			'fhd': `https://placehold.co/300x300/${color}/ffffff/png?text=Image+${i}`,
+			'uhd': `https://placehold.co/600x600/${color}/ffffff/png?text=Image+${i}`
+		};
+
+	items.push({caption, src});
+}
+
+const SamplePage = kind({
+	name: 'SamplePage',
+
+	render: () => (
+		<VirtualGridList
+			dataSize={items.length}
+			itemRenderer={renderItem}
+			itemSize={{
+				minWidth: ri.scale(540),
+				minHeight: ri.scale(450)
+			}}
+		/>
+	)
+});
+
+export default SamplePage;
