@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/sandstone/Panels';
+import {Header, Panel} from '@enact/limestone/Panels';
 
 // Custom component
 import Counter from '../components/Counter';
