@@ -1,35 +1,69 @@
 import CustomComponentStyles from "./componentStyles.class";
 import CustomComponentProperties from "./componentProperties.class";
+import {COMPONENTS} from "../constants";
 
+/**
+ * Represents an Enact component node generated from a Figma design.
+ * This class encapsulates the logic for creating, styling, and configuring Enact components.
+ */
 class EnactComponentNode {
+	/**
+	 * The name of the component.
+	 * @private
+	 */
 	private readonly componentName: string;
+
+	/**
+	 * Indicates whether the component has a layout parent.
+	 * @private
+	 */
 	private readonly hasComponentLayoutParent: boolean;
+
+	/**
+	 * The generated component node as a string.
+	 * @private
+	 */
 	private componentNode: string;
 
+	/**
+	 * Creates an instance of `EnactComponentNode`.
+	 *
+	 * @param {string} componentName - The name of the component.
+	 * @param {boolean} componentLayoutParent - Indicates whether the component has a layout parent.
+	 */
 	constructor (componentName: string, componentLayoutParent: boolean) {
 		this.hasComponentLayoutParent = componentLayoutParent;
 		this.componentName = componentName;
 	}
 
-	get generatedComponentNode () {
+	/**
+	 * Retrieves the generated component node as a string.
+	 *
+	 * @returns {string} The generated component node.
+	 */
+	get generatedComponentNode (): string {
 		return this.componentNode;
 	}
 
-	private convertStylesToString (styles: CustomComponentStyles) {
+	/**
+	 * Converts the styles of the component into a string representation.
+	 *
+	 * @private
+	 * @param {CustomComponentStyles} styles - The styles of the component.
+	 * @returns {string} A string representation of the styles.
+	 */
+	private convertStylesToString (styles: CustomComponentStyles): string {
 		return Object.entries(styles)
 			.filter(([, value]) => value)
 			.map(([key, value]) => {
 				// Exclude 'top' and 'left' if the component is a Button
 				// in the demo we have Buttons inside Layout components, and they need to be aligned automatically, not forced with 'top' and 'left'
 				// also excluded 'color' for now, so that Spotlight works and color is not enforced
-				if (this.componentName === 'Button' && (key === 'top' || key === 'left' || key === 'color') && this.hasComponentLayoutParent) {
+				if (this.componentName === COMPONENTS.BUTTON && (key === 'top' || key === 'left' || key === 'color') && this.hasComponentLayoutParent) {
 					return null;
 				}
-				if (this.componentName === 'Button' && key === 'backgroundColor') {
-					return `'--sand-component-bg-color': '${value}'`;
-				} else if (this.componentName === 'Button' && key === 'color') {
-					const rgbValue = value.split('rgb(')[1].split(')')[0].split(', ');
-					return `'--sand-component-text-color-rgb': '${rgbValue[0]}, ${rgbValue[1]}, ${rgbValue[2]}'`;
+				if (this.componentName === COMPONENTS.BUTTON) {
+					return this.handleButtonStyles(key, value);
 				} else if (value.includes('rgb')) {
 					return `${key}: '${value}'`;
 				} else if (key.includes('padding')) {
@@ -42,7 +76,14 @@ class EnactComponentNode {
 			.join(', ');
 	}
 
-	private convertPropertiesToString (props: CustomComponentProperties) {
+	/**
+	 * Converts the properties of the component into a string representation.
+	 *
+	 * @private
+	 * @param {CustomComponentProperties} props - The properties of the component.
+	 * @returns {string} A string representation of the properties.
+	 */
+	private convertPropertiesToString (props: CustomComponentProperties): string {
 		return Object.entries(props)
 			.filter(([key, value]) => {
 				const formattedKey = key.split('#')[0];
@@ -65,96 +106,48 @@ class EnactComponentNode {
 			.join(' ');
 	}
 
-	private extractIconName (componentProperties): string {
-		// Names must match the Icon names defined in Sandstone library
-		if (componentProperties.name.includes('ic_')) {
-			const iconName = componentProperties.name.split('_').slice(1, -1).toString().replace(/,/g, '');
-			return iconName === 'delete' ? 'trash' : iconName;
-		} else {
-			return this.extractIconName(componentProperties.parent);
+	/**
+	 * Handles the specific styles for a Button component.
+	 *
+	 * @private
+	 * @param {string} key - The style property key.
+	 * @param {string} value - The style property value.
+	 * @returns {string} A string representation of the style for the Button component.
+	 */
+	private handleButtonStyles (key: string, value: string): string {
+		if (key === 'backgroundColor') {
+			return `'--sand-component-bg-color': '${value}'`;
+		} else if (key === 'color') {
+			const rgbValue = value.split('rgb(')[1].split(')')[0].split(', ');
+			return `'--sand-component-text-color-rgb': '${rgbValue[0]}, ${rgbValue[1]}, ${rgbValue[2]}'`;
 		}
 	}
 
-	// Add props to the component node
-	addComponentProps (props: CustomComponentProperties) {
+	/**
+	 * Adds properties to the component node.
+	 *
+	 * @param {CustomComponentProperties} props - The properties to add to the component node.
+	 * @returns {EnactComponentNode} The current instance for chaining.
+	 */
+	addComponentProps (props: CustomComponentProperties): EnactComponentNode {
 		const tag = `<${this.componentName}`;
 		let tagWithProps = '';
 
 		switch (this.componentName) {
-			case 'ActionGuide':
-				tagWithProps = `<${this.componentName} buttonAriaLabel="More" icon="arrowsmalldown"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'BodyText':
-				tagWithProps = `<${this.componentName} centered noWrap size="large"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Button':
+			case COMPONENTS.BUTTON:
 				tagWithProps = `<${this.componentName} ${this.convertPropertiesToString(props)}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
-			case 'Cell':
+			case COMPONENTS.CELL:
 				tagWithProps = `<${this.componentName} align={'${props.align}'}${props.shrink ? ' shrink' : ''}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
-			case 'Checkbox':
-				// disabled = this.checkForDisabled((componentProps.parent as InstanceNode).componentProperties);
-				// selected = this.checkForSelected((componentProps.parent as InstanceNode).componentProperties);
-				tagWithProps = `<${this.componentName} disabled={${props.disabled}} indeterminate={false} indeterminateIcon="minus" onToggle={() => {}} selected={${props.selected}}`;
+			case COMPONENTS.COLUMN:
+			case COMPONENTS.LAYOUT:
+				tagWithProps = `<${this.componentName}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
-			case 'CheckboxItem':
-				tagWithProps = `<${this.componentName} inline={false} labelPosition="below"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'ContextualMenuDecorator':
-				tagWithProps = `<ContextualMenuButton direction="below right" menuItems={['Option 1']} popupWidth="auto"`;
-				this.componentNode = this.componentNode.replace('<ContextualMenuButton', tagWithProps);
-				return this;
-			case 'ContextualPopupDecorator':
-				tagWithProps = `<ContextualPopupButton direction="below right" onClose={() => {}} onOpen={() => {}} popupComponent={popupComponent}`;
-				this.componentNode = this.componentNode.replace('<ContextualPopupButton', tagWithProps);
-				return this;
-			case 'DatePicker':
-				tagWithProps = `<${this.componentName} noLabel={true}`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'DayPicker':
-				tagWithProps = `<${this.componentName} disabled={false}`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Dropdown':
-				tagWithProps = `<${this.componentName} direction="below" disabled={false} size="small"`;
-				return this;
-			// case 'FlexiblePopupPanels':
-			// 	tagWithProps = `<${this.componentName} open={open}`;
-			// 	return this;
-			case 'FormCheckboxItem':
-				tagWithProps = `<${this.componentName} inline={false} labelPosition="below"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Icon':
-				tagWithProps = `<${this.componentName} size="small"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'IconItem':
-				tagWithProps = `<${this.componentName} bordered icon="info" label={'${props.label}'}`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Header':
-				tagWithProps = `<${this.componentName} subtitle='${props.subtitle}' title='${props.title}'`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Input':
-			case 'InputField':
-				tagWithProps = `<${this.componentName} placeholder='${props.placeholder}'`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'Layout':
-				tagWithProps = `<${this.componentName}"`;
-				this.componentNode = this.componentNode.replace(tag, tagWithProps);
-				return this;
-			case 'VirtualList':
+			case COMPONENTS.VIRTUALLIST:
 				const itemRenderer = `() => <${props.virtualListItem}>${props.virtualListItem}</${props.virtualListItem}>`;
 				tagWithProps = `<${this.componentName} dataSize={10} itemRenderer={${itemRenderer}} itemSize={60}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
@@ -164,58 +157,24 @@ class EnactComponentNode {
 		}
 	}
 
-	// Add styling to the created component node
-	addComponentStyle (styles: CustomComponentStyles) {
+	/**
+	 * Adds styles to the component node.
+	 *
+	 * @param {CustomComponentStyles} styles - The styles to add to the component node.
+	 * @returns {EnactComponentNode} The current instance for chaining.
+	 */
+	addComponentStyle (styles: CustomComponentStyles): EnactComponentNode {
 		const tag = `<${this.componentName}`;
 		const convertedStyles = this.convertStylesToString(styles);
 		const componentPosition = (convertedStyles.length > 0 ? ', ' : '').concat(`position: 'absolute'`);
 		const componentStyle = convertedStyles.concat(this.hasComponentLayoutParent ? '' : componentPosition);
 
 		switch (this.componentName) {
-			case 'ActionGuide':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'BodyText':
-			case 'Button':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Cell':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Checkbox':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'CheckboxItem':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'ContextualMenuDecorator':
-				this.componentNode = this.componentNode.replace('<ContextualMenuButton', `<ContextualMenuButton style={{${componentStyle}}}`);
-				return this;
-			case 'ContextualPopupDecorator':
-				this.componentNode = this.componentNode.replace('<ContextualPopupButton', `<ContextualPopupButton style={{${componentStyle}}}`);
-				return this;
-			case 'DatePicker':
-			case 'DayPicker':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Dropdown':
-			case 'FormCheckboxItem':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Icon':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'IconItem':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Header':
-			case 'Input':
-			case 'InputField':
-				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
-				return this;
-			case 'Layout':
-			case 'Row':
-			case 'Column':
+			case COMPONENTS.BUTTON:
+			case COMPONENTS.CELL:
+			case COMPONENTS.COLUMN:
+			case COMPONENTS.LAYOUT:
+			case COMPONENTS.ROW:
 				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
 				return this;
 			default:
@@ -223,62 +182,24 @@ class EnactComponentNode {
 		}
 	}
 
-	// Create component node
-	public createComponent (childComponents: string[]) {
-		let iconName = '';
-
+	/**
+	 * Creates the component node with the specified child components.
+	 *
+	 * @param {string[]} childComponents - The child components to include in the node.
+	 * @returns {EnactComponentNode} The current instance for chaining.
+	 */
+	public createComponent (childComponents: string[]): EnactComponentNode {
 		switch (this.componentName) {
-			case 'ActionGuide':
-				this.componentNode = `<${this.componentName}>${childComponents[1]}</${this.componentName}>`;
-				return this;
-			case 'BodyText':
+			case COMPONENTS.BUTTON:
 				this.componentNode = childComponents ? `<${this.componentName}>${childComponents[0]}</${this.componentName}>` : `<${this.componentName} />`;
 				return this;
-			case 'Button':
-				this.componentNode = childComponents ? `<${this.componentName}>${childComponents[0]}</${this.componentName}>` : `<${this.componentName} />`;
-				return this;
-			case 'Checkbox':
-				this.componentNode = `<${this.componentName}>{/*Icon Name*/}</${this.componentName}>`;
-				return this;
-			case 'CheckboxItem':
-				this.componentNode = `<${this.componentName}>${childComponents[1]}</${this.componentName}>`;
-				return this;
-			case 'ContextualMenuDecorator':
-				this.componentNode = `<ContextualMenuButton>${childComponents[0]}</ContextualMenuButton>`;
-				return this;
-			case 'ContextualPopupDecorator':
-				this.componentNode = `<ContextualPopupButton>${childComponents[0]}</ContextualPopupButton>`;
-				return this;
-			case 'DatePicker':
-			case 'DayPicker':
-				this.componentNode = `<${this.componentName} />`;
-				return this;
-			case 'Dropdown':
-				this.componentNode = `<${this.componentName}>{['Option 1', 'Option 2']}</${this.componentName}>`;
-				return this;
-			// case 'FlexiblePopupPanels':
-			// 	this.componentNode = `<div><${this.componentName}><Panel size={'auto'}>Content 1</Panel><Panel size={'auto'}>Content 2</Panel></${this.componentName}><Button>${this.childrenComponents[0]}</Button></div>`;
-			// 	return this;
-			case 'FormCheckboxItem':
-				this.componentNode = `<${this.componentName}>${childComponents[1]}</${this.componentName}>`;
-				return this;
-			case 'Icon':
-				iconName = this.extractIconName(childComponents[0]);
-				this.componentNode = `<${this.componentName}>${iconName}</${this.componentName}>`;
-				return this;
-			case 'Cell':
-			case 'Column':
-			case 'Layout':
-			case 'Row':
+			case COMPONENTS.CELL:
+			case COMPONENTS.COLUMN:
+			case COMPONENTS.LAYOUT:
+			case COMPONENTS.ROW:
 				this.componentNode = `<${this.componentName}>`;
 				return this;
-			case 'IconItem':
-			case 'Header':
-			case 'Input':
-			case 'InputField':
-				this.componentNode = `<${this.componentName} />`;
-				return this;
-			case 'VirtualList':
+			case COMPONENTS.VIRTUALLIST:
 				this.componentNode = `<${this.componentName} />`;
 				return this;
 			default:

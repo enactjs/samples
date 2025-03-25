@@ -1,19 +1,14 @@
-const createComponentImport = (components: { componentName: string }[]) => {
+/**
+ * Generates import statements for a list of components.
+ *
+ * @param {{componentName: string}[]} components - An array of objects containing component names.
+ * @returns {string} A string of import statements for the given components.
+ */
+const createComponentImport = (components: {componentName: string}[]): string => {
 	const imports = [...new Set(components
-		.map(component => component.componentName.includes('1') ? Object.assign({}, component, {componentName: component.componentName.replace('1', '')}) : component)
 		.map(component => component.componentName))]
 		.map(name => {
 			switch (name) {
-				case 'ContextualMenuDecorator':
-				case 'ContextualPopupDecorator':
-					if (!components.some(component => component.componentName === 'Button')) {
-						return `import { Button } from '@enact/sandstone/Button';\nimport { ${name} } from '@enact/sandstone/${name}';\n`;
-					}
-					return `import { ${name} } from '@enact/sandstone/${name}';\n`;
-				case 'Header':
-					return `import { ${name} } from '@enact/sandstone/Panels';\n`;
-				case 'InputField':
-					return `import { ${name} } from '@enact/sandstone/Input';\n`;
 				case 'Layout':
 				case 'Row':
 				case 'Column':
