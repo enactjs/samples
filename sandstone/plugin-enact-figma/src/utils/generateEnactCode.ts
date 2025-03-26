@@ -2,22 +2,35 @@ import createComponentImport from './createComponentImport';
 import createComponentNode from './createComponentNode';
 import CustomComponent from '../types/component.class';
 
-const createComponents = (components: CustomComponent[]) => {
+/**
+ * Creates Enact component nodes for a list of components.
+ *
+ * @param {CustomComponent[]} components - An array of custom components extracted from a Figma design.
+ * @returns {string} A string representation of the generated component nodes.
+ *
+ *  * The function:
+ *  * - Handles layout-related components (`Cell`, `Column`, `Row`) by nesting their children.
+ *  * - Converts each component into an Enact component node using `createComponentNode`.
+ *  * - Returns a string of all component nodes.
+ */
+const createComponents = (components: CustomComponent[]): string => {
 	const allComponents = components.map((component) => {
-		if (component.componentName === 'Cell' || component.componentName === 'Column' || component.componentName === 'Row') {
-			if (component.children && component.children.length > 0) {
-				const childrenArray = component.children.map((child) => {
-					return createComponentNode(child, component.componentName);
+		const {children, componentName} = component;
+
+		if (componentName === 'Cell' || componentName === 'Column' || componentName === 'Row') {
+			if (children && children.length > 0) {
+				const childrenArray = children.map((child) => {
+					return createComponentNode(child, componentName);
 				});
 
 				const parentsArray = createComponentNode(component);
 				childrenArray.unshift(parentsArray);
-				childrenArray.push(`</${component.componentName}>`);
+				childrenArray.push(`</${componentName}>`);
 
 				return childrenArray;
 			} else {
 				const componentNode = [createComponentNode(component)];
-				componentNode.push(`</${component.componentName}>`);
+				componentNode.push(`</${componentName}>`);
 
 				return componentNode;
 			}
@@ -29,27 +42,26 @@ const createComponents = (components: CustomComponent[]) => {
 	return allComponents.toString().replace(/,</g, '<');
 };
 
-const addAdditionalContentForContextualDecorator = (menuDecorator: boolean, popupDecorator: boolean) => {
-	const content = [];
-
-	if (menuDecorator) {
-		content.push('const ContextualMenuButton = ContextualMenuDecorator(Button); // Instead of button it can be any other component');
-	}
-
-	if (popupDecorator) {
-		content.push('const ContextualPopupButton = ContextualPopupDecorator(Button); // Instead of button it can be any other component');
-		content.push('const popupComponent = () => <div>Hello Contextual Popup</div>;');
-	}
-
-	return content.toString().replace(/,/g, '\n');
-};
-
-const generateEnactCode = (components: CustomComponent[]) => {
-	const isContextualMenuDecorator = !!components.find(component => component.componentName === 'ContextualMenuDecorator');
-	const isContextualPopupDecorator = !!components.find(component => component.componentName === 'ContextualPopupDecorator');
-
-	// Helper function to check if two components overlap
-	function isOverlapping (parent, child) {
+/**
+ * Generates the Enact code for a list of components.
+ *
+ * @param {CustomComponent[]} components - An array of custom components extracted from a Figma design.
+ * @returns {string} The generated Enact code as a string.
+ *
+ * The function:
+ * - Identifies whether `ContextualMenuDecorator` or `ContextualPopupDecorator` is used.
+ * - Builds a nested structure of components based on their overlap.
+ * - Generates the Enact code, including imports, decorators, and the main panel.
+ */
+const generateEnactCode = (components: CustomComponent[]): string => {
+	/**
+	 * Checks if a child component overlaps with a parent component.
+	 *
+	 * @param {CustomComponent} parent - The potential parent component.
+	 * @param {CustomComponent} child - The child component to check.
+	 * @returns {boolean} `true` if the child overlaps with the parent, otherwise `false`.
+	 */
+	function isOverlapping (parent: CustomComponent, child: CustomComponent): boolean {
 		return (
 			child.x >= parent.x &&
 			child.y >= parent.y &&
@@ -58,8 +70,13 @@ const generateEnactCode = (components: CustomComponent[]) => {
 		);
 	}
 
-	// Recursive function to build the nested structure
-	function nestComponents (componentTags) {
+	/**
+	 * Builds a nested structure of components based on their overlap.
+	 *
+	 * @param {CustomComponent[]} componentTags - The list of components to nest.
+	 * @returns {CustomComponent[]} A nested structure of components.
+	 */
+	function nestComponents (componentTags: CustomComponent[]): CustomComponent[] {
 		const result = [];
 
 		componentTags.forEach((component) => {
@@ -90,7 +107,7 @@ const generateEnactCode = (components: CustomComponent[]) => {
 		import {Scroller} from '@enact/sandstone/Scroller';
 		import {Layout} from '@enact/ui/Layout';
 		import ri from '@enact/ui/resolution';
-		${addAdditionalContentForContextualDecorator(isContextualMenuDecorator, isContextualPopupDecorator)}
+		
 			const MainPanel = kind({
 				name: 'MainPanel',
 			
