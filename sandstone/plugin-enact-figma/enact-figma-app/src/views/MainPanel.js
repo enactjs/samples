@@ -14,14 +14,13 @@ const MainPanel = kind({
 			<Layout>
 				<Column
 					style={{
-						backgroundColor: 'rgb(255, 255, 255)',
+						backgroundColor: 'rgb(255, 221, 109)',
 						borderRadius: 0,
-						color: 'rgb(217, 217, 217)',
-						height: ri.scaleToRem(2240),
-						left: ri.scaleToRem(26),
+						height: ri.scaleToRem(2304),
+						left: ri.scaleToRem(0),
 						opacity: 1,
-						top: ri.scaleToRem(22),
-						width: ri.scaleToRem(1609),
+						top: ri.scaleToRem(0),
+						width: ri.scaleToRem(1527),
 						position: 'absolute'
 					}}
 				>
@@ -29,20 +28,23 @@ const MainPanel = kind({
 						disabled={false}
 						backgroundOpacity={'opaque'}
 						iconPosition={'before'}
-						minWidth={false}
+						minWidth={true}
 						roundBorder={false}
 						selected={false}
 						shadowed={false}
 						size={'large'}
+						color={'red'}
+						icon={'accessibility'}
+						iconFlip={'auto'}
 						style={{
 							'--sand-component-bg-color': 'rgb(125, 132, 140)',
 							borderRadius: 12,
 							fontSize: ri.scaleToRem(60),
 							height: ri.scaleToRem(112),
 							opacity: 1,
-							paddingRight: ri.scaleToRem(24),
-							paddingLeft: ri.scaleToRem(24),
-							width: ri.scaleToRem(282)
+							paddingRight: ri.scaleToRem(48),
+							paddingLeft: ri.scaleToRem(48),
+							width: ri.scaleToRem(385)
 						}}
 					>
 						Button
@@ -52,46 +54,28 @@ const MainPanel = kind({
 					disabled={false}
 					backgroundOpacity={'opaque'}
 					iconPosition={'before'}
-					minWidth={false}
+					minWidth={true}
 					roundBorder={false}
 					selected={false}
 					shadowed={false}
 					size={'large'}
-					style={{
-						'--sand-component-bg-color': 'rgb(53, 140, 239)',
-						borderRadius: 12,
-						'--sand-component-text-color-rgb': '237, 240, 55',
-						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(355),
-						left: ri.scaleToRem(2901),
-						opacity: 1,
-						paddingRight: ri.scaleToRem(24),
-						paddingLeft: ri.scaleToRem(24),
-						top: ri.scaleToRem(262),
-						width: ri.scaleToRem(584),
-						position: 'absolute'
-					}}
-				>
-					Button
-				</Button>
-				<Button
-					size={'small'}
+					color={'red'}
 					style={{
 						'--sand-component-bg-color': 'rgb(125, 132, 140)',
 						borderRadius: 12,
 						'--sand-component-text-color-rgb': '230, 230, 230',
 						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(108),
-						left: ri.scaleToRem(1970),
+						height: ri.scaleToRem(112),
+						left: ri.scaleToRem(2766),
 						opacity: 1,
 						paddingRight: ri.scaleToRem(48),
 						paddingLeft: ri.scaleToRem(48),
-						top: ri.scaleToRem(286),
-						width: ri.scaleToRem(300),
+						top: ri.scaleToRem(356),
+						width: ri.scaleToRem(325),
 						position: 'absolute'
 					}}
 				>
-					undefined
+					Button
 				</Button>
 				<Button
 					disabled={false}
@@ -102,7 +86,32 @@ const MainPanel = kind({
 					selected={false}
 					shadowed={false}
 					size={'large'}
-					color={'red'}
+					style={{
+						'--sand-component-bg-color': 'rgb(65, 129, 202)',
+						borderRadius: 35,
+						'--sand-component-text-color-rgb': '230, 230, 230',
+						fontSize: ri.scaleToRem(60),
+						height: ri.scaleToRem(463),
+						left: ri.scaleToRem(2170),
+						opacity: 1,
+						paddingRight: ri.scaleToRem(48),
+						paddingLeft: ri.scaleToRem(48),
+						top: ri.scaleToRem(1364),
+						width: ri.scaleToRem(759),
+						position: 'absolute'
+					}}
+				>
+					Button
+				</Button>
+				<Button
+					disabled={false}
+					backgroundOpacity={'opaque'}
+					iconPosition={'before'}
+					minWidth={true}
+					roundBorder={false}
+					selected={false}
+					shadowed={false}
+					size={'large'}
 					icon={'accessibility'}
 					iconFlip={'auto'}
 					style={{
@@ -110,88 +119,13 @@ const MainPanel = kind({
 						borderRadius: 12,
 						'--sand-component-text-color-rgb': '230, 230, 230',
 						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(112),
-						left: ri.scaleToRem(2105),
+						height: ri.scaleToRem(180),
+						left: ri.scaleToRem(1947),
 						opacity: 1,
 						paddingRight: ri.scaleToRem(48),
 						paddingLeft: ri.scaleToRem(48),
-						top: ri.scaleToRem(778),
-						width: ri.scaleToRem(385),
-						position: 'absolute'
-					}}
-				>
-					Button
-				</Button>
-				<Button
-					disabled={true}
-					size={'small'}
-					style={{
-						'--sand-component-bg-color': 'rgb(125, 132, 140)',
-						borderRadius: 12,
-						'--sand-component-text-color-rgb': '230, 230, 230',
-						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(108),
-						left: ri.scaleToRem(2587),
-						opacity: 0.30000001192092896,
-						paddingRight: ri.scaleToRem(48),
-						paddingLeft: ri.scaleToRem(48),
-						top: ri.scaleToRem(1085),
-						width: ri.scaleToRem(300),
-						position: 'absolute'
-					}}
-				>
-					undefined
-				</Button>
-				<Button
-					disabled={false}
-					backgroundOpacity={'opaque'}
-					iconPosition={'before'}
-					minWidth={true}
-					roundBorder={false}
-					selected={false}
-					shadowed={false}
-					size={'large'}
-					style={{
-						'--sand-component-bg-color': 'rgb(125, 132, 140)',
-						borderRadius: 12,
-						'--sand-component-text-color-rgb': '230, 230, 230',
-						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(112),
-						left: ri.scaleToRem(1913),
-						opacity: 1,
-						paddingRight: ri.scaleToRem(48),
-						paddingLeft: ri.scaleToRem(48),
-						top: ri.scaleToRem(1243),
-						width: ri.scaleToRem(275),
-						position: 'absolute'
-					}}
-				>
-					Button
-				</Button>
-				<Button
-					disabled={false}
-					backgroundOpacity={'opaque'}
-					iconPosition={'before'}
-					minWidth={true}
-					roundBorder={false}
-					selected={false}
-					shadowed={false}
-					size={'large'}
-					color={'red'}
-					icon={'accessibility'}
-					iconFlip={'auto'}
-					style={{
-						'--sand-component-bg-color': 'rgb(125, 132, 140)',
-						borderRadius: 12,
-						'--sand-component-text-color-rgb': '230, 230, 230',
-						fontSize: ri.scaleToRem(60),
-						height: ri.scaleToRem(112),
-						left: ri.scaleToRem(2617),
-						opacity: 1,
-						paddingRight: ri.scaleToRem(48),
-						paddingLeft: ri.scaleToRem(48),
-						top: ri.scaleToRem(1422),
-						width: ri.scaleToRem(385),
+						top: ri.scaleToRem(743),
+						width: ri.scaleToRem(514),
 						position: 'absolute'
 					}}
 				>

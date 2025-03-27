@@ -1,19 +1,13 @@
-/**
- * A list of component parent names used to identify layout-related components.
- */
-const componentParentNames = ['Cell', 'Column', 'Row', 'Layout']; // Names for Parent component
+import {LAYOUT_COMPONENTS} from "../constants";
 
 /**
  * Converts an RGB color object to a CSS `rgb()` string.
  *
  * @param {{r: number, g: number, b: number}} color - The RGB color object with `r`, `g`, and `b` values ranging from 0 to 1.
- * @param {string} componentName - The name of the component to check against the `componentParentNames` list.
  * @returns {string} A CSS `rgb()` string (e.g., `rgb(255, 0, 0)`) or an empty string if the color is invalid or the component is a parent layout component.
  */
-const convertToRGB = (color: {r: number, g: number, b: number}, componentName: string): string => {
-	if (!color || componentParentNames.includes(componentName)) {
-		return '';
-	}
+const convertToRGB = (color: {r: number, g: number, b: number}): string => {
+	if (!color) return '';
 
 	const {r = null, g = null, b = null} = color;
 
@@ -31,7 +25,7 @@ const convertToRGB = (color: {r: number, g: number, b: number}, componentName: s
  * @returns {boolean} `true` if the component parent is in the `componentParentNames` list, otherwise `false`.
  */
 const getComponentLayoutParent = (componentParent: string): boolean => {
-	return componentParentNames.includes(componentParent);
+	return Object.values(LAYOUT_COMPONENTS).includes(componentParent);
 };
 
 /**

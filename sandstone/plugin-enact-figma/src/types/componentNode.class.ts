@@ -1,6 +1,6 @@
 import CustomComponentStyles from "./componentStyles.class";
 import CustomComponentProperties from "./componentProperties.class";
-import {COMPONENTS} from "../constants";
+import {COMPONENTS, LAYOUT_COMPONENTS} from "../constants";
 
 /**
  * Represents an Enact component node generated from a Figma design.
@@ -62,7 +62,7 @@ class EnactComponentNode {
 				if (this.componentName === COMPONENTS.BUTTON && (key === 'top' || key === 'left' || key === 'color') && this.hasComponentLayoutParent) {
 					return null;
 				}
-				if (this.componentName === COMPONENTS.BUTTON) {
+				if (this.componentName === COMPONENTS.BUTTON && (key === 'backgroundColor' || key === 'color')) {
 					return this.handleButtonStyles(key, value);
 				} else if (value.includes('rgb')) {
 					return `${key}: '${value}'`;
@@ -138,12 +138,12 @@ class EnactComponentNode {
 				tagWithProps = `<${this.componentName} ${this.convertPropertiesToString(props)}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
-			case COMPONENTS.CELL:
+			case LAYOUT_COMPONENTS.CELL:
 				tagWithProps = `<${this.componentName} align={'${props.align}'}${props.shrink ? ' shrink' : ''}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
-			case COMPONENTS.COLUMN:
-			case COMPONENTS.LAYOUT:
+			case LAYOUT_COMPONENTS.COLUMN:
+			case LAYOUT_COMPONENTS.LAYOUT:
 				tagWithProps = `<${this.componentName}`;
 				this.componentNode = this.componentNode.replace(tag, tagWithProps);
 				return this;
@@ -171,10 +171,10 @@ class EnactComponentNode {
 
 		switch (this.componentName) {
 			case COMPONENTS.BUTTON:
-			case COMPONENTS.CELL:
-			case COMPONENTS.COLUMN:
-			case COMPONENTS.LAYOUT:
-			case COMPONENTS.ROW:
+			case LAYOUT_COMPONENTS.CELL:
+			case LAYOUT_COMPONENTS.COLUMN:
+			case LAYOUT_COMPONENTS.LAYOUT:
+			case LAYOUT_COMPONENTS.ROW:
 				this.componentNode = this.componentNode.replace(tag, `<${this.componentName} style={{${componentStyle}}}`);
 				return this;
 			default:
@@ -193,10 +193,10 @@ class EnactComponentNode {
 			case COMPONENTS.BUTTON:
 				this.componentNode = childComponents ? `<${this.componentName}>${childComponents[0]}</${this.componentName}>` : `<${this.componentName} />`;
 				return this;
-			case COMPONENTS.CELL:
-			case COMPONENTS.COLUMN:
-			case COMPONENTS.LAYOUT:
-			case COMPONENTS.ROW:
+			case LAYOUT_COMPONENTS.CELL:
+			case LAYOUT_COMPONENTS.COLUMN:
+			case LAYOUT_COMPONENTS.LAYOUT:
+			case LAYOUT_COMPONENTS.ROW:
 				this.componentNode = `<${this.componentName}>`;
 				return this;
 			case COMPONENTS.VIRTUALLIST:

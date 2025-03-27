@@ -55,18 +55,18 @@ const extractComponentProps = (component: CustomComponent): CustomComponentPrope
  * @returns {CustomComponentStyles} An object containing styles such as `backgroundColor`, `borderRadius`, `fontSize`, `height`, `width`, etc.
  */
 const extractComponentStyles = (customComponent: CustomComponent): CustomComponentStyles => {
-	const component = (customComponent.componentProps.parent as InstanceNode);
+	const isLayoutComponent = getComponentLayoutParent(customComponent.componentName)
+	const component = isLayoutComponent ? customComponent.componentProps : (customComponent.componentProps.parent as InstanceNode);
 	const {children, cornerRadius, fills, height: componentHeight, opacity: componentOpacity, parent, width: componentWidth, x, y} = component;
-	const {componentName} = customComponent;
 
-	const scaleToRem = (value: number) => value && `ri.scaleToRem(${value})`;
+	const scaleToRem = (value: number) => (value !== undefined && value !== null) && `ri.scaleToRem(${value})`;
 
 	const componentFontSize = (children?.find(value => (value as TextNode).fontSize) as TextNode)?.fontSize;
 	return {
-		backgroundColor: fills[0]?.visible && convertToRGB(fills[0].color, componentName),
+		backgroundColor: fills[0]?.visible && convertToRGB(fills[0].color),
 		borderRadius: String(cornerRadius),
-		color: convertToRGB(children?.find(value => value.type === 'TEXT')?.fills[0]?.color, componentName),
-		fontSize: scaleToRem(Number(componentFontSize)),
+		color: convertToRGB(children?.find(value => value.type === 'TEXT')?.fills[0]?.color),
+		fontSize: !isLayoutComponent && scaleToRem(Number(componentFontSize)),
 		height: scaleToRem(componentHeight),
 		left: scaleToRem(x >= 0 ? x : (parent as InstanceNode).x),
 		opacity: String(componentOpacity),
@@ -85,9 +85,9 @@ const extractComponentStyles = (customComponent: CustomComponent): CustomCompone
  */
 const createComponentNode = (component: CustomComponent, parent: string = ''): string => {
 	const childComponents = extractChildComponents(component);
-	const componentStyles = extractComponentStyles(component);
-	const componentProps = extractComponentProps(component);
 	const componentLayoutParent = getComponentLayoutParent(parent);
+	const componentProps = extractComponentProps(component);
+	const componentStyles = extractComponentStyles(component);
 
 	const componentNode = new EnactComponentNode(component.componentName, componentLayoutParent);
 	componentNode
