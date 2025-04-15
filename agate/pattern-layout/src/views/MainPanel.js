@@ -31,7 +31,7 @@ const GridItem = kind({
 	}
 });
 
-// eslint-disable-next-line enact/display-name, enact/prop-types
+// eslint-disable-next-line enact/display-name
 const renderItem = ({items, onChangePanel}) => ({index, ...rest}) => {
 	if (items && items[index]) {
 		return (
