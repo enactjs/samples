@@ -40,11 +40,11 @@ figma.ui.onmessage = (msg) => {
  * - Returns the parent node if the component has no children.
  */
 const extractComponentProps = (component: InstanceNode, componentName: string): InstanceNode => {
-	if (typeof component.children !== 'undefined') {
+	if (typeof component.children !== 'undefined' && component.name === componentName) {
 		return extractComponentProps(component.children[0] as InstanceNode, componentName);
 	}
 
-	return component.parent as InstanceNode;
+	return component as InstanceNode;
 };
 
 /**
