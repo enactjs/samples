@@ -1,5 +1,5 @@
 import Button from '@enact/agate/Button';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 
 import css from './ButtonToSamples.module.less';
 
