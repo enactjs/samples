@@ -5,7 +5,7 @@ import css from './ButtonToSamples.module.less';
 
 const ButtonToSamples = () => (
 	<div className={css.buttonContainer}>
-		<Link to="/" className={css.backLink}>
+		<Link to="../" className={css.backLink}>
 			<Button
 				className={css.backButton}
 				style={{zIndex: 1}}
