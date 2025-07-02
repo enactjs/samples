@@ -22,18 +22,18 @@
     "theme": "sandstone"
   },
   "dependencies": {
-    "@enact/core": "^5.0.0-alpha.4",
-    "@enact/i18n": "^5.0.0-alpha.4",
+    "@enact/core": "^5.0.0",
+    "@enact/i18n": "^5.0.0",
     "@enact/sandstone": "^3.0.0-alpha.4",
-    "@enact/spotlight": "^5.0.0-alpha.4",
-    "@enact/ui": "^5.0.0-alpha.4",
-    "@types/node": "^22.9.1",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "ilib": "^14.20.0",
+    "@enact/spotlight": "^5.0.0",
+    "@enact/ui": "^5.0.0",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "ilib": "^14.21.1",
     "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^5.6.3"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3"
   }
 }
