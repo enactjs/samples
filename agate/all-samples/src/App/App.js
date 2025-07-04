@@ -2,8 +2,7 @@ import Scroller from '@enact/agate/Scroller';
 import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import {HashRouter, Route, Routes, useNavigate} from 'react-router-dom';
-import {StaticRouter} from 'react-router-dom/server';
+import {HashRouter, Route, Routes, StaticRouter, useNavigate} from 'react-router';
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';

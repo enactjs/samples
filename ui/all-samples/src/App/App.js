@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {routes} from  '../index';
 import SampleItem from '../components/SampleItem';
 import Scroller from '@enact/ui/Scroller';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router';
 
 import css from './App.module.less';
 
