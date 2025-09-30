@@ -5,6 +5,12 @@ import {Header, Panel} from '@enact/sandstone/Panels';
 import Scroller from '@enact/sandstone/Scroller';
 import PropTypes from 'prop-types';
 
+// Props for AboutPanel
+interface AboutPanelProps {
+	onClick?: () => void;
+	title?: string;
+}
+
 const example =
 `<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 	<Route path="first" component={AboutPanel} title="First" onClick={onSecondPanel}>
@@ -15,7 +21,7 @@ const example =
 	</Route>
 </RoutablePanels>`;
 
-const AboutPanel = kind({
+const AboutPanel = kind<AboutPanelProps>({
 	name: 'AboutPanel',
 
 	propTypes: {

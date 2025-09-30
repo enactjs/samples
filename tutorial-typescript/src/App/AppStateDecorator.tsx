@@ -1,21 +1,18 @@
 import {connect} from 'react-redux';
 
-import {navigate} from '../store';
+import {navigate, RootState} from '../store';
 
-// @ts-ignore
-const mapStateToProps = ({path}) => ({
+const mapStateToProps = ({path}: RootState) => ({
 	path
 });
 
-// @ts-ignore
-const mapDispatchToProps = (dispatch) => {
-	return {
-		// @ts-ignore
-		onNavigate: ({path}) => dispatch(navigate(path))
-	};
+const mapDispatchToProps = {
+	onNavigate: navigate
 };
 
-const AppStateDecorator = connect(mapStateToProps, mapDispatchToProps);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+const AppStateDecorator = connector;
 
 export default AppStateDecorator;
 export {AppStateDecorator};

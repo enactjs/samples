@@ -1,16 +1,18 @@
 import kind from '@enact/core/kind';
 import {Panels, Routable, Route} from '@enact/sandstone/Panels';
+import {RoutableProps} from '@enact/ui/Routable';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {SlideLeftArranger} from '@enact/ui/ViewManager';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import AboutPanel from '../views/AboutPanel';
 import MainPanel from '../views/MainPanel';
 
 import AppStateDecorator from './AppStateDecorator';
 
-// @ts-expect-error
-const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
+// @ts-ignore
+const RoutablePanels: React.ComponentType<RoutableProps> = Routable({navigate: 'onBack'})(Panels);
 
 const Sample = kind({
 	name: 'App',
@@ -21,10 +23,10 @@ const Sample = kind({
 	},
 
 	handlers: {
-		onFirstPanel: (ev, {onNavigate}) => onNavigate({path: '/first'}),
-		onSecondPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second'}),
-		onThirdPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third'}),
-		onFourthPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third/fourth'})
+		onFirstPanel: (ev, {onNavigate}) => onNavigate('/first'),
+		onSecondPanel: (ev, {onNavigate}) => onNavigate('/first/second'),
+		onThirdPanel: (ev, {onNavigate}) => onNavigate('/first/third'),
+		onFourthPanel: (ev, {onNavigate}) => onNavigate('/first/third/fourth')
 	},
 
 	render: ({onFirstPanel, onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
@@ -32,10 +34,9 @@ const Sample = kind({
 			// @ts-ignore
 			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
 				<Route component={AboutPanel} onClick={onSecondPanel} path="first" title="About Routable Panels Pattern">
-					<Route component={MainPanel}  onClick={onFourthPanel} path="second" title="Second2" >
-					</Route>
-					<Route component={MainPanel}  onClick={onFirstPanel} path="third" title="Third">
-						<Route component={MainPanel}  onClick={onThirdPanel} path="fourth" title="Fourth" />
+					<Route component={MainPanel} onClick={onFourthPanel} path="second" title="Second2" />
+					<Route component={MainPanel} onClick={onFirstPanel} path="third" title="Third">
+						<Route component={MainPanel} onClick={onThirdPanel} path="fourth" title="Fourth" />
 					</Route>
 				</Route>
 			</RoutablePanels>

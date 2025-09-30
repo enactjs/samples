@@ -1,32 +1,40 @@
-import {configureStore, createSlice} from '@reduxjs/toolkit';
+import {configureStore, createSlice, PayloadAction} from '@reduxjs/toolkit';
+
+interface NaviState {
+	path: string;
+}
+
+const initialState: NaviState = {
+	path: '/first'
+};
 
 const naviSlice = createSlice({
 	name: 'naviReducer',
-	initialState: {
-		path : '/first'
-	},
+	initialState,
 	reducers: {
-		navigate: (state: any, action: any) => {
+		navigate: (state, action: PayloadAction<string>) => {
 			state.path = action.payload;
 		}
 	}
 });
 
 export const {navigate} = naviSlice.actions;
-// @ts-ignore
-export default function configureAppStore (initialState) {
-	// @ts-ignore
+
+export default function configureAppStore () {
 	const store = configureStore({
 		reducer: naviSlice.reducer,
 		preloadedState: initialState
 	});
 
-	if (module.hot) {
+	if ((module as any).hot) {
 		// Enable Webpack hot module replacement for reducers
-		module.hot.accept('./index.tsx', () => {
+		module?.hot?.accept('./index.tsx', () => {
 			store.replaceReducer(naviSlice.reducer);
 		});
 	}
 
 	return store;
 }
+
+export type RootState = ReturnType<typeof naviSlice.reducer>;
+
