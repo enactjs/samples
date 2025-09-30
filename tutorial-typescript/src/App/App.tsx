@@ -1,26 +1,50 @@
 import kind from '@enact/core/kind';
-import Panels from '@enact/sandstone/Panels';
+import {Panels, Routable, Route} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import {SlideLeftArranger} from '@enact/ui/ViewManager';
+import PropTypes from 'prop-types';
 
+import AboutPanel from '../views/AboutPanel';
 import MainPanel from '../views/MainPanel';
 
-import css from './App.module.less';
+import AppStateDecorator from './AppStateDecorator';
 
-const App = kind({
+// @ts-expect-error
+const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
+
+const Sample = kind({
 	name: 'App',
 
-	styles: {
-		css,
-		className: 'app'
+	propTypes: {
+		onNavigate: PropTypes.func,
+		path: PropTypes.string
 	},
 
-	render: (props) => (
-		<div {...props}>
-			<Panels>
-				<MainPanel />
-			</Panels>
-		</div>
-	)
+	handlers: {
+		onFirstPanel: (ev, {onNavigate}) => onNavigate({path: '/first'}),
+		onSecondPanel: (ev, {onNavigate}) => onNavigate({path: '/first/second'}),
+		onThirdPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third'}),
+		onFourthPanel: (ev, {onNavigate}) => onNavigate({path: '/first/third/fourth'})
+	},
+
+	render: ({onFirstPanel, onFourthPanel, onNavigate, onSecondPanel, onThirdPanel, path, ...rest}) => {
+		return (
+			// @ts-ignore
+			<RoutablePanels {...rest} arranger={SlideLeftArranger} onBack={onNavigate} path={path}>
+				<Route component={AboutPanel} onClick={onSecondPanel} path="first" title="About Routable Panels Pattern">
+					<Route component={MainPanel}  onClick={onFourthPanel} path="second" title="Second2" >
+					</Route>
+					<Route component={MainPanel}  onClick={onFirstPanel} path="third" title="Third">
+						<Route component={MainPanel}  onClick={onThirdPanel} path="fourth" title="Fourth" />
+					</Route>
+				</Route>
+			</RoutablePanels>
+		);
+	}
 });
 
-export default ThemeDecorator(App);
+const AppBase = AppStateDecorator(Sample);
+const App = ThemeDecorator(AppBase);
+
+export default App;
+export {App, AppBase};
