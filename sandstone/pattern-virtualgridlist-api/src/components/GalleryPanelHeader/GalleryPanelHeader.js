@@ -1,6 +1,6 @@
 import kind from '@enact/core/kind';
-import Button from '@enact/limestone/Button';
-import {Header} from '@enact/limestone/Panels';
+import Button from '@enact/sandstone/Button';
+import {Header} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 

@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import ImageItem from '@enact/limestone/ImageItem';
+import ImageItem from '@enact/sandstone/ImageItem';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 

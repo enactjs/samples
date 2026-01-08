@@ -1,6 +1,6 @@
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import Button from '@enact/limestone/Button';
+import Button from '@enact/sandstone/Button';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
 
