@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+import ThemeDecorator from '@enact/limestone/ThemeDecorator';
 
 import MainView from '../views/MainView';
 
