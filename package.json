@@ -13,7 +13,7 @@
   "private": true,
   "repository": "https://github.com/enactjs/samples",
   "engines": {
-    "node": "^20.19.0 || ^22.0.0 || >=24.0.0"
+    "node": ">= 20.19.0"
   },
   "dependencies": {
     "readdirp": "^5.0.0",
