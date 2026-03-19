@@ -27,7 +27,7 @@
     "@enact/sandstone": "^3.0.0-alpha.4",
     "@enact/spotlight": "^5.4.2",
     "@enact/ui": "^5.4.2",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.12.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "ilib": "^14.21.2",
