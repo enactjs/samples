@@ -1,6 +1,6 @@
 import {Cell, Row} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import Content from '../components/Content';
 import SideBar from '../components/SideBar';
@@ -8,15 +8,12 @@ import SideBar from '../components/SideBar';
 import css from './Body.module.less';
 
 const Body = ({cities, selectedCountry, ...rest}) => {
-	const [city, setCity] = useState(cities['usa'][0]);
+	const [city, setCity] = useState(() => cities[selectedCountry]?.[0] || '');
 	const [zoom, setZoom] = useState(false);
+	const countryCities = cities[selectedCountry] || [];
+	const selectedCity = countryCities.includes(city) ? city : countryCities[0];
 
-	useEffect(() => {
-		const nextCity = cities[selectedCountry][0];
-		setCity(nextCity);
-	}, [cities, selectedCountry]);
-
-	const handleCityChange = useCallback(({data: selectedCity}) => setCity(selectedCity), []);
+	const handleCityChange = useCallback(({data: nextCity}) => setCity(nextCity), []);
 	const handleZoom = useCallback(() => {
 		setZoom(!zoom);
 	}, [zoom]);
@@ -35,7 +32,7 @@ const Body = ({cities, selectedCountry, ...rest}) => {
 			<Cell className={css.content}>
 				<Content
 					onZoom={handleZoom}
-					selectedCity={city}
+					selectedCity={selectedCity}
 					zoom={zoom}
 				/>
 			</Cell>
