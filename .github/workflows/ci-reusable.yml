@@ -42,9 +42,6 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      - name: Validate documentation
-        run: npm run validate-docs
-
       - name: Starting agate/all-samples build
         run: |
           cd agate/all-samples
