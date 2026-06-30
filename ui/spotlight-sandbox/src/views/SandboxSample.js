@@ -1,6 +1,6 @@
 import {useCallback, useState} from 'react';
 
-import Barracuda from '../components/Barracuda';
+import DraggableControl from '../components/DraggableControl';
 import SpottableButton from '../components/SpottableButton';
 
 import css from './SandboxSample.module.less';
@@ -46,7 +46,7 @@ const SandboxSample = () => {
 				</div>
 				<div className={css.stage}>
 					{controls.map(({id, left, top}, index) => (
-						<Barracuda
+						<DraggableControl
 							key={id}
 							label={index + 1}
 							initialLeft={left}

@@ -2,14 +2,15 @@ import Spottable from '@enact/spotlight/Spottable';
 import Spotlight from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import {useCallback, useRef, useState} from 'react';
-import css from './Barracuda.module.less';
+
+import css from './DraggableControl.module.less';
 
 const SpottableDiv = Spottable('div');
 
 const CORNER_SIZE = 20;
 const DEFAULT_SIZE = 50;
 
-const Barracuda = ({initialLeft = 0, initialTop = 0, label, ...rest}) => {
+const DraggableControl = ({initialLeft = 0, initialTop = 0, label, ...rest}) => {
 	const [position, setPosition] = useState({left: initialLeft, top: initialTop});
 	const [size, setSize] = useState({width: DEFAULT_SIZE, height: DEFAULT_SIZE});
 	const dragState = useRef(null);
@@ -76,7 +77,7 @@ const Barracuda = ({initialLeft = 0, initialTop = 0, label, ...rest}) => {
 	return (
 		<SpottableDiv
 			{...rest}
-			className={css.barracuda}
+			className={css.control}
 			style={{
 				left: position.left,
 				top: position.top,
@@ -94,10 +95,10 @@ const Barracuda = ({initialLeft = 0, initialTop = 0, label, ...rest}) => {
 	);
 };
 
-Barracuda.propTypes = {
+DraggableControl.propTypes = {
 	initialLeft: PropTypes.number,
 	initialTop: PropTypes.number,
 	label: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
-export default Barracuda;
+export default DraggableControl;
