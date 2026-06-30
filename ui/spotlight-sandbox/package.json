@@ -1,0 +1,39 @@
+{
+  "name": "spotlight-sandbox",
+  "version": "1.0.0",
+  "description": "An Enact sample demonstrating standalone @enact/spotlight 5-way navigation and focus.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test",
+    "test-watch": "enact test --watch"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "Spotlight Sandbox",
+    "isomorphic": true,
+    "ri": {
+      "baseSize": 24
+    }
+  },
+  "dependencies": {
+    "@enact/core": "^5.4.2",
+    "@enact/i18n": "^5.4.2",
+    "@enact/spotlight": "^5.4.2",
+    "@enact/ui": "^5.4.2",
+    "ilib": "^14.21.2",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router": "^7.13.1"
+  }
+}

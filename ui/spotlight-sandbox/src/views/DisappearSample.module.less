@@ -1,0 +1,87 @@
+@import '../styles/sampleTheme.less';
+
+.disappearSample {
+	.sampleRoot();
+}
+
+.description {
+	.sampleDescription();
+}
+
+.demoPanel {
+	.sampleDemoPanel();
+}
+
+.rootContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 20px;
+	padding: 4px;
+}
+
+.topRow {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	width: 100%;
+}
+
+.nestedContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 14px;
+	width: 100%;
+	padding: 16px;
+	box-sizing: border-box;
+	border: 1px dashed @border;
+	border-radius: 14px;
+	background-color: @surface-muted;
+}
+
+.innerContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.actionRow {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+	width: 100%;
+}
+
+.actionRowSecond {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+	width: 100%;
+}
+
+.cell {
+	display: flex;
+	min-width: 0;
+}
+
+.cellButton {
+	width: 100%;
+}
+
+.hidden {
+	display: none !important;
+}
+
+@media (max-width: 900px) {
+	.topRow {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 720px) {
+	.actionRow,
+	.actionRowSecond {
+		grid-template-columns: 1fr;
+	}
+}

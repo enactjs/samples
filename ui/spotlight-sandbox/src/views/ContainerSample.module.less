@@ -1,0 +1,58 @@
+@import '../styles/sampleTheme.less';
+
+.containerSample {
+	.sampleRoot();
+}
+
+.description {
+	.sampleDescription();
+}
+
+.demoPanel {
+	.sampleDemoPanel();
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+	align-items: start;
+}
+
+.container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 0;
+	padding: 16px;
+	.spotlightContainer();
+}
+
+.nested {
+	flex: 1 1 100%;
+	margin-top: 4px;
+	background-color: @surface-muted;
+}
+
+.containerLabel {
+	.monoBadge();
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.statusBar {
+	.statusBar();
+}
+
+.statusLabel {
+	.statusLabel();
+}
+
+.statusValue {
+	.statusValue();
+}
