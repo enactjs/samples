@@ -1,0 +1,33 @@
+@import '../styles/sampleTheme.less';
+
+:global {
+	html,
+	body,
+	#root {
+		height: 100%;
+		margin: 0;
+		overflow: hidden;
+		.sampleTypography();
+	}
+
+	h1 {
+		.sampleTitle();
+	}
+
+	p,
+	ul {
+		margin: 0;
+	}
+
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+}
+
+.app {
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	background-color: #f1f5f9;
+}

@@ -4,6 +4,7 @@ The following is a curated list of changes in the Enact samples module, newest c
 
 ## [unreleased]
 
+- Added `ui/spotlight-sandbox` sample demonstrating standalone `@enact/spotlight` usage
 - Updated minor dependencies
 
 ## [2.7.0] - 2023-05-09

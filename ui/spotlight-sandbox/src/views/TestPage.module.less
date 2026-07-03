@@ -1,0 +1,61 @@
+@import '../styles/sampleTheme.less';
+
+@test-canvas-width: 1512px;
+@test-canvas-height: 1875px;
+
+.testPage {
+	.sampleRoot();
+}
+
+.description {
+	.sampleDescription();
+}
+
+.demoPanel {
+	.sampleDemoPanel();
+	padding: 24px;
+}
+
+.stage {
+	.sampleStage();
+	width: 100%;
+	max-height: calc(100vh - 336px);
+	min-height: 504px;
+	overflow: auto;
+}
+
+.canvas {
+	position: relative;
+	width: @test-canvas-width;
+	height: @test-canvas-height;
+}
+
+.button,
+.buttonA {
+	position: absolute;
+	margin: 0;
+	min-width: 0;
+	border-color: @container-active;
+	font-family: @mono;
+	font-weight: 700;
+}
+
+.bigItem {
+	border-color: @test-wide;
+	background-color: fade(@test-wide, 8%);
+
+	&[data-spotlight-focused] {
+		border-color: @test-wide;
+		box-shadow: 0 0 0 3px @test-wide-soft;
+	}
+}
+
+.bigItemVertical {
+	border-color: @test-tall;
+	background-color: fade(@test-tall, 8%);
+
+	&[data-spotlight-focused] {
+		border-color: @test-tall;
+		box-shadow: 0 0 0 3px @test-tall-soft;
+	}
+}

@@ -1,0 +1,37 @@
+@import '../styles/sampleTheme.less';
+
+.holdSample {
+	.sampleRoot();
+}
+
+.description {
+	.sampleDescription();
+}
+
+.demoPanel {
+	.sampleDemoPanel();
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 30px;
+}
+
+.statusList {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(309px, 1fr));
+	gap: 18px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.statusItem {
+	.statusCard();
+}
+
+.statusItem em {
+	color: @text;
+	font-style: normal;
+	font-family: @mono;
+	font-size: 18px;
+}

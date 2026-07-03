@@ -1,0 +1,36 @@
+@import '../styles/sampleTheme.less';
+
+.control {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #10b981;
+	border-radius: 15px;
+	background:
+		linear-gradient(180deg, rgba(16, 185, 129, 0.18) 0%, rgba(16, 185, 129, 0.08) 100%);
+	color: @text;
+	font-family: @mono;
+	font-size: 18px;
+	font-weight: 700;
+	user-select: none;
+	touch-action: none;
+	box-shadow: 0 3px 3px rgba(15, 23, 42, 0.08);
+
+	&[data-spotlight-focused] {
+		border-color: @accent;
+		box-shadow: 0 0 0 3px @accent-soft;
+	}
+}
+
+.corner {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 27px;
+	height: 27px;
+	border: 1px solid @border;
+	border-radius: 12px 0 15px 0;
+	background-color: @surface-muted;
+	cursor: nwse-resize;
+}
