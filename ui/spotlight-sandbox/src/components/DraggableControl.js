@@ -7,8 +7,8 @@ import css from './DraggableControl.module.less';
 
 const SpottableDiv = Spottable('div');
 
-const CORNER_SIZE = 20;
-const DEFAULT_SIZE = 50;
+const CORNER_SIZE = 27;
+const DEFAULT_SIZE = 69;
 
 const DraggableControl = ({initialLeft = 0, initialTop = 0, label, ...rest}) => {
 	const [position, setPosition] = useState({left: initialLeft, top: initialTop});

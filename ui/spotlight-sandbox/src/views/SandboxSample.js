@@ -13,8 +13,8 @@ const createInitialControls = () => {
 		for (let column = 0; column < 4; column++) {
 			controls.push({
 				id: `control-${id++}`,
-				left: 100 + column * 100,
-				top: 100 * (row + 1)
+				left: 141 + column * 141,
+				top: 141 * (row + 1)
 			});
 		}
 	}
@@ -28,8 +28,8 @@ const SandboxSample = () => {
 	const handleAddControl = useCallback(() => {
 		setControls((current) => current.concat({
 			id: `control-${current.length}`,
-			left: 20 + (current.length % 8) * 70,
-			top: 280 + Math.floor(current.length / 8) * 70
+			left: 30 + (current.length % 8) * 99,
+			top: 393 + Math.floor(current.length / 8) * 99
 		}));
 	}, []);
 

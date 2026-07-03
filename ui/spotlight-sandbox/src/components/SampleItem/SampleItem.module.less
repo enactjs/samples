@@ -5,13 +5,13 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
-	min-height: 56px;
-	padding: 14px 18px;
+	min-height: 78px;
+	padding: 21px 27px;
 	border: 1px solid @border;
-	border-radius: 14px;
+	border-radius: 21px;
 	background-color: @surface;
-	box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-	font-size: 15px;
+	box-shadow: 0 3px 3px rgba(15, 23, 42, 0.04);
+	font-size: 21px;
 	font-weight: 600;
 	text-align: left;
 	transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
@@ -19,18 +19,18 @@
 	&::after {
 		content: '→';
 		color: @text-muted;
-		font-size: 18px;
+		font-size: 24px;
 		transition: transform 160ms ease, color 160ms ease;
 	}
 
 	&[data-spotlight-focused] {
 		border-color: @accent;
 		box-shadow: 0 0 0 3px @accent-soft;
-		transform: translateY(-1px);
+		transform: translateY(-3px);
 
 		&::after {
 			color: @accent;
-			transform: translateX(4px);
+			transform: translateX(6px);
 		}
 	}
 }
