@@ -14,7 +14,7 @@ const SpottableContainer = SpotlightContainerDecorator({enterTo: 'last-focused'}
 
 const items = Array(80).fill().map((_, i) => 'Item ' + (i + 1));
 
-// eslint-disable-next-line enact/display-name, enact/prop-types
+// eslint-disable-next-line enact/display-name
 const renderItem = () => ({index, ...rest}) => (
 	<Item {...rest}>
 		{items[index]}
