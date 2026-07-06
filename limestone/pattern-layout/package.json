@@ -33,11 +33,11 @@
     "@enact/spotlight": "^5.5.1",
     "@enact/ui": "^5.5.1",
     "@enact/webos": "^5.5.1",
-    "ilib": "^14.21.0",
+    "ilib": "^14.22.0",
     "prop-types": "^15.8.1",
-    "query-string": "^9.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "query-string": "^9.4.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "eslint-config-enact-proxy": "^1.0.9"

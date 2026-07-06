@@ -36,11 +36,11 @@
     "@enact/ui": "^5.5.1",
     "@enact/webos": "^5.5.1",
     "@reduxjs/toolkit": "^2.3.0",
-    "ilib": "^14.21.0",
+    "ilib": "^14.22.0",
     "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-redux": "^9.1.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0",
     "redux": "^5.0.1"
   },
   "devDependencies": {
