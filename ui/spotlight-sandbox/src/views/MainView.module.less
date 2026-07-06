@@ -1,0 +1,26 @@
+@import '~@enact/ui/styles/mixins.less';
+@import '../styles/sampleTheme.less';
+
+.main {
+	background:
+		radial-gradient(circle at top, rgba(99, 102, 241, 0.08), transparent 34%),
+		#f1f5f9;
+	position: absolute;
+	.position(0);
+	padding: 57px clamp(33px, 4vw, 78px);
+	overflow: auto;
+}
+
+.intro {
+	max-width: 897px;
+	margin-block: 0 18px;
+	color: @text-muted;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	max-width: 783px;
+	margin-top: 39px;
+}

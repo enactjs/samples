@@ -21,30 +21,19 @@
   "enact": {
     "theme": "limestone"
   },
-  "eslintConfig": {
-    "extends": "enact-proxy"
-  },
-  "eslintIgnore": [
-    "node_modules/*",
-    "build/*",
-    "dist/*"
-  ],
   "dependencies": {
-    "@enact/core": "^5.0.0-alpha.4",
-    "@enact/i18n": "^5.0.0-alpha.4",
-    "@enact/limestone": "enactjs/limestone",
-    "@enact/spotlight": "^5.0.0-alpha.4",
-    "@enact/ui": "^5.0.0-alpha.4",
-    "@types/node": "^22.9.1",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "ilib": "^14.21.0",
+    "@enact/core": "^5.5.1",
+    "@enact/i18n": "^5.5.1",
+    "@enact/limestone": "^1.10.1",
+    "@enact/spotlight": "^5.5.1",
+    "@enact/ui": "^5.5.1",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "ilib": "^14.22.0",
     "prop-types": "^15.8.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^5.6.3"
-  },
-  "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.9"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^5.9.3"
   }
 }

@@ -12,14 +12,11 @@
   "license": "Apache-2.0",
   "private": true,
   "repository": "https://github.com/enactjs/samples",
-  "eslintConfig": {
-    "extends": "enact-proxy/strict"
+  "engines": {
+    "node": ">= 20.19.0"
   },
   "dependencies": {
-    "readdirp": "^4.0.2",
-    "shelljs": "^0.8.5"
-  },
-  "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.8"
+    "readdirp": "^5.0.0",
+    "shelljs": "^0.10.0"
   }
 }

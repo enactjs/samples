@@ -1,0 +1,136 @@
+@surface: #fff;
+@surface-muted: #f8fafc;
+@border: #e2e8f0;
+@text: #0f172a;
+@text-muted: #64748b;
+@accent: #6366f1;
+@accent-soft: rgba(99, 102, 241, 0.12);
+@container-active: #f43f5e;
+@container-active-soft: rgba(244, 63, 94, 0.14);
+@test-wide: #0ea5e9;
+@test-wide-soft: rgba(14, 165, 233, 0.14);
+@test-tall: #8b5cf6;
+@test-tall-soft: rgba(139, 92, 246, 0.14);
+@shadow: 0 3px 3px rgba(15, 23, 42, 0.06), 0 12px 33px rgba(15, 23, 42, 0.06);
+@mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+@font-base: 21px;
+@font-title: 45px;
+@font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+.sampleTypography() {
+	font-family: @font-sans;
+	font-size: @font-base;
+	line-height: 1.6;
+	color: @text;
+}
+
+.sampleTitle() {
+	margin: 0 0 18px;
+	font-family: @font-sans;
+	font-size: @font-title;
+	font-weight: 700;
+	line-height: 1.2;
+	color: @text;
+}
+
+.sampleRoot() {
+	max-width: 1344px;
+}
+
+.sampleDescription() {
+	margin: 0 0 30px;
+	font-size: @font-base;
+	line-height: 1.6;
+	color: @text-muted;
+}
+
+.sampleDemoPanel() {
+	padding: 36px;
+	border: 1px solid @border;
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 42%),
+		linear-gradient(180deg, @surface-muted 0%, @surface 100%);
+	box-shadow: @shadow;
+}
+
+.sampleStage() {
+	position: relative;
+	min-height: 504px;
+	border: 1px solid @border;
+	border-radius: 21px;
+	background-color: @surface;
+	box-shadow: inset 0 3px 3px rgba(15, 23, 42, 0.04);
+}
+
+.spotlightContainer() {
+	border: 1px solid @border;
+	border-radius: 21px;
+	background-color: @surface;
+	box-shadow: 0 3px 3px rgba(15, 23, 42, 0.04);
+	transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+
+	&:focus-within {
+		border-color: @container-active;
+		background-color: #fff7f8;
+		box-shadow:
+			0 0 0 3px @container-active-soft,
+			0 15px 33px rgba(244, 63, 94, 0.08);
+	}
+}
+
+.monoBadge() {
+	display: inline-flex;
+	align-self: flex-start;
+	padding: 6px 15px;
+	border-radius: 999px;
+	background-color: @accent-soft;
+	color: @accent;
+	font-family: @mono;
+	font-size: 18px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.statusBar() {
+	display: inline-flex;
+	align-items: center;
+	gap: 15px;
+	margin-top: 30px;
+	padding: 15px 21px;
+	border: 1px solid @border;
+	border-radius: 18px;
+	background-color: @surface;
+	box-shadow: @shadow;
+}
+
+.statusLabel() {
+	font-size: 18px;
+	font-weight: 600;
+	color: @text-muted;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.statusValue() {
+	padding: 6px 15px;
+	border-radius: 12px;
+	background-color: @surface-muted;
+	color: @text;
+	font-family: @mono;
+	font-size: 21px;
+}
+
+.statusCard() {
+	margin: 0;
+	padding: 18px 21px;
+	border: 1px solid @border;
+	border-radius: 18px;
+	background-color: @surface;
+	box-shadow: 0 3px 3px rgba(15, 23, 42, 0.04);
+	color: @text-muted;
+	font-size: 21px;
+	line-height: 1.5;
+	list-style: none;
+}

@@ -22,13 +22,17 @@ const createHandler = (fn: HandlerFunctionType) => {
 const CounterBase = kind<Props>({
 	name: 'Counter',
 
+	defaultProps: {
+		count: 0,
+	},
+
 	handlers: {
 		onDecrementClick: createHandler(count => count - 1),
 		onIncrementClick: createHandler(count => count + 1),
 		onResetClick: createHandler(() => 0)
 	},
 
-	render: ({onIncrementClick, onDecrementClick, onResetClick, count = 0, ...rest}) => {
+	render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => {
 		delete rest.onCounterChange;
 		return (
 			<div {...rest}>

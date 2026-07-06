@@ -2,6 +2,11 @@
 
 The following is a curated list of changes in the Enact samples module, newest changes on the top.
 
+## [unreleased]
+
+- Added `ui/spotlight-sandbox` sample demonstrating standalone `@enact/spotlight` usage
+- Updated minor dependencies
+
 ## [2.7.0] - 2023-05-09
 
 - Up to this version works with React 18.2.0, Enact 4.7, Sandstone 2.7, Moonstone 4.5

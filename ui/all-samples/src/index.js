@@ -1,6 +1,5 @@
 /* global ENACT_PACK_ISOMORPHIC */
-import {HashRouter, Route, Routes} from 'react-router-dom';
-import {StaticRouter} from 'react-router-dom/server';
+import {HashRouter, Route, Routes, StaticRouter} from 'react-router';
 import {createRoot, hydrateRoot} from 'react-dom/client';
 
 import PatternListDetails from '../../pattern-list-details/src/App';

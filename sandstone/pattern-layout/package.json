@@ -23,23 +23,17 @@
       "baseSize": 48
     }
   },
-  "eslintConfig": {
-    "extends": "enact-proxy/strict"
-  },
   "dependencies": {
-    "@enact/core": "^4.9.4",
-    "@enact/i18n": "^4.9.4",
-    "@enact/sandstone": "^2.9.5",
-    "@enact/spotlight": "^4.9.4",
-    "@enact/ui": "^4.9.4",
-    "@enact/webos": "^4.9.4",
-    "ilib": "^14.20.0",
+    "@enact/core": "^4.9.8",
+    "@enact/i18n": "^4.9.8",
+    "@enact/sandstone": "^2.9.13",
+    "@enact/spotlight": "^4.9.8",
+    "@enact/ui": "^4.9.8",
+    "@enact/webos": "^4.9.8",
+    "ilib": "^14.21.2",
     "prop-types": "^15.8.1",
-    "query-string": "^9.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.8"
+    "query-string": "^9.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
