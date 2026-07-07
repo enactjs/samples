@@ -25,9 +25,6 @@
       "baseSize": 48
     }
   },
-  "eslintConfig": {
-    "extends": "enact-proxy/strict"
-  },
   "dependencies": {
     "@enact/core": "^5.5.1",
     "@enact/i18n": "^5.5.1",
@@ -42,8 +39,5 @@
     "react-dom": "^19.2.7",
     "react-redux": "^9.3.0",
     "redux": "^5.0.1"
-  },
-  "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.9"
   }
 }

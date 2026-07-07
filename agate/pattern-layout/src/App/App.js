@@ -82,7 +82,7 @@ const Sample = kind({
 });
 
 const AppDecorator = hoc((config, Wrapped) => {
-	const Component = ({defaultDebug, defaultIndex, defaultItemIndex, ...rest}) => {
+	const Component = ({defaultDebug = false, defaultIndex = 0, defaultItemIndex = 0, ...rest}) => {
 		const [debug, setDebug] = useState(defaultDebug);
 		const [index, setIndex] = useState(defaultIndex);
 		const [itemIndex, setItemIndex] = useState(defaultItemIndex);
@@ -120,12 +120,6 @@ const AppDecorator = hoc((config, Wrapped) => {
 		defaultDebug: PropTypes.bool,
 		defaultIndex: PropTypes.number,
 		defaultItemIndex: PropTypes.number
-	};
-
-	Component.defaultProps = {
-		defaultDebug: false,
-		defaultIndex: 0,
-		defaultItemIndex: 0
 	};
 
 	return Component;

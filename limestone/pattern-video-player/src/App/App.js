@@ -16,7 +16,7 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-const AppBase = ({className, panelId, videoId, ...rest}) => {
+const AppBase = ({className, panelId = 0, videoId = 0, ...rest}) => {
 	const [panelIndex, setPanelIndex] = useState(panelId);
 	const [panelsVisible, setPanelsVisible] = useState(false);
 	const [videoIndex, setVideoIndex] = useState(videoId);
@@ -94,11 +94,6 @@ AppBase.propTypes = {
 	 * @public
 	 */
 	videoId: PropTypes.number
-};
-
-AppBase.defaultProps = {
-	panelId: 0,
-	videoId: 0
 };
 
 const App = ThemeDecorator(AppBase);

@@ -21,9 +21,6 @@
   "enact": {
     "theme": "limestone"
   },
-  "eslintConfig": {
-    "extends": "enact-proxy/strict"
-  },
   "eslintIgnore": [
     "node_modules/*",
     "build/*",
@@ -40,8 +37,5 @@
     "prop-types": "^15.8.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
-  },
-  "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.9"
   }
 }

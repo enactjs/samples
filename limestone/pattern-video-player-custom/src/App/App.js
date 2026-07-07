@@ -17,7 +17,7 @@ import css from './App.module.less';
 
 const getVideo = (index) => videos[index];
 
-const AppBase = ({className, subtitleId, videoId, ...rest}) => {
+const AppBase = ({className, subtitleId = 0, videoId = 0, ...rest}) => {
 	const [resolutionDropdownVisible, setResolutionDropdownVisible] = useState(false);
 	const [resolutions, setResolutions] = useState([]);
 	const [selectedResolution, setSelectedResolution] = useState();
@@ -227,11 +227,6 @@ AppBase.propTypes = {
 	 * @public
 	 */
 	videoId: PropTypes.number
-};
-
-AppBase.defaultProps = {
-	subtitleId: 0,
-	videoId: 0
 };
 
 const App = ThemeDecorator(AppBase);
