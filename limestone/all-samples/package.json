@@ -1,0 +1,48 @@
+{
+  "name": "all-samples",
+  "version": "1.0.0",
+  "description": "A collection of sample applications for limestone.",
+  "author": "",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint --strict .",
+    "license": "enact license",
+    "test": "enact test",
+    "test-watch": "enact test --watch"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "https://github.com/enactjs/samples",
+  "enact": {
+    "title": "Limestone QA Samples",
+    "isomorphic": true,
+    "ri": {
+      "baseSize": 48
+    }
+  },
+  "dependencies": {
+    "@enact/core": "^5.5.1",
+    "@enact/i18n": "^5.5.1",
+    "@enact/limestone": "^1.10.1",
+    "@enact/spotlight": "^5.5.1",
+    "@enact/ui": "^5.5.1",
+    "@enact/webos": "^5.5.1",
+    "@reduxjs/toolkit": "^2.12.0",
+    "classnames": "^2.5.1",
+    "hls.js": "^1.6.16",
+    "ilib": "^14.22.0",
+    "prop-types": "^15.8.1",
+    "query-string": "^9.4.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^6.28.0",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0"
+  }
+}

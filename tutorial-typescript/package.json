@@ -19,12 +19,12 @@
   "private": true,
   "repository": "",
   "enact": {
-    "theme": "sandstone"
+    "theme": "limestone"
   },
   "dependencies": {
     "@enact/core": "^5.5.1",
     "@enact/i18n": "^5.5.1",
-    "@enact/sandstone": "^3.0.0-alpha.4",
+    "@enact/limestone": "^1.10.1",
     "@enact/spotlight": "^5.5.1",
     "@enact/ui": "^5.5.1",
     "@types/node": "^24.13.2",

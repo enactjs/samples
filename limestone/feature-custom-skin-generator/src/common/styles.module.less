@@ -1,0 +1,51 @@
+// General styles
+
+.scrollerColors {
+	--sand-focus-bg-color-rgb: 230, 230, 230;
+	--sand-progress-bg-color-rgb: 55, 58, 65;
+	--sand-progress-color-rgb: 230, 230, 230;
+	--sand-shadow-color-rgb: none;
+}
+
+.inputField {
+	--sand-shadow-color-rgb: none;
+	align-items: center;
+	padding: 12px 0;
+
+	.labelField {
+		color: #e6e6e6;
+		margin: 0 36px;
+	}
+}
+
+.colorBlock[type=color] {
+	height: 132px;
+	width: 132px;
+	min-width: 132px;
+	border-color: transparent;
+	border-radius: 12px;
+
+	&::-webkit-color-swatch-wrapper {
+		padding: 0;
+	}
+
+	&::-webkit-color-swatch {
+		border-color: transparent;
+	}
+}
+
+.customAlert {
+	--sand-alert-overlay-bg-color-rgb: 76, 89, 106;
+	--sand-component-bg-color: #7D848C;
+	--sand-component-focus-text-color-rgb: 76, 80, 89;
+	--sand-component-text-color-rgb: 230, 230, 230;
+	--sand-focus-bg-color-rgb: 230, 230, 230;
+	--sand-overlay-bg-color-rgb: 76, 89, 106;
+	--sand-shadow-color-rgb: none;
+	--sand-text-color-rgb: 230, 230, 230;
+	text-align-last: center;
+
+	.customAlertMsg {
+		--sand-text-color-rgb: 230, 230, 230;
+	}
+}
