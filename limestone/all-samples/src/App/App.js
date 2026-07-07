@@ -2,8 +2,7 @@ import kind from '@enact/core/kind';
 import Scroller from '@enact/limestone/Scroller';
 import ThemeDecorator from '@enact/limestone/ThemeDecorator';
 import PropTypes from 'prop-types';
-import {HashRouter, Route, Routes, useNavigate} from 'react-router-dom';
-import {StaticRouter} from 'react-router-dom/server';
+import {HashRouter, Route, Routes, StaticRouter, useNavigate} from 'react-router';
 
 import SampleItem from '../components/SampleItem';
 import ButtonToSamples from '../components/ButtonToSamples';
