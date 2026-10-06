@@ -7,6 +7,8 @@ The following is a curated list of changes in the Enact samples module, newest c
 - Added `ui/spotlight-sandbox` sample demonstrating standalone `@enact/spotlight` usage
 - Updated major dependencies
 - Updated minor dependencies
+- Updated react-router to version 8.4.0 for ui/spotlight-sandbox
+- Updated @enact/ui to version 5.6.0 for limestone/pattern-single-panel-redux
 
 ## [2.7.0] - 2023-05-09
 
