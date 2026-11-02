@@ -114,7 +114,7 @@ const FileBrowserBase = kind({
 const popPath = (pathData) => {
 	const path = pathData.path;
 	let newPath = '/';
-	let lastPath = path;
+	let lastPath;
 
 	if (path) {
 		const parts = path.split('/').filter((e) => e);

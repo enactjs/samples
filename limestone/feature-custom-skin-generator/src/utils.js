@@ -199,7 +199,7 @@ const getColorsFromString = (colors) => {
 
 		return colorSets;
 	} catch (err) {
-		throw new Error(err);
+		throw new Error(err.message || err, {cause: err});
 	}
 };
 

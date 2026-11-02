@@ -61,12 +61,14 @@ const MainView = (props) => {
 	}, []);
 
 	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		createInitialData(defaultSize);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		if (isFetching) {
+			// eslint-disable-next-line react-hooks/set-state-in-effect
 			loadMoreData();
 			setIsFetching(false);
 		}
