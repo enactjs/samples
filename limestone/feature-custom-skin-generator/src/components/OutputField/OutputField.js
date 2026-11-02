@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable enact/jsx-no-bind */
 
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';

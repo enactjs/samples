@@ -50,10 +50,10 @@ const CameraView = () => {
 			<Heading showLine>Camera List</Heading>
 			<VirtualList
 				dataSize={cameraIds.length}
-				// eslint-disable-next-line react/jsx-no-bind
+				// eslint-disable-next-line enact/jsx-no-bind
 				itemRenderer={({index}) => (
 					<Item
-						// eslint-disable-next-line react/jsx-no-bind
+						// eslint-disable-next-line enact/jsx-no-bind
 						onClick={() => {
 							dispatch(startCamera(cameraIds[index].id));
 						}}
@@ -71,7 +71,7 @@ const CameraView = () => {
 			<Column align="center">
 				<Button
 					size="small"
-					// eslint-disable-next-line react/jsx-no-bind
+					// eslint-disable-next-line enact/jsx-no-bind
 					onClick={() => {
 						dispatch(closeCamera(cameraStatus.handle));
 					}}

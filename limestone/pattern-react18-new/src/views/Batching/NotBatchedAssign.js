@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks, react/jsx-no-bind */
+/* eslint-disable react-hooks/rules-of-hooks, enact/jsx-no-bind */
 
 import kind from '@enact/core/kind';
 import BodyText from '@enact/limestone/BodyText';

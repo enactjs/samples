@@ -130,7 +130,7 @@ const ImportSkin = kind({
 							try {
 								reader.readAsText(inputEvent.target.files[0]);
 							} catch (err) {
-								throw new Error(err);
+								throw new Error(err.message || err, {cause: err});
 							}
 						}
 					}
