@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable enact/jsx-no-bind */
 
 import Button from '@enact/limestone/Button';
 import Popup from '@enact/limestone/Popup';

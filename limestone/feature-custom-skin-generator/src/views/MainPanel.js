@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable enact/jsx-no-bind */
 
 import Alert from '@enact/limestone/Alert';
 import BodyText from '@enact/limestone/BodyText';

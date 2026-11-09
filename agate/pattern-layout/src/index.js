@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable enact/jsx-no-bind */
 /* global ENACT_PACK_ISOMORPHIC */
 import qs from 'query-string';
 import {createRoot, hydrateRoot} from 'react-dom/client';
